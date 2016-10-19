@@ -1,0 +1,550 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"_",
+				"_POST"
+			],
+			[
+				"url",
+				"urldecode"
+			],
+			[
+				"json",
+				"json_decode"
+			],
+			[
+				"page",
+				"Page"
+			],
+			[
+				"is_in",
+				"is_int"
+			],
+			[
+				"ta",
+				"tablename"
+			],
+			[
+				"_in",
+				"_index"
+			],
+			[
+				"su",
+				"submit"
+			],
+			[
+				"ex",
+				"explode"
+			],
+			[
+				"mysql_fet",
+				"mysql_fetch_row"
+			],
+			[
+				"sql",
+				"sql1"
+			],
+			[
+				"mysql_fe",
+				"mysql_fetch_array"
+			],
+			[
+				"con",
+				"content"
+			],
+			[
+				"tg_re",
+				"tg_reid"
+			],
+			[
+				"js",
+				"json_decode"
+			],
+			[
+				"gets",
+				"getsign"
+			],
+			[
+				"my",
+				"my_home"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"is_a",
+				"is_array"
+			],
+			[
+				"pre",
+				"preg_match"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"str_rep",
+				"str_replace"
+			],
+			[
+				"obj",
+				"get_object_vars"
+			],
+			[
+				"is_nu",
+				"is_numeric"
+			],
+			[
+				"this",
+				"this-"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"PRINT",
+				"printf"
+			],
+			[
+				"http_bu",
+				"http_build_query"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 351.0,
+		"last_filter": "inst",
+		"selected_items":
+		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 209.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/E/www/tgdemo/tag_cloud.php",
+		"/E/www/tgdemo/activity.php",
+		"/E/www/tgdemo/如何设置oauth实现自动登录.pdf",
+		"/E/work/demo/TestGuest/article.php",
+		"/E/work/demo/TestGuest/includes/global.func.php",
+		"/D/pan/testyao/modules/order.mod.php",
+		"/E/work/demo/TestGuest/index.php",
+		"/D/pan/bdb/include/logic/cpic.logic.php",
+		"/D/pan/testyao/include/logic/kuaiyaoapi.logic.php",
+		"/D/pan/bdb/modules/order.mod.php",
+		"/D/pan/testyao/modules/api/bdapi.mod.php",
+		"/E/work/demo/TestGuest/register.php",
+		"/E/work/demo/TestGuest/login.php",
+		"/E/work/demo/TestGuest/includes/common.inc.php",
+		"/D/pan/testyao/modules/api/api.mod.php",
+		"/E/work/demo/TestGuest/includes/mysql.func.php",
+		"/E/work/demo/TestGuest/header.php",
+		"/E/work/demo/TestGuest/includes/login.func.php",
+		"/E/work/demo/TestGuest/title.php",
+		"/D/pan/testyao/modules/chufang.mod.php",
+		"/D/pan/testyao/include/logic/order.logic.php",
+		"/D/code/TestGuest8.5/login.php",
+		"/D/pan/bdb/modules/login.mod.php",
+		"/D/pan/bdb/modules/index.mod.php",
+		"/E/work/demo/TestGuest/code.php",
+		"/E/work/demo/TestGuest/includes/check.func.php",
+		"/E/work/demo/TestGuest/new.xml",
+		"/C/xampp/php/php.ini",
+		"/E/work/demo/TestGuest/face.php",
+		"/E/work/demo/TestGuest/blog.html",
+		"/D/pan/voting/modules/admin/login.mod.php",
+		"/D/pan/voting/templates/default/index.html",
+		"/E/work/demo/TestGuest/footer.php",
+		"/D/pan/testyao/setting/admin_left_menu.php",
+		"/E/work/demo/TestGuest/flower.html",
+		"/E/work/demo/TestGuest/face.html",
+		"/E/work/demo/TestGuest/friend.html",
+		"/E/work/demo/thinkphp/Application/Admin/Controller/BasicController.class.php",
+		"/E/work/demo/thinkphp/Application/Admin/Controller/IndexController.class.php",
+		"/E/work/demo/thinkphp/Application/Admin/View/Index/index.html",
+		"/E/work/demo/thinkphp/Application/Admin/View/Index/top.html",
+		"/D/pan/testyao/modules/ajax/index.mod.php",
+		"/D/pan/testyao/modules/index.mod.php",
+		"/D/pan/testyao/include/function/global.func.php",
+		"/E/work/3班/authz",
+		"/E/work/demo/TestGuest/index.html",
+		"/D/Documents/Tencent Files/81102924/FileRecv/Client (1).java",
+		"/D/Documents/Tencent Files/81102924/FileRecv/Base64Util (1).java",
+		"/D/pan/testyao/m/modules/index.mod.php",
+		"/E/work/demo/thinkphp/Application/Admin/View/Index/sidebar.html",
+		"/E/work/demo/thinkphp/Application/Admin/View/Index/sidebarn.html",
+		"/E/work/demo/thinkphp/Application/Common/Model/UserModel.class.php",
+		"/E/work/demo/thinkphp/ThinkPHP/Library/Think/Verify.class.php",
+		"/E/work/demo/thinkphp/Application/Common/Model/BasicModel.class.php",
+		"/E/work/demo/thinkphp/Application/Admin/View/Index/admin_login.html",
+		"/D/Documents/Tencent Files/81102924/FileRecv/Client.java",
+		"/D/pan/testyao/modules/ajax/topic.mod.php",
+		"/D/Documents/Tencent Files/81102924/FileRecv/Base64Util.java",
+		"/D/pan/testyao/m/templates/default/order.html",
+		"/E/work/demo/thinkphp/Application/Admin/View/Index/admin.tpl",
+		"/E/work/demo/cmsdemo/includes/Validate.class.php",
+		"/E/work/demo/cmsdemo/model/ManagerModel.class.php",
+		"/E/work/demo/cmsdemo/action/AdminAction.class.php",
+		"/E/work/demo/cms/admin/index.php",
+		"/E/work/demo/cms/includes/Tool.class.php",
+		"/E/work/demo/thinkphp/Application/Home/Controller/IndexController.class.php",
+		"/E/work/demo/thinkphp/Application/Home/Conf/config.php",
+		"/E/work/demo/thinkphp/Application/Common/Conf/config.php",
+		"/E/work/demo/thinkphp/Application/Home/View/Index/navlist.html",
+		"/E/work/demo/thinkphp/Application/Home/View/include/header.html",
+		"/E/work/demo/cms/model/ContentModel.class.php",
+		"/E/work/demo/thinkphp/Application/Common/Model/ContentModel.class.php",
+		"/E/work/demo/cms/model/NavModel.class.php",
+		"/E/work/demo/thinkcms/CMS/Home/Controller/ContentController.class.php",
+		"/E/work/demo/thinkcms/CMS/Admin/Conf/config.php",
+		"/E/work/demo/cms/action/IndexAction.class.php",
+		"/E/work/demo/thinkphp/Application/Common/Model/NavModel.class.php",
+		"/E/work/demo/xm.php",
+		"/E/work/demo/cmsdemo/action/ListAction.class.php",
+		"/E/work/demo/cmsdemo/list.php",
+		"/E/work/demo/thinkphp/Application/Home/View/Index/index.html",
+		"/E/work/demo/thinkphp/Application/Home/View/layout.html",
+		"/E/work/demo/thinkphp/Application/Home/Model/BasicModel.class.php",
+		"/E/work/demo/thinkphp/Application/Home/Controller/BasicController.class.php",
+		"/E/work/demo/thinkphp/Application/Home/View/Index/list.tpl",
+		"/E/work/demo/thinkphp/Application/Home/Model/ContentModel.class.php",
+		"/E/work/demo/thinkcms/CMS/Home/Controller/IndexController.class.php",
+		"/E/work/demo/thinkphp/Application/Runtime/Cache/Home/2a94b8bda04ff446dcedd42276fc99ee.php",
+		"/E/work/demo/thinkphp/Application/Runtime/Cache/Home/4913b3ab5f520f6dd350e21137b73fb2.php",
+		"/E/work/demo/test.php",
+		"/E/work/demo/thinkcms/CMS/Home/View/Public/header.html",
+		"/E/work/demo/thinkphp/Application/Home/Model/UserModel.class.php",
+		"/D/pan/bdb/modules/api/api.mod.php",
+		"/E/work/demo/cms/includes/Validate.class.php",
+		"/E/work/demo/thinkcms/CMS/Home/View/layout.html",
+		"/E/work/demo/thinkcms/CMS/Home/View/Content/contentList.html",
+		"/E/work/demo/thinkcms/CMS/Home/View/Index/index.html",
+		"/E/work/demo/thinkphp/Application/Home/View/include/foot.html",
+		"/E/work/demo/TestGuest/js/register.js",
+		"/E/work/demo/test/demo5.php",
+		"/E/work/demo/test/demo4.php",
+		"/E/work/demo/test/basic19/index.php",
+		"/E/work/demo/demo12.php",
+		"/E/work/demo/domo16.php",
+		"/E/work/demo/demo.php",
+		"/D/pan/bdb/api.php",
+		"/D/pan/bdb/index.php",
+		"/D/pan/bdb/modules/api/bdapi.mod.php",
+		"/E/work/3班/passwd",
+		"/E/work/demo/thinkphp/Application/Home/View/index.html",
+		"/E/work/demo/thinkcms/CMS/Home/Conf/config.php",
+		"/E/work/demo/thinkcms/CMS/Common/Conf/config.php",
+		"/E/work/demo/thinkcms/index.php",
+		"/E/work/demo/thinkphp/ThinkPHP/Conf/convention.php",
+		"/E/work/demo/thinkphp/.htaccess",
+		"/E/work/demo/thinkphp/Common/index.html",
+		"/E/work/demo/thinkphp/Application/Home/Controller/EmptyController.class.php",
+		"/E/work/demo/thinkphp/ThinkPHP/Tpl/dispatch_jump.tpl",
+		"/E/work/demo/thinkphp/Application/Home/View/Index/test.html",
+		"/E/work/demo/thinkphp/admin.php",
+		"/C/Users/Administrator/AppData/Local/Temp/Rar$DIa0.534/index.tpl",
+		"/E/work/demo/thinkphp/index.php",
+		"/E/work/demo/thinkphp/kk/Home/Controller/MenuController.class.php",
+		"/D/pan/testyao/bdapi.php",
+		"/E/work/demo/thinkphp/Common/Conf/config.php",
+		"/D/pan/testyao/modules/api/bdapi.mod - 副本.php",
+		"/C/xampp/apache/conf/extra/httpd-xampp.conf",
+		"/E/work/demo/thinkphp/ThinkPHP/ThinkPHP.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 117.0,
+		"where_history":
+		[
+			"D:\\pan\\bdb",
+			"D:\\www\\ThinkPHP",
+			"<open folders>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"urlencode",
+			"4_60_20",
+			"file",
+			"_setcookies",
+			"file",
+			"chufang(",
+			"check_paytype",
+			"wxcallpay2png",
+			"weixin",
+			"error_reporting",
+			"time",
+			"KYW",
+			"map",
+			"p9&e&Ike5bPwUo$!S3Il$Q$sBJ3*l",
+			"secretKey",
+			"addchufang",
+			"SESSION",
+			"news_bynavtotal",
+			"email",
+			"html",
+			"mod_rewrite.c",
+			"vhost",
+			"merge_order",
+			"error_re",
+			"paytype",
+			"baodan2arr",
+			"pay_type",
+			"insure_confirm",
+			"print_r",
+			"MySqlIterator",
+			"_resource_id",
+			"GetResourceId",
+			"getpay_code",
+			"pay_id",
+			"orderitem",
+			"addlog",
+			"log(",
+			"log",
+			"2_20_00",
+			"4_26_00",
+			"get_order_detail",
+			"detail",
+			"BBRIDTYPE",
+			"APPCONTENT",
+			"ERRINFO",
+			"successurl",
+			"array2xml",
+			"money",
+			"check_paytype",
+			"oderarr",
+			"mnotify",
+			"paytask",
+			"koubao_account",
+			"get_fapiao",
+			"SERIALNUMBER",
+			"jobtype3",
+			"jobtype",
+			"get_classtype",
+			"jobtype",
+			"get_fapiao",
+			"news_bynav",
+			"Get_Order",
+			"updateoder",
+			"Get_Order",
+			"data",
+			"postfield",
+			"app",
+			"paytype",
+			"baodan2arr",
+			"orderinfo",
+			"a_alert_close",
+			"re",
+			"updatesql",
+			"payInfo",
+			"pay_id",
+			"baodan2arr",
+			"get_fapiao",
+			"password",
+			"菜单",
+			"CHECK_USER",
+			"_setcookies",
+			"max",
+			"endtday",
+			"_query",
+			"cookie",
+			"password",
+			"_mysql_string",
+			"_remove_Dir",
+			"password",
+			"order_detail",
+			"changestate_api",
+			"changestate_apiorder",
+			"_page",
+			"baodan2arr",
+			"content",
+			"tg_content",
+			"_photo",
+			"orders",
+			"PHPExcel",
+			"条件",
+			"setObject",
+			"pay_team_alipay",
+			"acctountmoney",
+			"product_sign as s where s.organizeid",
+			"tichen",
+			"changestate_apiorder",
+			"change_state2cache",
+			"code(",
+			"code",
+			"check_expressprice",
+			"_close",
+			"_insert_id",
+			"_affected_rows",
+			"_is_repeat",
+			"_fetch_array",
+			"_check_code",
+			"changestate_api",
+			"total_price",
+			"orderinfo",
+			"order_tichen",
+			"limitnum",
+			"limit",
+			"bussinessOrigin",
+			"app",
+			"comment_current",
+			"data_digest",
+			"jaddslashes",
+			"post"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 45.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "message.sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"cod",
+				"config\\code.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 229.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
