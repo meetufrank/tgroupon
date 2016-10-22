@@ -88,6 +88,8 @@
                <?php endif; ?>
             </td>
           </tr>
+
+
          <?php if ($this->_var['suppliers_exists'] == 1): ?>
           <tr>
             <td class="label"><?php echo $this->_var['lang']['label_suppliers']; ?></td>
@@ -146,7 +148,7 @@ if ($this->_foreach['volume_price_tab']['total'] > 0):
             </td>
           </tr>
           <!--鍟嗗搧浼樻儬浠锋牸 end -->
-		  
+
 		  <!--TGROUPON新增分成金额设定-->
           <tr>
             <td class="label">分成金额</td>

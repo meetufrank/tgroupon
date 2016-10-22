@@ -836,43 +836,69 @@ function admin_info()
  * @param       string      $conditions
  * @return      array
  */
-function suppliers_list_info($conditions = '')
-{
-    $where = '';
-    if (!empty($conditions))
-    {
-        $where .= 'WHERE ';
-        $where .= $conditions;
-    }
+// function suppliers_list_info($conditions = '')
+// {
+//     $where = '';
+//     if (!empty($conditions))
+//     {
+//         $where .= 'WHERE ';
+//         $where .= $conditions;
+//     }
 
-    /* 查询 */
-    $sql = "SELECT suppliers_id, suppliers_name, suppliers_desc
-            FROM " . $GLOBALS['ecs']->table("suppliers") . "
-            $where";
+//     /* 查询 */
+//     $sql = "SELECT suppliers_id, suppliers_name, suppliers_desc
+//             FROM " . $GLOBALS['ecs']->table("suppliers") . "
+//             $where";
 
-    return $GLOBALS['db']->getAll($sql);
-}
+//     return $GLOBALS['db']->getAll($sql);
+// }
+
 
 /**
  * 供货商名
  *
  * @return  array
  */
-function suppliers_list_name()
-{
-    /* 查询 */
-    $suppliers_list = suppliers_list_info(' is_check = 1 ');
+// function suppliers_list_name()
+// {
+//     /* 查询 */
+//     $suppliers_list = suppliers_list_info(' is_check = 1 ');
 
-    /* 供货商名字 */
-    $suppliers_name = array();
-    if (count($suppliers_list) > 0)
-    {
-        foreach ($suppliers_list as $suppliers)
-        {
-            $suppliers_name[$suppliers['suppliers_id']] = $suppliers['suppliers_name'];
-        }
-    }
+//     /* 供货商名字 */
+//     $suppliers_name = array();
+//     if (count($suppliers_list) > 0)
+//     {
+//         foreach ($suppliers_list as $suppliers)
+//         {
+//             $suppliers_name[$suppliers['suppliers_id']] = $suppliers['suppliers_name'];
+//         }
+//     }
 
-    return $suppliers_name;
-}
+//     return $suppliers_name;
+// }
+
+/**
+ * 艺术家列表或厂商列表信息
+ *
+ * @param       string      $conditions
+ * @return      array
+ */
+// function art_list_info($type=site_firm)
+// {
+
+//     if (!empty($type))
+//     {
+//         $where = 'WHERE role_id ='.$type;
+
+//     }
+
+//     /* 查询 */
+//     $sql = "SELECT user_id, user_name, role_id
+//             FROM " . $GLOBALS['ecs']->table("admin_user") . "
+//             $where";
+
+
+//     return $GLOBALS['db']->getAll($sql);
+// }
+
 ?>

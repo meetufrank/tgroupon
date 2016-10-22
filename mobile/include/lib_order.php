@@ -596,7 +596,7 @@ function order_fee($order, $goods, $consignee)
 		}else{
 			$total['fencheng']  += $val['goods_price'] * $val['goods_number'];
 		}
-		
+
 		//echo $total['fencheng'];
 		/*TGROUPON新增加入订单商品分成金额*/
         $total['market_price'] += $val['market_price'] * $val['goods_number'];
@@ -799,7 +799,7 @@ function order_fee($order, $goods, $consignee)
     $_SESSION['flow_order'] = $order;
 
     $se_flow_type = isset($_SESSION['flow_type']) ? $_SESSION['flow_type'] : '';
-    
+
     /* 支付费用 */
     if (!empty($order['pay_id']) && ($total['real_goods_count'] > 0 || $se_flow_type != CART_EXCHANGE_GOODS))
     {
@@ -1113,11 +1113,11 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
                 if ($num > $product_info['product_number'])
                 {
                     $GLOBALS['err']->add(sprintf($GLOBALS['_LANG']['shortage'], $product_info['product_number']), ERR_OUT_OF_STOCK);
-    
+
                     return false;
                 }
             }
-        }       
+        }
     }
 
     /* 计算商品的促销价格 */
@@ -1625,7 +1625,7 @@ function get_cart_goods()
     {
         $total['goods_price']  += $row['goods_price'] * $row['goods_number'];
         $total['market_price'] += $row['market_price'] * $row['goods_number'];
-	    $total['total_number'] += $row['goods_number'];//by Leah	
+	    $total['total_number'] += $row['goods_number'];//by Leah
 
         $row['subtotal']     = price_format($row['goods_price'] * $row['goods_number'], false);
         $row['goods_price']  = price_format($row['goods_price'], false);

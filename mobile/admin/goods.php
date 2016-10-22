@@ -123,16 +123,28 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
     }
 
     /* 供货商名 */
-    $suppliers_list_name = suppliers_list_name();
-    $suppliers_exists = 1;
+    /**/
+    ///$suppliers_list_name = suppliers_list_name();
+    $suppliers_exists = 0;
     if (empty($suppliers_list_name))
     {
         $suppliers_exists = 0;
     }
     $smarty->assign('suppliers_exists', $suppliers_exists);
-    $smarty->assign('suppliers_list_name', $suppliers_list_name);
-    unset($suppliers_list_name, $suppliers_exists);
+    ///$smarty->assign('suppliers_list_name', $suppliers_list_name);
 
+    //unset($suppliers_list_name, $suppliers_exists);
+    unset($suppliers_exists);
+
+    /////厂商
+    //$firm_arr=art_list_info(4);
+    print_r('fff');
+    //////艺术家
+    //$art_arr=art_list_info(site_artist);
+
+    $smarty->assign('firm_arr', $firm_arr);
+    $smarty->assign('art_arr', $art_arr);
+    unset($firm_arr, $art_arr);
     /* 如果是安全模式，检查目录是否存在 */
     if (ini_get('safe_mode') == 1 && (!file_exists('../' . IMAGE_DIR . '/'.date('Ym')) || !is_dir('../' . IMAGE_DIR . '/'.date('Ym'))))
     {
@@ -411,7 +423,6 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
             }
         }
     }
-
     /* 拆分商品名称样式 */
     $goods_name_style = explode('+', empty($goods['goods_name_style']) ? '+' : $goods['goods_name_style']);
 
@@ -461,6 +472,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
     $smarty->assign('volume_price_list', $volume_price_list);
     /* 显示商品信息页面 */
     assign_query_info();
+print_r('dd');
     $smarty->display('goods_info.htm');
 }
 
@@ -1116,7 +1128,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     }
 
     /* 处理相册图片 */
-	
+
     handle_gallery_image($goods_id, $_FILES['img_url'], $_POST['img_desc'], $_POST['img_file']);
 
     /* 编辑时处理相册图片描述 */
@@ -1651,10 +1663,10 @@ elseif ($_REQUEST['act'] == 'remove')
 elseif ($_REQUEST['act'] == 'edit_sales_volume_base')
 {
     check_authz_json('goods_manage');
- 
+
     $goods_id = intval($_POST['id']);
     $sales_volume_base = json_str_iconv(trim($_POST['val']));
- 
+
     if ($exc->edit("sales_volume_base = '$sales_volume_base', last_update=" .gmtime(), $goods_id))
     {
         clear_cache_files();
