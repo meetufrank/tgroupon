@@ -18,7 +18,7 @@ if (!defined('IN_ECTOUCH'))
     die('Hacking attempt');
 }
 
-error_reporting(E_ALL);
+error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT);
 
 if (__FILE__ == '') {
     die('Fatal error code: 0');
@@ -250,7 +250,7 @@ if (!defined('INIT_NO_USERS')) {
 if ((DEBUG_MODE & 1) == 1) {
     error_reporting(E_ALL);
 } else {
-    error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+    error_reporting(E_ALL  & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT);
 }
 if ((DEBUG_MODE & 4) == 4) {
     include(ROOT_PATH . 'include/lib.debug.php');
