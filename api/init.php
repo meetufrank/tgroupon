@@ -21,7 +21,7 @@ if (!defined('IN_ECS'))
     die('Hacking attempt');
 }
 
-error_reporting(E_ALL);
+error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT); 
 
 if (__FILE__ == '')
 {
@@ -122,7 +122,7 @@ if ((DEBUG_MODE & 1) == 1)
 }
 else
 {
-    error_reporting(E_ALL ^ E_NOTICE);
+    error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT); 
 }
 if ((DEBUG_MODE & 4) == 4)
 {

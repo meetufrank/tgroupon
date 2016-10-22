@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT); 
 
 define('InEmpireBak',TRUE);
 define('EBAK_PATH',substr(dirname(__FILE__),0,-5));
@@ -9,7 +9,7 @@ $editor=0;
 require_once EBAK_PATH.'lang/dbchar.php';
 require_once EBAK_PATH.'class/config.php';
 
-//≥¨ ±…Ë÷√
+//?? ±??
 if($php_outtime)
 {
 	$php_outtime=(int)$php_outtime;
@@ -19,7 +19,7 @@ if($php_outtime)
 function db_connect(){
 	global $phome_db_server,$phome_db_username,$phome_db_password,$phome_db_dbname,$phome_db_port,$phome_db_char,$phome_db_ver,$editor,$fun_r;
 	$dblocalhost=$phome_db_server;
-	//∂Àø⁄
+	//?Àø?
 	if($phome_db_port)
 	{
 		$dblocalhost.=":".$phome_db_port;
@@ -39,7 +39,7 @@ function db_connect(){
 		echo $fun_r['ConntConnectDb'];
 		exit();
 	}
-	//±‡¬Î
+	//???
 	DoSetDbChar($phome_db_char);
 	if($phome_db_ver>='5.0')
 	{
@@ -48,7 +48,7 @@ function db_connect(){
 	return $link;
 }
 
-//…Ë÷√±‡¬Î
+//?????
 function DoSetDbChar($dbchar){
 	if($dbchar&&$dbchar!='auto')
 	{
@@ -62,14 +62,14 @@ function db_close(){
 	@mysql_close($link);
 }
 
-//»°µ√mysql∞Ê±æ( ˝æ›ø‚)
+//»°??ysql?Ê±æ(??›ø?
 function Ebak_GetMysqlVerForDb(){
 	$sql=mysql_query("select version() as version");
 	$r=mysql_fetch_array($sql);
 	return Ebak_ReturnMysqlVer($r['version']);
 }
 
-//∑µªÿmysql∞Ê±æ
+//????ysql?Ê±æ
 function Ebak_ReturnMysqlVer($dbver){
 	if(empty($dbver))
 	{
@@ -94,26 +94,26 @@ function Ebak_ReturnMysqlVer($dbver){
 	return $dbver;
 }
 
-//…Ë÷√COOKIE
+//??COOKIE
 function esetcookie($var,$val,$life=0){
 	global $phome_cookiedomain,$phome_cookiepath,$phome_cookievarpre;
 	return setcookie($phome_cookievarpre.$var,$val,$life,$phome_cookiepath,$phome_cookiedomain);
 }
 
-//∑µªÿcookie
+//????ookie
 function getcvar($var){
 	global $phome_cookievarpre;
 	$tvar=$phome_cookievarpre.$var;
 	return $_COOKIE[$tvar];
 }
 
-//µº»Î”Ô—‘∞¸
+//???????
 function LoadLang($file){
 	global $ebaklang;
 	return "lang/".$ebaklang."/pub/".$file;
 }
 
-//≤Œ ˝¥¶¿Ì∫Ø ˝
+//?????????
 function RepPostVar($val){
 	$val=str_replace(" ","",$val);
 	$val=str_replace("'","",$val);
@@ -122,19 +122,19 @@ function RepPostVar($val){
 	return $val;
 }
 
-//µº»Îƒ£∞Â
+//???ƒ£??
 function LoadAdminTemp($file){
 	global $ebaklang;
 	return "lang/".$ebaklang."/temp/".$file;
 }
 
-// π”√±‡¬Î
+// π????
 function HeaderIeChar(){
 	global $ebaklangchar;
 	@header('Content-Type: text/html; charset='.$ebaklangchar);
 }
 
-//∑µªÿ”Ô—‘
+//??????
 function ReturnUseEbakLang(){
 	global $langcharr;
 	$loginlangid=(int)getcvar('loginlangid');

@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT);
 
 header('Content-type: text/html; charset=utf-8');
 
