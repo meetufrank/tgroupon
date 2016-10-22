@@ -18,7 +18,8 @@ if (!defined('IN_ECS'))
     die('Hacking attempt');
 }
 
-error_reporting(E_ALL);
+error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT);
+
 
 if (__FILE__ == '')
 {
@@ -282,15 +283,15 @@ if (!defined('INIT_NO_USERS'))
     }
 }
 if (real_ip()!='220.112.230.63') {
-	//header("Location:http://www.baidu.com");exit;		   
+	//header("Location:http://www.baidu.com");exit;
 }
 if ((DEBUG_MODE & 1) == 1)
 {
-    error_reporting(E_ALL);
+    error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 }
 else
 {
-    error_reporting(E_ALL ^ (E_NOTICE | E_WARNING)); 
+    error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT);
 }
 if ((DEBUG_MODE & 4) == 4)
 {

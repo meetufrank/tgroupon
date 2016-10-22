@@ -91,20 +91,21 @@
             <td class="label">厂商</td>
             <td><select name="suppliers_id" id="suppliers_id">
                 <option value="0">不选</option>
-        <foreach name=$firm_arr item=fa>
-                <option value="{$fa['user_id']}">{$fa['user_name']}</option>
-        </foreach>
+        {foreach from=$firm_arr item=fa}
+                <option value="{$fa.user_id}">{$fa.user_name}</option>
+        {/foreach}
       </select></td>
           </tr>
-           <tr>
+          <tr>
             <td class="label">艺术家</td>
-            <td><select name="artlist_id" id="artlist_id">
-        <option value="0">不选</option>
-        <foreach name=$art_arr item=fa>
-                <option value="{$fa['user_id']}">{$fa['user_name']}</option>
-        </foreach>
+            <td><select name="suppliers_id" id="suppliers_id">
+                <option value="0">不选</option>
+        {foreach from=$art_arr item=fa}
+                <option value="{$fa.user_id}">{$fa.user_name}</option>
+        {/foreach}
       </select></td>
           </tr>
+
          {if $suppliers_exists eq 1}
           <tr>
             <td class="label">{$lang.label_suppliers}</td>

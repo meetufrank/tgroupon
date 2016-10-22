@@ -20,7 +20,7 @@ if (!defined('IN_ECTOUCH'))
 
 define('ECS_ADMIN', true);
 
-error_reporting(0);
+error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT);
 
 if (__FILE__ == '')
 {
@@ -33,7 +33,7 @@ if (__FILE__ == '')
 @ini_set('session.use_trans_sid', 0);
 @ini_set('session.use_cookies',   1);
 @ini_set('session.auto_start',    0);
-@ini_set('display_errors',        0);
+@ini_set('display_errors',        1);
 
 if (DIRECTORY_SEPARATOR == '\\')
 {
@@ -367,7 +367,7 @@ if ((DEBUG_MODE & 1) == 1)
 }
 else
 {
-    error_reporting(E_ALL ^ E_NOTICE);
+    error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT);
 }
 if ((DEBUG_MODE & 4) == 4)
 {

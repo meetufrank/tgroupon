@@ -877,28 +877,6 @@ function admin_info()
 //     return $suppliers_name;
 // }
 
-/**
- * 艺术家列表或厂商列表信息
- *
- * @param       string      $conditions
- * @return      array
- */
-// function art_list_info($type=site_firm)
-// {
 
-//     if (!empty($type))
-//     {
-//         $where = 'WHERE role_id ='.$type;
-
-//     }
-
-//     /* 查询 */
-//     $sql = "SELECT user_id, user_name, role_id
-//             FROM " . $GLOBALS['ecs']->table("admin_user") . "
-//             $where";
-
-
-//     return $GLOBALS['db']->getAll($sql);
-// }
 
 ?>

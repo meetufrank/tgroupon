@@ -212,12 +212,12 @@ if (!defined('INIT_NO_USERS')) {
 
     /* 设置推荐会员 */
     if (isset($_GET['u'])) {
-	
+
         set_affiliate();
     }
     /* 设置推荐会员 */
     if (isset($_GET['wxid'])) {
-	
+
         set_affiliate();
     }
 
@@ -267,10 +267,10 @@ if (!defined('INIT_NO_SMARTY') && gzip_enabled()) {
 	if (isset($_GET['u']))
     {
 		$u=$_GET['u'];
-   
+
     }else{
 		$u="";
-		
+
 	}
 
 	$iipp = $_SERVER["REMOTE_ADDR"];
@@ -278,7 +278,7 @@ if (!defined('INIT_NO_SMARTY') && gzip_enabled()) {
 	//echo $iipp.'|';
 	//echo $phone_state.'|';
 	//echo $u.'|';
-	$sql_one="SELECT * FROM " . $GLOBALS['ecs']->table('ip_log') . " WHERE ip = '$iipp' and  phone_state='$phone_state' and u_id='$u' ";	
+	$sql_one="SELECT * FROM " . $GLOBALS['ecs']->table('ip_log') . " WHERE ip = '$iipp' and  phone_state='$phone_state' and u_id='$u' ";
 	$ipinfo1=$GLOBALS['db']->GetRow($sql_one);
 	//print_r($ipinfo1);
 	if(empty($ipinfo1)&&!empty($u)){
@@ -286,40 +286,40 @@ if (!defined('INIT_NO_SMARTY') && gzip_enabled()) {
 
 		$sql = "INSERT INTO ".$GLOBALS['ecs']->table('ip_log')."(ip, u_id,state,phone_state) "."VALUES ('$iipp', '$u','$state','$phone_state')";
 		$GLOBALS['db']->query($sql);
-		//记录结束		
+		//记录结束
 	}
 //新增绑定上下级关系开始
 	$iipp = $_SERVER["REMOTE_ADDR"];
 	$sql_two="SELECT * FROM " . $GLOBALS['ecs']->table('ip_log') . " WHERE ip = '$iipp' and state=0 and phone_state='$phone_state' ORDER BY id DESC LIMIT 0 , 1
-";	
+";
 	$ipinfo=$GLOBALS['db']->GetRow($sql_two);
 
-	
+
 	$id=$ipinfo['id'];
 	$up_uid=$ipinfo['u_id'];
 	$user_id=$_SESSION['user_id'];
 
-	$sql_one="SELECT * FROM " . $GLOBALS['ecs']->table('users') . " WHERE user_id = '$user_id'";	
+	$sql_one="SELECT * FROM " . $GLOBALS['ecs']->table('users') . " WHERE user_id = '$user_id'";
 	$userinfo=$GLOBALS['db']->GetRow($sql_one);
 	//找出自己所有的下级
-	$sql="SELECT * FROM " . $GLOBALS['ecs']->table('users') . " WHERE parent_id = '$user_id'";	
+	$sql="SELECT * FROM " . $GLOBALS['ecs']->table('users') . " WHERE parent_id = '$user_id'";
 	$childinfo=$GLOBALS['db']->GetAll($sql);
 	$flag=true;
 	//验证关系：自己的下级不能是自己的上级
 	foreach($childinfo as $k=>$v){
-	
+
 		if($v['user_id']==$up_uid){
-			
+
 			$flag=false;
 		}else{
 			$flag=true;
-		}	
+		}
 	}
-	
+
 /*避免上下级关系混乱，TGROUPON修复*/
-					$sql="SELECT * FROM  ".$GLOBALS['ecs']->table('users')."  WHERE parent_id = '$user_id'";	
+					$sql="SELECT * FROM  ".$GLOBALS['ecs']->table('users')."  WHERE parent_id = '$user_id'";
 					$childinfo_tianxin=$GLOBALS['db']->GetAll($sql);
-					
+
 					$flag_tianxin=true;
 					if(!empty($childinfo_tianxin)){
 						$flag_tianxin=false;
@@ -331,7 +331,7 @@ if (!defined('INIT_NO_SMARTY') && gzip_enabled()) {
 /*避免上下级关系混乱，TGROUPON修复*/
 	//三个条件进行判断。1：必须是推荐的2：上下级关系不能改变3：验证关系：自己的上级不能是自己下级
 	if(!empty($ipinfo)&&$userinfo['parent_id']==0&&$flag&&$user_id&&$flag_tianxin){
-	
+
 
         $affiliate  = unserialize($GLOBALS['_CFG']['affiliate']);
         if (isset($affiliate['on']) && $affiliate['on'] == 1&&$up_uid!=$_SESSION['user_id'])
@@ -342,7 +342,7 @@ if (!defined('INIT_NO_SMARTY') && gzip_enabled()) {
             $affiliate['config']['level_register_up'] = intval($affiliate['config']['level_register_up']);
 			//该用户是推荐来的
             if ($up_uid)
-            {	
+            {
 				//标注此用户被推荐过了
 				$info=array('state'=>1);
 				$GLOBALS['db']->autoExecute($ecs->table('ip_log'), $info, 'UPDATE', "id = {$id}");
@@ -363,20 +363,20 @@ if (!defined('INIT_NO_SMARTY') && gzip_enabled()) {
                 }
 
 
-				
+
 					$sql = 'UPDATE '. $GLOBALS['ecs']->table('users') . ' SET parent_id = ' . $up_uid . ' WHERE user_id = ' . $_SESSION['user_id'];
 					$GLOBALS['db']->query($sql);
 					require(ROOT_PATH . 'wxch_share.php');
 					//设置推荐人
-					
-				
+
+
             }
-        }			
+        }
 	}
 
-	
+
 	if(!empty($_SESSION['user_id'])){
-	
+
 		$user_id=$_SESSION['user_id'];
 		$sql = "SELECT parent_id FROM ". $ecs->table('users') .  "where user_id ='$user_id'";
 		$parent_id=$GLOBALS['db']->getOne($sql);
@@ -394,13 +394,13 @@ if (!defined('INIT_NO_SMARTY') && gzip_enabled()) {
 			}
 		}else{
 			$sql = "SELECT wxid FROM ". $ecs->table('users') .  "where user_id ='$parent_id'";
-			$share_userid=$GLOBALS['db']->getOne($sql);	
+			$share_userid=$GLOBALS['db']->getOne($sql);
 			$sql = "SELECT * FROM wxch_user where wxid ='$share_userid'";
 			$share_info=$GLOBALS['db']->getRow($sql);
 		}
-	
+
 	}else{
-		
+
 		if(isset($_GET['u'])){
 			if($u== $user_id){
 				$share_info="";

@@ -33,7 +33,7 @@ class cls_template
     var $_nowtime       = null;
     var $_checkfile     = true;
     var $_foreachmark   = '';
-    var $_seterror      = 0;
+    var $_seterror      = E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT;
 
     var $_temp_key      = array();  // 临时存放 foreach 里 key 的数组
     var $_temp_val      = array();  // 临时存放 foreach 里 item 的数组
@@ -45,7 +45,7 @@ class cls_template
 
     function cls_template()
     {
-        $this->_errorlevel = error_reporting();
+        $this->_errorlevel = error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT);
         $this->_nowtime    = time();
         if (defined('EC_CHARSET'))
         {
@@ -100,7 +100,7 @@ class cls_template
     function display($filename, $cache_id = '')
     {
         $this->_seterror++;
-        error_reporting(E_ALL ^ E_NOTICE);
+         
 
         $this->_checkfile = false;
         $out = $this->fetch($filename, $cache_id);
@@ -117,7 +117,7 @@ class cls_template
             }
             $out = implode('', $k);
         }
-        error_reporting($this->_errorlevel);
+        //error_reporting($this->_errorlevel);
         $this->_seterror--;
 
         echo $out;
@@ -136,7 +136,7 @@ class cls_template
     {
         if (!$this->_seterror)
         {
-            error_reporting(E_ALL ^ E_NOTICE);
+            //error_reporting(E_ALL ^ E_NOTICE);
         }
         $this->_seterror++;
 
@@ -208,7 +208,7 @@ class cls_template
         $this->_seterror--;
         if (!$this->_seterror)
         {
-            error_reporting($this->_errorlevel);
+           // error_reporting($this->_errorlevel);
         }
 
         return $out; // 返回html数据

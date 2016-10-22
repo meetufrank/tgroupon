@@ -137,10 +137,10 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
     unset($suppliers_exists);
 
     /////厂商
-    //$firm_arr=art_list_info(4);
-    print_r('fff');
+    $firm_arr=art_list_info($config['site_firm']);
+
     //////艺术家
-    //$art_arr=art_list_info(site_artist);
+    $art_arr=art_list_info($config['site_artist']);
 
     $smarty->assign('firm_arr', $firm_arr);
     $smarty->assign('art_arr', $art_arr);
@@ -472,7 +472,6 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
     $smarty->assign('volume_price_list', $volume_price_list);
     /* 显示商品信息页面 */
     assign_query_info();
-print_r('dd');
     $smarty->display('goods_info.htm');
 }
 
