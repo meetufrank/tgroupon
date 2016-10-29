@@ -89,19 +89,20 @@
 
            <tr>
             <td class="label">厂商</td>
-            <td><select name="suppliers_id" id="suppliers_id">
+            <td><select name="father_id" id="suppliers_id">
                 <option value="0">不选</option>
+
         {foreach from=$firm_arr item=fa}
-                <option value="{$fa.user_id}">{$fa.user_name}</option>
+                <option value="{$fa.user_id}" {if $fa.user_id==$goods.father_id} selected="true" {/if}>{$fa.user_name}</option>
         {/foreach}
       </select></td>
           </tr>
           <tr>
             <td class="label">艺术家</td>
-            <td><select name="suppliers_id" id="suppliers_id">
+            <td><select name="arter_id" id="suppliers_id">
                 <option value="0">不选</option>
         {foreach from=$art_arr item=fa}
-                <option value="{$fa.user_id}">{$fa.user_name}</option>
+                <option value="{$fa.user_id}"  {if $fa.user_id==$goods.arter_id} selected="true" {/if} >{$fa.user_name}</option>
         {/foreach}
       </select></td>
           </tr>
