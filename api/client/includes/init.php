@@ -14,7 +14,7 @@
  * $Id: init.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-error_reporting(7);
+error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT);
 
 if (!defined('IN_ECS'))
 {
