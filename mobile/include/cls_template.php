@@ -50,7 +50,7 @@ class cls_template
 
     function cls_template()
     {
-        $this->_errorlevel = error_reporting();
+        $this->_errorlevel = error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT);
         $this->_nowtime    = time();
         if (defined('EC_CHARSET'))
         {
@@ -105,7 +105,7 @@ class cls_template
     function display($filename, $cache_id = '')
     {
         $this->_seterror++;
-        error_reporting(E_ALL ^ E_NOTICE);
+        error_reporting(E_ALL & ~E_NOTICE  & ~ E_DEPRECATED & ~E_STRICT);
 
         $this->_checkfile = false;
         $out = $this->fetch($filename, $cache_id);
