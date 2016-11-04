@@ -21,8 +21,8 @@ if (!defined('IN_ECTOUCH'))
 //商品管理权限
     $purview['01_goods_list']        = array('goods_manage', 'remove_back');
     $purview['02_goods_add']         = 'goods_manage';
-    $purview['03_category_list']     = array('cat_manage', 'cat_drop'); 
-	$purview['04_comment_manage']    = 'comment_manage';//  tianxin  100   添加  
+    $purview['03_category_list']     = array('cat_manage', 'cat_drop');
+	$purview['04_comment_manage']    = 'comment_manage';//  tianxin  100   添加
 	//分类添加、分类转移和删除
     $purview['05_comment_manage']    = 'comment_priv';
     $purview['06_goods_brand_list']  = 'brand_manage';
@@ -38,6 +38,7 @@ if (!defined('IN_ECTOUCH'))
     $purview['51_virtual_card_add']  = 'virualcard';
     $purview['52_virtual_card_change'] = 'virualcard';
     $purview['goods_auto']           = 'goods_auto';
+
 
 //促销管理权限
     $purview['02_snatch_list']       = 'snatch_manage';
@@ -67,6 +68,8 @@ if (!defined('IN_ECTOUCH'))
     $purview['06_list_integrate']    = 'integrate_users';
     $purview['08_unreply_msg']       = 'feedback_priv';
     $purview['10_user_account_manage'] = 'account_manage';
+    $purview['line_shop']           = 'line_shop';   //签约表
+
 
 //权限管理
     $purview['admin_logs']           = array('logs_manage', 'logs_drop');
@@ -185,6 +188,6 @@ if (!defined('IN_ECTOUCH'))
 	$purview['weixintong']           = 'weixintong';
 	$purview['zdy_parent']           = 'zdy_parent';
 
-	
-	
+
+
 ?>

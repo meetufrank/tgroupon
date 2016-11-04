@@ -38,6 +38,7 @@ $modules['02_cat_and_goods']['52_virtual_card_change'] = 'virtual_card.php?act=c
 $modules['02_cat_and_goods']['goods_auto']             = 'goods_auto.php?act=list'; */
 
 
+
 //$modules['03_promotion']['02_snatch_list']          = 'snatch.php?act=list';
 $modules['03_promotion']['04_bonustype_list']       = 'bonus.php?act=list';//
 //$modules['03_promotion']['06_pack_list']            = 'pack.php?act=list';
@@ -91,6 +92,8 @@ $modules['08_members']['04_users_add']              = 'users.php?act=add';//
 //$modules['08_members']['08_unreply_msg']            = 'user_msg.php?act=list_all';
 $modules['08_members']['09_user_account']           = 'user_account.php?act=list';//
 //$modules['08_members']['10_user_account_manage']    = 'user_account_manage.php?act=list';
+$modules['08_members']['line_shop']             = 'line_shop.php?act=list';  //签约表
+
 
 //$modules['10_priv_admin']['admin_logs']             = 'admin_logs.php?act=list';
 $modules['10_priv_admin']['admin_list']             = 'privilege.php?act=list';
@@ -180,6 +183,9 @@ $modules['18_shouce']['ectouch']        = 'help_wei.php?act=ectouch';
 $modules['18_shouce']['weixintong']        = 'help_wei.php?act=weixintong';
 
 //甜  心100新增功能菜单
+
+
+
 
 
 

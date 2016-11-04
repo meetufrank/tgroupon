@@ -74,7 +74,7 @@ elseif ($_REQUEST['act'] == 'query')
 		$aa['number']=$number[0];
 		$kk[]=$aa;
 	}
-	
+
     $smarty->assign('user_list',    $kk);
     $smarty->assign('filter',       $user_list['filter']);
     $smarty->assign('record_count', $user_list['record_count']);
@@ -427,7 +427,7 @@ elseif ($_REQUEST['act'] == 'update')
     $other['mobile_phone'] = isset($_POST['extend_field5']) ? htmlspecialchars(trim($_POST['extend_field5'])) : '';
 	$other['parent_id'] = isset($_POST['parent_id']) ? htmlspecialchars(trim($_POST['parent_id'])) : '';
 	$parent_id=$other['parent_id'];
-	
+
 	if(!empty($parent_id))
 	{
 	$sql = 'SELECT * FROM ' . $ecs->table('users') . "WHERE user_id ='$parent_id'";
@@ -699,7 +699,7 @@ elseif ($_REQUEST['act'] == 'share_list')
     admin_priv('users_manage');
     $smarty->assign('ur_here',      $_LANG['03_users_list']);
 
-    
+
     $user_list['user_list'] = array();
 	$auid = $_GET['id'];
     $num = 4;
@@ -727,7 +727,7 @@ elseif ($_REQUEST['act'] == 'share_list')
                     " ORDER by level, user_id";
 			$user_info=$db->getAll($sql);
 			foreach($user_info as $key=>$value){
-			
+
 				$sql="SELECT count(*) as order_num ,sum(goods_amount - discount)  as order_amount FROM ".$GLOBALS['ecs']->table('order_info')."WHERE user_id=".$value['user_id'];
 				$order_info=$db->getRow($sql);
 				$k=$i-1;
@@ -740,9 +740,9 @@ elseif ($_REQUEST['act'] == 'share_list')
 				$user_info[$key]['order_num']=$order_info['order_num'];
 				$user_info[$key]['order_amount']=$order_info['order_amount'];
 				$user_info[$key]['setmoney']=$setmoney;
-				
+
 			}
-            $user_list['user_list'] = array_merge($user_list['user_list'], $user_info);	
+            $user_list['user_list'] = array_merge($user_list['user_list'], $user_info);
         }
     }
 	$new_arr1=array();
@@ -752,13 +752,13 @@ elseif ($_REQUEST['act'] == 'share_list')
 	$new_arr5=array();
 	foreach($user_list['user_list'] as $key =>$value)
 	{
-	
+
 		if($value['level']==1){
 			$wxid=$value['wxid'];
 			$value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
 			$value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
 			$new_arr1[]=$value;
-		}	
+		}
 		elseif($value['level']==2){
 			$wxid=$value['wxid'];
 			$value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
@@ -783,7 +783,7 @@ elseif ($_REQUEST['act'] == 'share_list')
 			$value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
 			$new_arr5[]=$value;
 		}
-		
+
 	}
 
     $user_list['record_count'] = $all_count;
@@ -921,10 +921,10 @@ function get_affiliate_ck($user_id,$level)
         $sqladd = ' AND o.order_sn LIKE \'%' . trim($_REQUEST['order_sn']) . '%\'';
         $filter['order_sn'] = $_REQUEST['order_sn'];
     }
-		
-		
+
+
         //$sqladd = ' AND a.user_id=' . $_SESSION['user_id'];
-   
+
 
     if(!empty($affiliate['on']))
     {
@@ -964,7 +964,7 @@ function get_affiliate_ck($user_id,$level)
         if(empty($separate_by))
         {
             //推荐注册分成
-			
+
             $sql = "SELECT o.*, a.log_id, a.user_id as suid,  a.user_name as auser, a.money, a.point, a.separate_type,u.parent_id as up FROM " . $GLOBALS['ecs']->table('order_info') . " o".
                     " LEFT JOIN".$GLOBALS['ecs']->table('users')." u ON o.user_id = u.user_id".
                     " LEFT JOIN " . $GLOBALS['ecs']->table('affiliate_log') . " a ON o.order_id = a.order_id" .
@@ -1057,7 +1057,7 @@ function get_affiliate_ck($user_id,$level)
 				$weixinInfo = $GLOBALS['db']->getRow("SELECT nickname, headimgurl FROM wxch_user WHERE wxid = '$wxid'");
 				$logdbnew[$key]['avatar'] = empty($weixinInfo['headimgurl']) ? '':$weixinInfo['headimgurl'];
 				$logdbnew[$key]['username'] = empty($weixinInfo['nickname']) ? '':$weixinInfo['nickname'];
-			}	
+			}
 				$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
 				$k=$level-1;
 				$affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
@@ -1068,13 +1068,16 @@ function get_affiliate_ck($user_id,$level)
 				$setmoney = round($value['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
 				$logdbnew[$key]['set_money']=$setmoney;
 				$logdbnew[$key]['level_money']=$affiliate['item'][$k]['level_money'];
-				
-			
+
+
 		}
 	}
 
     $arr = array('logdb' => $logdbnew, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
 
     return $arr;
-}	
+}
+
+
+
 ?>

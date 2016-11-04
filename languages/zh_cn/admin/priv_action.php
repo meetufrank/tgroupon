@@ -44,6 +44,7 @@ $_LANG['goods_batch'] = '商品批量上传/修改';
 $_LANG['gen_goods_script'] = '生成商品代码';
 $_LANG['suppliers_goods'] = '供货商商品管理';
 
+
 //文章管理部分的权限
 $_LANG['article_cat'] = '文章分类管理';
 $_LANG['article_manage'] = '文章内容管理';
