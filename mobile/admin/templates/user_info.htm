@@ -53,11 +53,20 @@
     <td><input type="password" name="confirm_password" maxlength="20" size="20" /></td>
   </tr>
   {/if}
+  <!--
   <tr>
     <td class="label">{$lang.user_rank}:</td>
     <td><select name="user_rank">
       <option value="0">{$lang.not_special_rank}</option>
       {html_options options=$special_ranks selected=$user.user_rank}
+    </select></td>
+  </tr>
+  -->
+  <tr>
+    <td class="label">会员身份:</td>
+    <td><select name="shenfen">
+      <option value="0" selected>普通会员</option>
+      <option value="1" {if $user.is_line==1}selected{/if}>线下店</option>
     </select></td>
   </tr>
   <tr>
@@ -98,7 +107,7 @@
   </tr>
   <tr>
     <td></td>
-    <td>   
+    <td>
     <table border="0" cellspacing="1" style="background: #dddddd; width:30%;">
     <tr>
     <td bgcolor="#ffffff">{$lang.affiliate_lever}</td>

@@ -108,7 +108,7 @@ elseif ($_REQUEST['act'] == 'add')
     $smarty->assign('action_link',      array('text' => $_LANG['03_users_list'], 'href'=>'users.php?act=list'));
     $smarty->assign('form_action',      'insert');
     $smarty->assign('user',             $user);
-    $smarty->assign('special_ranks',    get_rank_list(true));
+    //$smarty->assign('special_ranks',    get_rank_list(true));
 
     assign_query_info();
     $smarty->display('user_info.htm');
@@ -129,6 +129,7 @@ elseif ($_REQUEST['act'] == 'insert')
     $birthday = $_POST['birthdayYear'] . '-' .  $_POST['birthdayMonth'] . '-' . $_POST['birthdayDay'];
     $rank = empty($_POST['user_rank']) ? 0 : intval($_POST['user_rank']);
     $credit_line = empty($_POST['credit_line']) ? 0 : floatval($_POST['credit_line']);
+    $sf = empty($_POST['shenfen']) ? 0 : intval($_POST['shenfen']);
 
     $users =& init_users();
 
@@ -201,6 +202,7 @@ elseif ($_REQUEST['act'] == 'insert')
     $other['user_rank']  = $rank;
     $other['sex']        = $sex;
     $other['birthday']   = $birthday;
+    $other['is_line']=$sf;
     $other['reg_time'] = local_strtotime(local_date('Y-m-d H:i:s'));
 
     $other['msn'] = isset($_POST['extend_field1']) ? htmlspecialchars(trim($_POST['extend_field1'])) : '';
@@ -229,7 +231,7 @@ elseif ($_REQUEST['act'] == 'edit')
     /* 检查权限 */
     admin_priv('users_manage');
 
-    $sql = "SELECT u.user_name, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn, u.office_phone, u.home_phone, u.mobile_phone".
+    $sql = "SELECT u.user_name, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn, u.office_phone, u.home_phone, u.mobile_phone,u.is_line".
         " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 
     $row = $db->GetRow($sql);
@@ -238,7 +240,7 @@ elseif ($_REQUEST['act'] == 'edit')
     $user   = $users->get_user_info($row['user_name']);
 
     $sql = "SELECT u.user_id, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn,
-    u.office_phone, u.home_phone, u.mobile_phone".
+    u.office_phone, u.home_phone, u.mobile_phone,u.is_line".
         " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 
     $row = $db->GetRow($sql);
@@ -263,6 +265,7 @@ elseif ($_REQUEST['act'] == 'edit')
         $user['office_phone']   = $row['office_phone'];
         $user['home_phone']     = $row['home_phone'];
         $user['mobile_phone']   = $row['mobile_phone'];
+        $user['is_line']   = $row['is_line'];
     }
     else
     {
@@ -368,6 +371,7 @@ elseif ($_REQUEST['act'] == 'update')
     $birthday = $_POST['birthdayYear'] . '-' .  $_POST['birthdayMonth'] . '-' . $_POST['birthdayDay'];
     $rank = empty($_POST['user_rank']) ? 0 : intval($_POST['user_rank']);
     $credit_line = empty($_POST['credit_line']) ? 0 : floatval($_POST['credit_line']);
+    $sf = empty($_POST['shenfen']) ? 0 : intval($_POST['shenfen']);
 
     $users  =& init_users();
 
@@ -419,6 +423,7 @@ elseif ($_REQUEST['act'] == 'update')
     $other =  array();
     $other['credit_line'] = $credit_line;
     $other['user_rank'] = $rank;
+    $other['is_line'] = $sf;
 
     $other['msn'] = isset($_POST['extend_field1']) ? htmlspecialchars(trim($_POST['extend_field1'])) : '';
     $other['qq'] = isset($_POST['extend_field2']) ? htmlspecialchars(trim($_POST['extend_field2'])) : '';
