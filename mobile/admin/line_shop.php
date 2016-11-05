@@ -127,6 +127,9 @@ elseif ($_REQUEST['act'] == 'insert')
            "VALUES ( $goods_id, ".$_POST['select_role'].", ".$_POST['ratio'].")";
 
     $db->query($sql);
+    $link[] = array('text' => '返回列表','href'=>'line_shop.php?act=list');
+     sys_msg(sprintf('添加成功', $_POST['ratio']), 0, $link);
+
 
 
 

@@ -1,7 +1,7 @@
 <!-- $Id: user_info.htm 16854 2009-12-07 06:20:09Z sxc_shop $ -->
 {include file="pageheader.htm"}
 <div class="main-div">
-<form method="post" action="users.php" name="theForm" onsubmit="return validate()">
+<form method="post" action="users.php" name="theForm"  enctype="multipart/form-data"  onsubmit="return validate()">
 <table width="100%" >
   <tr>
     <td class="label">{$lang.username}:</td>
@@ -69,6 +69,13 @@
       <option value="1" {if $user.is_line==1}selected{/if}>线下店</option>
     </select></td>
   </tr>
+  <tr>
+            <td class="label">线下店logo：</td>
+            <td>
+              <input type="file" name="pic" size="35" />
+
+            </td>
+          </tr>
   <tr>
     <td class="label">{$lang.gender}:</td>
     <td>{html_radios name="sex" options=$lang.sex checked=$user.sex }</td>

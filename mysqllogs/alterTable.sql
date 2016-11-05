@@ -37,6 +37,13 @@ ADD COLUMN `fencheng`  double(4,2) NOT NULL AFTER `lineshop_id`;
 
 
 
-/*#2016/11/1 汪江  在ecs_cart 添加lineid 线下店id字段
+/*#2016/11/5 汪江  在ecs_cart 添加lineid 线下店id字段
 */
 alter table `ecs_cart` add `lineid` int(11) not Null;
+
+
+/*#2016/11/5 王晋  在ecs_admin_user 添加国家、艺术家logo字段
+*/
+ALTER TABLE `ecs_admin_user`
+ADD COLUMN `country`  varchar(20) NULL COMMENT '//国家' AFTER `role_id`,
+ADD COLUMN `hav_logo`  varchar(255) NULL COMMENT '//艺术家logo' AFTER `country`;
