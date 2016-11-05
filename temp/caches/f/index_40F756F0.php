@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:18:{i:0;s:40:"E:/www/tgroupon/themes/miqinew/index.dwt";i:1;s:60:"E:/www/tgroupon/themes/miqinew/library/page_header_index.lbi";i:2;s:62:"E:/www/tgroupon/themes/miqinew/library/category_tree_index.lbi";i:3;s:51:"E:/www/tgroupon/themes/miqinew/library/index_ad.lbi";i:4;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_r.lbi";i:5;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_b.lbi";i:6;s:52:"E:/www/tgroupon/themes/miqinew/library/group_buy.lbi";i:7;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_hot.lbi";i:8;s:62:"E:/www/tgroupon/themes/miqinew/library/recommend_promotion.lbi";i:9;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_new.lbi";i:10;s:57:"E:/www/tgroupon/themes/miqinew/library/recommend_best.lbi";i:11;s:52:"E:/www/tgroupon/themes/miqinew/library/cat_goods.lbi";i:12;s:48:"E:/www/tgroupon/themes/miqinew/library/top10.lbi";i:13;s:53:"E:/www/tgroupon/themes/miqinew/library/email_list.lbi";i:14;s:54:"E:/www/tgroupon/themes/miqinew/library/order_query.lbi";i:15;s:58:"E:/www/tgroupon/themes/miqinew/library/huiyuanchongzhi.lbi";i:16;s:56:"E:/www/tgroupon/themes/miqinew/library/index_history.lbi";i:17;s:54:"E:/www/tgroupon/themes/miqinew/library/page_footer.lbi";}s:7:"expires";i:1478333485;s:8:"maketime";i:1478329885;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php exit;?>a:3:{s:8:"template";a:18:{i:0;s:40:"E:/www/tgroupon/themes/miqinew/index.dwt";i:1;s:60:"E:/www/tgroupon/themes/miqinew/library/page_header_index.lbi";i:2;s:62:"E:/www/tgroupon/themes/miqinew/library/category_tree_index.lbi";i:3;s:51:"E:/www/tgroupon/themes/miqinew/library/index_ad.lbi";i:4;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_r.lbi";i:5;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_b.lbi";i:6;s:52:"E:/www/tgroupon/themes/miqinew/library/group_buy.lbi";i:7;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_hot.lbi";i:8;s:62:"E:/www/tgroupon/themes/miqinew/library/recommend_promotion.lbi";i:9;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_new.lbi";i:10;s:57:"E:/www/tgroupon/themes/miqinew/library/recommend_best.lbi";i:11;s:52:"E:/www/tgroupon/themes/miqinew/library/cat_goods.lbi";i:12;s:48:"E:/www/tgroupon/themes/miqinew/library/top10.lbi";i:13;s:53:"E:/www/tgroupon/themes/miqinew/library/email_list.lbi";i:14;s:54:"E:/www/tgroupon/themes/miqinew/library/order_query.lbi";i:15;s:58:"E:/www/tgroupon/themes/miqinew/library/huiyuanchongzhi.lbi";i:16;s:56:"E:/www/tgroupon/themes/miqinew/library/index_history.lbi";i:17;s:54:"E:/www/tgroupon/themes/miqinew/library/page_footer.lbi";}s:7:"expires";i:1478339577;s:8:"maketime";i:1478335977;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="Generator" content="TGROUPON v2.7.3" />
@@ -1706,9 +1706,9 @@ catch (e) {
         <div class="brand_txt"> <b><a href="goods.php?id=165" title="娃娃啊啊啊啊啊">娃娃啊啊啊啊啊</a></b>
           <p> 
              
-            <font class="shop_s">￥<span>0</span></font> 
+            <font class="shop_s">￥<span>2000</span></font> 
              
-            <font class="marker_s">￥<span>0</span></font> </p>
+            <font class="marker_s">￥<span>2400</span></font> </p>
         </div >
       </div>
        
@@ -2285,6 +2285,21 @@ catch (e) {
   <div class="title_body">
     <div class="bd">
       <ul>
+                <li>
+        
+      
+          <div class="topimg"> <a href="goods.php?id=165"><img src="images/no_picture.gif" alt="" style="width:220px; height:220px;" /></a>
+          
+          <div class="top_num01"> <img src="themes/miqinew/images/top_1.gif" class="iteration"  /> </div>
+          
+          
+           </div>
+         
+          <div class="top_txt"> <b><a href="goods.php?id=165" title="">娃娃啊啊啊啊啊</a></b>
+            <p>本店价：<font class="f1">￥<span>2000</span></font></p>
+            <p>1人已购买</p>
+          </div>
+        </li>
               </ul>
       
       

@@ -1127,8 +1127,6 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
     $goods_attr             = get_goods_attr_info($spec);
     $goods_attr_id          = join(',', $spec);
 
-   $_SESSION['new_fencheng']=20;
-   $_SESSION['lineid']=7;
     /* 初始化要插入购物车的基本件数据 */
     $parent = array(
         'user_id'       => $_SESSION['user_id'],
