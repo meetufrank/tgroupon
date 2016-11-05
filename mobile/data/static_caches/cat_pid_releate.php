@@ -2,6 +2,19 @@
 $data = array (
   0 => 
   array (
+    'cat_id' => '17',
+    'cat_name' => '身体护理',
+    'measure_unit' => '',
+    'parent_id' => '0',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '4',
+    'goods_num' => 0,
+  ),
+  1 => 
+  array (
     'cat_id' => '18',
     'cat_name' => '美容工具',
     'measure_unit' => '',
@@ -13,7 +26,7 @@ $data = array (
     'has_children' => '4',
     'goods_num' => 0,
   ),
-  1 => 
+  2 => 
   array (
     'cat_id' => '12',
     'cat_name' => '男士',
@@ -26,7 +39,7 @@ $data = array (
     'has_children' => '4',
     'goods_num' => 0,
   ),
-  2 => 
+  3 => 
   array (
     'cat_id' => '145',
     'cat_name' => '糕点',
@@ -39,7 +52,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  3 => 
+  4 => 
   array (
     'cat_id' => '16',
     'cat_name' => '香氛',
@@ -52,7 +65,7 @@ $data = array (
     'has_children' => '4',
     'goods_num' => 0,
   ),
-  4 => 
+  5 => 
   array (
     'cat_id' => '6',
     'cat_name' => '护肤',
@@ -61,19 +74,6 @@ $data = array (
     'is_show' => '1',
     'show_in_nav' => '1',
     'grade' => '5',
-    'sort_order' => '50',
-    'has_children' => '4',
-    'goods_num' => 0,
-  ),
-  5 => 
-  array (
-    'cat_id' => '17',
-    'cat_name' => '身体护理',
-    'measure_unit' => '',
-    'parent_id' => '0',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
     'sort_order' => '50',
     'has_children' => '4',
     'goods_num' => 0,
@@ -145,6 +145,32 @@ $data = array (
   ),
   11 => 
   array (
+    'cat_id' => '66',
+    'cat_name' => '底妆定妆',
+    'measure_unit' => '',
+    'parent_id' => '2',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  12 => 
+  array (
+    'cat_id' => '63',
+    'cat_name' => '美甲',
+    'measure_unit' => '',
+    'parent_id' => '2',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  13 => 
+  array (
     'cat_id' => '64',
     'cat_name' => '修容',
     'measure_unit' => '',
@@ -156,7 +182,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  12 => 
+  14 => 
   array (
     'cat_id' => '65',
     'cat_name' => '遮瑕',
@@ -169,36 +195,10 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  13 => 
+  15 => 
   array (
     'cat_id' => '61',
     'cat_name' => '腮红',
-    'measure_unit' => '',
-    'parent_id' => '2',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  14 => 
-  array (
-    'cat_id' => '66',
-    'cat_name' => '底妆定妆',
-    'measure_unit' => '',
-    'parent_id' => '2',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  15 => 
-  array (
-    'cat_id' => '63',
-    'cat_name' => '美甲',
     'measure_unit' => '',
     'parent_id' => '2',
     'is_show' => '1',
@@ -275,6 +275,19 @@ $data = array (
   ),
   21 => 
   array (
+    'cat_id' => '49',
+    'cat_name' => '睫毛',
+    'measure_unit' => '',
+    'parent_id' => '4',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => '1',
+  ),
+  22 => 
+  array (
     'cat_id' => '50',
     'cat_name' => '眉粉眉笔',
     'measure_unit' => '',
@@ -286,7 +299,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  22 => 
+  23 => 
   array (
     'cat_id' => '47',
     'cat_name' => '眼线',
@@ -299,7 +312,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '1',
   ),
-  23 => 
+  24 => 
   array (
     'cat_id' => '48',
     'cat_name' => '眼影',
@@ -311,19 +324,6 @@ $data = array (
     'sort_order' => '50',
     'has_children' => '0',
     'goods_num' => 0,
-  ),
-  24 => 
-  array (
-    'cat_id' => '49',
-    'cat_name' => '睫毛',
-    'measure_unit' => '',
-    'parent_id' => '4',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => '1',
   ),
   25 => 
   array (
@@ -561,6 +561,19 @@ $data = array (
   ),
   43 => 
   array (
+    'cat_id' => '30',
+    'cat_name' => '去眼纹',
+    'measure_unit' => '',
+    'parent_id' => '8',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => '1',
+  ),
+  44 => 
+  array (
     'cat_id' => '31',
     'cat_name' => '去眼袋',
     'measure_unit' => '',
@@ -572,7 +585,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '1',
   ),
-  44 => 
+  45 => 
   array (
     'cat_id' => '28',
     'cat_name' => '保湿',
@@ -585,7 +598,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  45 => 
+  46 => 
   array (
     'cat_id' => '32',
     'cat_name' => '去黑眼圈',
@@ -598,7 +611,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  46 => 
+  47 => 
   array (
     'cat_id' => '29',
     'cat_name' => '去浮肿',
@@ -611,12 +624,12 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  47 => 
+  48 => 
   array (
-    'cat_id' => '30',
-    'cat_name' => '去眼纹',
+    'cat_id' => '33',
+    'cat_name' => '护唇',
     'measure_unit' => '',
-    'parent_id' => '8',
+    'parent_id' => '9',
     'is_show' => '1',
     'show_in_nav' => '0',
     'grade' => '0',
@@ -624,7 +637,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '1',
   ),
-  48 => 
+  49 => 
   array (
     'cat_id' => '40',
     'cat_name' => '保健食品',
@@ -637,7 +650,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  49 => 
+  50 => 
   array (
     'cat_id' => '37',
     'cat_name' => '祛痘祛斑',
@@ -650,7 +663,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '1',
   ),
-  50 => 
+  51 => 
   array (
     'cat_id' => '34',
     'cat_name' => '喷雾',
@@ -663,7 +676,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  51 => 
+  52 => 
   array (
     'cat_id' => '38',
     'cat_name' => 'T区护理',
@@ -676,7 +689,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  52 => 
+  53 => 
   array (
     'cat_id' => '35',
     'cat_name' => '啫喱',
@@ -689,7 +702,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  53 => 
+  54 => 
   array (
     'cat_id' => '39',
     'cat_name' => '颈霜',
@@ -702,7 +715,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  54 => 
+  55 => 
   array (
     'cat_id' => '36',
     'cat_name' => '角质按摩',
@@ -714,19 +727,6 @@ $data = array (
     'sort_order' => '50',
     'has_children' => '0',
     'goods_num' => 0,
-  ),
-  55 => 
-  array (
-    'cat_id' => '33',
-    'cat_name' => '护唇',
-    'measure_unit' => '',
-    'parent_id' => '9',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => '1',
   ),
   56 => 
   array (
@@ -847,8 +847,8 @@ $data = array (
   ),
   65 => 
   array (
-    'cat_id' => '80',
-    'cat_name' => 'BB霜',
+    'cat_id' => '79',
+    'cat_name' => '剃须',
     'measure_unit' => '',
     'parent_id' => '13',
     'is_show' => '1',
@@ -860,8 +860,8 @@ $data = array (
   ),
   66 => 
   array (
-    'cat_id' => '78',
-    'cat_name' => '防晒',
+    'cat_id' => '80',
+    'cat_name' => 'BB霜',
     'measure_unit' => '',
     'parent_id' => '13',
     'is_show' => '1',
@@ -873,8 +873,8 @@ $data = array (
   ),
   67 => 
   array (
-    'cat_id' => '79',
-    'cat_name' => '剃须',
+    'cat_id' => '78',
+    'cat_name' => '防晒',
     'measure_unit' => '',
     'parent_id' => '13',
     'is_show' => '1',
@@ -1038,7 +1038,7 @@ $data = array (
     'grade' => '0',
     'sort_order' => '50',
     'has_children' => '5',
-    'goods_num' => '6',
+    'goods_num' => '7',
   ),
   80 => 
   array (
@@ -1185,6 +1185,19 @@ $data = array (
   ),
   91 => 
   array (
+    'cat_id' => '82',
+    'cat_name' => '活肤',
+    'measure_unit' => '',
+    'parent_id' => '46',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  92 => 
+  array (
     'cat_id' => '83',
     'cat_name' => '兰芝',
     'measure_unit' => '',
@@ -1196,7 +1209,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '1',
   ),
-  92 => 
+  93 => 
   array (
     'cat_id' => '84',
     'cat_name' => '欧莱雅',
@@ -1209,7 +1222,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '1',
   ),
-  93 => 
+  94 => 
   array (
     'cat_id' => '81',
     'cat_name' => '保湿',
@@ -1222,7 +1235,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  94 => 
+  95 => 
   array (
     'cat_id' => '85',
     'cat_name' => '碧欧泉',
@@ -1234,19 +1247,6 @@ $data = array (
     'sort_order' => '50',
     'has_children' => '0',
     'goods_num' => '1',
-  ),
-  95 => 
-  array (
-    'cat_id' => '82',
-    'cat_name' => '活肤',
-    'measure_unit' => '',
-    'parent_id' => '46',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
   ),
   96 => 
   array (
@@ -1315,6 +1315,32 @@ $data = array (
   ),
   101 => 
   array (
+    'cat_id' => '98',
+    'cat_name' => '宝格丽',
+    'measure_unit' => '',
+    'parent_id' => '87',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  102 => 
+  array (
+    'cat_id' => '95',
+    'cat_name' => '淡香',
+    'measure_unit' => '',
+    'parent_id' => '87',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  103 => 
+  array (
     'cat_id' => '99',
     'cat_name' => '阿迪达斯',
     'measure_unit' => '',
@@ -1326,7 +1352,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  102 => 
+  104 => 
   array (
     'cat_id' => '96',
     'cat_name' => '海洋香调',
@@ -1339,36 +1365,10 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  103 => 
+  105 => 
   array (
     'cat_id' => '97',
     'cat_name' => '博柏利',
-    'measure_unit' => '',
-    'parent_id' => '87',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  104 => 
-  array (
-    'cat_id' => '98',
-    'cat_name' => '宝格丽',
-    'measure_unit' => '',
-    'parent_id' => '87',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  105 => 
-  array (
-    'cat_id' => '95',
-    'cat_name' => '淡香',
     'measure_unit' => '',
     'parent_id' => '87',
     'is_show' => '1',
@@ -1497,6 +1497,19 @@ $data = array (
   ),
   115 => 
   array (
+    'cat_id' => '114',
+    'cat_name' => '脱毛',
+    'measure_unit' => '',
+    'parent_id' => '109',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  116 => 
+  array (
     'cat_id' => '115',
     'cat_name' => '手足护理',
     'measure_unit' => '',
@@ -1508,7 +1521,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '2',
   ),
-  116 => 
+  117 => 
   array (
     'cat_id' => '116',
     'cat_name' => '香体止汗',
@@ -1521,7 +1534,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  117 => 
+  118 => 
   array (
     'cat_id' => '113',
     'cat_name' => '沐浴',
@@ -1534,23 +1547,10 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '1',
   ),
-  118 => 
+  119 => 
   array (
     'cat_id' => '117',
     'cat_name' => '其他护理',
-    'measure_unit' => '',
-    'parent_id' => '109',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  119 => 
-  array (
-    'cat_id' => '114',
-    'cat_name' => '脱毛',
     'measure_unit' => '',
     'parent_id' => '109',
     'is_show' => '1',
@@ -1666,6 +1666,19 @@ $data = array (
   ),
   128 => 
   array (
+    'cat_id' => '127',
+    'cat_name' => '沐浴',
+    'measure_unit' => '',
+    'parent_id' => '112',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  129 => 
+  array (
     'cat_id' => '128',
     'cat_name' => '护发养发',
     'measure_unit' => '',
@@ -1677,7 +1690,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  129 => 
+  130 => 
   array (
     'cat_id' => '129',
     'cat_name' => '美体套装',
@@ -1690,7 +1703,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '1',
   ),
-  130 => 
+  131 => 
   array (
     'cat_id' => '126',
     'cat_name' => '保湿',
@@ -1702,19 +1715,6 @@ $data = array (
     'sort_order' => '50',
     'has_children' => '0',
     'goods_num' => '1',
-  ),
-  131 => 
-  array (
-    'cat_id' => '127',
-    'cat_name' => '沐浴',
-    'measure_unit' => '',
-    'parent_id' => '112',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
   ),
   132 => 
   array (
@@ -1822,8 +1822,8 @@ $data = array (
   ),
   140 => 
   array (
-    'cat_id' => '144',
-    'cat_name' => '雅诗兰黛',
+    'cat_id' => '143',
+    'cat_name' => '化妆包',
     'measure_unit' => '',
     'parent_id' => '133',
     'is_show' => '1',
@@ -1835,8 +1835,8 @@ $data = array (
   ),
   141 => 
   array (
-    'cat_id' => '142',
-    'cat_name' => '收纳',
+    'cat_id' => '144',
+    'cat_name' => '雅诗兰黛',
     'measure_unit' => '',
     'parent_id' => '133',
     'is_show' => '1',
@@ -1848,8 +1848,8 @@ $data = array (
   ),
   142 => 
   array (
-    'cat_id' => '143',
-    'cat_name' => '化妆包',
+    'cat_id' => '142',
+    'cat_name' => '收纳',
     'measure_unit' => '',
     'parent_id' => '133',
     'is_show' => '1',
