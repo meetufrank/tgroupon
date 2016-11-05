@@ -47,3 +47,11 @@ alter table `ecs_cart` add `lineid` int(11) not Null;
 ALTER TABLE `ecs_admin_user`
 ADD COLUMN `country`  varchar(20) NULL COMMENT '//国家' AFTER `role_id`,
 ADD COLUMN `hav_logo`  varchar(255) NULL COMMENT '//艺术家logo' AFTER `country`;
+
+
+
+
+/*#2016/11/5 王晋  在ecs_cart 添加分成比例字段
+*/
+ALTER TABLE `ecs_cart`
+ADD COLUMN `new_fencheng`  double(4,2) NULL COMMENT '//线下店分成比例' AFTER `lineid`;

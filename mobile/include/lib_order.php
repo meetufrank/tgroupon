@@ -1127,9 +1127,13 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
     $goods_attr             = get_goods_attr_info($spec);
     $goods_attr_id          = join(',', $spec);
 
+   $_SESSION['new_fencheng']=20;
+   $_SESSION['lineid']=7;
     /* 初始化要插入购物车的基本件数据 */
     $parent = array(
         'user_id'       => $_SESSION['user_id'],
+        'lineid'       => $_SESSION['lineid'],//线下店
+        'new_fencheng'       => $_SESSION['new_fencheng'],//线下店分成比例
         'session_id'    => SESS_ID,
         'goods_id'      => $goods_id,
         'goods_sn'      => addslashes($goods['goods_sn']),
@@ -1279,6 +1283,8 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
 			$parent['fencheng'] = $goods['fencheng'];
             $parent['parent_id']    = 0;
             $GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('cart'), $parent, 'INSERT');
+            unset($_SESSION['lineid']);
+            unset($_SESSION['new_fencheng']);
         }
     }
 

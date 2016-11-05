@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:18:{i:0;s:40:"E:/www/tgroupon/themes/miqinew/index.dwt";i:1;s:60:"E:/www/tgroupon/themes/miqinew/library/page_header_index.lbi";i:2;s:62:"E:/www/tgroupon/themes/miqinew/library/category_tree_index.lbi";i:3;s:51:"E:/www/tgroupon/themes/miqinew/library/index_ad.lbi";i:4;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_r.lbi";i:5;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_b.lbi";i:6;s:52:"E:/www/tgroupon/themes/miqinew/library/group_buy.lbi";i:7;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_hot.lbi";i:8;s:62:"E:/www/tgroupon/themes/miqinew/library/recommend_promotion.lbi";i:9;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_new.lbi";i:10;s:57:"E:/www/tgroupon/themes/miqinew/library/recommend_best.lbi";i:11;s:52:"E:/www/tgroupon/themes/miqinew/library/cat_goods.lbi";i:12;s:48:"E:/www/tgroupon/themes/miqinew/library/top10.lbi";i:13;s:53:"E:/www/tgroupon/themes/miqinew/library/email_list.lbi";i:14;s:54:"E:/www/tgroupon/themes/miqinew/library/order_query.lbi";i:15;s:58:"E:/www/tgroupon/themes/miqinew/library/huiyuanchongzhi.lbi";i:16;s:56:"E:/www/tgroupon/themes/miqinew/library/index_history.lbi";i:17;s:54:"E:/www/tgroupon/themes/miqinew/library/page_footer.lbi";}s:7:"expires";i:1477121703;s:8:"maketime";i:1477118103;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php exit;?>a:3:{s:8:"template";a:18:{i:0;s:40:"E:/www/tgroupon/themes/miqinew/index.dwt";i:1;s:60:"E:/www/tgroupon/themes/miqinew/library/page_header_index.lbi";i:2;s:62:"E:/www/tgroupon/themes/miqinew/library/category_tree_index.lbi";i:3;s:51:"E:/www/tgroupon/themes/miqinew/library/index_ad.lbi";i:4;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_r.lbi";i:5;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_b.lbi";i:6;s:52:"E:/www/tgroupon/themes/miqinew/library/group_buy.lbi";i:7;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_hot.lbi";i:8;s:62:"E:/www/tgroupon/themes/miqinew/library/recommend_promotion.lbi";i:9;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_new.lbi";i:10;s:57:"E:/www/tgroupon/themes/miqinew/library/recommend_best.lbi";i:11;s:52:"E:/www/tgroupon/themes/miqinew/library/cat_goods.lbi";i:12;s:48:"E:/www/tgroupon/themes/miqinew/library/top10.lbi";i:13;s:53:"E:/www/tgroupon/themes/miqinew/library/email_list.lbi";i:14;s:54:"E:/www/tgroupon/themes/miqinew/library/order_query.lbi";i:15;s:58:"E:/www/tgroupon/themes/miqinew/library/huiyuanchongzhi.lbi";i:16;s:56:"E:/www/tgroupon/themes/miqinew/library/index_history.lbi";i:17;s:54:"E:/www/tgroupon/themes/miqinew/library/page_footer.lbi";}s:7:"expires";i:1478333485;s:8:"maketime";i:1478329885;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="Generator" content="TGROUPON v2.7.3" />
@@ -12,10 +12,6 @@
 <link rel="alternate" type="application/rss+xml" title="RSS|tgroupon分销系统" href="feed.php" />
 <script type="text/javascript" src="js/common.js"></script><script type="text/javascript" src="js/index.js"></script></head>
 <body>
-<br />
-<b>Deprecated</b>:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>491</b><br />
-<br />
-<b>Deprecated</b>:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>491</b><br />
 <br />
 <b>Warning</b>:  file_put_contents(E:/www/tgroupon/temp/compiled/page_header_index.lbi.php): failed to open stream: No such file or directory in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>262</b><br />
 <br />
@@ -490,7 +486,7 @@ catch (e) {
                                     <a href="category.php?id=16&amp;brand=26" target="_blank" ><img border="0" width="78" height="38" src="data/brandlogo/1385076915245433330.jpg" alt="博柏利 (1)" /></a>
                                   </dd>
                                 <dd>
-                                    <a href="category.php?id=16&amp;brand=27" target="_blank" ><img border="0" width="78" height="38" src="data/brandlogo/1385077155008131442.jpg" alt="大卫杜夫 (1)" /></a>
+                                    <a href="category.php?id=16&amp;brand=27" target="_blank" ><img border="0" width="78" height="38" src="data/brandlogo/1385077155008131442.jpg" alt="大卫杜夫 (4)" /></a>
                                   </dd>
                                 <dd>
                                     <a href="category.php?id=16&amp;brand=28" target="_blank" ><img border="0" width="78" height="38" src="data/brandlogo/1385077477188890125.jpg" alt="马克.雅克布 (1)" /></a>
@@ -704,6 +700,9 @@ catch (e) {
 			
             <div class="leftSubNav_list_right">
               <dl>
+                                <dd>
+                                    <a href="category.php?id=145&amp;brand=28">马克.雅克布</a>
+                                  </dd>
                               </dl>
               <div class="leftSubNav_list_img"> <a href="#" target="_blank"><img src="" border="0" width="296"></a> </div>
             </div>
@@ -1280,8 +1279,6 @@ catch (e) {
       <div class="blank"></div>
       
 <br />
-<b>Deprecated</b>:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>491</b><br />
-<br />
 <b>Warning</b>:  file_put_contents(E:/www/tgroupon/temp/compiled/cat_goods.lbi.php): failed to open stream: No such file or directory in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>262</b><br />
 <br />
 <b>Notice</b>:  can't write:E:/www/tgroupon/temp/compiled/cat_goods.lbi.php in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>264</b><br />
@@ -1480,8 +1477,6 @@ catch (e) {
 </div>
       <div class="blank" style="height:0"></div>
       
-<br />
-<b>Deprecated</b>:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>491</b><br />
 <br />
 <b>Warning</b>:  file_put_contents(E:/www/tgroupon/temp/compiled/cat_goods.lbi.php): failed to open stream: No such file or directory in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>262</b><br />
 <br />
@@ -1682,8 +1677,6 @@ catch (e) {
       <div class="blank" style="height:0"></div>
       
 <br />
-<b>Deprecated</b>:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>491</b><br />
-<br />
 <b>Warning</b>:  file_put_contents(E:/www/tgroupon/temp/compiled/cat_goods.lbi.php): failed to open stream: No such file or directory in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>262</b><br />
 <br />
 <b>Notice</b>:  can't write:E:/www/tgroupon/temp/compiled/cat_goods.lbi.php in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>264</b><br />
@@ -1707,6 +1700,42 @@ catch (e) {
 		</script>
   <div class="brand_right" >
     <div class="brand_list_out"> 
+       
+            <div class="brand_list">
+        <div class="brand_img"> <a href="goods.php?id=165"><img src="images/no_picture.gif" alt="娃娃啊啊啊啊啊" width="170" height="170" /></a></div>
+        <div class="brand_txt"> <b><a href="goods.php?id=165" title="娃娃啊啊啊啊啊">娃娃啊啊啊啊啊</a></b>
+          <p> 
+             
+            <font class="shop_s">￥<span>0</span></font> 
+             
+            <font class="marker_s">￥<span>0</span></font> </p>
+        </div >
+      </div>
+       
+       
+            <div class="brand_list">
+        <div class="brand_img"> <a href="goods.php?id=164"><img src="images/no_picture.gif" alt="娃娃啊啊" width="170" height="170" /></a></div>
+        <div class="brand_txt"> <b><a href="goods.php?id=164" title="娃娃啊啊">娃娃啊啊</a></b>
+          <p> 
+             
+            <font class="shop_s">￥<span>10</span></font> 
+             
+            <font class="marker_s">￥<span>12</span></font> </p>
+        </div >
+      </div>
+       
+       
+            <div class="brand_list">
+        <div class="brand_img"> <a href="goods.php?id=163"><img src="images/no_picture.gif" alt="娃娃" width="170" height="170" /></a></div>
+        <div class="brand_txt"> <b><a href="goods.php?id=163" title="娃娃">娃娃</a></b>
+          <p> 
+             
+            <font class="shop_s">￥<span>10</span></font> 
+             
+            <font class="marker_s">￥<span>12</span></font> </p>
+        </div >
+      </div>
+       
        
             <div class="brand_list">
         <div class="brand_img"> <a href="goods.php?id=123"><img src="images/201312/thumb_img/123_thumb_G_1385947952157.jpg" alt="迪奥红毒女士香水EDT 50ml" width="170" height="170" /></a></div>
@@ -1792,42 +1821,6 @@ catch (e) {
       </div>
        
        
-            <div class="brand_list">
-        <div class="brand_img"> <a href="goods.php?id=51"><img src="images/201311/thumb_img/51_thumb_G_1385077004880.jpg" alt="安娜苏逐梦翎雀香水30ml" width="170" height="170" /></a></div>
-        <div class="brand_txt"> <b><a href="goods.php?id=51" title="安娜苏逐梦翎雀香水30ml">安娜苏逐梦翎雀香水30ml</a></b>
-          <p> 
-             
-            <font class="shop_s">￥<span>209</span></font> 
-             
-            <font class="marker_s">￥<span>430</span></font> </p>
-        </div >
-      </div>
-       
-       
-            <div class="brand_list">
-        <div class="brand_img"> <a href="goods.php?id=50"><img src="images/201311/thumb_img/50_thumb_G_1385076903577.jpg" alt="大卫杜夫冷水男士香水40ml" width="170" height="170" /></a></div>
-        <div class="brand_txt"> <b><a href="goods.php?id=50" title="大卫杜夫冷水男士香水40ml">大卫杜夫冷水男士香水40ml</a></b>
-          <p> 
-             
-            <font class="shop_s">￥<span>129</span></font> 
-             
-            <font class="marker_s">￥<span>300</span></font> </p>
-        </div >
-      </div>
-       
-       
-            <div class="brand_list">
-        <div class="brand_img"> <a href="goods.php?id=49"><img src="images/201311/thumb_img/49_thumb_G_1385076764442.jpg" alt="博柏利英伦迷情女士香水（白）30ml" width="170" height="170" /></a></div>
-        <div class="brand_txt"> <b><a href="goods.php?id=49" title="博柏利英伦迷情女士香水（白）30ml">博柏利英伦迷情女士香水（白）30ml</a></b>
-          <p> 
-             
-            <font class="shop_s">￥<span>179</span></font> 
-             
-            <font class="marker_s">￥<span>420</span></font> </p>
-        </div >
-      </div>
-       
-       
        
        
     </div>
@@ -1882,8 +1875,6 @@ catch (e) {
 </div>
       <div class="blank" style="height:0"></div>
       <Div class="title_more03"> 
-<br />
-<b>Deprecated</b>:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>491</b><br />
 <br />
 <b>Warning</b>:  file_put_contents(E:/www/tgroupon/temp/compiled/cat_goods.lbi.php): failed to open stream: No such file or directory in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>262</b><br />
 <br />
@@ -2083,8 +2074,6 @@ catch (e) {
 </div> </Div>
       <div class="blank" style="height:0"></div>
       
-<br />
-<b>Deprecated</b>:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>491</b><br />
 <br />
 <b>Warning</b>:  file_put_contents(E:/www/tgroupon/temp/compiled/cat_goods.lbi.php): failed to open stream: No such file or directory in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>262</b><br />
 <br />
@@ -2454,8 +2443,6 @@ function check_email()
   </div>
 </div>
       <br />
-<b>Deprecated</b>:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>491</b><br />
-<br />
 <b>Warning</b>:  file_put_contents(E:/www/tgroupon/temp/compiled/index_history.lbi.php): failed to open stream: No such file or directory in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>262</b><br />
 <br />
 <b>Notice</b>:  can't write:E:/www/tgroupon/temp/compiled/index_history.lbi.php in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>264</b><br />
@@ -2500,8 +2487,6 @@ function clear_history_Response(res)
 <div class="footer">
 <div class="footerBody">
 <Div class="block">
-<br />
-<b>Deprecated</b>:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>491</b><br />
 <br />
 <b>Warning</b>:  file_put_contents(E:/www/tgroupon/temp/compiled/page_footer.lbi.php): failed to open stream: No such file or directory in <b>E:\www\tgroupon\includes\cls_template.php</b> on line <b>262</b><br />
 <br />
