@@ -127,7 +127,7 @@ elseif ($_REQUEST['act'] == 'separate')
     if (empty($row['is_separate']))
     {
         $affiliate['config']['level_point_all'] = (float)$affiliate['config']['level_point_all'];
-		
+
         if ($affiliate['config']['level_point_all'])
         {
             $affiliate['config']['level_point_all'] /= 100;

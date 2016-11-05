@@ -19,13 +19,38 @@ CREATE TABLE `ecs_line_shop` (
   PRIMARY KEY (`ls_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='//线下店签约表';
 
-/*#2016/10/29 王晋  在ecs_order_info 添加字段线下店id
+
+
+
+/*#2016/11/1 王晋  用户表中增加判断会员和线下店的区分字段、特殊标志字段
 */
+ALTER TABLE `ecs_users`
+ADD COLUMN `is_line`  int(2) NOT NULL DEFAULT 0 COMMENT '//是否为线下店 ' AFTER `password_tianxin`,
+ADD COLUMN `hav_logo`  varchar(255) NULL COMMENT '//特殊标志（线下店logo）' AFTER `is_line`;
 
-ALTER TABLE `ecs_order_info`
-ADD COLUMN `lineshop_id`  smallint(8) NOT NULL COMMENT '//线下店id' AFTER `fencheng`;
-
-/*#2016/11/3 汪江  购物车表ecs_cart添加线下店的id
+/*#2016/11/1 王晋  在ecs_order_goods 添加字段线下店id,分成
 */
+ALTER TABLE `ecs_order_goods`
+ADD COLUMN `lineshop_id`  mediumint(8) NOT NULL COMMENT '//线下店id' AFTER `goods_attr_id`,
+ADD COLUMN `fencheng`  double(4,2) NOT NULL AFTER `lineshop_id`;
 
-alter table `ecs_cart` add `lineid` int(11) not Null; '//线下店id'
+
+
+/*#2016/11/5 汪江  在ecs_cart 添加lineid 线下店id字段
+*/
+alter table `ecs_cart` add `lineid` int(11) not Null;
+
+
+/*#2016/11/5 王晋  在ecs_admin_user 添加国家、艺术家logo字段
+*/
+ALTER TABLE `ecs_admin_user`
+ADD COLUMN `country`  varchar(20) NULL COMMENT '//国家' AFTER `role_id`,
+ADD COLUMN `hav_logo`  varchar(255) NULL COMMENT '//艺术家logo' AFTER `country`;
+
+
+
+
+/*#2016/11/5 王晋  在ecs_cart 添加分成比例字段
+*/
+ALTER TABLE `ecs_cart`
+ADD COLUMN `new_fencheng`  double(4,2) NULL COMMENT '//线下店分成比例' AFTER `lineid`;

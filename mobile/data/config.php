@@ -20,6 +20,7 @@ require(dirname(__FILE__) . '/convention.php');
 //网站全局配置
 $config['site_name'] = '上海商创网络科技有限公司'; //站点名称
 $config['site_url']="http://".$_SERVER['HTTP_HOST']."/"; //电脑版地址
+$config['mobilesite_url']=str_replace($_SERVER["DOCUMENT_ROOT"],'',ROOT_PATH); //手机版地址
 $config['site_email'] = 'admin@ectouch.cn'; //管理员邮箱
 $config['site_phone'] = '021-68686868'; //公司电话
 $config['site_fax'] = '021-68686868-801'; //传真号码

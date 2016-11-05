@@ -151,7 +151,7 @@ $_LANG['18_shouce'] = '使用手册';
 $_LANG['01_goods_list'] = '商品列表';
 $_LANG['02_goods_add'] = '添加新商品';
 $_LANG['03_category_list'] = '商品分类';
-$_LANG['04_comment_manage'] = '用户评论管理';//  甜  心100tianxin  100   添加  
+$_LANG['04_comment_manage'] = '用户评论管理';//  甜  心100tianxin  100   添加
 $_LANG['04_category_add'] = '添加分类';
 $_LANG['05_comment_manage'] = '用户评论';
 $_LANG['06_goods_brand_list'] = '品牌管理';
@@ -244,6 +244,8 @@ $_LANG['05_user_rank_list'] = '会员等级';
 $_LANG['06_list_integrate'] = '会员整合';
 $_LANG['09_user_account'] = '充值和提现申请';
 $_LANG['10_user_account_manage'] = '资金管理';
+$_LANG['line_shop'] = '线下店签约管理';
+$_LANG['line_shop_add'] = '新增线下店签约';
 
 /* 权限管理 */
 $_LANG['admin_list'] = '管理员列表';

@@ -243,6 +243,7 @@ $_LANG['06_list_integrate'] = '会员整合';
 $_LANG['09_user_account'] = '充值和提现申请';
 $_LANG['10_user_account_manage'] = '资金管理';
 
+
 /* 权限管理 */
 $_LANG['admin_list'] = '管理员列表';
 $_LANG['admin_list_role'] = '角色列表';

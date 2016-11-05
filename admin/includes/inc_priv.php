@@ -67,12 +67,16 @@ if (!defined('IN_ECS'))
     $purview['08_unreply_msg']       = 'feedback_priv';
     $purview['10_user_account_manage'] = 'account_manage';
 
+
+
 //权限管理
     $purview['admin_logs']           = array('logs_manage', 'logs_drop');
     $purview['admin_list']           = array('admin_manage', 'admin_drop', 'allot_priv');
     $purview['agency_list']          = 'agency_manage';
     $purview['suppliers_list']          = 'suppliers_manage'; // 供货商
     $purview['admin_role']             = 'role_manage';
+
+
 
 //商店设置权限
     $purview['01_shop_config']       = 'shop_config';

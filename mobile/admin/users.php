@@ -16,7 +16,7 @@
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
-require(ROOT_PATH . 'include/lib_weixintong.php');
+require(ROOT_PATH . '/include/upload.php');
 
 /*------------------------------------------------------ */
 //-- 用户帐号列表
@@ -74,7 +74,7 @@ elseif ($_REQUEST['act'] == 'query')
 		$aa['number']=$number[0];
 		$kk[]=$aa;
 	}
-	
+
     $smarty->assign('user_list',    $kk);
     $smarty->assign('filter',       $user_list['filter']);
     $smarty->assign('record_count', $user_list['record_count']);
@@ -108,7 +108,7 @@ elseif ($_REQUEST['act'] == 'add')
     $smarty->assign('action_link',      array('text' => $_LANG['03_users_list'], 'href'=>'users.php?act=list'));
     $smarty->assign('form_action',      'insert');
     $smarty->assign('user',             $user);
-    $smarty->assign('special_ranks',    get_rank_list(true));
+    //$smarty->assign('special_ranks',    get_rank_list(true));
 
     assign_query_info();
     $smarty->display('user_info.htm');
@@ -129,6 +129,37 @@ elseif ($_REQUEST['act'] == 'insert')
     $birthday = $_POST['birthdayYear'] . '-' .  $_POST['birthdayMonth'] . '-' . $_POST['birthdayDay'];
     $rank = empty($_POST['user_rank']) ? 0 : intval($_POST['user_rank']);
     $credit_line = empty($_POST['credit_line']) ? 0 : floatval($_POST['credit_line']);
+    $sf = empty($_POST['shenfen']) ? 0 : intval($_POST['shenfen']);
+
+if($_FILES['pic']['name']){
+           //图片上传处理
+ $up = new FileUpload();
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+    $path="images/logo/";
+    $up -> set("path", ROOT_PATH.$path);
+    $up -> set("maxsize", 2000000);
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+    $up -> set("israndname", true);
+
+
+    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
+    if($up -> upload("pic")) {
+        // echo '<pre>';
+        // //获取上传后文件名子
+        // var_dump($up->getFileName());
+        // echo '</pre>';
+        $url_img=$config['mobilesite_url'].$path.$up->getFileName();
+
+
+
+    } else {
+        // echo '<pre>';
+        // //获取上传失败以后的错误提示
+        // var_dump($up->getErrorMsg());
+        // echo '</pre>';
+        sys_msg($up->getErrorMsg(), 1);
+    }
+}
 
     $users =& init_users();
 
@@ -201,6 +232,8 @@ elseif ($_REQUEST['act'] == 'insert')
     $other['user_rank']  = $rank;
     $other['sex']        = $sex;
     $other['birthday']   = $birthday;
+    $other['is_line']=$sf;
+    $other['hav_logo']=$url_img;
     $other['reg_time'] = local_strtotime(local_date('Y-m-d H:i:s'));
 
     $other['msn'] = isset($_POST['extend_field1']) ? htmlspecialchars(trim($_POST['extend_field1'])) : '';
@@ -229,7 +262,7 @@ elseif ($_REQUEST['act'] == 'edit')
     /* 检查权限 */
     admin_priv('users_manage');
 
-    $sql = "SELECT u.user_name, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn, u.office_phone, u.home_phone, u.mobile_phone".
+    $sql = "SELECT u.user_name, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn, u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo".
         " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 
     $row = $db->GetRow($sql);
@@ -238,7 +271,7 @@ elseif ($_REQUEST['act'] == 'edit')
     $user   = $users->get_user_info($row['user_name']);
 
     $sql = "SELECT u.user_id, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn,
-    u.office_phone, u.home_phone, u.mobile_phone".
+    u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo".
         " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 
     $row = $db->GetRow($sql);
@@ -263,6 +296,8 @@ elseif ($_REQUEST['act'] == 'edit')
         $user['office_phone']   = $row['office_phone'];
         $user['home_phone']     = $row['home_phone'];
         $user['mobile_phone']   = $row['mobile_phone'];
+        $user['is_line']   = $row['is_line'];
+        $user['hav_logo']   = $row['hav_logo'];
     }
     else
     {
@@ -368,7 +403,39 @@ elseif ($_REQUEST['act'] == 'update')
     $birthday = $_POST['birthdayYear'] . '-' .  $_POST['birthdayMonth'] . '-' . $_POST['birthdayDay'];
     $rank = empty($_POST['user_rank']) ? 0 : intval($_POST['user_rank']);
     $credit_line = empty($_POST['credit_line']) ? 0 : floatval($_POST['credit_line']);
+    $sf = empty($_POST['shenfen']) ? 0 : intval($_POST['shenfen']);
 
+    if ($_FILES['pic']['name']) {
+
+
+              //图片上传处理
+ $up = new FileUpload();
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+    $path="images/logo/";
+    $up -> set("path", ROOT_PATH.$path);
+    $up -> set("maxsize", 2000000);
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+    $up -> set("israndname", true);
+
+
+    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
+    if($up -> upload("pic")) {
+        // echo '<pre>';
+        // //获取上传后文件名子
+        // var_dump($up->getFileName());
+        // echo '</pre>';
+        $url_img=$config['mobilesite_url'].$path.$up->getFileName();
+
+
+
+    } else {
+        // echo '<pre>';
+        // //获取上传失败以后的错误提示
+        // var_dump($up->getErrorMsg());
+        // echo '</pre>';
+       sys_msg($up->getErrorMsg(), 1);
+    }
+ }
     $users  =& init_users();
 
     if (!$users->edit_user(array('username'=>$username, 'password'=>$password, 'email'=>$email, 'gender'=>$sex, 'bday'=>$birthday ), 1))
@@ -419,6 +486,8 @@ elseif ($_REQUEST['act'] == 'update')
     $other =  array();
     $other['credit_line'] = $credit_line;
     $other['user_rank'] = $rank;
+    $other['is_line'] = $sf;
+    $other['hav_logo'] = $url_img;
 
     $other['msn'] = isset($_POST['extend_field1']) ? htmlspecialchars(trim($_POST['extend_field1'])) : '';
     $other['qq'] = isset($_POST['extend_field2']) ? htmlspecialchars(trim($_POST['extend_field2'])) : '';
@@ -427,7 +496,7 @@ elseif ($_REQUEST['act'] == 'update')
     $other['mobile_phone'] = isset($_POST['extend_field5']) ? htmlspecialchars(trim($_POST['extend_field5'])) : '';
 	$other['parent_id'] = isset($_POST['parent_id']) ? htmlspecialchars(trim($_POST['parent_id'])) : '';
 	$parent_id=$other['parent_id'];
-	
+
 	if(!empty($parent_id))
 	{
 	$sql = 'SELECT * FROM ' . $ecs->table('users') . "WHERE user_id ='$parent_id'";
@@ -699,7 +768,7 @@ elseif ($_REQUEST['act'] == 'share_list')
     admin_priv('users_manage');
     $smarty->assign('ur_here',      $_LANG['03_users_list']);
 
-    
+
     $user_list['user_list'] = array();
 	$auid = $_GET['id'];
     $num = 4;
@@ -727,7 +796,7 @@ elseif ($_REQUEST['act'] == 'share_list')
                     " ORDER by level, user_id";
 			$user_info=$db->getAll($sql);
 			foreach($user_info as $key=>$value){
-			
+
 				$sql="SELECT count(*) as order_num ,sum(goods_amount - discount)  as order_amount FROM ".$GLOBALS['ecs']->table('order_info')."WHERE user_id=".$value['user_id'];
 				$order_info=$db->getRow($sql);
 				$k=$i-1;
@@ -740,9 +809,9 @@ elseif ($_REQUEST['act'] == 'share_list')
 				$user_info[$key]['order_num']=$order_info['order_num'];
 				$user_info[$key]['order_amount']=$order_info['order_amount'];
 				$user_info[$key]['setmoney']=$setmoney;
-				
+
 			}
-            $user_list['user_list'] = array_merge($user_list['user_list'], $user_info);	
+            $user_list['user_list'] = array_merge($user_list['user_list'], $user_info);
         }
     }
 	$new_arr1=array();
@@ -752,13 +821,13 @@ elseif ($_REQUEST['act'] == 'share_list')
 	$new_arr5=array();
 	foreach($user_list['user_list'] as $key =>$value)
 	{
-	
+
 		if($value['level']==1){
 			$wxid=$value['wxid'];
 			$value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
 			$value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
 			$new_arr1[]=$value;
-		}	
+		}
 		elseif($value['level']==2){
 			$wxid=$value['wxid'];
 			$value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
@@ -783,7 +852,7 @@ elseif ($_REQUEST['act'] == 'share_list')
 			$value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
 			$new_arr5[]=$value;
 		}
-		
+
 	}
 
     $user_list['record_count'] = $all_count;
@@ -921,10 +990,10 @@ function get_affiliate_ck($user_id,$level)
         $sqladd = ' AND o.order_sn LIKE \'%' . trim($_REQUEST['order_sn']) . '%\'';
         $filter['order_sn'] = $_REQUEST['order_sn'];
     }
-		
-		
+
+
         //$sqladd = ' AND a.user_id=' . $_SESSION['user_id'];
-   
+
 
     if(!empty($affiliate['on']))
     {
@@ -964,7 +1033,7 @@ function get_affiliate_ck($user_id,$level)
         if(empty($separate_by))
         {
             //推荐注册分成
-			
+
             $sql = "SELECT o.*, a.log_id, a.user_id as suid,  a.user_name as auser, a.money, a.point, a.separate_type,u.parent_id as up FROM " . $GLOBALS['ecs']->table('order_info') . " o".
                     " LEFT JOIN".$GLOBALS['ecs']->table('users')." u ON o.user_id = u.user_id".
                     " LEFT JOIN " . $GLOBALS['ecs']->table('affiliate_log') . " a ON o.order_id = a.order_id" .
@@ -1057,7 +1126,7 @@ function get_affiliate_ck($user_id,$level)
 				$weixinInfo = $GLOBALS['db']->getRow("SELECT nickname, headimgurl FROM wxch_user WHERE wxid = '$wxid'");
 				$logdbnew[$key]['avatar'] = empty($weixinInfo['headimgurl']) ? '':$weixinInfo['headimgurl'];
 				$logdbnew[$key]['username'] = empty($weixinInfo['nickname']) ? '':$weixinInfo['nickname'];
-			}	
+			}
 				$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
 				$k=$level-1;
 				$affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
@@ -1068,13 +1137,16 @@ function get_affiliate_ck($user_id,$level)
 				$setmoney = round($value['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
 				$logdbnew[$key]['set_money']=$setmoney;
 				$logdbnew[$key]['level_money']=$affiliate['item'][$k]['level_money'];
-				
-			
+
+
 		}
 	}
 
     $arr = array('logdb' => $logdbnew, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
 
     return $arr;
-}	
+}
+
+
+
 ?>

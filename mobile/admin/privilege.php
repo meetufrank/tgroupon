@@ -16,7 +16,7 @@
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
-
+require(ROOT_PATH . '/include/upload.php');
 /* act操作项的初始化 */
 if (empty($_REQUEST['act']))
 {
@@ -90,7 +90,7 @@ elseif ($_REQUEST['act'] == 'signin')
          $sql = "SELECT t1.user_id, t1.user_name, t1.password, t1.last_login, t2.action_list, t1.last_login,t1.suppliers_id,t1.ec_salt".
             " FROM " . $ecs->table('admin_user') .
             " t1 left join ".$ecs->table('touch_priv')." t2 on t1.user_id = t2.user_id WHERE t1.user_name = '" . $_POST['username']. "' AND t1.password = '" . md5(md5($_POST['password']).$ec_salt) . "'";
-        
+
     }
     else
     {
@@ -229,9 +229,39 @@ elseif ($_REQUEST['act'] == 'insert')
         }
     }
 
+    if($_FILES['pic']['name']){
+                  //图片上传处理
+ $up = new FileUpload();
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+    $path="images/logo/";
+    $up -> set("path", ROOT_PATH.$path);
+    $up -> set("maxsize", 2000000);
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+    $up -> set("israndname", true);
+
+
+    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
+    if($up -> upload("pic")) {
+        // echo '<pre>';
+        // //获取上传后文件名子
+        // var_dump($up->getFileName());
+        // echo '</pre>';
+        $url_img=$config['mobilesite_url'].$path.$up->getFileName();
+
+
+
+    } else {
+        // echo '<pre>';
+        // //获取上传失败以后的错误提示
+        // var_dump($up->getErrorMsg());
+        // echo '</pre>';
+        sys_msg($up->getErrorMsg(), 1);
+    }
+}
+
     /* 获取添加日期及密码 */
     $add_time = gmtime();
-    
+
     $password  = md5($_POST['password']);
     $role_id = '';
     $action_list = '';
@@ -247,17 +277,17 @@ elseif ($_REQUEST['act'] == 'insert')
         $row = $db->getRow($sql);
 
 
-    $sql = "INSERT INTO ".$ecs->table('admin_user')." (user_name, email, password, add_time, nav_list, action_list, role_id) ".
-           "VALUES ('".trim($_POST['user_name'])."', '".trim($_POST['email'])."', '$password', '$add_time', '$row[nav_list]', '$action_list', '$role_id')";
+    $sql = "INSERT INTO ".$ecs->table('admin_user')." (user_name, email, password, add_time, nav_list, action_list, role_id,country,hav_logo) ".
+           "VALUES ('".trim($_POST['user_name'])."', '".trim($_POST['email'])."', '$password', '$add_time', '$row[nav_list]', '$action_list', '$role_id','".trim($_POST['country'])."','".$url_img."')";
 
     $db->query($sql);
     /* 转入权限分配列表 */
     $new_id = $db->Insert_ID();
-    
+
     /* 手机端后台权限添加 */
     $sql = "insert into ".$ecs->table('touch_priv')." (user_id, action_list) values ($new_id, '$action_list')";
     $db->query($sql);
-    
+
     /*添加链接*/
     $link[0]['text'] = $_LANG['go_allot_priv'];
     $link[0]['href'] = 'privilege.php?act=allot&id='.$new_id.'&user='.$_POST['user_name'].'';
@@ -292,7 +322,7 @@ elseif ($_REQUEST['act'] == 'edit')
     }
 
     /* 获取管理员信息 */
-    $sql = "SELECT user_id, user_name, email, password, agency_id, role_id FROM " .$ecs->table('admin_user').
+    $sql = "SELECT user_id, user_name, email, password, agency_id, role_id,country FROM " .$ecs->table('admin_user').
            " WHERE user_id = '".$_REQUEST['id']."'";
     $user_info = $db->getRow($sql);
 
@@ -334,6 +364,39 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
     $admin_id    = !empty($_REQUEST['id'])        ? intval($_REQUEST['id'])      : 0;
     $admin_name  = !empty($_REQUEST['user_name']) ? trim($_REQUEST['user_name']) : '';
     $admin_email = !empty($_REQUEST['email'])     ? trim($_REQUEST['email'])     : '';
+    $country = !empty($_REQUEST['country'])     ? trim($_REQUEST['country'])     : '';
+
+
+    if($_FILES['pic']['name']){
+                     //图片上传处理
+ $up = new FileUpload();
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+    $path="images/logo/";
+    $up -> set("path", ROOT_PATH.$path);
+    $up -> set("maxsize", 2000000);
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+    $up -> set("israndname", true);
+
+
+    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
+    if($up -> upload("pic")) {
+        // echo '<pre>';
+        // //获取上传后文件名子
+        // var_dump($up->getFileName());
+        // echo '</pre>';
+        $url_img=$config['mobilesite_url'].$path.$up->getFileName();
+
+
+
+    } else {
+        // echo '<pre>';
+        // //获取上传失败以后的错误提示
+        // var_dump($up->getErrorMsg());
+        // echo '</pre>';
+        sys_msg($up->getErrorMsg(), 1);
+    }
+
+    }
     $ec_salt=rand(1,9999);
     $password = !empty($_POST['new_password']) ? ", password = '".md5(md5($_POST['new_password']).$ec_salt)."'"    : '';
     if ($_REQUEST['act'] == 'update')
@@ -417,6 +480,8 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
         $row = $db->getRow($sql);
         $action_list = ', action_list = \''.$row['action_list'].'\'';
         $role_id = ', role_id = '.$_POST['select_role'].' ';
+        if(empty($url_img)){$img_list='';}else{$img_list=' ,hav_logo=\''.$url_img.'\'';}
+       if(empty($_POST['country'])){$country_list='';}else{$country_list=' ,country=\''.$_POST['country'].'\'';}
     }
     //更新管理员信息
     if($pwd_modified)
@@ -425,7 +490,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
                "user_name = '$admin_name', ".
                "email = '$admin_email', ".
                "ec_salt = '$ec_salt' ".
-               $action_list.
+               $action_list.$img_list.$country_list.
                $role_id.
                $password.
                $nav_list.
@@ -433,13 +498,17 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
     }
     else
     {
+
+
         $sql = "UPDATE " .$ecs->table('admin_user'). " SET ".
                "user_name = '$admin_name', ".
                "email = '$admin_email' ".
-               $action_list.
+               $action_list.$img_list.$country_list.
                $role_id.
                $nav_list.
                "WHERE user_id = '$admin_id'";
+
+
     }
 
    $db->query($sql);
@@ -639,11 +708,11 @@ elseif ($_REQUEST['act'] == 'update_allot')
            "WHERE user_id = '$_POST[id]'";
 
     $db->query($sql); */
-    
+
     $sql = "UPDATE ".$ecs->table('touch_priv')." SET action_list = '$act_list' ".
            "WHERE user_id = '$_POST[id]'";
     $db->query($sql);
-    
+
     /* 动态更新管理员的SESSION */
     if ($_SESSION["admin_id"] == $_POST['id'])
     {

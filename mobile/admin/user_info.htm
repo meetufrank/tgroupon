@@ -1,15 +1,11 @@
 <!-- $Id: user_info.htm 16854 2009-12-07 06:20:09Z sxc_shop $ -->
 {include file="pageheader.htm"}
 <div class="main-div">
-<form method="post" action="users.php" name="theForm"  enctype="multipart/form-data"  onsubmit="return validate()">
+<form method="post" action="users.php" name="theForm" onsubmit="return validate()">
 <table width="100%" >
   <tr>
     <td class="label">{$lang.username}:</td>
     <td>{if $form_action eq "update"}{$user.user_name}<input type="hidden" name="username" value="{$user.user_name}" />{else}<input type="text" name="username" maxlength="60" value="{$user.user_name}" />{$lang.require_field}{/if}</td>
-  </tr>
-    <tr>
-    <td class="label">会员号:</td>
-    <td>{$user.user_num}</td>
   </tr>
   {if $form_action eq "update"}
   <tr>
@@ -53,7 +49,6 @@
     <td><input type="password" name="confirm_password" maxlength="20" size="20" /></td>
   </tr>
   {/if}
-  <!--
   <tr>
     <td class="label">{$lang.user_rank}:</td>
     <td><select name="user_rank">
@@ -61,21 +56,6 @@
       {html_options options=$special_ranks selected=$user.user_rank}
     </select></td>
   </tr>
-  -->
-  <tr>
-    <td class="label">会员身份:</td>
-    <td><select name="shenfen">
-      <option value="0" selected>普通会员</option>
-      <option value="1" {if $user.is_line==1}selected{/if}>线下店</option>
-    </select></td>
-  </tr>
-  <tr>
-            <td class="label">线下店logo：</td>
-            <td>
-              <input type="file" name="pic" size="35" />
-
-            </td>
-          </tr>
   <tr>
     <td class="label">{$lang.gender}:</td>
     <td>{html_radios name="sex" options=$lang.sex checked=$user.sex }</td>
@@ -88,11 +68,6 @@
     <td class="label">{$lang.credit_line}:</td>
     <td><input name="credit_line" type="text" id="credit_line" value="{$user.credit_line}" size="10" /></td>
   </tr>
-  <!--甜心 100 新增绑定上级ID-->
-    <tr>
-    <td class="label"><font style="color:red">自定义上级ID:</font></td>
-    <td><input name="parent_id" type="text" id="credit_line" value="{$user.parent_id}" size="10" />会员ID查看方法：点击会员列表，最前面编号就是对应的ID</td>
-	</tr>
   {foreach from=$extend_info_list item=field}
   <tr>
     <td class="label">{$field.reg_field_name}:</td>
@@ -114,7 +89,7 @@
   </tr>
   <tr>
     <td></td>
-    <td>
+    <td>   
     <table border="0" cellspacing="1" style="background: #dddddd; width:30%;">
     <tr>
     <td bgcolor="#ffffff">{$lang.affiliate_lever}</td>
