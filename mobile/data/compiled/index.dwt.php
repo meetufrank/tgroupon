@@ -12,11 +12,14 @@
 <link href="<?php echo $this->_var['ectouch_themes']; ?>/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="<?php echo $this->_var['ectouch_themes']; ?>/ectouch.css?v=2014" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<?php echo $this->_var['ectouch_themes']; ?>/js/TouchSlide.js"></script>
- 
+
+
+
+
 <style>
 .user_top_goods {
 height: 5rem;
-overflow: hidden; 
+overflow: hidden;
 background:#ffbf6b;
 position:relative
 
@@ -89,9 +92,11 @@ font-size: 12px;
     width: 100%;
 }
 </style>
- 
+
 </head>
 <body>
+
+
 
 <div id="page">
   <header id="header" >
@@ -100,7 +105,7 @@ font-size: 12px;
     <div class="header_r"> <a class="ico_01" href="flow.php"> 购物车 </a> </div>
   </header>
 </div>
- 
+
 
 <div id="focus" class="focus region">
   <div class="hd">
@@ -114,11 +119,11 @@ font-size: 12px;
   </div>
 </div>
 <script type="text/javascript">
-TouchSlide({ 
+TouchSlide({
 	slideCell:"#focus",
 	titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
-	mainCell:".bd ul", 
-	effect:"leftLoop", 
+	mainCell:".bd ul",
+	effect:"leftLoop",
 	autoPlay:true,//自动播放
 	autoPage:true //自动分页
 });
@@ -129,11 +134,11 @@ TouchSlide({
 
 <div id=content class="wrap">
 
-  
+
     <ul>
     <li>
 	<div  style="overflow: hidden;background: #FE0000;position: relative; height: 2.5rem; overflow: hidden;">
-	<div style="float:left">	
+	<div style="float:left">
 <table align=left cellspacing=0 cellpadding=0 width=200 border=0>
 <tr>
 <td  style="width:2.5rem;height: 2.5rem;"><?php if ($this->_var['share_info']['headimgurl'] != ''): ?><img src="<?php echo $this->_var['share_info']['headimgurl']; ?>"  style="width:2.5rem;height: 2.5rem;border-radius: 2.5rem;"> <?php endif; ?></td> <td>     <p style="color:rgb(253, 250, 250)"><?php if ($this->_var['share_info']['headimgurl'] != ''): ?>来自&nbsp; <?php echo $this->_var['share_info']['nickname']; ?>&nbsp;的分享<?php endif; ?></p>
@@ -153,8 +158,8 @@ TouchSlide({
  </div>
 	</li>
   </ul>
-  	
-  
+
+
   
   <header class=region>
     <div class=content>
@@ -169,7 +174,7 @@ TouchSlide({
   
   <div class="region row row_category">
     <ul class="flex flex-f-row">
-    
+
 	  <?php $_from = $this->_var['navigator_list']['middle']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'nav');$this->_foreach['nav_middle_list'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['nav_middle_list']['total'] > 0):
     foreach ($_from AS $this->_var['nav']):
@@ -185,17 +190,17 @@ if ($this->_foreach['nav_middle_list']['total'] > 0):
     </ul>
   </div>
   
-  
-  
-  
-  
+
+
+
+
 
 <?php $this->assign('articles',$this->_var['articles_4']); ?><?php $this->assign('articles_cat',$this->_var['articles_cat_4']); ?><?php echo $this->fetch('library/cat_articles.lbi'); ?>
 <?php echo $this->fetch('library/recommend_best.lbi'); ?>
 
 </div>
- 
-<?php echo $this->fetch('library/page_footer.lbi'); ?> 
+
+<?php echo $this->fetch('library/page_footer.lbi'); ?>
 <nav id="menu" style="display:None">
   <ul>
     <?php $_from = $this->_var['categories']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cat');if (count($_from)):
@@ -255,7 +260,7 @@ if ($this->_foreach['nav_middle_list']['total'] > 0):
    text-align:center;
                -webkit-box-sizing:border-box;
                   -moz-box-sizing:border-box;
-                     -o-box-sizing:border-box;   
+                     -o-box-sizing:border-box;
                         box-sizing:border-box;
 }
 .contact-public li:last-child{
@@ -324,7 +329,7 @@ $(function() {
     signature: '<?php echo $this->_var['signPackage']['signature']; ?>',
     jsApiList: [
         'onMenuShareTimeline',
-        'onMenuShareAppMessage' 
+        'onMenuShareAppMessage'
     ]
   });
  wx.ready(function () {
@@ -335,17 +340,17 @@ $(function() {
       link: '<?php echo $this->_var['url']; ?>',
       imgUrl: '',
       trigger: function (res) {
-		
+
 		<?php if ($this->_var['url']): ?>
         alert('恭喜！分享可以获取提成哦！');
 		<?php else: ?>
 		alert('糟糕，需要分销商登录才能获得提成哦！');
 		<?php endif; ?>
-		
+
       },
       success: function (res) {
 		<?php if ($this->_var['dourl']): ?>
-        window.location.href="<?php echo $this->_var['dourl']; ?>&type=1"; 
+        window.location.href="<?php echo $this->_var['dourl']; ?>&type=1";
 		<?php endif; ?>
       },
       cancel: function (res) {
@@ -362,7 +367,7 @@ $(function() {
       link: '<?php echo $this->_var['url']; ?>',
       imgUrl: '',
       trigger: function (res) {
-			
+
         <?php if ($this->_var['url']): ?>
 			alert('恭喜！分享可以获取提成哦！');
 		<?php else: ?>
@@ -371,7 +376,7 @@ $(function() {
       },
       success: function (res) {
        	<?php if ($this->_var['dourl']): ?>
-        window.location.href="<?php echo $this->_var['dourl']; ?>&type=2"; 
+        window.location.href="<?php echo $this->_var['dourl']; ?>&type=2";
 		<?php endif; ?>
       },
       cancel: function (res) {

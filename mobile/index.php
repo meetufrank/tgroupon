@@ -48,6 +48,8 @@ $cache_id = sprintf('%X', crc32($_SESSION['user_rank'] . '-' . $_CFG['lang']));
 
 if (!$smarty->is_cached('index.dwt', $cache_id))
 {
+
+
     assign_template();
 
     $position = assign_ur_here();
@@ -114,16 +116,16 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
 		if(!empty($userid)){
 			$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
 			$level_register_up = (float)$affiliate['config']['level_register_up'];
-			$rank_points =  $GLOBALS['db']->getOne("SELECT rank_points FROM " . $GLOBALS['ecs']->table('users')."where user_id=".$_SESSION["user_id"]);	
-			if($rank_points>$level_register_up||$rank_points==$level_register_up){		
+			$rank_points =  $GLOBALS['db']->getOne("SELECT rank_points FROM " . $GLOBALS['ecs']->table('users')."where user_id=".$_SESSION["user_id"]);
+			if($rank_points>$level_register_up||$rank_points==$level_register_up){
 			$url=$config['site_url']."mobile/index.php?u=".$userid;
 			//20141204新增分享返积分
 			$dourl=$config['site_url']."mobile/re_url.php?user_id=".$userid;
 			}else{
 					$url="";
 					//20141204新增分享返积分
-					$dourl="";				
-			
+					$dourl="";
+
 			}
 		}else{
 			$url="";
@@ -137,25 +139,25 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
 		$smarty->assign('signPackage',  $signPackage);
 		$smarty->assign('userid',  $userid);
 		$smarty->assign('share_info',  $share_info);
-		$smarty->assign('dourl',  $dourl);		
+		$smarty->assign('dourl',  $dourl);
 		$smarty->assign('url',  $url);
 		/*TGROUPON修改*/
 	/*TGROUPON开发显示店铺名称*/
 	if(!empty($u)){
 		$sql = 'SELECT nicheng FROM ' . $ecs->table("users") . ' where user_id='.$u.'';
 		$name = $db->getOne($sql);
-		
+
 		}
 
 	if(!empty($user_id)){
 		$sql = 'SELECT nicheng FROM ' . $ecs->table("users") . ' where user_id='.$user_id.'';
 		$name = $db->getOne($sql);
-		}	
+		}
 		/*甜   心100  修复开发*/
-		
+
 		$tianxin_url = $db->getOne("SELECT cfg_value  FROM `wxch_cfg` WHERE `cfg_name` = 'tianxin_url'");
-		$smarty->assign('tianxin_url',  $tianxin_url); 		
-		
+		$smarty->assign('tianxin_url',  $tianxin_url);
+
 $smarty->assign('name', $name);
 $smarty->display('index.dwt', $cache_id);
 

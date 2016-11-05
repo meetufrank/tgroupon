@@ -23,23 +23,23 @@
         </div>
         <div class="bd1">
             <ul>
-                <?php $_from = $this->_var['best_goods']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_06553300_1477279338');$this->_foreach['best_goods'] = array('total' => count($_from), 'iteration' => 0);
+                <?php $_from = $this->_var['best_goods']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_66711500_1478241868');$this->_foreach['best_goods'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['best_goods']['total'] > 0):
-    foreach ($_from AS $this->_var['goods_0_06553300_1477279338']):
+    foreach ($_from AS $this->_var['goods_0_66711500_1478241868']):
         $this->_foreach['best_goods']['iteration']++;
 ?>
-                <!--jeffxieli><a href="<?php echo $this->_var['goods_0_06553300_1477279338']['url']; ?>"><img src="<?php echo $this->_var['site_url']; ?><?php echo $this->_var['goods_0_06553300_1477279338']['thumb']; ?>" /></a-->
-                <li><a href="<?php echo $this->_var['goods_0_06553300_1477279338']['url']; ?>"><img src="../<?php echo $this->_var['goods_0_06553300_1477279338']['thumb']; ?>" /></a>
+                <!--jeffxieli><a href="<?php echo $this->_var['goods_0_66711500_1478241868']['url']; ?>"><img src="<?php echo $this->_var['site_url']; ?><?php echo $this->_var['goods_0_66711500_1478241868']['thumb']; ?>" /></a-->
+                <li><a href="<?php echo $this->_var['goods_0_66711500_1478241868']['url']; ?>"><img src="../<?php echo $this->_var['goods_0_66711500_1478241868']['thumb']; ?>" /></a>
                 <br/>
-                <?php if ($this->_var['goods_0_06553300_1477279338']['promote_price'] != ""): ?> 
-				<font style="font-size:8px">市场价</font><del style="font-size: .675rem;"><?php echo $this->_var['goods_0_06553300_1477279338']['market_price']; ?></del>
-                <span class="price_s"> <?php echo $this->_var['goods_0_06553300_1477279338']['promote_price']; ?> </span> 
+                <?php if ($this->_var['goods_0_66711500_1478241868']['promote_price'] != ""): ?> 
+				<font style="font-size:8px">市场价</font><del style="font-size: .675rem;"><?php echo $this->_var['goods_0_66711500_1478241868']['market_price']; ?></del>
+                <span class="price_s"> <?php echo $this->_var['goods_0_66711500_1478241868']['promote_price']; ?> </span> 
                 <?php else: ?> 
-				<font style="font-size:8px">市场价</font><del style="font-size: .675rem;"><?php echo $this->_var['goods_0_06553300_1477279338']['market_price']; ?></del>
-                <span class="price_s"> <?php echo $this->_var['goods_0_06553300_1477279338']['shop_price']; ?> </span>
+				<font style="font-size:8px">市场价</font><del style="font-size: .675rem;"><?php echo $this->_var['goods_0_66711500_1478241868']['market_price']; ?></del>
+                <span class="price_s"> <?php echo $this->_var['goods_0_66711500_1478241868']['shop_price']; ?> </span>
 				
                 <?php endif; ?>
-                <br><?php echo sub_str(htmlspecialchars($this->_var['goods_0_06553300_1477279338']['name']),12); ?>
+                <br><?php echo sub_str(htmlspecialchars($this->_var['goods_0_66711500_1478241868']['name']),12); ?>
                 </li>
                 <?php if ($this->_foreach['best_goods']['iteration'] % 2 == 0 && $this->_foreach['best_goods']['iteration'] != $this->_foreach['best_goods']['total']): ?></ul><ul><?php endif; ?>
                 <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>

@@ -24,3 +24,8 @@ CREATE TABLE `ecs_line_shop` (
 
 ALTER TABLE `ecs_order_info`
 ADD COLUMN `lineshop_id`  smallint(8) NOT NULL COMMENT '//线下店id' AFTER `fencheng`;
+
+/*#2016/11/3 汪江  购物车表ecs_cart添加线下店的id
+*/
+
+alter table `ecs_cart` add `lineid` int(11) not Null; '//线下店id'

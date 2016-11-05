@@ -179,6 +179,10 @@ if ($this->_foreach['volume_price_tab']['total'] > 0):
             <br /><span class="notice-span" <?php if ($this->_var['help_open']): ?>style="display:block" <?php else: ?> style="display:none" <?php endif; ?> id="rankIntegral">该商品出售后，需要用于分成的金额</span></td>
           </tr>
           <tr>
+            <td class="label"><?php echo $this->_var['lang']['lab_goods_brief']; ?></td>
+            <td><textarea name="goods_brief" cols="40" rows="3"><?php echo htmlspecialchars($this->_var['goods']['goods_brief']); ?></textarea></td>
+          </tr>
+          <tr>
             <td class="label"><?php echo $this->_var['lang']['lab_market_price']; ?></td>
             <td><input type="text" name="market_price" value="<?php echo $this->_var['goods']['market_price']; ?>" size="20" />
               <input type="button" value="<?php echo $this->_var['lang']['integral_market_price']; ?>" onclick="integral_market_price()" />
@@ -285,10 +289,7 @@ if ($this->_foreach['volume_price_tab']['total'] > 0):
             <td class="label"><?php echo $this->_var['lang']['lab_keywords']; ?></td>
             <td><input type="text" name="keywords" value="<?php echo htmlspecialchars($this->_var['goods']['keywords']); ?>" size="40" /> <?php echo $this->_var['lang']['notice_keywords']; ?></td>
           </tr>
-          <tr>
-            <td class="label"><?php echo $this->_var['lang']['lab_goods_brief']; ?></td>
-            <td><textarea name="goods_brief" cols="40" rows="3"><?php echo htmlspecialchars($this->_var['goods']['goods_brief']); ?></textarea></td>
-          </tr>
+
           <tr>
             <td class="label">
             <a href="javascript:showNotice('noticeSellerNote');" title="<?php echo $this->_var['lang']['form_notice']; ?>"><img src="images/notice.gif" width="16" height="16" border="0" alt="<?php echo $this->_var['lang']['form_notice']; ?>"></a> <?php echo $this->_var['lang']['lab_seller_note']; ?> </td>
