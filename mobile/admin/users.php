@@ -16,7 +16,7 @@
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
-require(ROOT_PATH . 'include/lib_weixintong.php');
+require(ROOT_PATH . '/include/upload.php');
 
 /*------------------------------------------------------ */
 //-- 用户帐号列表
@@ -131,6 +131,36 @@ elseif ($_REQUEST['act'] == 'insert')
     $credit_line = empty($_POST['credit_line']) ? 0 : floatval($_POST['credit_line']);
     $sf = empty($_POST['shenfen']) ? 0 : intval($_POST['shenfen']);
 
+if($_FILES['pic']['name']){
+           //图片上传处理
+ $up = new FileUpload();
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+    $path="images/logo/";
+    $up -> set("path", ROOT_PATH.$path);
+    $up -> set("maxsize", 2000000);
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+    $up -> set("israndname", true);
+
+
+    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
+    if($up -> upload("pic")) {
+        // echo '<pre>';
+        // //获取上传后文件名子
+        // var_dump($up->getFileName());
+        // echo '</pre>';
+        $url_img=$config['mobilesite_url'].$path.$up->getFileName();
+
+
+
+    } else {
+        // echo '<pre>';
+        // //获取上传失败以后的错误提示
+        // var_dump($up->getErrorMsg());
+        // echo '</pre>';
+        sys_msg($up->getErrorMsg(), 1);
+    }
+}
+
     $users =& init_users();
 
     if (!$users->add_user($username, $password, $email))
@@ -203,6 +233,7 @@ elseif ($_REQUEST['act'] == 'insert')
     $other['sex']        = $sex;
     $other['birthday']   = $birthday;
     $other['is_line']=$sf;
+    $other['hav_logo']=$url_img;
     $other['reg_time'] = local_strtotime(local_date('Y-m-d H:i:s'));
 
     $other['msn'] = isset($_POST['extend_field1']) ? htmlspecialchars(trim($_POST['extend_field1'])) : '';
@@ -231,7 +262,7 @@ elseif ($_REQUEST['act'] == 'edit')
     /* 检查权限 */
     admin_priv('users_manage');
 
-    $sql = "SELECT u.user_name, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn, u.office_phone, u.home_phone, u.mobile_phone,u.is_line".
+    $sql = "SELECT u.user_name, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn, u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo".
         " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 
     $row = $db->GetRow($sql);
@@ -240,7 +271,7 @@ elseif ($_REQUEST['act'] == 'edit')
     $user   = $users->get_user_info($row['user_name']);
 
     $sql = "SELECT u.user_id, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn,
-    u.office_phone, u.home_phone, u.mobile_phone,u.is_line".
+    u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo".
         " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 
     $row = $db->GetRow($sql);
@@ -266,6 +297,7 @@ elseif ($_REQUEST['act'] == 'edit')
         $user['home_phone']     = $row['home_phone'];
         $user['mobile_phone']   = $row['mobile_phone'];
         $user['is_line']   = $row['is_line'];
+        $user['hav_logo']   = $row['hav_logo'];
     }
     else
     {
@@ -373,6 +405,37 @@ elseif ($_REQUEST['act'] == 'update')
     $credit_line = empty($_POST['credit_line']) ? 0 : floatval($_POST['credit_line']);
     $sf = empty($_POST['shenfen']) ? 0 : intval($_POST['shenfen']);
 
+    if ($_FILES['pic']['name']) {
+
+
+              //图片上传处理
+ $up = new FileUpload();
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+    $path="images/logo/";
+    $up -> set("path", ROOT_PATH.$path);
+    $up -> set("maxsize", 2000000);
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+    $up -> set("israndname", true);
+
+
+    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
+    if($up -> upload("pic")) {
+        // echo '<pre>';
+        // //获取上传后文件名子
+        // var_dump($up->getFileName());
+        // echo '</pre>';
+        $url_img=$config['mobilesite_url'].$path.$up->getFileName();
+
+
+
+    } else {
+        // echo '<pre>';
+        // //获取上传失败以后的错误提示
+        // var_dump($up->getErrorMsg());
+        // echo '</pre>';
+       sys_msg($up->getErrorMsg(), 1);
+    }
+ }
     $users  =& init_users();
 
     if (!$users->edit_user(array('username'=>$username, 'password'=>$password, 'email'=>$email, 'gender'=>$sex, 'bday'=>$birthday ), 1))
@@ -424,6 +487,7 @@ elseif ($_REQUEST['act'] == 'update')
     $other['credit_line'] = $credit_line;
     $other['user_rank'] = $rank;
     $other['is_line'] = $sf;
+    $other['hav_logo'] = $url_img;
 
     $other['msn'] = isset($_POST['extend_field1']) ? htmlspecialchars(trim($_POST['extend_field1'])) : '';
     $other['qq'] = isset($_POST['extend_field2']) ? htmlspecialchars(trim($_POST['extend_field2'])) : '';
