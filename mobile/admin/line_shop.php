@@ -187,7 +187,7 @@ function user_list()
         {
             $filter['keywords'] = json_str_iconv($filter['keywords']);
         }
-        $filter['rank'] = empty($_REQUEST['rank']) ? 0 : intval($_REQUEST['rank']);
+        $filter['rank'] = empty($_REQUEST['rank']) ? 0 : ($_REQUEST['rank']);
 
         $ex_where = ' WHERE  1';
         if ($filter['rank']=='name')
@@ -209,7 +209,6 @@ function user_list()
                 $ex_where .= " AND user_name LIKE '%" . mysql_like_quote($filter['keywords']) ."%'";
             }
         }
-
 
 
         $filter['record_count'] = get_line_count($ex_where);

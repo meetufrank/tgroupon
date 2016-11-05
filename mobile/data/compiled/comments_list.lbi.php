@@ -22,10 +22,10 @@
         <?php if ($this->_var['pager']['styleid'] == 0): ?>
         <div id="pager" style="padding:10px 0">
           <?php echo $this->_var['lang']['pager_1']; ?><?php echo $this->_var['pager']['record_count']; ?><?php echo $this->_var['lang']['pager_2']; ?><?php echo $this->_var['lang']['pager_3']; ?><?php echo $this->_var['pager']['page_count']; ?><?php echo $this->_var['lang']['pager_4']; ?> <span>  <a href="<?php echo $this->_var['pager']['page_prev']; ?>"><?php echo $this->_var['lang']['page_prev']; ?></a> <a href="<?php echo $this->_var['pager']['page_next']; ?>"><?php echo $this->_var['lang']['page_next']; ?></a>  </span>
-            <?php $_from = $this->_var['pager']['search']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_47207700_1478247773');if (count($_from)):
-    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_47207700_1478247773']):
+            <?php $_from = $this->_var['pager']['search']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_79540500_1478314211');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_79540500_1478314211']):
 ?>
-            <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo $this->_var['item_0_47207700_1478247773']; ?>" />
+            <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo $this->_var['item_0_79540500_1478314211']; ?>" />
             <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
         </div>
         <?php else: ?>
@@ -89,10 +89,10 @@
   
 <script type="text/javascript">
 //<![CDATA[
-<?php $_from = $this->_var['lang']['cmt_lang']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_47207700_1478247773');if (count($_from)):
-    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_47207700_1478247773']):
+<?php $_from = $this->_var['lang']['cmt_lang']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_79540500_1478314211');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_79540500_1478314211']):
 ?>
-var <?php echo $this->_var['key']; ?> = "<?php echo $this->_var['item_0_47207700_1478247773']; ?>";
+var <?php echo $this->_var['key']; ?> = "<?php echo $this->_var['item_0_79540500_1478314211']; ?>";
 <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 
 /**
