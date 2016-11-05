@@ -36,6 +36,8 @@ ADD COLUMN `lineshop_id`  mediumint(8) NOT NULL COMMENT '//线下店id' AFTER `g
 ADD COLUMN `fencheng`  double(4,2) NOT NULL AFTER `lineshop_id`;
 
 
+
 /*#2016/11/1 汪江  在ecs_cart 添加lineid 线下店id字段
 */
 alter table `ecs_cart` add `lineid` int(11) not Null;
+
