@@ -19,11 +19,7 @@ CREATE TABLE `ecs_line_shop` (
   PRIMARY KEY (`ls_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='//线下店签约表';
 
-/*#2016/10/29 王晋  在ecs_order_info 添加字段线下店id
-*/
 
-ALTER TABLE `ecs_order_info`
-ADD COLUMN `lineshop_id`  smallint(8) NOT NULL COMMENT '//线下店id' AFTER `fencheng`;
 
 
 /*#2016/11/1 王晋  用户表中增加判断会员和线下店的区分字段、特殊标志字段
@@ -31,3 +27,10 @@ ADD COLUMN `lineshop_id`  smallint(8) NOT NULL COMMENT '//线下店id' AFTER `fe
 ALTER TABLE `ecs_users`
 ADD COLUMN `is_line`  int(2) NOT NULL DEFAULT 0 COMMENT '//是否为线下店 ' AFTER `password_tianxin`,
 ADD COLUMN `hav_logo`  varchar(255) NULL COMMENT '//特殊标志（线下店logo）' AFTER `is_line`;
+
+
+/*#2016/11/1 王晋  在ecs_order_goods 添加字段线下店id,分成
+*/
+ALTER TABLE `ecs_order_goods`
+ADD COLUMN `lineshop_id`  mediumint(8) NOT NULL COMMENT '//线下店id' AFTER `goods_attr_id`,
+ADD COLUMN `fencheng`  double(4,2) NOT NULL AFTER `lineshop_id`;
