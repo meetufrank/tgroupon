@@ -55,3 +55,40 @@ ADD COLUMN `hav_logo`  varchar(255) NULL COMMENT '//艺术家logo' AFTER `countr
 */
 ALTER TABLE `ecs_cart`
 ADD COLUMN `new_fencheng`  double(4,2) NULL COMMENT '//线下店分成比例' AFTER `lineid`;
+
+
+
+/*#2016/11/5 王晋  添加分成表ecs_fencheng
+*/
+CREATE TABLE `ecs_fencheng` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '//分成编号',
+  `goodsid` mediumint(8) NOT NULL COMMENT '//商品id',
+  `line_shopid` mediumint(8) NOT NULL COMMENT '//线下店id',
+  `userid` mediumint(8) NOT NULL COMMENT '//购买用户',
+  `money` double(7,2) NOT NULL DEFAULT '0.00' COMMENT '//分成金额',
+  `time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '//时间',
+  `status` smallint(2) NOT NULL DEFAULT '0' COMMENT '//状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+/*#2016/11/5 王晋  添加提现表   ecs_tixian
+*/
+
+CREATE TABLE `ecs_tixian` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '//提现编号',
+  `line_shopid` mediumint(8) NOT NULL COMMENT '//线下店id',
+  `money` double(7,2) NOT NULL DEFAULT '0.00' COMMENT '//提现金额',
+  `time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '//提现时间',
+  `status` smallint(2) NOT NULL COMMENT '//状态',
+  `other` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+/*#2016/11/5 王晋  会员表中 线下店添加 可提现金额字段。
+*/
+
+ALTER TABLE `ecs_users`
+ADD COLUMN `hav_money`  double(7,2) NOT NULL DEFAULT 0 COMMENT '//可提现金额' AFTER `hav_logo`;
