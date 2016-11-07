@@ -167,6 +167,10 @@
             <br /><span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="rankIntegral">该商品出售后，需要用于分成的金额</span></td>
           </tr>
           <tr>
+            <td class="label">{$lang.lab_goods_brief}</td>
+            <td><textarea name="goods_brief" cols="40" rows="3">{$goods.goods_brief|escape}</textarea></td>
+          </tr>
+          <tr>
             <td class="label">{$lang.lab_market_price}</td>
             <td><input type="text" name="market_price" value="{$goods.market_price}" size="20" />
               <input type="button" value="{$lang.integral_market_price}" onclick="integral_market_price()" />
@@ -273,10 +277,7 @@
             <td class="label">{$lang.lab_keywords}</td>
             <td><input type="text" name="keywords" value="{$goods.keywords|escape}" size="40" /> {$lang.notice_keywords}</td>
           </tr>
-          <tr>
-            <td class="label">{$lang.lab_goods_brief}</td>
-            <td><textarea name="goods_brief" cols="40" rows="3">{$goods.goods_brief|escape}</textarea></td>
-          </tr>
+
           <tr>
             <td class="label">
             <a href="javascript:showNotice('noticeSellerNote');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a> {$lang.lab_seller_note} </td>

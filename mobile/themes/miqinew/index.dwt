@@ -11,11 +11,14 @@
 <link href="{$ectouch_themes}/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="{$ectouch_themes}/ectouch.css?v=2014" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="{$ectouch_themes}/js/TouchSlide.js"></script>
-<!--甜心新增---> 
+
+
+
+<!--甜心新增--->
 <style>
 .user_top_goods {
 height: 5rem;
-overflow: hidden; 
+overflow: hidden;
 background:#ffbf6b;
 position:relative
 
@@ -88,10 +91,12 @@ font-size: 12px;
     width: 100%;
 }
 </style>
-<!--甜心新增  ---> 
+<!--甜心新增  --->
 </head>
 <body>
 <!--头部s-->
+
+
 <div id="page">
   <header id="header" >
     <div class="header_l"> <a class="ico_02" href="#menu"> 菜单栏 </a> </div>
@@ -99,7 +104,7 @@ font-size: 12px;
     <div class="header_r"> <a class="ico_01" href="flow.php"> 购物车 </a> </div>
   </header>
 </div>
-<!--头部e--> 
+<!--头部e-->
 <!--播放器广告s-->
 <div id="focus" class="focus region">
   <div class="hd">
@@ -116,11 +121,11 @@ font-size: 12px;
   </div>
 </div>
 <script type="text/javascript">
-TouchSlide({ 
+TouchSlide({
 	slideCell:"#focus",
 	titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
-	mainCell:".bd ul", 
-	effect:"leftLoop", 
+	mainCell:".bd ul",
+	effect:"leftLoop",
 	autoPlay:true,//自动播放
 	autoPage:true //自动分页
 });
@@ -131,11 +136,11 @@ TouchSlide({
 <!--content s-->
 <div id=content class="wrap">
 
-<!--甜心新增  提示分享人--->  
+<!--甜心新增  提示分享人--->
     <ul>
     <li>
 	<div  style="overflow: hidden;background: #FE0000;position: relative; height: 2.5rem; overflow: hidden;">
-	<div style="float:left">	
+	<div style="float:left">
 <table align=left cellspacing=0 cellpadding=0 width=200 border=0>
 <tr>
 <td  style="width:2.5rem;height: 2.5rem;">{if $share_info.headimgurl neq ''}<img src="{$share_info.headimgurl}"  style="width:2.5rem;height: 2.5rem;border-radius: 2.5rem;"> {/if}</td> <td>     <p style="color:rgb(253, 250, 250)">{if $share_info.headimgurl neq ''}来自&nbsp; {$share_info.nickname}&nbsp;的分享{/if}</p>
@@ -155,8 +160,8 @@ TouchSlide({
  </div>
 	</li>
   </ul>
-  	
-<!--甜心新增  提示分享人--->  
+
+<!--甜心新增  提示分享人--->
   <!--搜索区域-->
   <header class=region>
     <div class=content>
@@ -171,7 +176,7 @@ TouchSlide({
   <!--快速连接s-->
   <div class="region row row_category">
     <ul class="flex flex-f-row">
-    
+
 	  <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} -->
       <li class="flex_in"> <a href="{$nav.url}"{if $nav.opennew eq 1} target="_blank"{/if} title="{$nav.name}"> <img src="{$nav.pic}" /> </a>
         <p> {$nav.name} </p>
@@ -183,10 +188,10 @@ TouchSlide({
     </ul>
   </div>
   <!--快速连接e-->
-  
-  
-  
-  
+
+
+
+
 <!-- TemplateBeginEditable name="中部主区域" -->
 <!-- #BeginLibraryItem "/library/cat_articles.lbi" -->
 
@@ -199,12 +204,12 @@ TouchSlide({
         </span>
     </header>
  <div class="clearfix article-list" style="padding:0px 20px; padding-bottom:10px;">
-  <!--{foreach from=$articles item=goods name=brand_goods}--> 
+  <!--{foreach from=$articles item=goods name=brand_goods}-->
     <li><a href="{$goods.url}" title="{$goods.title}">{$goods.title}</a></li>
-	 <!--{/foreach}-->   
+	 <!--{/foreach}-->
     </div>
-          
-      
+
+
 </section>
 <!--循环分类下商品end-->
  <!-- #EndLibraryItem -->
@@ -238,13 +243,13 @@ TouchSlide({
                 <!--{foreach from=$best_goods item=goods name=best_goods}-->
                 <li><a href="{$goods.url}"><img src="{$site_url}{$goods.thumb}" /></a>
                 <br/>
-                <!-- {if $goods.promote_price neq ""} --> 
+                <!-- {if $goods.promote_price neq ""} -->
 				<font style="font-size:8px">市场价</font><del style="font-size: .675rem;">{$goods.market_price}</del>
-                <span class="price_s"> {$goods.promote_price} </span> 
-                <!-- {else}--> 
+                <span class="price_s"> {$goods.promote_price} </span>
+                <!-- {else}-->
 				<font style="font-size:8px">市场价</font><del style="font-size: .675rem;">{$goods.market_price}</del>
                 <span class="price_s"> {$goods.shop_price} </span>
-				
+
                 <!--{/if}-->
                 <br>{$goods.name|escape:html|truncate:12}
                 </li>
@@ -273,15 +278,15 @@ TouchSlide({
     titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
     autoPage:true, //自动分页
     pnLoop:"false", // 前后按钮不循环
-    //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+    //switchLoad:"_src" //切换加载，真实图片路径为"_src"
 });
 </script>
 <!-- {/if} -->
  <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable -->
 </div>
-<!--content e--> 
-<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+<!--content e-->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
 <nav id="menu" style="display:None">
   <ul>
     <!--{foreach from=$categories item=cat}-->
@@ -335,7 +340,7 @@ TouchSlide({
    text-align:center;
                -webkit-box-sizing:border-box;
                   -moz-box-sizing:border-box;
-                     -o-box-sizing:border-box;   
+                     -o-box-sizing:border-box;
                         box-sizing:border-box;
 }
 .contact-public li:last-child{
@@ -402,7 +407,7 @@ $(function() {
     signature: '{$signPackage.signature}',
     jsApiList: [
         'onMenuShareTimeline',
-        'onMenuShareAppMessage' 
+        'onMenuShareAppMessage'
     ]
   });
  wx.ready(function () {
@@ -413,17 +418,17 @@ $(function() {
       link: '{$url}',
       imgUrl: '',
       trigger: function (res) {
-		
+
 		{if $url}
         alert('恭喜！分享可以获取提成哦！');
 		{else}
 		alert('糟糕，需要分销商登录才能获得提成哦！');
 		{/if}
-		
+
       },
       success: function (res) {
 		{if $dourl }
-        window.location.href="{$dourl}&type=1"; 
+        window.location.href="{$dourl}&type=1";
 		{/if}
       },
       cancel: function (res) {
@@ -440,7 +445,7 @@ $(function() {
       link: '{$url}',
       imgUrl: '',
       trigger: function (res) {
-			
+
         {if $url}
 			alert('恭喜！分享可以获取提成哦！');
 		{else}
@@ -449,7 +454,7 @@ $(function() {
       },
       success: function (res) {
        	{if $dourl }
-        window.location.href="{$dourl}&type=2"; 
+        window.location.href="{$dourl}&type=2";
 		{/if}
       },
       cancel: function (res) {

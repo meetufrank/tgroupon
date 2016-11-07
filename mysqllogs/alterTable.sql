@@ -28,7 +28,6 @@ ALTER TABLE `ecs_users`
 ADD COLUMN `is_line`  int(2) NOT NULL DEFAULT 0 COMMENT '//是否为线下店 ' AFTER `password_tianxin`,
 ADD COLUMN `hav_logo`  varchar(255) NULL COMMENT '//特殊标志（线下店logo）' AFTER `is_line`;
 
-
 /*#2016/11/1 王晋  在ecs_order_goods 添加字段线下店id,分成
 */
 ALTER TABLE `ecs_order_goods`
