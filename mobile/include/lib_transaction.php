@@ -461,6 +461,7 @@ function cancel_order($order_id, $user_id = 0)
  */
 function affirm_received($order_id, $user_id = 0)
 {
+    include_once(ROOT_PATH . 'include/lib_order.php');
     /* 查询订单信息，检查状态 */
     $sql = "SELECT user_id, order_sn , order_status, shipping_status, pay_status FROM ".$GLOBALS['ecs']->table('order_info') ." WHERE order_id = '$order_id'";
 
@@ -489,6 +490,7 @@ function affirm_received($order_id, $user_id = 0)
     /* 修改订单发货状态为“确认收货” */
     else
     {
+        get_money($order_id);
         $sql = "UPDATE " . $GLOBALS['ecs']->table('order_info') . " SET shipping_status = '" . SS_RECEIVED . "' WHERE order_id = '$order_id'";
         if ($GLOBALS['db']->query($sql))
         {

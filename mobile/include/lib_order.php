@@ -3015,6 +3015,28 @@ function judge_package_stock($package_id, $package_num = 1)
     return false;
 }
 
+/**
+ * 计算分成
+ *
+ */
 
+function get_money($orderid)   //某订单id
+{
+
+        $sql="SELECT goods_price,lineshop_id,goods_id,fencheng,goods_number,user_id from ecs_order_goods  WHERE rec_id=".$orderid." and lineshop_id<>0 and goods_id<>0 ";
+        $data = $GLOBALS['db']->GetRow($sql);    //查询该订单是否跟某个线下店有关
+        print_r($data);exit;
+        if (!empty($data)) {
+            $money=$data['goods_number']*$data['goods_price']*$data['fencheng']/100;
+            $sql="INSERT INTO ecs_fencheng SET goodsid=".$data['goodsid']." line_shopid=".$data['lineshop_id']." userid=".$data['user_id']." money=".$money;
+            $result=$GLOBALS['db']->query($sql);
+
+         if($result){
+            $sql="UPDATE ecs_users SET hav_money=hav_money+".$money." where user_id=".$data['lineshop_id'];
+         }
+
+        }
+
+}
 
 ?>

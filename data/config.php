@@ -9,7 +9,7 @@ $db_name   = "tgroup";
 $db_user   = "root";
 
 // database password
-$db_pass   = "";
+$db_pass   = "123456";
 
 // table prefix
 $prefix    = "ecs_";
