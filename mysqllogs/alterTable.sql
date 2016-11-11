@@ -91,3 +91,11 @@ CREATE TABLE `ecs_tixian` (
 
 ALTER TABLE `ecs_users`
 ADD COLUMN `hav_money`  double(7,2) NOT NULL DEFAULT 0 COMMENT '//可提现金额' AFTER `hav_logo`;
+
+
+
+/*#2016/11/11 王晋  会员表中 添加用户第一次购买标示、线下店推荐分成字段。
+*/
+ALTER TABLE `ecs_users`
+MODIFY COLUMN `tuijian`  mediumint(9) NOT NULL DEFAULT '-1' COMMENT '//推荐人' AFTER `hav_money`,
+CHANGE COLUMN `hav_fencheng` `tj_fencheng`  double(4,2) NULL DEFAULT 0.00 COMMENT '//线下店推荐分成' AFTER `tuijian`;
