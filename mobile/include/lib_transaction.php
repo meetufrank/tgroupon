@@ -490,7 +490,7 @@ function affirm_received($order_id, $user_id = 0)
     /* 修改订单发货状态为“确认收货” */
     else
     {
-        get_money($order_id);
+        get_money($order_id,$user_id);
         $sql = "UPDATE " . $GLOBALS['ecs']->table('order_info') . " SET shipping_status = '" . SS_RECEIVED . "' WHERE order_id = '$order_id'";
         if ($GLOBALS['db']->query($sql))
         {

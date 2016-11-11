@@ -3020,12 +3020,15 @@ function judge_package_stock($package_id, $package_num = 1)
  *
  */
 
-function get_money($orderid)   //某订单id
+function get_money($orderid,$user_id)   //某订单id
 {
 
-        $sql="SELECT goods_price,lineshop_id,goods_id,fencheng,goods_number,user_id from ecs_order_goods  WHERE rec_id=".$orderid." and lineshop_id<>0 and goods_id<>0 ";
+        $sql="SELECT goods_price,lineshop_id,goods_id,fencheng,goods_number from ecs_order_goods  WHERE rec_id=".$orderid." and lineshop_id<>0 and goods_id<>0 ";
         $data = $GLOBALS['db']->GetRow($sql);    //查询该订单是否跟某个线下店有关
         print_r($data);exit;
+        //查询该订单是否跟某个线下店有关
+        $sql="SELECT tuijian from ecs_users  WHERE rec_id=".$orderid." and lineshop_id<>0 and goods_id<>0 ";
+        $data = $GLOBALS['db']->GetRow($sql);
         if (!empty($data)) {
             $money=$data['goods_number']*$data['goods_price']*$data['fencheng']/100;
             $sql="INSERT INTO ecs_fencheng SET goodsid=".$data['goodsid']." line_shopid=".$data['lineshop_id']." userid=".$data['user_id']." money=".$money;
