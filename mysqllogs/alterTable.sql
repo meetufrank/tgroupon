@@ -124,3 +124,9 @@ ADD COLUMN `ysj_fencheng`  double(4,2) NOT NULL DEFAULT 0 COMMENT '//艺术家�
 */
 ALTER TABLE `ecs_admin_user`
 ADD COLUMN `ysj_tixian`  double(7,2) NOT NULL DEFAULT 0 COMMENT '//艺术家可提现金额' AFTER `ysj_fencheng`;
+
+
+/*#2016/11/12 王晋  修改分成类型
+*/
+ALTER TABLE `ecs_fencheng`
+MODIFY COLUMN `type`  int(2) NOT NULL DEFAULT 0 COMMENT '//分成类型 0代表产品分成 1代表销售分成 2代表艺术家分成 3代表厂商' AFTER `status`;
