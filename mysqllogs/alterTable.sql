@@ -119,6 +119,7 @@ ALTER TABLE `ecs_admin_user`
 ADD COLUMN `ysj_fencheng`  double(4,2) NOT NULL DEFAULT 0 COMMENT '//艺术家分成' AFTER `hav_logo`;
 
 
+
 /*#2016/11/11 王晋  管理员表中添加艺术家可提现金额
 */
 ALTER TABLE `ecs_admin_user`
