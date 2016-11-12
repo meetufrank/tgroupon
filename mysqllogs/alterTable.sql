@@ -106,3 +106,17 @@ CHANGE COLUMN  `tj_fencheng`  double(4,2) NULL DEFAULT 0.00 COMMENT '//线下店
 ALTER TABLE `ecs_fencheng`
 
 MODIFY COLUMN `type`  int(2) NOT NULL DEFAULT 0 COMMENT '//分成类型 0代表产品分成 1代表销售分成' AFTER `status`;
+
+
+
+
+/*#2016/11/11 王晋  分成表中添加获得提成用户
+*/
+ALTER TABLE `ecs_fencheng`
+ADD COLUMN `get_shopid`  mediumint(8) NOT NULL DEFAULT 0 COMMENT '//获得提成用户' AFTER `type`;
+
+
+/*#2016/11/11 王晋  管理员表中添加艺术家分成字段
+*/
+ALTER TABLE `ecs_admin_user`
+ADD COLUMN `ysj_fencheng`  double(4,2) NOT NULL DEFAULT 0 COMMENT '//艺术家分成' AFTER `hav_logo`;

@@ -3023,22 +3023,58 @@ function judge_package_stock($package_id, $package_num = 1)
 function get_money($orderid,$user_id)   //某订单id
 {
 
-        $sql="SELECT goods_price,lineshop_id,goods_id,fencheng,goods_number from ecs_order_goods  WHERE rec_id=".$orderid." and lineshop_id<>0 and goods_id<>0 ";
+        $sql="SELECT goods_price,lineshop_id,goods_id,fencheng,goods_number from ecs_order_goods  WHERE rec_id=".$orderid;
         $data = $GLOBALS['db']->GetRow($sql);    //查询该订单是否跟某个线下店有关
         print_r($data);exit;
-        //查询该订单是否跟某个线下店有关
-        $sql="SELECT tuijian from ecs_users  WHERE rec_id=".$orderid." and lineshop_id<>0 and goods_id<>0 ";
-        $data = $GLOBALS['db']->GetRow($sql);
-        if (!empty($data)) {
-            $money=$data['goods_number']*$data['goods_price']*$data['fencheng']/100;
-            $sql="INSERT INTO ecs_fencheng SET goodsid=".$data['goodsid']." line_shopid=".$data['lineshop_id']." userid=".$data['user_id']." money=".$money;
-            $result=$GLOBALS['db']->query($sql);
+        //查询该用户推荐
+        $sql="SELECT tuijian from ecs_users  WHERE user_id=".$user_id;
+        $tuijian = $GLOBALS['db']->GetRow($sql);
 
-         if($result){
-            $sql="UPDATE ecs_users SET hav_money=hav_money+".$money." where user_id=".$data['lineshop_id'];
-         }
+        if (!empty($data['line_shopid'])){
+
+                   //计算并录入产品分成
+                $money=$data['goods_number']*$data['goods_price']*$data['fencheng']/100;
+                $sql="INSERT INTO ecs_fencheng SET goodsid=".$data['goodsid'].", line_shopid=".$data['lineshop_id'].", userid=".$user_id.", money=".$money.", get_shopid=".$data['lineshop_id'];
+                $result=$GLOBALS['db']->query($sql);
+
+             if($result){
+                $sql="UPDATE ecs_users SET hav_money=hav_money+".$money." where user_id=".$data['lineshop_id'];
+                $GLOBALS['db']->query($sql);
+             }
+
+             //计算并录入销售提成
+            if($tuijian['tuijian']<0){    //当购买用户为第一次购买(无任何角色推荐)
+                $tj_id=$data['line_shopid'];
+
+
+
+            }elseif($tuijian['tuijian']>0){//
+                $tj_id=$tuijian['tuijian'];
+            }else{
+
+
+            }
+            if($tj_id>0){//推荐分成处理
+                $sql="SELECT tj_fencheng from ecs_users  WHERE user_id=".$tj_id; //查询该线下店推荐分成
+                $tj_fengcheng = $GLOBALS['db']->GetRow($sql);
+
+                $tj_money=$data['goods_number']*$data['goods_price']*$tj_fengcheng['tj_fencheng']/100;
+                $sql="INSERT INTO ecs_fencheng SET goodsid=".$data['goodsid'].", line_shopid=".$data['line_shopid'].", userid=".$user_id.", money=".$tj_money.", get_shopid=".$tj_id.",type=1";
+                $result=$GLOBALS['db']->query($sql);
+
+                 if($result){
+                    $sql="UPDATE ecs_users SET hav_money=hav_money+".$tj_money." where user_id=".$tj_id;
+                    $GLOBALS['db']->query($sql);
+                 }
+
+            }
+
+
+        }else{
 
         }
+
+
 
 }
 
