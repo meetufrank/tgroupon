@@ -101,34 +101,20 @@ MODIFY COLUMN `tuijian`  mediumint(9) NOT NULL DEFAULT '-1' COMMENT '//推荐人
 CHANGE COLUMN `hav_fencheng` `tj_fencheng`  double(4,2) NULL DEFAULT 0.00 COMMENT '//线下店推荐分成' AFTER `tuijian`;
 
 
+/*#2016/11/11 王晋  分成表中添加分成类型
+*/
+ALTER TABLE `ecs_fencheng`
+ADD COLUMN `type`  int(2) NOT NULL DEFAULT 0 COMMENT '//分成类型' AFTER `status`;
 
 
+/*#2016/11/11 王晋  分成表中添加获得提成用户
+*/
+ALTER TABLE `ecs_fencheng`
+ADD COLUMN `get_shopid`  mediumint(8) NOT NULL DEFAULT 0 COMMENT '//获得提成用户' AFTER `type`;
 
 
+/*#2016/11/11 王晋  管理员表中添加艺术家分成字段
+*/
+ALTER TABLE `ecs_admin_user`
+ADD COLUMN `ysj_fencheng`  double(4,2) NOT NULL DEFAULT 0 COMMENT '//艺术家分成' AFTER `hav_logo`;
 
-
-
-
-
-
-
-
-
-
-<script  type="text/javascript" charset="utf-8">
-     function dj(){
-      document.getElementById("ysjfc").style.display="block";
-    }
-
-
-
-  </script>
-  <!-- 艺术家分成 -->
-  <tr id="ysjfc" style="display:block">
-            <td class="label">艺术家分成</td>
-            <td>
-              <input type="text" name="ysj_fencheng" size="10" />
-
-            </td>
-  </tr>
- <input type="button" onclick="dj()" name="" value="点击">
