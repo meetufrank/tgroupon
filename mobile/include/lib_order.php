@@ -3026,9 +3026,22 @@ function get_money($orderid,$user_id)   //某订单id
         $sql="SELECT goods_price,lineshop_id,goods_id,fencheng,goods_number from ecs_order_goods  WHERE rec_id=".$orderid;
         $data = $GLOBALS['db']->GetRow($sql);    //查询该订单是否跟某个线下店有关
         print_r($data);exit;
+        $sql="SELECT  ysj_fencheng,arter_id from  ecs_goods as eg INNER JOIN ecs_admin_user as eau  ON eg.arter_id=eau.user_id where goods_id=".$data['goods_id'];
+        $admin_fencheng = $GLOBALS['db']->GetRow($sql);    //查询艺术家分成比例
+        //计算该艺术家该订单所得分成
+        $ysj_money=$data['goods_number']*$data['goods_price']*$admin_fencheng['ysj_fencheng']/100;
+        $sql="INSERT INTO ecs_fencheng SET goodsid=".$data['goodsid'].", line_shopid=".$data['lineshop_id'].", userid=".$user_id.", money=".$ysj_money.", get_shopid=".$admin_fencheng['arter_id'];
+                $result=$GLOBALS['db']->query($sql);
+
+             if($result){
+                $sql="UPDATE ecs_admin_user SET hav_money=hav_money+".$money." where user_id=".$data['lineshop_id'];
+                $GLOBALS['db']->query($sql);
+             }
+
         //查询该用户推荐
         $sql="SELECT tuijian from ecs_users  WHERE user_id=".$user_id;
         $tuijian = $GLOBALS['db']->GetRow($sql);
+
 
         if (!empty($data['line_shopid'])){
 
