@@ -277,8 +277,8 @@ elseif ($_REQUEST['act'] == 'insert')
         $row = $db->getRow($sql);
 
 
-    $sql = "INSERT INTO ".$ecs->table('admin_user')." (user_name, email, password, add_time, nav_list, action_list, role_id,country,hav_logo) ".
-           "VALUES ('".trim($_POST['user_name'])."', '".trim($_POST['email'])."', '$password', '$add_time', '$row[nav_list]', '$action_list', '$role_id','".trim($_POST['country'])."','".$url_img."')";
+    $sql = "INSERT INTO ".$ecs->table('admin_user')." (user_name, email, password, add_time, nav_list, action_list, role_id,country,hav_logo,ysj_fencheng) ".
+           "VALUES ('".trim($_POST['user_name'])."', '".trim($_POST['email'])."', '$password', '$add_time', '$row[nav_list]', '$action_list', '$role_id','".trim($_POST['country'])."','".$url_img."','".trim($_POST['ysj_fencheng'])."')";
 
     $db->query($sql);
     /* 转入权限分配列表 */
@@ -322,7 +322,7 @@ elseif ($_REQUEST['act'] == 'edit')
     }
 
     /* 获取管理员信息 */
-    $sql = "SELECT user_id, user_name, email, password, agency_id, role_id,country FROM " .$ecs->table('admin_user').
+    $sql = "SELECT user_id, user_name, email, password, agency_id, role_id,country,ysj_fencheng FROM " .$ecs->table('admin_user').
            " WHERE user_id = '".$_REQUEST['id']."'";
     $user_info = $db->getRow($sql);
 
@@ -365,7 +365,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
     $admin_name  = !empty($_REQUEST['user_name']) ? trim($_REQUEST['user_name']) : '';
     $admin_email = !empty($_REQUEST['email'])     ? trim($_REQUEST['email'])     : '';
     $country = !empty($_REQUEST['country'])     ? trim($_REQUEST['country'])     : '';
-
+    $ysj_fencheng = !empty($_REQUEST['ysj_fencheng'])   ? trim($_REQUEST['ysj_fencheng'])  : '';
 
     if($_FILES['pic']['name']){
                      //图片上传处理
@@ -489,12 +489,14 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
         $sql = "UPDATE " .$ecs->table('admin_user'). " SET ".
                "user_name = '$admin_name', ".
                "email = '$admin_email', ".
-               "ec_salt = '$ec_salt' ".
+               "ec_salt = '$ec_salt' ,".
+               "ysj_fencheng = '$ysj_fencheng' ".
                $action_list.$img_list.$country_list.
                $role_id.
                $password.
                $nav_list.
                "WHERE user_id = '$admin_id'";
+
     }
     else
     {
@@ -502,7 +504,8 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
 
         $sql = "UPDATE " .$ecs->table('admin_user'). " SET ".
                "user_name = '$admin_name', ".
-               "email = '$admin_email' ".
+               "email = '$admin_email' ,".
+               "ysj_fencheng = '$ysj_fencheng' ".
                $action_list.$img_list.$country_list.
                $role_id.
                $nav_list.
