@@ -65,19 +65,27 @@
   </tr>
 
 
-  <<script  type="text/javascript" charset="utf-8">
 
 
+  <script  type="text/javascript" charset="utf-8">
+     function dj(){
+      document.getElementsByClassName("ysjfc").style.display="block";
+    }
+  </script>
 
-  </script>>
+  <input type="button" onclick="dj()" name="" value="点击">
+
   <!-- 艺术家分成 -->
-  <tr id="ysjfc" style="display:none">
-            <td class="label">艺术家分成</td>
-            <td>
-              <input type="text" name="ysj_fencheng" size="10" />
 
-            </td>
-  </tr>
+      <tr class="ysjfc" style="display:none;">
+                <td class="label">艺术家分成</td>
+                <td>
+                  <input type="text" name="ysj_fencheng" size="10" />
+
+                </td>
+      </tr>
+
+
 
 
 
