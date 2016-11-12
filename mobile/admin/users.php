@@ -130,6 +130,8 @@ elseif ($_REQUEST['act'] == 'insert')
     $rank = empty($_POST['user_rank']) ? 0 : intval($_POST['user_rank']);
     $credit_line = empty($_POST['credit_line']) ? 0 : floatval($_POST['credit_line']);
     $sf = empty($_POST['shenfen']) ? 0 : intval($_POST['shenfen']);
+    $tj_fencheng = empty($_POST['tj_fencheng']) ? 0 : intval($_POST['tj_fencheng']);
+
 
 if($_FILES['pic']['name']){
            //图片上传处理
@@ -241,7 +243,7 @@ if($_FILES['pic']['name']){
     $other['office_phone'] = isset($_POST['extend_field3']) ? htmlspecialchars(trim($_POST['extend_field3'])) : '';
     $other['home_phone'] = isset($_POST['extend_field4']) ? htmlspecialchars(trim($_POST['extend_field4'])) : '';
     $other['mobile_phone'] = isset($_POST['extend_field5']) ? htmlspecialchars(trim($_POST['extend_field5'])) : '';
-
+    $other['tj_fencheng'] = isset($_POST['tj_fencheng']) ? htmlspecialchars(trim($_POST['tj_fencheng'])) : '';
     $db->autoExecute($ecs->table('users'), $other, 'UPDATE', "user_name = '$username'");
 
     /* 记录管理员操作 */
@@ -262,7 +264,7 @@ elseif ($_REQUEST['act'] == 'edit')
     /* 检查权限 */
     admin_priv('users_manage');
 
-    $sql = "SELECT u.user_name, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn, u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo".
+    $sql = "SELECT u.user_name, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn, u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo,u.hav_money,u.tj_fencheng".
         " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 
     $row = $db->GetRow($sql);
@@ -271,7 +273,7 @@ elseif ($_REQUEST['act'] == 'edit')
     $user   = $users->get_user_info($row['user_name']);
 
     $sql = "SELECT u.user_id, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn,
-    u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo".
+    u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo,u.hav_money,u.tj_fencheng".
         " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 
     $row = $db->GetRow($sql);
@@ -297,7 +299,9 @@ elseif ($_REQUEST['act'] == 'edit')
         $user['home_phone']     = $row['home_phone'];
         $user['mobile_phone']   = $row['mobile_phone'];
         $user['is_line']   = $row['is_line'];
-        $user['hav_logo']   = $row['hav_logo'];
+        $user['hav_logo']  = $row['hav_logo'];
+        $user['hav_money']  = $row['hav_money'];
+        $user['tj_fencheng'] = $row['tj_fencheng'];
     }
     else
     {
@@ -404,7 +408,7 @@ elseif ($_REQUEST['act'] == 'update')
     $rank = empty($_POST['user_rank']) ? 0 : intval($_POST['user_rank']);
     $credit_line = empty($_POST['credit_line']) ? 0 : floatval($_POST['credit_line']);
     $sf = empty($_POST['shenfen']) ? 0 : intval($_POST['shenfen']);
-
+    $fc = empty($_POST['tj_fencheng']) ? 0 : intval($_POST['tj_fencheng']);
     if ($_FILES['pic']['name']) {
 
 
@@ -495,6 +499,7 @@ elseif ($_REQUEST['act'] == 'update')
     $other['home_phone'] = isset($_POST['extend_field4']) ? htmlspecialchars(trim($_POST['extend_field4'])) : '';
     $other['mobile_phone'] = isset($_POST['extend_field5']) ? htmlspecialchars(trim($_POST['extend_field5'])) : '';
 	$other['parent_id'] = isset($_POST['parent_id']) ? htmlspecialchars(trim($_POST['parent_id'])) : '';
+    $other['tj_fencheng'] = isset($_POST['tj_fencheng']) ? htmlspecialchars(trim($_POST['tj_fencheng'])) : '';
 	$parent_id=$other['parent_id'];
 
 	if(!empty($parent_id))
