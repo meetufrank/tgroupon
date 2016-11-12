@@ -1,4 +1,4 @@
-/*#2016/10/29 王晋在ecs_goods 表中添加两个字段名 艺术家id  厂商id
+﻿/*#2016/10/29 王晋在ecs_goods 表中添加两个字段名 艺术家id  厂商id
 */
 ALTER TABLE `ecs_goods`
 
@@ -106,3 +106,9 @@ CHANGE COLUMN  `tj_fencheng`  double(4,2) NULL DEFAULT 0.00 COMMENT '//线下店
 ALTER TABLE `ecs_fencheng`
 
 MODIFY COLUMN `type`  int(2) NOT NULL DEFAULT 0 COMMENT '//分成类型 0代表产品分成 1代表销售分成' AFTER `status`;
+
+
+
+可提现金额  hav_money
+
+线下店推荐分成  tj_fencheng
