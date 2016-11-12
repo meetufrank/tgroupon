@@ -69,6 +69,29 @@
       <option value="1" {if $user.is_line==1}selected{/if}>线下店</option>
     </select></td>
   </tr>
+
+
+
+  <!-- 可提现金额 -->
+  <tr>
+    <td class="label">可提现金额:</td>
+    <td>
+       <input name="hav_money" type="text" readonly="flase" value="{$user.hav_money}" size="10" />
+       可提现金额不可编辑
+    </td>
+  </tr>
+
+
+  <!-- 线下店推荐分成 -->
+  <tr>
+    <td class="label">线下店推荐分成:</td>
+    <td>
+       <input name="tj_fencheng" type="text"  value="{$user.tj_fencheng}" size="10" />
+    </td>
+  </tr>
+
+
+
   <tr>
             <td class="label">线下店logo：</td>
             <td>
