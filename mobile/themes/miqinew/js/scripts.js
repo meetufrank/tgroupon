@@ -125,7 +125,7 @@ jQuery(document).ready(function($) {
 		toolbarSection.removeClass('current');
 	}
 
-	toolbarToggle.on('click', function(e) {
+	toolbarToggle.on('click', function (e) {
 		var currentValue = $(this).attr('href');
 		if($(e.target).is('.active')) {
 			closeToolBox();
@@ -214,26 +214,7 @@ jQuery(document).ready(function($) {
 	});
 
 
-	// Count Input (Quantity)
-	//------------------------------------------------------------------------------
-	$(".incr-btn").on("click", function(e) {
-		var $button = $(this);
-		var oldValue = $button.parent().find('.quantity').val();
-		$button.parent().find('.incr-btn[data-action="decrease"]').removeClass('inactive');
-		if ($button.data('action') == "increase") {
-			var newVal = parseFloat(oldValue) + 1;
-		} else {
-		 // Don't allow decrementing below 1
-			if (oldValue > 1) {
-				var newVal = parseFloat(oldValue) - 1;
-			} else {
-				newVal = 1;
-				$button.addClass('inactive');
-			}
-		}
-		$button.parent().find('.quantity').val(newVal);
-		e.preventDefault();
-	});
+
 
 	// Waves Effect (on Buttons)
 	//------------------------------------------------------------------------------
@@ -387,10 +368,10 @@ jQuery(document).ready(function($) {
 
 	// Custom checkboxes and radios
 	//------------------------------------------------------------------------------
-	var $checkbox = $('input[type="checkbox"], input[type="radio"]');
-	if($checkbox.length) {
-		$('input').iCheck();
-	}
+	//var $checkbox = $('input[type="checkbox"], input[type="radio"]');
+	//if($checkbox.length) {
+	//	$('input').iCheck();
+	//}
 
 
 	// Countdown Function
