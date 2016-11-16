@@ -140,7 +140,7 @@
               <li><a href="#">艺术家</a></li>
               <li><a href="#">关于我们</a></li>
             </ul><!-- .main-navigation -->
-            
+
           </div>
           <!-- .inner -->
         </div><!-- .toolbar-section#menu -->
@@ -155,7 +155,7 @@
       		</a>
           </div><!-- .inner -->
         </div><!-- .toolbar-section#account -->
-        
+
         <!-- Account (userinfo) -->
         <div class="toolbar-section" id="userinfo">
             <div class="clearfix">
@@ -258,19 +258,19 @@
                 <h3 class="amount"><small class="hidden-xs">数量：6&nbsp;&nbsp;&nbsp;</small>$161.90</h3>
               </div>
             </div><!-- .subtotal -->
-            
+
             <div class="form-group">
               <label class="radio radio-inline">
-                <input type="radio" name="co_shipping" checked> 
+                <input type="radio" name="co_shipping" checked>
                 	联系人：里默默<br>
 					手机号：18954781245<br>
 					地   址 ：上海市五角场黄兴路100号1号楼102室
               </label>
             </div><!-- .form-group -->
-            
+
             <div class="form-group">
               <label class="radio radio-inline">
-                <input type="radio" name="co_shipping"> 
+                <input type="radio" name="co_shipping">
                 	联系人：里默默<br>
 					手机号：18954781245<br>
 					地   址 ：上海市五角场黄兴路100号1号楼102室
@@ -287,7 +287,7 @@
             </div>
           </form><!-- .checkout-form.container -->
         </div><!-- .toolbar-section#checkout -->
-        
+
         <!-- 填写地址 -->
         <div class="toolbar-section" id="address">
           <form method="post" class="checkout-form container">
@@ -296,7 +296,7 @@
                 <h3 class="toolbar-title">填写地址</h3>
               </div>
             </div><!-- .subtotal -->
-            
+
             <input type="text" class="form-control" name="" placeholder="收件人">
             <input type="text" class="form-control" name="" placeholder="手机号码">
             <div class="row">
@@ -338,41 +338,41 @@
             </div>
       </div><!-- .toolbar-dropdown -->
     </header><!-- .navbar.navbar-sticky -->
-   
+
     <!-- Pager + Product Gallery -->
     <section class="fw-section bg-gray padding-top-3x">
 
-     
+
       <div class="container padding-top">
 
         <!-- Product Gallery -->
         <div class="product-gallery">
           <!-- Preview -->
-		
+
            <ul class="product-gallery-preview">
 
-		  <!--  <li id="preview01"><img src="{$ectouch_themes}/img/shop/product-gallery/preview01.jpg" alt="Product"></li> 
-       
+		  <!--  <li id="preview01"><img src="{$ectouch_themes}/img/shop/product-gallery/preview01.jpg" alt="Product"></li>
+
             <li id="preview02" class="current"><img src="{$ectouch_themes}/img/shop/product-gallery/preview02.jpg" alt="Product"></li>
             <li id="preview03"><img src="{$ectouch_themes}/img/shop/product-gallery/preview03.jpg" alt="Product"></li> -->
-			
-			
+
+
          <!-- .product-gallery-preview -->
-		 
-		 
+
+
 		 <!-- 商品相册大图 -->
-		{foreach from=$pictures item=picture name=cats} 
+		{foreach from=$pictures item=picture name=cats}
 		    <!--  <li id="preview01">{$smarty.foreach.cats.index}<img src="{if $picture.img_url}{$picture.img_url}{else}../{$picture.thumb_url}{/if}" alt="Product" /></li> -->
-			  <li {if $smarty.foreach.cats.index eq 0}id="preview01"{elseif $smarty.foreach.cats.index eq 1}id="preview02" class="current"{else}id="preview03"{/if}>	      
+			  <li {if $smarty.foreach.cats.index eq 0}id="preview01"{elseif $smarty.foreach.cats.index eq 1}id="preview02" class="current"{else}id="preview03"{/if}>
 		        <img src="{if $picture.img_url}{$picture.img_url}{else}../{$picture.thumb_url}{/if}" alt="Product" />
-				
+
 		      </li>
-        {/foreach}   
- 
+        {/foreach}
+
 		   </ul>
-		   
-		   
-		   
+
+
+
 		   <!-- 商品相册小图 -->
           <!-- Thumblist -->
           <ul class="product-gallery-thumblist">
@@ -389,7 +389,7 @@
 			 <li>
               <a {if $smarty.foreach.cats.index eq 0}href="#preview01"{elseif $smarty.foreach.cats.index eq 1}href="#preview02" class="current"{else}href="#preview03"{/if}><img src="{if $picture.img_url}{$picture.img_url}{else}../{$picture.thumb_url}{/if}" alt="Product"></a>
              </li>
-			{/foreach} 
+			{/foreach}
           </ul><!-- .product-gallery-thumblist -->
         </div><!-- .product-gallery -->
       </div><!-- .container -->
@@ -402,7 +402,7 @@
           <h1 class="h2 space-bottom-half">{$goods.goods_style_name}</h1>
           <h2>￥{$goods.shop_price}</h2>
           <p class="text-sm text-gray">{$goods.goods_brief}</p>
-      
+
           <div class="product-tools shop-item">
             <div class="count-input">
               <a class="incr-btn" data-action="decrease" href="#">–</a>
@@ -426,7 +426,7 @@
               <em>立即支付</em>
             </a><!-- .add-to-cart-pay -->
           </div><!-- .product-tools -->
-         <div class="product-share hidden-xs">          
+         <div class="product-share hidden-xs">
             <span>收藏:</span>
               <a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top">
                 <i class="fa fa-heart"></i>
@@ -537,7 +537,7 @@
             </div>
           </div>
         </div>
-       
+
       </div><!-- .tab-content -->
     </section><!-- .container -->
 
@@ -671,7 +671,7 @@
 			$("#erweima").hide();
 			}
 		});
-	}) 
+	})
   </script>
 </body><!-- <body> -->
 
