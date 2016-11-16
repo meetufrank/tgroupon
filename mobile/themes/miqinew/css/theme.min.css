@@ -46,10 +46,10 @@ a {
 	-o-transition: color 0.3s;
 	transition: color 0.3s
 }
-a:hover {
+/*a:hover {
 	color: #77cde3;
 	text-decoration: none
-}
+}*/
 a:focus {
 	color: #77cde3;
 	outline: none
@@ -1895,9 +1895,9 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 .sb-twitter {
 	color: #606060
 }
-.sb-twitter:hover, .sb-twitter:focus {
+/*.sb-twitter:hover, .sb-twitter:focus {
 	color: #55acee !important
-}
+}*/
 .sb-vimeo {
 	color: #606060
 }
@@ -4012,9 +4012,9 @@ display:none
 	position: relative;
 	width: 100%;
 	margin-bottom: 24px;
-	overflow: hidden
+/*	overflow: hidden*/
 }
-.teammate .teammate-thumb>img {
+/*.teammate .teammate-thumb>img {
 	display: block;
 	width: 100%;
 	opacity: 1;
@@ -4029,7 +4029,7 @@ display:none
 	-webkit-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	transition: all 0.5s
-}
+}*/
 .teammate .teammate-name {
 	font-size: 16px;
 	font-weight: normal;
