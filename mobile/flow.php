@@ -76,6 +76,7 @@ if ($_REQUEST['step'] == 'add_to_cart')
 
     $goods = $json->decode($_POST['goods']);
 
+
     /* 检查：如果商品有规格，而post的数据没有规格，把商品的规格属性通过JSON传到前台 */
     if (empty($goods->spec) AND empty($goods->quick))
     {
@@ -2152,7 +2153,7 @@ elseif ($_REQUEST['step'] == 'drop_goods')
     $rec_id = intval($_GET['id']);
     flow_drop_cart_goods($rec_id);
 
-    ecs_header("Location: flow.php\n");
+    //ecs_header("Location: flow.php\n");
     exit;
 }
 
@@ -2410,6 +2411,26 @@ elseif ($_REQUEST['step'] == 'add_package_to_cart')
     }
     $result['confirm_type'] = !empty($_CFG['cart_confirm']) ? $_CFG['cart_confirm'] : 2;
     die($json->encode($result));
+}
+elseif($_REQUEST['step'] == 'ajax_cart_goods')
+{
+     include_once('include/cls_json.php');
+    /* 标记购物流程为普通商品 */
+    $_SESSION['flow_type'] = CART_GENERAL_GOODS;
+
+    /* 如果是一步购物，跳到结算中心 */
+    if ($_CFG['one_step_buy'] == '1')
+    {
+        ecs_header("Location: flow.php?step=checkout\n");
+        exit;
+    }
+
+    /* 取得商品列表，计算合计 */
+    $cart_goods = get_cart_goods();
+    // $smarty->assign('goods_list', $cart_goods['goods_list']);
+    // $smarty->assign('total', $cart_goods['total']);
+    $json  = new JSON;
+    die($json->encode($cart_goods));
 }
 else
 {

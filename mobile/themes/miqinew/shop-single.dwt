@@ -34,6 +34,8 @@
 
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
+
+
   <style>
   .add-to-cart-pay{
 		position: relative;
@@ -103,6 +105,7 @@
  <!-- 头部开始 -->
     {include file="head.dwt"}
     <!-- 头部结束 -->
+
 
     <!-- Pager + Product Gallery -->
     <section class="fw-section bg-gray padding-top-3x">
@@ -174,7 +177,7 @@
                 <option value="red" data-image="preview03">外框类型</option>
               </select>
             </div><!-- .form-element -->
-            <a href="#" class="add-to-cart" id="xqcar">
+            <a href="#" class="add-to-cart" id="xqcar" onclick="addToCart({$goods.goods_id});">
               <em>放入购物车</em>
               <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
   							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"></path>

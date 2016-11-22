@@ -2420,7 +2420,7 @@ else
 
     /* 取得商品列表，计算合计 */
     $cart_goods = get_cart_goods();
-
+    //print_r($cart_goods);exit;
     $smarty->assign('goods_list', $cart_goods['goods_list']);
     $smarty->assign('total', $cart_goods['total']);
 
@@ -3055,7 +3055,7 @@ function add_favourable_to_cart($act_id, $act_name, $amount)
 function cart_favourable_amount($favourable)
 {
     /* 查询优惠范围内商品总额的sql */
-    $sql = "SELECT SUM(c.goods_price * c.goods_number) " .
+     $sql = "SELECT SUM(c.goods_price * c.goods_number) " .
             "FROM " . $GLOBALS['ecs']->table('cart') . " AS c, " . $GLOBALS['ecs']->table('goods') . " AS g " .
             "WHERE c.goods_id = g.goods_id " .
             "AND c.session_id = '" . SESS_ID . "' " .
