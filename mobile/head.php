@@ -2506,12 +2506,13 @@ else
         if ($_SESSION['user_id'] > 0)
         {
             $consignee_list = get_consignee_list($_SESSION['user_id']);
-             //print_r($consignee_list);exit;
+
 
 
 
         }
 
+$consignee_list = get_consignee_list($_SESSION['user_id']);
         $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
                $smarty->assign('consignee_list', $consignee_list);
 
