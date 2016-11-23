@@ -103,7 +103,7 @@
                 </label>
                 </div>
             <!-- Item -->
-
+             <form action="flow.php" method="post" name="theForm" id="theForm" >
             {foreach from=$goods_list item=goods}
                 <div class="item">
                 <label class="checkbox" id="checkone">
@@ -146,33 +146,26 @@
 
         <!-- Checkout -->
         <div class="toolbar-section" id="checkout">
-          <form method="post" class="checkout-form container">
+
             <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
               <div class="column">
                 <h3 class="toolbar-title">订单确认</h3>
               </div>
               <div class="column">
-                <h3 class="amount"><small class="hidden-xs">数量：6&nbsp;&nbsp;&nbsp;</small>$161.90</h3>
+                <h3 class="amount"><small class="hidden-xs"></small></h3>
               </div>
             </div>
-
+            {foreach from=$consignee_list item=consignee key=sn}
             <div class="form-group">
               <label class="radio radio-inline">
-                <input type="radio" name="co_shipping" checked>
-                  联系人：里默默<br>
-          手机号：18954781245<br>
-          地   址 ：上海市五角场黄兴路100号1号楼102室
+                <input type="radio" name="co_shipping" checked value="{$consignee.address_id}">
+                  联系人：{$consignee.consignee}<br>
+          手机号：{$consignee.tel}<br>
+          地   址 ：{$consignee.address}
               </label>
             </div>
+            {/foreach}
 
-            <div class="form-group">
-              <label class="radio radio-inline">
-                <input type="radio" name="co_shipping">
-                  联系人：里默默<br>
-          手机号：18954781245<br>
-          地   址 ：上海市五角场黄兴路100号1号楼102室
-              </label>
-            </div>
             <h3><a class="toggle-section" href="#address">新增地址</a></h3>
             <div class="text-right">
               <a href="#cart" class="btn btn-default btn-ghost icon-left toggle-section">
@@ -182,8 +175,9 @@
                   确认
               </a>
             </div>
-          </form>
+
         </div>
+     </form>
 
         <!-- 新增地址 -->
         <div class="toolbar-section" id="address">

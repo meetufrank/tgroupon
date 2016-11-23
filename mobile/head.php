@@ -2470,8 +2470,84 @@ else
 
     $smarty->assign('fittings_list', $fittings_list);
 
+
+
     //新增购物来路链接，用于返回跳转 by carson 20140425
     $smarty->assign('jump_http_referer', $_SERVER["HTTP_REFERER"]);
+
+
+    /*
+        新加开始
+     */
+     /*------------------------------------------------------ */
+    //-- 收货人信息
+    /*------------------------------------------------------ */
+    include_once('include/lib_transaction.php');
+
+
+        /* 取得购物类型 */
+        $flow_type = isset($_SESSION['flow_type']) ? intval($_SESSION['flow_type']) : CART_GENERAL_GOODS;
+
+        /*
+         * 收货人信息填写界面
+         */
+
+        if (isset($_REQUEST['direct_shopping']))
+        {
+            $_SESSION['direct_shopping'] = 1;
+        }
+
+        /* 取得国家列表、商店所在国家、商店所在国家的省列表 */
+        $smarty->assign('country_list',       get_regions());
+        $smarty->assign('shop_country',       $_CFG['shop_country']);
+        $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
+
+        /* 获得用户所有的收货人信息 */
+        if ($_SESSION['user_id'] > 0)
+        {
+            $consignee_list = get_consignee_list($_SESSION['user_id']);
+             //print_r($consignee_list);exit;
+
+
+
+        }
+
+        $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
+               $smarty->assign('consignee_list', $consignee_list);
+
+
+        /* 取得每个收货地址的省市区列表 */
+        $province_list = array();
+        $city_list = array();
+        $district_list = array();
+        foreach ($consignee_list as $region_id => $consignee)
+        {
+            $consignee['country']  = isset($consignee['country'])  ? intval($consignee['country'])  : 0;
+            $consignee['province'] = isset($consignee['province']) ? intval($consignee['province']) : 0;
+            $consignee['city']     = isset($consignee['city'])     ? intval($consignee['city'])     : 0;
+
+            $province_list[$region_id] = get_regions(1, $consignee['country']);
+            $city_list[$region_id]     = get_regions(2, $consignee['province']);
+            $district_list[$region_id] = get_regions(3, $consignee['city']);
+        }
+        $smarty->assign('province_list', get_regions( 1 , 1 ));
+        // $smarty->assign('province_list', $province_list);
+        $smarty->assign('city_list',     $city_list);
+        $smarty->assign('district_list', $district_list);
+
+
+        /* 返回收货人页面代码 */
+        $smarty->assign('real_goods_count', exist_real_goods(0, $flow_type) ? 1 : 0);
+
+
+
+
+
+    /*
+        新加结束
+     */
+
+
 }
 
 
@@ -2479,6 +2555,11 @@ $smarty->assign('currency_format', $_CFG['currency_format']);
 $smarty->assign('integral_scale',  $_CFG['integral_scale']);
 $smarty->assign('step',            $_REQUEST['step']);
 assign_dynamic('shopping_flow');
+
+
+
+
+
 
 //$smarty->display('head.dwt');
 
