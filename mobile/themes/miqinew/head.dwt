@@ -235,7 +235,7 @@
               data:{step:'done',cart_id:chk_value,address:address},
               type:"POST",
               success: function(data){
-                 cosole.log(data);
+                 console.log(data);
               },
               error:function(){
 

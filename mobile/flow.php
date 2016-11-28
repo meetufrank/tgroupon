@@ -1631,7 +1631,7 @@ elseif ($_REQUEST['step'] == 'done')
     $_POST['postscript'] = isset($_POST['postscript']) ? compile_str($_POST['postscript']) : '';
 
     $order = array(
-        'shipping_id'     => intval($_POST['shipping']),
+        'shipping_id'     => 14,//配送方式id14：其他 没有配送方式 ， 该参数由后台定义  intval($_POST['shipping']),
         'pay_id'          => intval($_POST['payment']),
         'pack_id'         => isset($_POST['pack']) ? intval($_POST['pack']) : 0,
         'card_id'         => isset($_POST['card']) ? intval($_POST['card']) : 0,
@@ -1913,7 +1913,7 @@ elseif ($_REQUEST['step'] == 'done')
             " SELECT '$new_order_id', goods_id, goods_name, goods_sn, product_id, goods_number, market_price, ".
                 "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id,lineid,new_fencheng".
             " FROM " .$ecs->table('cart') .
-            " WHERE session_id = '".SESS_ID."' AND rec_type = '$flow_type' AND rec_id in ".$idstring;
+            " WHERE session_id = '".SESS_ID."' AND rec_type = '$flow_type' AND rec_id in (".$idstring.")";
     }else{
 
         $sql = "INSERT INTO " . $ecs->table('order_goods') . "( " .
