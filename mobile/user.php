@@ -1283,18 +1283,20 @@ elseif ($action == 'order_tracking')
             " WHERE user_id = '$user_id' AND order_id = ".$order_id;
     $orders = $db->getRow($sql);
     //生成快递100查询接口链接
-    $shipping   = get_shipping_object($orders['shipping_id']);
-    $query_link = $shipping->kuaidi100($orders['invoice_no']);
-    //优先使用curl模式发送数据
-    if (function_exists('curl_init') == 1){
-      $curl = curl_init();
-      curl_setopt ($curl, CURLOPT_URL, $query_link);
-      curl_setopt ($curl, CURLOPT_HEADER,0);
-      curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt ($curl, CURLOPT_USERAGENT,$_SERVER['HTTP_USER_AGENT']);
-      curl_setopt ($curl, CURLOPT_TIMEOUT,5);
-      $get_content = curl_exec($curl);
-      curl_close ($curl);
+    if($orders['shipping_id']!=14){
+        $shipping   = get_shipping_object($orders['shipping_id']);
+        $query_link = $shipping->kuaidi100($orders['invoice_no']);
+        //优先使用curl模式发送数据
+        if (function_exists('curl_init') == 1){
+          $curl = curl_init();
+          curl_setopt ($curl, CURLOPT_URL, $query_link);
+          curl_setopt ($curl, CURLOPT_HEADER,0);
+          curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+          curl_setopt ($curl, CURLOPT_USERAGENT,$_SERVER['HTTP_USER_AGENT']);
+          curl_setopt ($curl, CURLOPT_TIMEOUT,5);
+          $get_content = curl_exec($curl);
+          curl_close ($curl);
+        }
     }
 
     $smarty->assign('trackinfo',      $get_content);

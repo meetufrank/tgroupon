@@ -15,7 +15,6 @@
 
 define('IN_ECTOUCH', true);
 
-
 require(dirname(__FILE__) . '/include/init.php');
 require(ROOT_PATH . 'include/lib_weixintong.php');
 //头部需要文件
@@ -25,7 +24,7 @@ require(ROOT_PATH . 'include/lib_order.php');
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/shopping_flow.php');
 require(ROOT_PATH . 'head.php');
- //$_SESSION['user_id']=1628;
+ $_SESSION['user_id']=1628;
 
 $smarty->assign('ajaxurl','shop-single.php');  //ajax访问地址
 
@@ -359,6 +358,7 @@ $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 
 
 		$tianxin_url = $db->getOne("SELECT cfg_value  FROM `wxch_cfg` WHERE `cfg_name` = 'tianxin_url'");
 		$smarty->assign('tianxin_url',  $tianxin_url);
+
 
 		/*甜   心100  修复开发*/
 $smarty->assign('now_time',  gmtime());           // 当前系统时间

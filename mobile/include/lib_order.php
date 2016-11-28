@@ -875,7 +875,7 @@ function get_order_sn()
  */
 function cart_goods($type = CART_GENERAL_GOODS)
 {
-    $sql = "SELECT rec_id, user_id, goods_id, goods_name, goods_sn, goods_number, " .
+     $sql = "SELECT rec_id, user_id, goods_id, goods_name, goods_sn, goods_number, " .
             "market_price, goods_price,fencheng, goods_attr, is_real, extension_code, parent_id, is_gift, is_shipping, " .
             "goods_price * goods_number AS subtotal " .
             "FROM " . $GLOBALS['ecs']->table('cart') .
@@ -1615,7 +1615,7 @@ function get_cart_goods()
     );
 
     /* 循环、统计 */
-    $sql = "SELECT *, IF(parent_id, parent_id, goods_id) AS pid , goods_number " .
+   $sql = "SELECT *, IF(parent_id, parent_id, goods_id) AS pid , goods_number " .
             " FROM " . $GLOBALS['ecs']->table('cart') . " " .
             " WHERE session_id = '" . SESS_ID . "' AND rec_type = '" . CART_GENERAL_GOODS . "'" .
             " ORDER BY pid, parent_id";
@@ -1715,7 +1715,62 @@ function get_consignee($user_id)
         return $arr;
     }
 }
+/**
+ * 取得收货人信息
+ * @param   int     $user_id    用户编号   新加个地址id
+ * @return  array
+ */
+function get_consignee_byid($user_id,$addressid=0)
+{
 
+    if($addressid){
+
+         /* 如果不存在，则取得用户的默认收货人信息 */
+        $arr = array();
+
+        if ($user_id > 0)
+        {
+            /* 取默认地址 */
+            $sql = "SELECT ua.*".
+                    " FROM " . $GLOBALS['ecs']->table('user_address') . "AS ua, ".$GLOBALS['ecs']->table('users').' AS u '.
+                    " WHERE u.user_id='$user_id' AND ua.address_id = ".$addressid;
+
+            $arr = $GLOBALS['db']->getRow($sql);
+        }
+
+        return $arr;
+
+
+
+    }else{
+
+         if (isset($_SESSION['flow_consignee']))
+    {
+        /* 如果存在session，则直接返回session中的收货人信息 */
+
+        return $_SESSION['flow_consignee'];
+    }
+    else
+    {
+        /* 如果不存在，则取得用户的默认收货人信息 */
+        $arr = array();
+
+        if ($user_id > 0)
+        {
+            /* 取默认地址 */
+            $sql = "SELECT ua.*".
+                    " FROM " . $GLOBALS['ecs']->table('user_address') . "AS ua, ".$GLOBALS['ecs']->table('users').' AS u '.
+                    " WHERE u.user_id='$user_id' AND ua.address_id = u.address_id";
+
+            $arr = $GLOBALS['db']->getRow($sql);
+        }
+
+        return $arr;
+    }
+
+
+    }
+ }
 /**
  * 查询购物车（订单id为0）或订单中是否有实体商品
  * @param   int     $order_id   订单id
