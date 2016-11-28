@@ -16,9 +16,147 @@
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
+
+
+$appid = 'wx7eee3208b7b59ea1';
+$secret ='9d9360d18e266b81d69888227fbbadeb';
+if((!isset($_SESSION['wechat_id']) || $_SESSION['wechat_id']==null) && !$_SESSION['user_id'] && !$_CFG['shop_reg_closed']){
+    $code=isset($_GET['code'])?$_GET['code']:null;
+    $url =  urlencode("http://mall.58zcm.com/mobile/index.php");
+    if($code==null){
+        $str="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appid}&redirect_uri=".$url."&scope=snsapi_base&state=123&response_type=code#wechat_redirect";
+        //echo $str;exit;
+        header ("Location:".$str);
+    }else{
+        $str="https://api.weixin.qq.com/sns/oauth2/access_token?appid={$appid}&secret={$secret}&code=".$code."&grant_type=authorization_code";
+        $ch = curl_init() ;
+        curl_setopt($ch, CURLOPT_URL, $str);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); //将curl_exec()获取的信息以文件流的形式返回，而不是直接输出。
+        $output = curl_exec($ch);
+        $output=json_decode($output,true);
+        $_SESSION['wechat_id']=$output['openid'];
+    }
+}
+//unset($_SESSION['user_id']);exit;
+/*授权登陆 注册*/
+if(!$_SESSION['user_id'] && $_SESSION['wechat_id'] && !$_CFG['shop_reg_closed']){
+    $openid = $_SESSION['wechat_id'];
+
+    $sql = "SELECT * FROM".$ecs->table('users')." where wx_open_id = '".$openid."'";
+    $row = $db->getRow($sql);
+    if($row){
+        $username = $row['user_name'];
+        $password = $row['user_name'];
+        if ($user->login($username, $password)){
+            update_user_info();
+            recalculate_price();
+         }
+    }else{//注册
+        include_once(ROOT_PATH . 'include/lib_passport.php');echo ROOT_PATH . 'include/lib_passport.php';
+
+        $username = 'wx_'.time();
+        $password = 'wx_'.time();
+        $email    = 'wx_login'.time().'@qq.com';
+        if (register($username, $password, $email) !== false){
+            $sql = "UPDATE ".$ecs->table('users')." SET  wx_open_id = '".$openid."' WHERE user_id = '".$_SESSION['user_id']."'";
+            if(!$db->query($sql)){
+                unset($_SESSION['user_id']);
+            }
+        }
+    }
+}
+
+
+
+
+
 require(ROOT_PATH . 'include/lib_weixintong.php');
 /* 载入语言文件 */
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
+
+
+
+if(isset($_REQUEST['code'])&&isset($_REQUEST['state'])&&$action == 'weixin'){
+    include_once(ROOT_PATH . 'includes/website/jntoo.php');
+
+    $code = $_GET['code'];
+    $state = $_GET['state'];
+    //xxxx修改成自己的appID和AppSecret
+    $appid = 'wx7eee3208b7b59ea1';
+    $appsecret = '9d9360d18e266b81d69888227fbbadeb';
+
+    if (empty($code))
+    show_message('授权失败', '返回首页', '', 'wrong');
+
+    $token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$appsecret.'&code='.$code.'&grant_type=authorization_code';
+    $token = json_decode(file_get_contents($token_url));
+    if (isset($token->errcode))
+    {
+        show_message($token->errmsg, '返回首页', '', 'wrong');
+    }
+    $access_token_url = 'https://api.weixin.qq.com/sns/oauth2/refresh_token?appid='.$appid.'&grant_type=refresh_token&refresh_token='.$token->refresh_token;
+
+    $access_token = json_decode(file_get_contents($access_token_url));
+    if (isset($access_token->errcode))
+    {
+        show_message($access_token->errmsg, '返回首页', '', 'wrong');
+    }
+    $user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token->access_token.'&openid='.$access_token->openid.'&lang=zh_CN';
+
+    $user_info = json_decode(file_get_contents($user_info_url));
+    if (isset($user_info->errcode)) {
+        show_message($user_info->errmsg, '返回首页', '', 'wrong');
+    }
+
+    setcookie('user_info',$user_info);
+    $info = $user_info;
+    $type='weixin';
+    $info_user_id = $type .'_'.$info->openid; //  加个标识！！！防止 其他的标识 一样  // 以后的ID 标识 将以这种形式 辨认
+    $info->nickname= str_replace("'" , "" ,$info->nickname);
+
+
+    $sql = 'SELECT user_name,password,aite_id FROM '.$ecs->table('users').' WHERE aite_id = \''.$info_user_id.'\' OR aite_id=\''.$info->openid.'\'';
+
+    $count = $db->getRow($sql);
+    $login_name = $info->nickname;
+    if(!$count)   // 没有当前数据
+    {
+        if($user->check_user($info->nickname))  // 重名处理
+        {
+            $info->nickname = $info->nickname.'_'.$type.(rand()*1000);
+        }
+        $login_name = $info->nickname;
+        $user_pass = $user->compile_password(array('password'=>$info->openid));
+        $sql = 'INSERT INTO '.$ecs->table('users').'(user_name , password, aite_id , sex , reg_time , user_rank , is_validated) VALUES '.
+                "('$info->nickname' , '$user_pass' , '$info_user_id' , '$info->sex' , '".gmtime()."' , '0' , '1')" ;
+        $db->query($sql);
+    }
+    else
+    {
+        $login_name = $count['user_name'];
+        $sql = '';
+        if($count['aite_id'] == $info->openid)
+        {
+            $sql = 'UPDATE '.$ecs->table('users')." SET aite_id = '$info_user_id' WHERE aite_id = '$count[aite_id]'";
+            $db->query($sql);
+        }
+    }
+
+
+    $user->set_session($login_name);
+    $user->set_cookie($login_name);
+    update_user_info();
+
+    $redirect_url =  "http://".$_SERVER["HTTP_HOST"].str_replace("user.php", "index.php", $_SERVER["REQUEST_URI"]);
+    header('Location: '.$redirect_url);
+}
+
+
+
+
 $user_id = $_SESSION['user_id'];
 $action  = isset($_REQUEST['act']) ? trim($_REQUEST['act']) : 'default';
 $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);

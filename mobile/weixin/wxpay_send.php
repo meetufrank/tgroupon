@@ -10,7 +10,7 @@ if(!empty($rs['openid']) && !empty($rs['transid'])){
 	$pay_code = 'wxpay';
 	/* 支付信息 */
 	$payment  = get_payment($pay_code);
-	
+
 	$data = array();
 	$data['appkey'] = $payment['wxpay_paysignkey'];
 	//发送给微信的数据
@@ -75,3 +75,5 @@ function logResult($word='') {
     flock($fp, LOCK_UN);
     fclose($fp);
 }
+
+

@@ -130,3 +130,11 @@ ADD COLUMN `ysj_tixian`  double(7,2) NOT NULL DEFAULT 0 COMMENT '//艺术家可�
 */
 ALTER TABLE `ecs_fencheng`
 MODIFY COLUMN `type`  int(2) NOT NULL DEFAULT 0 COMMENT '//分成类型 0代表产品分成 1代表销售分成 2代表艺术家分成 3代表厂商' AFTER `status`;
+
+/*#2016/11/26 汪江  users表添加wx_open_id微信用户openid
+*/
+alter table `ecs_users` add `wx_open_id` varchar(25) not Null;
+
+
+
+
