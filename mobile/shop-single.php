@@ -24,7 +24,7 @@ require(ROOT_PATH . 'include/lib_order.php');
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/shopping_flow.php');
 require(ROOT_PATH . 'head.php');
- //$_SESSION['user_id']=1628;
+ $_SESSION['user_id']=1628;
 
 $smarty->assign('ajaxurl','shop-single.php');  //ajax访问地址
 
