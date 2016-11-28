@@ -25,6 +25,9 @@
     <h1> 登录/注册 </h1>
   </header>
 </div>
+<!-- 微信登录 -->
+<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx7eee3208b7b59ea1&response_type=code&scope=snsapi_login&redirect_uri=http://uranion.com.cn/mobile/user.php&state=9d9360d18e266b81d69888227fbbadeb"><img height="156px" width="32px" src="images/weixin.png">&nbsp;
+</a>
 <section class="wrap">
   <div id="leftTabBox" class="loginBox">
     <div class="hd"> <span>欢迎光临，登录后体验更多服务</span>

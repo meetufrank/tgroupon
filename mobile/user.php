@@ -18,56 +18,56 @@ define('IN_ECTOUCH', true);
 require(dirname(__FILE__) . '/include/init.php');
 
 
-$appid = 'wx7eee3208b7b59ea1';
-$secret ='9d9360d18e266b81d69888227fbbadeb';
-if((!isset($_SESSION['wechat_id']) || $_SESSION['wechat_id']==null) && !$_SESSION['user_id'] && !$_CFG['shop_reg_closed']){
-    $code=isset($_GET['code'])?$_GET['code']:null;
-    $url =  urlencode("http://mall.58zcm.com/mobile/index.php");
-    if($code==null){
-        $str="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appid}&redirect_uri=".$url."&scope=snsapi_base&state=123&response_type=code#wechat_redirect";
-        //echo $str;exit;
-        header ("Location:".$str);
-    }else{
-        $str="https://api.weixin.qq.com/sns/oauth2/access_token?appid={$appid}&secret={$secret}&code=".$code."&grant_type=authorization_code";
-        $ch = curl_init() ;
-        curl_setopt($ch, CURLOPT_URL, $str);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); //将curl_exec()获取的信息以文件流的形式返回，而不是直接输出。
-        $output = curl_exec($ch);
-        $output=json_decode($output,true);
-        $_SESSION['wechat_id']=$output['openid'];
-    }
-}
-//unset($_SESSION['user_id']);exit;
-/*授权登陆 注册*/
-if(!$_SESSION['user_id'] && $_SESSION['wechat_id'] && !$_CFG['shop_reg_closed']){
-    $openid = $_SESSION['wechat_id'];
+// $appid = 'wx7eee3208b7b59ea1';
+// $secret ='9d9360d18e266b81d69888227fbbadeb';
+// if((!isset($_SESSION['wechat_id']) || $_SESSION['wechat_id']==null) && !$_SESSION['user_id'] && !$_CFG['shop_reg_closed']){
+//     $code=isset($_GET['code'])?$_GET['code']:null;
+//     $url =  urlencode("http://mall.58zcm.com/mobile/index.php");
+//     if($code==null){
+//         $str="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appid}&redirect_uri=".$url."&scope=snsapi_base&state=123&response_type=code#wechat_redirect";
+//         //echo $str;exit;
+//         header ("Location:".$str);
+//     }else{
+//         $str="https://api.weixin.qq.com/sns/oauth2/access_token?appid={$appid}&secret={$secret}&code=".$code."&grant_type=authorization_code";
+//         $ch = curl_init() ;
+//         curl_setopt($ch, CURLOPT_URL, $str);
+//         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+//         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+//         curl_setopt($ch, CURLOPT_HEADER, FALSE);
+//         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); //将curl_exec()获取的信息以文件流的形式返回，而不是直接输出。
+//         $output = curl_exec($ch);
+//         $output=json_decode($output,true);
+//         $_SESSION['wechat_id']=$output['openid'];
+//     }
+// }
+// //unset($_SESSION['user_id']);exit;
+// /*授权登陆 注册*/
+// if(!$_SESSION['user_id'] && $_SESSION['wechat_id'] && !$_CFG['shop_reg_closed']){
+//     $openid = $_SESSION['wechat_id'];
 
-    $sql = "SELECT * FROM".$ecs->table('users')." where wx_open_id = '".$openid."'";
-    $row = $db->getRow($sql);
-    if($row){
-        $username = $row['user_name'];
-        $password = $row['user_name'];
-        if ($user->login($username, $password)){
-            update_user_info();
-            recalculate_price();
-         }
-    }else{//注册
-        include_once(ROOT_PATH . 'include/lib_passport.php');echo ROOT_PATH . 'include/lib_passport.php';
+//     $sql = "SELECT * FROM".$ecs->table('users')." where wx_open_id = '".$openid."'";
+//     $row = $db->getRow($sql);
+//     if($row){
+//         $username = $row['user_name'];
+//         $password = $row['user_name'];
+//         if ($user->login($username, $password)){
+//             update_user_info();
+//             recalculate_price();
+//          }
+//     }else{//注册
+//         include_once(ROOT_PATH . 'include/lib_passport.php');echo ROOT_PATH . 'include/lib_passport.php';
 
-        $username = 'wx_'.time();
-        $password = 'wx_'.time();
-        $email    = 'wx_login'.time().'@qq.com';
-        if (register($username, $password, $email) !== false){
-            $sql = "UPDATE ".$ecs->table('users')." SET  wx_open_id = '".$openid."' WHERE user_id = '".$_SESSION['user_id']."'";
-            if(!$db->query($sql)){
-                unset($_SESSION['user_id']);
-            }
-        }
-    }
-}
+//         $username = 'wx_'.time();
+//         $password = 'wx_'.time();
+//         $email    = 'wx_login'.time().'@qq.com';
+//         if (register($username, $password, $email) !== false){
+//             $sql = "UPDATE ".$ecs->table('users')." SET  wx_open_id = '".$openid."' WHERE user_id = '".$_SESSION['user_id']."'";
+//             if(!$db->query($sql)){
+//                 unset($_SESSION['user_id']);
+//             }
+//         }
+//     }
+// }
 
 
 
