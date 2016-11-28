@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<!--#登录界面 start--> 
+<!--#登录界面 start-->
 <!-- {if $action eq 'login' or $action eq 'register'} -->
 <div id="page">
   <header id="header">
@@ -38,6 +38,8 @@
         <div class="table_box">
           <form name="formLogin" action="user.php" method="post" onSubmit="return userLogin()">
 		  <dl>
+   <!--      <dd><a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx7eee3208b7b59ea1&response_type=code&scope=snsapi_login&redirect_uri=http://uranion.com.cn/mobile/user.php&state=9d9360d18e266b81d69888227fbbadeb"><img height="24px" width="23px" src="images/weixin.gif">&nbsp;微信
+       </a></dd> -->
               <dd>
                <label class="leftlabel"><select name="login_type"><option value="0">用户名</option><option value="3">会员卡</option></select></label>
               </dd>
@@ -164,12 +166,12 @@ jQuery(function($){
 	})
 })
 </script>
-<!--{/if}--> 
-<!--#登录界面 end--> 
+<!--{/if}-->
+<!--#登录界面 end-->
 
-<!--*找回密码界面 --> 
-<!--{if $action eq 'get_password'} --> 
-{insert_scripts files='utils.js'} 
+<!--*找回密码界面 -->
+<!--{if $action eq 'get_password'} -->
+{insert_scripts files='utils.js'}
 <script type="text/javascript">
     {foreach from=$lang.password_js item=item key=key}
       var {$key} = "{$item}";
@@ -239,7 +241,7 @@ jQuery(function($){
     </div>
   </div>
 </section>
-<!--{/if}--> 
+<!--{/if}-->
 <!--#找回密码界面 end-->
 <script type="text/javascript" src="{$ectouch_themes}/js/sms.js"></script>
 
