@@ -341,6 +341,76 @@ function get_user_orders($user_id, $num = 10, $start = 0)
 
     return $arr;
 }
+/**
+ *  获取用户指定范围的订单列表(改)
+ *
+ * @access  public
+ * @param   int         $user_id        用户ID号
+ * @param   int         $num            列表最大数量
+ * @param   int         $start          列表起始位置
+ * @param   int         $status         订单状态
+ * @return  array       $order_list     订单列表
+ */
+function get_user_orders_new($user_id, $status=1,$num = 10, $start = 0)
+{
+    /* 取得订单列表 */
+    $arr    = array();
+
+    $sql = "SELECT order_id, order_sn, order_status, shipping_id, shipping_status, pay_status, add_time, " .
+           "(goods_amount + shipping_fee + insure_fee + pay_fee + pack_fee + card_fee + tax - discount) AS total_fee ".
+           " FROM " .$GLOBALS['ecs']->table('order_info') .
+           " WHERE user_id = '$user_id' ORDER BY add_time DESC";
+    $res = $GLOBALS['db']->SelectLimit($sql, $num, $start);
+
+    while ($row = $GLOBALS['db']->fetchRow($res))
+    {
+        if ($row['order_status'] == OS_UNCONFIRMED)
+        {
+            $row['handler'] = "<a href=\"user.php?act=cancel_order&order_id=" .$row['order_id']. "\" onclick=\"if (!confirm('".$GLOBALS['_LANG']['confirm_cancel']."')) return false;\">".$GLOBALS['_LANG']['cancel']."</a>";
+        }
+        else if ($row['order_status'] == OS_SPLITED)
+        {
+            /* 对配送状态的处理 */
+            if ($row['shipping_status'] == SS_SHIPPED)
+            {
+                @$row['handler'] = "<a href=\"user.php?act=affirm_received&order_id=" .$row['order_id']. "\" onclick=\"if (!confirm('".$GLOBALS['_LANG']['confirm_received']."')) return false;\">".$GLOBALS['_LANG']['received']."</a>";
+            }
+            elseif ($row['shipping_status'] == SS_RECEIVED)
+            {
+                @$row['handler'] = '<span style="color:red">'.$GLOBALS['_LANG']['ss_received'] .'</span>';
+            }
+            else
+            {
+                if ($row['pay_status'] == PS_UNPAYED)
+                {
+                    @$row['handler'] = "<a href=\"user.php?act=order_detail&order_id=" .$row['order_id']. '">' .$GLOBALS['_LANG']['pay_money']. '</a>';
+                }
+                else
+                {
+                    @$row['handler'] = "<a href=\"user.php?act=order_detail&order_id=" .$row['order_id']. '">' .$GLOBALS['_LANG']['view_order']. '</a>';
+                }
+
+            }
+        }
+        else
+        {
+            $row['handler'] = '<span style="color:red">'.$GLOBALS['_LANG']['os'][$row['order_status']] .'</span>';
+        }
+
+        $row['shipping_status'] = ($row['shipping_status'] == SS_SHIPPED_ING) ? SS_PREPARING : $row['shipping_status'];
+        $row['order_status'] = $GLOBALS['_LANG']['os'][$row['order_status']] . ',' . $GLOBALS['_LANG']['ps'][$row['pay_status']] . ',' . $GLOBALS['_LANG']['ss'][$row['shipping_status']];
+
+        $arr[] = array('order_id'       => $row['order_id'],
+                       'order_sn'       => $row['order_sn'],
+                       'order_time'     => local_date($GLOBALS['_CFG']['time_format'], $row['add_time']),
+                       'order_status'   => $row['order_status'],
+                       'shipping_id'    => $row['shipping_id'],
+                       'total_fee'      => price_format($row['total_fee'], false),
+                       'handler'        => $row['handler']);
+    }
+
+    return $arr;
+}
 
 /**
  * 取消一个用户订单

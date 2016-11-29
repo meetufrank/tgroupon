@@ -1228,13 +1228,14 @@ elseif ($action == 'order_list')
 
     $pager  = get_pager('user.php', array('act' => $action), $record_count, $page);
 
-    $orders = get_user_orders($user_id, $pager['size'], $pager['start']);
+    $orders = get_user_orders_new($user_id, 1,$pager['size'], $pager['start']);
+
     $merge  = get_user_merge($user_id);
 
     $smarty->assign('merge',  $merge);
     $smarty->assign('pager',  $pager);
     $smarty->assign('orders', $orders);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_order.dwt');
 }
 
 /* 异步显示订单列表 by wang */

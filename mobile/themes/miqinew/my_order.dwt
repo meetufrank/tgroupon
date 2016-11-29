@@ -17,23 +17,23 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 -->
   <!-- Google Material Icons -->
-  <link href="css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+  <link href="{$ectouch_themes}/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
 
   <!-- Brand Icons -->
-  <link href="css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+  <link href="{$ectouch_themes}/css/vendor/socicon.min.css" rel="stylesheet" media="screen">
 
   <!-- Bootstrap -->
-  <link href="css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="{$ectouch_themes}/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
 
   <!-- Theme Styles -->
-  <link href="css/theme.min.css" rel="stylesheet" media="screen">
-  
+  <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
+
   <!-- tan chuang -->
-  <link href="js/layer_mobile/need/layer.css">
-  
+  <link href="{$ectouch_themes}/js/layer_mobile/need/layer.css">
+
   <!-- Page Preloading -->
-  <script src="js/vendor/page-preloading.js"></script>
-  
+  <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
+
   <!-- by sun -->
   <style>
     .nav-pills{
@@ -101,7 +101,7 @@
 		margin-bottom:-36px;
 	}
   </style>
-  
+
 </head>
 
 <!-- Body -->
@@ -111,7 +111,7 @@
   <!-- Page Pre-Loader -->
   <div class="page-preloader">
     <div class="preloader">
-      <img src="img/preloader.gif" alt="Preloader">
+      <img src="{$ectouch_themes}/img/preloader.gif" alt="Preloader">
     </div>
   </div><!-- .page-preloader -->
 
@@ -157,7 +157,7 @@
               <li><a href="artist-list.html">设计师</a></li>
               <li><a href="#">关于我们</a></li>
             </ul><!-- .main-navigation -->
-            
+
           </div>
           <!-- .inner -->
         </div><!-- .toolbar-section#menu -->
@@ -172,14 +172,14 @@
       		</a>
           </div><!-- .inner -->
         </div><!-- .toolbar-section#account -->
-        
+
         <!-- Account (userinfo) -->
         <div class="toolbar-section" id="userinfo">
             <div class="clearfix">
             <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section">退出</a>
             <div class="quotation pull-left" style="width:auto;">
               <div class="quotation-author-ava pull-left">
-                <img class="" src="img/team/quote_author.jpg" alt="James Cameron">
+                <img class="" src="{$ectouch_themes}/img/team/quote_author.jpg" alt="James Cameron">
               </div>
               &nbsp;&nbsp;
               <span style="display:inline-block; line-height:74px;">微信名称</span>
@@ -231,19 +231,19 @@
                 <h3 class="amount"><small class="hidden-xs">数量：6&nbsp;&nbsp;&nbsp;</small>￥0.00</h3>
               </div>
             </div><!-- .subtotal -->
-            
+
             <div class="form-group">
               <label class="radio radio-inline">
-                <input type="radio" name="co_shipping" checked> 
+                <input type="radio" name="co_shipping" checked>
                 	联系人：里默默<br>
 					手机号：18954781245<br>
 					地   址 ：上海市五角场黄兴路100号1号楼102室
               </label>
             </div>
-            
+
             <div class="form-group">
               <label class="radio radio-inline">
-                <input type="radio" name="co_shipping"> 
+                <input type="radio" name="co_shipping">
                 	联系人：里默默<br>
 					手机号：18954781245<br>
 					地   址 ：上海市五角场黄兴路100号1号楼102室
@@ -260,7 +260,7 @@
             </div>
           </form>
         </div>
-        
+
         <!-- 新增地址 -->
         <div class="toolbar-section" id="address">
 
@@ -272,7 +272,7 @@
 
             <form method="post" class="checkout-form container" action="#" id="xzdz">
             <div>
-              
+
                 <p><input type="text" class="form-control" name="UserName" placeholder="收件人"><span></span></p>
                 <p><input type="text" class="form-control" name="UserTel" placeholder="手机号码"><span></span></p>
                 <div class="row">
@@ -298,12 +298,12 @@
       </div>
     </header>
     <!-- 头部结束 -->
-	
+
     <!-- Content -->
     <section class="container padding-top-3x">
      <!-- Nav Tabs -->
       <ul class="nav-tabs" role="tablist">
-        <li class="active"><a href="#tab1" role="tab" data-toggle="tab">我的订单</a></li>
+        <li {if $action eq 'order_list'}class="active"{/if}><a href="my_user.php?act=order_list" role="tab" data-toggle="tab">我的订单</a></li>
         <li><a href="#tab2" role="tab" data-toggle="tab">我的收藏</a></li>
         <li><a href="#tab3" role="tab" data-toggle="tab">消息记录</a></li>
         <li><a href="#tab4" role="tab" data-toggle="tab">管理地址</a></li>
@@ -311,6 +311,8 @@
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
+      <!--#订单列表界面 start-->
+    {if $action eq 'order_list'}
         <div role="tabpanel" class="tab-pane transition fade in active" id="tab1">
         	<!-- Nav Tabs -->
 		      <ul class="nav-pills" role="tablist">
@@ -328,7 +330,7 @@
 					            <!-- Item -->
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
-					                <img src="img/cart/item01.jpg" alt="Item">
+					                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
 					              </a>
 					              <div class="item-details">
 					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
@@ -339,7 +341,7 @@
 					            <!-- Item -->
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
-					                <img src="img/cart/item01.jpg" alt="Item">
+					                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
 					              </a>
 					              <div class="item-details">
 					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
@@ -367,8 +369,8 @@
 					              <a href="#" class="btn btn-primary waves-effect waves-light">去支付</a>
 					            </div>
 					          </div>
-					          
-					          
+
+
 					          <div class="shopping-cart-1 padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
 					          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
 					          			订单编号：356666636329
@@ -376,7 +378,7 @@
 					            <!-- Item -->
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
-					                <img src="img/cart/item01.jpg" alt="Item">
+					                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
 					              </a>
 					              <div class="item-details">
 					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
@@ -387,7 +389,7 @@
 					            <!-- Item -->
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
-					                <img src="img/cart/item01.jpg" alt="Item">
+					                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
 					              </a>
 					              <div class="item-details">
 					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
@@ -424,7 +426,7 @@
 					            <!-- Item -->
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
-					                <img src="img/cart/item01.jpg" alt="Item">
+					                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
 					              </a>
 					              <div class="item-details">
 					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
@@ -435,7 +437,7 @@
 					            <!-- Item -->
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
-					                <img src="img/cart/item01.jpg" alt="Item">
+					                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
 					              </a>
 					              <div class="item-details">
 					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
@@ -457,7 +459,7 @@
 									手机号：18954781245<br>
 									地   址 ：上海市五角场黄兴路100号1号楼102室
 					            </div>
-					            <!-- Buttons 
+					            <!-- Buttons
 					            <div class="text-right">
 					              <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
 					              <a href="#" class="btn btn-primary waves-effect waves-light">去支付</a>
@@ -475,7 +477,7 @@
 					            <!-- Item -->
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
-					                <img src="img/cart/item01.jpg" alt="Item">
+					                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
 					              </a>
 					              <div class="item-details">
 					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
@@ -486,7 +488,7 @@
 					            <!-- Item -->
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
-					                <img src="img/cart/item01.jpg" alt="Item">
+					                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
 					              </a>
 					              <div class="item-details">
 					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
@@ -519,7 +521,7 @@
 									<a id="Logistics" class="btn btn-primary" href="#">快递跟踪</a>
 					            </div>
 					            </div>
-					            <!-- Buttons 
+					            <!-- Buttons
 					            <div class="text-right">
 					              <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
 					              <a href="#" class="btn btn-primary waves-effect waves-light">去支付</a>
@@ -529,6 +531,21 @@
 		        </div>
 		      </div>
         </div>
+        <script type="text/javascript" src="{$ectouch_themes}/js/jquery.more.js"></script>
+    <script type="text/javascript">
+    {foreach from=$lang.merge_order_js item=item key=key}
+      var {$key} = "{$item}";
+    {/foreach}
+    jQuery(function($){
+      $('.order_list').more({'address': 'user.php?act=async_order_list', amount: 3, 'spinner_code':'<div style="text-align:center; margin:10px;"><img src="{$ectouch_themes}/images/loader.gif" /></div>'})
+    $(window).scroll(function () {
+      if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        $('.get_more').click();
+      }
+    });
+    });
+    </script>
+    {/if}
         <div role="tabpanel" class="tab-pane transition fade" id="tab2">
         	<!-- Nav Tabs -->
 		      <ul class="nav-pills" role="tablist">
@@ -543,7 +560,7 @@
           <div class="shop-item">
             <div class="shop-thumbnail">
               <a href="shop-single.html" class="item-link"></a>
-              <img src="img/shop/th02.jpg" alt="Shop item">
+              <img src="{$ectouch_themes}/img/shop/th02.jpg" alt="Shop item">
               <div class="shop-item-tools">
                 <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
                   <i class="material-icons close"></i>
@@ -559,7 +576,7 @@
           <div class="shop-item">
             <div class="shop-thumbnail">
               <a href="shop-single.html" class="item-link"></a>
-              <img src="img/shop/th02.jpg" alt="Shop item">
+              <img src="{$ectouch_themes}/img/shop/th02.jpg" alt="Shop item">
               <div class="shop-item-tools">
                 <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
                   <i class="material-icons close"></i>
@@ -575,7 +592,7 @@
           <div class="shop-item">
             <div class="shop-thumbnail">
               <a href="shop-single.html" class="item-link"></a>
-              <img src="img/shop/th02.jpg" alt="Shop item">
+              <img src="{$ectouch_themes}/img/shop/th02.jpg" alt="Shop item">
               <div class="shop-item-tools">
                 <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
                   <i class="material-icons close"></i>
@@ -591,7 +608,7 @@
           <div class="shop-item">
             <div class="shop-thumbnail">
               <a href="shop-single.html" class="item-link"></a>
-              <img src="img/shop/th02.jpg" alt="Shop item">
+              <img src="{$ectouch_themes}/img/shop/th02.jpg" alt="Shop item">
               <div class="shop-item-tools">
                 <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
                   <i class="material-icons close"></i>
@@ -607,7 +624,7 @@
           <div class="shop-item">
             <div class="shop-thumbnail">
               <a href="shop-single.html" class="item-link"></a>
-              <img src="img/shop/th02.jpg" alt="Shop item">
+              <img src="{$ectouch_themes}/img/shop/th02.jpg" alt="Shop item">
               <div class="shop-item-tools">
                 <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
                   <i class="material-icons close"></i>
@@ -629,7 +646,7 @@
 				              <div class="social-bar text-center space-bottom">
 				                <a href="#" class="btn btn-square btn-sm btn-primary waves-effect waves-light"><i class="material-icons close"></i>移除</a>
 				              </div><!-- .social-bar -->
-				              <img src="img/team/01.jpg" alt="">
+				              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
 				            </div>
 				            <h4 class="teammate-name"><a href="#">艺术家姓名</a></h4>
 				          </div>
@@ -640,12 +657,12 @@
 				              <div class="social-bar text-center space-bottom">
 				                <a href="#" class="btn btn-square btn-sm btn-primary waves-effect waves-light"><i class="material-icons close"></i>移除</a>
 				              </div><!-- .social-bar -->
-				              <img src="img/team/01.jpg" alt="">
+				              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
 				            </div>
 				            <h4 class="teammate-name"><a href="#">艺术家姓名</a></h4>
 				          </div>
 				        </div>
-				        
+
 		        	</div>
 		        </div>
 		      </div>
@@ -684,12 +701,12 @@
 		<!--收货地址1-->
         <div class="shop-item">
                 <div class="shop-thumbnail">
-                	<form name=”form” method=”post” action=”#” id="form0"> 
+                	<form name=”form” method=”post” action=”#” id="form0">
                         <div style="padding:18px;" id="shouhuo">
                                 <p>收件人:<span>里默默</span></p>
                                 <p>手机号:<span>18954781245</span></p>
                                 <p style="float:left">地&nbsp;&nbsp;&nbsp;址:</p>
-                                <p><span class="mobile-address">上海市五角场黄兴路100号1号楼102室</span></p> 
+                                <p><span class="mobile-address">上海市五角场黄兴路100号1号楼102室</span></p>
                         </div>
                         <div class="shop-item-tools">
                             <button id="edit" class="btn-bianji">编辑</button>
@@ -699,7 +716,7 @@
                 </div>
           </div>
           <!--收货地址1结束-->
-          
+
           <div class="text-right">
               <a href="#" class="btn btn-primary waves-effect waves-light">添加地址</a>
             </div>
@@ -823,20 +840,20 @@
 		</div>
 	</section>
   </div>
-	
+
   <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
-  <script src="js/vendor/jquery-2.1.4.min.js"></script>
-  <script src="js/vendor/bootstrap.min.js"></script>
-  <script src="js/vendor/smoothscroll.js"></script>
-  <script src="js/vendor/velocity.min.js"></script>
-  <script src="js/vendor/waves.min.js"></script>
-  <script src="js/vendor/icheck.min.js"></script>
-  <script src="js/scripts.js"></script>
-  
+  <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
+  <script src="{$ectouch_themes}/js/scripts.js"></script>
+
   <!-- tan chuang -->
-  <script src="js/layer_mobile/layer.js"></script>
-  <script src="js/jquery.validate.js" type="text/javascript"></script>
-  <script src="js/messages_zh.js" type="text/javascript"></script>
+  <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
+  <script src="{$ectouch_themes}/js/jquery.validate.js" type="text/javascript"></script>
+  <script src="{$ectouch_themes}/js/messages_zh.js" type="text/javascript"></script>
   <!-- script for tan chuang -->
   <script type="text/javascript">
   $(document).ready(function () {
@@ -926,9 +943,9 @@
         // $(".shopping-cart").find("input[type='checkbox']").attr("checked",$("#checkbox-all").attr('checked'));;
     }
   </script>
-  
+
   <script>
-	//申请提现 
+	//申请提现
    $('#Apply_Cash').click(function(){
    	var content ='<div>您的申请已发送给管理员，我们会在2个工作日内审核你的提现要求，</div>'+'<div>请注意查看提现记录中的反馈信息</div>';
   	layer.open({
@@ -938,7 +955,7 @@
 			  shadeClose: false
 			});
 			});
-			
+
 	//提现记录
    $('#Apply_Record').click(function(){
    	var content ='<div>2016.11.3 &nbsp;&nbsp;管理员Kitty同意了你的提现申请，本次提现金额为：300元</div>'+'<div>2016.11.3 &nbsp;&nbsp;管理员Kitty拒绝了你的提现申请，理由：未满提现额度</div>';
@@ -947,12 +964,12 @@
 			    '已提现：300元',
 			    'background-color:#77cde3; color:#fff;'
 			  ],
-			  content:content,			  
+			  content:content,
 			  btn: '我知道了',
 			  shadeClose: false,
 			});
-			});	
-				
+			});
+
 	//与我们合作
    $('#Cooperate').click(function(){
    	var content ='<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px;" placeholder="姓名" /></div>'
@@ -965,11 +982,11 @@
 			    '填写表单',
 			    'background-color:#77cde3; color:#fff;'
 			  ],
-			  content:content,	
+			  content:content,
 			  btn: ['提交', '取消']
 			});
-			});	
-			
+			});
+
 	//快递跟踪
 	$('#Logistics').click(function(){
    	var content ='<div class="row bg-default" style="padding:6px 0;"><div class="col-md-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-md-1" style="margin-top:10px;">●</div><div class="col-md-7" style="margin-top:10px;">顺丰速运 &nbsp;已收取快件</div></div>'
@@ -987,14 +1004,14 @@
 			    '跟踪包裹',
 			    'background-color:#77cde3; color:#fff;'
 			  ],
-			  content:content,			  
+			  content:content,
 			  btn: '我知道了',
 			  shadeClose: false,
 			});
-			});	
-										
-  </script>  
-  
+			});
+
+  </script>
+
 <script type="text/javascript">
   // 手机号码验证
   jQuery.validator.addMethod("isMobile", function(value, element) {
@@ -1002,7 +1019,7 @@
       var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
       return this.optional(element) || (length == 11 && mobile.test(value));
   }, "请正确填写您的手机号码");
-  
+
    $(function () {
     $("#xzdz").validate({
        rules: {
@@ -1013,7 +1030,7 @@
           UserAddress: { required: true,minlength:2,maxlength:30 }
                 },
                 messages:{
-                    UserName: { 
+                    UserName: {
                         required: "请输入收货人！",
                      },
                     UserTel: {
@@ -1052,9 +1069,9 @@
 	edit.onclick =function(){
                 if(statu == 0){
                     edit.innerHTML= '保存';
-					edit.className= "btn-save";		
+					edit.className= "btn-save";
                     for(i = 0; i < item_length; i++){
-                        
+
 						if(i==item_length-1){
 							item[i].innerHTML = '<textarea type="txt" class="item_input" value="'+item_value[i]+'" id="address-text"></textarea>';
 							}else{
@@ -1065,7 +1082,7 @@
                 }else{
 					document.getElementById("form0").submit();
                     edit.innerHTML= '编辑';
-					edit.className= "btn-bianji";	
+					edit.className= "btn-bianji";
                     var item_input = document.getElementsByClassName('item_input');
                     for(i = 0; i < item_length; i++){
                         item_value[i] = item_input[i].value;
@@ -1080,7 +1097,7 @@
   </script>
   <!--设置input随着字数变化宽度同步增多-->
   <script language="javascript">
-	function checkLength(which) { 
+	function checkLength(which) {
 		iCount = which.value.replace(/[^\u0000-\u00ff]/g,"aa");
 		which.size=iCount.length+1;
 	}
