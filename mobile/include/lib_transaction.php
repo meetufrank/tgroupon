@@ -962,7 +962,7 @@ function get_user_merge($user_id)
     {
         $merge[$val] = $val;
     }
-
+//print_r($merge);exit;
     return $merge;
 }
 
