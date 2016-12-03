@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,300,500,600);
+
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -2487,11 +2487,12 @@ display:none
 	vertical-align: top;
 	width: 50%
 }
-.cart-subtotal .amount {
+.cart-subtotal .amount,.amount1 {
 	font-size: 24px;
 	font-weight: 500;
 	text-align: right
 }
+
 .cart-subtotal small {
 	font-size: 16px;
 	color: #999;

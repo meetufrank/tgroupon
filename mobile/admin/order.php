@@ -113,6 +113,7 @@ elseif ($_REQUEST['act'] == 'info')
     {
         $order_id = intval($_REQUEST['order_id']);
         $order = order_info($order_id);
+
     }
     elseif (isset($_REQUEST['order_sn']))
     {
@@ -367,6 +368,16 @@ elseif ($_REQUEST['act'] == 'info')
     /* 取得能执行的操作列表 */
     $operable_list = operable_list($order);
     $smarty->assign('operable_list', $operable_list);
+
+    /*查询目前支持配送方式种类*/
+
+    $region_id_list = array(
+        $order['country'], $order['province'], $order['city'], $order['district']
+    );
+    $shipping_list = available_shipping_list($region_id_list);
+
+    $smarty->assign('shipping_list', $shipping_list);
+
 
     /* 取得订单操作记录 */
     $act_list = array();
@@ -896,7 +907,7 @@ elseif ($_REQUEST['act'] == 'delivery_ship')
             $sms->send($order['mobile'], sprintf($GLOBALS['_LANG']['order_shipped_sms'], $order['order_sn'],
                 local_date($GLOBALS['_LANG']['sms_time_format']), $GLOBALS['_CFG']['shop_name']), 0);
         }
-		
+
 		/* 微信发送 TGROUPON*/
 		$wxch_order_name = 'order';
 		  		/*甜  心  100 修复后台控制是否微信提醒订单*/
@@ -906,8 +917,8 @@ elseif ($_REQUEST['act'] == 'delivery_ship')
 			include(ROOT_PATH . 'admin/wxch_order.php');
 		}
 		//include(ROOT_PATH . 'admin/wxch_order.php');
-		
-		
+
+
     }
 
     /* 清除缓存 */
@@ -1580,8 +1591,10 @@ elseif ($_REQUEST['act'] == 'step_post')
         }
     }
     /* 保存配送信息 */
+
     elseif ('shipping' == $step)
     {
+
         /* 如果不存在实体商品，退出 */
         if (!exist_real_goods($order_id))
         {
@@ -1593,9 +1606,13 @@ elseif ($_REQUEST['act'] == 'step_post')
         $region_id_list = array($order_info['country'], $order_info['province'], $order_info['city'], $order_info['district']);
 
         /* 保存订单 */
-        $shipping_id = $_POST['shipping'];
+        $shipping_id = $_POST['shipping'];  //$_POST['shipping']
+
+
         $shipping = shipping_area_info($shipping_id, $region_id_list);
+
         $weight_amount = order_weight_price($order_id);
+
         $shipping_fee = shipping_fee($shipping['shipping_code'], $shipping['configure'], $weight_amount['weight'], $weight_amount['amount'], $weight_amount['number']);
         $order = array(
             'shipping_id' => $shipping_id,
@@ -1612,8 +1629,11 @@ elseif ($_REQUEST['act'] == 'step_post')
         {
             $order['insure_fee'] = 0;
         }
+
         update_order($order_id, $order);
+
         update_order_amount($order_id);
+
 
         /* 更新 pay_log */
         update_pay_log($order_id);
@@ -1994,7 +2014,7 @@ elseif ($_REQUEST['act'] == 'step_post')
             /* 如果已付款，检查金额是否变动，并执行相应操作 */
             $order = order_info($order_id);
             handle_order_money_change($order, $msgs, $links);
-			
+
 			/*TGROUPON修  改兼容微信    支付修改价格*/
 			$order = $db->getRow("SELECT * FROM ".$ecs->table('order_info')." WHERE order_id='".$order_id."'");
 			$order['order_amount_formated'] = price_format($order['order_amount'],false);
@@ -2002,24 +2022,24 @@ elseif ($_REQUEST['act'] == 'step_post')
 			$smarty->assign('order',      $order);
 			if ($order['order_amount'] > 0)
 
-			{	
-				
+			{
+
 				$payment = payment_info($order['pay_id']);
 				include_once('../include/modules/payment/' . $payment['pay_code'] . '.php');
 				$pay_obj    = new $payment['pay_code'];
 				    $error_no = 0;
 				do
 				{
-					$order['order_sn'] = get_order_sn(); 
+					$order['order_sn'] = get_order_sn();
 					$neworder_sn=$order['order_sn'];
 					//获取新订单号
 					$sql = "SELECT * FROM " . $ecs->table('order_info') . " WHERE order_sn = '$neworder_sn'";
 					$order_sninfo= $db->getOne($sql);
-					
+
 					if(!empty($order_sninfo)){
-					
+
 						$error_no=1062;
-						
+
 					}else{
 						$GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('order_info'), $order, 'UPDATE',"order_id='$order[order_id]'");
 						}
@@ -2029,8 +2049,8 @@ elseif ($_REQUEST['act'] == 'step_post')
 				$order['pay_desc'] = $payment['pay_desc'];
 			}
 			/*甜   心   100*/
-			
-			
+
+
             /* 显示提示信息 */
             if (!empty($msgs))
             {
@@ -2245,7 +2265,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit')
                 unserialize($shipping['configure']), $total['weight'], $total['amount'], $total['number']);
             $shipping_list[$key]['shipping_fee'] = $shipping_fee;
             $shipping_list[$key]['format_shipping_fee'] = price_format($shipping_fee);
-            $shipping_list[$key]['free_money'] = price_format($shipping['configure']['free_money']);
+           // $shipping_list[$key]['free_money'] = price_format($shipping['configure']['free_money']);
         }
         $smarty->assign('shipping_list', $shipping_list);
     }
@@ -2629,7 +2649,7 @@ elseif ($_REQUEST['act'] == 'operate')
             }
         }
         /* 查询：取得区域名 */
-        
+
         $order['region'] = $db->getOne($sql);
 
         /* 查询：其他处理 */
@@ -2641,7 +2661,7 @@ elseif ($_REQUEST['act'] == 'operate')
         /* 查询：是否存在实体商品 */
         $exist_real_goods = exist_real_goods($order_id);
 
-        
+
 		/* 查询：取得订单商品 */
         $_goods = get_order_goods(array('order_id' => $order['order_id'], 'order_sn' =>$order['order_sn']));
 
@@ -2704,9 +2724,9 @@ elseif ($_REQUEST['act'] == 'operate')
                 }
             }
         }
-		
+
 		$suppliers_id = 0;
-		
+
 		$delivery['order_sn'] = trim($order['order_sn']);
 		$delivery['add_time'] = trim($order['order_time']);
 		$delivery['user_id'] = intval(trim($order['user_id']));
@@ -2736,17 +2756,17 @@ elseif ($_REQUEST['act'] == 'operate')
     $order = order_info($order_id);
     /* 检查能否操作 */
     $operable_list = operable_list($order);
-	
+
     /* 初始化提示信息 */
    $msg = '';
 
 		/* 定义当前时间 */
-       
+
 
         /* 取得订单商品 */
         $_goods = get_order_goods(array('order_id' => $order_id, 'order_sn' => $delivery['order_sn']));
         $goods_list = $_goods['goods_list'];
-	
+
 
 		        /* 检查此单发货商品库存缺货情况 */
         /* $goods_list已经过处理 超值礼包中商品库存已取得 */
@@ -2761,7 +2781,7 @@ elseif ($_REQUEST['act'] == 'operate')
         $delivery['action_user'] = $_SESSION['admin_name'];
 
         /* 获取发货单生成时间 */
- 	define('GMTIME_UTC', gmtime()); 
+ 	define('GMTIME_UTC', gmtime());
         $delivery['update_time'] = GMTIME_UTC;
         $delivery_time = $delivery['update_time'];
         $sql ="select add_time from ". $GLOBALS['ecs']->table('order_info') ." WHERE order_sn = '" . $delivery['order_sn'] . "'";
@@ -2793,7 +2813,7 @@ elseif ($_REQUEST['act'] == 'operate')
         {
 
             $delivery_goods = array();
-			
+
             //发货单商品入库
             if (!empty($goods_list))
             {
@@ -3142,7 +3162,7 @@ elseif ($_REQUEST['act'] == 'operate')
             send_order_bonus($order_id);
         }
 
-		
+
 		/* 微信发送 TGROUPON*/
 		$wxch_order_name = 'order';
 		/*甜  心  100 修复后台控制是否微信提醒订单*/
@@ -3187,7 +3207,7 @@ elseif ($_REQUEST['act'] == 'operate')
     $links[] = array('text' => $_LANG['09_delivery_order'], 'href' => 'order.php?act=delivery_list');
     $links[] = array('text' => $_LANG['delivery_sn'] . $_LANG['detail'], 'href' => 'order.php?act=delivery_info&delivery_id=' . $delivery_id);
     sys_msg($_LANG['act_ok'], 0, $links);
-	
+
     }
 }
 /*------------------------------------------------------ */

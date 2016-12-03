@@ -2531,14 +2531,41 @@ $consignee_list = get_consignee_list($_SESSION['user_id']);
             $city_list[$region_id]     = get_regions(2, $consignee['province']);
             $district_list[$region_id] = get_regions(3, $consignee['city']);
         }
+
+
+
+
         $smarty->assign('province_list', get_regions( 1 , 1 ));
         // $smarty->assign('province_list', $province_list);
         $smarty->assign('city_list',     $city_list);
         $smarty->assign('district_list', $district_list);
 
+         /*
+             缓存数据表
+          */
+         $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('region')." where region_id!=1";
 
-        /* 返回收货人页面代码 */
-        $smarty->assign('real_goods_count', exist_real_goods(0, $flow_type) ? 1 : 0);
+            $region_list=$GLOBALS['db']->getAll($sql);
+            foreach($region_list as $k=>$v){
+                 $province_list[$v['region_id']]=$region_list[$k];
+                // if($v['region_type']==1){
+                //     $province_list[$v['region_id']]=$region_list[$k];
+                // }
+                // if($v['region_type']==2){
+                //     $city_list[$v['region_id']]=$region_list[$k];
+                // }
+                // if($v['region_type']==3){
+                //     $district_list[$v['region_id']]=$region_list[$k];
+                // }
+
+            }
+
+
+            $filename="region.txt";
+            file_put_contents($filename,json_encode($province_list));
+
+
+
 
 
 
