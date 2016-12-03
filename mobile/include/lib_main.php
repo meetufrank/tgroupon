@@ -54,7 +54,7 @@ function update_user_info()
         {
             $sql="SELECT special_rank from ".$GLOBALS['ecs']->table('user_rank')."where rank_id='$row[user_rank]'";
             if($GLOBALS['db']->getOne($sql)==='0' || $GLOBALS['db']->getOne($sql)===null)
-            {   
+            {
                 $sql="update ".$GLOBALS['ecs']->table('users')."set user_rank='0' where user_id='$_SESSION[user_id]'";
                 $GLOBALS['db']->query($sql);
                 $row['user_rank']=0;
@@ -728,6 +728,7 @@ function get_pager($url, $param, $record_count, $page = 1, $size = 10)
         }
     }
     $pager['search'] = $param;
+
 
     return $pager;
 }
@@ -1767,24 +1768,24 @@ function set_affiliate()
     $config = unserialize($GLOBALS['_CFG']['affiliate']);
     if ( $config['on'] == 1)
     {
-	
+
 		//start by   tianxin
 		if(!empty($_GET['wxid'])){
-		
+
 			 $sql = 'SELECT user_id' .
              ' FROM ' .$GLOBALS['ecs']->table('users') .
              " WHERE wxid = '" . $_GET['wxid']."'";
 			$userid = $GLOBALS['db']->GetOne($sql);
 			$u=intval($userid);
-			
+
 		}else{
-			
+
 			$u=intval($_GET['u']);
 		}
-	
 
-		//end	
-	
+
+		//end
+
         if(!empty($config['config']['expire']))
         {
             if($config['config']['expire_unit'] == 'hour')

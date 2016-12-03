@@ -13,10 +13,22 @@
  * $Id: index.php 17217 2011-01-19 06:29:08Z liubo $
 */
 //
+//
+session_start();
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
 require(ROOT_PATH . 'include/lib_weixintong.php');
+
+
+
+
+
+
+
+
+
+
 if ((DEBUG_MODE & 2) != 2)
 {
     $smarty->caching = true;

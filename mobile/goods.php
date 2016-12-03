@@ -240,31 +240,31 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         $smarty->assign('related_goods',       $linked_goods);                                   // 关联商品
         $smarty->assign('goods_article_list',  get_linked_articles($goods_id));                  // 关联文章
         $smarty->assign('fittings',            get_goods_fittings(array($goods_id)));                   // 配件
-        $smarty->assign('rank_prices',         get_user_rank_prices($goods_id, $shop_price)); 
+        $smarty->assign('rank_prices',         get_user_rank_prices($goods_id, $shop_price));
 		/*甜心添加*/
 		$rank_prices=get_user_rank_prices($goods_id, $shop_price);
 		$user_prices="";
 		foreach($rank_prices as $k=>$v){
-			
+
 			if($_SESSION['user_rank']==$k){
 				$user_prices=$v;
 			}
 		}
 
-		$smarty->assign('user_prices',            $user_prices); 
+		$smarty->assign('user_prices',            $user_prices);
 		/*甜心添加*/
-		
+
 		//甜心添加判断该商品是否被收藏过
 			$is_collect=0;
 			$user_id=$_SESSION['user_id'];
 			$sql = "SELECT * FROM " .$GLOBALS['ecs']->table('collect_goods'). " WHERE user_id = '$user_id' and goods_id='$goods_id'";
 			$is_collect = $GLOBALS['db']->getRow($sql);
-			
+
 		if(!empty($is_collect))	{
 			$smarty->assign('is_collect', 1 );
 		}else{
 			$smarty->assign('is_collect', 0 );
-		}		
+		}
 		//甜心添加判断该商品是否被收藏过
 		// 会员等级价格
         $smarty->assign('pictures',            get_goods_gallery($goods_id));                    // 商品相册
@@ -316,7 +316,7 @@ $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 
 		if(!empty($userid)){
 			$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
 			$level_register_up = (float)$affiliate['config']['level_register_up'];
-			$rank_points =  $GLOBALS['db']->getOne("SELECT rank_points FROM " . $GLOBALS['ecs']->table('users')."where user_id=".$_SESSION["user_id"]);	
+			$rank_points =  $GLOBALS['db']->getOne("SELECT rank_points FROM " . $GLOBALS['ecs']->table('users')."where user_id=".$_SESSION["user_id"]);
 			if($rank_points>$level_register_up||$rank_points==$level_register_up){
 			$url=$config['site_url']."mobile/goods.php?id=".$goods_id."&u=".$userid;
 			//20141204新增分享返积分
@@ -325,7 +325,7 @@ $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 
 					$url="";
 					//20141204新增分享返积分
 					$dourl="";
-			
+
 			}
 		}else{
 			$url="";
@@ -338,15 +338,15 @@ $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 
 		$signPackage = $jssdk->GetSignPackage();
 		$smarty->assign('signPackage',  $signPackage);
 		$smarty->assign('userid',  $userid);
-		$smarty->assign('share_info',  $share_info);	
-		$smarty->assign('dourl',  $dourl);		
+		$smarty->assign('share_info',  $share_info);
+		$smarty->assign('dourl',  $dourl);
 		$smarty->assign('url',  $url);
 		/*TGROUPON修改*/
 		/*甜   心100  修复开发*/
-		
+
 		$tianxin_url = $db->getOne("SELECT cfg_value  FROM `wxch_cfg` WHERE `cfg_name` = 'tianxin_url'");
-		$smarty->assign('tianxin_url',  $tianxin_url); 
-		
+		$smarty->assign('tianxin_url',  $tianxin_url);
+
 		/*甜   心100  修复开发*/
 $smarty->assign('now_time',  gmtime());           // 当前系统时间
 $smarty->display('goods.dwt',      $cache_id);
