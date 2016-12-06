@@ -2313,6 +2313,9 @@ elseif ($_REQUEST['act'] == 'product_query')
         array('filter' => $product['filter'], 'page_count' => $product['page_count']));
 }
 
+
+
+
 /*------------------------------------------------------ */
 //-- 货品删除
 /*------------------------------------------------------ */
@@ -2340,7 +2343,7 @@ elseif ($_REQUEST['act'] == 'product_remove')
     if ($result)
     {
         /* 修改商品库存 */
-        if (update_goods_stock($product['goods_id'], $product_number - $product['product_number']))
+        if (update_goods_stock($product['goods_id'], attributeprice - $product['product_number']))
         {
             //记录日志
             admin_log('', 'update', 'goods');
@@ -2381,6 +2384,26 @@ elseif ($_REQUEST['act'] == 'edit_product_sn')
         make_json_result($product_sn);
     }
 }
+/*------------------------------------------------------ */
+//-- 修改货品关联属性价格
+/*------------------------------------------------------ */
+elseif ($_REQUEST['act'] == 'edit_attributeprice')
+{
+    check_authz_json('goods_manage');
+
+    $product_id       = intval($_POST['id']);
+    $attributeprice       = intval($_POST['val']);
+
+
+    /* 修改 */
+    $sql = "UPDATE " . $ecs->table('products') . " SET attributeprice = '$attributeprice' WHERE product_id = '$product_id'";
+    $result = $db->query($sql);
+    if ($result)
+    {
+        clear_cache_files();
+        make_json_result($attributeprice);
+    }
+}
 
 /*------------------------------------------------------ */
 //-- 修改货品库存
@@ -2414,12 +2437,93 @@ elseif ($_REQUEST['act'] == 'edit_product_number')
 /*------------------------------------------------------ */
 elseif ($_REQUEST['act'] == 'product_add_execute')
 {
+
+
+
+    //上传图片
+    $fileInfo=$_FILES['cover'];
+$maxSize=2097152;//允许的最大值
+$allowExt=array('jpeg','jpg','png','gif','wbmp');
+$flag=true;//检测是否为真实图片类型
+//1.判断错误号
+if($fileInfo['error']==0){
+    //判断上传文件的大小
+    if($fileInfo['size']>$maxSize){
+        exit('上传文件过大');
+    }
+    //$ext=strtolower(end(explode('.',$fileInfo['name'])));
+    $ext=pathinfo($fileInfo['name'],PATHINFO_EXTENSION);
+    if(!in_array($ext,$allowExt)){
+        exit('非法文件类型');
+    }
+    //判断文件是否是通过HTTP POST方式上传来的
+    if(!is_uploaded_file($fileInfo['tmp_name'])){
+        exit('文件不是通过HTTP POST方式上传来的');
+    }
+    //检测是否为真实的图片类型
+    if($flag){
+        if(!getimagesize($fileInfo['tmp_name'])){
+            exit('不是真正图片类型');
+        }
+    }
+    $path='uploads';
+    if(!file_exists($path)){
+        mkdir($path,0777,true);
+        chmod($path,0777);
+    }
+    //确保文件名唯一，防止重名产生覆盖
+    $uniName=md5(uniqid(microtime(true),true)).'.'.$ext;
+    //echo $uniName;exit;
+    $destination=$path.'/'.$uniName;
+    if(@move_uploaded_file($fileInfo['tmp_name'],$destination)){
+        echo '图片上传成功';
+
+    }else{
+        echo '图片上传失败';
+    }
+}else{
+    //匹配错误信息
+    switch($fileInfo['error']){
+        case 1:
+            echo '上传文件超过了PHP配置文件中upload_max_filesize选项的值';
+            break;
+        case 2:
+            echo '超过了表单MAX_FILE_SIZE限制的大小';
+            break;
+        case 3:
+            echo '文件部分被上传';
+            break;
+        case 4:
+            echo '没有选择上传文件';
+            break;
+        case 6:
+            echo '没有找到临时目录';
+            break;
+        case 7:
+        case 8:
+            echo '系统错误';
+            break;
+    }
+}
+
+
+
+
+
+
     admin_priv('goods_manage');
 
     $product['goods_id']        = intval($_POST['goods_id']);
     $product['attr']            = $_POST['attr'];
     $product['product_sn']      = $_POST['product_sn'];
     $product['product_number']  = $_POST['product_number'];
+    $product['attributeprice']  = $_POST['attributeprice'];
+
+
+
+
+
+
 
     /* 是否存在商品id */
     if (empty($product['goods_id']))
@@ -2490,7 +2594,7 @@ elseif ($_REQUEST['act'] == 'product_add_execute')
         }
 
         /* 插入货品表 */
-        $sql = "INSERT INTO " . $GLOBALS['ecs']->table('products') . " (goods_id, goods_attr, product_sn, product_number)  VALUES ('" . $product['goods_id'] . "', '$goods_attr', '$value', '" . $product['product_number'][$key] . "')";
+        $sql = "INSERT INTO " . $GLOBALS['ecs']->table('products') . " (goods_id, goods_attr, product_sn, product_number,attributeprice,attributeimg)  VALUES ('" . $product['goods_id'] . "', '$goods_attr', '$value', '" . $product['product_number'][$key] . "', '" . $product['attributeprice'][$key] . "','$destination')";
         if (!$GLOBALS['db']->query($sql))
         {
             continue;
@@ -2554,7 +2658,7 @@ elseif ($_REQUEST['act'] == 'batch_product')
         //取出货品库存总数
         $sum = 0;
         $goods_id = 0;
-        $sql = "SELECT product_id, goods_id, product_number FROM  " . $GLOBALS['ecs']->table('products') . " WHERE product_id $product_bound";
+        $sql = "SELECT product_id, goods_id, product_number,attributeprice FROM  " . $GLOBALS['ecs']->table('products') . " WHERE product_id $product_bound";
         $product_array = $GLOBALS['db']->getAll($sql);
         if (!empty($product_array))
         {
@@ -2592,6 +2696,8 @@ elseif ($_REQUEST['act'] == 'batch_product')
     /* 返回 */
     sys_msg($_LANG['no_operation'], 1, $link);
 }
+
+
 
 /**
  * 列表链接

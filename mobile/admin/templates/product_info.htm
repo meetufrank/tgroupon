@@ -1,16 +1,34 @@
 <!-- $Id: goods_list.htm 16529 2009-08-12 05:38:57Z wangleisvn $ -->
 
+
+<style>
+
+.js_showBox{
+  width:100px;
+  height:100px;
+  border:2px solid white;
+  margin:0 auto;
+}
+.js_showBox img{
+  width:100px;
+  height:100px;
+}
+
+</style>
 {if $full_page}
 
 {include file="pageheader.htm"}
 {insert_scripts files="../data/static/js/utils.js,./js/listtable.js"}
 {insert_scripts files="./js/validator.js"}
+{insert_scripts files="./js/jquery.js"}
+{insert_scripts files="./js/jquery.uploadView.js"}
+{insert_scripts files="./layer_mobile/layer.js"}
 <!-- 添加货品 -->
 <div class="list-div" style="margin-bottom: 5px; margin-top: 10px;" id="listDiv">
 
 {/if}
 
-<form method="post" action="goods.php" name="addForm" id="addForm" >
+<form method="post" action="goods.php" name="addForm" id="addForm" enctype="multipart/form-data" >
 <input type="hidden" name="goods_id" value="{$goods_id}" />
 <input type="hidden" name="act" value="product_add_execute" />
   <table width="100%" cellpadding="3" cellspacing="1" id="table_list">
@@ -25,9 +43,13 @@
         <td scope="col">&nbsp;</td>
       {/foreach}
       <!-- end for specifications -->
-      <td class="label_2">{$lang.goods_sn}</td>
-      <td class="label_2">{$lang.goods_number}</td>
-      <td class="label_2">&nbsp;</td>
+      <td class="label_2" align="center">{$lang.goods_sn}</td>
+
+      <td class="label_2" align="center">属性关联图片</td>
+      <td class="label_2" align="center">属性关联价格</td>
+      <td class="label_2" align="center">{$lang.goods_number}</td>
+      <td class="label_2" align="center">&nbsp;</td>
+
     </tr>
 
     {foreach from=$product_list item=product}
@@ -35,9 +57,42 @@
       {foreach from=$product.goods_attr item=goods_attr}
       <td scope="col"><div align="center">{$goods_attr}</div></td>
       {/foreach}
-      <td class="td_1"><span onclick="listTable.edit(this, 'edit_product_sn', {$product.product_id})">{$product.product_sn|default:$lang.n_a}</span></td>
-      <td class="td_1"><span onclick="listTable.edit(this, 'edit_product_number', {$product.product_id})">{$product.product_number}</span></td>
+      <td><span onclick="listTable.edit(this, 'edit_product_sn', {$product.product_id})">{$product.product_sn|default:$lang.n_a}</span></td>
+
+      <!-- 保存后列表 -->
+       <!-- 属性关联图片 -->
+
+      <td  align="center">
+<!--
+{if $product.attributeimg == ''}
+  没有属性关联图片
+{else}
+  <img style=" width:100px; height:100px;" src="{$product.attributeimg}"  />
+{/if} -->
+  <div class="control-group js_uploadBox" id="center" onClick="a()">
+      <div class="js_showBox"><input class="js_upFile" type="file" id="btn_file" name="cover" style="display:none">
+      {if $product.attributeimg == ''}
+        没有属性关联图片
+      {else}
+        <img class="js_logoBox style=" width:100px; height:100px;" src="{$product.attributeimg}"  />
+      {/if}
+
+      </div>
+
+        <div class="btn-upload" style="display:none">
+             <a href="javascript:;" class="a-upload">
+             <input class="js_upFile" type="file" id="b"  name="cover">点击这里上传照片
+             </a>
+        </div>
+     </div>
+      </td>
+      <!-- 属性关联价格 -->
+      <td><span onclick="listTable.edit(this, 'edit_attributeprice', {$product.product_id})">{$product.attributeprice}</span></td>
+
+      <td><span onclick="listTable.edit(this, 'edit_product_number', {$product.product_id})">
+      {$product.product_number}</span></td>
       <td><input type="button" class="button" value=" - " onclick="listTable.remove({$product.product_id}, '{$lang.trash_product_confirm}', 'product_remove')"/></td>
+
     </tr>
     {/foreach}
 
@@ -55,8 +110,22 @@
     {/foreach}
     <!-- end for specifications_value -->
 
-      <td class="label_2"><input type="text" name="product_sn[]" value="" size="20"/></td>
-      <td class="label_2"><input type="text" name="product_number[]" value="{$product_number}" size="10"/></td>
+      <td  align="center"><input type="text" name="product_sn[]" value="" size="20"/></td>
+       <td align="center">
+
+       <div class="control-group js_uploadBox" id="center" onClick="a()">
+      <div class="js_showBox"><input class="js_upFile" type="file" id="btn_file" name="cover" style="display:none"><img class="js_logoBox" src="../../images/6.png"></div>
+
+        <div class="btn-upload" style="display:none">
+             <a href="javascript:;" class="a-upload">
+             <input class="js_upFile" type="file" id="b"  name="cover">点击这里上传照片
+             </a>
+        </div>
+     </div>
+
+</td>
+      <td><input type="text" name="attributeprice[]"  value="{$attributeprice}"  size="10"/></td>
+      <td><input  type="text" name="product_number[]" value="{$product_number}" size="10"/></td>
       <td><input type="button" class="button" value=" + " onclick="javascript:add_attr_product();"/></td>
     </tr>
 
@@ -198,6 +267,39 @@ function  checkgood_sn()
 
 {/literal}
 </script>
+<script type="text/javascript">
+function a(){
+
+document.getElementById('b').click();
+
+return false;
+}
+
+</script>
+
+<script type="text/javascript">
+$(".js_upFile").uploadView({
+  uploadBox: '.js_uploadBox',//设置上传框容器
+  showBox : '.js_showBox',//设置显示预览图片的容器
+  width : 100, //预览图片的宽度，单位px
+  height : 100, //预览图片的高度，单位px
+  allowType: ["gif", "jpeg", "jpg", "bmp", "png"], //允许上传图片的类型
+  maxSize :10, //允许上传图片的最大尺寸，单位M
+  success:function(e){
+//    $(".js_uploadText").text('更改');
+//    alert('图片上传成功');
+    layer.open({
+      content: '图片上传成功'
+      ,skin: 'msg'
+      ,time: 1 //2秒后自动关闭
+      });
+  }
+});
+</script>
 {include file="pagefooter.htm"}
 
 {/if}
+
+<script type="text/javascript">
+  var process_request = "{$lang.process_request}";
+</script>

@@ -26,7 +26,38 @@ require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/shopping_flow.php');
 require(ROOT_PATH . 'head.php');
  $_SESSION['user_id']=1628;
 
-$smarty->assign('ajaxurl','shop-single.php');  //ajax访问地址
+
+
+
+     //商品关联艺术家(图像，名称，地区)
+
+    //商品id
+    $goodsid = 165;
+
+    $sqlspxx = "select u.artiststalk,u.hav_logo,u.user_name,u.country from `ecs_goods` as g inner join  `ecs_admin_user` as u on g.arter_id = u.user_id where g.goods_id = '$goodsid'";
+    $spxx = $db->getAll($sqlspxx);
+
+    $smarty->assign('spxx',  $spxx);
+
+
+    //商品详细描述
+    $sqlmiaoshu = "select g.goods_desc from `ecs_goods` as g  where g.goods_id = '$goodsid'";
+    $miaoshu = $db->getRow($sqlmiaoshu);
+    // print_r($miaoshu);
+    $smarty->assign('miaoshu',  $miaoshu);
+
+
+    //猜你喜欢
+    $sqlxihuan = "SELECT g.goods_id,g.goods_name,g.goods_img,g.market_price   FROM `ecs_goods` as g where g.goods_id !='$goodsid' ORDER BY RAND() LIMIT 4 ";
+    $xihuan = $db->getAll($sqlxihuan);
+    $smarty->assign('xihuan',  $xihuan);
+
+
+
+
+
+
+ $smarty->assign('ajaxurl','shop-single.php');  //ajax访问地址
 
 
 if ((DEBUG_MODE & 2) != 2)

@@ -79,80 +79,10 @@ require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 
 
 
-if(isset($_REQUEST['code'])&&isset($_REQUEST['state'])&&$action == 'weixin'){
-    include_once(ROOT_PATH . 'includes/website/jntoo.php');
-
-    $code = $_GET['code'];
-    $state = $_GET['state'];
-    //xxxx修改成自己的appID和AppSecret
-    $appid = 'wx7eee3208b7b59ea1';
-    $appsecret = '9d9360d18e266b81d69888227fbbadeb';
-
-    if (empty($code))
-    show_message('授权失败', '返回首页', '', 'wrong');
-
-    $token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$appsecret.'&code='.$code.'&grant_type=authorization_code';
-    $token = json_decode(file_get_contents($token_url));
-    if (isset($token->errcode))
-    {
-        show_message($token->errmsg, '返回首页', '', 'wrong');
-    }
-    $access_token_url = 'https://api.weixin.qq.com/sns/oauth2/refresh_token?appid='.$appid.'&grant_type=refresh_token&refresh_token='.$token->refresh_token;
-
-    $access_token = json_decode(file_get_contents($access_token_url));
-    if (isset($access_token->errcode))
-    {
-        show_message($access_token->errmsg, '返回首页', '', 'wrong');
-    }
-    $user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token->access_token.'&openid='.$access_token->openid.'&lang=zh_CN';
-
-    $user_info = json_decode(file_get_contents($user_info_url));
-    if (isset($user_info->errcode)) {
-        show_message($user_info->errmsg, '返回首页', '', 'wrong');
-    }
-
-    setcookie('user_info',$user_info);
-    $info = $user_info;
-    $type='weixin';
-    $info_user_id = $type .'_'.$info->openid; //  加个标识！！！防止 其他的标识 一样  // 以后的ID 标识 将以这种形式 辨认
-    $info->nickname= str_replace("'" , "" ,$info->nickname);
 
 
-    $sql = 'SELECT user_name,password,aite_id FROM '.$ecs->table('users').' WHERE aite_id = \''.$info_user_id.'\' OR aite_id=\''.$info->openid.'\'';
-
-    $count = $db->getRow($sql);
-    $login_name = $info->nickname;
-    if(!$count)   // 没有当前数据
-    {
-        if($user->check_user($info->nickname))  // 重名处理
-        {
-            $info->nickname = $info->nickname.'_'.$type.(rand()*1000);
-        }
-        $login_name = $info->nickname;
-        $user_pass = $user->compile_password(array('password'=>$info->openid));
-        $sql = 'INSERT INTO '.$ecs->table('users').'(user_name , password, aite_id , sex , reg_time , user_rank , is_validated) VALUES '.
-                "('$info->nickname' , '$user_pass' , '$info_user_id' , '$info->sex' , '".gmtime()."' , '0' , '1')" ;
-        $db->query($sql);
-    }
-    else
-    {
-        $login_name = $count['user_name'];
-        $sql = '';
-        if($count['aite_id'] == $info->openid)
-        {
-            $sql = 'UPDATE '.$ecs->table('users')." SET aite_id = '$info_user_id' WHERE aite_id = '$count[aite_id]'";
-            $db->query($sql);
-        }
-    }
 
 
-    $user->set_session($login_name);
-    $user->set_cookie($login_name);
-    update_user_info();
-
-    $redirect_url =  "http://".$_SERVER["HTTP_HOST"].str_replace("user.php", "index.php", $_SERVER["REQUEST_URI"]);
-    header('Location: '.$redirect_url);
-}
 
 
 
@@ -1232,10 +1162,66 @@ elseif ($action == 'order_list')
 
     $merge  = get_user_merge($user_id);
 
+
+
+    //收藏的单品
+    $user_id = 1632;
+    $sqlspnum = "SELECT COUNT(*) FROM " .$ecs->table('collect_goods'). " WHERE user_id = '$user_id' order by add_time";
+    $spnum = $db->getOne($sqlspnum);
+    $smarty->assign('spnum',  $spnum);
+
+    //收藏的商品信息(商品图片,商品名称)
+    $sqlspxx = "select shoc.goods_id,shoc.rec_id,gs.goods_img,gs.goods_name from ecs_collect_goods as shoc inner JOIN
+    ecs_goods as gs on shoc.goods_id = gs.goods_id
+    where `user_id` = '$user_id' order by shoc.add_time";
+    $spxx = $db->getAll($sqlspxx);
+    // var_dump($spxx);
+    $smarty->assign('spxx',  $spxx);
+
+
+
+    //收藏的艺术家
+    $user_ids = 1633;
+    $sqlysjnum = "SELECT COUNT(*) FROM " .$ecs->table('shocangysj'). " WHERE user_id = '$user_ids' order by add_time";
+    $ysjnum = $db->getOne($sqlysjnum);
+    $smarty->assign('ysjnum',  $ysjnum);
+
+
+    //收藏的艺术家(艺术家头像,艺术家名称)
+    $sqlysj = "select sc.ysj_id,sc.scid,u.user_name,u.hav_logo from ecs_shocangysj as sc inner join ecs_admin_user as u ON
+    sc.ysj_id = u.user_id
+    where sc.`user_id` = '$user_ids' order by sc.add_time";
+    $ysjxx = $db->getAll($sqlysj);
+    $smarty->assign('ysjxx',  $ysjxx);
+
+
+
     $smarty->assign('merge',  $merge);
     $smarty->assign('pager',  $pager);
     $smarty->assign('orders', $orders);
     $smarty->display('my_order.dwt');
+}/* 查看订单列表 */
+
+
+//删除收藏商品
+elseif ($action == 'del')
+{
+
+    $recid = $_POST['recid'];
+    $sqlspdel ="DELETE FROM  `ecs_collect_goods`
+    WHERE rec_id = '$recid';";
+    $db->query($sqlspdel);
+
+
+}
+//删除艺术家收藏
+elseif ($action == 'delsyj')
+{
+
+     $scysjid = $_POST['scysjid'];
+     $sqlysjdel ="DELETE FROM  `ecs_shocangysj`
+     WHERE scid = '$scysjid'";
+     $db->query($sqlysjdel);
 }
 
 /* 异步显示订单列表 by wang */
@@ -4064,6 +4050,9 @@ function get_accountlist($user_id, $account_type = '')
 
     return array('account' => $arr, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
 }
+
+
+
 
 
 ?>
