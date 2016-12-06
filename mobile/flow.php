@@ -612,7 +612,7 @@ elseif ($_REQUEST['step'] == 'consignee')
         $consignee = array(
             'address_id'    => empty($_POST['address_id']) ? 0  :   intval($_POST['address_id']),
             'consignee'     => empty($_POST['consignee'])  ? '' :   compile_str(trim($_POST['consignee'])),
-            'country'       => empty($_POST['country'])    ? '' :   intval($_POST['country']),
+            'country'       => empty($_POST['country'])    ? 1 :   intval($_POST['country']),
             'province'      => empty($_POST['province'])   ? '' :   intval($_POST['province']),
             'city'          => empty($_POST['city'])       ? '' :   intval($_POST['city']),
             'district'      => empty($_POST['district'])   ? '' :   intval($_POST['district']),
@@ -2458,6 +2458,7 @@ elseif($_REQUEST['step'] == 'ajax_cart_goods')
 }
 else
 {
+
     /* 标记购物流程为普通商品 */
     $_SESSION['flow_type'] = CART_GENERAL_GOODS;
 
@@ -2521,6 +2522,8 @@ else
 
     //新增购物来路链接，用于返回跳转 by carson 20140425
     $smarty->assign('jump_http_referer', $_SERVER["HTTP_REFERER"]);
+
+
 }
 
 $smarty->assign('currency_format', $_CFG['currency_format']);

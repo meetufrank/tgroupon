@@ -109,6 +109,8 @@ elseif ($_REQUEST['act'] == 'query')
 
 elseif ($_REQUEST['act'] == 'info')
 {
+
+
     /* 根据订单id或订单号查询订单信息 */
     if (isset($_REQUEST['order_id']))
     {
@@ -897,14 +899,14 @@ elseif ($_REQUEST['act'] == 'delivery_ship')
             $sms->send($order['mobile'], sprintf($GLOBALS['_LANG']['order_shipped_sms'], $order['order_sn'],
                 local_date($GLOBALS['_LANG']['sms_time_format']), $GLOBALS['_CFG']['shop_name']), 0);
         }
-		
-		
+
+
 		/* 微信发送 */
 		$wxch_order_name = 'order';
 		include(ROOT_PATH . 'admin/wxch_order.php');
 		/* 更新商品销量 */
 		$sql = 'SELECT goods_id,goods_number FROM '.$GLOBALS['ecs']->table('order_goods').' WHERE order_id ='.$order_id;
-		$order_res = $GLOBALS['db']->getAll($sql);	
+		$order_res = $GLOBALS['db']->getAll($sql);
 		foreach($order_res as $idx=>$val)
 		{
 			$sql = 'SELECT SUM(og.goods_number) as goods_number ' .
@@ -916,11 +918,11 @@ elseif ($_REQUEST['act'] == 'delivery_ship')
 				"AND (o.pay_status = '" . PS_PAYED . "' OR o.pay_status = '" . PS_PAYING . "') " .
 				"AND (o.shipping_status = '" . SS_SHIPPED . "' OR o.shipping_status = '" . SS_RECEIVED . "') AND g.goods_id=".$val['goods_id'];
 
-			$sales_volume = $GLOBALS['db']->getOne($sql);	
+			$sales_volume = $GLOBALS['db']->getOne($sql);
 			$sql = "update " . $ecs->table('goods') . " set sales_volume=$sales_volume WHERE goods_id =".$val['goods_id'];
-	
+
 			$db->query($sql);
-		}	
+		}
     }
 
     /* 清除缓存 */
@@ -1595,6 +1597,7 @@ elseif ($_REQUEST['act'] == 'step_post')
     /* 保存配送信息 */
     elseif ('shipping' == $step)
     {
+
         /* 如果不存在实体商品，退出 */
         if (!exist_real_goods($order_id))
         {

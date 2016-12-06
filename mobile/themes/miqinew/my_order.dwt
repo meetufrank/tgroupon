@@ -312,62 +312,60 @@
       <!-- Tab panes -->
       <div class="tab-content">
       <!--#订单列表界面 start-->
-    {if $action eq 'order_list'}
+
+    <!--{if $action eq 'order_list'}-->
         <div role="tabpanel" class="tab-pane transition fade in active" id="tab1">
         	<!-- Nav Tabs -->
 		      <ul class="nav-pills" role="tablist">
-		        <li class="active"><a href="#tab1_1" role="tab" data-toggle="tab">待付款<span>2</span></a></li>
-		        <li><a href="#tab1_2" role="tab" data-toggle="tab">待发货<span>1</span></a></li>
-		        <li><a href="#tab1_3" role="tab" data-toggle="tab">待收货<span>1</span></a></li>
+		        <li class="active"><a href="#tab1_1" role="tab" data-toggle="tab">待付款<span>{$record_count_no}</span></a></li>
+		        <li><a href="#tab1_2" role="tab" data-toggle="tab">待发货<span>{$record_count_yes}</span></a></li>
+		        <li><a href="#tab1_3" role="tab" data-toggle="tab">待收货<span>{$record_count_come}</span></a></li>
 		      </ul>
 		      <!-- Tab panes -->
 		      <div class="tab-content">
+          <!--{foreach from=$no_orders item=no}-->
+
 		        <div role="tabpanel" class="tab-pane transition fade in active" id="tab1_1">
 					          <div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
 					          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
-					          			订单编号：356666636329
+					          			订单编号：{$no.order_sn}
 					                </div>
 					            <!-- Item -->
+                      <!--{foreach from=$no.good_list item=gl}-->
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
 					                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
 					              </a>
 					              <div class="item-details">
-					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
-					                <h4 class="item-price">数量：1 </h4>
-					                <h4 class="item-price">$85.90</h4>
+					                <h3 class="item-title"><a href="shop-single.html">{$gl.goods_name}</a></h3>
+					                <h4 class="item-price">数量：{$gl.goods_number} </h4>
+					                <h4 class="item-price">{$gl.subtotal} </h4>
 					              </div>
 					            </div><!-- .item -->
-					            <!-- Item -->
-					            <div class="item">
-					              <a href="shop-single.html" class="item-thumb">
-					                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
-					              </a>
-					              <div class="item-details">
-					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
-					                <h4 class="item-price">数量：1 </h4>
-					                <h4 class="item-price">$85.90</h4>
-					              </div>
-					            </div><!-- .item -->
+                      <!-- {/foreach} -->
+
 					            <!-- Subtotal -->
 					            <div class="cart-subtotal space-bottom">
 					              <div class="column">
 					                <h3 class="toolbar-title">总价：</h3>
 					              </div>
 					              <div class="column">
-					                <h3 class="amount text-danger">$161.90</h3>
+					                <h3 class="amount1 text-danger">{$no.total_fee}</h3>
 					              </div>
 					            </div><!-- .subtotal -->
 					            <div style="background: #f8f8f8; padding:10px; margin-bottom: 20px;">
-					            	收件人：里默默<br>
-									手机号：18954781245<br>
-									地   址 ：上海市五角场黄兴路100号1号楼102室
+					            	收件人：{$no.consignee}<br>
+									手机号：{$no.tel}<br>
+									地   址 ：{$no.address}
 					            </div>
 					            <!-- Buttons -->
+                      {$no.handler}
+                      <!--
 					            <div class="text-right">
 					              <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
 					              <a href="#" class="btn btn-primary waves-effect waves-light">去支付</a>
 					            </div>
+                      -->
 					          </div>
 
 
@@ -418,6 +416,7 @@
 					            </div>
 					          </div>
 		        </div>
+            <!--{/foreach}-->
 		        <div role="tabpanel" class="tab-pane transition fade" id="tab1_2">
 		        	<div class="shopping-cart-1 padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
 					          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
@@ -531,21 +530,9 @@
 		        </div>
 		      </div>
         </div>
-        <script type="text/javascript" src="{$ectouch_themes}/js/jquery.more.js"></script>
-    <script type="text/javascript">
-    {foreach from=$lang.merge_order_js item=item key=key}
-      var {$key} = "{$item}";
-    {/foreach}
-    jQuery(function($){
-      $('.order_list').more({'address': 'user.php?act=async_order_list', amount: 3, 'spinner_code':'<div style="text-align:center; margin:10px;"><img src="{$ectouch_themes}/images/loader.gif" /></div>'})
-    $(window).scroll(function () {
-      if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-        $('.get_more').click();
-      }
-    });
-    });
-    </script>
-    {/if}
+        <!-- {/if} -->
+
+
         <div role="tabpanel" class="tab-pane transition fade" id="tab2">
         	<!-- Nav Tabs -->
 		      <ul class="nav-pills" role="tablist">

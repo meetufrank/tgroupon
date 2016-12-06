@@ -1224,17 +1224,30 @@ elseif ($action == 'order_list')
 
     $page = isset($_REQUEST['page']) ? intval($_REQUEST['page']) : 1;
 
-    $record_count = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('order_info'). " WHERE user_id = '$user_id'");
 
+      $string1="  and pay_status=0 and shipping_status=0";//待付款
+      $string2="  and pay_status=2 and shipping_status=0";//待发货
+       $string3=" and pay_status=2 and shipping_status=1";//待收货
+
+    $record_count_no = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('order_info'). " WHERE user_id = '$user_id'  ".$string1);//待付款
+    $record_count_yes = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('order_info'). " WHERE user_id = '$user_id' ".$string2);//待发货
+    $record_count_come = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('order_info'). " WHERE user_id = '$user_id' ".$string3);//待收货
     $pager  = get_pager('user.php', array('act' => $action), $record_count, $page);
 
-    $orders = get_user_orders_new($user_id, 1,$pager['size'], $pager['start']);
-
+    $no_orders = get_user_orders_new($user_id, 1,$pager['size'], $pager['start']);  //未付款订单列表
+    $ye_orders = get_user_orders_new($user_id, 2,$pager['size'], $pager['start']);  //待发货订单列表
+    $come_orders = get_user_orders_new($user_id, 3,$pager['size'], $pager['start']);  //待收货订单列表
+    //print_r($no_orders);
     $merge  = get_user_merge($user_id);
 
     $smarty->assign('merge',  $merge);
     $smarty->assign('pager',  $pager);
-    $smarty->assign('orders', $orders);
+    $smarty->assign('record_count_no',$record_count_no);//待付款
+    $smarty->assign('record_count_yes',$record_count_yes);//待发货
+    $smarty->assign('record_count_come',$record_count_come);//待收货
+    $smarty->assign('no_orders', $no_orders);//待付款
+    $smarty->assign('ye_orders', $ye_orders);//待发货
+    $smarty->assign('come_orders', $come_orders);//待收货
     $smarty->display('my_order.dwt');
 }
 

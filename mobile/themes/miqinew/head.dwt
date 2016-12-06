@@ -178,35 +178,61 @@
           </form>
         </div>
 
-        <!-- 新增地址 -->
-        <div class="toolbar-section" id="address">
 
+
+
+                <!-- 填写地址 -->
+        <div class="toolbar-section" id="address">
+          <form method="post" class="checkout-form container" id="address_form">
             <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
               <div class="column">
-                <h3 class="toolbar-title">新增地址</h3>
+                <h3 class="toolbar-title">填写地址</h3>
+              </div>
+            </div><!-- .subtotal -->
+            <input type="text" class="form-control" name="consignee" placeholder="收件人">
+            <input type="text" class="form-control" name="tel" placeholder="手机号码">
+            <div class="row" >
+              <div class="col-md-4">
+                <div class="form-element form-select">
+
+                  <select name="province" id="province"   class="form-control" >
+                <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+                <!-- {foreach from=$province_list item=province} -->
+                <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                <!-- {/foreach} -->
+                 </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-element form-select">
+
+                  <select name="city" id="city"  class="form-control">
+                  <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+                  <!-- {foreach from=$city_list.$sn item=city} -->
+                  <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+                  <!-- {/foreach} -->
+                 </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-element form-select">
+                  <select name="district" id="district"   class="form-control">
+                    <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+                    <!-- {foreach from=$district_list.$sn item=district} -->
+                    <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+                    <!-- {/foreach} -->
+                  </select>
+                </div>
               </div>
             </div>
 
-            <form method="post" class="checkout-form container" action="#" id="xzdz">
-            <div>
-
-                <p><input type="text" class="form-control" name="UserName" placeholder="收件人"><span></span></p>
-                <p><input type="text" class="form-control" name="UserTel" placeholder="手机号码"><span></span></p>
-                <div class="row">
-                  <div class="col-sm-6">
-                  <p><input type="text" class="form-control" name="UserSf" placeholder="省份"><span></span></p>
-                  </div>
-                  <div class="col-sm-6">
-                      <p><input type="text" class="form-control" name="UserCity" placeholder="城市"><span></span></p>
-                  </div>
-                </div>
-                <p><input type="text" class="form-control" name="UserAddress" placeholder="详细地址"><span></span></p>
+                <p><input type="text" class="form-control" name="address" placeholder="详细地址"><span></span></p>
             </div>
             <div class="text-right">
               <a href="#checkout" class="btn btn-default btn-ghost icon-left toggle-section">
                   返回
               </a>
-              <button class="btn btn-primary waves-effect waves-light" >
+              <button class="btn btn-primary waves-effect waves-light"  id="ad_submit">
                   确认
               </button>
             </div>
@@ -223,6 +249,89 @@
 
   <script type="text/javascript">
   $(document).ready(function () {
+       $("#ad_submit").click(function(){
+
+             $.ajax({
+              type:"POST",
+              url:"flow.php?step=consignee",
+              data:$('#address_form').serialize(),
+              success: function(data){
+
+                    alert('aa');
+
+                    }
+                   });
+
+       });
+
+      $("#province").change(function(){
+          var id=$("#province").val();
+          $("#city").find("option").remove();
+                    $("#district").find("option").remove();
+                   $("#city").append('<option value="0">{$lang.please_select}{$name_of_region[2]}</option>');
+                   $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
+          if(id!=0){
+           $.ajax({
+              url:"ajax_region.php",
+              data:{ajax_province:id},
+              dataType:"JSON",
+              success: function(data){
+
+                   $.each(data,function(i){
+
+                       $("#city").append(
+                         ' <option value="'+data[i].region_id+'"  >'+data[i].region_name+'</option>'
+                       );
+
+
+                   });
+                   var cityid=$("#city").val();
+
+
+
+
+
+              },
+              error:function(){
+                    alert('error');
+              }
+            });
+          }
+
+      });
+      $("#city").change(function(){
+          var id=$("#city").val();
+          $("#district").find("option").remove();
+          $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
+          if(id!=0){
+           $.ajax({
+              url:"ajax_region.php",
+              data:{ajax_province:id},
+              dataType:"JSON",
+              success: function(data){
+
+                   $.each(data,function(i){
+                   if(i==0){
+                       $("#district").append(
+                         ' <option value="'+data[i].region_id+'" selected >'+data[i].region_name+'</option>'
+                       );
+                   }else{
+                       $("#district").append(
+                         ' <option value="'+data[i].region_id+'" >'+data[i].region_name+'</option>'
+                       );
+                   }
+
+                   });
+
+              },
+              error:function(){
+                    alert('error');
+              }
+            });
+          }
+
+      });
+
       $("#sub_cart").click(function(){
                  var chk_value=[];
                  var address=$('input[name="co_shipping"]:checked').val();
