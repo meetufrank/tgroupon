@@ -105,6 +105,14 @@
 
 </head>
 
+
+
+<!-- 快递100测试 -->
+
+<a href="http://api.kuaidi100.com/api?id=7e133ebbc5fd71b6&com=[]&nu=[]&valicode=[]&show=[0|1|2|3]&muti=[0|1]&order=[desc|asc] "></a>
+
+
+
 <!-- Body -->
 <!-- Adding/Removing class ".page-preloading" is enabling/disabling background smooth page transition effect and spinner. Make sure you also added/removed link to page-preloading.js script in the <head> of the document. -->
 <body class="page-preloading">
@@ -557,23 +565,23 @@
 		      <div class="tab-content">
 		        <div role="tabpanel" class="tab-pane transition fade in active" id="tab2_1">
 		        	<div class="row">
-					
+
 					<script>
 					function cls(){
-					   var recid = document.getElementById("recid").value;		   
-                       Ajax.call('my_user.php?act=del', 'recid=' + recid, 'POST', 'JSON'); 
-					   document.getElementById("shocsp").remove();		   
+					   var recid = document.getElementById("recid").value;
+                       Ajax.call('my_user.php?act=del', 'recid=' + recid, 'POST', 'JSON');
+					   document.getElementById("shocsp").remove();
 					}
-					
+
 					function cl(){
-					   var scysjid = document.getElementById("scysjid").value;		   
-                       Ajax.call('my_user.php?act=delsyj', 'scysjid=' + scysjid, 'POST', 'JSON'); 
-					   document.getElementById("ysjdel").remove();		   
+					   var scysjid = document.getElementById("scysjid").value;
+                       Ajax.call('my_user.php?act=delsyj', 'scysjid=' + scysjid, 'POST', 'JSON');
+					   document.getElementById("ysjdel").remove();
 					}
-					
+
 					</script>
-	   
-	    {foreach from=$spxx item=spxx name=no}	
+
+	    {foreach from=$spxx item=spxx name=no}
 		<div class="col-md-4 col-sm-6" id="shocsp">
           <div class="shop-item">
             <div class="shop-thumbnail">
@@ -592,24 +600,24 @@
           </div><!-- .shop-item -->
         </div>
 		{/foreach}
-                     
+
 		        	</div>
-					 
-					  
-					 
+
+
+
 		        </div>
-				
+
 				<script>
 				   function ysjdwt(){
 				    var s = document.getElementById("ysjimg").click();
 				   }
-				
+
 				</script>
-				
+
 		        <div role="tabpanel" class="tab-pane transition fade" id="tab2_2">
 		        	<div class="row">
 					     {foreach from=$ysjxx item=ysjxx name=no}
-						 
+
 							<div class="col-md-2 col-sm-3"  id="ysjdel">
 							  <div class="teammate">
 								<div class="teammate-thumb">
