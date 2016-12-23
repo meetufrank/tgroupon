@@ -16,6 +16,7 @@
 define('IN_ECTOUCH', true);
 define('IN_ECS', true);
 require(dirname(__FILE__) . '/includes/init.php');
+require(ROOT_PATH . '/include/upload.php');
 
 require_once(ROOT_PATH . '/' . ADMIN_PATH . '/includes/lib_goods.php');
 include_once(ROOT_PATH . '/include/cls_image_tianxin.php');
@@ -371,7 +372,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
             $sql = "DELETE FROM " . $ecs->table('goods_attr') . " WHERE goods_id = 0";
             $db->query($sql);
 
-            $sql = "SELECT 0 AS goods_id, attr_id, attr_value, attr_price " .
+            $sql = "SELECT 0 AS goods_id, attr_id, attr_value, attr_price,attr_img " .
                     "FROM " . $ecs->table('goods_attr') .
                     " WHERE goods_id = '$_REQUEST[goods_id]' ";
             $res = $db->query($sql);
@@ -955,6 +956,23 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         admin_log($_POST['goods_name'], 'edit', 'goods');
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /* 处理属性 */
     if ((isset($_POST['attr_id_list']) && isset($_POST['attr_value_list'])) || (empty($_POST['attr_id_list']) && empty($_POST['attr_value_list'])))
     {
@@ -992,13 +1010,65 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         {
             $goods_attr_list[$row['attr_id']][$row['attr_value']] = array('sign' => 'delete', 'goods_attr_id' => $row['goods_attr_id']);
         }
+
+
+
+
+         //商品属性图片
+               //上传图片
+if($_FILES['attr_img']){
+
+           //图片上传处理
+ $up = new FileUpload();
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+    $path="images/shuxing/";
+    $up -> set("path", ROOT_PATH.$path);
+    $up -> set("maxsize", 2000000);
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+    $up -> set("israndname", true);
+
+
+    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
+    if($up -> upload("attr_img")) {
+        // echo '<pre>';
+        // //获取上传后文件名子
+        // var_dump($up->getFileName());
+        // echo '</pre>';
+        // $attr_img=$config['mobilesite_url'].$path.$up->getFileName();
+
+        $attr_imgs = $up->getFileName();
+
+
+    } else {
+        // echo '<pre>';
+        // //获取上传失败以后的错误提示
+        // var_dump($up->getErrorMsg());
+        // echo '</pre>';
+        sys_msg($up->getErrorMsg(), 1);
+    }
+
+}
+    // $attr_imgs = $up->getFileName();
+    // print_r($attr_img);
+    var_dump($attr_imgs);
+
+
+
+
+
+
+
         // 循环现有的，根据原有的做相应处理
         if(isset($_POST['attr_id_list']))
         {
             foreach ($_POST['attr_id_list'] AS $key => $attr_id)
             {
+
                 $attr_value = $_POST['attr_value_list'][$key];
                 $attr_price = $_POST['attr_price_list'][$key];
+                $attr_img = $attr_imgs[$key];
+
+
                 if (!empty($attr_value))
                 {
                     if (isset($goods_attr_list[$attr_id][$attr_value]))
@@ -1006,14 +1076,17 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                         // 如果原来有，标记为更新
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'update';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
+                        $goods_attr_list[$attr_id][$attr_value]['attr_img'] = $config['mobilesite_url'].$path.$attr_img;
                     }
                     else
                     {
                         // 如果原来没有，标记为新增
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'insert';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
+                        $goods_attr_list[$attr_id][$attr_value]['attr_img'] = $config['mobilesite_url'].$path.$attr_img;
                     }
                     $val_arr = explode(' ', $attr_value);
+
                     foreach ($val_arr AS $k => $v)
                     {
                         if (!isset($keywords_arr[$v]) && $attr_list[$attr_id] == "1")
@@ -1037,20 +1110,28 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
             {
                 if ($info['sign'] == 'insert')
                 {
-                    $sql = "INSERT INTO " .$ecs->table('goods_attr'). " (attr_id, goods_id, attr_value, attr_price)".
-                            "VALUES ('$attr_id', '$goods_id', '$attr_value', '$info[attr_price]')";
+                    $sql = "INSERT INTO " .$ecs->table('goods_attr'). " (attr_id, goods_id, attr_value, attr_price,attr_img)".
+                            "VALUES ('$attr_id', '$goods_id', '$attr_value', '$info[attr_price]','$info[attr_img]')";
+
                 }
+                // elseif ($info['sign'] == 'update')
+                // {
+                //     $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_price = '$info[attr_price]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+                // }
                 elseif ($info['sign'] == 'update')
                 {
-                    $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_price = '$info[attr_price]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+                    $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_img = '$info[attr_img]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
                 }
                 else
                 {
                     $sql = "DELETE FROM " .$ecs->table('goods_attr'). " WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
                 }
                 $db->query($sql);
+
             }
+
         }
+
     }
 
     /* 处理会员价格 */
@@ -2405,6 +2486,9 @@ elseif ($_REQUEST['act'] == 'edit_attributeprice')
     }
 }
 
+
+
+
 /*------------------------------------------------------ */
 //-- 修改货品库存
 /*------------------------------------------------------ */
@@ -2440,7 +2524,7 @@ elseif ($_REQUEST['act'] == 'product_add_execute')
 
 
 
-    //上传图片
+//上传图片
     $fileInfo=$_FILES['cover'];
 $maxSize=2097152;//允许的最大值
 $allowExt=array('jpeg','jpg','png','gif','wbmp');
@@ -2475,11 +2559,12 @@ if($fileInfo['error']==0){
     $uniName=md5(uniqid(microtime(true),true)).'.'.$ext;
     //echo $uniName;exit;
     $destination=$path.'/'.$uniName;
+
     if(@move_uploaded_file($fileInfo['tmp_name'],$destination)){
-        echo '图片上传成功';
+        echo '';
 
     }else{
-        echo '图片上传失败';
+        echo '';
     }
 }else{
     //匹配错误信息
@@ -2571,7 +2656,7 @@ if($fileInfo['error']==0){
 
         /* 是否为重复规格的货品 */
         $goods_attr = sort_goods_attr_id_array($goods_attr_id);
-        $goods_attr = implode('|', $goods_attr['sort']);
+        $goods_attr = implode(',', $goods_attr['sort']);
         if (check_goods_attr_exist($goods_attr, $product['goods_id']))
         {
             continue;
@@ -2595,6 +2680,7 @@ if($fileInfo['error']==0){
 
         /* 插入货品表 */
         $sql = "INSERT INTO " . $GLOBALS['ecs']->table('products') . " (goods_id, goods_attr, product_sn, product_number,attributeprice,attributeimg)  VALUES ('" . $product['goods_id'] . "', '$goods_attr', '$value', '" . $product['product_number'][$key] . "', '" . $product['attributeprice'][$key] . "','$destination')";
+
         if (!$GLOBALS['db']->query($sql))
         {
             continue;
