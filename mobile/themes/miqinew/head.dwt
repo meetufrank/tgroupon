@@ -1,20 +1,4 @@
-  <!-- Google Material Icons -->
-  <link href="{$ectouch_themes}/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
 
-    <!-- Brand Icons -->
-  <link href="{$ectouch_themes}/css/vendor/font-awesome.css" rel="stylesheet" media="screen">
-
-  <!-- Bootstrap -->
-  <link href="{$ectouch_themes}/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
-
-  <!-- Theme Styles -->
-  <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
-
-  <!-- Page Preloading -->
-  <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
-
-  <!-- Modernizr -->
-  <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
 
 <header class="navbar navbar-sticky">
 
@@ -116,10 +100,10 @@
                 <div class="item-details"><h3 class="item-title">
                 <a href="shop-single.php?id={$goods.goods_id}">{$goods.goods_name}</a>
                 </h3>
-                <h4 class="item-price" data-price="{$goods.market_price}">{$goods.market_price}</h4>
+                <h4 class="item-price" data-price="{$goods.goods_price}">{$goods.goods_price}</h4>
                 <div class="count-input">
                 <a class="incr-btn" data-action="decrease" href="#" onclick="changenum({$goods.rec_id},-1)">–</a>
-                <input class="quantity" type="text" value="{$goods.goods_number}" min="1" max="1000" name="goods_number[{$goods.rec_id}]" id="goods_number_{$goods.rec_id}" onkeyup="changenum({$goods.rec_id},0)">
+                <input class="quantity" type="text" value="{$goods.goods_number}" min="1" max="1000" name="goods_number[{$goods.rec_id}]" id="goods_number_{$goods.rec_id}" onkeyup="changenum({$goods.rec_id},0)" readonly>
                 <a class="incr-btn" data-action="increase" href="#" onclick="changenum({$goods.rec_id},1)">+</a>
                 </div></div>
                 <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="移出购物车"><i class="material-icons delete"></i></a></div>
@@ -138,105 +122,17 @@
             </div><!-- .subtotal -->
             <!-- Buttons -->
             <div class="text-right">
-              <a href="#checkout" class="btn btn-primary waves-effect waves-light toggle-section">支付结算</a>
+              <a href="#" class="btn btn-primary waves-effect waves-light toggle-section" id="sub_cart">去结算</a>
             </div>
           </div><!-- .shopping-cart -->
         </div><!-- .toolbar-section#cart -->
 
 
-        <!-- Checkout -->
-        <div class="toolbar-section" id="checkout">
-          <form method="post" class="checkout-form container">
-            <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
-              <div class="column">
-                <h3 class="toolbar-title">订单确认</h3>
-              </div>
-              <div class="column">
-                <h3 class="amount"><small class="hidden-xs">数量：6&nbsp;&nbsp;&nbsp;</small>$161.90</h3>
-              </div>
-            </div>
-            {foreach from=$consignee_list item=consignee key=sn}
-            <div class="form-group">
-              <label class="radio radio-inline">
-                <input type="radio" name="co_shipping" checked value="{$consignee.address_id}">
-                  联系人：{$consignee.consignee}<br>
-          手机号：{$consignee.tel}<br>
-          地   址 ：{$consignee.address}
-              </label>
-            </div>
-            {/foreach}
-
-            <h3><a class="toggle-section" href="#address">新增地址</a></h3>
-            <div class="text-right">
-              <a href="#cart" class="btn btn-default btn-ghost icon-left toggle-section">
-                  取消
-              </a>
-              <a href="#" class="btn btn-primary waves-effect waves-light" id="sub_cart">
-                  确认
-              </a>
-            </div>
-          </form>
-        </div>
 
 
 
 
-                <!-- 填写地址 -->
-        <div class="toolbar-section" id="address">
-          <form method="post" class="checkout-form container" id="address_form">
-            <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
-              <div class="column">
-                <h3 class="toolbar-title">填写地址</h3>
-              </div>
-            </div><!-- .subtotal -->
-            <input type="text" class="form-control" name="consignee" placeholder="收件人">
-            <input type="text" class="form-control" name="tel" placeholder="手机号码">
-            <div class="row" >
-              <div class="col-md-4">
-                <div class="form-element form-select">
 
-                  <select name="province" id="province"   class="form-control" >
-                <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
-                <!-- {foreach from=$province_list item=province} -->
-                <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
-                <!-- {/foreach} -->
-                 </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-element form-select">
-
-                  <select name="city" id="city"  class="form-control">
-                  <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
-                  <!-- {foreach from=$city_list.$sn item=city} -->
-                  <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
-                  <!-- {/foreach} -->
-                 </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-element form-select">
-                  <select name="district" id="district"   class="form-control">
-                    <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
-                    <!-- {foreach from=$district_list.$sn item=district} -->
-                    <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
-                    <!-- {/foreach} -->
-                  </select>
-                </div>
-              </div>
-            </div>
-
-                <p><input type="text" class="form-control" name="address" placeholder="详细地址"><span></span></p>
-            </div>
-            <div class="text-right">
-              <a href="#checkout" class="btn btn-default btn-ghost icon-left toggle-section">
-                  返回
-              </a>
-              <button class="btn btn-primary waves-effect waves-light"  id="ad_submit">
-                  确认
-              </button>
-            </div>
-            </form>
             </div>
       </div>
     </header>
@@ -247,109 +143,20 @@
   <script src="{$ectouch_themes}/js/jquery.validate.js" type="text/javascript"></script>
   <script src="{$ectouch_themes}/js/messages_zh.js" type="text/javascript"></script>
 
+
   <script type="text/javascript">
   $(document).ready(function () {
-       $("#ad_submit").click(function(){
 
-             $.ajax({
-              type:"POST",
-              url:"flow.php?step=consignee",
-              data:$('#address_form').serialize(),
-              success: function(data){
-
-                    alert('aa');
-
-                    }
-                   });
-
-       });
-
-      $("#province").change(function(){
-          var id=$("#province").val();
-          $("#city").find("option").remove();
-                    $("#district").find("option").remove();
-                   $("#city").append('<option value="0">{$lang.please_select}{$name_of_region[2]}</option>');
-                   $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
-          if(id!=0){
-           $.ajax({
-              url:"ajax_region.php",
-              data:{ajax_province:id},
-              dataType:"JSON",
-              success: function(data){
-
-                   $.each(data,function(i){
-
-                       $("#city").append(
-                         ' <option value="'+data[i].region_id+'"  >'+data[i].region_name+'</option>'
-                       );
-
-
-                   });
-                   var cityid=$("#city").val();
-
-
-
-
-
-              },
-              error:function(){
-                    alert('error');
-              }
-            });
-          }
-
-      });
-      $("#city").change(function(){
-          var id=$("#city").val();
-          $("#district").find("option").remove();
-          $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
-          if(id!=0){
-           $.ajax({
-              url:"ajax_region.php",
-              data:{ajax_province:id},
-              dataType:"JSON",
-              success: function(data){
-
-                   $.each(data,function(i){
-                   if(i==0){
-                       $("#district").append(
-                         ' <option value="'+data[i].region_id+'" selected >'+data[i].region_name+'</option>'
-                       );
-                   }else{
-                       $("#district").append(
-                         ' <option value="'+data[i].region_id+'" >'+data[i].region_name+'</option>'
-                       );
-                   }
-
-                   });
-
-              },
-              error:function(){
-                    alert('error');
-              }
-            });
-          }
-
-      });
-
-      $("#sub_cart").click(function(){
+ $("#sub_cart").click(function(){
                  var chk_value=[];
-                 var address=$('input[name="co_shipping"]:checked').val();
+
                   $('input[name="rec_check"]:checked').each(function(){
                   chk_value.push($(this).val());
+
                   });
 
-           $.ajax({
-              url:"flow.php",
-              data:{step:'done',cart_id:chk_value,address:address},
-              type:"POST",
-              success: function(data){
-                 console.log(data);
-              },
-              error:function(){
 
-              }
-            });
+window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
 
 
     });
@@ -434,6 +241,7 @@
         $(".amount").text("￥"+pay.toFixed(2));
         // $(".shopping-cart").find("input[type='checkbox']").attr("checked",$("#checkbox-all").attr('checked'));;
     }
+
   </script>
 
 <script type="text/javascript">
@@ -458,7 +266,7 @@
                 dataType: "json",
                 data:{step:'ajax_update_cart',rec_id:rec_id,goods_number:goods_number},
                 success: function(data){
-                    console.log(data);
+
                    // document.getElementById('total_number').innerHTML = data.total_number;//更新数量
                   //document.getElementById('goods_subtotal').innerHTML = data.total_desc;//更新小计
                     if (document.getElementById('ECS_CARTINFO'))
@@ -480,50 +288,7 @@
 
 
 
-    <script type="text/javascript">
-    // 手机号码验证
-    jQuery.validator.addMethod("isMobile", function(value, element) {
-        var length = value.length;
-        var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
-        return this.optional(element) || (length == 11 && mobile.test(value));
-    }, "请正确填写您的手机号码");
 
-     $(function () {
-        $("#xzdz").validate({
-             rules: {
-                    UserName: { required: true, },
-                    UserTel: { required: true, number:true,isMobile:true,min:11},
-                    UserSf: { required: true,},
-                    UserCity: { required: true,minlength:2,maxlength:15 },
-                    UserAddress: { required: true,minlength:2,maxlength:30 }
-                },
-                messages:{
-                    UserName: {
-                        required: "请输入收货人！",
-                     },
-                    UserTel: {
-                        required: "请填写你的手机号码",
-                        number:"手机号码只能为数字",
-                        min: "手机号码必须为11位数！",
-                        isMobile:"请正确填写您的手机号码",
-                     },
-                    UserSf: {
-                        required: "请输入省份！",
-                    },
-                    UserCity: {
-                        required: "请输入城市!",
-                    },
-                    UserAddress: {
-                        required: "请输入地址!",
-                    }
-                },
-                /*错误提示位置*/
-                errorPlacement: function (error, element) {
-                    error.appendTo(element.siblings("span"));
-                }
-        })
-    })
-    </script>
         <script type="text/javascript">
      function click_scroll() {
          document.getElementById("zhankai").click();
@@ -579,7 +344,7 @@ function addToCart(goodsId, parentId)
 
               },
               error:function(){
-                   alert("删除异常");
+                   alert("false");
               }
             });
 
@@ -628,7 +393,7 @@ function addToCartResponse(result)
                 data:{step:'ajax_cart_goods'},
                 success: function(data){
                     //$(".item").find("input[type='checkbox']").iCheck("destroy");
-                    console.log(data.goods_list);
+                   // console.log(data.goods_list);
                     $(".item").remove();
                     $.each(data.goods_list,function(i){
                         $("#zongjia").before(
@@ -637,7 +402,7 @@ function addToCartResponse(result)
                 '<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px;background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>'+
                 '</label> <a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'" class="item-thumb"><img src="../../'+data.goods_list[i]['goods_thumb']+'" alt="Item">'+
                 '</a><div class="item-details"><h3 class="item-title"><a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'">'+data.goods_list[i]['goods_name']+'</a>'+
-                '</h3><h4 class="item-price" data-price="'+data.goods_list[i]['market_price']+'">'+data.goods_list[i]['market_price']+'</h4><div class="count-input">'+
+                '</h3><h4 class="item-price" data-price="'+data.goods_list[i]['goods_price']+'">'+data.goods_list[i]['goods_price']+'</h4><div class="count-input">'+
                 '<a class="incr-btn" data-action="decrease" href="#" onclick="changenum('+data.goods_list[i]['rec_id']+',-1)">–</a>'+
                 '<input class="quantity" type="text" value="'+data.goods_list[i]['goods_number']+'" min="1" max="1000" name="goods_number['+data.goods_list[i]['rec_id']+']" '+
                 'id="goods_number_'+data.goods_list[i]['rec_id']+'" onkeyup="changenum('+data.goods_list[i]['rec_id']+',0)">'+

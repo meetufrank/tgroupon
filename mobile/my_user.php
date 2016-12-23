@@ -1223,7 +1223,8 @@ elseif ($action == 'order_list')
     include_once(ROOT_PATH . 'include/lib_transaction.php');
 
     $page = isset($_REQUEST['page']) ? intval($_REQUEST['page']) : 1;
-
+   //初始化每页显示数据
+   $size=1;
 
       $string1="  and pay_status=0 and shipping_status=0";//待付款
       $string2="  and pay_status=2 and shipping_status=0";//待发货
@@ -1232,12 +1233,15 @@ elseif ($action == 'order_list')
     $record_count_no = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('order_info'). " WHERE user_id = '$user_id'  ".$string1);//待付款
     $record_count_yes = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('order_info'). " WHERE user_id = '$user_id' ".$string2);//待发货
     $record_count_come = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('order_info'). " WHERE user_id = '$user_id' ".$string3);//待收货
-    $pager  = get_pager('user.php', array('act' => $action), $record_count, $page);
 
-    $no_orders = get_user_orders_new($user_id, 1,$pager['size'], $pager['start']);  //未付款订单列表
-    $ye_orders = get_user_orders_new($user_id, 2,$pager['size'], $pager['start']);  //待发货订单列表
-    $come_orders = get_user_orders_new($user_id, 3,$pager['size'], $pager['start']);  //待收货订单列表
-    //print_r($no_orders);
+    $pager_no  = get_pager('my_user.php', array('act' => $action), $record_count_no, $page);
+    $pager_yes = get_pager('my_user.php', array('act' => $action), $record_count_yes, $page);
+    $pager_come  = get_pager('my_user.php', array('act' => $action), $record_count_come, $page);
+
+    $no_orders = get_user_orders_new($user_id, 1,$size, $pager_no['start']);  //未付款订单列表
+    $ye_orders = get_user_orders_new($user_id, 2,$size, $pager_yes['start']);  //待发货订单列表
+    $come_orders = get_user_orders_new($user_id, 3,$size, $pager_come['start']);  //待收货订单列表
+
     $merge  = get_user_merge($user_id);
 
     $smarty->assign('merge',  $merge);
@@ -1248,40 +1252,258 @@ elseif ($action == 'order_list')
     $smarty->assign('no_orders', $no_orders);//待付款
     $smarty->assign('ye_orders', $ye_orders);//待发货
     $smarty->assign('come_orders', $come_orders);//待收货
+
     $smarty->display('my_order.dwt');
+
 }
 
 /* 异步显示订单列表 by wang */
 elseif ($action == 'async_order_list')
 {
+
     include_once(ROOT_PATH . 'include/lib_transaction.php');
+    $page_num=1;
 
-    $start = $_POST['last'];
-    $limit = $_POST['amount'];
+   if($_POST['type']==1){  //待付款ajax获取数据
+            $start_no = $_POST['last_no'];  //待付款
+            $limit_no = $_POST['amount_no']?$_POST['amount_no']:$page_num;//待付款
 
-    $orders = get_user_orders($user_id, $limit, $start);
-    if(is_array($orders)){
-        foreach($orders as $vo){
-            //获取订单第一个商品的图片
-            $img = $db->getOne("SELECT g.goods_thumb FROM " .$ecs->table('order_goods'). " as og left join " .$ecs->table('goods'). " g on og.goods_id = g.goods_id WHERE og.order_id = ".$vo['order_id']." limit 1");
-            $tracking = ($vo['shipping_id'] > 0) ? '<a href="user.php?act=order_tracking&order_id='.$vo['order_id'].'" class="c-btn3">订单跟踪</a>':'';
-            $asyList[] = array(
-                'order_status' => '订单状态：'.$vo['order_status'],
-                'order_handler' => $vo['handler'],
-                'order_content' => '<a href="user.php?act=order_detail&order_id='.$vo['order_id'].'"><table width="100%" border="0" cellpadding="5" cellspacing="0" class="ectouch_table_no_border">
-            <tr>
-                <td><img src="'.$config['site_url'].$img.'" width="50" height="50" /></td>
-                <td>订单编号：'.$vo['order_sn'].'<br>
-                订单金额：'.$vo['total_fee'].'<br>
-                下单时间：'.$vo['order_time'].'</td>
-                <td style="position:relative"><span class="new-arr"></span></td>
-            </tr>
-          </table></a>',
-                'order_tracking' => $tracking
-            );
-        }
-    }
-    echo json_encode($asyList);
+             $no_orders = get_user_orders_new($user_id, 1,$limit_no, $start_no*$page_num);  //未付款订单列表
+             $no_orders_next=get_user_orders_new($user_id, 1,$limit_no, ($start_no+1)*$page_num);  //未付款订单列表
+             $order_list['data']=$no_orders;//还有更多
+             if(is_array($no_orders_next)){
+
+                $order_list['more']=1;
+
+             }else{
+                $order_list['more']=0;
+
+             }
+             //print_r($order_list['data']);exit;
+             foreach ($order_list['data'] as $key => $value) {
+                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+                        <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
+                          <div class="pull-left" style="padding-top:10px;">订单编号:'.$value['order_sn'].'</div>
+                            <!-- Buttons -->
+                          <div class="pull-right hidden-xs hidden-sm">
+                            <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
+                            <a href="flow.php?step=pay_ok&order_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light">去支付</a>
+                          </div>
+
+                          </div>
+                      <div class="row">
+                          <div class="col-md-6">';
+                foreach ((array)$value['good_list'] as $k => $v) {
+                    $string.='<div class="item">';
+                    if($v['goods_thumb']){
+                       $string.='<a href="shop-single.php?id='.$v['goods_id'].' "class="item-thumb pull-left">
+                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="Item">
+                        </a>';
+                    }
+                    $string.='<div class="item-details hidden-xs">
+                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
+                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
+                          <h4 class="item-price">'.$v['subtotal'].'</h4>
+                        </div>
+                        <div class="item-details visible-xs">
+                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
+                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
+                          <h4 class="item-price">'.$v['subtotal'].'</h4>
+                        </div>
+                         </div>';
+
+                }
+                $string.='<div class="cart-subtotal space-bottom">
+                        <div class="column">
+                          <h3 class="toolbar-title">总价：</h3>
+                        </div>
+                        <div class="column">
+                          <h3 class="amount_no" style="color:#f20000">'.$value['total_fee'].'</h3>
+                        </div>
+                      </div><!-- .subtotal -->
+                      </div>
+                      <div class="col-md-6">
+                        <h4 class="text-primary">收件人信息</h4>
+                        <hr>
+                        <div>
+                        收件人：'.$value['consignee'].'<br>
+                  手机号：'.$value['tel'].'<br>
+                  地   址 ：'.$value['address'].'
+                  </div>
+                      </div>
+                      </div>
+                      <br>
+
+                      <div class="visible-sm visible-xs">
+                        <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
+                        <a href="flow.php?step=pay_select&or_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light">去支付</a>
+                      </div>
+
+                    </div>';
+
+             }
+        $data['data']=$string;
+        $data['more']=$order_list['more'];
+
+
+             echo json_encode($data);
+
+   }elseif($_POST['type']==2){//待发货ajax获取数据
+          $start_yes = $_POST['last_yes'];  //待发货
+          $limit_yes = $_POST['amount_yes']?$_POST['amount_yes']:$page_num;//待发货
+
+          $ye_orders = get_user_orders_new($user_id, 2,$limit_yes, $start_yes*$page_num);  //待发货订单列表
+
+          $ye_orders_next=get_user_orders_new($user_id, 2,$limit_yes, ($start_yes+1)*$page_num);  //待发货订单列表
+          $order_list['data']=$ye_orders;
+             if(is_array($ye_orders_next)){
+
+                $order_list['more']=1;
+
+             }else{
+                $order_list['more']=0;
+             }
+             foreach ($order_list['data'] as $key => $value) {
+                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+                        <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
+                          <div class="pull-left" style="padding-top:10px;">订单编号:'.$value['order_sn'].'</div>
+
+
+                          </div>
+                      <div class="row">
+                          <div class="col-md-6">';
+                foreach ((array)$value['good_list'] as $k => $v) {
+                    $string.='<div class="item">';
+                    if($v['goods_thumb']){
+                        $string.='<a href="shop-single.php?id='.$v['goods_id'].'" class="item-thumb pull-left">
+                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="Item">
+                        </a>';
+                    }
+                    $string.='<div class="item-details hidden-xs">
+                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
+                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
+                          <h4 class="item-price">'.$v['subtotal'].'</h4>
+                        </div>
+                        <div class="item-details visible-xs">
+                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
+                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
+                          <h4 class="item-price">'.$v['subtotal'].'</h4>
+                        </div>
+                         </div>';
+
+                }
+                $string.='<div class="cart-subtotal space-bottom">
+                        <div class="column">
+                          <h3 class="toolbar-title">总价：</h3>
+                        </div>
+                        <div class="column">
+                          <h3 class="amount_yes" style="color:#f20000">'.$value['total_fee'].'</h3>
+                        </div>
+                      </div><!-- .subtotal -->
+                      </div>
+                      <div class="col-md-6">
+                        <h4 class="text-primary">收件人信息</h4>
+                        <hr>
+                        <div>
+                        收件人：'.$value['consignee'].'<br>
+                  手机号：'.$value['tel'].'<br>
+                  地   址 ：'.$value['address'].'
+                  </div>
+                      </div>
+                      </div>
+                      <br>
+
+
+
+                    </div>';
+
+             }
+        $data['data']=$string;
+        $data['more']=$order_list['more'];
+
+
+        echo json_encode($data);
+   }elseif($_POST['type']==3){//待收货ajax获取数据
+         $start_come = $_POST['last_come'];  //待收货
+         $limit_come = $_POST['amount_come']?$_POST['amount_come']:$page_num;//待收货
+
+        $come_orders = get_user_orders_new($user_id, 3,$limit_come, $start_come*$limit_come);  //待收货订单列表
+        $come_orders_next=get_user_orders_new($user_id, 2,$limit_come, ($start_come+1)*$limit_come);  //未付款订单列表
+         $order_list['data']=$come_orders;
+             if(is_array($come_orders_next)){
+
+                $order_list['more']=1;
+
+             }else{
+                 $order_list['more']=0;
+             }
+             foreach ($order_list['data'] as $key => $value) {
+                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+                        <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
+                          <div class="pull-left" style="padding-top:10px;">订单编号:'.$value['order_sn'].'</div>
+
+
+                          </div>
+                      <div class="row">
+                          <div class="col-md-6">';
+                foreach ((array)$value['good_list'] as $k => $v) {
+                    $string.='<div class="item">';
+                    if($v['goods_thumb']){
+                        $string.='<a href="shop-single.php?id='.$v['goods_id'].'" class="item-thumb pull-left">
+                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="Item">
+                        </a>';
+                    }
+                    $string.='<div class="item-details hidden-xs">
+                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
+                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
+                          <h4 class="item-price">'.$v['subtotal'].'</h4>
+                        </div>
+                        <div class="item-details visible-xs">
+                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
+                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
+                          <h4 class="item-price">'.$v['subtotal'].'</h4>
+                        </div>
+                         </div>';
+
+                }
+                $string.='<div class="cart-subtotal space-bottom">
+                        <div class="column">
+                          <h3 class="toolbar-title">总价：</h3>
+                        </div>
+                        <div class="column">
+                          <h3 class="amount_come" style="color:#f20000">'.$value['total_fee'].'</h3>
+                        </div>
+                      </div><!-- .subtotal -->
+                      </div>
+                      <div class="col-md-6">
+                        <h4 class="text-primary">收件人信息</h4>
+                        <hr>
+                        <div>
+                        收件人：'.$value['consignee'].'<br>
+                  手机号：'.$value['tel'].'<br>
+                  地   址 ：'.$value['address'].'
+                  </div>
+                  <br>
+                  <h4 class="text-primary">快递信息</h4>
+                        <hr>
+                  <a id="Logistics" class="btn btn-primary" href="#">快递跟踪</a>
+                      </div>
+                      </div>
+                      </div>
+                     ';
+
+             }
+        $data['data']=$string;
+        $data['more']=$order_list['more'];
+
+             echo json_encode($data);
+   }
+
+
+
+
+
+
 }
 
 /* 包裹跟踪 by wang */

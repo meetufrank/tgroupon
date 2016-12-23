@@ -268,7 +268,7 @@ function pay_fee($payment_id, $order_amount, $cod_fee=null)
  */
 function available_payment_list($support_cod, $cod_fee = 0, $is_online = false)
 {
-    $sql = 'SELECT pay_id, pay_code, pay_name, pay_fee, pay_desc, pay_config, is_cod' .
+    $sql = 'SELECT pay_id, pay_code, pay_name, pay_fee, pay_desc, pay_config, is_cod,logo' .
             ' FROM ' . $GLOBALS['ecs']->table('touch_payment') .
             ' WHERE enabled = 1 ';
     if (!$support_cod)
@@ -475,7 +475,7 @@ function order_goods($order_id)
 {
     $sql = "SELECT og.rec_id, og.goods_id, og.goods_name, og.goods_sn, og.market_price, og.goods_number, " .
             "og.goods_price, og.goods_attr, og.is_real, og.parent_id, og.is_gift, " .
-            "og.goods_price * og.goods_number AS subtotal, og.extension_code, g.goods_thumb " .
+            "og.goods_price * og.goods_number AS subtotal, og.extension_code, g.goods_thumb,g.more_price,og.goods_attr " .
             "FROM " . $GLOBALS['ecs']->table('order_goods') . " as og left join " .$GLOBALS['ecs']->table('goods'). " g on og.goods_id = g.goods_id" .
             " WHERE og.order_id = '$order_id'";
 
@@ -1035,7 +1035,7 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
     $sql = "SELECT g.goods_name, g.goods_sn, g.is_on_sale, g.is_real, ".
                 "g.market_price, g.shop_price AS org_price, g.promote_price, g.promote_start_date, ".
                 "g.promote_end_date, g.goods_weight, g.integral, g.extension_code,g.fencheng, ".
-                "g.goods_number, g.is_alone_sale, g.is_shipping,".
+                "g.goods_number, g.is_alone_sale, g.is_shipping,g.more_price,  ".
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price ".
             " FROM " .$GLOBALS['ecs']->table('goods'). " AS g ".
             " LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
@@ -1144,7 +1144,8 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
         'extension_code'=> $goods['extension_code'],
         'is_gift'       => 0,
         'is_shipping'   => $goods['is_shipping'],
-        'rec_type'      => CART_GENERAL_GOODS
+        'rec_type'      => CART_GENERAL_GOODS,
+
     );
 
     /* 如果该配件在添加为基本件的配件时，所设置的“配件价格”比原价低，即此配件在价格上提供了优惠， */
@@ -1302,6 +1303,19 @@ function clear_cart($type = CART_GENERAL_GOODS)
     $sql = "DELETE FROM " . $GLOBALS['ecs']->table('cart') .
             " WHERE session_id = '" . SESS_ID . "' AND rec_type = '$type'";
     $GLOBALS['db']->query($sql);
+}
+/**
+ * 清空购物车
+ * @param   int     $typeid   类型：购物车id  (改)
+ */
+function clear_cart_new($typeid)
+{
+    if($typeid){
+        $sql = "DELETE FROM " . $GLOBALS['ecs']->table('cart') .
+            " WHERE session_id = '" . SESS_ID . "' AND rec_id in ($typeid)";
+        $GLOBALS['db']->query($sql);
+    }
+
 }
 
 /**
@@ -1602,8 +1616,11 @@ function order_refund($order, $refund_type, $refund_note, $refund_amount = 0)
  * @access  public
  * @return  array
  */
-function get_cart_goods()
+function get_cart_goods($id='')
 {
+    if($id){
+        $string=" and rec_id in (".$id.") ";
+    }
     /* 初始化 */
     $goods_list = array();
     $total = array(
@@ -1617,7 +1634,7 @@ function get_cart_goods()
     /* 循环、统计 */
    $sql = "SELECT *, IF(parent_id, parent_id, goods_id) AS pid , goods_number " .
             " FROM " . $GLOBALS['ecs']->table('cart') . " " .
-            " WHERE session_id = '" . SESS_ID . "' AND rec_type = '" . CART_GENERAL_GOODS . "'" .
+            " WHERE session_id = '" . SESS_ID . "' AND rec_type = '" . CART_GENERAL_GOODS . "'".$string .
             " ORDER BY pid, parent_id";
     $res = $GLOBALS['db']->query($sql);
 
@@ -1758,7 +1775,7 @@ function get_consignee_byid($user_id,$addressid=0)
         if ($user_id > 0)
         {
             /* 取默认地址 */
-            $sql = "SELECT ua.*".
+           $sql = "SELECT ua.*".
                     " FROM " . $GLOBALS['ecs']->table('user_address') . "AS ua, ".$GLOBALS['ecs']->table('users').' AS u '.
                     " WHERE u.user_id='$user_id' AND ua.address_id = u.address_id";
 

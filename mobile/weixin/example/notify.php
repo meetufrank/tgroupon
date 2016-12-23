@@ -1,4 +1,5 @@
 <?php
+
 ini_set('date.timezone','Asia/Shanghai');
 error_reporting(E_ERROR);
 
@@ -48,20 +49,21 @@ class PayNotifyCallBack extends WxPayNotify
 		return true;
 	}
 }
+
 define('IN_ECTOUCH', true);
-require(dirname(__FILE__) . '/../../include/init.php');
+require('../../include/init.php');
 
 $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
 
 Log::DEBUG(print_r($xml,TRUE));
 $notify = new PayNotifyCallBack();
-//print_r($result);exit;
+
 
 
 
 
 $arr=xml2array($xml);
-//print_r($arr );
+
 
 
 if($arr['appid']=='wxb5aec13c030a530b'&&$arr['mch_id']=='1267579601'&&$arr['total_fee']==1&&$arr['result_code']=='SUCCESS'){
