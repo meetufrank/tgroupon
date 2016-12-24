@@ -1505,12 +1505,14 @@ elseif ($action == 'address_list')
     /* 获取默认收货ID */
     $address_id  = $db->getOne("SELECT address_id FROM " .$ecs->table('users'). " WHERE user_id='$user_id'");
 
+
     //赋值于模板
     $smarty->assign('real_goods_count', 1);
     $smarty->assign('shop_country',     $_CFG['shop_country']);
     $smarty->assign('shop_province',    get_regions(1, $_CFG['shop_country']));
     $smarty->assign('province_list',    $province_list);
     $smarty->assign('address',          $address_id);
+
     $smarty->assign('city_list',        $city_list);
     $smarty->assign('district_list',    $district_list);
     $smarty->assign('currency_format',  $_CFG['currency_format']);

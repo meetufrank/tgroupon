@@ -95,8 +95,29 @@
     <td>{$order.pay_time}</td>
   </tr>
   <tr>
-    <td><div align="right"><strong>{$lang.label_shipping}</strong></div></td>
+  <!--配送方式-->
+  <!--<td><div align="right"><strong>{$lang.label_shipping}</strong></div></td> -->
+    <td><div align="right">
+    <strong>{$lang.label_shipping}</strong>
+    </div></td>
+
     <td>{if $exist_real_goods}{if $order.shipping_id > 0}{$order.shipping_name}{else}{$lang.require_field}{/if}<a href="order.php?act=edit&order_id={$order.order_id}&step=shipping" class="special">{$lang.edit}</a>&nbsp;&nbsp;<input type="button" onclick="window.open('order.php?act=info&order_id={$order.order_id}&shipping_print=1')" class="button" value="{$lang.print_shipping}"> {if $order.insure_fee > 0}（{$lang.label_insure_fee}{$order.formated_insure_fee}）{/if}{/if}</td>
+
+
+
+    <script type="text/javascript">
+    function edit(){
+
+
+       var  myselect=document.getElementById("shippling").value;
+
+       window.location.href="order.php?act=step_post&step=shipping&order_id={$order.order_id}&step_act=edit&shipping="+myselect;
+
+       }
+    </script>
+    <a href="order.php?act=edit&order_id={$order.order_id}&step=shipping" class="special" onclick="">编辑</a>&nbsp;&nbsp;<input type="button" onclick="window.open('order.php?act=info&order_id={$order.order_id}&shipping_print=1')" class="button" value="{$lang.print_shipping}"> {if $order.insure_fee > 0}（{$lang.label_insure_fee}{$order.formated_insure_fee}）{/if}
+    </td>
+
     <td><div align="right"><strong>{$lang.label_shipping_time}</strong></div></td>
     <td>{$order.shipping_time}</td>
   </tr>
@@ -275,10 +296,10 @@
     <td><div align="right"></div>
       <div align="right"><strong>{$lang.label_operable_act}</strong> </div></td>
     <td colspan="5">
-    <!-- 一键发货begin -->      
+    <!-- 一键发货begin -->
 {if $order.pay_status == 2 && $order.shipping_status != 1 && $order.order_status == 1 }<input name="invoice_no" type="text" style="color:#00F" value="{$order.order_sn}" /><input name="to_shipping" type="submit" style="color:#F00" value="快速发货" class="button"/>{/if}
-<!-- 一键发货end-->  
-    
+<!-- 一键发货end-->
+
     {if $operable_list.confirm}
       <input name="confirm" type="submit" value="{$lang.op_confirm}" class="button" />
         {/if} {if $operable_list.pay}

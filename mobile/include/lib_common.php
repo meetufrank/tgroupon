@@ -964,6 +964,7 @@ function price_format($price, $change_price = true)
     }
 
     return sprintf($GLOBALS['_CFG']['currency_format'], $price);
+
 }
 
 /**
@@ -1587,18 +1588,18 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
 		$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
 		$level_register_up = (float)$affiliate['config']['level_register_up'];
 		$rank_points =  $GLOBALS['db']->getOne("SELECT rank_points FROM " . $GLOBALS['ecs']->table('users')."where user_id=".$userid);
-		
+
 		if($rank_points>$level_register_up||$rank_points==$level_register_up){
 			if(!empty($userid)){
 			$uri = $rewrite ? 'goods-' . $gid : 'goods.php?id=' . $gid."&u=".$userid;
 				}else{
-					
+
 					$uri = $rewrite ? 'goods-' . $gid : 'goods.php?id=' . $gid;
 				}
 			}else{
-				
+
 				$uri = $rewrite ? 'goods-' . $gid : 'goods.php?id=' . $gid;
-			}			
+			}
 			/*甜心修改*/
             }
 
@@ -2300,7 +2301,7 @@ function get_final_price($goods_id, $goods_num = '1', $is_spec_price = false, $s
     }
     //取得商品促销价格列表
     /* 取得商品信息 */
-    $sql = "SELECT g.promote_price, g.promote_start_date, g.promote_end_date, ".
+    $sql = "SELECT g.promote_price, g.promote_start_date, g.promote_end_date,g.more_price,  ".
                 "IFNULL(mp.user_price, g.shop_price * '" . $_SESSION['discount'] . "') AS shop_price ".
            " FROM " .$GLOBALS['ecs']->table('goods'). " AS g ".
            " LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
@@ -2359,7 +2360,7 @@ function get_final_price($goods_id, $goods_num = '1', $is_spec_price = false, $s
     }
 
     //返回商品最终购买价格
-    return $final_price;
+    return $final_price+$goods['more_price'];
 }
 /**甜心修改调用属性价格方法
  *$spec 属性数组
@@ -2371,7 +2372,7 @@ function get_pro_price($spec,$org_price=0)
 		$is_s=sort($spec);
 		if ($is_s)
 			$goods_attr = implode("|", $spec);
-		
+
 		$final_price = $GLOBALS['db']->getOne("SELECT pro_price FROM " .$GLOBALS['ecs']->table('products'). " WHERE goods_attr='".$goods_attr."'");
 		if($final_price > 0)
 			return $final_price;

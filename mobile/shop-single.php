@@ -48,9 +48,13 @@ require(ROOT_PATH . 'head.php');
 
 
     //猜你喜欢
-    $sqlxihuan = "SELECT g.goods_id,g.goods_name,g.goods_img,g.market_price   FROM `ecs_goods` as g where g.goods_id !='$goodsid' ORDER BY RAND() LIMIT 4 ";
+    $sqlxihuan = "SELECT g.goods_id,g.goods_name,g.goods_img,g.market_price   FROM `ecs_goods` as g where g.goods_id !='$goodsid' and g.goods_img !='' ORDER BY RAND() LIMIT 4 ";
     $xihuan = $db->getAll($sqlxihuan);
     $smarty->assign('xihuan',  $xihuan);
+
+
+
+
 
 
 
@@ -73,6 +77,49 @@ $smarty->assign('affiliate', $affiliate);
 /*------------------------------------------------------ */
 
 $goods_id = isset($_REQUEST['id'])  ? intval($_REQUEST['id']) : 0;
+$smarty->assign('goods_id',  $goods_id);
+
+
+
+ if($_REQUEST['act'] == 'goodsattr'){
+       $attrid = $_POST['attrid'];
+
+       // $attridguanlian = "select * from `ecs_products` where goods_attr like '%$attrid%' and goods_id ='$goods_id'";
+       // $feiattrid = $db->getAll($attridguanlian);
+
+
+
+             $attridguanlian = "select goods_attr from `ecs_products` where goods_id = '$goods_id' and goods_attr like  '%$attrid%'";
+
+             $feiattrid = $db->getAll($attridguanlian);
+
+               foreach ($feiattrid as $key => $value) {
+				   $str=str_replace($attrid.',','',$value);
+				   $feiattrid[$key]=$str;
+               }
+			  // print_r($feiattrid);
+			  echo json_encode($feiattrid);
+			   exit;
+
+    }
+
+
+
+if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'get_products_info')
+{
+include('include/cls_json.php');
+
+$json = new JSON;
+// $res = array('err_msg' => '', 'result' => '', 'qty' => 1);
+
+$spce_id = $_GET['id'];
+$goods_id = $_GET['goods_id'];
+$row = get_products_info($goods_id,explode(",",$spce_id));
+//$res = array('err_msg'=>$goods_id,'id'=>$spce_id);
+die($json->encode($row));
+
+}
+
 
 /*------------------------------------------------------ */
 //-- 改变属性、数量时重新计算商品价格
@@ -113,6 +160,108 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'price')
     die($json->encode($res));
 }
 
+
+/* 代码增加_end   By www.ecshop68.com */
+/*------------------------------------------------------ */
+//-- INPUT
+/*------------------------------------------------------ */
+
+$goods_id = isset($_REQUEST['id'])  ? intval($_REQUEST['id']) : 0;
+
+/* 代码增加_start By  www.ecshop68.com */
+$sql_attr_www_ecshop68_com="SELECT a.attr_id, ga.goods_attr_id FROM ". $GLOBALS['ecs']->table('attribute') . " AS a left join ". $GLOBALS['ecs']->table('goods_attr') . "  AS ga on a.attr_id=ga.attr_id  WHERE a.attr_input_type=1 and ga.goods_id='" . $goods_id. "' order by ga.goods_attr_id ";
+$goods_attr=$GLOBALS['db']->getRow($sql_attr_www_ecshop68_com);
+$goods_attr_id=$goods_attr['goods_attr_id'];
+$smarty->assign('attr_id', $goods_attr['attr_id']);
+
+if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'get_gallery_attr')
+{
+	include('include/cls_json.php');
+	$json = new JSON;
+
+	$goods_attr_id=$_REQUEST['goods_attr_id'];
+	$gallery_list_www_ecshop68_com=get_goods_gallery_attr_www_ecshop68_com($goods_id, $goods_attr_id);
+	$gallery_content=array();
+	$gallery_content['thumblist'] ='<ul>';
+	foreach($gallery_list_www_ecshop68_com as $gkey=>$gval)
+	{
+		$gallery_content['thumblist'] .= '<li>';
+		$gallery_content['thumblist'] .= '<a  href="'. $gval['img_original'] . '" rel="zoom-id: zoom; zoom-height: 360px;zoom-width:400px;"  rev="'.$gval['img_url'].'" name="'.$gval['img_url'].'" rev="'. $gval['img_original'] . '" ';
+
+		$gallery_content['thumblist'] .= '><img src="'. ($gval['thumb_url'] ? $gval['thumb_url'] : $gval['img_url']) . '" class="B_blue" ';
+		$gallery_content['thumblist'] .= '  /></a></li>';
+		if ($gkey==0)
+		{
+			$gallery_content['bigimg'] = $gval['img_original'] ;
+			$gallery_content['middimg'] .= $gval['img_url'] ;
+		}
+	}
+	$gallery_content['thumblist'] .='</ul>';
+
+	die ($json->encode($gallery_content));
+
+}
+
+
+if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'get_products_info')
+{
+include('include/cls_json.php');
+
+$json = new JSON;
+// $res = array('err_msg' => '', 'result' => '', 'qty' => 1);
+
+$spce_id = $_GET['id'];
+$goods_id = $_GET['goods_id'];
+$row = get_products_info($goods_id,explode(",",$spce_id));
+//$res = array('err_msg'=>$goods_id,'id'=>$spce_id);
+die($json->encode($row));
+
+}
+/* 代码增加_end By  www.ecshop68.com */
+
+/*------------------------------------------------------ */
+//-- 改变属性、数量时重新计算商品价格
+/*------------------------------------------------------ */
+
+if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'price')
+{
+    include('includes/cls_json.php');
+
+    $json   = new JSON;
+    $res    = array('err_msg' => '', 'result' => '', 'qty' => 1);
+
+    //$attr_id    = isset($_REQUEST['attr']) ? explode(',', $_REQUEST['attr']) : array();
+    $attr_id    = isset($_REQUEST['attr']) ? $_REQUEST['attr'] : array();
+    $number     = (isset($_REQUEST['number'])) ? intval($_REQUEST['number']) : 1;
+
+    if ($goods_id == 0)
+    {
+        $res['err_msg'] = $_LANG['err_change_attr'];
+        $res['err_no']  = 1;
+    }
+    else
+    {
+        if ($number == 0)
+        {
+            $res['qty'] = $number = 1;
+        }
+        else
+        {
+            $res['qty'] = $number;
+        }
+        if(empty($attr_id)){
+        	$attr_id = 0;
+        }
+        $res['attr_num'] = get_product_attr_num($goods_id,$attr_id);
+        //$res['attr_num'] = $ret[$attr_id];
+
+
+        $shop_price  = get_final_price($goods_id, $number, true, $attr_id);
+        $res['result'] = price_format($shop_price * $number);
+    }
+
+    die($json->encode($res));
+}
 
 /*------------------------------------------------------ */
 //-- 商品购买记录ajax处理
@@ -275,10 +424,21 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         $smarty->assign('page_title',          $position['title']);                    // 页面标题
         $smarty->assign('ur_here',             $position['ur_here']);                  // 当前位置
 
+
+
+
+
+
+
+       // make_json_result($feiattrid);
+
         $properties = get_goods_properties($goods_id);  // 获得商品的规格和属性
 
         $smarty->assign('properties',          $properties['pro']);                              // 商品属性
         $smarty->assign('specification',       $properties['spe']);                              // 商品规格
+
+        $smarty->assign('specifications',       $properties['lnk']);                              // 商品关联的属性
+
         $smarty->assign('attribute_linked',    get_same_attribute_goods($properties));           // 相同属性的关联商品
         $smarty->assign('related_goods',       $linked_goods);                                   // 关联商品
         $smarty->assign('goods_article_list',  get_linked_articles($goods_id));                  // 关联文章

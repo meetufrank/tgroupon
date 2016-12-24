@@ -117,6 +117,7 @@ class FileUpload {
       }
     }
 
+
     /**
      * 获取上传后的文件名称
      * @param  void   没有参数

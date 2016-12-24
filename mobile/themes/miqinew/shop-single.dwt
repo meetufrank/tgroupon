@@ -29,11 +29,17 @@
   <!-- Theme Styles -->
   <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
 
+  <link href="{$ectouch_themes}/css/pshow.css" rel="stylesheet" media="screen">
+  <link href="{$ectouch_themes}/css/increase-68.css" rel="stylesheet" media="screen">
+
   <!-- Page Preloading -->
   <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
+   <script src="{$ectouch_themes}/js/magiczoom_plus.js"></script>
 
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="js/transport.js"></script>
   <style>
   .add-to-cart-pay{
 		position: relative;
@@ -304,34 +310,118 @@
             <li id="preview02" class="current"><img src="{$ectouch_themes}/img/shop/product-gallery/preview02.jpg" alt="Product"></li>
             <li id="preview03"><img src="{$ectouch_themes}/img/shop/product-gallery/preview03.jpg" alt="Product"></li>
           </ul><!-- .product-gallery-preview -->
-          <!-- Thumblist -->
-       <!--  <ul class="product-gallery-thumblist">
-            <li><a href="#preview01">
-              <img src="{$ectouch_themes}/img/shop/product-gallery/thumb01.jpg" alt="Product">
-            </a></li>
-            <li class="active"><a href="#preview02">
-              <img src="{$ectouch_themes}/img/shop/product-gallery/thumb02.jpg" alt="Product">
-            </a></li>
-            <li><a href="#preview03">
-              <img src="{$ectouch_themes}/img/shop/product-gallery/thumb03.jpg" alt="Product">
-            </a></li>
-          </ul>-->
+
         </div>
       </div>
     </section>
 
-    <!-- 电脑端商品详情选择-->
-
-
-
-
+         <!-- 电脑端商品详情选择-->
     <section class="fw-section bg-gray padding-bottom-3x  hidden-xs">
       <div class="container">
         <div class="product-info padding-top-2x text-center">
           <h1 class="h2 space-bottom-half">创 意 椅 子</h1>
           <h2 class="hidden-xs">￥128.00</h2>
+
+
+
+
+		  <script type="text/javascript">
+		                function attridfun(ids,type){
+                            var arrtipt='#attidshuxingipt'+type;
+							$(arrtipt).val(ids);
+							var  idstr=ids;
+
+							if(type == 2){
+
+							       var top='#attidshuxingipt'+(type-1);
+							       var  idstr=$(top).val()+','+ids;
+								   <!-- alert(idstr); -->
+							}
+							if(type == 3){
+
+							       var top='#attidshuxingipt'+(type-2);
+							       var  idstr=$(top).val()+','+ids;
+								   <!-- alert(idstr); -->
+							}
+							 var id = document.getElementById("goodsid").value;
+							<!--  Ajax.call('shop-single.php?act=goodsattr', 'attrid=' + ids +'&id=' + id,attridshuxidfun,'POST', 'JSON'); -->
+							  $.ajax({
+									type:"post",
+									url:"shop-single.php?act=goodsattr",
+									async:true,
+									data:{'attrid':idstr,'id':id},
+
+									dataType: "json",
+									success: function (result) {
+									type++;
+									var box='#attridshuxdiv'+type+' a';
+										    $(box).hide();
+											$.each(result,function(i){
+
+
+											     var str='#attrid_'+result[i].goods_attr;
+											     var shuxindivid =  document.getElementById("attridshuxdiv");
+
+
+												 $(str).show();
+											});
+										  }
+							});
+
+
+
+					   }
+
+					   function attridshuxidfun(result){
+
+					     console.log(result);
+
+					   }
+		  </script>
+
+		   <!--
+		        类型名称  {$spec.name} (如颜色、尺寸)
+				属性名称  {$value.label} (如颜色中的黄色、黑色、白色)
+		  -->
+		 <input id="goodsid" type="hidden" value="{$goods_id}">
+		  {foreach from=$specification item=spec key=spec_key name=name}
+            <div class="cart-border col-lg-6 col-md-6 col-sm-6 hidden-xs" id="attridshuxdiv{$smarty.foreach.name.iteration}">
+
+					<span class="cart-border-text">{$spec.name}</span>
+
+                     <input id="attidshuxingipt{$smarty.foreach.name.iteration}" type="hidden" value="">
+					 <ul  class="cart-border-select" id="borderbox">
+					 {foreach from=$spec.values item=value key=key}
+						<li>
+                           {$value.attr_img}
+                           <input type="button" value="{$value.id}">
+						   <a href="#" id="attrid_{$value.id}" onclick="attridfun({$value.id},{$smarty.foreach.name.iteration})" class="cart-border-select-details" title="{$value.label}">{$value.label}</a>
+						</li>
+						{/foreach}
+					</ul>
+
+				   <div class="clear"></div>
+           </div>
+         {/foreach}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           <!--颜色选择-->
-        <!--   <div class="cart-color col-lg-6  col-md-6 col-sm-6 hidden-xs">
+
+
+          <div class="cart-color col-lg-6  col-md-6 col-sm-6 hidden-xs">
           	<span class="cart-color-text">颜色</span>
             <ul class="cart-color-select" id="colorbox">
             	<li><a href="#" class="cart-color-details cart-yellow" title="黄色"></a></li>
@@ -340,10 +430,19 @@
                 <li><a href="#" class="cart-color-details cart-deongaree" title="深蓝色"></a></li>
                 <li><a href="#" class="cart-color-details cart-blue" title="淡蓝色"></a></li>
                 <li><a href="#" class="cart-color-details cart-blue-1" title="浅蓝色"></a></li>
-                
+                <br/>
+               	<li><a href="#" class="cart-color-details cart-yellow" title="黄色"></a></li>
+                <li><a href="#" class="cart-color-details cart-red" title="红色"></a></li>
+                <li><a href="#" class="cart-color-details cart-white" title="灰色"></a></li>
+                <li><a href="#" class="cart-color-details cart-deongaree" title="深蓝色"></a></li>
+                <li><a href="#" class="cart-color-details cart-blue" title="淡蓝色"></a></li>
+                <li><a href="#" class="cart-color-details cart-blue-1" title="浅蓝色"></a></li>
             </ul>
             <div class="clear"></div>
-          </div> -->
+          </div>
+
+
+
           <div class="cart-size col-lg-6 col-md-6 col-sm-6 hidden-xs">
           	<ul class="cart-size-select" id="sizebox">
             	<li><span>尺寸</span></li>
@@ -353,8 +452,7 @@
             </ul>
             <div class="clear"></div>
           </div>
-		  
-         <!--  <div class="cart-group col-lg-6 col-md-6 col-sm-6 hidden-xs">
+          <div class="cart-group col-lg-6 col-md-6 col-sm-6 hidden-xs">
          	<span class="cart-group-text">组合形式</span>
              <ul class="cart-group-select" id="groupbox">
             	<li><a href="#" class="cart-group-select-details" title="单件">单件</a></li>
@@ -369,7 +467,7 @@
             	<li><a href="#" class="cart-border-select-details" title="单件">水泥</a></li>
                 <li><a href="#" class="cart-border-select-details" title="2件">陶瓷</a></li>
                 <li><a href="#" class="cart-border-select-details" title="3件">布艺</a></li>
-            </ul> -->
+            </ul>
              <div class="clear"></div>
           </div>
           <!-- .product-meta -->
@@ -401,7 +499,7 @@
                     <i class="fa fa-wechat" id="fenxiang"></i>
                   </a>
                  <a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top">
-                    <img src="{$ectouch_themes}/img/fenxiangerweima.png" width="150px;" height="150px;" style="display:none;" id="erweima">
+                    <img src="img/fenxiangerweima.png" width="150px;" height="150px;" style="display:none;" id="erweima">
                   </a>
             </div>
           </div>
@@ -409,7 +507,80 @@
       </div><!-- .container -->
     </section><!-- .fw-section.bg-gray -->
     <!--手机端商品详情选择-->
-  
+    <section class="mobile-detail hidden-lg hidden-md hidden-sm">
+    	<div class="col-xs-12 mobile-detail-1">
+        	<span class="mobile-shop-name">创意椅子商品名称多了的话，显示效果测试情况如下创意椅子商品名</span>
+        </div>
+        <div class="col-xs-6 mobile-shop-price">￥128.00</div>
+        <div class="mobile-count-input col-xs-6">
+              <a class="mobile-incr-btn" href="#">–</a>
+              <input class="mobile-quantity" type="text" value="1">
+              <a class="mobile-incr-btn" href="#">+</a>
+        </div>
+        <div class="clear"></div>
+        <p class="mobile-cart-color-text">颜色<span style="margin-left:10px; font-size:16px;color:#0CF" id="selectcolor"></span></p>
+        <div class="mobile-cart-color">
+            <ul class="mobile-cart-color-select" id="mobile-colorbox">
+            	<li><a href="#" class="mobile-cart-color-details cart-yellow" title="黄色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-red" title="红色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-white" title="灰色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-deongaree" title="深蓝色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-blue" title="淡蓝色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-blue-1" title="浅蓝色"></a></li>
+                <br/>
+               	<li><a href="#" class="mobile-cart-color-details cart-yellow" title="黄色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-red" title="红色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-white" title="灰色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-deongaree" title="深蓝色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-blue" title="淡蓝色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-blue-1" title="浅蓝色"></a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <p class="mobile-cart-size-text">尺寸</p>
+        <div class="mobile-cart-size">
+          	<ul class="mobile-cart-size-select" id="mobile-sizebox">
+                <li><a href="#" class="mobile-cart-size-select-details" title="大码">大</a></li>
+                <li><a href="#" class="mobile-cart-size-select-details" title="中码">中</a></li>
+                <li><a href="#" class="mobile-cart-size-select-details" title="小码">小</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <p class="mobile-cart-group-text">组合形式</p>
+        <div class="mobile-cart-group">
+          	<ul class="mobile-cart-group-select" id="mobile-groupbox">
+                <li><a href="#" class="mobile-cart-group-details" title="单件">单件</a></li>
+                <li><a href="#" class="mobile-cart-group-details" title="两件">两件</a></li>
+                <li><a href="#" class="mobile-cart-group-details" title="三件">三件</a></li>
+                <li><a href="#" class="mobile-cart-group-details" title="四件">四件</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <p class="mobile-cart-border-text">外框类型</p>
+        <div class="mobile-cart-border">
+          	<ul class="mobile-cart-border-select" id="mobile-borderbox">
+                <li><a href="#" class="mobile-cart-border-details" title="水泥">水泥</a></li>
+                <li><a href="#" class="mobile-cart-border-details" title="陶瓷">陶瓷</a></li>
+                <li><a href="#" class="mobile-cart-border-details" title="布艺">布艺</a></li>
+                <li><a href="#" class="mobile-cart-border-details" title="泥巴">麻绳</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="clear"></div>
 	<!--艺术家-->
     <section class="container padding-top">
@@ -446,6 +617,7 @@
 
         <div role="tabpanel" class="tab-pane transition fade in active" id="description">
          {$miaoshu.goods_desc}
+
         </div><!-- .tab-pane -->
 
         <div role="tabpanel" class="tab-pane transition fade" id="additional">
@@ -489,77 +661,17 @@
 
       </div>
     </section><!-- .container -->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	  <ul class="ul2">
-          <!-- {* 开始循环所有可选属性 *} -->
-          <!-- {foreach from=$specification item=spec key=spec_key} -->
-          <li>
-          <p>{$spec.name}：</p>
-            <div class="items">
-            <!-- {* 判断属性是复选还是单选 *} -->
-            <!-- {if $spec.attr_type eq 1} -->
-                <!-- {if $cfg.goodsattr_style eq 1} -->
-				  <!-- {if $spec.name eq '颜色'}-->
-                    <!-- {foreach from=$spec.values item=value key=key} -->
-                    <input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} onclick="changePrice()" />
-                    <label for="spec_value_{$value.id}">{if $value.product_number eq 0}{$value.label}-<font class="price">缺货</font>{else}{$value.label}-<font class="price">{$value.product_number}{$goods.measure_unit}</font>{/if}</label>
-                    <!-- {/foreach} -->
-                    <!--{else}-->
-					<!--{foreach from=$spec.values item=value key=key}-->
-					<input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} onclick="changePrice()" />
-                    <label for="spec_value_{$value.id}">{$value.label}</label>
-					<!-- {/foreach} -->
-			      <!--{/if}-->
-                    <input type="hidden" name="spec_list" value="{$key}" />
-                <!-- {else} -->
-                    <select name="spec_{$spec_key}" onchange="changePrice()">
-                    <!-- {foreach from=$spec.values item=value key=key} -->
-                    <option label="{$value.label}" value="{$value.id}">{$value.label} {if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if}{if $value.price neq 0}{$value.format_price}{/if}</option>
-                    <!-- {/foreach} -->
-                    </select>
-                    <input type="hidden" name="spec_list" value="{$key}" />
-                <!-- {/if} -->
-            <!-- {else} -->
-                <!-- {foreach from=$spec.values item=value key=key} -->
-                <input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" onclick="changePrice()" />
-                <label for="spec_value_{$value.id}">
-                {$value.label} [{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}] </label><br />
-                <!-- {/foreach} -->
-                <input type="hidden" name="spec_list" value="{$key}" />
-            <!-- {/if} -->
-            </div>
-		  </li>
-          <!-- {/foreach} -->
-          <!-- {* 结束循环可选属性 *} -->
-        </ul>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Related Products -->
     <section class="container padding-top padding-bottom">

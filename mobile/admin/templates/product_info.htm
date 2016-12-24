@@ -63,28 +63,12 @@
        <!-- 属性关联图片 -->
 
       <td  align="center">
-<!--
-{if $product.attributeimg == ''}
-  没有属性关联图片
-{else}
-  <img style=" width:100px; height:100px;" src="{$product.attributeimg}"  />
-{/if} -->
-  <div class="control-group js_uploadBox" id="center" onClick="a()">
-      <div class="js_showBox"><input class="js_upFile" type="file" id="btn_file" name="cover" style="display:none">
-      {if $product.attributeimg == ''}
-        没有属性关联图片
-      {else}
-        <img class="js_logoBox style=" width:100px; height:100px;" src="{$product.attributeimg}"  />
-      {/if}
 
-      </div>
-
-        <div class="btn-upload" style="display:none">
-             <a href="javascript:;" class="a-upload">
-             <input class="js_upFile" type="file" id="b"  name="cover">点击这里上传照片
-             </a>
-        </div>
-     </div>
+                  {if $product.attributeimg == ''}
+                        <img class="js_logoBox" src="../../images/12.png">
+                  {else}
+                        <img class="js_logoBox" style="width:100px; height:100px;" src="{$product.attributeimg}"/>
+                  {/if}
       </td>
       <!-- 属性关联价格 -->
       <td><span onclick="listTable.edit(this, 'edit_attributeprice', {$product.product_id})">{$product.attributeprice}</span></td>
@@ -111,19 +95,17 @@
     <!-- end for specifications_value -->
 
       <td  align="center"><input type="text" name="product_sn[]" value="" size="20"/></td>
-       <td align="center">
+      <td align="center">
 
-       <div class="control-group js_uploadBox" id="center" onClick="a()">
-      <div class="js_showBox"><input class="js_upFile" type="file" id="btn_file" name="cover" style="display:none"><img class="js_logoBox" src="../../images/6.png"></div>
-
-        <div class="btn-upload" style="display:none">
-             <a href="javascript:;" class="a-upload">
-             <input class="js_upFile" type="file" id="b"  name="cover">点击这里上传照片
-             </a>
-        </div>
-     </div>
-
-</td>
+          <div class="control-group js_uploadBox" id="center">
+              <div class="js_showBox"><img class="js_logoBox" src="../../images/12.png"></div>
+              <div class="btn-upload">
+                  <a href="javascript:;" class="a-upload">
+                  <input class="js_upFile" type="file" name="cover">
+              </a>
+              </div>
+         </div>
+      </td>
       <td><input type="text" name="attributeprice[]"  value="{$attributeprice}"  size="10"/></td>
       <td><input  type="text" name="product_number[]" value="{$product_number}" size="10"/></td>
       <td><input type="button" class="button" value=" + " onclick="javascript:add_attr_product();"/></td>
@@ -278,6 +260,7 @@ return false;
 </script>
 
 <script type="text/javascript">
+
 $(".js_upFile").uploadView({
   uploadBox: '.js_uploadBox',//设置上传框容器
   showBox : '.js_showBox',//设置显示预览图片的容器

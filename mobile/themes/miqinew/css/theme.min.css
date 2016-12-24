@@ -1,4 +1,4 @@
-/*@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,300,500,600);*/
+
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -745,7 +745,8 @@ textarea.form-control {
 }
 .form-element {
 	position: relative;
-	margin-bottom: 24px
+	/*margin-bottom: 24px*/
+	margin-bottom: 10px;
 }
 .form-element>i {
 	display: block;
@@ -2356,6 +2357,7 @@ display:none
 	border-bottom: 2px solid #ededed;
 	margin-bottom: 30px
 }
+
 .shopping-cart .item .item-thumb, .shopping-cart .item .item-details {
 	display: table-cell;
 	vertical-align: top
@@ -2487,6 +2489,11 @@ display:none
 	width: 50%
 }
 .cart-subtotal .amount {
+	font-size: 24px;
+	font-weight: 500;
+	text-align: right
+}
+.cart-subtotal .amount_no,.cart-subtotal .amount_ye,.column .amount_come,.amount_pay {
 	font-size: 24px;
 	font-weight: 500;
 	text-align: right
@@ -2979,8 +2986,10 @@ to {
 .shop-item .shop-item-tools {
 	position: absolute;
 	z-index: 2;
-	bottom: 100px;
-	right: 22px;
+	/*bottom: 100px;
+	right: 22px;*/
+	right:10px;
+	top:10px;
 	text-align: right;
 	visibility: hidden;
 	opacity: 0;
@@ -3461,9 +3470,11 @@ to {
 }
 .widget-title {
 	font-size: 14px;
-	font-weight: normal;
+	/*font-weight: normal;*/
+	font-weight: bold;
 	text-transform: uppercase;
-	margin-bottom: 24px
+	/*margin-bottom: 24px*/
+	margin-bottom: 14px;
 }
 .widget-title small {
 	display: block;
@@ -3499,7 +3510,8 @@ to {
 	text-decoration: none
 }
 .widget>ul>li>a:hover {
-	color: #606060
+	color: #f20000;
+	border-bottom: 1px solid #f20000;
 }
 .widget>ul>li>a>i {
 	font-size: 15px;
@@ -3515,7 +3527,8 @@ to {
 	margin-top: -2px
 }
 .widget>ul>li.active>a {
-	color: #606060
+	color: #f20000;
+	border-bottom: 1px solid #f20000;
 }
 .widget-tags a {
 	display: inline-block;
@@ -4124,8 +4137,8 @@ display:none
 	position: absolute;
 	z-index: 1;
 	width: 100%;
-	top: 50%;
-	left: 0;
+	/*top: 50%;
+	left: 0;*/
 	opacity: 0;
 	-webkit-transform: translateY(-25%);
 	-moz-transform: translateY(-25%);
@@ -4165,7 +4178,14 @@ display:none
 	font-size: 16px;
 	font-weight: normal;
 	/*margin-bottom: 8px*/
-	margin-top:8px;
+	/*margin-top:8px;*/
+}
+.feature .feature-title a{
+	text-decoration:underline;
+	color:#333;
+}
+.feature .feature-title a:hover{
+	color:#f20000;
 }
 .feature .feature-text {
 	color: #c4c4c4;
@@ -5208,6 +5228,18 @@ img.mfp-img {
 .footer button[type='submit']:hover {
 	color: #77cde3
 }
+/*新分页161202*/
+.layui-laypage{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;margin:10px 0;font-size:0}
+.layui-laypage>:first-child,.layui-laypage>:first-child em{border-radius:2px 0 0 2px}
+.layui-laypage>:last-child,.layui-laypage>:last-child em{border-radius:0 2px 2px 0}
+.layui-laypage a,.layui-laypage span{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;padding:0 15px;border:1px solid #e2e2e2;height:28px;line-height:28px;margin:0 -1px 5px 0;background-color:#fff;color:#333;font-size:14px;}
+.layui-laypage span{color:#999;font-weight:700}
+.layui-laypage .layui-laypage-curr{position:relative}
+.layui-laypage .layui-laypage-curr em{position:relative;color:#fff;font-weight:400;font-style:normal;}
+.layui-laypage .layui-laypage-curr .layui-laypage-em{position:absolute;left:0px;top:0px;padding:1px;width:100%;height:100%;background-color:#77cde3;}
+.layui-laypage-em{border-radius:2px}
+.layui-laypage-next em,.layui-laypage-prev em{font-family:Sim sun;font-size:16px}
+
 /*商品详情颜色选择*/
 .cart-yellow{
 	background-color:#FF0;

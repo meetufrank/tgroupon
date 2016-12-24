@@ -620,7 +620,7 @@ function get_attr_list($cat_id, $goods_id = 0)
     }
 
     // 查询属性值及商品的属性值
-    $sql = "SELECT a.attr_id, a.attr_name, a.attr_input_type, a.attr_type, a.attr_values, v.attr_value, v.attr_price ".
+    $sql = "SELECT a.attr_id, a.attr_name, a.attr_input_type, a.attr_type, a.attr_values,v.attr_img, v.attr_value, v.attr_price ".
             "FROM " .$GLOBALS['ecs']->table('attribute'). " AS a ".
             "LEFT JOIN " .$GLOBALS['ecs']->table('goods_attr'). " AS v ".
             "ON v.attr_id = a.attr_id AND v.goods_id = '$goods_id' ".
@@ -673,6 +673,7 @@ function build_attr_html($cat_id, $goods_id = 0)
 
     foreach ($attr AS $key => $val)
     {
+
         $html .= "<tr><td class='label'>";
         if ($val['attr_type'] == 1 || $val['attr_type'] == 2)
         {
@@ -710,9 +711,19 @@ function build_attr_html($cat_id, $goods_id = 0)
             $html .= '</select> ';
         }
 
-        $html .= ($val['attr_type'] == 1 || $val['attr_type'] == 2) ?
-            $GLOBALS['_LANG']['spec_price'].' <input type="text" name="attr_price_list[]" value="' . $val['attr_price'] . '" size="5" maxlength="10" />' :
-            ' <input type="hidden" name="attr_price_list[]" value="0" />';
+        // $html .= ($val['attr_type'] == 1 || $val['attr_type'] == 2) ?
+        //     $GLOBALS['_LANG']['spec_price'].' <input type="text" name="attr_price_list[]" value="' . $val['attr_price'] . '" size="5" maxlength="10" />' :
+        //     ' <input type="hidden" name="attr_price_list[]" value="0" />';
+
+         if($val['attr_type'] == 1 || $val['attr_type'] == 2) {
+                $html .=' <input type="file" name="attr_img[]" value="' . $val['attr_img'] . '" size="5" maxlength="10" />';
+
+                // if($val['attr_img'] )
+                // {
+                //      $html .='<img style="width:50px;height:50px;" src="' . $val['attr_img'] . '">';
+
+                // }
+            }
 
         $html .= '</td></tr>';
     }
@@ -1106,7 +1117,7 @@ function product_list($goods_id, $conditions = '')
     $goods_attr = product_goods_attr_list($goods_id);
     foreach ($row as $key => $value)
     {
-        $_goods_attr_array = explode('|', $value['goods_attr']);
+        $_goods_attr_array = explode(',', $value['goods_attr']);
         if (is_array($_goods_attr_array))
         {
             $_temp = '';
