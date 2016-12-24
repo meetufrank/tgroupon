@@ -1076,7 +1076,6 @@ $smarty->assign('payment_list',$payment_list);
     $consignee = get_consignee_byid($_SESSION['user_id']);
 
 
-
  $user_id=$_SESSION['user_id'];
 
 if(isset($_GET['cartid'])){
@@ -1127,6 +1126,8 @@ if(isset($_GET['cartid'])){
 $consignee_list = get_consignee_list($_SESSION['user_id']);
         $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
          //print_r($consignee_list);exit;
+         //
+print_r($consignee_list);exit;
                $smarty->assign('consignee_list', $consignee_list);
 
 

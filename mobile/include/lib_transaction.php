@@ -190,7 +190,10 @@ function get_profile($user_id)
 function get_consignee_list($user_id)
 {
     $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('user_address') .
-            " WHERE user_id = '$user_id'";
+            " INNER JOIN ecs_region as er1
+            INNER JOIN ecs_region as er2
+            INNER JOIN ecs_region as er3
+            WHERE user_id = '$user_id'";
 
     return $GLOBALS['db']->getAll($sql);
 }
