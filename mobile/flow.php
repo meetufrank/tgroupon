@@ -1055,6 +1055,7 @@ elseif($_REQUEST['step'] == 'pay_select'){
     //-- 订单确认
     /*------------------------------------------------------ */
 
+
 include_once(ROOT_PATH . 'include/lib_order.php');
 
     /*
@@ -1123,11 +1124,10 @@ if(isset($_GET['cartid'])){
 
         }
 
-$consignee_list = get_consignee_list($_SESSION['user_id']);
-        $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
-         //print_r($consignee_list);exit;
-         //
-print_r($consignee_list);exit;
+
+
+
+
                $smarty->assign('consignee_list', $consignee_list);
 
 
