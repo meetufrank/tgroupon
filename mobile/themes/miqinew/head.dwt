@@ -298,6 +298,7 @@ window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
     </script>
     <script src="{$ectouch_themes}/js/jquery.json-2.3.js"></script>
   <script src="{$ectouch_themes}/js/jquery.json-2.3.min.js"></script>
+
 <script type="text/javascript">
 
 /* *

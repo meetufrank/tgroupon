@@ -32,7 +32,7 @@ require(ROOT_PATH . 'head.php');
      //商品关联艺术家(图像，名称，地区)
 
     //商品id
-    $goodsid = 165;
+    $goodsid = 164;
 
     $sqlspxx = "select u.artiststalk,u.hav_logo,u.user_name,u.country from `ecs_goods` as g inner join  `ecs_admin_user` as u on g.arter_id = u.user_id where g.goods_id = '$goodsid'";
     $spxx = $db->getAll($sqlspxx);

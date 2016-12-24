@@ -190,20 +190,20 @@
             data:{step:'update_order_pay',pay_list:pay_id,order_id:orderid},
             success: function(data){
                     content=data;
-
+                    layer.open({
+                        content:content,
+                        btn: ['关闭'],
+                        style:'width:190px;'
+                      });
                   }
                  });
 
       });
 
-    layer.open({
-                        content:content,
-                        btn: ['关闭'],
-                        style:'width:190px;'
-                      });
 
 
-      });
+
+
  </script>
 
 </body><!-- <body> -->

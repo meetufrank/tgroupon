@@ -166,3 +166,24 @@ MODIFY COLUMN `more_price`  decimal(10,2) NULL DEFAULT 0.00 COMMENT '//额外费
 */
 ALTER TABLE `ecs_order_info`
 ADD COLUMN `post_price`  decimal(10,2) NOT NULL DEFAULT 0 COMMENT '//邮费' AFTER `lineshop_id`;
+
+
+/*#2016/12/16 汪江   ecs_admin_user表添加艺术家备注字段
+*/
+ALTER TABLE `ecs_admin_user`
+ADD COLUMN `artiststalk`  varchar(255) NULL COMMENT '//艺术家备注' AFTER `ysj_tixian`;
+
+
+
+/*#2016/12/16 汪江   ecs_products表添加字段
+*/
+ALTER TABLE `ecs_products`
+ADD COLUMN `attributeprice`  varchar(255) NULL AFTER `product_number`,
+ADD COLUMN `attributeimg`  varchar(255) NULL AFTER `attributeprice`;
+
+
+/*#2016/12/16 汪江   ecs_goods_attr添加商品属性表字段
+*/
+
+ALTER TABLE `ecs_goods_attr`
+ADD COLUMN `attr_img`  varchar(255) NULL COMMENT '//具体商品属性表' AFTER `attr_price`;
