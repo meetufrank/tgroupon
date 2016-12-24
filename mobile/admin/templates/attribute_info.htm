@@ -73,6 +73,14 @@
           <textarea name="attr_values" cols="30" rows="5">{$attr.attr_values}</textarea>
         </td>
       </tr>
+
+
+
+
+
+
+
+
       <tr>
         <td colspan="2">
         <div class="button-div">
@@ -81,6 +89,7 @@
         </div>
         </td>
       </tr>
+
       </table>
     <input type="hidden" name="act" value="{$form_act}" />
     <input type="hidden" name="attr_id" value="{$attr.attr_id}" />
@@ -134,6 +143,8 @@ function validate()
   }
 }
 
+
+
 /**
  * 点击类型按钮时切换选项的禁用状态
  */
@@ -141,6 +152,30 @@ function radioClicked(n)
 {
   document.forms['theForm'].elements["attr_values"].disabled = n > 0 ? false : true;
 }
+
+
+
+ var count = 1;
+    function add() {
+      var tbl = document.getElementById('general-table');
+      var rows = tbl.rows.length;
+      var tr = tbl.insertRow(rows);
+
+      var name = tr.insertCell(0);
+      name.innerHTML = '<td>&nbsp;属性值:<input name="attr_values" type="text"></td>';
+
+
+      var del = tr.insertCell(1);
+      del.innerHTML = '<input type="button" onclick="del(this)" value="Delete">';
+      count++;
+    }
+
+    function del(btn) {
+      var tr = btn.parentElement.parentElement;
+      var tbl = tr.parentElement;
+      tbl.deleteRow(tr.rowIndex-1);
+    }
+
 
 /**
  * 改变商品类型的处理函数

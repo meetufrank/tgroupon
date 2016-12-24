@@ -440,6 +440,9 @@ elseif ($_REQUEST['act'] == 'update')
        sys_msg($up->getErrorMsg(), 1);
     }
  }
+
+
+ print_r($url_img);
     $users  =& init_users();
 
     if (!$users->edit_user(array('username'=>$username, 'password'=>$password, 'email'=>$email, 'gender'=>$sex, 'bday'=>$birthday ), 1))

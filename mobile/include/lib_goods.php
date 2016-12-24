@@ -160,7 +160,7 @@ function get_top10($cats = '')
            "AND (o.pay_status = '" . PS_PAYED . "' OR o.pay_status = '" . PS_PAYING . "') " .
            "AND (o.shipping_status = '" . SS_SHIPPED . "' OR o.shipping_status = '" . SS_RECEIVED . "') " .
            'GROUP BY g.goods_id ORDER BY goods_number DESC, g.goods_id DESC LIMIT ' . $GLOBALS['_CFG']['top_number'];
-           
+
     $arr = $GLOBALS['db']->getAll($sql);
 
     for ($i = 0, $count = count($arr); $i < $count; $i++)
@@ -515,7 +515,7 @@ function get_goods_info($goods_id)
             "WHERE g.goods_id = '$goods_id' AND g.is_delete = 0 " .
             "GROUP BY g.goods_id";
     $row = $GLOBALS['db']->getRow($sql);
-	
+
 	/* 查询该商品的实际销量 */
     $sql = 'SELECT IFNULL(SUM(g.goods_number), 0) ' .
         'FROM ' . $GLOBALS['ecs']->table('order_info') . ' AS o, ' .
@@ -636,7 +636,7 @@ function get_goods_properties($goods_id)
     }
 
     /* 获得商品的规格 */
-    $sql = "SELECT a.attr_id, a.attr_name, a.attr_group, a.is_linked, a.attr_type, ".
+    $sql = "SELECT g.attr_img,g.attr_id,a.attr_id, a.attr_name, a.attr_group, a.is_linked, a.attr_type, ".
                 "g.goods_attr_id, g.attr_value, g.attr_price, " .
 				"p.product_sn, p.product_number " ./* 这一行是我加的*/
             'FROM ' . $GLOBALS['ecs']->table('goods_attr') . ' AS g ' .
@@ -644,11 +644,15 @@ function get_goods_properties($goods_id)
 			'LEFT JOIN ' . $GLOBALS['ecs']->table('products') . ' AS p ON g.goods_attr_id = p.goods_attr ' . /* 这一行也是我加的*/
             "WHERE g.goods_id = '$goods_id' " .
             'ORDER BY a.sort_order, g.attr_price, g.goods_attr_id';
+
     $res = $GLOBALS['db']->getAll($sql);
+
+
+
 	//修复多个属性重复显示的问题
 	foreach($res as $key=>$v){
-			
-			
+
+
             if ($v['attr_id'] == $before['attr_id']&&$v['goods_attr_id'] == $before['goods_attr_id']) {
 
                $res[$key] = -1;
@@ -656,7 +660,7 @@ function get_goods_properties($goods_id)
 				$before="";
 				$before=$v;
 			}
-			
+
         }
 	foreach($res as $key=>$v){
 		if($v==-1){
@@ -664,7 +668,7 @@ function get_goods_properties($goods_id)
 		}
 	}
 
-	//济南五铢电子商务修复多个属性重复显示的问题	
+	//济南五铢电子商务修复多个属性重复显示的问题
     $arr['pro'] = array();     // 属性
     $arr['spe'] = array();     // 规格
     $arr['lnk'] = array();     // 关联的属性
@@ -687,6 +691,7 @@ function get_goods_properties($goods_id)
             $arr['spe'][$row['attr_id']]['values'][] = array(
                                                         'label'        => $row['attr_value'],
                                                         'price'        => $row['attr_price'],
+                                                        'attr_img'        => $row['attr_img'],
                                                         'format_price' => price_format(abs($row['attr_price']), false),
                                                         'id'           => $row['goods_attr_id'],
 														'product_sn'   => $row["product_sn"],/* 这一行是我加的*/
@@ -767,8 +772,8 @@ function get_goods_gallery($goods_id)
     $row = $GLOBALS['db']->getAll($sql);
     /* 格式化相册图片路径 */
     foreach($row as $key => $gallery_img)
-    {	
-	
+    {
+
 		//甜心修改修复远程图片路径
 		$url=$gallery_img['img_url'];
 		$flag=strstr("$url","http");
