@@ -3095,9 +3095,9 @@ function judge_package_stock($package_id, $package_num = 1)
 function get_money($orderid,$user_id)   //某订单id
 {
 
-        $sql="SELECT goods_price,lineshop_id,goods_id,fencheng,goods_number from ecs_order_goods  WHERE order_id=".$orderid;
+        $sql="SELECT goods_price,lineshop_id,goods_id,fencheng,goods_number,post_price from ecs_order_goods  WHERE order_id=".$orderid;
         $data = $GLOBALS['db']->GetRow($sql);    //查询该订单是否跟某个线下店有关
-
+       $data['goods_price']-=$data['post_price'];
         $my_fencheng=1; //初始化形色个人比例
         $sql="SELECT  ysj_fencheng,arter_id,father_id from  ecs_goods as eg INNER JOIN ecs_admin_user as eau  ON eg.arter_id=eau.user_id where goods_id=".$data['goods_id'];
         $admin_fencheng = $GLOBALS['db']->GetRow($sql);    //查询艺术家分成比例
@@ -3174,7 +3174,7 @@ function get_money($orderid,$user_id)   //某订单id
         }
 
         //形色所得
-           $my_money=$data['goods_number']*$data['goods_price']*$my_fencheng;
+           $my_money=$data['goods_number']*$data['goods_price']*$my_fencheng+$data['post_price'];
 
            $result=fencheng_insert($data['goods_id'],$data['lineshop_id'],$user_id,$my_money,$data['father_id'],3);
 

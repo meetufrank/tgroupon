@@ -557,7 +557,7 @@
     <!-- .footer -->
     <div class="mobile-foot col-xs-12 hidden-sm hidden-md hidden-lg" style="position:fixed;bottom:0;padding:0px;">
 		<div class="col-xs-6" style="padding:0px;">
-        	<a href="#" class="mobile-add-to-cart" >
+        	<a href="#" class="mobile-add-to-cart" onclick="addToCart({$goods_id});">
               放入购物车
             </a>
         </div>

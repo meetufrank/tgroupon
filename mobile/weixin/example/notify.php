@@ -55,24 +55,41 @@ require('../../include/init.php');
 
 $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
 
-Log::DEBUG(print_r($xml,TRUE));
+Log::DEBUG($xml);
 $notify = new PayNotifyCallBack();
 
 
-
+// $xml='<xml><appid><![CDATA[wxb5aec13c030a530b]]></appid>
+// <attach><![CDATA[娃娃啊啊]]></attach>
+// <bank_type><![CDATA[CMB_DEBIT]]></bank_type>
+// <cash_fee><![CDATA[1]]></cash_fee>
+// <fee_type><![CDATA[CNY]]></fee_type>
+// <is_subscribe><![CDATA[Y]]></is_subscribe>
+// <mch_id><![CDATA[1267579601]]></mch_id>
+// <nonce_str><![CDATA[9m48w4jsudwn577934lhlgkt5pk8tqb1]]></nonce_str>
+// <openid><![CDATA[okRTqvv9Rri34dDloixJeixyRPms]]></openid>
+// <out_trade_no><![CDATA[126757960120161224143511]]></out_trade_no>
+// <result_code><![CDATA[SUCCESS]]></result_code>
+// <return_code><![CDATA[SUCCESS]]></return_code>
+// <sign><![CDATA[9563957A7BC4D2BBCC4314A1F694DC92]]></sign>
+// <time_end><![CDATA[20161224143541]]></time_end>
+// <total_fee>1</total_fee>
+// <trade_type><![CDATA[NATIVE]]></trade_type>
+// <transaction_id><![CDATA[4000242001201612243817562256]]></transaction_id>
+// </xml>';
 
 
 $arr=xml2array($xml);
 
-
+//print_r($arr);exit;
 
 if($arr['appid']=='wxb5aec13c030a530b'&&$arr['mch_id']=='1267579601'&&$arr['total_fee']==1&&$arr['result_code']=='SUCCESS'){
-    $sql="select COUNT(*) from ecs_order_info where order_sn=".$arr['out_trade_no'];
+   echo $sql="select COUNT(*) from ecs_order_info where order_sn='".$arr['out_trade_no']."'";
     $result=$GLOBALS['db']->getOne($sql);
 
 
     if($result){
-	 	$sql="update ecs_order_info set order_status=1,pay_status=2 where order_sn=".$arr['out_trade_no'];
+	 echo	$sql="update ecs_order_info set order_status=1,pay_status=2 where order_sn=".$arr['out_trade_no'];
     	if($GLOBALS['db']->query($sql)){
     		$notify->Handle(true);
     	}
@@ -80,45 +97,9 @@ if($arr['appid']=='wxb5aec13c030a530b'&&$arr['mch_id']=='1267579601'&&$arr['tota
     }
 
 
-}
+}exit;
 
-	/*
-	   将xml转换成数组
-	 */
-	function xml2array($xmlString = '')
-	 {
-	  $targetArray = array();
-	  $xmlString = str_replace( array( '<![CDATA[' , ']]>'), '', $xmlString );
-	  $xmlObject = simplexml_load_string($xmlString);
-	  $mixArray = (array)$xmlObject;
-	  foreach($mixArray as $key => $value)
-	  {
-	   if(is_string($value))
-	   {
-		$targetArray[$key] = $value;
-	   }
-	   if(is_object($value))
-	   {
-		$targetArray[$key] = xml2array($value->asXML());
-	   }
-	   if(is_array($value))
-	   {
-		foreach($value as $zkey => $zvalue)
-		{
-		 if(is_numeric($zkey))
-		 {
-		  $targetArray[$key][] = xml2array($zvalue->asXML());
-		 }
-		 if(is_string($zkey))
-		 {
-		  $targetArray[$key][$zkey] = xml2array($zvalue->asXML());
-		 }
-		}
-	   }
-	  }
-	  return $targetArray;
 
-	 }
 
 
 

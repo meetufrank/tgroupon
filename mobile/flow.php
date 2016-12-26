@@ -1210,6 +1210,7 @@ elseif($_REQUEST['step']=='pay_ok'){
     /* 订单详情 */
     $order = get_order_detail($order_id, $user_id);
 
+
     if ($order === false)
     {
         $err->show($_LANG['back_home_lnk'], './');
@@ -1228,9 +1229,25 @@ elseif($_REQUEST['step']=='pay_ok'){
         $goods_list[$key]['subtotal']     = price_format($value['subtotal'], false);
     }
 
-  $payment_list=available_payment_list(0);  //支付方式
-$smarty->assign('payment_list',$payment_list);
+    $payment_list=available_payment_list(0);  //支付方式
+    $smarty->assign('payment_list',$payment_list);
+    $is_wechat=is_wechat_browser();
+    $smarty->assign('is_wechat',      $is_wechat);
+    if($is_wechat){
+    foreach($payment_list as $payment){
+        if($payment['pay_code']=='wx_new_jspay'){
+            include_once('include/modules/payment/' . $payment['pay_code'] . '.php');
+            $pay_obj    = new $payment['pay_code'];
 
+            $pay_online = $pay_obj->get_code($order, unserialize_config($payment['pay_config']));
+
+            $smarty->assign('pay_online', $pay_online);
+        }
+
+
+    }
+
+    }
 
 
 
@@ -2860,7 +2877,7 @@ exit;
 
 
 }
-elseif($_REQUEST['step'] == 'update_order_pay'){
+elseif($_REQUEST['step'] == 'update_order_pay'){//微信扫码支付
 
 include_once('include/lib_clips.php');
     include_once('include/lib_payment.php');
@@ -2891,17 +2908,20 @@ include_once('include/lib_clips.php');
 
                                           $payment['pay_code']="native";
                                            include_once('weixin/example/native.php');
-                                           $content='<div><img  src="weixin/example/qrcode.php?data='.urlencode($url2).'" style="width:150px;height:150px;"/></div>';
-                                           echo $content;
+                                           $return['content']='<div><img  src="weixin/example/qrcode.php?data='.urlencode($url2).'" style="width:150px;height:150px;"/></div>';
+                                           $return['step']=1;
+                                           echo  json_encode( $return);exit;
 
 
-                                            }
+
+
+                                        }
                        }else{
                         include_once('include/modules/payment/' . $payment['pay_code'] . '.php');
                         $pay_obj    = new $payment['pay_code'];
 
                         $pay_online = $pay_obj->get_code($order, unserialize_config($payment['pay_config']));
-                         ecs_header("Location: $pay_online");
+                         ecs_header("Location: $pay_online");exit;
                            }
 
 
