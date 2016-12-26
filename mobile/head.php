@@ -15,41 +15,27 @@
 
 
 
-/*------------------------------------------------------ */
-//-- INPUT
-/*------------------------------------------------------ */
 
-if (!isset($_REQUEST['step']))
-{
-    $_REQUEST['step'] = "cart";
-}
 /*------------------------------------------------------ */
 //-- PROCESSOR
 /*------------------------------------------------------ */
 
-assign_template();
-assign_dynamic('flow');
-$position = assign_ur_here(0, $_LANG['shopping_flow']);
-$smarty->assign('page_title',       $position['title']);    // 页面标题
-$smarty->assign('ur_here',          $position['ur_here']);  // 当前位置
-
-$smarty->assign('categories',       get_categories_tree()); // 分类树
-$smarty->assign('helps',            get_shop_help());       // 网店帮助
-$smarty->assign('lang',             $_LANG);
-$smarty->assign('show_marketprice', $_CFG['show_marketprice']);
-$smarty->assign('data_dir',    DATA_DIR);       // 数据目录
 
 
 
-    /* 标记购物流程为普通商品 */
-    $_SESSION['flow_type'] = CART_GENERAL_GOODS;
 
-    /* 如果是一步购物，跳到结算中心 */
-    if ($_CFG['one_step_buy'] == '1')
+
+if ( $_SESSION['user_id'] != 0)
     {
-        ecs_header("Location: flow.php?step=checkout\n");
-        exit;
+      $sql  = "SELECT user_name, birthday, sex, question, answer, rank_points, pay_points,user_money, user_rank,".
+             " msn, qq, office_phone, home_phone, mobile_phone, passwd_question, passwd_answer ".
+           "FROM " .$GLOBALS['ecs']->table('users') . " WHERE user_id = '$user_id'";
+      $infos = $GLOBALS['db']->getRow($sql);
+
+      $smarty->assign('user_status', 1);
     }
+
+
 
     /* 取得商品列表，计算合计 */
     $cart_goods = get_cart_goods();
@@ -57,11 +43,23 @@ $smarty->assign('data_dir',    DATA_DIR);       // 数据目录
     //print_r($cart_goods);exit;
     $smarty->assign('goods_list', $cart_goods['goods_list']);
     $smarty->assign('total', $cart_goods['total']);
+ $smarty->assign('user_data', $infos);
 
 
 
 
 
+
+function please_in(){
+    echo '
+  <script  type="text/javascript" charset="utf-8" >alert(\'您需要登录\');</script>
+    ';
+    /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
+        ecs_header("Location: flow.php?step=login\n");
+        exit;
+
+
+}
 
 
 

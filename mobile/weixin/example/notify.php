@@ -84,12 +84,12 @@ $arr=xml2array($xml);
 //print_r($arr);exit;
 
 if($arr['appid']=='wxb5aec13c030a530b'&&$arr['mch_id']=='1267579601'&&$arr['total_fee']==1&&$arr['result_code']=='SUCCESS'){
-   echo $sql="select COUNT(*) from ecs_order_info where order_sn='".$arr['out_trade_no']."'";
+    $sql="select order_amount from ecs_order_info where order_sn='".$arr['out_trade_no']."'";
     $result=$GLOBALS['db']->getOne($sql);
-
+    $price=$result-$arr['cash_fee']/100;
 
     if($result){
-	 echo	$sql="update ecs_order_info set order_status=1,pay_status=2 where order_sn=".$arr['out_trade_no'];
+	 	$sql="update ecs_order_info set order_status=1,pay_status=2,order_amount=0,money_paid=".$price." where order_sn=".$arr['out_trade_no'];
     	if($GLOBALS['db']->query($sql)){
     		$notify->Handle(true);
     	}

@@ -52,6 +52,11 @@ include_once('head.php');
 /*------------------------------------------------------ */
 if ($_REQUEST['step'] == 'add_to_cart')
 {
+
+    if ( $_SESSION['user_id'] == 0)
+    {
+            please_in();
+    }
     include_once('include/cls_json.php');
     $_POST['goods']=strip_tags(urldecode($_POST['goods']));
     $_POST['goods'] = json_str_iconv($_POST['goods']);
@@ -204,10 +209,7 @@ elseif ($_REQUEST['step']== 'ajax_get_price') {
 
     if ( $_SESSION['user_id'] == 0)
     {
-
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+            please_in();
     }
     if(isset($_POST['address'])){
         $addressid=intval($_POST['address']);
@@ -735,9 +737,9 @@ elseif ($_REQUEST['step'] == 'checkout')
     if (empty($_SESSION['direct_shopping']) && $_SESSION['user_id'] == 0)
     {
 
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+
+            please_in();
+
     }
 
     $consignee = get_consignee($_SESSION['user_id']);
@@ -1027,9 +1029,7 @@ elseif($_REQUEST['step'] == 'ajax_get_cart'){
     if ( $_SESSION['user_id'] == 0)
     {
 
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+          please_in();
     }
 
     $consignee = get_consignee_byid($_SESSION['user_id']);
@@ -1066,9 +1066,7 @@ include_once(ROOT_PATH . 'include/lib_order.php');
     if ( $_SESSION['user_id'] == 0)
     {
 
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+          please_in();
     }
 
 $payment_list=available_payment_list(0);
@@ -2884,9 +2882,7 @@ include_once('include/lib_clips.php');
      if ( $_SESSION['user_id'] == 0)
     {
 
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+          please_in();
     }
 
     $user_id=$_SESSION['user_id'];
