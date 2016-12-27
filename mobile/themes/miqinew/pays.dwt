@@ -578,7 +578,10 @@
                           data:$('#address_form').serialize(),
                           success: function(data){
                                  layer.close(index);
-                                  window.location.href=window.location.href;
+                                 alert("adfa");
+                                 //top.location.href = top.location.href;
+                                  //window.location.href=window.location.href;
+                                  window.location.reload();
                                 }
                                });
               },
