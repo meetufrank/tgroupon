@@ -17,72 +17,88 @@ define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
 
-
-// $appid = 'wx7eee3208b7b59ea1';
-// $secret ='9d9360d18e266b81d69888227fbbadeb';
-// if((!isset($_SESSION['wechat_id']) || $_SESSION['wechat_id']==null) && !$_SESSION['user_id'] && !$_CFG['shop_reg_closed']){
-//     $code=isset($_GET['code'])?$_GET['code']:null;
-//     $url =  urlencode("http://mall.58zcm.com/mobile/index.php");
-//     if($code==null){
-//         $str="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appid}&redirect_uri=".$url."&scope=snsapi_base&state=123&response_type=code#wechat_redirect";
-//         //echo $str;exit;
-//         header ("Location:".$str);
-//     }else{
-//         $str="https://api.weixin.qq.com/sns/oauth2/access_token?appid={$appid}&secret={$secret}&code=".$code."&grant_type=authorization_code";
-//         $ch = curl_init() ;
-//         curl_setopt($ch, CURLOPT_URL, $str);
-//         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-//         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-//         curl_setopt($ch, CURLOPT_HEADER, FALSE);
-//         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); //将curl_exec()获取的信息以文件流的形式返回，而不是直接输出。
-//         $output = curl_exec($ch);
-//         $output=json_decode($output,true);
-//         $_SESSION['wechat_id']=$output['openid'];
-//     }
-// }
-// //unset($_SESSION['user_id']);exit;
-// /*授权登陆 注册*/
-// if(!$_SESSION['user_id'] && $_SESSION['wechat_id'] && !$_CFG['shop_reg_closed']){
-//     $openid = $_SESSION['wechat_id'];
-
-//     $sql = "SELECT * FROM".$ecs->table('users')." where wx_open_id = '".$openid."'";
-//     $row = $db->getRow($sql);
-//     if($row){
-//         $username = $row['user_name'];
-//         $password = $row['user_name'];
-//         if ($user->login($username, $password)){
-//             update_user_info();
-//             recalculate_price();
-//          }
-//     }else{//注册
-//         include_once(ROOT_PATH . 'include/lib_passport.php');echo ROOT_PATH . 'include/lib_passport.php';
-
-//         $username = 'wx_'.time();
-//         $password = 'wx_'.time();
-//         $email    = 'wx_login'.time().'@qq.com';
-//         if (register($username, $password, $email) !== false){
-//             $sql = "UPDATE ".$ecs->table('users')." SET  wx_open_id = '".$openid."' WHERE user_id = '".$_SESSION['user_id']."'";
-//             if(!$db->query($sql)){
-//                 unset($_SESSION['user_id']);
-//             }
-//         }
-//     }
-// }
-
-
-
-
-
 require(ROOT_PATH . 'include/lib_weixintong.php');
+
 /* 载入语言文件 */
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 
 
 
 
+if(isset($_REQUEST['code'])&&isset($_REQUEST['state'])&&$action == 'weixin'){
+    include_once(ROOT_PATH . 'includes/website/jntoo.php');
+
+    $code = $_GET['code'];
+    $state = $_GET['state'];
+    //xxxx修改成自己的appID和AppSecret
+    $appid = 'wx7eee3208b7b59ea1';
+    $appsecret = '9d9360d18e266b81d69888227fbbadeb';
+
+    if (empty($code))
+    show_message('授权失败', '返回首页', '', 'wrong');
+
+    $token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$appsecret.'&code='.$code.'&grant_type=authorization_code';
+    $token = json_decode(file_get_contents($token_url));
+    if (isset($token->errcode))
+    {
+        show_message($token->errmsg, '返回首页', '', 'wrong');
+    }
+    $access_token_url = 'https://api.weixin.qq.com/sns/oauth2/refresh_token?appid='.$appid.'&grant_type=refresh_token&refresh_token='.$token->refresh_token;
+
+    $access_token = json_decode(file_get_contents($access_token_url));
+    if (isset($access_token->errcode))
+    {
+        show_message($access_token->errmsg, '返回首页', '', 'wrong');
+    }
+    $user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token->access_token.'&openid='.$access_token->openid.'&lang=zh_CN';
+
+    $user_info = json_decode(file_get_contents($user_info_url));
+    if (isset($user_info->errcode)) {
+        show_message($user_info->errmsg, '返回首页', '', 'wrong');
+    }
+
+    setcookie('user_info',$user_info);
+    $info = $user_info;
+    $type='weixin';
+    $info_user_id = $type .'_'.$info->openid; //  加个标识！！！防止 其他的标识 一样  // 以后的ID 标识 将以这种形式 辨认
+    $info->nickname= str_replace("'" , "" ,$info->nickname);
 
 
+    $sql = 'SELECT user_name,password,aite_id FROM '.$ecs->table('users').' WHERE aite_id = \''.$info_user_id.'\' OR aite_id=\''.$info->openid.'\'';
 
+    $count = $db->getRow($sql);
+    $login_name = $info->nickname;
+    if(!$count)   // 没有当前数据
+    {
+        if($user->check_user($info->nickname))  // 重名处理
+        {
+            $info->nickname = $info->nickname.'_'.$type.(rand()*1000);
+        }
+        $login_name = $info->nickname;
+        $user_pass = $user->compile_password(array('password'=>$info->openid));
+        $sql = 'INSERT INTO '.$ecs->table('users').'(user_name , password, aite_id , sex , reg_time , user_rank , is_validated) VALUES '.
+                "('$info->nickname' , '$user_pass' , '$info_user_id' , '$info->sex' , '".gmtime()."' , '0' , '1')" ;
+        $db->query($sql);
+    }
+    else
+    {
+        $login_name = $count['user_name'];
+        $sql = '';
+        if($count['aite_id'] == $info->openid)
+        {
+            $sql = 'UPDATE '.$ecs->table('users')." SET aite_id = '$info_user_id' WHERE aite_id = '$count[aite_id]'";
+            $db->query($sql);
+        }
+    }
+
+
+    $user->set_session($login_name);
+    $user->set_cookie($login_name);
+    update_user_info();
+
+    $redirect_url =  "http://".$_SERVER["HTTP_HOST"].str_replace("user.php", "index.php", $_SERVER["REQUEST_URI"]);
+    header('Location: '.$redirect_url);
+}
 
 
 
@@ -209,7 +225,7 @@ if ($action == 'dianpu')
 	$dianpu = $db->getOne('SELECT nicheng FROM ' . $ecs->table('users') . ' WHERE user_id='.$user_id.'');
 	$smarty->assign('dianpu', $dianpu);
 
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 if ($action == 'act_dianpu')
 {
@@ -235,7 +251,7 @@ if ($action == 'act_dianpu')
 	$db->query("update " . $ecs->table('users') . " set nicheng='".$nicheng."' WHERE user_id=".$user_id."");
 	$smarty->assign('dianpu', $nicheng);
 
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 //  第三方登录接口
@@ -390,7 +406,7 @@ if ($action == 'register')
     /* 增加是否关闭注册 */
     $smarty->assign('shop_reg_closed', $_CFG['shop_reg_closed']);
 //    $smarty->assign('back_act', $back_act);
-    $smarty->display('user_passport.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 注册会员的处理 */
@@ -401,7 +417,7 @@ elseif ($action == 'act_register')
     {
         $smarty->assign('action',     'register');
         $smarty->assign('shop_reg_closed', $_CFG['shop_reg_closed']);
-        $smarty->display('user_passport.dwt');
+        $smarty->display('my_usergrzx.dwt');
     }
     else
     {
@@ -563,7 +579,7 @@ elseif ($action == 'login')
     }
 
     $smarty->assign('back_act', $back_act);
-    $smarty->display('user_passport.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 处理会员的登录 */
@@ -797,7 +813,7 @@ elseif ($action == 'profile')
     $smarty->assign('passwd_questions', $_LANG['passwd_questions']);
 
     $smarty->assign('profile', $user_info);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 修改个人资料的处理 */
@@ -918,7 +934,7 @@ elseif ($action == 'get_password')
         $smarty->assign('uid',    $uid);
         $smarty->assign('code',   $code);
         $smarty->assign('action', 'reset_password');
-        $smarty->display('user_passport.dwt');
+        $smarty->display('my_usergrzx.dwt');
     }
     else
     {
@@ -927,7 +943,7 @@ elseif ($action == 'get_password')
             $smarty->assign('enabled_sms_signin', 1);
         }
         //显示用户名和email表单
-        $smarty->display('user_passport.dwt');
+        $smarty->display('my_usergrzx.dwt');
     }
 }
 
@@ -935,7 +951,7 @@ elseif ($action == 'get_password')
 elseif ($action == 'qpassword_name')
 {
     //显示输入要找回密码的账号表单
-    $smarty->display('user_passport.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 密码找回-->根据注册用户名取得密码提示问题界面 */
@@ -972,7 +988,7 @@ elseif ($action == 'get_passwd_question')
     }
 
     $smarty->assign('passwd_question', $_LANG['passwd_questions'][$user_question_arr['passwd_question']]);
-    $smarty->display('user_passport.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 密码找回-->根据提交的密码答案进行相应处理 */
@@ -1009,7 +1025,7 @@ elseif ($action == 'check_answer')
         unset($_SESSION['temp_user_name']);
         $smarty->assign('uid',    $_SESSION['user_id']);
         $smarty->assign('action', 'reset_password');
-        $smarty->display('user_passport.dwt');
+        $smarty->display('my_usergrzx.dwt');
     }
 }
 
@@ -1088,7 +1104,7 @@ elseif ($action == 'send_pwd_sms')
 elseif ($action == 'reset_password')
 {
     //显示重置密码的表单
-    $smarty->display('user_passport.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 修改会员密码 */
@@ -1153,342 +1169,51 @@ elseif ($action == 'order_list')
     include_once(ROOT_PATH . 'include/lib_transaction.php');
 
     $page = isset($_REQUEST['page']) ? intval($_REQUEST['page']) : 1;
-   //初始化每页显示数据
-   $size=1;
 
-      $string1="  and pay_status=0 and shipping_status=0";//待付款
-      $string2="  and pay_status=2 and shipping_status=0";//待发货
-       $string3=" and pay_status=2 and shipping_status=1";//待收货
+    $record_count = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('order_info'). " WHERE user_id = '$user_id'");
 
-    $record_count_no = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('order_info'). " WHERE user_id = '$user_id'  ".$string1);//待付款
-    $record_count_yes = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('order_info'). " WHERE user_id = '$user_id' ".$string2);//待发货
-    $record_count_come = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('order_info'). " WHERE user_id = '$user_id' ".$string3);//待收货
+    $pager  = get_pager('user.php', array('act' => $action), $record_count, $page);
 
-    $pager_no  = get_pager('my_user.php', array('act' => $action), $record_count_no, $page);
-    $pager_yes = get_pager('my_user.php', array('act' => $action), $record_count_yes, $page);
-    $pager_come  = get_pager('my_user.php', array('act' => $action), $record_count_come, $page);
-
-    $no_orders = get_user_orders_new($user_id, 1,$size, $pager_no['start']);  //未付款订单列表
-    $ye_orders = get_user_orders_new($user_id, 2,$size, $pager_yes['start']);  //待发货订单列表
-    $come_orders = get_user_orders_new($user_id, 3,$size, $pager_come['start']);  //待收货订单列表
-
+    $orders = get_user_orders($user_id, $pager['size'], $pager['start']);
     $merge  = get_user_merge($user_id);
-
-
-
-    //收藏的单品
-    $user_id = 1632;
-    $sqlspnum = "SELECT COUNT(*) FROM " .$ecs->table('collect_goods'). " WHERE user_id = '$user_id' order by add_time";
-    $spnum = $db->getOne($sqlspnum);
-    $smarty->assign('spnum',  $spnum);
-
-    //收藏的商品信息(商品图片,商品名称)
-    $sqlspxx = "select shoc.goods_id,shoc.rec_id,gs.goods_img,gs.goods_name from ecs_collect_goods as shoc inner JOIN
-    ecs_goods as gs on shoc.goods_id = gs.goods_id
-    where `user_id` = '$user_id' order by shoc.add_time";
-    $spxx = $db->getAll($sqlspxx);
-    // var_dump($spxx);
-    $smarty->assign('spxx',  $spxx);
-
-
-
-    //收藏的艺术家
-    $user_ids = 1633;
-    $sqlysjnum = "SELECT COUNT(*) FROM " .$ecs->table('shocangysj'). " WHERE user_id = '$user_ids' order by add_time";
-    $ysjnum = $db->getOne($sqlysjnum);
-    $smarty->assign('ysjnum',  $ysjnum);
-
-
-    //收藏的艺术家(艺术家头像,艺术家名称)
-    $sqlysj = "select sc.ysj_id,sc.scid,u.user_name,u.hav_logo from ecs_shocangysj as sc inner join ecs_admin_user as u ON
-    sc.ysj_id = u.user_id
-    where sc.`user_id` = '$user_ids' order by sc.add_time";
-    $ysjxx = $db->getAll($sqlysj);
-    $smarty->assign('ysjxx',  $ysjxx);
-
-
 
     $smarty->assign('merge',  $merge);
     $smarty->assign('pager',  $pager);
-    $smarty->assign('record_count_no',$record_count_no);//待付款
-    $smarty->assign('record_count_yes',$record_count_yes);//待发货
-    $smarty->assign('record_count_come',$record_count_come);//待收货
-    $smarty->assign('no_orders', $no_orders);//待付款
-    $smarty->assign('ye_orders', $ye_orders);//待发货
-    $smarty->assign('come_orders', $come_orders);//待收货
-
-    $smarty->display('my_order.dwt');
-}/* 查看订单列表 */
-
-
-//删除收藏商品
-elseif ($action == 'del')
-{
-
-    $recid = $_POST['recid'];
-    $sqlspdel ="DELETE FROM  `ecs_collect_goods`
-    WHERE rec_id = '$recid';";
-    $db->query($sqlspdel);
-
-
-}
-//删除艺术家收藏
-elseif ($action == 'delsyj')
-{
-
-     $scysjid = $_POST['scysjid'];
-     $sqlysjdel ="DELETE FROM  `ecs_shocangysj`
-     WHERE scid = '$scysjid'";
-     $db->query($sqlysjdel);
+    $smarty->assign('orders', $orders);
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 异步显示订单列表 by wang */
 elseif ($action == 'async_order_list')
 {
-
     include_once(ROOT_PATH . 'include/lib_transaction.php');
-    $page_num=1;
 
-   if($_POST['type']==1){  //待付款ajax获取数据
-            $start_no = $_POST['last_no'];  //待付款
-            $limit_no = $_POST['amount_no']?$_POST['amount_no']:$page_num;//待付款
+    $start = $_POST['last'];
+    $limit = $_POST['amount'];
 
-             $no_orders = get_user_orders_new($user_id, 1,$limit_no, $start_no*$page_num);  //未付款订单列表
-             $no_orders_next=get_user_orders_new($user_id, 1,$limit_no, ($start_no+1)*$page_num);  //未付款订单列表
-             $order_list['data']=$no_orders;//还有更多
-             if(is_array($no_orders_next)){
-
-                $order_list['more']=1;
-
-             }else{
-                $order_list['more']=0;
-
-             }
-             //print_r($order_list['data']);exit;
-             foreach ($order_list['data'] as $key => $value) {
-                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
-                        <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
-                          <div class="pull-left" style="padding-top:10px;">订单编号:'.$value['order_sn'].'</div>
-                            <!-- Buttons -->
-                          <div class="pull-right hidden-xs hidden-sm">
-                            <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
-                            <a href="flow.php?step=pay_ok&order_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light">去支付</a>
-                          </div>
-
-                          </div>
-                      <div class="row">
-                          <div class="col-md-6">';
-                foreach ((array)$value['good_list'] as $k => $v) {
-                    $string.='<div class="item">';
-                    if($v['goods_thumb']){
-                       $string.='<a href="shop-single.php?id='.$v['goods_id'].' "class="item-thumb pull-left">
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="Item">
-                        </a>';
-                    }
-                    $string.='<div class="item-details hidden-xs">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
-                        </div>
-                        <div class="item-details visible-xs">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
-                        </div>
-                         </div>';
-
-                }
-                $string.='<div class="cart-subtotal space-bottom">
-                        <div class="column">
-                          <h3 class="toolbar-title">总价：</h3>
-                        </div>
-                        <div class="column">
-                          <h3 class="amount_no" style="color:#f20000">'.$value['total_fee'].'</h3>
-                        </div>
-                      </div><!-- .subtotal -->
-                      </div>
-                      <div class="col-md-6">
-                        <h4 class="text-primary">收件人信息</h4>
-                        <hr>
-                        <div>
-                        收件人：'.$value['consignee'].'<br>
-                  手机号：'.$value['tel'].'<br>
-                  地   址 ：'.$value['address'].'
-                  </div>
-                      </div>
-                      </div>
-                      <br>
-
-                      <div class="visible-sm visible-xs">
-                        <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
-                        <a href="flow.php?step=pay_select&or_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light">去支付</a>
-                      </div>
-
-                    </div>';
-
-             }
-        $data['data']=$string;
-        $data['more']=$order_list['more'];
-
-
-             echo json_encode($data);
-
-   }elseif($_POST['type']==2){//待发货ajax获取数据
-          $start_yes = $_POST['last_yes'];  //待发货
-          $limit_yes = $_POST['amount_yes']?$_POST['amount_yes']:$page_num;//待发货
-
-          $ye_orders = get_user_orders_new($user_id, 2,$limit_yes, $start_yes*$page_num);  //待发货订单列表
-
-          $ye_orders_next=get_user_orders_new($user_id, 2,$limit_yes, ($start_yes+1)*$page_num);  //待发货订单列表
-          $order_list['data']=$ye_orders;
-             if(is_array($ye_orders_next)){
-
-                $order_list['more']=1;
-
-             }else{
-                $order_list['more']=0;
-             }
-             foreach ($order_list['data'] as $key => $value) {
-                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
-                        <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
-                          <div class="pull-left" style="padding-top:10px;">订单编号:'.$value['order_sn'].'</div>
-
-
-                          </div>
-                      <div class="row">
-                          <div class="col-md-6">';
-                foreach ((array)$value['good_list'] as $k => $v) {
-                    $string.='<div class="item">';
-                    if($v['goods_thumb']){
-                        $string.='<a href="shop-single.php?id='.$v['goods_id'].'" class="item-thumb pull-left">
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="Item">
-                        </a>';
-                    }
-                    $string.='<div class="item-details hidden-xs">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
-                        </div>
-                        <div class="item-details visible-xs">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
-                        </div>
-                         </div>';
-
-                }
-                $string.='<div class="cart-subtotal space-bottom">
-                        <div class="column">
-                          <h3 class="toolbar-title">总价：</h3>
-                        </div>
-                        <div class="column">
-                          <h3 class="amount_yes" style="color:#f20000">'.$value['total_fee'].'</h3>
-                        </div>
-                      </div><!-- .subtotal -->
-                      </div>
-                      <div class="col-md-6">
-                        <h4 class="text-primary">收件人信息</h4>
-                        <hr>
-                        <div>
-                        收件人：'.$value['consignee'].'<br>
-                  手机号：'.$value['tel'].'<br>
-                  地   址 ：'.$value['address'].'
-                  </div>
-                      </div>
-                      </div>
-                      <br>
-
-
-
-                    </div>';
-
-             }
-        $data['data']=$string;
-        $data['more']=$order_list['more'];
-
-
-        echo json_encode($data);
-   }elseif($_POST['type']==3){//待收货ajax获取数据
-         $start_come = $_POST['last_come'];  //待收货
-         $limit_come = $_POST['amount_come']?$_POST['amount_come']:$page_num;//待收货
-
-        $come_orders = get_user_orders_new($user_id, 3,$limit_come, $start_come*$limit_come);  //待收货订单列表
-        $come_orders_next=get_user_orders_new($user_id, 2,$limit_come, ($start_come+1)*$limit_come);  //未付款订单列表
-         $order_list['data']=$come_orders;
-             if(is_array($come_orders_next)){
-
-                $order_list['more']=1;
-
-             }else{
-                 $order_list['more']=0;
-             }
-             foreach ($order_list['data'] as $key => $value) {
-                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
-                        <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
-                          <div class="pull-left" style="padding-top:10px;">订单编号:'.$value['order_sn'].'</div>
-
-
-                          </div>
-                      <div class="row">
-                          <div class="col-md-6">';
-                foreach ((array)$value['good_list'] as $k => $v) {
-                    $string.='<div class="item">';
-                    if($v['goods_thumb']){
-                        $string.='<a href="shop-single.php?id='.$v['goods_id'].'" class="item-thumb pull-left">
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="Item">
-                        </a>';
-                    }
-                    $string.='<div class="item-details hidden-xs">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
-                        </div>
-                        <div class="item-details visible-xs">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
-                        </div>
-                         </div>';
-
-                }
-                $string.='<div class="cart-subtotal space-bottom">
-                        <div class="column">
-                          <h3 class="toolbar-title">总价：</h3>
-                        </div>
-                        <div class="column">
-                          <h3 class="amount_come" style="color:#f20000">'.$value['total_fee'].'</h3>
-                        </div>
-                      </div><!-- .subtotal -->
-                      </div>
-                      <div class="col-md-6">
-                        <h4 class="text-primary">收件人信息</h4>
-                        <hr>
-                        <div>
-                        收件人：'.$value['consignee'].'<br>
-                  手机号：'.$value['tel'].'<br>
-                  地   址 ：'.$value['address'].'
-                  </div>
-                  <br>
-                  <h4 class="text-primary">快递信息</h4>
-                        <hr>
-                  <a id="Logistics" class="btn btn-primary" href="#">快递跟踪</a>
-                      </div>
-                      </div>
-                      </div>
-                     ';
-
-             }
-        $data['data']=$string;
-        $data['more']=$order_list['more'];
-
-             echo json_encode($data);
-   }
-
-
-
-
-
-
+    $orders = get_user_orders($user_id, $limit, $start);
+    if(is_array($orders)){
+        foreach($orders as $vo){
+            //获取订单第一个商品的图片
+            $img = $db->getOne("SELECT g.goods_thumb FROM " .$ecs->table('order_goods'). " as og left join " .$ecs->table('goods'). " g on og.goods_id = g.goods_id WHERE og.order_id = ".$vo['order_id']." limit 1");
+            $tracking = ($vo['shipping_id'] > 0) ? '<a href="user.php?act=order_tracking&order_id='.$vo['order_id'].'" class="c-btn3">订单跟踪</a>':'';
+            $asyList[] = array(
+                'order_status' => '订单状态：'.$vo['order_status'],
+                'order_handler' => $vo['handler'],
+                'order_content' => '<a href="user.php?act=order_detail&order_id='.$vo['order_id'].'"><table width="100%" border="0" cellpadding="5" cellspacing="0" class="ectouch_table_no_border">
+            <tr>
+                <td><img src="'.$config['site_url'].$img.'" width="50" height="50" /></td>
+                <td>订单编号：'.$vo['order_sn'].'<br>
+                订单金额：'.$vo['total_fee'].'<br>
+                下单时间：'.$vo['order_time'].'</td>
+                <td style="position:relative"><span class="new-arr"></span></td>
+            </tr>
+          </table></a>',
+                'order_tracking' => $tracking
+            );
+        }
+    }
+    echo json_encode($asyList);
 }
 
 /* 包裹跟踪 by wang */
@@ -1521,7 +1246,7 @@ elseif ($action == 'order_tracking')
     }
 
     $smarty->assign('trackinfo',      $get_content);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 查看订单详情 */
@@ -1599,7 +1324,7 @@ elseif ($action == 'order_detail')
 
     $smarty->assign('order',      $order);
     $smarty->assign('goods_list', $goods_list);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 取消订单 */
@@ -1624,6 +1349,8 @@ elseif ($action == 'cancel_order')
 /* 收货地址列表界面*/
 elseif ($action == 'address_list')
 {
+
+
     include_once(ROOT_PATH . 'include/lib_transaction.php');
     include_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/shopping_flow.php');
     $smarty->assign('lang',  $_LANG);
@@ -1655,23 +1382,81 @@ elseif ($action == 'address_list')
         $district_list[$region_id] = get_regions(3, $consignee['city']);
     }
 
+
     /* 获取默认收货ID */
     $address_id  = $db->getOne("SELECT address_id FROM " .$ecs->table('users'). " WHERE user_id='$user_id'");
 
-    //赋值于模板
-    $smarty->assign('real_goods_count', 1);
-    $smarty->assign('shop_country',     $_CFG['shop_country']);
-    $smarty->assign('shop_province',    get_regions(1, $_CFG['shop_country']));
-    $smarty->assign('province_list',    $province_list);
-    $smarty->assign('address',          $address_id);
-    $smarty->assign('city_list',        $city_list);
-    $smarty->assign('district_list',    $district_list);
-    $smarty->assign('currency_format',  $_CFG['currency_format']);
-    $smarty->assign('integral_scale',   $_CFG['integral_scale']);
-    $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
 
-    $smarty->display('user_transaction.dwt');
+
+
+
+
+        $smarty->assign('province_list', get_regions( 1 , 1 ));
+        // $smarty->assign('province_list', $province_list);
+        $smarty->assign('city_list',     $city_list);
+        $smarty->assign('district_list', $district_list);
+
+
+
+
+           /*
+             缓存数据表
+          */
+         $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('region')." where region_id!=1";
+
+            $region_list=$GLOBALS['db']->getAll($sql);
+            foreach($region_list as $k=>$v){
+                 $province_list[$v['region_id']]=$region_list[$k];
+                // if($v['region_type']==1){
+                //     $province_list[$v['region_id']]=$region_list[$k];
+                // }
+                // if($v['region_type']==2){
+                //     $city_list[$v['region_id']]=$region_list[$k];
+                // }
+                // if($v['region_type']==3){
+                //     $district_list[$v['region_id']]=$region_list[$k];
+                // }
+
+
+            }
+
+
+            $filename="region.txt";
+            file_put_contents($filename,json_encode($province_list));
+
+
+            //print_r($province_list);
+
+
+
+
+    // //赋值于模板
+    // $smarty->assign('real_goods_count', 1);
+    // $smarty->assign('shop_country',     $_CFG['shop_country']);
+    // $smarty->assign('shop_province',    get_regions(1, $_CFG['shop_country']));
+    // $smarty->assign('province_list',    $province_list);
+    // $smarty->assign('address',          $address_id);
+
+    // $smarty->assign('city_list',        $city_list);
+    // $smarty->assign('district_list',    $district_list);
+    // $smarty->assign('currency_format',  $_CFG['currency_format']);
+    // $smarty->assign('integral_scale',   $_CFG['integral_scale']);
+    // $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
+
+    $smarty->display('my_usergrzx.dwt');
 }
+
+//设为默认地址
+elseif($action == 'morendizhi'){
+  $addressid = $_POST['addressid'];
+  $sql1 ="update `ecs_user_address` set `default` = 1 where user_id = 1628 and address_id = $addressid";
+  $db->query($sql1);
+  $sql2 ="update `ecs_user_address` set `default` = 0 where user_id = 1628 and address_id != $addressid";
+  $db->query($sql2);
+  echo 1;
+
+}
+
 /* 添加/编辑收货地址的处理 */
 elseif ($action == 'act_edit_address')
 {
@@ -1680,32 +1465,58 @@ elseif ($action == 'act_edit_address')
     $smarty->assign('lang', $_LANG);
 
     if($_GET['flag'] == 'display'){
-        $id = intval($_GET['id']);
+        $id = intval($_REQUEST['id']);
+
+
+
 
         /* 取得国家列表、商店所在国家、商店所在国家的省列表 */
         $smarty->assign('country_list',       get_regions());
         $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
 
         /* 获得用户所有的收货人信息 */
-        $consignee_list = get_consignee_list($_SESSION['user_id']);
+        $consignee_list = get_consignee_list_new($_SESSION['user_id']);
+
+
 
         foreach ($consignee_list AS $region_id => $vo)
         {
-            if($vo['address_id'] == $id){
-                $consignee = $vo;
-                $smarty->assign('consignee', $vo);
+
+            if($vo['address_id']==$id ){
+               $consignee=$vo;
+               $smarty->assign('consignee', $vo);
             }
+
         }
+
         $province_list = get_regions(1, 1);
         $city_list     = get_regions(2, $consignee['province']);
         $district_list = get_regions(3, $consignee['city']);
 
         $smarty->assign('province_list',    $province_list);
+
+
+
         $smarty->assign('city_list',        $city_list);
         $smarty->assign('district_list',    $district_list);
+     //   echo   '<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="收件人" /></div> <div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="手机" /><div>'
+     // .
+     // '<div id="form-control"><div class="col-md-4 col-xs-12"><div class="form-element form-select"><select class="form-control"><option>省</option></select></div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select"><select class="form-control"><option>市</option></select></div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select"><select class="form-control"><option>区</option></select></div></div></div>'
+     // .
+     // '<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="详细地址" /></div>'
+     // .
+     // '<div class="text-right visible-sm visible-xs"><a href="#" style="text-decoration: underline;">读取微信地址</a></div>';
 
-        $smarty->display('user_transaction.dwt');
-        return false;
+     $sqlssq = "select ua.province,ua.city,ua.district from `ecs_user_address` as ua where user_id = 1628 and address_id = $id";
+     $shengshiqu = $db->getAll($sqlssq);
+
+     $smarty->assign('shengshiqu',$shengshiqu);
+
+     //编辑页
+      $smarty->display('bianji.dwt');
+
+
+     return false;
     }
 
     $address = array(
@@ -1730,6 +1541,34 @@ elseif ($action == 'act_edit_address')
         show_message($_LANG['edit_address_success'], $_LANG['address_list_lnk'], 'user.php?act=address_list');
     }
 }
+//修改收货地址
+elseif ($action == 'editdizhi'){
+     //地址id
+     $id = $_POST['addressid'];
+
+
+     //详细地址
+      $address = $_POST['address'];
+     //省
+      $province = $_POST['province'];
+     //市
+      $city = $_POST['city'];
+     //区
+      $district = $_POST['district'];
+     //电话
+      $tel = $_POST['tel'];
+     //收货人姓名
+      $consignee = $_POST['consignee'];
+
+      $sql = "update `ecs_user_address` set consignee = '$consignee',tel = '$tel',address = '$address',province = $province,city = $city,district = $district where address_id = $id";
+
+      $db->query($sql);
+
+     ecs_header("Location:my_usergrzx.php?act=address_list");
+
+}
+
+
 
 /* 删除收货地址 */
 elseif ($action == 'drop_consignee')
@@ -1747,6 +1586,17 @@ elseif ($action == 'drop_consignee')
     {
         show_message($_LANG['del_address_false']);
     }
+}
+
+
+/* 删除收货地址 */
+elseif ($action == 'drop_consignees')
+{
+    $addressid = $_POST['addressid'];
+
+    $sqldeldizhi ="DELETE FROM  `ecs_user_address`
+    WHERE address_id = '$addressid';";
+    $db->query($sqldeldizhi);
 }
 
 /* 显示收藏商品列表 */
@@ -2133,7 +1983,7 @@ elseif ($action == 'affirm_received')
 /* 会员退款申请界面 */
 elseif ($action == 'account_raply')
 {
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 会员预付款界面 */
@@ -2146,7 +1996,7 @@ elseif ($action == 'account_deposit')
 
     $smarty->assign('payment', get_online_payment_list(false));
     $smarty->assign('order',   $account);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 会员账目明细界面 */
@@ -2198,7 +2048,7 @@ elseif ($action == 'account_detail')
     $smarty->assign('surplus_amount', price_format($surplus_amount, false));
     $smarty->assign('account_log',    $account_log);
     $smarty->assign('pager',          $pager);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 会员充值和提现申请记录 */
@@ -2231,7 +2081,7 @@ elseif ($action == 'account_log')
     $smarty->assign('surplus_amount', price_format($surplus_amount, false));
     $smarty->assign('account_log',    $account_log);
     $smarty->assign('pager',          $pager);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 对会员余额申请的处理 */
@@ -2351,7 +2201,7 @@ elseif ($action == 'act_account')
         $smarty->assign('pay_fee', price_format($payment_info['pay_fee'], false));
         $smarty->assign('amount',  price_format($amount, false));
         $smarty->assign('order',   $order);
-        $smarty->display('user_transaction.dwt');
+        $smarty->display('my_usergrzx.dwt');
     }
 }
 
@@ -2449,7 +2299,7 @@ elseif ($action == 'pay')
         $smarty->assign('pay_fee', price_format($payment_info['pay_fee'], false));
         $smarty->assign('amount',  price_format($order['surplus_amount'], false));
         $smarty->assign('action',  'act_account');
-        $smarty->display('user_transaction.dwt');
+        $smarty->display('my_usergrzx.dwt');
     }
     /* 重新选择支付方式 */
     else
@@ -2459,7 +2309,7 @@ elseif ($action == 'pay')
         $smarty->assign('payment', get_online_payment_list());
         $smarty->assign('order',   $order);
         $smarty->assign('action',  'account_deposit');
-        $smarty->display('user_transaction.dwt');
+        $smarty->display('my_usergrzx.dwt');
     }
 }
 
@@ -2778,7 +2628,7 @@ elseif ($action == 'user_card')
 		$card_list[] = $row;
 	}
     $smarty->assign('card_list', $card_list);
-	$smarty->display('user_transaction.dwt');
+	$smarty->display('my_usergrzx.dwt');
 }
 /* 编辑使用余额支付的处理 */
 elseif ($action == 'act_edit_surplus')
@@ -3008,7 +2858,7 @@ elseif ($action == 'bonus')
 
     $smarty->assign('pager', $pager);
     $smarty->assign('bonus', $bonus);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 我的团购列表 */
@@ -3017,7 +2867,7 @@ elseif ($action == 'group_buy')
     include_once(ROOT_PATH .'include/lib_transaction.php');
 
     //待议
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 /* 团购订单详情 */
@@ -3026,7 +2876,7 @@ elseif ($action == 'group_buy_detail')
     include_once(ROOT_PATH .'include/lib_transaction.php');
 
     //待议
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 
 // 用户推荐页面
@@ -3498,7 +3348,7 @@ elseif ($action == 'myorder_detail')
 	$order['level_money_all']=$affiliate['item'][$k]['level_money'];
     $smarty->assign('order',      $order);
     $smarty->assign('goods_list', $goods_list);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 //首页邮件订阅ajax操做和验证操作
 elseif ($action =='email_list')
@@ -3691,7 +3541,7 @@ else if ($action == 'track_packages')
     $pager  = get_pager('user.php', array('act' => $action), $record_count, $page);
     $smarty->assign('pager',  $pager);
     $smarty->assign('orders', $orders);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 else if ($action == 'order_query')
 {
@@ -3851,7 +3701,7 @@ elseif ($action == 'transform_points')
     $smarty->assign('exchange_type',     $exchange_type);
     $smarty->assign('action',     $action);
     $smarty->assign('lang',       $_LANG);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 elseif ($action == 'act_transform_points')
 {
@@ -4284,9 +4134,6 @@ function get_accountlist($user_id, $account_type = '')
 
     return array('account' => $arr, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
 }
-
-
-
 
 
 ?>
