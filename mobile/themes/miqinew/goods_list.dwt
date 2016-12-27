@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>商品分类页</title>
+
+  <!--SEO Meta Tags-->
+  <meta name="description" content="M-Store - Modern E-Commerce Template" />
+  <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+  <meta name="author" content="Rokaux" />
+
+  <!--Mobile Specific Meta Tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Google Material Icons -->
+  <link href="{$ectouch_themes}/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+
+  <!-- Brand Icons -->
+  <link href="{$ectouch_themes}/css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+
+  <!-- Bootstrap -->
+  <link href="{$ectouch_themes}/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <!-- Theme Styles -->
+  <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
+
+  <!-- Page Preloading -->
+  <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
+
+  <!-- Modernizr -->
+  <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
+
+</head>
+
+<!-- Body -->
+<body class="page-preloading">
+
+  <!-- Page Pre-Loader -->
+  <div class="page-preloader">
+    <div class="preloader">
+      <img src="{$ectouch_themes}/img/preloader.gif" alt="Preloader">
+    </div>
+  </div><!-- .page-preloader -->
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+
+	<!-- 头部开始 -->
+    {include file="head.dwt"}
+	<!-- 头部结束-->
+
+    <!-- Shop Catalog -->
+    <section class="container-fluid padding-top-3x padding-bottom-3x">
+
+      <!-- Sidebar Toggle / visible only on mobile -->
+      <div class="sidebar-toggle">
+        <i class="material-icons filter_list"></i>
+      </div>
+
+      <div class="row padding-top">
+
+        <!-- Sidebar (Filters) -->
+        <div class="col-lg-2 col-md-3 col-sm-4">
+          <aside class="sidebar">
+            <span class="sidebar-close"><i class="material-icons close"></i></span>
+            <div class="widgets" id="view2">
+
+            <!--类型列表-->
+              <script id="demo2" type="text/html">
+	{{# for(var i = 0, len = d.length; i < len; i++){ }}
+	<div class="widget {{d[i].style}}">
+                <h3 class="widget-title">{{d[i].title}}</h3>
+                <ul>
+				{{# for(var y = 0, ilen = d[i].data.length; y < ilen; y++){ }}
+                   {{# if(d[i].title=='价格区间'){ }}
+                     <li><a href="#" id="showprice" onClick="showlist({{d[i].data[y].money_id}},'showprice')">{{d[i].data[y].money_name}}</a></li>
+                   {{# } }}
+                     {{#  if(d[i].title=='商品分类'){ }}
+                     <li><a href="#" id="showtype" onClick="showlist({{d[i].data[y].id}},'showtype')">{{d[i].data[y].name}}</a></li>
+                   {{# } }}
+
+
+
+				  {{# } }}
+                </ul>
+              </div>
+			  {{# } }}
+
+
+	</script>
+    <script type="text/javascript">
+       function showlist(val,id){
+        if(id=='showsearch'){
+         var val= $("#"+val).val();
+
+                  }
+
+		     $.ajax({
+				   type: "post",
+				   url: "goods_list.php?step=ajax_goods_list",
+				   data:{typeid:val,type:id},
+				   dataType:"json",
+				   success: function (data) {
+               console.log(data);
+						var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
+						laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
+							document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
+						});
+				  },
+				  error: function(data){
+                    	alert("Json数据出错");
+                }
+		});
+		   }
+    </script>
+          <!-- Price Filter Widget -->
+
+              <!-- .widget.widget-price -->
+            </div>
+          </aside>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="col-lg-10 col-md-9 col-sm-8">
+
+
+
+          <div id="view">
+          </div>
+
+          <hr>
+
+          <!-- Pagination -->
+          <div class="pagination padding-bottom">
+            <div class="page-numbers">
+              <a href="#">1</a>
+              <a href="#">2</a>
+              <span class="active">3</span>
+              <a href="#">4</a>
+              <span>...</span>
+              <a href="#">10</a>
+            </div>
+            <div class="pager">
+              <a href="#">上一页</a>
+              <span>|</span>
+              <a href="#">下一页</a>
+            </div>
+          </div>
+        </div><!-- .col-md-9 col-sm-8 -->
+      </div><!-- .row -->
+    </section><!-- .container -->
+  </div><!-- .page-wrapper -->
+
+ 	<!-- Footer脚步 -->
+    <footer class="footer padding-top-2x">
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons credit_card"></i>
+            </div>
+			<h4 class="feature-title"><a id="Cooperate" href="about-us.html">与我们合作</a></h4>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons settings"></i>
+            </div>
+            <h4 class="feature-title"><a href="about-us.html">关于我们</a></h4>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons face"></i>
+            </div>
+            <h4 class="feature-title"><a href="about-us.html">物流及售后服务</a></h4>
+          </div>
+      </div>
+    </footer>
+
+	<section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
+		<div class="text-center">
+			<div class="hidden-xs">
+				<div>联系我们：电话|微信：13502637171（KITTY）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系邮箱：3412355834@qq.com</div>
+				<!-- <div>公司地址：广东省潮州市潮安区江东镇沙洲工业区</div> -->
+				<div style="margin-top: 10px;">ICP备案号</div>
+			</div>
+			<div class="visible-xs">
+				<div>联系我们：电话|微信：13502637171（KITTY）</div>
+				<div style="margin-top: 10px;">联系邮箱：3412355834@qq.com</div>
+				<div style="margin-top: 10px;">ICP备案号</div>
+			</div>
+		</div>
+	</section>
+    <!-- .footer脚步结束 -->
+  </div>
+  <!--底部-->
+
+  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+
+  <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/nouislider.min.js"></script>
+  <script src="{$ectouch_themes}/js/scripts.js"></script>
+
+
+  <script src="{$ectouch_themes}/js/laytpl/laytpl.js" type="text/javascript"></script>
+  <script id="demo" type="text/html">
+  <!-- Shop Bar -->
+          <div class="shop-bar">
+            <div class="column">
+              <p class="text-sm space-bottom-none">
+                <span class="text-gray">显示</span> {{d.count}} 项结果
+              </p>
+            </div><!-- .column -->
+            <div class="column">
+              <form method="get" class="search-box">
+                <input type="text" class="form-control" placeholder="请在此处搜索您想要的商品" value="{{d.search}}" id="searchvalue" >
+                <button type="submit">
+                  <i class="material-icons search" onClick="showlist('searchvalue','showsearch')"></i>
+                </button>
+              </form><!-- form.search-box -->
+            </div><!-- .column -->
+          </div><!-- .shop-bar -->
+	  <div class="row">
+	  {{# for(var i = 0, len = d.data.length; i < len; i++){ }}
+
+            <!-- Item -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="shop-item">
+                <div class="shop-thumbnail">
+                  <a href="shop-single.html" class="item-link"></a>
+
+                  <img src="../../{{ d.data[i].goods_thumb}}" alt="Shop item">
+                </div>
+                <div class="shop-item-details">
+                  <h3 class="shop-item-title"><a href="shop-single.html">{{ d.data[i].goods_name }}</a></h3>
+                  <span class="shop-item-price">
+                    <span class="old-price">￥{{ d.data[i].market_price }}</span>
+                    ￥{{ d.data[i].shop_price }}
+                  </span>
+                </div>
+              </div><!-- .shop-item -->
+            </div><!-- .col-md-4.col-sm-6 -->
+		{{# } }}
+      </div><!-- .row -->
+
+	</script>
+	<script type="text/javascript">
+	$.ajax({
+				   type: "post",
+				   url: "goods_list.php?step=ajax_goods_type",
+				   dataType:"json",
+				   success: function (data) {
+						var gettpl = document.getElementById('demo2').innerHTML;   //获取拼接部分的内容
+						laytpl(gettpl).render(eval(data), function (html) {
+           // console.log(data);     //給拼接的模板绑定数据
+							document.getElementById('view2').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
+						});
+				  },
+				  error: function(data){
+						layer.open({
+							content: 'Json数据出错'
+							,skin: 'msg'
+							,time: 1 //2秒后自动关闭
+  						});
+                }
+		});
+		$.ajax({
+				   type: "post",
+				   url: "goods_list.php?step=ajax_goods_list",
+				   dataType:"json",
+				   success: function (data) {
+
+						var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
+						laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
+							document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
+						});
+				  },
+				  error: function(data){
+                    	layer.open({
+							content: 'Json数据出错'
+							,skin: 'msg'
+							,time: 1 //2秒后自动关闭
+  						});
+                }
+		});
+
+	</script>
+
+
+</body><!-- <body> -->
+
+</html>
