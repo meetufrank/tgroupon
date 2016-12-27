@@ -88,7 +88,7 @@
           </tr>
 
            <tr>
-            <td class="label">厂商</td>
+            <td class="label">厂商：</td>
             <td><select name="father_id" id="suppliers_id">
                 <option value="0">不选</option>
 
@@ -98,7 +98,7 @@
       </select></td>
           </tr>
           <tr>
-            <td class="label">艺术家</td>
+            <td class="label">艺术家：</td>
             <td><select name="arter_id" id="suppliers_id">
                 <option value="0">不选</option>
         {foreach from=$art_arr item=fa}
@@ -122,6 +122,11 @@
             <input type="button" value="{$lang.compute_by_mp}" onclick="marketPriceSetted()" />
             {$lang.require_field}</td>
           </tr>
+          <tr>
+            <td class="label">额外费用：</td>
+            <td><input type="text" name="more_price" {if $goods.more_price}value="{$goods.more_price}"{else}value="0.00"{/if} size="20" onblur="priceSetted()"/></td>
+          </tr>
+
           {if $user_rank_list}
           <tr>
             <td class="label"><a href="javascript:showNotice('noticeUserPrice');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a>{$lang.lab_user_price}</td>

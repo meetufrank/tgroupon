@@ -135,6 +135,55 @@ MODIFY COLUMN `type`  int(2) NOT NULL DEFAULT 0 COMMENT '//分成类型 0代表�
 */
 alter table `ecs_users` add `wx_open_id` varchar(25) not Null;
 
+/*#2016/12/11 王晋   支付方式添加字段logo
+*/
+ALTER TABLE `ecs_touch_payment`
+ADD COLUMN `logo`  varchar(255) NULL COMMENT '//支付logo' AFTER `is_online`;
 
 
 
+
+/*#2016/12/16 王晋   新建偏远地区表
+*/
+CREATE TABLE `ecs_yuan_area` (
+`yuan_id`  mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '//偏远地区id(省级id)' ,
+`yuan_name`  mediumint(8) NULL COMMENT '//省级id' ,
+PRIMARY KEY (`yuan_id`)
+)
+;
+
+/*#2016/12/16 王晋   添加该偏远地区邮费表
+*/
+ALTER TABLE `ecs_yuan_area`
+ADD COLUMN `price`  double(6,2) NOT NULL DEFAULT 0 COMMENT '//该偏远地区邮费' AFTER `yuan_name`;
+
+/*#2016/12/16 王晋   商品表 添加字段  额外费用
+*/
+ALTER TABLE `ecs_goods`
+MODIFY COLUMN `more_price`  decimal(10,2) NULL DEFAULT 0.00 COMMENT '//额外费用' AFTER `father_id`;
+
+/*#2016/12/16 王晋   订单表添加订单邮费字段
+*/
+ALTER TABLE `ecs_order_info`
+ADD COLUMN `post_price`  decimal(10,2) NOT NULL DEFAULT 0 COMMENT '//邮费' AFTER `lineshop_id`;
+
+
+/*#2016/12/16 汪江   ecs_admin_user表添加艺术家备注字段
+*/
+ALTER TABLE `ecs_admin_user`
+ADD COLUMN `artiststalk`  varchar(255) NULL COMMENT '//艺术家备注' AFTER `ysj_tixian`;
+
+
+
+/*#2016/12/16 汪江   ecs_products表添加字段
+*/
+ALTER TABLE `ecs_products`
+ADD COLUMN `attributeprice`  varchar(255) NULL AFTER `product_number`,
+ADD COLUMN `attributeimg`  varchar(255) NULL AFTER `attributeprice`;
+
+
+/*#2016/12/16 汪江   ecs_goods_attr添加商品属性表字段
+*/
+
+ALTER TABLE `ecs_goods_attr`
+ADD COLUMN `attr_img`  varchar(255) NULL COMMENT '//具体商品属性表' AFTER `attr_price`;

@@ -50,7 +50,7 @@ class WxPayApi
 
 		$inputObj->SetAppid(WxPayConfig::APPID);//公众账号ID
 		$inputObj->SetMch_id(WxPayConfig::MCHID);//商户号
-		$inputObj->SetSpbill_create_ip($_SERVER['REMOTE_ADDR']);//终端ip
+		//$inputObj->SetSpbill_create_ip($_SERVER['REMOTE_ADDR']);//终端ip
 		//$inputObj->SetSpbill_create_ip("1.1.1.1");
 		$inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 
@@ -535,8 +535,8 @@ class WxPayApi
 			curl_setopt($ch,CURLOPT_PROXYPORT, WxPayConfig::CURL_PROXY_PORT);
 		}
 		curl_setopt($ch,CURLOPT_URL, $url);
-		curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,TRUE);
-		curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,2);//严格校验
+		curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,FALSE);
+		curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,FALSE);//严格校验
 		//设置header
 		curl_setopt($ch, CURLOPT_HEADER, FALSE);
 		//要求结果为字符串且输出到屏幕上
@@ -551,7 +551,7 @@ class WxPayApi
 			curl_setopt($ch,CURLOPT_SSLKEY, WxPayConfig::SSLKEY_PATH);
 		}
 		//post提交方式
-		curl_setopt($ch, CURLOPT_POST, TRUE);
+		curl_setopt($ch, CURLOPT_POST, TRUE);//print_r($xml);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
 		//运行curl
 		$data = curl_exec($ch);

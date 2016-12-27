@@ -189,8 +189,24 @@ function get_profile($user_id)
  */
 function get_consignee_list($user_id)
 {
-    $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('user_address') .
-            " WHERE user_id = '$user_id' LIMIT 5";
+   $sql = "SELECT ua.address_id,ua.user_id,ua.consignee,ua.address,ua.tel,ua.default,er1.region_name as province,er2.region_name as city ,er3.region_name as district FROM " . $GLOBALS['ecs']->table('user_address') .
+            " as ua INNER JOIN ecs_region as er1 ON er1.region_id=ua.province
+             INNER JOIN ecs_region as er2 ON er2.region_id=ua.city
+             INNER JOIN ecs_region as er3 ON er3.region_id=ua.district
+            WHERE user_id = '$user_id'";
+
+    return $GLOBALS['db']->getAll($sql);
+}
+/**
+ * 取得收货人地址列表  新
+ * @param   int     $user_id    用户编号
+ * @return  array
+ */
+function get_consignee_list_new($user_id)
+{
+   $sql = "SELECT *  FROM " . $GLOBALS['ecs']->table('user_address') .
+            "
+             WHERE user_id = '$user_id'";
 
     return $GLOBALS['db']->getAll($sql);
 }
@@ -363,7 +379,7 @@ function get_user_orders_new($user_id, $status=1,$num = 10, $start = 0)
     }elseif($status==3){//待收货
        $string=" and pay_status=2 and shipping_status=1";
     }
-   $sql = "SELECT order_id, order_sn, order_status, shipping_id, shipping_status, pay_status, add_time,consignee,address,tel,re1.region_name as province,re2.region_name as city,re3.region_name as district, " .
+     $sql = " SELECT order_id, order_sn, order_status, shipping_id, shipping_status, pay_status, add_time,order_amount,consignee,address,tel,re1.region_name as province,re2.region_name as city,re3.region_name as district, " .
            "(goods_amount + shipping_fee + insure_fee + pay_fee + pack_fee + card_fee + tax - discount) AS total_fee ".
            " FROM " .$GLOBALS['ecs']->table('order_info')
             ." as oi inner join ".$GLOBALS['ecs']->table('region')."as re1 on re1.region_id=oi.province"
@@ -376,12 +392,9 @@ function get_user_orders_new($user_id, $status=1,$num = 10, $start = 0)
     {
         if ($row['order_status'] == OS_UNCONFIRMED)
         {
-            $row['handler'] = "<div class=\"text-right\">
-                                  <a href=\"#\" class=\"btn btn-default waves-effect waves-light\">取消订单</a>
-                                  <a href=\"#\" class=\"btn btn-primary waves-effect waves-light\">去支付</a>
-                                </div>";
-            /* $row['handler'] = "<a href=\"user.php?act=cancel_order&order_id=" .$row['order_id']. "\" onclick=\"if (!confirm('".$GLOBALS['_LANG']['confirm_cancel']."')) return false;\">".$GLOBALS['_LANG']['cancel']."</a>";
-            */
+
+             $row['handler'] = "<a href=\"user.php?act=cancel_order&order_id=" .$row['order_id']. "\" onclick=\"if (!confirm('".$GLOBALS['_LANG']['confirm_cancel']."')) return false;\">".$GLOBALS['_LANG']['cancel']."</a>";
+
         }
         else if ($row['order_status'] == OS_SPLITED)
         {
@@ -422,7 +435,7 @@ function get_user_orders_new($user_id, $status=1,$num = 10, $start = 0)
     {
         $goods_list[$key]['market_price'] = price_format($value['market_price'], false);
         $goods_list[$key]['goods_price']  = price_format($value['goods_price'], false);
-        $goods_list[$key]['subtotal']     = price_format($value['subtotal'], false);
+        $goods_list[$key]['subtotal']     = price_format($value['subtotal']+$value['more_price']*$value['goods_number'], false);
     }
 
         $arr[] = array('order_id'       => $row['order_id'],
@@ -435,7 +448,8 @@ function get_user_orders_new($user_id, $status=1,$num = 10, $start = 0)
                        'good_list'      =>$goods_list,
                        'address'        =>$row['province'].'市'.$row['city'].'市'.$row['district'].'&nbsp;&nbsp;&nbsp;'.$row['address'],
                        'consignee'      =>$row['consignee'],
-                       'tel'            =>$row['tel']
+                       'tel'            =>$row['tel'],
+                       'order_amount'   =>$row['order_amount']
                        );
     }
 
@@ -758,45 +772,45 @@ function get_order_detail($order_id, $user_id = 0)
     /* 获取订单中实体商品数量 */
     $order['exist_real_goods'] = exist_real_goods($order_id);
 
-    /* 如果是未付款状态，生成支付按钮 */
-    if ($order['pay_status'] == PS_UNPAYED &&
-        ($order['order_status'] == OS_UNCONFIRMED ||
-        $order['order_status'] == OS_CONFIRMED))
-    {
-        /*
-         * 在线支付按钮
-         */
-        //支付方式信息
-        $payment_info = array();
-        $payment_info = payment_info($order['pay_id']);
+    // /* 如果是未付款状态，生成支付按钮 */
+    // if ($order['pay_status'] == PS_UNPAYED &&
+    //     ($order['order_status'] == OS_UNCONFIRMED ||
+    //     $order['order_status'] == OS_CONFIRMED))
+    // {
+    //     /*
+    //      * 在线支付按钮
+    //      */
+    //     //支付方式信息
+    //     $payment_info = array();
+    //     $payment_info = payment_info($order['pay_id']);
 
-        //无效支付方式
-        if ($payment_info === false)
-        {
-            $order['pay_online'] = '';
-        }
-        else
-        {
-            //取得支付信息，生成支付代码
-            $payment = unserialize_config($payment_info['pay_config']);
+    //     //无效支付方式
+    //     if ($payment_info === false)
+    //     {
+    //         $order['pay_online'] = '';
+    //     }
+    //     else
+    //     {
+    //         //取得支付信息，生成支付代码
+    //         $payment = unserialize_config($payment_info['pay_config']);
 
-            //获取需要支付的log_id
-            $order['log_id']    = get_paylog_id($order['order_id'], $pay_type = PAY_ORDER);
-            $order['user_name'] = $_SESSION['user_name'];
-            $order['pay_desc']  = $payment_info['pay_desc'];
+    //         //获取需要支付的log_id
+    //         $order['log_id']    = get_paylog_id($order['order_id'], $pay_type = PAY_ORDER);
+    //         $order['user_name'] = $_SESSION['user_name'];
+    //         $order['pay_desc']  = $payment_info['pay_desc'];
 
-            /* 调用相应的支付方式文件 */
-            include_once(ROOT_PATH . 'include/modules/payment/' . $payment_info['pay_code'] . '.php');
+    //         /* 调用相应的支付方式文件 */
+    //         include_once(ROOT_PATH . 'include/modules/payment/' . $payment_info['pay_code'] . '.php');
 
-            /* 取得在线支付方式的支付按钮 */
-            $pay_obj    = new $payment_info['pay_code'];
-            $order['pay_online'] = $pay_obj->get_code($order, $payment);
-        }
-    }
-    else
-    {
-        $order['pay_online'] = '';
-    }
+    //         /* 取得在线支付方式的支付按钮 */
+    //         $pay_obj    = new $payment_info['pay_code'];
+    //         $order['pay_online'] = $pay_obj->get_code($order, $payment);
+    //     }
+    // }
+    // else
+    // {
+    //     $order['pay_online'] = '';
+    // }
 
     /* 无配送时的处理 */
     $order['shipping_id'] == -1 and $order['shipping_name'] = $GLOBALS['_LANG']['shipping_not_need'];
@@ -883,6 +897,8 @@ function get_order_detail($order_id, $user_id = 0)
 
 function get_order_detail_new($order_id, $user_id = 0)
 {
+
+
     include_once(ROOT_PATH . 'include/lib_order.php');
 
     $order_id = intval($order_id);
@@ -908,7 +924,6 @@ function get_order_detail_new($order_id, $user_id = 0)
               $order['invoice_no'] = $shipping->query($order['invoice_no']);
         }
     }
-
     /* 只有未确认才允许用户修改订单地址 */
     if ($order['order_status'] == OS_UNCONFIRMED)
     {
@@ -918,49 +933,11 @@ function get_order_detail_new($order_id, $user_id = 0)
     {
         $order['allow_update_address'] = 0;
     }
-
     /* 获取订单中实体商品数量 */
     $order['exist_real_goods'] = exist_real_goods($order_id);
 
-    /* 如果是未付款状态，生成支付按钮 */
-    if ($order['pay_status'] == PS_UNPAYED &&
-        ($order['order_status'] == OS_UNCONFIRMED ||
-        $order['order_status'] == OS_CONFIRMED))
-    {
-        /*
-         * 在线支付按钮
-         */
-        //支付方式信息
-        $payment_info = array();
-        $payment_info = payment_info($order['pay_id']);
 
-        //无效支付方式
-        if ($payment_info === false)
-        {
-            $order['pay_online'] = '';
-        }
-        else
-        {
-            //取得支付信息，生成支付代码
-            $payment = unserialize_config($payment_info['pay_config']);
 
-            //获取需要支付的log_id
-            $order['log_id']    = get_paylog_id($order['order_id'], $pay_type = PAY_ORDER);
-            $order['user_name'] = $_SESSION['user_name'];
-            $order['pay_desc']  = $payment_info['pay_desc'];
-
-            /* 调用相应的支付方式文件 */
-            include_once(ROOT_PATH . 'include/modules/payment/' . $payment_info['pay_code'] . '.php');
-
-            /* 取得在线支付方式的支付按钮 */
-            $pay_obj    = new $payment_info['pay_code'];
-            $order['pay_online'] = $pay_obj->get_code($order, $payment);
-        }
-    }
-    else
-    {
-        $order['pay_online'] = '';
-    }
 
     /* 无配送时的处理 */
     $order['shipping_id'] == -1 and $order['shipping_name'] = $GLOBALS['_LANG']['shipping_not_need'];

@@ -29,13 +29,17 @@
   <!-- Theme Styles -->
   <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
 
+  <link href="{$ectouch_themes}/css/pshow.css" rel="stylesheet" media="screen">
+  <link href="{$ectouch_themes}/css/increase-68.css" rel="stylesheet" media="screen">
+
   <!-- Page Preloading -->
   <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
+   <script src="{$ectouch_themes}/js/magiczoom_plus.js"></script>
 
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
-
-
+  <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="js/transport.js"></script>
   <style>
   .add-to-cart-pay{
 		position: relative;
@@ -90,8 +94,22 @@
 </head>
 
 <!-- Body -->
-<!-- Adding/Removing class ".page-preloading" is enabling/disabling background smooth page transition effect and spinner. Make sure you also added/removed link to page-preloading.js script in the <head> of the document. -->
 <body class="page-preloading">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- Page Pre-Loader -->
   <div class="page-preloader">
@@ -104,8 +122,8 @@
   <div class="page-wrapper">
  <!-- 头部开始 -->
     {include file="head.dwt"}
-    <!-- 头部结束 -->
 
+    <!-- 头部结束 -->
 
     <!-- Pager + Product Gallery -->
     <section class="fw-section bg-gray padding-top-3x">
@@ -119,73 +137,183 @@
             <li id="preview02" class="current"><img src="{$ectouch_themes}/img/shop/product-gallery/preview02.jpg" alt="Product"></li>
             <li id="preview03"><img src="{$ectouch_themes}/img/shop/product-gallery/preview03.jpg" alt="Product"></li>
           </ul><!-- .product-gallery-preview -->
-          <!-- Thumblist -->
-          <ul class="product-gallery-thumblist">
-            <li><a href="#preview01">
-              <img src="{$ectouch_themes}/img/shop/product-gallery/thumb01.jpg" alt="Product">
-            </a></li>
-            <li class="active"><a href="#preview02">
-              <img src="{$ectouch_themes}/img/shop/product-gallery/thumb02.jpg" alt="Product">
-            </a></li>
-            <li><a href="#preview03">
-              <img src="{$ectouch_themes}/img/shop/product-gallery/thumb03.jpg" alt="Product">
-            </a></li>
-          </ul>
+
         </div>
       </div>
     </section>
 
-    <!-- Product Info -->
-    <section class="fw-section bg-gray padding-bottom-3x">
+         <!-- 电脑端商品详情选择-->
+    <section class="fw-section bg-gray padding-bottom-3x  hidden-xs">
       <div class="container">
         <div class="product-info padding-top-2x text-center">
-          <h1 class="h2 space-bottom-half">商品名称</h1>
-          <h2>￥128.00</h2>
-          <p class="text-sm text-gray">商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述</p>
+          <h1 class="h2 space-bottom-half">创 意 椅 子</h1>
+          <h2 class="hidden-xs">￥128.00</h2>
+
+
+
+
+		  <script type="text/javascript">
+		                function attridfun(ids,type){
+                            var arrtipt='#attidshuxingipt'+type;
+							$(arrtipt).val(ids);
+							var  idstr=ids;
+
+							if(type == 2){
+
+							       var top='#attidshuxingipt'+(type-1);
+							       var  idstr=$(top).val()+','+ids;
+								   <!-- alert(idstr); -->
+							}
+							if(type == 3){
+
+							       var top='#attidshuxingipt'+(type-2);
+							       var  idstr=$(top).val()+','+ids;
+								   <!-- alert(idstr); -->
+							}
+							 var id = document.getElementById("goodsid").value;
+							<!--  Ajax.call('shop-single.php?act=goodsattr', 'attrid=' + ids +'&id=' + id,attridshuxidfun,'POST', 'JSON'); -->
+							  $.ajax({
+									type:"post",
+									url:"shop-single.php?act=goodsattr",
+									async:true,
+									data:{'attrid':idstr,'id':id},
+
+									dataType: "json",
+									success: function (result) {
+									type++;
+									var box='#attridshuxdiv'+type+' a';
+										    $(box).hide();
+											$.each(result,function(i){
+
+
+											     var str='#attrid_'+result[i].goods_attr;
+											     var shuxindivid =  document.getElementById("attridshuxdiv");
+
+
+												 $(str).show();
+											});
+										  }
+							});
+
+
+
+					   }
+
+					   function attridshuxidfun(result){
+
+					     console.log(result);
+
+					   }
+		  </script>
+
+		   <!--
+		        类型名称  {$spec.name} (如颜色、尺寸)
+				属性名称  {$value.label} (如颜色中的黄色、黑色、白色)
+		  -->
+		 <input id="goodsid" type="hidden" value="{$goods_id}">
+		  {foreach from=$specification item=spec key=spec_key name=name}
+            <div class="cart-border col-lg-6 col-md-6 col-sm-6 hidden-xs" id="attridshuxdiv{$smarty.foreach.name.iteration}">
+
+					<span class="cart-border-text">{$spec.name}</span>
+
+                     <input id="attidshuxingipt{$smarty.foreach.name.iteration}" type="hidden" value="">
+					 <ul  class="cart-border-select" id="borderbox">
+					 {foreach from=$spec.values item=value key=key}
+						<li>
+                           {$value.attr_img}
+                           <input type="button" value="{$value.id}">
+						   <a href="#" id="attrid_{$value.id}" onclick="attridfun({$value.id},{$smarty.foreach.name.iteration})" class="cart-border-select-details" title="{$value.label}">{$value.label}</a>
+						</li>
+						{/foreach}
+					</ul>
+
+				   <div class="clear"></div>
+           </div>
+         {/foreach}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <!--颜色选择-->
+
+
+          <div class="cart-color col-lg-6  col-md-6 col-sm-6 hidden-xs">
+          	<span class="cart-color-text">颜色</span>
+            <ul class="cart-color-select" id="colorbox">
+            	<li><a href="#" class="cart-color-details cart-yellow" title="黄色"></a></li>
+                <li><a href="#" class="cart-color-details cart-red" title="红色"></a></li>
+                <li><a href="#" class="cart-color-details cart-white" title="灰色"></a></li>
+                <li><a href="#" class="cart-color-details cart-deongaree" title="深蓝色"></a></li>
+                <li><a href="#" class="cart-color-details cart-blue" title="淡蓝色"></a></li>
+                <li><a href="#" class="cart-color-details cart-blue-1" title="浅蓝色"></a></li>
+                <br/>
+               	<li><a href="#" class="cart-color-details cart-yellow" title="黄色"></a></li>
+                <li><a href="#" class="cart-color-details cart-red" title="红色"></a></li>
+                <li><a href="#" class="cart-color-details cart-white" title="灰色"></a></li>
+                <li><a href="#" class="cart-color-details cart-deongaree" title="深蓝色"></a></li>
+                <li><a href="#" class="cart-color-details cart-blue" title="淡蓝色"></a></li>
+                <li><a href="#" class="cart-color-details cart-blue-1" title="浅蓝色"></a></li>
+            </ul>
+            <div class="clear"></div>
+          </div>
+
+
+
+          <div class="cart-size col-lg-6 col-md-6 col-sm-6 hidden-xs">
+          	<ul class="cart-size-select" id="sizebox">
+            	<li><span>尺寸</span></li>
+                <li><a href="#" class="cart-size-select-details" title="大码">大</a></li>
+                <li><a href="#" class="cart-size-select-details" title="中码">中</a></li>
+                <li><a href="#" class="cart-size-select-details" title="小码">小</a></li>
+            </ul>
+            <div class="clear"></div>
+          </div>
+          <div class="cart-group col-lg-6 col-md-6 col-sm-6 hidden-xs">
+         	<span class="cart-group-text">组合形式</span>
+             <ul class="cart-group-select" id="groupbox">
+            	<li><a href="#" class="cart-group-select-details" title="单件">单件</a></li>
+                <li><a href="#" class="cart-group-select-details" title="2件">2件</a></li>
+                <li><a href="#" class="cart-group-select-details" title="3件">113件</a></li>
+            </ul>
+             <div class="clear"></div>
+          </div>
+          <div class="cart-border col-lg-6 col-md-6 col-sm-6 hidden-xs">
+         	<span class="cart-border-text">外框类型</span>
+             <ul class="cart-border-select" id="borderbox">
+            	<li><a href="#" class="cart-border-select-details" title="单件">水泥</a></li>
+                <li><a href="#" class="cart-border-select-details" title="2件">陶瓷</a></li>
+                <li><a href="#" class="cart-border-select-details" title="3件">布艺</a></li>
+            </ul>
+             <div class="clear"></div>
+          </div>
           <!-- .product-meta -->
-          <div class="product-tools shop-item">
+          <br/>
+          <div class="product-tools shop-item hidden-xs">
             <div class="count-input">
               <a class="incr-btn" data-action="decrease" href="#">–</a>
               <input class="quantity" type="text" value="1">
               <a class="incr-btn" data-action="increase" href="#">+</a>
             </div><!-- .count-input -->
-            <div class="form-element">
-              <select class="form-control form-control-sm color-select">
-                <option value="blue" data-image="preview02">蓝色</option>
-                <option value="creme" data-image="preview01">灰色</option>
-                <option value="red" data-image="preview03">红色</option>
-              </select>
-            </div><!-- .form-element -->
-            <div class="form-element">
-              <select class="form-control form-control-sm color-select">
-                <option value="blue" data-image="preview02">大尺寸</option>
-                <option value="creme" data-image="preview01">中尺寸</option>
-                <option value="red" data-image="preview03">小尺寸</option>
-              </select>
-            </div><!-- .form-element -->
-            <div class="form-element">
-              <select class="form-control form-control-sm color-select">
-                <option value="blue" data-image="preview02">组合形式</option>
-                <option value="creme" data-image="preview01">组合形式</option>
-                <option value="red" data-image="preview03">组合形式</option>
-              </select>
-            </div><!-- .form-element -->
-            <div class="form-element">
-              <select class="form-control form-control-sm color-select">
-                <option value="blue" data-image="preview02">外框类型</option>
-                <option value="creme" data-image="preview01">外框类型</option>
-                <option value="red" data-image="preview03">外框类型</option>
-              </select>
-            </div><!-- .form-element -->
-            <a href="#" class="add-to-cart" id="xqcar" onclick="addToCart({$goods.goods_id});">
+            <a href="#" class="add-to-cart-pay" onclick="click_scroll();">
+              <em>立即支付</em>
+            </a><!-- .add-to-cart-pay -->
+            <a href="#" class="add-to-cart" id="xqcar" onclick="addToCart({$goods_id});">
               <em>放入购物车</em>
               <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
   							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"></path>
   						</svg>
             </a><!-- .add-to-cart -->
-            <a href="#" class="add-to-cart-pay" onclick="click_scroll();">
-              <em>立即支付</em>
-            </a><!-- .add-to-cart-pay -->
           </div><!-- .product-tools -->
          <div class="product-share hidden-xs">
             <span>收藏:</span>
@@ -193,44 +321,113 @@
                 <i class="fa fa-heart"></i>
               </a>
             <span style="margin-left:10px;">分享:</span>
-            <div class="social-bar">
-              <a href="#" class="sb-facebook" data-toggle="tooltip" data-placement="top" >
-                <i class="fa fa-wechat" id="fenxiang"></i>
-              </a>
-             <a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top">
-                <img src="{$ectouch_themes}/img/fenxiangerweima.png" width="150px;" height="150px;" style="display:none;" id="erweima">
-              </a>
+            <div class="social-bar hidden-xs">
+                  <a href="#" class="sb-facebook" data-toggle="tooltip" data-placement="top">
+                    <i class="fa fa-wechat" id="fenxiang"></i>
+                  </a>
+                 <a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top">
+                    <img src="img/fenxiangerweima.png" width="150px;" height="150px;" style="display:none;" id="erweima">
+                  </a>
             </div>
           </div>
-          <!-- .product-share -->
         </div><!-- .product-info -->
       </div><!-- .container -->
     </section><!-- .fw-section.bg-gray -->
+    <!--手机端商品详情选择-->
+    <section class="mobile-detail hidden-lg hidden-md hidden-sm">
+    	<div class="col-xs-12 mobile-detail-1">
+        	<span class="mobile-shop-name">创意椅子商品名称多了的话，显示效果测试情况如下创意椅子商品名</span>
+        </div>
+        <div class="col-xs-6 mobile-shop-price">￥128.00</div>
+        <div class="mobile-count-input col-xs-6">
+              <a class="mobile-incr-btn" href="#">–</a>
+              <input class="mobile-quantity" type="text" value="1">
+              <a class="mobile-incr-btn" href="#">+</a>
+        </div>
+        <div class="clear"></div>
+        <p class="mobile-cart-color-text">颜色<span style="margin-left:10px; font-size:16px;color:#0CF" id="selectcolor"></span></p>
+        <div class="mobile-cart-color">
+            <ul class="mobile-cart-color-select" id="mobile-colorbox">
+            	<li><a href="#" class="mobile-cart-color-details cart-yellow" title="黄色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-red" title="红色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-white" title="灰色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-deongaree" title="深蓝色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-blue" title="淡蓝色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-blue-1" title="浅蓝色"></a></li>
+                <br/>
+               	<li><a href="#" class="mobile-cart-color-details cart-yellow" title="黄色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-red" title="红色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-white" title="灰色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-deongaree" title="深蓝色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-blue" title="淡蓝色"></a></li>
+                <li><a href="#" class="mobile-cart-color-details cart-blue-1" title="浅蓝色"></a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <p class="mobile-cart-size-text">尺寸</p>
+        <div class="mobile-cart-size">
+          	<ul class="mobile-cart-size-select" id="mobile-sizebox">
+                <li><a href="#" class="mobile-cart-size-select-details" title="大码">大</a></li>
+                <li><a href="#" class="mobile-cart-size-select-details" title="中码">中</a></li>
+                <li><a href="#" class="mobile-cart-size-select-details" title="小码">小</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <p class="mobile-cart-group-text">组合形式</p>
+        <div class="mobile-cart-group">
+          	<ul class="mobile-cart-group-select" id="mobile-groupbox">
+                <li><a href="#" class="mobile-cart-group-details" title="单件">单件</a></li>
+                <li><a href="#" class="mobile-cart-group-details" title="两件">两件</a></li>
+                <li><a href="#" class="mobile-cart-group-details" title="三件">三件</a></li>
+                <li><a href="#" class="mobile-cart-group-details" title="四件">四件</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <p class="mobile-cart-border-text">外框类型</p>
+        <div class="mobile-cart-border">
+          	<ul class="mobile-cart-border-select" id="mobile-borderbox">
+                <li><a href="#" class="mobile-cart-border-details" title="水泥">水泥</a></li>
+                <li><a href="#" class="mobile-cart-border-details" title="陶瓷">陶瓷</a></li>
+                <li><a href="#" class="mobile-cart-border-details" title="布艺">布艺</a></li>
+                <li><a href="#" class="mobile-cart-border-details" title="泥巴">麻绳</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="clear"></div>
 	<!--艺术家-->
     <section class="container padding-top">
+	{foreach from=$spxx item=spxx name=no}
     <div class="row">
-       <div class="artist-lf col-lg-6">
-       		<p><img src="{$ectouch_themes}/img/artist-logo.png" style="width:60px;height:60px;border:1px solid transparent;border-radius:30px; float:left;"><span style="margin-top:15px;margin-left:15px; margin-right:15px;display:inline-block; font-size:18px; font-weight:blod;">达芬奇</span><img src="{$ectouch_themes}/img/shugang.png" style="display:inline-block; width:1px; height:30px;"><span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:18px; font-weight:blod;">意大利</span></p>
+       <div class="artist-lf col-lg-6 col-md-6 col-sm-6">
+       		<p>
+            	<img src="{$spxx.hav_logo}" style="width:60px;height:60px;border:1px solid transparent;border-radius:30px; float:left;">
+            	<span style="margin-top:15px;margin-left:15px; margin-right:15px;display:inline-block; font-size:18px; font-weight:blod;">{$spxx.user_name}</span>
+            	<img src="{$ectouch_themes}/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
+            	<span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:18px; font-weight:blod;">{$spxx.country}</span>
+           	</p>
        </div>
-       <div class="artist-rt col-lg-6">
-           <p style="font-size:16px; font-weight:bold;">线下门店</p>
-           <div>
-           <a href="#" style="float:left"><img src="{$ectouch_themes}/img/yika.jpg" width="100px" height="120px" alt="店铺名称"/></a>
-           <dl style="margin-left:110px; font-size:15px;">
-           	<dt>
-            	名称：<span>宜家家居（IEKA）</span>
-            </dt>
-            <dt>
-            	地址：<span>上海市杨浦区昌源北路588号</span>
-            </dt>
-            <dt>
-            	电话：<span>021:88888888</span>
-            </dt>
-           </dl>
-           <div class="clear"></div>
-           </div>
+
+       <div class="artist-rt col-lg-6 col-md-6 col-sm-6">
+           <p style="font-size:16px; font-weight:bold; margin-bottom:0px;">艺术家说:</p>
+           <div style="font-size:15px; font-weight:bold; margin-top:5px;">{$spxx.artiststalk}</div>
        </div>
     </div>
+	 {/foreach}
     </section>
     <!-- Product Tabs -->
     <section class="container padding-top-2x">
@@ -242,240 +439,134 @@
       </ul><!-- .nav-tabs -->
       <!-- Tab panes -->
       <div class="tab-content">
+
+
+
         <div role="tabpanel" class="tab-pane transition fade in active" id="description">
-          <div class="row space-top">
-            <div class="col-md-6 space-bottom">
-              <div class="embed-responsive embed-responsive-16by9">
-              	<img src="{$ectouch_themes}/img/blog/02.jpg">
-                <!--<iframe src="https://player.vimeo.com/video/105829213?color=77cde3&title=0&byline=0&portrait=0" allowfullscreen></iframe>-->
-              </div>
-            </div>
-            <div class="col-md-6">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic totam, tempore quos dicta voluptate tempora ex voluptatum amet, veniam assumenda magnam eveniet eius reiciendis, ab necessitatibus quis iure libero.</p>
-              <p>Alias commodi aspernatur quo illo dolor voluptatem animi ipsum laudantium similique blanditiis, molestias facilis vitae harum minima obcaecati corrupti quibusdam minus modi.</p>
-            </div>
-          </div>
+         {$miaoshu.goods_desc}
+
         </div><!-- .tab-pane -->
+
         <div role="tabpanel" class="tab-pane transition fade" id="additional">
           <div class="row">
             <div class="col-md-6">
               <table class="table-no-border">
                 <tr>
-                  <th>Weight</th>
-                  <td>2.65 kg</td>
+                  <th>品牌</th>
+                  <td>品牌<td>
                 </tr>
                 <tr>
-                  <th>Dimensions</th>
-                  <td>120 x 75 x 90 cm</td>
+                  <th>风格</th>
+                  <td>风格</td>
                 </tr>
                 <tr>
-                  <th>Materials</th>
-                  <td>40% wood, 37% cotton, 23% plastic</td>
+                  <th>材质</th>
+                  <td>材质</td>
                 </tr>
               </table>
             </div>
             <div class="col-md-6">
               <table class="table-no-border">
                 <tr>
-                  <th>Colors</th>
-                  <td>Blue, Creme, Orange, Red</td>
+                  <th>颜色</th>
+                  <td>颜色颜色颜色颜色颜色</td>
                 </tr>
                 <tr>
-                  <th>Manufacturer</th>
-                  <td>Norway</td>
+                  <th>尺寸</th>
+                  <td>尺寸</td>
                 </tr>
                 <tr>
-                  <th>Other Info</th>
-                  <td>Repellendus ea laudantium pariatur eum.</td>
+                  <th>重量</th>
+                  <td>重量</td>
                 </tr>
               </table>
             </div>
           </div>
         </div>
-        <!-- .tab-pane -->
-        <!--评价系统Review-->
-<!--        <div role="tabpanel" class="tab-pane transition fade" id="reviews">
 
-          <div class="review">
-            <div class="review-author-ava">
-              <img src="img/shop/reviews/01.jpg" alt="Review Author">
-            </div>
-            <div class="review-body">
-              <div class="review-meta">
-                <div class="column">
-                  <h4 class="review-title">Very stylish. Great Deal!</h4>
-                </div>
-                <div class="column">
-                  <span class="product-rating text-warning">
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star"></i>
-                  </span>
-                </div>
-              </div>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
-              <cite>Jessie James</cite>
-            </div>
-          </div>
 
-          <div class="review">
-            <div class="review-author-ava">
-              <img src="img/shop/reviews/02.jpg" alt="Review Author">
-            </div>
-            <div class="review-body">
-              <div class="review-meta">
-                <div class="column">
-                  <h4 class="review-title">Nice nordic design, afordable price.</h4>
-                </div>
-                <div class="column">
-                  <span class="product-rating text-warning">
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star_border"></i>
-                  </span>
-                </div>
-              </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sequi ipsa fugit officia eos! Sapiente laboriosam molestiae praesentium ducimus culpa. Magnam, odit, optio. Possimus similique eligendi explicabo, dolore, beatae sequi.</p>
-              <cite>Susanna Davis</cite>
-            </div>
-          </div>
 
-          <div class="review">
-            <div class="review-author-ava">
-              <img src="img/shop/reviews/03.jpg" alt="Review Author">
-            </div>
-            <div class="review-body">
-              <div class="review-meta">
-                <div class="column">
-                  <h4 class="review-title">Godd value for your money.</h4>
-                </div>
-                <div class="column">
-                  <span class="product-rating text-warning">
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star"></i>
-                    <i class="material-icons star_border"></i>
-                  </span>
-                </div>
-              </div>
-              <p>Anuo ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
-              <cite>Donald Murphy</cite>
-            </div>
-          </div>
-
-          <h4 class="padding-top">Leave a review</h4>
-          <form method="post" class="row padding-top">
-            <div class="col-sm-4">
-              <div class="form-element">
-                <input type="text" class="form-control" placeholder="Name*" required>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="form-element">
-                <input type="email" class="form-control" placeholder="Email*" required>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="form-element form-select">
-                <select class="form-control">
-                  <option>5 stars</option>
-                  <option>4 stars</option>
-                  <option>3 stars</option>
-                  <option>2 stars</option>
-                  <option>1 star</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="form-element">
-                <textarea rows="8" class="form-control" placeholder="Review*" required></textarea>
-              </div>
-              <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-lg-offset-9 col-md-offset-8 col-sm-offset-6">
-                  <button type="submit" class="btn btn-block btn-primary waves-effect waves-light space-top-none space-bottom-none">Leave Review</button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>-->
-        <!-- .row -->
-        <!-- .tab-pane -->
-        <!--评价系统结束-->
-      </div><!-- .tab-content -->
+      </div>
     </section><!-- .container -->
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Related Products -->
     <section class="container padding-top padding-bottom">
       <hr>
       <h3 class="padding-top">猜 你 喜 欢</h3>
       <div class="row padding-top">
+
+
+		{foreach from=$xihuan item=xihuan name=no}
         <div class="col-lg-3 col-sm-6">
           <div class="shop-item">
             <div class="shop-thumbnail">
               <a href="#" class="item-link"></a>
-              <img src="{$ectouch_themes}/img/shop/th05.jpg" alt="Shop item">
+              <img src="../../{$xihuan.goods_img}" alt="Shop item">
             </div>
             <div class="shop-item-details">
-              <h3 class="shop-item-title"><a href="#">商品 名称</a></h3>
+              <h3 class="shop-item-title"><a href="#">{$xihuan.goods_name}</a></h3>
               <span class="shop-item-price">
-                <span class="old-price">￥69.00</span>
-                ￥48.00
+                ￥{$xihuan.market_price}
               </span>
             </div>
           </div><!-- .shop-item -->
         </div><!-- .col-lg-3.col-sm-6 -->
-        <div class="col-lg-3 col-sm-6">
-          <div class="shop-item">
-            <div class="shop-thumbnail">
-              <a href="#" class="item-link"></a>
-              <img src="{$ectouch_themes}/img/shop/th06.jpg" alt="Shop item">
-            </div>
-            <div class="shop-item-details">
-              <h3 class="shop-item-title"><a href="#">LED 大灯泡</a></h3>
-              <span class="shop-item-price">
-                ￥130.00
-              </span>
-            </div>
-          </div><!-- .shop-item -->
-        </div><!-- .col-lg-3.col-sm-6 -->
-        <div class="col-lg-3 col-sm-6">
-          <div class="shop-item">
-            <div class="shop-thumbnail">
-              <a href="#" class="item-link"></a>
-              <img src="{$ectouch_themes}/img/shop/th04.jpg" alt="Shop item">
-            </div>
-            <div class="shop-item-details">
-              <h3 class="shop-item-title"><a href="#">超级大灯泡</a></h3>
-              <span class="shop-item-price">
-                ￥178.00
-              </span>
-            </div>
-          </div><!-- .shop-item -->
-        </div><!-- .col-lg-3.col-sm-6 -->
-        <div class="col-lg-3 col-sm-6">
-          <div class="shop-item">
-            <div class="shop-thumbnail">
-              <a href="#" class="item-link"></a>
-              <img src="{$ectouch_themes}/img/shop/th08.jpg" alt="Shop item">
-            </div>
-            <div class="shop-item-details">
-              <h3 class="shop-item-title"><a href="#">包邮超级大灯泡</a></h3>
-              <span class="shop-item-price">
-                ￥112.35
-              </span>
-            </div>
-          </div><!-- .shop-item -->
-        </div><!-- .col-lg-3.col-sm-6 -->
+       {/foreach}
+
       </div><!-- .row -->
     </section><!-- .container -->
 
-    {include file="foot.dwt"}
-
+ <!--footer -->
+  <footer class="footer">
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons credit_card"></i>
+            </div>
+            <h4 class="feature-title">微信支付</h4>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons settings"></i>
+            </div>
+            <h4 class="feature-title">关于我们</h4>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons face"></i>
+            </div>
+            <h4 class="feature-title">物流及售后服务</h4>
+          </div>
+      </div><!-- .column -->
+    </footer>
+    <!-- .footer -->
+    <div class="mobile-foot col-xs-12 hidden-sm hidden-md hidden-lg" style="position:fixed;bottom:0;padding:0px;">
+		<div class="col-xs-6" style="padding:0px;">
+        	<a href="#" class="mobile-add-to-cart" onclick="addToCart({$goods_id});">
+              放入购物车
+            </a>
+        </div>
+        <div class="col-xs-6" style="padding:0px;">
+         <a href="#" class="mobile-add-to-cart-pay">
+              立即支付
+         </a>
+        </div>
+    </div>
   </div><!-- .page-wrapper -->
 
   <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
@@ -499,6 +590,67 @@
   </script>
 
 
+    <script type="text/javascript">
+	 function click_scroll() {
+ 		 document.getElementById("zhankai").click();
+	 }
+	</script>
+    <!--电脑端+手机端颜色选择时样式切换-->
+    <script type="text/javascript">
+		$(document).ready(function (){
+		  $("#colorbox li a").each(function(index){
+			  $(this).click(function(){
+				  $("#colorbox li a").removeClass("cart-color-details-change");
+				  $("#colorbox li a").eq(index).addClass("cart-color-details-change");
+		  		});
+		  	});
+			$("#sizebox li a").each(function(index){
+			  $(this).click(function(){
+				  $("#sizebox li a").removeClass("cart-size-select-details-visited");
+				  $("#sizebox li a").eq(index).addClass("cart-size-select-details-visited");
+		  		});
+		  	});
+			$("#groupbox li a").each(function(index){
+			  $(this).click(function(){
+				  $("#groupbox li a").removeClass("cart-group-select-details-visited");
+				  $("#groupbox li a").eq(index).addClass("cart-group-select-details-visited");
+		  		});
+		  	});
+			$("#borderbox li a").each(function(index){
+			  $(this).click(function(){
+				  $("#borderbox li a").removeClass("cart-border-details-visited");
+				  $("#borderbox li a").eq(index).addClass("cart-border-details-visited");
+		  		});
+		  	});
+			$("#mobile-colorbox li a").each(function(index){
+			  $(this).click(function(){
+				  $("#mobile-colorbox li a").removeClass("mobile-cart-color-details-change");
+				  $("#mobile-colorbox li a").eq(index).addClass("mobile-cart-color-details-change");
+				  var adom = $(this);//根据标签的id获取标签a的dom节点
+				  var title = adom.attr('title');//获取title内容
+				  var f = $("#selectcolor").text(title);
+		  		});
+		  	});
+			$("#mobile-sizebox li a").each(function(index){
+			  $(this).click(function(){
+				  $("#mobile-sizebox li a").removeClass("mobile-cart-size-change");
+				  $("#mobile-sizebox li a").eq(index).addClass("mobile-cart-size-change");
+		  		});
+		  	});
+			$("#mobile-groupbox li a").each(function(index){
+			  $(this).click(function(){
+				  $("#mobile-groupbox li a").removeClass("mobile-cart-group-change");
+				  $("#mobile-groupbox li a").eq(index).addClass("mobile-cart-group-change");
+		  		});
+		  	});
+			$("#mobile-borderbox li a").each(function(index){
+			  $(this).click(function(){
+				  $("#mobile-borderbox li a").removeClass("mobile-cart-border-change");
+				  $("#mobile-borderbox li a").eq(index).addClass("mobile-cart-border-change");
+		  		});
+		  	});
+ 		});
+	</script>
 </body><!-- <body> -->
 
 </html>

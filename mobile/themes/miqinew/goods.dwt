@@ -12,11 +12,11 @@
 <link href="{$ectouch_themes}/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="{$ectouch_themes}/ectouch.css?id=10" rel="stylesheet" type="text/css" />
 
-<!--甜心新增---> 
+<!--甜心新增--->
 <style>
 .user_top_goods {
 height: 5rem;
-overflow: hidden; 
+overflow: hidden;
 background:#ffbf6b;
 position:relative
 
@@ -89,7 +89,7 @@ font-size: 0.9rem;
     width: 100%;
 }
 </style>
-<!--甜心新增  ---> 
+<!--甜心新增  --->
 <script type="text/javascript" src="../data/static/js/common1.js">
 <script type="text/javascript" src="{$ectouch_themes}/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
@@ -118,34 +118,34 @@ function changenum(diff) {
   <h1> 商品详情 </h1>
 
 </header>
-<!--商品图 s---> 
+<!--商品图 s--->
 <script src="{$ectouch_themes}/js/TouchSlide.js"></script>
 
 <section class="goods_slider">
 
   <div id="slideBox" class="slideBox">
-    <div class="scroller"> 
+    <div class="scroller">
       <!--<div><a href="javascript:showPic()"><img src="{$goods.goods_thumb}"  alt="{$goods.goods_name}" /></a></div>-->
       <ul>
 	  <!--li><a href="javascript:showPic()"><img alt="" src="{$site_url}{$goods.original_img}"/></a></li-->
 	  <li><a href="javascript:showPic()"><img alt="" src="../../{$goods.original_img}"/></a></li>
-        <!--{if $pictures}--> 
-        <!-- {foreach from=$pictures item=picture name=no}--> 
-		
+        <!--{if $pictures}-->
+        <!-- {foreach from=$pictures item=picture name=no}-->
+
         <!--li><a href="javascript:showPic()"><img alt="" src="{if $picture.img_url}{$picture.img_url}{else}{$site_url}{$picture.thumb_url}{/if}"/></a></li-->
         <li><a href="javascript:showPic()"><img alt="" src="{if $picture.img_url}{$picture.img_url}{else}../{$picture.thumb_url}{/if}"/></a></li>
-	
-        <!--{/foreach}--> 
+
+        <!--{/foreach}-->
         <!--{/if}-->
       </ul>
     </div>
     <div class="icons">
       <ul>
-        <i class="current"></i> 
-        <!--{if $pictures}--> 
-        <!-- {foreach from=$pictures item=picture name=no}--> 
-        <i class="current"></i> 
-        <!--{/foreach}--> 
+        <i class="current"></i>
+        <!--{if $pictures}-->
+        <!-- {foreach from=$pictures item=picture name=no}-->
+        <i class="current"></i>
+        <!--{/foreach}-->
         <!--{/if}-->
       </ul>
     </div>
@@ -153,11 +153,11 @@ function changenum(diff) {
 
 </section>
 <script type="text/javascript">
-TouchSlide({ 
+TouchSlide({
 	slideCell:"#slideBox",
 	titCell:".icons ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
-	mainCell:".scroller ul", 
-	effect:"leftLoop", 
+	mainCell:".scroller ul",
+	effect:"leftLoop",
 	autoPage:true,//自动分页
 	autoPlay:false //自动播放
 });
@@ -173,15 +173,15 @@ function showPic(){
 		//document.getElementById("slideBox").style.position = 'fixed';
 	}
 }
-</script> 
-<!--商品图 end---> 
+</script>
+<!--商品图 end--->
 <!--商品参数-->
 <section class="goodsInfo">
-<!--甜心新增  提示分享人--->  
+<!--甜心新增  提示分享人--->
     <ul>
     <li>
 	<div  style="overflow: hidden;background: #FE0000;position: relative; height: 2.5rem; overflow: hidden;">
-	<div style="float:left">	
+	<div style="float:left">
 <table align=left cellspacing=0 cellpadding=0 width=200 border=0>
 <tr>
 <td  style="width:2.5rem;height: 2.5rem;">{if $share_info.headimgurl neq ''}<img src="{$share_info.headimgurl}"  style="width:2.5rem;height: 2.5rem;border-radius: 2.5rem;"> {/if}</td> <td>     <p style="color:rgb(253, 250, 250)">{if $share_info.headimgurl neq ''}来自&nbsp; {$share_info.nickname}&nbsp;的分享{/if}</p>
@@ -201,32 +201,32 @@ function showPic(){
  </div>
 	</li>
   </ul>
-  	
-<!--甜心新增  提示分享人--->  
+
+<!--甜心新增  提示分享人--->
 <!--甜心修改兼容收藏
   <a class="{if $is_collect==1}collect1{else}collect{/if}" id="collect_box" href="javascript:collect({$goods.goods_id})" style="display: inline;">{$record_count}</a>-->
   <div class="title">
     <h1> {$goods.goods_style_name} </h1>
   </div>
     <div class="title">
-    {$goods.goods_brief} 
+    {$goods.goods_brief}
   </div>
   <ul>
     <!--{if $goods.is_promote and $goods.gmt_end_time } 促销-->
     <li>{$lang.promote_price}<b class="price">{$goods.promote_price}</b>　<!-- {if $cfg.show_marketprice} 市场价格-->
-    <del>{$goods.market_price}</del> 
-    <!-- {/if} --></li> 
+    <del>{$goods.market_price}</del>
+    <!-- {/if} --></li>
     <!--{else}-->
     <li>{$lang.shop_price}<b class="price">{$goods.shop_price_formated}</b>　<!-- {if $cfg.show_marketprice} 市场价格-->
-    <del>{$goods.market_price}</del> 
+    <del>{$goods.market_price}</del>
     <!-- {/if} --></li>
-    <!--{/if}--> 
+    <!--{/if}-->
 	{if  $user_prices }
-    <li>	
+    <li>
 	{$user_prices.rank_name}：<b class="price" >{$user_prices.price}</b></li>
 {/if}
   </ul>
-  <!--{if $goods.is_promote and $goods.gmt_end_time } 促销--> 
+  <!--{if $goods.is_promote and $goods.gmt_end_time } 促销-->
   {insert_scripts files='lefttime.js'}
   <ul>
     <li> <span class="time">时间剩余：<time class="countdown" id="leftTime">{$lang.please_waiting}</time></span> </li>
@@ -251,7 +251,7 @@ function showPic(){
     </li>
   </ul>
   <!-- {/if} -->
-  
+
   <ul>
     <li>月销量：{$goods.sales_volume_total}件</li>
   </ul>
@@ -266,13 +266,13 @@ function showPic(){
     <div class="selected"> </div>
     </label>
     <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
-     <div class="fields"   style="display: block;">	 
+     <div class="fields"   style="display: block;">
         <ul class="ul1">
           <li>{$lang.amount}：<font id="ECS_GOODS_AMOUNT" class="price"></font></li>
           <li><!--推荐功能--></li>
         </ul>
         <ul class="ul2">
-          <!-- {* 开始循环所有可选属性 *} --> 
+          <!-- {* 开始循环所有可选属性 *} -->
           <!-- {foreach from=$specification item=spec key=spec_key} -->
           <li>
           <h2>{$spec.name}：</h2>
@@ -283,12 +283,12 @@ function showPic(){
 				  <!-- {if $spec.name eq '颜色'}-->
                     <!-- {foreach from=$spec.values item=value key=key} -->
                     <input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} onclick="changePrice()" />
-                    <label for="spec_value_{$value.id}">{if $value.product_number eq 0}{$value.label}-<font class="price">缺货</font>{else}{$value.label}-<font class="price">{$value.product_number}{$goods.measure_unit}</font>{/if}</label> 
-                    <!-- {/foreach} -->					
+                    <label for="spec_value_{$value.id}">{if $value.product_number eq 0}{$value.label}-<font class="price">缺货</font>{else}{$value.label}-<font class="price">{$value.product_number}{$goods.measure_unit}</font>{/if}</label>
+                    <!-- {/foreach} -->
                     <!--{else}-->
 					<!--{foreach from=$spec.values item=value key=key}-->
 					<input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} onclick="changePrice()" />
-                    <label for="spec_value_{$value.id}">{$value.label}</label> 
+                    <label for="spec_value_{$value.id}">{$value.label}</label>
 					<!-- {/foreach} -->
 			      <!--{/if}-->
                     <input type="hidden" name="spec_list" value="{$key}" />
@@ -310,23 +310,37 @@ function showPic(){
             <!-- {/if} -->
             </div>
 		  </li>
-          <!-- {/foreach} --> 
+          <!-- {/foreach} -->
           <!-- {* 结束循环可选属性 *} -->
         </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <ul class="quantity">
           <h2>数量：</h2>
-          <div class="items"> <span class="ui-number radius5"> 
+          <div class="items"> <span class="ui-number radius5">
             <!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
             <button type="button" class="decrease radius5" onclick="changenum(- 1)">-</button>
             <input class="num" name="number" id="goods_number" autocomplete="off" value="1" min="1" max="{$goods.goods_number}" type="number" />
             <button type="button" class="increase radius5" onclick="changenum(1)">+</button>
-            <!-- {else} --> 
-            {$goods.goods_number} 
-            <!-- {/if} --> 
+            <!-- {else} -->
+            {$goods.goods_number}
+            <!-- {/if} -->
             </span> </div>
         </ul>
       </div>
-      <div class="option" > 
+      <div class="option" >
         <script type="text/javascript">
             function showDiv(){
                 document.getElementById('popDiv').style.display = 'block';
@@ -354,12 +368,12 @@ function showPic(){
             <div id="left"> <img width="115" height="115" src="{$site_url}{$goods.original_img}"> </div>
             <div id="right">
               <p>{$goods.goods_name}</p>
-              <span> 加入数量： <b id="cartNum"></b></span> <span> 总计金额： <b id="cartPrice"></b></span> 
+              <span> 加入数量： <b id="cartNum"></b></span> <span> 总计金额： <b id="cartPrice"></b></span>
             </div>
           </div>
           <div class="popbtn"> <a class="bnt1 flex_in radius5" onclick="closeDiv()" href="javascript:void(0);">继续购物</a> <a class="bnt2 flex_in radius5" href="flow.php">去结算</a> </div>
         </div>
-        <!--弹出层 E--> 
+        <!--弹出层 E-->
       </div>
     </form>
   </section>
@@ -388,7 +402,7 @@ function tab(id){
 		document.getElementById('tab3').className = '';
 	}
 }
-</script> 
+</script>
 
 <!--商品参数 begin-->
 <section class="s-detail">
@@ -402,7 +416,7 @@ function tab(id){
   <div id="tab1" class="">
     <div class="desc wrap">
       <div class="blank2"></div>
-	  
+
 	  {if $goods.mobile_desc }
 		{$goods.mobile_desc}
 	  {else}
@@ -421,28 +435,28 @@ function tab(id){
     <div class="wrap">
       <ul class="m-recommend ">
         <div class="blank2"></div>
-        <!--{foreach from=$related_goods item=releated_goods_data name="related_goods"}--> 
+        <!--{foreach from=$related_goods item=releated_goods_data name="related_goods"}-->
         <li class="flex_in  "   <!-- {if $smarty.foreach.related_goods.index mod 2 eq 1} --> style="float:right" <!-- {/if} --> > <a href="{$releated_goods_data.url}">
         <div class="summary radius5"> <img src="{$site_url}{$releated_goods_data.goods_thumb}" alt=""/>
-          <div class="price"> 
-            
-            <!-- {if $releated_goods_data.promote_price neq 0} --> 
-            {$releated_goods_data.formated_promote_price} 
-            <!-- {else} --> 
-            {$releated_goods_data.shop_price} 
-            <!-- {/if} --> 
-            
+          <div class="price">
+
+            <!-- {if $releated_goods_data.promote_price neq 0} -->
+            {$releated_goods_data.formated_promote_price}
+            <!-- {else} -->
+            {$releated_goods_data.shop_price}
+            <!-- {/if} -->
+
           </div>
         </div>
         <!--{if $goods.goods_comment}-->
-        <div class="reviews"> 
-          <!--{foreach from=$goods.goods_comment item=comment name="comment"}--> 
+        <div class="reviews">
+          <!--{foreach from=$goods.goods_comment item=comment name="comment"}-->
           <!-- {if $smarty.foreach.comment.iteration<4}-->
           <blockquote> <span class="user"><!-- {if $comment.username} -->{$comment.username|escape:html}<!-- {else} -->{$lang.anonymous}<!-- {/if} --></span> {$comment.content} </blockquote>
-          <!--{/if}--> 
-          <!--{/foreach}--> 
+          <!--{/if}-->
+          <!--{/foreach}-->
         </div>
-        <!--{/if}--> 
+        <!--{/if}-->
         </a>
         </li>
         <!--{/foreach}-->
@@ -450,8 +464,8 @@ function tab(id){
     </div>
   </div>
 </section>
-<!-- #BeginLibraryItem "/library/page_footer_tianxin100.lbi" --><!-- #EndLibraryItem --> 
-<!--购物车区域 S--> 
+<!-- #BeginLibraryItem "/library/page_footer_tianxin100.lbi" --><!-- #EndLibraryItem -->
+<!--购物车区域 S-->
 
 <!--购物车区域 E-->
 <script type="text/javascript">
@@ -513,7 +527,7 @@ function changePriceResponse(res)
     signature: '{$signPackage.signature}',
     jsApiList: [
         'onMenuShareTimeline',
-        'onMenuShareAppMessage' 
+        'onMenuShareAppMessage'
     ]
   });
  wx.ready(function () {
@@ -524,17 +538,17 @@ function changePriceResponse(res)
       link: '{$url}',
       imgUrl: '{$site_url}{$goods.original_img}',
       trigger: function (res) {
-		
+
 		{if $url}
         alert('恭喜！分享可以获取提成哦！');
 		{else}
 		alert('糟糕，需要分销商登录才能获得提成哦！');
 		{/if}
-		
+
       },
       success: function (res) {
 		{if $dourl }
-        window.location.href="{$dourl}&type=1"; 
+        window.location.href="{$dourl}&type=1";
 		{/if}
       },
       cancel: function (res) {
@@ -551,7 +565,7 @@ function changePriceResponse(res)
       link: '{$url}',
       imgUrl: '{$site_url}{$goods.original_img}',
       trigger: function (res) {
-			
+
         {if $url}
 			alert('恭喜！分享可以获取提成哦！');
 		{else}
@@ -560,7 +574,7 @@ function changePriceResponse(res)
       },
       success: function (res) {
        	{if $dourl }
-        window.location.href="{$dourl}&type=2"; 
+        window.location.href="{$dourl}&type=2";
 		{/if}
       },
       cancel: function (res) {

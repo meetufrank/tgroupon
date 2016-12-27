@@ -628,7 +628,7 @@ function get_attr_list($cat_id, $goods_id = 0)
             "ORDER BY a.sort_order, a.attr_type, a.attr_id, v.attr_price, v.goods_attr_id";
 
     $row = $GLOBALS['db']->GetAll($sql);
-
+    print_($row);
     return $row;
 }
 
@@ -1086,7 +1086,7 @@ function product_list($goods_id, $conditions = '')
         $sql = "SELECT COUNT(*) FROM " .$GLOBALS['ecs']->table('products'). " AS p WHERE goods_id = $goods_id $where";
         $filter['record_count'] = $GLOBALS['db']->getOne($sql);
 
-        $sql = "SELECT product_id, goods_id, goods_attr, product_sn, product_number
+        $sql = "SELECT product_id, goods_id, goods_attr, attributeprice,product_sn, product_number,attributeimg
                 FROM " . $GLOBALS['ecs']->table('products') . " AS g
                 WHERE goods_id = $goods_id $where
                 ORDER BY $filter[sort_by] $filter[sort_order]";
@@ -1159,13 +1159,19 @@ function check_goods_specifications_exist($goods_id)
 {
     $goods_id = intval($goods_id);
 
-    $sql = "SELECT COUNT(a.attr_id)
+    $sql = "SELECT a.attr_id
             FROM " .$GLOBALS['ecs']->table('attribute'). " AS a, " .$GLOBALS['ecs']->table('goods'). " AS g
             WHERE a.cat_id = g.goods_type
-            AND g.goods_id = '$goods_id'";
+            AND g.goods_id = '$goods_id'
+            AND a.attr_type='1'";
 
-    $count = $GLOBALS['db']->getOne($sql);
-
+    $a = $GLOBALS['db']->getAll($sql);
+    foreach ($a as $val)
+    {
+        $att[]=$val['attr_id'];
+    }
+    $sql= "SELECT count(goods_attr_id ) FROM ".$GLOBALS['ecs']->table('goods_attr')."as a WHERE a.goods_id ='$goods_id' AND a.attr_id ".db_create_in($att);
+    $count=$GLOBALS['db']->getOne($sql);
     if ($count > 0)
     {
         return true;    //存在

@@ -57,7 +57,7 @@ class wx_new_jspay
     function __construct()
     {
         $payment = get_payment('wx_new_jspay');
-    
+
         if(!defined('WXAPPID'))
         {
             $root_url = str_replace('mobile/', '', $GLOBALS['ecs']->url());
@@ -77,22 +77,22 @@ class wx_new_jspay
 
     function get_code($order, $payment)
     {
-        
+
         $jsApi = new JsApi_pub();
 
-       
+
         if (!isset($_GET['code']))
         {
-            $redirect = urlencode($GLOBALS['ecs']->url().'flow.php?step=ok&order_id='.$order['order_sn']);
+            $redirect = urlencode($GLOBALS['ecs']->url().'flow.php?step=pay_ok&order_id='.$order['order_id']);
             $url = $jsApi->createOauthUrlForCode($redirect);
-            Header("Location: $url"); 
+            Header("Location: $url");
         }else
         {
             $code = $_GET['code'];
             $jsApi->setCode($code);
             $openid = $jsApi->getOpenId();
         }
-        
+
         if($openid)
         {
             $unifiedOrder = new UnifiedOrder_pub();
@@ -100,15 +100,15 @@ class wx_new_jspay
             $unifiedOrder->setParameter("openid","$openid");//商品描述
             $unifiedOrder->setParameter("body",$order['order_sn']);//商品描述
             $out_trade_no = $order['order_sn'];
-            $unifiedOrder->setParameter("out_trade_no","$out_trade_no");//商户订单号 
-            $unifiedOrder->setParameter("attach",strval($order['log_id']));//商户支付日志
-            $unifiedOrder->setParameter("total_fee",strval(intval($order['order_amount']*100)));//总金额
-            $unifiedOrder->setParameter("notify_url",WXNOTIFY_URL);//通知地址 
+            $unifiedOrder->setParameter("out_trade_no","$out_trade_no");//商户订单号
+            //$unifiedOrder->setParameter("attach",strval($order['log_id']));//商户支付日志
+            $unifiedOrder->setParameter("total_fee",(intval($order['order_amount']*100)));//总金额
+            $unifiedOrder->setParameter("notify_url",WXNOTIFY_URL);//通知地址
             $unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
 
 
-            $prepay_id = $unifiedOrder->getPrepayId();
-
+          echo  $prepay_id = $unifiedOrder->getPrepayId();
+print_r($unifiedOrder);
             $jsApi->setPrepayId($prepay_id);
 
             $jsApiParameters = $jsApi->getParameters();
@@ -180,7 +180,7 @@ class wx_new_jspay
             return $html;
         }
 
-        
+
     }
     function respond()
     {
@@ -216,20 +216,20 @@ class wx_new_jspay
                 $log_id = $notify->data["attach"];
                 $sql = 'SELECT order_amount FROM ' . $GLOBALS['ecs']->table('pay_log') ." WHERE log_id = '$log_id'";
                 $amount = $GLOBALS['db']->getOne($sql);
-                
+
                 if($payment['logs'])
                 {
                     $this->log(ROOT_PATH.'/data/wx_new_log.txt','订单金额'.$amount."\r\n");
                 }
-                
+
                 if(intval($amount*100) != $total_fee)
                 {
-                    
+
                     if($payment['logs'])
-                    {   
+                    {
                         $this->log(ROOT_PATH.'/data/wx_new_log.txt','订单金额不符'."\r\n");
                     }
-                    
+
                     echo 'fail';
                     return;
                 }
@@ -244,9 +244,9 @@ class wx_new_jspay
             $this->log(ROOT_PATH.'/data/wx_new_log.txt',"签名失败\r\n");
         }
         return false;
-       
+
     }
-    
+
     function log($file,$txt)
     {
        $fp =  fopen($file,'ab+');
@@ -255,6 +255,6 @@ class wx_new_jspay
        fwrite($fp,"\r\n\r\n\r\n");
        fclose($fp);
     }
-    
+
 }
 ?>

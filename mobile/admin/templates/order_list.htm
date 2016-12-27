@@ -167,19 +167,19 @@ listTable.filter.{$key} = '{$item}';
             }
         }
     }
-    listTable.listCallback = function(result, txt) 
+    listTable.listCallback = function(result, txt)
     {
-        if (result.error > 0) 
+        if (result.error > 0)
         {
             alert(result.message);
         }
-        else 
+        else
         {
-            try 
+            try
             {
                 document.getElementById('listDiv').innerHTML = result.content;
                 bind_order_event();
-                if (typeof result.filter == "object") 
+                if (typeof result.filter == "object")
                 {
                     listTable.filter = result.filter;
                 }

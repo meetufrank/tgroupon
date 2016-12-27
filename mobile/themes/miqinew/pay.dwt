@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>支付方式</title>
+
+  <!--SEO Meta Tags-->
+  <meta name="description" content="M-Store - Modern E-Commerce Template" />
+  <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+  <meta name="author" content="Rokaux" />
+
+  <!--Mobile Specific Meta Tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Google Material Icons -->
+  <link href="{$ectouch_themes}/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+
+  <!-- Brand Icons -->
+  <link href="{$ectouch_themes}/css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+
+  <!-- Bootstrap -->
+  <link href="{$ectouch_themes}/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <!-- Theme Styles -->
+  <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
+
+  <!-- Page Preloading -->
+  <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
+
+  <!-- Modernizr -->
+  <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
+
+</head>
+
+<!-- Body -->
+<!-- Adding/Removing class ".page-preloading" is enabling/disabling background smooth page transition effect and spinner. Make sure you also added/removed link to page-preloading.js script in the <head> of the document. -->
+<body class="page-preloading">
+
+  <!-- Page Pre-Loader -->
+  <div class="page-preloader">
+    <div class="preloader">
+      <img src="{$ectouch_themes}/img/preloader.gif" alt="Preloader">
+    </div>
+  </div><!-- .page-preloader -->
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+
+ <!-- 头部开始 -->
+
+    {include file="head.dwt"}
+    <!-- 头部结束 -->
+
+    <!-- Shop Catalog -->
+    <section class="container-fluid padding-top-3x padding-bottom-3x">
+
+      <div class="row">
+      	<div class="col-sm-6">
+
+	        	<div class="shopping-cart-1 padding-bottom-1x" style="padding:15px; margin-bottom: 30px;">
+				          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
+				          			<h4 class="text-primary">选择支付方式</h4>
+				                </div>
+                         <input type="hidden" value="{$order.order_id}" name="orderid">
+                         <!-- {foreach from=$payment_list item=payment} -->
+				                <div class="clearfix" style="position: relative;">
+
+			          				<input style="position:relative;" name="pay_list" type="radio" {if $order.pay_id eq $payment.pay_id}checked{/if} value="{$payment.pay_id}"><div class="pull-left" style="margin-left: 22px;">{$payment.pay_name}</div>{if $payment.logo}<div class="pull-left" style="margin-top:-5px;margin-left: 20px;"><img src="{$ectouch_themes}/{$payment.logo}"></div>{/if}
+
+			          			</div>
+                        <!--{/foreach}-->
+				          		<div class="padding-top-2x" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
+				          			<h4 class="text-primary">确认付款</h4>
+				                </div>
+				                <div class="clearfix hidden-xs">
+				                <h3 class="amount_pay pull-left" style="color:#f20000">{$order.goo}</h3>
+				                <div class="pull-right"><a href="#" class="btn btn-primary payput" >确认支付</a></div>
+				                </div>
+				                <div class="visible-xs">
+				                <h3 class="amount_pay" style="color:#f20000">{$order.total_fee}</h3>
+				                <a href="#"  class="btn btn-primary payput" >确认支付</a>
+				                </div>
+				          </div>
+
+      	</div>
+
+
+      	<div class="col-sm-6 hidden-xs">
+
+		        	<div class="shopping-cart-1 padding-bottom-1x" style="padding:15px; margin-bottom: 30px;">
+					          		<div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
+					          			<h4 class="text-primary pull-left">订单信息</h4>
+					          			<div class="pull-right">订单编号：{$order.order_sn}</div>
+					                </div>
+                          <!--{foreach from=$goods_list item=og}-->
+					            <!-- Item -->
+					            <div class="item">
+					              <a href="shop-single.html" class="item-thumb">
+					                <img src="../../{$og.goods_thumb}" alt="Item">
+					              </a>
+					              <div class="item-details hidden-sm">
+					                <h3 class="item-title"><a href="shop-single.html">{$og.goods_name}</a></h3>
+					                <h4 class="item-price">数量：{$og.goods_number}</h4>
+					                <h4 class="item-price">{$og.goods_price}</h4>
+					              </div>
+					              <div class="item-details visible-sm">
+					                <h3 class="item-title" style="font-size: 18px;"><a href="shop-single.html">{$og.goods_name}</a></h3>
+					                <h4 class="item-price" style="font-size: 14px;">数量：{$og.goods_name} </h4>
+					                <h4 class="item-price" style="font-size: 14px;">{$og.goods_name}</h4>
+					              </div>
+					            </div><!-- .item -->
+                      <!--{/foreach}-->
+
+
+					            	<h4 class="text-primary" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">收件人信息</h4>
+					            	<div>
+					            	收件人：{$order.consignee}<br>
+									手机号：{$order.tel}<br>
+									地   址 ：{$order.address}
+									</div>
+					          </div>
+
+      	</div>
+
+		</div><!-- .row -->
+    </section><!-- .container -->
+  </div><!-- .page-wrapper -->
+
+  <!--底部-->
+    <footer class="footer">
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons credit_card"></i>
+            </div>
+            <h4 class="feature-title">微信支付</h4>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons settings"></i>
+            </div>
+            <h4 class="feature-title">关于我们</h4>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons face"></i>
+            </div>
+            <h4 class="feature-title">物流及售后服务</h4>
+          </div>
+      </div><!-- .column -->
+    </footer><!-- .footer -->
+
+	<section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
+		<div class="text-center">
+			<div>联系我们：电话|微信：13502637171（KITTY）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系邮箱：3412355834@qq.com</div>
+			<div>公司地址：广东省潮州市潮安区江东镇沙洲工业区</div>
+			<div>ICP备案号</div>
+		</div>
+	</section>
+  </div>
+  <!--底部-->
+
+  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+ <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/nouislider.min.js"></script>
+  <script src="{$ectouch_themes}/js/scripts.js"></script>
+ <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
+
+ {$pay_online}
+ <script type="text/javascript">
+
+    //确认支付
+   $('.payput').click(function(){
+        var pay_id=$("input[name='pay_list']:checked").val();//备用
+        var content ='';
+        var orderid='{$order.order_id}';
+        var type='{$is_wechat}';
+
+        if(type==true&&pay_id=='9'){
+
+          callpay();
+           // window.location.href=window.location.href+'&pay_list'+pay_id;
+        }else{
+
+            $.ajax({
+            type:"POST",
+            url:"flow.php",
+            data:{step:'update_order_pay',pay_list:pay_id,order_id:orderid},
+            dataType:'json',
+            success: function(data){
+                if(data.step==1){
+                    content=data.content;
+                    layer.open({
+                        content:content,
+                        btn: ['关闭'],
+                        style:'width:190px;'
+                      });
+                    getProgress();
+                }else{
+
+                    window.location.href=data.content;
+                }
+
+                }
+            });
+
+        }
+
+      });
+
+
+ getProgress = function(){
+     $.ajax({
+         type:"POST",
+         url:"getdata.php",
+         dataType:"text",
+         data:{orderid:'{$order.order_id}'},
+         timeout:10*60*1000,  //设置10分钟超时
+         success:function(data){
+             data = (new Function("return "+data))();
+             if(data.step == 1){
+
+                 getProgress();
+
+             }  else if(data.step == 3){
+
+                alert('支付成功');
+                window.location.href="my_user.php?act=order_list";
+             }
+         },
+        error:function(){
+            alert('支付超时');
+         }
+     });
+ };
+
+
+
+
+ </script>
+
+</body><!-- <body> -->
+
+</html>
