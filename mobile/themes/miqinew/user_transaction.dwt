@@ -56,6 +56,7 @@
               <dd class="dd1">{$field.reg_field_name}</dd>
               <input placeholder="{$field.reg_field_name}"  name="extend_field{$field.id}" type="text"  class="dd2" value="{$field.content}"/>
             </dl>
+
             <!-- {/if} -->
             {/foreach}
 			<dl>
@@ -962,7 +963,7 @@ jQuery(function($){
       <form action="user.php" method="post" name="theForm" onsubmit="return checkConsignee(this)">
         <table width="100%" border="0" cellpadding="5" cellspacing="0" class="ectouch_table">
           <tr>
-          	<td width="70">收货人</td>
+          	<td width="70">收货人d</td>
             <td align="left" ><input name="consignee" placeholder="{$lang.consignee_name}{$lang.require_field}" type="text" class="inputBg_touch" value="{$consignee.consignee|escape}" /> </td>
           </tr>
           <tr>
@@ -1001,6 +1002,11 @@ jQuery(function($){
                 <!-- {/foreach} -->
               </select></td>
           </tr>
+
+
+
+
+
           <tr>
           	<td>详细地址</td>
             <td align="left" ><input name="address" placeholder="{$lang.detailed_address}{$lang.require_field}" type="text" class="inputBg_touch" value="{$consignee.address|escape}" /></td>
