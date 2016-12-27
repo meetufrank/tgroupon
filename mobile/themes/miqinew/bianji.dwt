@@ -1,0 +1,67 @@
+﻿
+
+
+
+<form method="post" class="checkout-form container" id="address_form" action="my_usergrzx.php?act=editdizhi">
+<input  name="addressid" type="hidden" value="{$consignee.address_id}">
+<div><input type="text"  style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" value="{$consignee.consignee|escape}" name="consignee"/></div>
+{foreach from=$shengshiqu item=shengshiqu} 
+
+    <div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" value="{$consignee.tel|escape}" name="tel" /></div>
+
+    <div id="form-control"><div class="col-md-4 col-xs-12"><div class="form-element form-select">
+    <select name="province" id="province"   class="form-control" >
+                <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+                 {foreach from=$province_list item=province} 
+                <option value="{$province.region_id}" {if $shengshiqu.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                {/foreach} </select>
+                 </div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select">
+                 <select name="city" id="city"  class="form-control">
+                  <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+                   {foreach from=$city_list item=city} 
+                  <option value="{$city.region_id}" {if $shengshiqu.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+                   {/foreach} 
+                 </select>
+                 </div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select">
+                 <select name="district" id="district"   class="form-control">
+                   <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+                     {foreach from=$district_list item=district} 
+                    <option value="{$district.region_id}" {if $shengshiqu.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+                     {/foreach} 
+                  </select>
+                 </div></div></div>
+{/foreach}
+    <div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" value="{$consignee.address|escape}" name="address"/></div>
+
+    <div class="text-right visible-sm visible-xs"><a href="#" id="address" style="text-decoration: underline;">读取微信地址</a></div></form>
+    ;
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
