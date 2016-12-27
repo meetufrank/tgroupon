@@ -189,11 +189,24 @@ function get_profile($user_id)
  */
 function get_consignee_list($user_id)
 {
-   $sql = "SELECT ua.address_id,ua.user_id,ua.consignee,ua.address,ua.tel,er1.region_name as province,er2.region_name as city ,er3.region_name as district FROM " . $GLOBALS['ecs']->table('user_address') .
+   $sql = "SELECT ua.address_id,ua.user_id,ua.consignee,ua.address,ua.tel,ua.default,er1.region_name as province,er2.region_name as city ,er3.region_name as district FROM " . $GLOBALS['ecs']->table('user_address') .
             " as ua INNER JOIN ecs_region as er1 ON er1.region_id=ua.province
              INNER JOIN ecs_region as er2 ON er2.region_id=ua.city
              INNER JOIN ecs_region as er3 ON er3.region_id=ua.district
             WHERE user_id = '$user_id'";
+
+    return $GLOBALS['db']->getAll($sql);
+}
+/**
+ * 取得收货人地址列表  新
+ * @param   int     $user_id    用户编号
+ * @return  array
+ */
+function get_consignee_list_new($user_id)
+{
+   $sql = "SELECT *  FROM " . $GLOBALS['ecs']->table('user_address') .
+            "
+             WHERE user_id = '$user_id'";
 
     return $GLOBALS['db']->getAll($sql);
 }
