@@ -52,6 +52,11 @@ include_once('head.php');
 /*------------------------------------------------------ */
 if ($_REQUEST['step'] == 'add_to_cart')
 {
+
+    if ( $_SESSION['user_id'] == 0)
+    {
+            please_in();
+    }
     include_once('include/cls_json.php');
     $_POST['goods']=strip_tags(urldecode($_POST['goods']));
     $_POST['goods'] = json_str_iconv($_POST['goods']);
@@ -204,10 +209,7 @@ elseif ($_REQUEST['step']== 'ajax_get_price') {
 
     if ( $_SESSION['user_id'] == 0)
     {
-
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+            please_in();
     }
     if(isset($_POST['address'])){
         $addressid=intval($_POST['address']);
@@ -735,9 +737,9 @@ elseif ($_REQUEST['step'] == 'checkout')
     if (empty($_SESSION['direct_shopping']) && $_SESSION['user_id'] == 0)
     {
 
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+
+            please_in();
+
     }
 
     $consignee = get_consignee($_SESSION['user_id']);
@@ -1027,9 +1029,7 @@ elseif($_REQUEST['step'] == 'ajax_get_cart'){
     if ( $_SESSION['user_id'] == 0)
     {
 
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+          please_in();
     }
 
     $consignee = get_consignee_byid($_SESSION['user_id']);
@@ -1066,9 +1066,7 @@ include_once(ROOT_PATH . 'include/lib_order.php');
     if ( $_SESSION['user_id'] == 0)
     {
 
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+          please_in();
     }
 
 $payment_list=available_payment_list(0);
@@ -1210,6 +1208,7 @@ elseif($_REQUEST['step']=='pay_ok'){
     /* 订单详情 */
     $order = get_order_detail($order_id, $user_id);
 
+
     if ($order === false)
     {
         $err->show($_LANG['back_home_lnk'], './');
@@ -1228,9 +1227,25 @@ elseif($_REQUEST['step']=='pay_ok'){
         $goods_list[$key]['subtotal']     = price_format($value['subtotal'], false);
     }
 
-  $payment_list=available_payment_list(0);  //支付方式
-$smarty->assign('payment_list',$payment_list);
+    $payment_list=available_payment_list(0);  //支付方式
+    $smarty->assign('payment_list',$payment_list);
+    $is_wechat=is_wechat_browser();
+    $smarty->assign('is_wechat',      $is_wechat);
+    if($is_wechat){
+    foreach($payment_list as $payment){
+        if($payment['pay_code']=='wx_new_jspay'){
+            include_once('include/modules/payment/' . $payment['pay_code'] . '.php');
+            $pay_obj    = new $payment['pay_code'];
 
+            $pay_online = $pay_obj->get_code($order, unserialize_config($payment['pay_config']));
+
+            $smarty->assign('pay_online', $pay_online);
+        }
+
+
+    }
+
+    }
 
 
 
@@ -2860,16 +2875,14 @@ exit;
 
 
 }
-elseif($_REQUEST['step'] == 'update_order_pay'){
+elseif($_REQUEST['step'] == 'update_order_pay'){//微信扫码支付
 
 include_once('include/lib_clips.php');
     include_once('include/lib_payment.php');
      if ( $_SESSION['user_id'] == 0)
     {
 
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+          please_in();
     }
 
     $user_id=$_SESSION['user_id'];
@@ -2891,17 +2904,20 @@ include_once('include/lib_clips.php');
 
                                           $payment['pay_code']="native";
                                            include_once('weixin/example/native.php');
-                                           $content='<div><img  src="weixin/example/qrcode.php?data='.urlencode($url2).'" style="width:150px;height:150px;"/></div>';
-                                           echo $content;
+                                           $return['content']='<div><img  src="weixin/example/qrcode.php?data='.urlencode($url2).'" style="width:150px;height:150px;"/></div>';
+                                           $return['step']=1;
+                                           echo  json_encode( $return);exit;
 
 
-                                            }
+
+
+                                        }
                        }else{
                         include_once('include/modules/payment/' . $payment['pay_code'] . '.php');
                         $pay_obj    = new $payment['pay_code'];
 
                         $pay_online = $pay_obj->get_code($order, unserialize_config($payment['pay_config']));
-                         ecs_header("Location: $pay_online");
+                         ecs_header("Location: $pay_online");exit;
                            }
 
 

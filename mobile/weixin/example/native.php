@@ -36,7 +36,7 @@ $goods_sn=$orderdata[0]['order_sn'];
 $input = new WxPayUnifiedOrder();
 $input->SetBody("形色主义：".$goods_sn);
 $input->SetAttach("$title");
-$input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
+$input->SetOut_trade_no("$goods_sn");
 //$input->SetTotal_fee("$price");
 $input->SetTotal_fee("1");
 $input->SetTime_start(date("YmdHis"));

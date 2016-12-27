@@ -217,21 +217,27 @@ region.isAdmin=true;
 <div class="list-div">
 <table cellpadding="3" cellspacing="1">
   <tr>
-    <th width="5%">&nbsp;</th>
-    <th width="25%">{$lang.name}</th>
+    <th >&nbsp;选择</th>
+    <th >{$lang.name}</th>
+    <!--
     <th>{$lang.desc}</th>
     <th width="15%">{$lang.shipping_fee}</th>
     <th width="15%">{$lang.free_money}</th>
   <th width="15%">{$lang.insure}</th>
+    -->
   </tr>
   {foreach from=$shipping_list item=shipping}
   <tr>
     <td><input name="shipping" type="radio" value="{$shipping.shipping_id}" {if $order.shipping_id eq $shipping.shipping_id}checked{/if} onclick="" /></td>
+
     <td>{$shipping.shipping_name}</td>
+    <!--
     <td>{$shipping.shipping_desc}</td>
     <td><div align="right">{$shipping.format_shipping_fee}</div></td>
     <td><div align="right">{$shipping.free_money}</div></td>
   <td><div align="right">{$shipping.insure}</div></td>
+  -->
+   </tr>
   </tr>
   {/foreach}
 </table>

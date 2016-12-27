@@ -18,10 +18,14 @@
           <a href="#cart" class="toolbar-toggle" id="zhankai">
             <i>
               <span class="material-icons shopping_basket"></span>
-<!--              <span class="count">2</span>-->
+<!--              <span class="count">2</span> -->
             </i>
           </a>
-          <a href="#account" class="toolbar-toggle"><i class="material-icons person"></i></a>
+          {if $user_status}
+          <a href="#userinfo" class="toolbar-toggle"><i class="material-icons person"></i></a>
+          {else}
+          <a href="#account"class="toolbar-toggle"><i class="material-icons person"></i></a>
+          {/if}
         </div>
       </div>
       <!-- .toolbar -->
@@ -41,19 +45,10 @@
 
           </div>
         </div>
-        <!-- Account (Login) -->
-        <div class="toolbar-section" id="account">
-          <h3 class="toolbar-title space-bottom">用户登录</h3>
-          <div class="inner">
-            <a href="#userinfo" class="btn btn-primary waves-effect waves-light toggle-section">
-              <i class="material-icons question_answer"></i>
-              点击扫二维码登录
-          </a>
-          </div>
-        </div>
+
 
         <!-- Account (userinfo) -->
-        <div class="toolbar-section" id="userinfo">
+        <div class="toolbar-section" id="userinfo" >
             <div class="clearfix">
             <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section">退出</a>
             <div class="quotation pull-left" style="width:auto;">
@@ -72,6 +67,17 @@
                 <li><a class="relative" href="#">消息记录</a></li>
               <li><a href="#">管理地址</a></li>
             </ul>
+        </div>
+
+         <!-- Account (Login) -->
+        <div class="toolbar-section" id="account">
+          <h3 class="toolbar-title space-bottom">用户登录</h3>
+          <div class="inner">
+            <a href="#userinfo" class="btn btn-primary waves-effect waves-light toggle-section">
+              <i class="material-icons question_answer"></i>
+              点击扫二维码登录
+          </a>
+          </div>
         </div>
 
 
@@ -298,6 +304,7 @@ window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
     </script>
     <script src="{$ectouch_themes}/js/jquery.json-2.3.js"></script>
   <script src="{$ectouch_themes}/js/jquery.json-2.3.min.js"></script>
+
 <script type="text/javascript">
 
 /* *

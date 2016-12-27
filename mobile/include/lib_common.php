@@ -17,7 +17,43 @@ if (!defined('IN_ECTOUCH'))
 {
     die('Hacking attempt');
 }
+    /*
+       将xml转换成数组
+     */
+    function xml2array($xmlString = '')
+     {
+      $targetArray = array();
+      $xmlString = str_replace( array( '<![CDATA[' , ']]>'), '', $xmlString );
+      $xmlObject = simplexml_load_string($xmlString);
+      $mixArray = (array)$xmlObject;
+      foreach($mixArray as $key => $value)
+      {
+       if(is_string($value))
+       {
+        $targetArray[$key] = $value;
+       }
+       if(is_object($value))
+       {
+        $targetArray[$key] = xml2array($value->asXML());
+       }
+       if(is_array($value))
+       {
+        foreach($value as $zkey => $zvalue)
+        {
+         if(is_numeric($zkey))
+         {
+          $targetArray[$key][] = xml2array($zvalue->asXML());
+         }
+         if(is_string($zkey))
+         {
+          $targetArray[$key][$zkey] = xml2array($zvalue->asXML());
+         }
+        }
+       }
+      }
+      return $targetArray;
 
+     }
 /**
  * 创建像这样的查询: "IN('a','b')";
  *

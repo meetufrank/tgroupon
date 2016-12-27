@@ -101,7 +101,7 @@
 					            <!-- Item -->
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
-					                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
+					                <img src="../../{$og.goods_thumb}" alt="Item">
 					              </a>
 					              <div class="item-details hidden-sm">
 					                <h3 class="item-title"><a href="shop-single.html">{$og.goods_name}</a></h3>
@@ -177,33 +177,78 @@
   <script src="{$ectouch_themes}/js/vendor/nouislider.min.js"></script>
   <script src="{$ectouch_themes}/js/scripts.js"></script>
  <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
+
+ {$pay_online}
  <script type="text/javascript">
 
     //确认支付
    $('.payput').click(function(){
-     var pay_id=$("input[name='pay_list']:checked").val();//备用
-    var content ='';
-      var orderid='{$order.order_id}';
-    $.ajax({
+        var pay_id=$("input[name='pay_list']:checked").val();//备用
+        var content ='';
+        var orderid='{$order.order_id}';
+        var type='{$is_wechat}';
+
+        if(type==true&&pay_id=='9'){
+
+          callpay();
+           // window.location.href=window.location.href+'&pay_list'+pay_id;
+        }else{
+
+            $.ajax({
             type:"POST",
             url:"flow.php",
             data:{step:'update_order_pay',pay_list:pay_id,order_id:orderid},
+            dataType:'json',
             success: function(data){
-                    content=data;
-
-                  }
-                 });
-
-      });
-
-    layer.open({
+                if(data.step==1){
+                    content=data.content;
+                    layer.open({
                         content:content,
                         btn: ['关闭'],
                         style:'width:190px;'
                       });
+                    getProgress();
+                }else{
 
+                    window.location.href=data.content;
+                }
+
+                }
+            });
+
+        }
 
       });
+
+
+ getProgress = function(){
+     $.ajax({
+         type:"POST",
+         url:"getdata.php",
+         dataType:"text",
+         data:{orderid:'{$order.order_id}'},
+         timeout:10*60*1000,  //设置10分钟超时
+         success:function(data){
+             data = (new Function("return "+data))();
+             if(data.step == 1){
+
+                 getProgress();
+
+             }  else if(data.step == 3){
+
+                alert('支付成功');
+                window.location.href="my_user.php?act=order_list";
+             }
+         },
+        error:function(){
+            alert('支付超时');
+         }
+     });
+ };
+
+
+
+
  </script>
 
 </body><!-- <body> -->

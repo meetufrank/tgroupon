@@ -427,10 +427,11 @@ function order_info($order_id, $order_sn = '')
     /* 格式化金额字段 */
     if ($order)
     {
-        $order['formated_goods_amount']   = price_format($order['goods_amount'], false);
+        $order['formated_goods_amount']   = price_format($order['goods_amount']-$order['post_price'], false);
         $order['formated_discount']       = price_format($order['discount'], false);
         $order['formated_tax']            = price_format($order['tax'], false);
-        $order['formated_shipping_fee']   = price_format($order['shipping_fee'], false);
+        //$order['formated_shipping_fee']   = price_format($order['shipping_fee'], false);
+        $order['formated_shipping_fee']   = price_format($order['post_price'], false);
         $order['formated_insure_fee']     = price_format($order['insure_fee'], false);
         $order['formated_pay_fee']        = price_format($order['pay_fee'], false);
         $order['formated_pack_fee']       = price_format($order['pack_fee'], false);
@@ -3096,8 +3097,8 @@ function get_money($orderid,$user_id)   //某订单id
 {
 
         $sql="SELECT goods_price,lineshop_id,goods_id,fencheng,goods_number from ecs_order_goods  WHERE order_id=".$orderid;
-        $data = $GLOBALS['db']->GetRow($sql);    //查询该订单是否跟某个线下店有关
-
+        $data = $GLOBALS['db']->getAll($sql);    //查询该订单是否跟某个线下店有关
+       foreach ($data as $k=>$v){
         $my_fencheng=1; //初始化形色个人比例
         $sql="SELECT  ysj_fencheng,arter_id,father_id from  ecs_goods as eg INNER JOIN ecs_admin_user as eau  ON eg.arter_id=eau.user_id where goods_id=".$data['goods_id'];
         $admin_fencheng = $GLOBALS['db']->GetRow($sql);    //查询艺术家分成比例
@@ -3177,6 +3178,8 @@ function get_money($orderid,$user_id)   //某订单id
            $my_money=$data['goods_number']*$data['goods_price']*$my_fencheng;
 
            $result=fencheng_insert($data['goods_id'],$data['lineshop_id'],$user_id,$my_money,$data['father_id'],3);
+    }
+
 
 
 
