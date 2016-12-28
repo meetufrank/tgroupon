@@ -1554,4 +1554,10 @@ function get_products_info($goods_id, $spec_goods_attr_id)
     }
     return $return_array;
 }
+
+
+
+
+
+
 ?>

@@ -194,3 +194,18 @@ ADD COLUMN `attr_img`  varchar(255) NULL COMMENT '//具体商品属性表' AFTER
 
 ALTER TABLE `ecs_user_address`
 ADD COLUMN `default`  int(10) NULL COMMENT '//1为默认
+ADD COLUMN `attr_img`  varchar(255) NULL COMMENT '//具体商品属性表' AFTER `attr_price`;
+
+
+
+/*#2016/12/16 王晋   添加新表，价格区间表
+*/
+CREATE TABLE `ecs_money_type` (
+`money_id`  smallint(2) NOT NULL COMMENT '//筛选区间 ' ,
+`money_name`  varchar(20) NULL ,
+`min_money`  int NULL ,
+`max_money`  int  NULL ,
+
+PRIMARY KEY (`money_id`)
+)
+;
