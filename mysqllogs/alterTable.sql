@@ -189,6 +189,14 @@ ALTER TABLE `ecs_goods_attr`
 ADD COLUMN `attr_img`  varchar(255) NULL COMMENT '//具体商品属性表' AFTER `attr_price`;
 
 
+/*#2016/12/28 汪江   ecs_user_address  收货人的信息列表 添加默认地址字段
+*/
+
+ALTER TABLE `ecs_user_address`
+ADD COLUMN `default`  int(10) NULL COMMENT '//1为默认
+ADD COLUMN `attr_img`  varchar(255) NULL COMMENT '//具体商品属性表' AFTER `attr_price`;
+
+
 
 /*#2016/12/16 王晋   添加新表，价格区间表
 */

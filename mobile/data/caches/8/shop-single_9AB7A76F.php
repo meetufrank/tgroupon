@@ -1,45 +1,36 @@
-<!DOCTYPE html>
+<?php exit;?>a:3:{s:8:"template";a:1:{i:0;s:55:"F:/wamp/www/xinse/mobile/themes/miqinew/shop-single.dwt";}s:7:"expires";i:1482916077;s:8:"maketime";i:1482912477;}<!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta name="Generator" content="TGROUPON v2.7.3" />
   <meta charset="utf-8">
   <title>商品详情页</title>
-
-  <!--SEO Meta Tags-->
+  
   <meta name="description" content="M-Store - Modern E-Commerce Template" />
   <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
   <meta name="author" content="Rokaux" />
-
-  <!--Mobile Specific Meta Tag-->
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-  <!--Favicon-->
+  
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-  <!-- Google Material Icons -->
-  <link href="{$ectouch_themes}/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
-
-  <!-- Brand Icons -->
-  <link href="{$ectouch_themes}/css/vendor/font-awesome.css" rel="stylesheet" media="screen">
-
-  <!-- Bootstrap -->
-  <link href="{$ectouch_themes}/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
-
-  <!-- Theme Styles -->
-  <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
+  
+  <link href="themes/miqinew/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+  
+  <link href="themes/miqinew/css/vendor/font-awesome.css" rel="stylesheet" media="screen">
+  
+  <link href="themes/miqinew/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+  
+  <link href="themes/miqinew/css/theme.min.css" rel="stylesheet" media="screen">
   
   
-  <link href="{$ectouch_themes}/css/theme.mins.css" rel="stylesheet" media="screen">
+  <link href="themes/miqinew/css/theme.mins.css" rel="stylesheet" media="screen">
   
-  <!-- swiper -->
-  <link href="{$ectouch_themes}/Swiper-3.4.0/dist/css/swiper.css" rel="stylesheet" media="screen">
-
-  <!-- Page Preloading -->
-  <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
-
-  <!-- Modernizr -->
-  <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
+  
+  <link href="themes/miqinew/Swiper-3.4.0/dist/css/swiper.css" rel="stylesheet" media="screen">
+  
+  <script src="themes/miqinew/js/vendor/page-preloading.js"></script>
+  
+  <script src="themes/miqinew/js/vendor/modernizr.custom.js"></script>
   <style>
   .add-to-cart-pay{
 		position: relative;
@@ -254,32 +245,25 @@
 	}
     </style>
 </head>
-
-<!-- Body -->
 <body class="page-preloading">
-
-  <!-- Page Pre-Loader -->
+  
   <div class="page-preloader">
     <div class="preloader">
-      <img src="{$ectouch_themes}/img/preloader.gif" alt="Preloader">
+      <img src="themes/miqinew/img/preloader.gif" alt="Preloader">
     </div>
-  </div><!-- .page-preloader -->
-
-  <!-- Page Wrapper -->
+  </div>
+  
   <div class="page-wrapper">
-	<!-- 头部开始 -->
+	
    <header class="navbar navbar-sticky">
-
-      <!-- Site Logo -->
+      
       <a href="index.html" class="site-logo visible-desktop">
         COLOR <span>&</span> SHAPE
-      </a><!-- site-logo.visible-desktop -->
+      </a>
       <a href="index.html" class="site-logo visible-mobile">
         COLOR <span>&</span> SHAPE
-      </a><!-- site-logo.visible-mobile -->
-
-
-      <!-- Toolbar -->
+      </a>
+      
       <div class="toolbar">
         <div class="inner">
           <a href="#menu" class="toolbar-toggle"><i class="material-icons menu"></i></a>
@@ -291,12 +275,10 @@
           </a>
           <a href="#account" class="toolbar-toggle"><i class="material-icons person"></i></a>
         </div>
-      </div><!-- .toolbar -->
-
-      <!-- Toolbar Dropdown -->
+      </div>
+      
       <div class="toolbar-dropdown">
-
-        <!-- Menu -->
+        
         <div class="toolbar-section" id="menu">
           <div class="inner">
             <ul class="main-navigation space-bottom">
@@ -304,13 +286,12 @@
               <li><a href="shop-fullwidth-sl.html">商品</a></li>
               <li><a href="artist-list.html">艺术家</a></li>
               <li><a href="about-us.html">关于我们</a></li>
-            </ul><!-- .main-navigation -->
+            </ul>
             
           </div>
-          <!-- .inner -->
-        </div><!-- .toolbar-section#menu -->
-
-        <!-- Account (Login) -->
+          
+        </div>
+        
         <div class="toolbar-section" id="account">
           <h3 class="toolbar-title space-bottom">用户登录</h3>
           <div class="inner">
@@ -318,16 +299,16 @@
           		<i class="material-icons question_answer"></i>
           		点击扫二维码登录
       		</a>
-          </div><!-- .inner -->
-        </div><!-- .toolbar-section#account -->
+          </div>
+        </div>
         
-        <!-- Account (userinfo) -->
+        
         <div class="toolbar-section" id="userinfo">
             <div class="clearfix">
             <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section">退出</a>
             <div class="quotation pull-left" style="width:auto;">
               <div class="quotation-author-ava pull-left">
-                <img class="" src="{$ectouch_themes}/img/team/quote_author.jpg" alt="James Cameron">
+                <img class="" src="themes/miqinew/img/team/quote_author.jpg" alt="James Cameron">
               </div>
               &nbsp;&nbsp;
               <span style="display:inline-block; line-height:74px;">微信名称</span>
@@ -341,8 +322,7 @@
       	  		<li><a href="#">管理地址</a></li>
       	  	</ul>
         </div>
-
-        <!-- Cart -->
+        
         <div class="toolbar-section" id="cart">
           <div class="shopping-cart">
           		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px; ">
@@ -352,14 +332,14 @@
                   <h4 style="margin-left:18px ;">全选</h4>
                 </label>
                 </div>
-            <!-- Item -->
+            
             <div class="item">
             	<label class="checkbox">
                   	<input style="position: absolute; opacity: 0;" type="checkbox">
                   	<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
                 </label>
               <a href="shop-single.html" class="item-thumb">
-                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
+                <img src="themes/miqinew/img/cart/item01.jpg" alt="Item">
               </a>
               <div class="item-details">
                 <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
@@ -373,15 +353,15 @@
               <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="Remove">
                 <i class="material-icons delete"></i>
               </a>
-            </div><!-- .item -->
-            <!-- Item -->
+            </div>
+            
             <div class="item">
             	<label class="checkbox">
                   	<input style="position: absolute; opacity: 0;" type="checkbox">
                   	<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
                 </label>
               <a href="shop-single.html" class="item-thumb">
-                <img src="{$ectouch_themes}/img/cart/item02.jpg" alt="Item">
+                <img src="themes/miqinew/img/cart/item02.jpg" alt="Item">
               </a>
               <div class="item-details">
                 <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
@@ -395,8 +375,8 @@
               <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="Remove">
                 <i class="material-icons delete"></i>
               </a>
-            </div><!-- .item -->
-            <!-- Subtotal -->
+            </div>
+            
             <div class="cart-subtotal space-bottom">
               <div class="column">
                 <h3 class="toolbar-title">总价：</h3>
@@ -404,15 +384,14 @@
               <div class="column">
                 <h3 class="amount">$161.90</h3>
               </div>
-            </div><!-- .subtotal -->
-            <!-- Buttons -->
+            </div>
+            
             <div class="text-right">
               <a href="#checkout" class="btn btn-primary waves-effect waves-light toggle-section">支付结算</a>
             </div>
-          </div><!-- .shopping-cart -->
-        </div><!-- .toolbar-section#cart -->
-
-        <!-- Checkout -->
+          </div>
+        </div>
+        
         <div class="toolbar-section" id="checkout">
           <form method="post" class="checkout-form container">
             <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
@@ -422,7 +401,7 @@
               <div class="column">
                 <h3 class="amount"><small class="hidden-xs">数量：6&nbsp;&nbsp;&nbsp;</small>$161.90</h3>
               </div>
-            </div><!-- .subtotal -->
+            </div>
             
             <div class="form-group">
               <label class="radio radio-inline">
@@ -431,7 +410,7 @@
 					手机号：18954781245<br>
 					地   址 ：上海市五角场黄兴路100号1号楼102室
               </label>
-            </div><!-- .form-group -->
+            </div>
             
             <div class="form-group">
               <label class="radio radio-inline">
@@ -440,7 +419,7 @@
 					手机号：18954781245<br>
 					地   址 ：上海市五角场黄兴路100号1号楼102室
               </label>
-            </div><!-- .form-group -->
+            </div>
             <h3><a class="toggle-section" href="#address">新增地址</a></h3>
             <div class="text-right">
               <a href="#cart" class="btn btn-default btn-ghost icon-left toggle-section">
@@ -450,17 +429,17 @@
                 	确认
               </a>
             </div>
-          </form><!-- .checkout-form.container -->
-        </div><!-- .toolbar-section#checkout -->
+          </form>
+        </div>
         
-        <!-- 填写地址 -->
+        
         <div class="toolbar-section" id="address">
           <form method="post" class="checkout-form container">
             <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
               <div class="column">
                 <h3 class="toolbar-title">填写地址</h3>
               </div>
-            </div><!-- .subtotal -->
+            </div>
             
             <input type="text" class="form-control" name="" placeholder="收件人">
             <input type="text" class="form-control" name="" placeholder="手机号码">
@@ -513,54 +492,56 @@
             </div>
             </form>
             </div>
-      </div><!-- .toolbar-dropdown -->
-    </header><!-- .navbar.navbar-sticky -->
-	<!-- 头部结束--> 
+      </div>
+    </header>
+	 
    
-    <!-- Pager + Product Gallery -->
+    
     <section class="fw-section bg-gray padding-top-3x">
       <div class="swiper-container">
             <div class="swiper-wrapper">
-					{foreach from=$xiangce item=xiangce}
-						<div class="swiper-slide"><img src="../../{$xiangce.img_url}"></div>
-					{/foreach}
-            </div>
+											<div class="swiper-slide"><img src="../images/201612/goods_img/165_P_1482876599050.gif"></div>
+											<div class="swiper-slide"><img src="../images/201612/goods_img/165_P_1482876637363.jpg"></div>
+											<div class="swiper-slide"><img src="../images/201612/goods_img/165_P_1482876637978.jpg"></div>
+											<div class="swiper-slide"><img src="../images/201612/goods_img/165_P_1482876637294.jpg"></div>
+											<div class="swiper-slide"><img src="../images/201612/goods_img/165_P_1482876637079.jpg"></div>
+					            </div>
         	
-            <!--分页器 -->
+            
     		<div class="swiper-pagination"></div>
             <!--<div class="swiper-button-prev" style="width:50px;">-PREV</div>
             <div class="swiper-button-next" style="width:50px;">NEXT-</div>-->
 		</div>
     </section>
 	
-    <!-- 电脑端商品详情选择-->
+    
     <section class="fw-section bg-gray padding-bottom-3x  hidden-xs">
       <div class="container">
         <div class="product-info padding-top-2x text-center">
           <h1 class="h2 space-bottom-half">创 意 椅 子</h1>
           <h2 class="hidden-xs" style="color:#E7322E;">￥128.00</h2>
-          <!--PC端缩略图-->
+          
           	<div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
-			   <img src="{$ectouch_themes}/img/shop/product-gallery/preview01.jpg" class="pc-thumbnail">
+			   <img src="themes/miqinew/img/shop/product-gallery/preview01.jpg" class="pc-thumbnail">
             </div>
-          <!--PC端商品选择详情-->
+          
             <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
            		<div class="pc-dright-top">
                 	<div class="pc-color-select col-lg-6 col-md-6 col-sm-6" id="pc-select-color">
                     	<span style="float:left; margin-top:5px;">选择颜色:</span>
                         <ul>
-                        	<li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
+                        	<li><a href="#"><img src="themes/miqinew/img/orange.png"></a></li>
+                            <li><a href="#"><img src="themes/miqinew/img/orange.png"></a></li>
+                            <li><a href="#"><img src="themes/miqinew/img/orange.png"></a></li>
+                            <li><a href="#"><img src="themes/miqinew/img/orange.png"></a></li>
+                            <li><a href="#"><img src="themes/miqinew/img/orange.png"></a></li>
+                            <li><a href="#"><img src="themes/miqinew/img/orange.png"></a></li>
+                            <li><a href="#"><img src="themes/miqinew/img/bottle green.png"></a></li>
+                            <li><a href="#"><img src="themes/miqinew/img/bottle green.png"></a></li>
+                            <li><a href="#"><img src="themes/miqinew/img/bottle green.png"></a></li>
+                            <li><a href="#"><img src="themes/miqinew/img/bottle green.png"></a></li>
+                            <li><a href="#"><img src="themes/miqinew/img/bottle green.png"></a></li>
+                            <li><a href="#"><img src="themes/miqinew/img/bottle green.png"></a></li>
                         </ul>
                      	<div class="clear"></div>	
                     </div>
@@ -617,13 +598,13 @@
                    </div>
                 </div>
             </div> 
-        </div><!-- .product-info -->
+        </div>
       </div>
-    </section><!-- .fw-section.bg-gray -->
-    <!--手机端商品详情选择-->
+    </section>
+    
     <section class="mobile-detail hidden-lg hidden-md hidden-sm">
     	<div class="mobile-thumbnail col-xs-5" style="padding:5px;">
-        	<img src="{$ectouch_themes}/img/shop/product-gallery/preview03.jpg" id="Mobilethumbnail">
+        	<img src="themes/miqinew/img/shop/product-gallery/preview03.jpg" id="Mobilethumbnail">
         </div>
         <div class="col-xs-7">
             <div class="mobile-detail-1">
@@ -640,18 +621,18 @@
         <p class="mobile-cart-color-text">颜色<span style="margin-left:10px; font-size:17px;color:#09F" id="selectcolor"></span></p>
         <div class="mobile-cart-color" id="mobile-select-color">
             <ul class="mobile-cart-color-select">
-            	<li><a href="#" title="绿色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="紫色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="红色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="青色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="蓝色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="粉色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-               	<li><a href="#" title="橙色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="褐色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="黄色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="黑色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="青色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="玫红色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
+            	<li><a href="#" title="绿色"><img src="themes/miqinew/img/orange.png"></a></li>
+                <li><a href="#" title="紫色"><img src="themes/miqinew/img/orange.png"></a></li>
+                <li><a href="#" title="红色"><img src="themes/miqinew/img/orange.png"></a></li>
+                <li><a href="#" title="青色"><img src="themes/miqinew/img/orange.png"></a></li>
+                <li><a href="#" title="蓝色"><img src="themes/miqinew/img/orange.png"></a></li>
+                <li><a href="#" title="粉色"><img src="themes/miqinew/img/orange.png"></a></li>
+               	<li><a href="#" title="橙色"><img src="themes/miqinew/img/bottle green.png"></a></li>
+                <li><a href="#" title="褐色"><img src="themes/miqinew/img/bottle green.png"></a></li>
+                <li><a href="#" title="黄色"><img src="themes/miqinew/img/bottle green.png"></a></li>
+                <li><a href="#" title="黑色"><img src="themes/miqinew/img/bottle green.png"></a></li>
+                <li><a href="#" title="青色"><img src="themes/miqinew/img/bottle green.png"></a></li>
+                <li><a href="#" title="玫红色"><img src="themes/miqinew/img/bottle green.png"></a></li>
             </ul>
             <div class="clear"></div>
         </div>
@@ -686,42 +667,46 @@
         </div>
     </section>
     <div class="clear"></div>
-	<!--艺术家-->
+	
     <section class="container padding-top">
     <div class="row">
        <div class="artist-lf col-lg-6 col-md-6 col-sm-6">
-	      {foreach from=$spysj item=spysj}
-       		<p>
-            	<img src="../{$spysj.hav_logo}" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
-            	<span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;">{$spysj.user_name}</span>
-            	<img src="{$ectouch_themes}/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
-            	<span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;">{$spysj.country}</span>
+	             		<p>
+            	<img src="/xinse/mobile/images/logo/20161228160732_532.jpg" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
+            	<span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;">王晋大艺术家1</span>
+            	<img src="themes/miqinew/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
+            	<span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;">中国美国</span>
            	</p>
-		  {/foreach}
-       </div>
+		         </div>
        <!--<div class="artist-rt col-lg-6 col-md-6 col-sm-6">
            <p style="font-size:16px; font-weight:bold; margin-bottom:0px;">艺术家说:</p>
            <div style="font-size:15px; font-weight:bold; margin-top:5px;">人生的磨难是很多的，所以我们不可对于每一件轻微的伤害都过于敏感。在生活磨难面前，精神上的坚强和无动于衷是我们抵抗罪恶和人生意外的最好武器。 —— 洛克</div>
        </div>-->
     </div>
     </section>
-    <!-- Product Tabs -->
+    
     <section class="container padding-top-2x">
-      <!-- Nav Tabs -->
+      
       <ul class="nav-tabs text-center" role="tablist">
         <li class="active"><a href="#description" role="tab" data-toggle="tab">产品介绍</a></li>
         <li><a href="#additional" role="tab" data-toggle="tab">商品规格</a></li>
 <!--        <li><a href="#reviews" role="tab" data-toggle="tab">Reviews <sup>3</sup></a></li>-->
-      </ul><!-- .nav-tabs -->
-      <!-- Tab panes -->
+      </ul>
+      
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane transition fade in active" id="description">
           <div class="row space-top">
-                {foreach from=$goodsdesc item=goodsdesc}
-		             {$goodsdesc.goods_desc}	           
-                {/foreach}
-          </div>
-        </div><!-- .tab-pane -->
+                		             <p>
+	这个是商品的详细描述
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<img src="/xinse/images/upload/image/20161228/20161228072339_46271.jpg" alt="" /> 
+</p>	           
+                          </div>
+        </div>
         <div role="tabpanel" class="tab-pane transition fade" id="additional">
           <div class="row">
             <div class="col-md-6">
@@ -759,38 +744,76 @@
           </div>
         </div>      
       </div>
-    </section><!-- .container -->
-
-    <!-- Related Products -->
+    </section>
+    
     <section class="container padding-top padding-bottom">
     	<div style="width:100px; height:30px;background-color:#ededed;position:absolute; margin-top:10px;"></div>
       	<hr style="position:relative;">
       <h3 class="padding-top">猜 你 喜 欢</h3>
       <div class="row padding-top">
 	  
-	    {foreach from=$xh item=xh}
-			<div class="col-lg-3 col-sm-6 mobile-indent">
+	    			<div class="col-lg-3 col-sm-6 mobile-indent">
 			  <div class="shop-item">
 				<div class="shop-thumbnail">
 				  <a href="#" class="item-link"></a>
-				  <img src="../../{$xh.goods_img}" alt="Shop item">
+				  <img src="../images/201311/goods_img/114_G_1385664673888.jpg" alt="Shop item">
 				</div>
 				<div class="shop-item-details">
-				  <h3 class="shop-item-title"><a href="#">{$xh.goods_name}</a></h3>
+				  <h3 class="shop-item-title"><a href="#">思亲肤绿茶泡沫洁面摩丝16</a></h3>
 				  <span class="shop-item-price">
 					<span class="old-price"></span>
-						￥{$xh.shop_price}
-				  </span>
+						￥59.00				  </span>
 				</div>
-			  </div><!-- .shop-item -->
-			</div><!-- .col-lg-3.col-sm-6 -->
-        {/foreach}
-        
+			  </div>
+			</div>
+        			<div class="col-lg-3 col-sm-6 mobile-indent">
+			  <div class="shop-item">
+				<div class="shop-thumbnail">
+				  <a href="#" class="item-link"></a>
+				  <img src="../images/200905/goods_img/29_G_1241973022206.jpg" alt="Shop item">
+				</div>
+				<div class="shop-item-details">
+				  <h3 class="shop-item-title"><a href="#">移动100元充值卡</a></h3>
+				  <span class="shop-item-price">
+					<span class="old-price"></span>
+						￥90.00				  </span>
+				</div>
+			  </div>
+			</div>
+        			<div class="col-lg-3 col-sm-6 mobile-indent">
+			  <div class="shop-item">
+				<div class="shop-thumbnail">
+				  <a href="#" class="item-link"></a>
+				  <img src="../images/200905/goods_img/27_G_1241972894061.jpg" alt="Shop item">
+				</div>
+				<div class="shop-item-details">
+				  <h3 class="shop-item-title"><a href="#">联通100元充值卡</a></h3>
+				  <span class="shop-item-price">
+					<span class="old-price"></span>
+						￥95.00				  </span>
+				</div>
+			  </div>
+			</div>
+        			<div class="col-lg-3 col-sm-6 mobile-indent">
+			  <div class="shop-item">
+				<div class="shop-thumbnail">
+				  <a href="#" class="item-link"></a>
+				  <img src="../images/200905/goods_img/25_G_1241972709544.jpg" alt="Shop item">
+				</div>
+				<div class="shop-item-details">
+				  <h3 class="shop-item-title"><a href="#">小灵通/固话50元充值卡</a></h3>
+				  <span class="shop-item-price">
+					<span class="old-price"></span>
+						￥48.00				  </span>
+				</div>
+			  </div>
+			</div>
+                
       
-      </div><!-- .row -->
-    </section><!-- .container -->
+      </div>
+    </section>
     
- 	<!-- Footer脚步 -->
+ 	
     <footer class="footer padding-top-2x">
       <div class="column">
       	<div class="feature text-center">
@@ -799,7 +822,7 @@
             </div>
 			<h4 class="feature-title"><a id="Cooperate" href="about-us.html">与我们合作</a></h4>
           </div>
-      </div><!-- .column -->
+      </div>
       <div class="column">
       	<div class="feature text-center">
             <div class="feature-icon">
@@ -807,7 +830,7 @@
             </div>
             <h4 class="feature-title"><a href="about-us.html">关于我们</a></h4>
           </div>
-      </div><!-- .column -->
+      </div>
       <div class="column">
       	<div class="feature text-center">
             <div class="feature-icon">
@@ -832,7 +855,7 @@
 			</div>
 		</div>
 	</section>
-    <!-- .footer -->
+    
     <div class="mobile-foot col-xs-12 hidden-sm hidden-md hidden-lg" style="position:fixed;bottom:0;padding:0px;">
 		<div class="col-xs-6" style="padding:0px;">
         	<a href="#" class="mobile-add-to-cart">
@@ -845,20 +868,18 @@
          </a>
         </div>
     </div>
-  </div><!-- .page-wrapper -->
-
-  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
-  <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
-  <script src="{$ectouch_themes}/js/scripts.js"></script>
+  </div>
   
-  <script src="{$ectouch_themes}/Swiper-3.4.0/dist/js/swiper.min.js"></script>
-  <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
-<!--swiper,banner插件-->
+  <script src="themes/miqinew/js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="themes/miqinew/js/vendor/bootstrap.min.js"></script>
+  <script src="themes/miqinew/js/vendor/smoothscroll.js"></script>
+  <script src="themes/miqinew/js/vendor/velocity.min.js"></script>
+  <script src="themes/miqinew/js/vendor/waves.min.js"></script>
+  <script src="themes/miqinew/js/vendor/icheck.min.js"></script>
+  <script src="themes/miqinew/js/scripts.js"></script>
+  
+  <script src="themes/miqinew/Swiper-3.4.0/dist/js/swiper.min.js"></script>
+  <script src="themes/miqinew/js/layer_mobile/layer.js"></script>
   <script>        
 	  var mySwiper = new Swiper ('.swiper-container', {
 		direction: 'horizontal',
@@ -875,11 +896,10 @@
 	  })        
   	</script>
     
-<!--电脑端点击分享二维码,手机端放大缩略图-->
 <script type="text/javascript">
   $(document).ready(function(){
 	  $("#fenxiang").click(function(){
-		  var content= '<img src="{$ectouch_themes}/img/fenxiangerweima.png">';
+		  var content= '<img src="themes/miqinew/img/fenxiangerweima.png">';
 			layer.open({
 				closeBtn: 0,
 				title: false,
@@ -888,7 +908,7 @@
 			});
 		});
 	$("#Mobilethumbnail").click(function(){
-		  var content= '<img src="{$ectouch_themes}/img/shop/product-gallery/preview03.jpg">';
+		  var content= '<img src="themes/miqinew/img/shop/product-gallery/preview03.jpg">';
 			layer.open({
 				closeBtn: 0,
 				title: false,
@@ -899,9 +919,8 @@
 		});
 	}) 
 </script>
-
-  <script src="{$ectouch_themes}/js/jquery.validate.js" type="text/javascript"></script>
-  <script src="{$ectouch_themes}/js/messages_zh.js" type="text/javascript"></script>
+  <script src="themes/miqinew/js/jquery.validate.js" type="text/javascript"></script>
+  <script src="themes/miqinew/js/messages_zh.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	$(document).ready(function () {
         $("#xqcar").click(function(){
@@ -929,7 +948,6 @@
                     alert("json出错");
                 }
             });
-
         });
         $('#checkbox-all').on('ifChanged', function(event){ //ifCreated 事件应该在插件初始化之前绑定
             choseAll();
@@ -1002,11 +1020,11 @@
 	 $(function () {
 		$("#xzdz").validate({
 			 rules: {
-                    UserName: { required: true, },
-                    UserTel: { required: true, number:true,isMobile:true,min:11},
-                    UserSf: { required: true,},
-                    UserCity: { required: true,minlength:2,maxlength:15 },
-					UserAddress: { required: true,minlength:2,maxlength:30 }
+                    UserName: {required: true,},
+                    UserTel: {required: true, number:true,isMobile:true,min:11},
+                    UserSf: {required: true,},
+                    UserCity: {required: true,minlength:2,maxlength:15},
+					UserAddress: {required: true,minlength:2,maxlength:30}
                 },
                 messages:{
                     UserName: { 
@@ -1040,7 +1058,7 @@
  		 document.getElementById("zhankai").click();
 	 }
 	</script>
-    <!--电脑端+手机端颜色选择时样式切换-->
+    
     <script type="text/javascript">
 		$(document).ready(function (){
 		  $("#pc-select-color li a").each(function(index){
@@ -1098,5 +1116,4 @@
  		});
 	</script>
 </body><!-- <body> -->
-
 </html>

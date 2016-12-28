@@ -25,6 +25,11 @@ require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 
 
 
+
+
+
+
+
 if(isset($_REQUEST['code'])&&isset($_REQUEST['state'])&&$action == 'weixin'){
     include_once(ROOT_PATH . 'includes/website/jntoo.php');
 
@@ -1351,6 +1356,9 @@ elseif ($action == 'address_list')
 {
 
 
+
+
+
     include_once(ROOT_PATH . 'include/lib_transaction.php');
     include_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/shopping_flow.php');
     $smarty->assign('lang',  $_LANG);
@@ -1460,6 +1468,8 @@ elseif($action == 'morendizhi'){
 /* 添加/编辑收货地址的处理 */
 elseif ($action == 'act_edit_address')
 {
+
+
     include_once(ROOT_PATH . 'include/lib_transaction.php');
     include_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/shopping_flow.php');
     $smarty->assign('lang', $_LANG);
@@ -1540,6 +1550,30 @@ elseif ($action == 'act_edit_address')
     {
         show_message($_LANG['edit_address_success'], $_LANG['address_list_lnk'], 'user.php?act=address_list');
     }
+}
+
+
+//添加微信收货地址
+elseif ($action == 'wxaddress'){
+      //详细地址
+      $address = $_POST['address'];
+      print_r($address);
+     //省
+      $province = $_POST['province'];
+     //市
+      $city = $_POST['city'];
+     //区
+      $district = $_POST['district'];
+     //电话
+      $tel = $_POST['tel'];
+     //收货人姓名
+      $consignee = $_POST['consignee'];
+$sql = "insert into `ecs_user_address`(consignee) values('$consignee')";
+$db->query($sql);
+
+
+
+
 }
 //修改收货地址
 elseif ($action == 'editdizhi'){

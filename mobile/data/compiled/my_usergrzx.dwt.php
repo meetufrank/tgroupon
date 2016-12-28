@@ -5,44 +5,45 @@
 <html lang="en">
 
 <head>
+<meta name="Generator" content="TGROUPON v2.7.3" />
   <meta charset="utf-8">
   <title>COLOR & SHAPE</title>
 
-  <!--SEO Meta Tags-->
+  
   <meta name="description" content="M-Store - Modern E-Commerce Template" />
   <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
 
-  <!--Mobile Specific Meta Tag-->
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-  {insert_scripts files='utils.js,region.js,shopping_flow.js'}
+  <?php echo $this->smarty_insert_scripts(array('files'=>'utils.js,region.js,shopping_flow.js')); ?>
 
   <!--Favicon
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 -->
-  <!-- Google Material Icons -->
-  <link href="{$ectouch_themes}/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+  
+  <link href="<?php echo $this->_var['ectouch_themes']; ?>/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
 
-  <!-- Brand Icons -->
-  <link href="{$ectouch_themes}/css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+  
+  <link href="<?php echo $this->_var['ectouch_themes']; ?>/css/vendor/socicon.min.css" rel="stylesheet" media="screen">
 
-  <!-- Bootstrap -->
-  <link href="{$ectouch_themes}/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+  
+  <link href="<?php echo $this->_var['ectouch_themes']; ?>/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
 
-  <!-- Theme Styles -->
-  <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
+  
+  <link href="<?php echo $this->_var['ectouch_themes']; ?>/css/theme.min.css" rel="stylesheet" media="screen">
 
-  <!-- tan chuang -->
-  <link href="{$ectouch_themes}/js/layer_mobile/need/layer.css">
+  
+  <link href="<?php echo $this->_var['ectouch_themes']; ?>/js/layer_mobile/need/layer.css">
 
-  <!-- Page Preloading -->
-  <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
-  <script src="{$ectouch_themes}/js/jquery-1.4.4.min.js"></script>
+  
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/page-preloading.js"></script>
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/jquery-1.4.4.min.js"></script>
 
 
 
-  <!-- by sun -->
+  
   <style>
     .nav-pills{
     	margin-left:-18px;
@@ -88,7 +89,7 @@
 		font-weight:bold;
 		text-decoration:none;
 		padding-left:10px;
-		background:url({$ectouch_themes}/img/dot_red.png) no-repeat left center;
+		background:url(<?php echo $this->_var['ectouch_themes']; ?>/img/dot_red.png) no-repeat left center;
 	}
 	.list_msgs a.title.read:link{
 		color:#666;
@@ -96,7 +97,7 @@
 		font-weight:normal;
 		text-decoration:none;
 		padding-left:10px;
-		background:url({$ectouch_themes}/img/dot_black.png) no-repeat left center;
+		background:url(<?php echo $this->_var['ectouch_themes']; ?>/img/dot_black.png) no-repeat left center;
 	}
 	.list_msgs a.title:visited{
 		color:#666;
@@ -104,7 +105,7 @@
 		font-weight:normal;
 		text-decoration:none;
 		padding-left:10px;
-		background:url({$ectouch_themes}/img/dot_black.png) no-repeat left center;
+		background:url(<?php echo $this->_var['ectouch_themes']; ?>/img/dot_black.png) no-repeat left center;
 	}
 	.list_msgs a.title:hover{
 		color:#999;
@@ -116,7 +117,7 @@
 		font-weight:normal;
 		text-decoration:none;
 		padding-left:10px;
-		background:url({$ectouch_themes}/img/dot_black.png) no-repeat left center;
+		background:url(<?php echo $this->_var['ectouch_themes']; ?>/img/dot_black.png) no-repeat left center;
 	}
 	button{
 		outline:none;
@@ -184,34 +185,35 @@
 
 
 
-<!-- Body -->
-<!-- Adding/Removing class ".page-preloading" is enabling/disabling background smooth page transition effect and spinner. Make sure you also added/removed link to page-preloading.js script in the <head> of the document. -->
+
+<!-- Adding/Removing class ".page-preloading" is enabling/disabling background smooth page transition effect and spinner. Make sure you also added/removed link to page-preloading.js script in the <head>
+<meta name="Generator" content="TGROUPON v2.7.3" /> of the document. -->
 <body class="page-preloading">
 
-  <!-- Page Pre-Loader -->
+  
   <div class="page-preloader">
     <div class="preloader">
-      <img src="{$ectouch_themes}/img/preloader.gif" alt="Preloader">
+      <img src="<?php echo $this->_var['ectouch_themes']; ?>/img/preloader.gif" alt="Preloader">
     </div>
-  </div><!-- .page-preloader -->
+  </div>
 
-  <!-- Page Wrapper -->
+  
   <div class="page-wrapper">
 
-    <!-- Navbar -->
-    <!-- Remove ".navbar-sticky" class to make navigation bar scrollable with the page. -->
+    
+    
     <header class="navbar navbar-sticky">
 
-      <!-- Site Logo -->
+      
       <a href="index.html" class="site-logo visible-desktop">
         COLOR <span>&</span> SHAPE
-      </a><!-- site-logo.visible-desktop -->
+      </a>
       <a href="index.html" class="site-logo visible-mobile">
         COLOR <span>&</span> SHAPE
-      </a><!-- site-logo.visible-mobile -->
+      </a>
 
 
-      <!-- Toolbar -->
+      
       <div class="toolbar">
         <div class="inner">
           <a href="#menu" class="toolbar-toggle"><i class="material-icons menu"></i></a>
@@ -223,12 +225,12 @@
           </a>
           <a href="#account" class="toolbar-toggle"><i class="material-icons person"></i></a>
         </div>
-      </div><!-- .toolbar -->
+      </div>
 
-      <!-- Toolbar Dropdown -->
+      
       <div class="toolbar-dropdown">
 
-        <!-- Menu -->
+        
         <div class="toolbar-section" id="menu">
           <div class="inner">
             <ul class="main-navigation space-bottom">
@@ -236,13 +238,13 @@
               <li><a href="shop-fullwidth-sl.html">商品</a></li>
               <li><a href="artist-list.html">设计师</a></li>
               <li><a href="#">关于我们</a></li>
-            </ul><!-- .main-navigation -->
+            </ul>
 
           </div>
-          <!-- .inner -->
-        </div><!-- .toolbar-section#menu -->
+          
+        </div>
 
-        <!-- Account (Login) -->
+        
         <div class="toolbar-section" id="account">
           <h3 class="toolbar-title space-bottom">用户登录</h3>
           <div class="inner">
@@ -250,16 +252,16 @@
           		<i class="material-icons question_answer"></i>
           		点击扫二维码登录
       		</a>
-          </div><!-- .inner -->
-        </div><!-- .toolbar-section#account -->
+          </div>
+        </div>
 
-        <!-- Account (userinfo) -->
+        
         <div class="toolbar-section" id="userinfo">
             <div class="clearfix">
             <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section">退出</a>
             <div class="quotation pull-left" style="width:auto;">
               <div class="quotation-author-ava pull-left">
-                <img class="" src="{$ectouch_themes}/img/team/quote_author.jpg" alt="James Cameron">
+                <img class="" src="<?php echo $this->_var['ectouch_themes']; ?>/img/team/quote_author.jpg" alt="James Cameron">
               </div>
               &nbsp;&nbsp;
               <span style="display:inline-block; line-height:74px;">微信名称</span>
@@ -276,7 +278,7 @@
       	  	</ul>
         </div>
 
-        <!-- Cart -->
+        
          <div class="toolbar-section" id="cart">
           <div class="shopping-cart" >
               <div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
@@ -305,11 +307,11 @@
 
       </div>
     </header>
-    <!-- 头部结束 -->
+    
 
-    <!-- Content -->
+    
     <section class="container padding-top-3x">
-     <!-- Nav Tabs -->
+     
       <ul class="nav-tabs" role="tablist">
         <li ><a href="#tab1" role="tab" data-toggle="tab">我的订单</a></li>
         <li><a href="my_grzxgdsc.php" role="tab" data-toggle="tab">我的收藏</a></li>
@@ -317,7 +319,7 @@
         <li class="active"><a href="my_usergrzx.php?act=address_list" role="tab" data-toggle="tab">管理地址</a></li>
         <li><a href="#tab5" role="tab" data-toggle="tab">商品销售</a></li>
       </ul>
-      <!-- Tab panes -->
+      
       <div class="tab-content">
 
 
@@ -347,43 +349,45 @@
 
 
 
-          <!--收货地址1-->
-       {foreach from=$consignee_list item=consignee key=sn}
-        <div class="shop-item" id="dizhi{$consignee.address_id}">
+          
+       <?php $_from = $this->_var['consignee_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('sn', 'consignee');if (count($_from)):
+    foreach ($_from AS $this->_var['sn'] => $this->_var['consignee']):
+?>
+        <div class="shop-item" id="dizhi<?php echo $this->_var['consignee']['address_id']; ?>">
                 <div class="shop-thumbnail">
                 	<form name=”form” method=”post” action=”#” id="form0">
-                        <div {if $consignee.default eq 1}class="clearfix" style="padding:18px; background: #edf7f9;"{else}style="padding:18px;"{/if} id="shouhuo">
+                        <div <?php if ($this->_var['consignee']['default'] == 1): ?>class="clearfix" style="padding:18px; background: #edf7f9;"<?php else: ?>style="padding:18px;"<?php endif; ?> id="shouhuo">
                                 <div>
-	                                <p>收件人:<span>{$consignee.consignee|escape}</span></p>
-	                                <p>手机号:<span>{$consignee.tel}</span></p>
+	                                <p>收件人:<span><?php echo htmlspecialchars($this->_var['consignee']['consignee']); ?></span></p>
+	                                <p>手机号:<span><?php echo $this->_var['consignee']['tel']; ?></span></p>
 	                                <p style="float:left">地&nbsp;&nbsp;&nbsp;址:</p>
-	                                <p><span class="mobile-address">{$consignee.address|escape}</span></p>
+	                                <p><span class="mobile-address"><?php echo htmlspecialchars($this->_var['consignee']['address']); ?></span></p>
                                 </div>
                                 <div class="pull-right hidden-xs" style="margin-top: -62px;">
 
- {if $consignee.default eq 1} <span href="#" style="font-size:12px; color: #999; margin-right:20px;">默认地址</span>{else}
-                                  <a href="#" onclick="morendizhi({$consignee.address_id})" class="btn btn-default btn-sm">设为默认地址</a>
-                                  {/if}
-                                  <a href="#" onclick="editdizhi({$consignee.address_id})" class="btn btn-primary btn-sm">编辑</a>
+ <?php if ($this->_var['consignee']['default'] == 1): ?> <span href="#" style="font-size:12px; color: #999; margin-right:20px;">默认地址</span><?php else: ?>
+                                  <a href="#" onclick="morendizhi(<?php echo $this->_var['consignee']['address_id']; ?>)" class="btn btn-default btn-sm">设为默认地址</a>
+                                  <?php endif; ?>
+                                  <a href="#" onclick="editdizhi(<?php echo $this->_var['consignee']['address_id']; ?>)" class="btn btn-primary btn-sm">编辑</a>
                               </div>
                               <div class="pull-right visible-xs">
-                              {if $consignee.default eq 1}
+                              <?php if ($this->_var['consignee']['default'] == 1): ?>
                                    <span href="#" style="font-size:12px; color: #999; margin-right:20px;">默认地址</span>
-                              {else}
-                                  <a href="#" onclick="morendizhi({$consignee.address_id})" class="btn btn-default btn-sm">设为默认地址</a>
-                              {/if}
+                              <?php else: ?>
+                                  <a href="#" onclick="morendizhi(<?php echo $this->_var['consignee']['address_id']; ?>)" class="btn btn-default btn-sm">设为默认地址</a>
+                              <?php endif; ?>
 
-                                	<a href="#" onclick="editdizhi({$consignee.address_id})"  class="btn btn-primary btn-sm">编辑</a>
+                                	<a href="#" onclick="editdizhi(<?php echo $this->_var['consignee']['address_id']; ?>)"  class="btn btn-primary btn-sm">编辑</a>
                             	</div>
                         </div>
                         <div id="btn-sm" class="shop-item-tools">
-                            <a onclick="deldizhi({$consignee.address_id})" href="#" class="btn btn-default btn-sm"><i class="material-icons close"></i></a>
+                            <a onclick="deldizhi(<?php echo $this->_var['consignee']['address_id']; ?>)" href="#" class="btn btn-default btn-sm"><i class="material-icons close"></i></a>
                          </div>
                     </form>
                 </div>
           </div>
-          {/foreach}
-          <!--收货地址1结束-->
+          <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+          
 
           <div class="text-right" id="adddizhi">
               <a href="#"  id="Address_Manager" class="btn btn-primary waves-effect waves-light">添加地址</a>
@@ -391,7 +395,7 @@
         </div>
 
       </div>
-      </section><!-- .container -->
+      </section>
 
 
 
@@ -408,7 +412,7 @@
 			</div>
             </a>
           </div>
-      </div><!-- .column -->
+      </div>
       <div class="column">
       	<div class="feature text-center">
             <div class="feature-icon">
@@ -416,7 +420,7 @@
             </div>
             <h4 class="feature-title">关于我们</h4>
           </div>
-      </div><!-- .column -->
+      </div>
       <div class="column">
       	<div class="feature text-center">
             <div class="feature-icon">
@@ -424,9 +428,9 @@
             </div>
             <h4 class="feature-title">物流及售后服务</h4>
           </div>
-      </div><!-- .column -->
-    </footer><!-- .footer -->
-	<!--底部-->
+      </div>
+    </footer>
+	
 	<section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
 		<div class="text-center">
 			<div class="hidden-xs">
@@ -443,25 +447,25 @@
 	</section>
   </div>
 
-  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
-  <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
-  <script src="{$ectouch_themes}/js/scripts.js"></script>
+  
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/bootstrap.min.js"></script>
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/smoothscroll.js"></script>
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/velocity.min.js"></script>
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/waves.min.js"></script>
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/icheck.min.js"></script>
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/scripts.js"></script>
 
-  <!-- tan chuang -->
-  <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
-  <script src="{$ectouch_themes}/js/jquery.validate.js" type="text/javascript"></script>
-  <script src="{$ectouch_themes}/js/messages_zh.js" type="text/javascript"></script>
-
-
+  
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/layer_mobile/layer.js"></script>
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/jquery.validate.js" type="text/javascript"></script>
+  <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/messages_zh.js" type="text/javascript"></script>
 
 
 
-  <!-- script for tan chuang -->
+
+
+  
   <script type="text/javascript">
   $(document).ready(function () {
         $("#xqcar").click(function(){
@@ -696,8 +700,8 @@
                                 var id=$("#province").val();
                                 $("#city").find("option").remove();
                                           $("#district").find("option").remove();
-                                         $("#city").append('<option value="0">{$lang.please_select}{$name_of_region[2]}</option>');
-                                         $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
+                                         $("#city").append('<option value="0"><?php echo $this->_var['lang']['please_select']; ?><?php echo $this->_var['name_of_region']['2']; ?></option>');
+                                         $("#district").append('<option value="0"><?php echo $this->_var['lang']['please_select']; ?><?php echo $this->_var['name_of_region']['3']; ?></option>');
                                 if(id!=0){
                                  $.ajax({
                                     url:"ajax_region.php",
@@ -732,7 +736,7 @@
                          $("#city").change(function(){
                             var id=$("#city").val();
                             $("#district").find("option").remove();
-                            $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
+                            $("#district").append('<option value="0"><?php echo $this->_var['lang']['please_select']; ?><?php echo $this->_var['name_of_region']['3']; ?></option>');
                             if(id!=0){
                              $.ajax({
                                 url:"ajax_region.php",
@@ -790,23 +794,29 @@
     +
     '<div id="form-control"><div class="col-md-4 col-xs-12"><div class="form-element form-select">'+
     '<select name="province" id="province"   class="form-control" >'+
-               ' <option value="0">{$lang.please_select}{$name_of_region[1]}</option>' +
-                '<!-- {foreach from=$province_list item=province} -->'+
-                '<option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>'+
-               '<!-- {/foreach} --></select>'+
+               ' <option value="0"><?php echo $this->_var['lang']['please_select']; ?><?php echo $this->_var['name_of_region']['1']; ?></option>' +
+                '<?php $_from = $this->_var['province_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'province');if (count($_from)):
+    foreach ($_from AS $this->_var['province']):
+?>'+
+                '<option value="<?php echo $this->_var['province']['region_id']; ?>" <?php if ($this->_var['consignee']['province'] == $this->_var['province']['region_id']): ?>selected<?php endif; ?>><?php echo $this->_var['province']['region_name']; ?></option>'+
+               '<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?></select>'+
                  '</div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select">'+
                  '<select name="city" id="city"  class="form-control">'+
-                  '<option value="0">{$lang.please_select}{$name_of_region[2]}</option>'+
-                  '<!-- {foreach from=$city_list.$sn item=city} -->'+
-                  '<option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>'+
-                  '<!-- {/foreach} -->'+
+                  '<option value="0"><?php echo $this->_var['lang']['please_select']; ?><?php echo $this->_var['name_of_region']['2']; ?></option>'+
+                  '<?php $_from = $this->_var['city_list'][$this->_var['sn']]; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'city');if (count($_from)):
+    foreach ($_from AS $this->_var['city']):
+?>'+
+                  '<option value="<?php echo $this->_var['city']['region_id']; ?>" <?php if ($this->_var['consignee']['city'] == $this->_var['city']['region_id']): ?>selected<?php endif; ?>><?php echo $this->_var['city']['region_name']; ?></option>'+
+                  '<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>'+
                  '</select>'+
                  '</div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select">'+
                  '<select name="district" id="district"   class="form-control">'+
-                   '<option value="0">{$lang.please_select}{$name_of_region[3]}</option>' +
-                    '<!-- {foreach from=$district_list.$sn item=district} -->'+
-                    '<option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>'+
-                    '<!-- {/foreach} -->'+
+                   '<option value="0"><?php echo $this->_var['lang']['please_select']; ?><?php echo $this->_var['name_of_region']['3']; ?></option>' +
+                    '<?php $_from = $this->_var['district_list'][$this->_var['sn']]; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'district');if (count($_from)):
+    foreach ($_from AS $this->_var['district']):
+?>'+
+                    '<option value="<?php echo $this->_var['district']['region_id']; ?>" <?php if ($this->_var['consignee']['district'] == $this->_var['district']['region_id']): ?>selected<?php endif; ?>><?php echo $this->_var['district']['region_name']; ?></option>'+
+                    '<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>'+
                   '</select>'+
                  '</div></div></div>'
     +
@@ -832,8 +842,8 @@
                                 var id=$("#province").val();
                                 $("#city").find("option").remove();
                                           $("#district").find("option").remove();
-                                          $("#city").append('<option value="0">{$lang.please_select}{$name_of_region[2]}</option>');
-                                         $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
+                                          $("#city").append('<option value="0"><?php echo $this->_var['lang']['please_select']; ?><?php echo $this->_var['name_of_region']['2']; ?></option>');
+                                         $("#district").append('<option value="0"><?php echo $this->_var['lang']['please_select']; ?><?php echo $this->_var['name_of_region']['3']; ?></option>');
                                 if(id!=0){
                                  $.ajax({
                                     url:"ajax_region.php",
@@ -860,7 +870,7 @@
                          $("#city").change(function(){
                             var id=$("#city").val();
                             $("#district").find("option").remove();
-                            $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
+                            $("#district").append('<option value="0"><?php echo $this->_var['lang']['please_select']; ?><?php echo $this->_var['name_of_region']['3']; ?></option>');
                             if(id!=0){
                              $.ajax({
                                 url:"ajax_region.php",
@@ -927,11 +937,11 @@
    $(function () {
     $("#xzdz").validate({
        rules: {
-                    UserName: { required: true, },
-                    UserTel: { required: true, number:true,isMobile:true,min:11},
-                    UserSf: { required: true,},
-                    UserCity: { required: true,minlength:2,maxlength:15 },
-          UserAddress: { required: true,minlength:2,maxlength:30 }
+                    UserName: {required: true,},
+                    UserTel: {required: true, number:true,isMobile:true,min:11},
+                    UserSf: {required: true,},
+                    UserCity: {required: true,minlength:2,maxlength:15},
+          UserAddress: {required: true,minlength:2,maxlength:30}
                 },
                 messages:{
                     UserName: {
@@ -999,7 +1009,7 @@
  //                return false;
  //            }
   </script>
-  <!--设置input随着字数变化宽度同步增多-->
+  
   <script language="javascript">
 	function checkLength(which) {
 		iCount = which.value.replace(/[^\u0000-\u00ff]/g,"aa");
