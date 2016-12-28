@@ -27,18 +27,26 @@ session_start();
 $orderid=$_SESSION['my_mobile_order'];
 if($orderid){
 $order_id=$orderid;
-$sql="select eog.goods_name,eoi.order_amount,eoi.order_sn from ecs_order_goods as eog
-INNER JOIN ecs_order_info as eoi
-INNER JOIN ecs_goods as eg
-on  eog.order_id=eoi.order_id and eog.goods_id=eg.goods_id
-where eog.order_id=".$order_id;
-$orderdata=$GLOBALS['db']->getAll($sql);
-foreach ($orderdata as $key => $value) {
-    foreach ($orderdata[$key] as $k => $v){
-    if($k=='goods_name'){
-        $goodsname[]=$orderdata[$key][$k];
-    }
+$sql=" select pay_status from  ecs_order_info where order_id=".$orderid;
+$pay_status=$GLOBALS['db']->getOne($sql);
+if($pay_status==2){
+      ecs_header("Location: ../../flow.php?step=pay_ok&order_id=".$order_id);
+}else{
+
+	$sql="select eog.goods_name,eoi.order_amount,eoi.order_sn from ecs_order_goods as eog
+			INNER JOIN ecs_order_info as eoi
+			INNER JOIN ecs_goods as eg
+			on  eog.order_id=eoi.order_id and eog.goods_id=eg.goods_id
+			where eog.order_id=".$order_id;
+			$orderdata=$GLOBALS['db']->getAll($sql);
+			foreach ($orderdata as $key => $value) {
+			    foreach ($orderdata[$key] as $k => $v){
+			    if($k=='goods_name'){
+			        $goodsname[]=$orderdata[$key][$k];
+			    }
+			}
 }
+
 }
 $title=implode('、',$goodsname);
 //print_r($title);
