@@ -177,8 +177,6 @@
   <script src="{$ectouch_themes}/js/vendor/nouislider.min.js"></script>
   <script src="{$ectouch_themes}/js/scripts.js"></script>
  <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
-
- {$pay_online}
  <script type="text/javascript">
 
     //确认支付
@@ -187,12 +185,8 @@
         var content ='';
         var orderid='{$order.order_id}';
         var type='{$is_wechat}';
+            if(type==false){
 
-        if(type==true&&pay_id=='9'){
-
-          callpay();
-           // window.location.href=window.location.href+'&pay_list'+pay_id;
-        }else{
 
             $.ajax({
             type:"POST",
@@ -208,15 +202,13 @@
                         style:'width:190px;'
                       });
                     getProgress();
-                }else{
-
-                    window.location.href=data.content;
                 }
-
                 }
             });
+          }else{
+            window.location.href='weixin/example/jsapi.php?orderid='+orderid;
+          }
 
-        }
 
       });
 

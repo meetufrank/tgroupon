@@ -1229,23 +1229,13 @@ elseif($_REQUEST['step']=='pay_ok'){
 
     $payment_list=available_payment_list(0);  //支付方式
     $smarty->assign('payment_list',$payment_list);
+
     $is_wechat=is_wechat_browser();
-    $smarty->assign('is_wechat',      $is_wechat);
-    if($is_wechat){
-    foreach($payment_list as $payment){
-        if($payment['pay_code']=='wx_new_jspay'){
-            include_once('include/modules/payment/' . $payment['pay_code'] . '.php');
-            $pay_obj    = new $payment['pay_code'];
-
-            $pay_online = $pay_obj->get_code($order, unserialize_config($payment['pay_config']));
-
-            $smarty->assign('pay_online', $pay_online);
+        if($is_wechat){
+            session_start();
+            $_SESSION['my_mobile_order'] = $order['order_id'];
         }
-
-
-    }
-
-    }
+    $smarty->assign('is_wechat',$is_wechat);
 
 
 
