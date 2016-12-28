@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2016-12-27 17:57:36
+ * @Last Modified time: 2016-12-28 13:52:08
  */
 define('IN_ECTOUCH', true);
 
@@ -28,7 +28,13 @@ if ($_REQUEST['step'] == 'goods_list'){
 }
 elseif ($_REQUEST['step'] == 'ajax_goods_list') {
 
-
+       $page_count=15;   ///设置每页显示条数
+       if(!intval($_POST['page_num'])){
+            $page_num=1;
+       }else{
+           $page_num=intval($_POST['page_num']);
+       }
+       $limit="  limit ".($page_num-1)*$page_count." ,".$page_count." ";
        if($_POST['type']=='showprice'){
           if(intval($_POST['typeid'])!=1){      //价格区间筛选
             //获取价格区间
@@ -36,7 +42,12 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
 
             $where=" and shop_price>=".$price['min_money']." and shop_price<=".$price['max_money'];
             setcookie('showprice',$where);
-            $where.=$_COOKIE['showtype'].$_COOKIE['showsearch'];
+            if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
+                $where.=$_COOKIE['showtype'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
+            }else{
+                $where.=$_COOKIE['showtype'];
+            }
+
 
           }else{
              setcookie('showprice','',time()-3600);
@@ -53,17 +64,24 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
                 $where=" and cat_id in (".$cart_id.") ";
 
                 setcookie('showtype',$where);
-                $where.=$_COOKIE['showprice'].$_COOKIE['showsearch'];
+                if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
+                       $where.=$_COOKIE['showprice'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
+                }else{
+                       $where.=$_COOKIE['showprice'];
+                }
+
            }else{
                setcookie('showtype','',time()-3600);
            }
        }elseif($_POST['type']=='showsearch'){
 
              if($_POST['typeid']){
-                   $where=" and goods_name like '%".$_POST['typeid']."%' ";
+                   $where=" and goods_name like ";
                    setcookie('showsearch',$where);
+                   $where.=" '%".$_POST['typeid']."%' ";
                    $where.=$_COOKIE['showprice'].$_COOKIE['showtype'];
                    setcookie('search_content',$_POST['typeid']);
+
                  }else{
                       setcookie('showsearch','',time()-3600);
                       setcookie('search_content','',time()-3600);
@@ -71,7 +89,7 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
        }
         $sql = "SELECT goods_id, goods_name, goods_type, goods_sn, market_price,shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, sales_volume_base,goods_thumb, " .
                     " (promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today') AS is_promote ".
-                    " FROM " . $GLOBALS['ecs']->table('goods') . " AS g WHERE is_delete=0 AND is_on_sale=1 ".$where;
+                    " FROM " . $GLOBALS['ecs']->table('goods') . " AS g WHERE is_delete=0 AND is_on_sale=1 ".$where.$limit;
 
        $goods_list = $GLOBALS['db']->getALL($sql);  //商品列表
 
@@ -83,7 +101,11 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
 
          $data['data']=$goods_list;
          $data['count']=$goods_count;
-         $data['search']=$_COOKIE['search_content'];
+         $data['search']=$_POST['typeid']?$_POST['typeid']:'';
+         $num=ceil($goods_count/$page_count);
+
+         $data['pages']=$num;
+
 
 
        echo json_encode($data);

@@ -35,6 +35,8 @@
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
 
+
+
 </head>
 
 <!-- Body -->
@@ -53,7 +55,6 @@
 	<!-- 头部开始 -->
     {include file="head.dwt"}
 	<!-- 头部结束-->
-
     <!-- Shop Catalog -->
     <section class="container-fluid padding-top-3x padding-bottom-3x">
 
@@ -103,13 +104,14 @@
 		     $.ajax({
 				   type: "post",
 				   url: "goods_list.php?step=ajax_goods_list",
-				   data:{typeid:val,type:id},
+				   data:{typeid:val,type:id,page_num:page},
 				   dataType:"json",
 				   success: function (data) {
                console.log(data);
 						var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
 						laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
 							document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
+              insert_page(data);
 						});
 				  },
 				  error: function(data){
@@ -132,25 +134,10 @@
 
           <div id="view">
           </div>
-
+          <div id="demo_page"></div>
           <hr>
 
-          <!-- Pagination -->
-          <div class="pagination padding-bottom">
-            <div class="page-numbers">
-              <a href="#">1</a>
-              <a href="#">2</a>
-              <span class="active">3</span>
-              <a href="#">4</a>
-              <span>...</span>
-              <a href="#">10</a>
-            </div>
-            <div class="pager">
-              <a href="#">上一页</a>
-              <span>|</span>
-              <a href="#">下一页</a>
-            </div>
-          </div>
+
         </div><!-- .col-md-9 col-sm-8 -->
       </div><!-- .row -->
     </section><!-- .container -->
@@ -254,6 +241,7 @@
 		{{# } }}
       </div><!-- .row -->
 
+
 	</script>
 	<script type="text/javascript">
 	$.ajax({
@@ -285,6 +273,7 @@
 						laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
 							document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
 						});
+            insert_page(data);
 				  },
 				  error: function(data){
                     	layer.open({
@@ -296,7 +285,48 @@
 		});
 
 	</script>
+<link rel="stylesheet" href="{$ectouch_themes}/layui/css/layui.css">
+<script type="text/livescript" src="{$ectouch_themes}/layui/layui.js"></script>
+<script type="text/javascript">
+function insert_page(data){
+layui.use('layer', function (){
+  var layer = layui.layer;
+});
+layui.use(['laypage', 'layer'], function(){
+  var laypage = layui.laypage
+  ,layer = layui.layer;
+    laypage({
+    cont: 'demo_page'
+    ,pages: data.pages
+    ,skin: '#1E9FFF'
+    ,jump: function(obj){
 
+      $.ajax({
+               type: "post",
+               url: "goods_list.php?step=ajax_goods_list",
+               dataType:"json",
+               data:{page_num:obj.curr},
+               success: function (data) {
+
+                var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
+                laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
+                  document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
+                });
+
+              },
+              error: function(data){
+                          layer.open({
+                  content: 'Json数据出错'
+                  ,skin: 'msg'
+                  ,time: 1 //2秒后自动关闭
+                  });
+                    }
+          });
+    }
+  });
+});
+}
+</script>
 
 </body><!-- <body> -->
 

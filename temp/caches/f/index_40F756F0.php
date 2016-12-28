@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:18:{i:0;s:40:"E:/www/tgroupon/themes/miqinew/index.dwt";i:1;s:60:"E:/www/tgroupon/themes/miqinew/library/page_header_index.lbi";i:2;s:62:"E:/www/tgroupon/themes/miqinew/library/category_tree_index.lbi";i:3;s:51:"E:/www/tgroupon/themes/miqinew/library/index_ad.lbi";i:4;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_r.lbi";i:5;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_b.lbi";i:6;s:52:"E:/www/tgroupon/themes/miqinew/library/group_buy.lbi";i:7;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_hot.lbi";i:8;s:62:"E:/www/tgroupon/themes/miqinew/library/recommend_promotion.lbi";i:9;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_new.lbi";i:10;s:57:"E:/www/tgroupon/themes/miqinew/library/recommend_best.lbi";i:11;s:52:"E:/www/tgroupon/themes/miqinew/library/cat_goods.lbi";i:12;s:48:"E:/www/tgroupon/themes/miqinew/library/top10.lbi";i:13;s:53:"E:/www/tgroupon/themes/miqinew/library/email_list.lbi";i:14;s:54:"E:/www/tgroupon/themes/miqinew/library/order_query.lbi";i:15;s:58:"E:/www/tgroupon/themes/miqinew/library/huiyuanchongzhi.lbi";i:16;s:56:"E:/www/tgroupon/themes/miqinew/library/index_history.lbi";i:17;s:54:"E:/www/tgroupon/themes/miqinew/library/page_footer.lbi";}s:7:"expires";i:1482835483;s:8:"maketime";i:1482831883;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php exit;?>a:3:{s:8:"template";a:18:{i:0;s:40:"E:/www/tgroupon/themes/miqinew/index.dwt";i:1;s:60:"E:/www/tgroupon/themes/miqinew/library/page_header_index.lbi";i:2;s:62:"E:/www/tgroupon/themes/miqinew/library/category_tree_index.lbi";i:3;s:51:"E:/www/tgroupon/themes/miqinew/library/index_ad.lbi";i:4;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_r.lbi";i:5;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_b.lbi";i:6;s:52:"E:/www/tgroupon/themes/miqinew/library/group_buy.lbi";i:7;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_hot.lbi";i:8;s:62:"E:/www/tgroupon/themes/miqinew/library/recommend_promotion.lbi";i:9;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_new.lbi";i:10;s:57:"E:/www/tgroupon/themes/miqinew/library/recommend_best.lbi";i:11;s:52:"E:/www/tgroupon/themes/miqinew/library/cat_goods.lbi";i:12;s:48:"E:/www/tgroupon/themes/miqinew/library/top10.lbi";i:13;s:53:"E:/www/tgroupon/themes/miqinew/library/email_list.lbi";i:14;s:54:"E:/www/tgroupon/themes/miqinew/library/order_query.lbi";i:15;s:58:"E:/www/tgroupon/themes/miqinew/library/huiyuanchongzhi.lbi";i:16;s:56:"E:/www/tgroupon/themes/miqinew/library/index_history.lbi";i:17;s:54:"E:/www/tgroupon/themes/miqinew/library/page_footer.lbi";}s:7:"expires";i:1482906258;s:8:"maketime";i:1482902658;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="Generator" content="TGROUPON v2.7.3" />
@@ -1179,21 +1179,21 @@ catch (e) {
     </dd>
         <dd >
       <div class="hot_img"> <span class="hot"></span>
-        <div class="pic"><a href="goods.php?id=122"><img src="images/201311/thumb_img/122_thumb_G_1385665161614.jpg" alt="玫琳凯中性洗面乳绿2号" class="goodsimg" /></a></div>
+        <div class="pic"><a href="goods.php?id=165"><img src="images/201612/thumb_img/165_thumb_G_1481850865322.jpg" alt="娃娃啊啊啊啊啊" class="goodsimg" /></a></div>
         <div class="text">
-          <p class="name"><a href="goods.php?id=122" title="玫琳凯中性洗面乳绿2号">玫琳凯中性洗面乳绿2号</a></p>
+          <p class="name"><a href="goods.php?id=165" title="娃娃啊啊啊啊啊">娃娃啊啊啊啊啊</a></p>
           <p class="brife"> </p>
           <p class="price" > <font class="aa"> 
              
-            ￥<span>69</span> 
+            ￥<span>2000</span> 
              
             
-            </font> <font class="bb">￥<span>83</span></font> </p>
+            </font> <font class="bb">￥<span>2400</span></font> </p>
         </div>
       </div>
-      <div class="hot_btn"> <a href="javascript:addToCartShowDiv(122,1,'hot')"></a> </div>
+      <div class="hot_btn"> <a href="javascript:addToCartShowDiv(165,1,'hot')"></a> </div>
       <div class="hot_line" > </div>
-      <div class="sucess_joinCart" id="addtocartdialog_retui_122_hot"></div>
+      <div class="sucess_joinCart" id="addtocartdialog_retui_165_hot"></div>
     </dd>
       </dl>
 </div>
@@ -1246,19 +1246,19 @@ catch (e) {
 <dd >
   <div class="hot_img"> <span class="hot"></span>
     <div class="text">
-      <p class="name"><a href="goods.php?id=122" title="玫琳凯中性洗面乳绿2号">玫琳凯中性洗面乳绿2号</a></p>
+      <p class="name"><a href="goods.php?id=165" title="娃娃啊啊啊啊啊">娃娃啊啊啊啊啊</a></p>
       <p class="brife"> </p>
       <p class="price" > <font class="aa"> 
          
-        ￥<span>69</span> 
+        ￥<span>2000</span> 
          
-        </font> <font class="bb">￥<span>83</span></font> </p>
+        </font> <font class="bb">￥<span>2400</span></font> </p>
     </div>
-    <div class="pic"> <a href="goods.php?id=122"><img src="images/201311/thumb_img/122_thumb_G_1385665161614.jpg" alt="玫琳凯中性洗面乳绿2号" class="goodsimg" /></a></div>
+    <div class="pic"> <a href="goods.php?id=165"><img src="images/201612/thumb_img/165_thumb_G_1481850865322.jpg" alt="娃娃啊啊啊啊啊" class="goodsimg" /></a></div>
   </div>
-   <div class="hot_btn"> <a href="javascript:addToCartShowDiv(122,1,'new')"  ></a> </div>
+   <div class="hot_btn"> <a href="javascript:addToCartShowDiv(165,1,'new')"  ></a> </div>
       <div class="hot_line" > </div>
-      <div class="sucess_joinCart" id="addtocartdialog_retui_122_new">
+      <div class="sucess_joinCart" id="addtocartdialog_retui_165_new">
 </div>
 </dd>
  
@@ -1287,19 +1287,19 @@ catch (e) {
    <dd class="hot_dd02" >
   <div class="hot_img"> <span class="hot1"></span>
     
-        <div class="pic">   <a href="goods.php?id=122"><img src="images/201311/thumb_img/122_thumb_G_1385665161614.jpg" alt="玫琳凯中性洗面乳绿2号" class="goodsimg" /></a></div>
+        <div class="pic">   <a href="goods.php?id=165"><img src="images/201612/thumb_img/165_thumb_G_1481850865322.jpg" alt="娃娃啊啊啊啊啊" class="goodsimg" /></a></div>
            <div class="text">
-          <p class="name"><a href="goods.php?id=122" title="玫琳凯中性洗面乳绿2号">玫琳凯中性洗面乳绿2号</a></p>
+          <p class="name"><a href="goods.php?id=165" title="娃娃啊啊啊啊啊">娃娃啊啊啊啊啊</a></p>
           <p class="brife"> </p>
           
            <p class="price" > <font class="aa"> 
-                     ￥<span>69</span>                     </font><font class="bb">￥<span>83</span></font>
+                     ￥<span>2000</span>                     </font><font class="bb">￥<span>2400</span></font>
            </p>
         </div>
         </div>
-         <div class="hot_btn"><a href="javascript:addToCartShowDiv(122,1,'best')"  ></a> </div>
+         <div class="hot_btn"><a href="javascript:addToCartShowDiv(165,1,'best')"  ></a> </div>
       <div class="hot_line" > </div>
-      <div class="sucess_joinCart" id="addtocartdialog_retui_122_best">
+      <div class="sucess_joinCart" id="addtocartdialog_retui_165_best">
 </div>
         </dd>
   
