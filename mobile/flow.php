@@ -125,13 +125,13 @@ if ($_REQUEST['step'] == 'add_to_cart')
     }
 
     /* 更新：如果是一步购物，先清空购物车 */
-    if ($_CFG['one_step_buy'] == '1')
-    {
-        clear_cart();
-    }
+    // if ($_CFG['one_step_buy'] == '1')
+    // {
+    //     clear_cart();
+    // }
     //增加检查属性库存是否充足，不足的话返回错误
     //有属性传入时，判断属性库存
-    /*
+
     if (!empty($goods->spec))
     {
     $goods_attr_id=$goods->spec;
@@ -159,7 +159,7 @@ if ($_REQUEST['step'] == 'add_to_cart')
         $result['message'] = "库存不足，请重新选择商品";
     }
 
-    }*/
+    }
     /* 检查：商品数量是否合法 */
     if (!is_numeric($goods->number) || intval($goods->number) <= 0)
     {
