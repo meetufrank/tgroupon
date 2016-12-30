@@ -100,7 +100,7 @@ font-size: 12px;
 
 
 
-<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx7eee3208b7b59ea1&response_type=code&scope=snsapi_login&redirect_uri=http://uranion.com.cn/mobile/user.php&state=9d9360d18e266b81d69888227fbbadeb"><img height="156px" width="32px" src="themes/miqinew/images/weixin.png">&nbsp;
+<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx7eee3208b7b59ea1&response_type=code&scope=snsapi_login&redirect_uri=http://uranion.com.cn/mobile/head.php&state=9d9360d18e266b81d69888227fbbadeb"><img height="156px" width="32px" src="themes/miqinew/images/weixin.png">&nbsp;
 </a>
 
 

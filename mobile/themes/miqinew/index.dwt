@@ -99,7 +99,7 @@ font-size: 12px;
 
 
 <!-- 微信登录 -->
-<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx7eee3208b7b59ea1&response_type=code&scope=snsapi_login&redirect_uri=http://uranion.com.cn/mobile/head.php&state=9d9360d18e266b81d69888227fbbadeb"><img height="156px" width="32px" src="images/weixin.png">&nbsp;
+<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx972a6f963cf1d611&response_type=code&scope=snsapi_login&redirect_uri=http://meetuuu.com/mobile/weixinlogin.php&state=668ee48328701ca10efef2517d8826e8"><img height="156px" width="32px" src="images/weixin.png">&nbsp;
 </a>
 
 

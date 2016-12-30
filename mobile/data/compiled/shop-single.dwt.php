@@ -29,10 +29,10 @@
 
   
   <link href="<?php echo $this->_var['ectouch_themes']; ?>/css/theme.min.css" rel="stylesheet" media="screen">
-  
-  
+
+
   <link href="<?php echo $this->_var['ectouch_themes']; ?>/css/theme.mins.css" rel="stylesheet" media="screen">
-  
+
   
   <link href="<?php echo $this->_var['ectouch_themes']; ?>/Swiper-3.4.0/dist/css/swiper.css" rel="stylesheet" media="screen">
 
@@ -306,7 +306,7 @@
               <li><a href="artist-list.html">艺术家</a></li>
               <li><a href="about-us.html">关于我们</a></li>
             </ul>
-            
+
           </div>
           
         </div>
@@ -321,7 +321,7 @@
       		</a>
           </div>
         </div>
-        
+
         
         <div class="toolbar-section" id="userinfo">
             <div class="clearfix">
@@ -424,19 +424,19 @@
                 <h3 class="amount"><small class="hidden-xs">数量：6&nbsp;&nbsp;&nbsp;</small>$161.90</h3>
               </div>
             </div>
-            
+
             <div class="form-group">
               <label class="radio radio-inline">
-                <input type="radio" name="co_shipping" checked> 
+                <input type="radio" name="co_shipping" checked>
                 	联系人：里默默<br>
 					手机号：18954781245<br>
 					地   址 ：上海市五角场黄兴路100号1号楼102室
               </label>
             </div>
-            
+
             <div class="form-group">
               <label class="radio radio-inline">
-                <input type="radio" name="co_shipping"> 
+                <input type="radio" name="co_shipping">
                 	联系人：里默默<br>
 					手机号：18954781245<br>
 					地   址 ：上海市五角场黄兴路100号1号楼102室
@@ -453,7 +453,7 @@
             </div>
           </form>
         </div>
-        
+
         
         <div class="toolbar-section" id="address">
           <form method="post" class="checkout-form container">
@@ -462,7 +462,7 @@
                 <h3 class="toolbar-title">填写地址</h3>
               </div>
             </div>
-            
+
             <input type="text" class="form-control" name="" placeholder="收件人">
             <input type="text" class="form-control" name="" placeholder="手机号码">
             <div class="row">
@@ -516,26 +516,26 @@
             </div>
       </div>
     </header>
-	 
-   
+	
+
     
     <section class="fw-section bg-gray padding-top-3x">
       <div class="swiper-container">
             <div class="swiper-wrapper">
-					<?php $_from = $this->_var['xiangce']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'xiangce_0_94523800_1482912477');if (count($_from)):
-    foreach ($_from AS $this->_var['xiangce_0_94523800_1482912477']):
+					<?php $_from = $this->_var['xiangce']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'xiangce_0_82157000_1483068240');if (count($_from)):
+    foreach ($_from AS $this->_var['xiangce_0_82157000_1483068240']):
 ?>
-						<div class="swiper-slide"><img src="../<?php echo $this->_var['xiangce_0_94523800_1482912477']['img_url']; ?>"></div>
+						<div class="swiper-slide"><img src="../<?php echo $this->_var['xiangce_0_82157000_1483068240']['img_url']; ?>"></div>
 					<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
             </div>
-        	
+
             
     		<div class="swiper-pagination"></div>
             <!--<div class="swiper-button-prev" style="width:50px;">-PREV</div>
             <div class="swiper-button-next" style="width:50px;">NEXT-</div>-->
 		</div>
     </section>
-	
+
     
     <section class="fw-section bg-gray padding-bottom-3x  hidden-xs">
       <div class="container">
@@ -565,7 +565,7 @@
                             <li><a href="#"><img src="<?php echo $this->_var['ectouch_themes']; ?>/img/bottle green.png"></a></li>
                             <li><a href="#"><img src="<?php echo $this->_var['ectouch_themes']; ?>/img/bottle green.png"></a></li>
                         </ul>
-                     	<div class="clear"></div>	
+                     	<div class="clear"></div>
                     </div>
                     <div class="pc-size-select col-lg-6 col-md-6 col-sm-6" id="pc-select-size">
                     	<span style="float:left; margin-top:5px;">选择尺寸:</span>
@@ -619,7 +619,7 @@
                     <span>分享:</span><a href="#" class="sb-facebook" data-toggle="tooltip" data-placement="top"><i class="fa fa-wechat" id="fenxiang"></i></a>
                    </div>
                 </div>
-            </div> 
+            </div>
         </div>
       </div>
     </section>
@@ -693,14 +693,14 @@
     <section class="container padding-top">
     <div class="row">
        <div class="artist-lf col-lg-6 col-md-6 col-sm-6">
-	      <?php $_from = $this->_var['spysj']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'spysj_0_94747800_1482912477');if (count($_from)):
-    foreach ($_from AS $this->_var['spysj_0_94747800_1482912477']):
+	      <?php $_from = $this->_var['spysj']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'spysj_0_82404100_1483068240');if (count($_from)):
+    foreach ($_from AS $this->_var['spysj_0_82404100_1483068240']):
 ?>
        		<p>
-            	<img src="<?php echo $this->_var['spysj_0_94747800_1482912477']['hav_logo']; ?>" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
-            	<span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;"><?php echo $this->_var['spysj_0_94747800_1482912477']['user_name']; ?></span>
+            	<img src="<?php echo $this->_var['spysj_0_82404100_1483068240']['hav_logo']; ?>" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
+            	<span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;"><?php echo $this->_var['spysj_0_82404100_1483068240']['user_name']; ?></span>
             	<img src="<?php echo $this->_var['ectouch_themes']; ?>/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
-            	<span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;"><?php echo $this->_var['spysj_0_94747800_1482912477']['country']; ?></span>
+            	<span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;"><?php echo $this->_var['spysj_0_82404100_1483068240']['country']; ?></span>
            	</p>
 		  <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
        </div>
@@ -722,49 +722,53 @@
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane transition fade in active" id="description">
           <div class="row space-top">
-                <?php $_from = $this->_var['goodsdesc']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goodsdesc_0_94825700_1482912477');if (count($_from)):
-    foreach ($_from AS $this->_var['goodsdesc_0_94825700_1482912477']):
+                <?php $_from = $this->_var['goodsdesc']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goodsdesc_0_82442400_1483068240');if (count($_from)):
+    foreach ($_from AS $this->_var['goodsdesc_0_82442400_1483068240']):
 ?>
-		             <?php echo $this->_var['goodsdesc_0_94825700_1482912477']['goods_desc']; ?>	           
+		             <?php echo $this->_var['goodsdesc_0_82442400_1483068240']['goods_desc']; ?>
                 <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
           </div>
         </div>
         <div role="tabpanel" class="tab-pane transition fade" id="additional">
           <div class="row">
+          <?php $_from = $this->_var['spguige']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'spguige_0_82467100_1483068240');if (count($_from)):
+    foreach ($_from AS $this->_var['spguige_0_82467100_1483068240']):
+?>
             <div class="col-md-6">
               <table class="table-no-border">
                 <tr>
-                  <th>Weight</th>
-                  <td>2.65 kg</td>
+                  <th><?php echo $this->_var['spguige_0_82467100_1483068240']['guige1']; ?></th>
+                  <td><?php echo $this->_var['spguige_0_82467100_1483068240']['canshu1']; ?></td>
                 </tr>
                 <tr>
-                  <th>Dimensions</th>
-                  <td>120 x 75 x 90 cm</td>
+                  <th><?php echo $this->_var['spguige_0_82467100_1483068240']['guige2']; ?></th>
+                  <td><?php echo $this->_var['spguige_0_82467100_1483068240']['canshu2']; ?></td>
                 </tr>
                 <tr>
-                  <th>Materials</th>
-                  <td>40% wood, 37% cotton, 23% plastic</td>
+                  <th><?php echo $this->_var['spguige_0_82467100_1483068240']['guige3']; ?></th>
+                  <td><?php echo $this->_var['spguige_0_82467100_1483068240']['canshu3']; ?></td>
                 </tr>
               </table>
             </div>
             <div class="col-md-6">
               <table class="table-no-border">
                 <tr>
-                  <th>Colors</th>
-                  <td>Blue, Creme, Orange, Red</td>
+                  <th><?php echo $this->_var['spguige_0_82467100_1483068240']['guige4']; ?></th>
+                  <td><?php echo $this->_var['spguige_0_82467100_1483068240']['canshu4']; ?></td>
                 </tr>
                 <tr>
-                  <th>Manufacturer</th>
-                  <td>Norway</td>
+                  <th><?php echo $this->_var['spguige_0_82467100_1483068240']['guige5']; ?></th>
+                  <td><?php echo $this->_var['spguige_0_82467100_1483068240']['canshu5']; ?></td>
                 </tr>
                 <tr>
-                  <th>Other Info</th>
-                  <td>Repellendus ea laudantium pariatur eum.</td>
+                  <th><?php echo $this->_var['spguige_0_82467100_1483068240']['guige6']; ?></th>
+                  <td><?php echo $this->_var['spguige_0_82467100_1483068240']['canshu6']; ?></td>
                 </tr>
               </table>
             </div>
+            <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
           </div>
-        </div>      
+        </div>
       </div>
     </section>
 
@@ -774,31 +778,31 @@
       	<hr style="position:relative;">
       <h3 class="padding-top">猜 你 喜 欢</h3>
       <div class="row padding-top">
-	  
-	    <?php $_from = $this->_var['xh']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'xh_0_94876600_1482912477');if (count($_from)):
-    foreach ($_from AS $this->_var['xh_0_94876600_1482912477']):
+
+	    <?php $_from = $this->_var['xh']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'xh_0_82544800_1483068240');if (count($_from)):
+    foreach ($_from AS $this->_var['xh_0_82544800_1483068240']):
 ?>
 			<div class="col-lg-3 col-sm-6 mobile-indent">
 			  <div class="shop-item">
 				<div class="shop-thumbnail">
-				  <a href="#" class="item-link"></a>
-				  <img src="../<?php echo $this->_var['xh_0_94876600_1482912477']['goods_img']; ?>" alt="Shop item">
+				  <a href="shop-single.php?id=<?php echo $this->_var['xh_0_82544800_1483068240']['goods_id']; ?>" class="item-link"></a>
+				  <img src="../<?php echo $this->_var['xh_0_82544800_1483068240']['goods_img']; ?>" alt="Shop item">
 				</div>
 				<div class="shop-item-details">
-				  <h3 class="shop-item-title"><a href="#"><?php echo $this->_var['xh_0_94876600_1482912477']['goods_name']; ?></a></h3>
+				  <h3 class="shop-item-title"><a href="shop-single.php?id=<?php echo $this->_var['xh_0_82544800_1483068240']['goods_id']; ?>"><?php echo $this->_var['xh_0_82544800_1483068240']['goods_name']; ?></a></h3>
 				  <span class="shop-item-price">
 					<span class="old-price"></span>
-						￥<?php echo $this->_var['xh_0_94876600_1482912477']['shop_price']; ?>
+						￥<?php echo $this->_var['xh_0_82544800_1483068240']['shop_price']; ?>
 				  </span>
 				</div>
 			  </div>
 			</div>
         <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-        
-      
+
+
       </div>
     </section>
-    
+
  	
     <footer class="footer padding-top-2x">
       <div class="column">
@@ -826,7 +830,7 @@
           </div>
       </div>
     </footer>
-	
+
 	<section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
 		<div class="text-center">
 			<div class="hidden-xs">
@@ -864,11 +868,11 @@
   <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/waves.min.js"></script>
   <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/icheck.min.js"></script>
   <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/scripts.js"></script>
-  
+
   <script src="<?php echo $this->_var['ectouch_themes']; ?>/Swiper-3.4.0/dist/js/swiper.min.js"></script>
   <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/layer_mobile/layer.js"></script>
 
-  <script>        
+  <script>
 	  var mySwiper = new Swiper ('.swiper-container', {
 		direction: 'horizontal',
 		loop: true,
@@ -876,14 +880,14 @@
 /*		zoom : true,*/
 		// 如果需要前进后退按钮
 		nextButton: '.swiper-button-next',
-		prevButton: '.swiper-button-prev',	
+		prevButton: '.swiper-button-prev',
 		pagination: '.swiper-pagination',
         paginationClickable: '.swiper-pagination',
         spaceBetween: 30,
         effect: 'slide'
-	  })        
+	  })
   	</script>
-    
+
 
 <script type="text/javascript">
   $(document).ready(function(){
@@ -906,7 +910,7 @@
 				style:'width:300px; height:250px;'
 			});
 		});
-	}) 
+	})
 </script>
 
   <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/jquery.validate.js" type="text/javascript"></script>
@@ -999,7 +1003,7 @@
         // $(".shopping-cart").find("input[type='checkbox']").attr("checked",$("#checkbox-all").attr('checked'));;
     }
 	</script>
-     
+
     <script type="text/javascript">
 	// 手机号码验证
 	jQuery.validator.addMethod("isMobile", function(value, element) {
@@ -1007,7 +1011,7 @@
     	var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
     	return this.optional(element) || (length == 11 && mobile.test(value));
 	}, "请正确填写您的手机号码");
-	
+
 	 $(function () {
 		$("#xzdz").validate({
 			 rules: {
@@ -1018,7 +1022,7 @@
 					UserAddress: {required: true,minlength:2,maxlength:30}
                 },
                 messages:{
-                    UserName: { 
+                    UserName: {
                         required: "请输入收货人！",
                      },
                     UserTel: {
@@ -1059,26 +1063,26 @@
 		  		});
 		  	});
 			$("#pc-select-size li a").each(function(index){
-			  $(this).click(function(){ 
-			  
+			  $(this).click(function(){
+
 				  $("#pc-select-size li a").removeClass("pc-size-change");
 				  $("#pc-select-size li a").eq(index).addClass("pc-size-change");
 		  		});
 		  	});
 			$("#pc-select-group li a").each(function(index){
-			  $(this).click(function(){ 
+			  $(this).click(function(){
 				  $("#pc-select-group li a").removeClass("pc-group-change");
 				  $("#pc-select-group li a").eq(index).addClass("pc-group-change");
 		  		});
 		  	});
 			$("#pc-select-mold li a").each(function(index){
-			  $(this).click(function(){ 
+			  $(this).click(function(){
 				  $("#pc-select-mold li a").removeClass("pc-mold-change");
 				  $("#pc-select-mold li a").eq(index).addClass("pc-mold-change");
 		  		});
 		  	});
 			$("#mobile-select-color li a").each(function(index){
-			  $(this).click(function(){ 
+			  $(this).click(function(){
 				  $("#mobile-select-color li a").removeClass("mobile-color-change");
 				  $("#mobile-select-color li a").eq(index).addClass("mobile-color-change");
 				  var adom = $(this);//根据标签的id获取标签a的dom节点
@@ -1087,19 +1091,19 @@
 		  		});
 		  	});
 			$("#mobile-sizebox li a").each(function(index){
-			  $(this).click(function(){ 
+			  $(this).click(function(){
 				  $("#mobile-sizebox li a").removeClass("mobile-cart-size-change");
 				  $("#mobile-sizebox li a").eq(index).addClass("mobile-cart-size-change");
 		  		});
-		  	});		
+		  	});
 			$("#mobile-groupbox li a").each(function(index){
-			  $(this).click(function(){ 
+			  $(this).click(function(){
 				  $("#mobile-groupbox li a").removeClass("mobile-cart-group-change");
 				  $("#mobile-groupbox li a").eq(index).addClass("mobile-cart-group-change");
 		  		});
 		  	});
 			$("#mobile-borderbox li a").each(function(index){
-			  $(this).click(function(){ 
+			  $(this).click(function(){
 				  $("#mobile-borderbox li a").removeClass("mobile-cart-border-change");
 				  $("#mobile-borderbox li a").eq(index).addClass("mobile-cart-border-change");
 		  		});

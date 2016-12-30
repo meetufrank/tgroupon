@@ -113,6 +113,41 @@
       </select></td>
           </tr>
 
+
+
+
+        <tr>
+            <td class="label">规格1(名称):<input name="guige1" type="text" value="<?php echo $this->_var['goods']['guige1']; ?>"></td>
+            <td>规格1(参数):<input name="canshu1" type="text" value="<?php echo $this->_var['goods']['canshu1']; ?>"></td>
+        </tr>
+         <tr>
+            <td class="label">规格2(名称):<input name="guige2" type="text" value="<?php echo $this->_var['goods']['guige2']; ?>"></td>
+            <td>规格2(参数):<input name="canshu2" type="text" value="<?php echo $this->_var['goods']['canshu2']; ?>"></td>
+        </tr>
+         <tr>
+            <td class="label">规格3(名称):<input name="guige3" type="text" value="<?php echo $this->_var['goods']['guige3']; ?>"></td>
+            <td>规格3(参数):<input name="canshu3" type="text" value="<?php echo $this->_var['goods']['canshu3']; ?>"></td>
+        </tr>
+         <tr>
+            <td class="label">规格4(名称):<input name="guige4" type="text" value="<?php echo $this->_var['goods']['guige4']; ?>"></td>
+            <td>规格4(参数):<input name="canshu4" type="text" value="<?php echo $this->_var['goods']['canshu4']; ?>"></td>
+        </tr>
+         <tr>
+            <td class="label">规格5(名称):<input name="guige5" type="text" value="<?php echo $this->_var['goods']['guige5']; ?>"></td>
+            <td>规格5(参数):<input name="canshu5" type="text" value="<?php echo $this->_var['goods']['canshu5']; ?>"></td>
+        </tr>
+         <tr>
+            <td class="label">规格6(名称):<input name="guige6" type="text" value="<?php echo $this->_var['goods']['guige6']; ?>"></td>
+            <td>规格6(参数):<input name="canshu6" type="text" value="<?php echo $this->_var['goods']['canshu6']; ?>"></td>
+        </tr>
+
+
+
+
+
+
+
+
          <?php if ($this->_var['suppliers_exists'] == 1): ?>
           <tr>
             <td class="label"><?php echo $this->_var['lang']['label_suppliers']; ?></td>

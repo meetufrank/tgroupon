@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * TGROUPON 购物流程
@@ -15,6 +15,7 @@
 
 define('IN_ECTOUCH', true);
 require(dirname(__FILE__) . '/include/init.php');
+session_start();
 
 /*------------------------------------------------------ */
 //-- PROCESSOR
@@ -70,64 +71,31 @@ print_r($openid);
 $nickname = $rs['nickname'];
 print_r($nickname);
 $sex = $rs['sex'];
-print_r($sex);
+
 $headimgurl = $rs['headimgurl'];
-print_r($headimgurl);
- echo $sql = 'INSERT INTO ' . $ecs->table('users') . '(alias , wx_open_id , sex , reg_time  , headimgurl) VALUES ' .
+
+$sql = "select count(*) from `ecs_users` where wx_open_id = '$openid'";
+$openids = $db->getOne($sql);
+print_r($openids);
+
+if(!$openids){
+	$sql = 'INSERT INTO ' . $ecs->table('users') . '(alias , wx_open_id , sex , reg_time  , headimgurl) VALUES ' .
                     "('$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl')";
-
-$db->query($sql);
-
-
-
-header("Location:index.php");
-
-
-
-
-
-
-
-include_once(ROOT_PATH .'include/lib_order.php');
-
-if ( $_SESSION['user_id'] != 0)
-    {
-      $sql  = "SELECT user_name, birthday, sex, question, answer, rank_points, pay_points,user_money, user_rank,".
-             " msn, qq, office_phone, home_phone, mobile_phone, passwd_question, passwd_answer ".
-           "FROM " .$GLOBALS['ecs']->table('users') . " WHERE user_id = '$user_id'";
-      $infos = $GLOBALS['db']->getRow($sql);
-
-      $smarty->assign('user_status', 1);
-    }
-
-
-
-    /* 取得商品列表，计算合计 */
-    $cart_goods = get_cart_goods();
-   // print_r($cart_goods);exit;
-    //print_r($cart_goods);exit;
-    $smarty->assign('goods_list', $cart_goods['goods_list']);
-    $smarty->assign('total', $cart_goods['total']);
- $smarty->assign('user_data', $infos);
-
-
-
-
-
-
-function please_in(){
-    echo '
-  <script  type="text/javascript" charset="utf-8" >alert(\'您需要登录\');</script>
-    ';
-    /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
-
-
+     $db->query($sql);
+	
+	
+}else{
+	$sql = "update `ecs_users` set alias='$nickname',sex='$sex',reg_time='time()',headimgurl='$headimgurl' where wx_open_id='$openid'"; 
+	$db->query($sql);
+	print_r($sql);
 }
 
 
 
+$_SESSION['user_id'] = $openid;
+$_SESSION['user_name']   = $nickname;
+
+header("Location:index.php");
 
 
 

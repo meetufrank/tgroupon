@@ -209,3 +209,9 @@ CREATE TABLE `ecs_money_type` (
 PRIMARY KEY (`money_id`)
 )
 ;
+
+
+/*#2016/12/30 汪江   修改wx_open_id长度
+*/
+ALTER TABLE `ecs_users`
+MODIFY COLUMN `wx_open_id`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `tj_fencheng`;
