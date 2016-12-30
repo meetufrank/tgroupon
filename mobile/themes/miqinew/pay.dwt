@@ -132,44 +132,11 @@
   </div><!-- .page-wrapper -->
 
   <!--底部-->
-    <footer class="footer">
-      <div class="column">
-      	<div class="feature text-center">
-            <div class="feature-icon">
-              <i class="material-icons credit_card"></i>
-            </div>
-            <h4 class="feature-title">微信支付</h4>
-          </div>
-      </div><!-- .column -->
-      <div class="column">
-      	<div class="feature text-center">
-            <div class="feature-icon">
-              <i class="material-icons settings"></i>
-            </div>
-            <h4 class="feature-title">关于我们</h4>
-          </div>
-      </div><!-- .column -->
-      <div class="column">
-      	<div class="feature text-center">
-            <div class="feature-icon">
-              <i class="material-icons face"></i>
-            </div>
-            <h4 class="feature-title">物流及售后服务</h4>
-          </div>
-      </div><!-- .column -->
-    </footer><!-- .footer -->
-
-	<section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
-		<div class="text-center">
-			<div>联系我们：电话|微信：13502637171（KITTY）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系邮箱：3412355834@qq.com</div>
-			<div>公司地址：广东省潮州市潮安区江东镇沙洲工业区</div>
-			<div>ICP备案号</div>
-		</div>
-	</section>
-  </div>
+   {include file="foot.dwt"}
   <!--底部-->
 
   <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+  <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
  <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
   <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
   <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
@@ -228,8 +195,7 @@
 
              }  else if(data.step == 3){
 
-                alert('支付成功');
-                window.location.href="my_user.php?act=order_list";
+                window.location.href="flow.php?step=pay_success";
              }
          },
         error:function(){

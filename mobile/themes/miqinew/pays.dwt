@@ -249,41 +249,7 @@
   </div><!-- .page-wrapper -->
 
   <!--底部-->
-    <footer class="footer">
-      <div class="column">
-        <div class="feature text-center">
-            <div class="feature-icon">
-              <i class="material-icons credit_card"></i>
-            </div>
-            <h4 class="feature-title">微信支付</h4>
-          </div>
-      </div><!-- .column -->
-      <div class="column">
-        <div class="feature text-center">
-            <div class="feature-icon">
-              <i class="material-icons settings"></i>
-            </div>
-            <h4 class="feature-title">关于我们</h4>
-          </div>
-      </div><!-- .column -->
-      <div class="column">
-        <div class="feature text-center">
-            <div class="feature-icon">
-              <i class="material-icons face"></i>
-            </div>
-            <h4 class="feature-title">物流及售后服务</h4>
-          </div>
-      </div><!-- .column -->
-    </footer><!-- .footer -->
-
-    <section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
-        <div class="text-center">
-            <div>联系我们：电话|微信：13502637171（KITTY）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系邮箱：3412355834@qq.com</div>
-            <div>公司地址：广东省潮州市潮安区江东镇沙洲工业区</div>
-            <div>ICP备案号</div>
-        </div>
-    </section>
-  </div>
+  {include file="foot.dwt"}
   <!--底部-->
 
   <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
@@ -625,50 +591,7 @@
 
       });
  </script>
-<script type="text/javascript">
-    // 手机号码验证
-    jQuery.validator.addMethod("isMobile", function(value, element) {
-        var length = value.length;
-        var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
-        return this.optional(element) || (length == 11 && mobile.test(value));
-    }, "请正确填写您的手机号码");
 
-     $(function () {
-        $("#xzdz").validate({
-             rules: {
-                    UserName: { required: true, },
-                    UserTel: { required: true, number:true,isMobile:true,min:11},
-                    UserSf: { required: true,},
-                    UserCity: { required: true,minlength:2,maxlength:15 },
-                    UserAddress: { required: true,minlength:2,maxlength:30 }
-                },
-                messages:{
-                    UserName: {
-                        required: "请输入收货人！",
-                     },
-                    UserTel: {
-                        required: "请填写你的手机号码",
-                        number:"手机号码只能为数字",
-                        min: "手机号码必须为11位数！",
-                        isMobile:"请正确填写您的手机号码",
-                     },
-                    UserSf: {
-                        required: "请输入省份！",
-                    },
-                    UserCity: {
-                        required: "请输入城市!",
-                    },
-                    UserAddress: {
-                        required: "请输入地址!",
-                    }
-                },
-                /*错误提示位置*/
-                errorPlacement: function (error, element) {
-                    error.appendTo(element.siblings("span"));
-                }
-        })
-    })
-    </script>
 </body><!-- <body> -->
 
 </html>
