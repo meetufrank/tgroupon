@@ -1965,9 +1965,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	top: 0;
 	left: 0
 }
-.navbar.navbar-sticky {
-	position: fixed
-}
+
 .navbar.navbar-sticky+* {
 	margin-top: 80px
 }
@@ -5438,11 +5436,11 @@ img.mfp-img {
 	display:block;
 	max-width:100px;
 	white-space:nowrap;
- 	text-overflow:ellipsis; 
- 	-o-text-overflow:ellipsis; 
+ 	text-overflow:ellipsis;
+ 	-o-text-overflow:ellipsis;
  	overflow: hidden;
 	font-size:16px;
-	font-weight:bold;	
+	font-weight:bold;
 }
 .mobile-shop-price{
 	color:red;

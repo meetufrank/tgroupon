@@ -1244,7 +1244,11 @@ elseif($_REQUEST['step']=='pay_ok'){
     $smarty->display('pay.dwt');
     exit;
 }
+elseif($_REQUEST['step'] == 'pay_success'){
 
+   $smarty->display('pay_success.dwt');
+   exit;
+}
 elseif ($_REQUEST['step'] == 'select_shipping')
 {
     /*------------------------------------------------------ */
@@ -3276,11 +3280,11 @@ else
     $_SESSION['flow_type'] = CART_GENERAL_GOODS;
 
     /* 如果是一步购物，跳到结算中心 */
-    if ($_CFG['one_step_buy'] == '1')
-    {
-        ecs_header("Location: flow.php?step=checkout\n");
-        exit;
-    }
+    // if ($_CFG['one_step_buy'] == '1')
+    // {
+    //     ecs_header("Location: flow.php?step=checkout\n");
+    //     exit;
+    // }
 
     /* 取得商品列表，计算合计 */
     $cart_goods = get_cart_goods();
