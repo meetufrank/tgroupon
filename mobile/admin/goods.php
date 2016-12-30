@@ -858,12 +858,14 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                     "cat_id, brand_id, shop_price, market_price, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, " .
+
                     "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral,fencheng, suppliers_id,arter_id,father_id,more_price,guige1,canshu1,guige2,canshu2,guige3,canshu3,guige4,canshu4,guige5,canshu5,guige6,canshu6)" .
                 "VALUES ('$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', '$is_on_sale', '$is_alone_sale', $is_shipping, ".
+
                     " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral','$fencheng', '$suppliers_id','$arter_id','$father_id',$more_price,'$_POST[guige1]','$_POST[canshu1]','$_POST[guige2]','$_POST[canshu2]','$_POST[guige3]','$_POST[canshu3]','$_POST[guige4]','$_POST[canshu4]','$_POST[guige5]','$_POST[canshu5]','$_POST[guige6]','$_POST[canshu6]')";
         }
         else
@@ -872,12 +874,14 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                     "cat_id, brand_id, shop_price, market_price, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, is_real, " .
+
                     "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral,fencheng,arter_id,father_id,more_price,guige1,canshu1,guige2,canshu2,guige3,canshu3,guige4,canshu4,guige5,canshu5,guige6,canshu6)" .
                 "VALUES ('$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', 0, '$is_on_sale', '$is_alone_sale', $is_shipping, ".
+
                     " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral','$fencheng','$arter_id','$father_id',$more_price,'$_POST[guige1]','$_POST[canshu1]','$_POST[guige2]','$_POST[canshu2]','$_POST[guige3]','$_POST[canshu3]','$_POST[guige4]','$_POST[canshu4]','$_POST[guige5]','$_POST[canshu5]','$_POST[guige6]','$_POST[canshu6]')";
         }
     }
@@ -928,7 +932,6 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "guige6 = '$_POST[guige6]',".
                 "canshu6 = '$_POST[canshu6]',"
 
-                ;
 
 
 

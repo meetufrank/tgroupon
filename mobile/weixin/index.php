@@ -55,13 +55,13 @@
 <body>
 	<div align="center">
         <ul>
-            <li style="background-color:#FF7F24"><a href="http://uranion.com.cn/mobile/weixin/example/jsapi.php">JSAPI支付</a></li>
-            <li style="background-color:#698B22"><a href="http://uranion.com.cn/mobile/weixin/example/micropay.php">刷卡支付</a></li>
-            <li style="background-color:#8B6914"><a href="http://uranion.com.cn/mobile/weixin/example/native.php">扫码支付</a></li>
-            <li style="background-color:#CDCD00"><a href="http://uranion.com.cn/mobile/weixin/example/orderquery.php">订单查询</a></li>
-            <li style="background-color:#CD3278"><a href="http://uranion.com.cn/mobile/weixin/example/refund.php">订单退款</a></li>
-            <li style="background-color:#848484"><a href="http://uranion.com.cn/mobile/weixin/example/refundquery.php">退款查询</a></li>
-            <li style="background-color:#8EE5EE"><a href="http://uranion.com.cn/mobile/weixin/example/download.php">下载订单</a></li>
+            <li style="background-color:#FF7F24"><a href="http://meetuuu.com/mobile/weixin/example/jsapi.php">JSAPI支付</a></li>
+            <li style="background-color:#698B22"><a href="http://meetuuu.com/mobile/weixin/example/micropay.php">刷卡支付</a></li>
+            <li style="background-color:#8B6914"><a href="http://meetuuu.com/mobile/weixin/example/native.php">扫码支付</a></li>
+            <li style="background-color:#CDCD00"><a href="http://meetuuu.com/mobile/weixin/example/orderquery.php">订单查询</a></li>
+            <li style="background-color:#CD3278"><a href="http://meetuuu.com/mobile/weixin/example/refund.php">订单退款</a></li>
+            <li style="background-color:#848484"><a href="http://meetuuu.com/mobile/weixin/example/refundquery.php">退款查询</a></li>
+            <li style="background-color:#8EE5EE"><a href="http://meetuuu.com/mobile/weixin/example/download.php">下载订单</a></li>
         </ul>
 	</div>
 </body>

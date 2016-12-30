@@ -125,13 +125,13 @@ if ($_REQUEST['step'] == 'add_to_cart')
     }
 
     /* 更新：如果是一步购物，先清空购物车 */
-    if ($_CFG['one_step_buy'] == '1')
-    {
-        clear_cart();
-    }
+    // if ($_CFG['one_step_buy'] == '1')
+    // {
+    //     clear_cart();
+    // }
     //增加检查属性库存是否充足，不足的话返回错误
     //有属性传入时，判断属性库存
-    /*
+
     if (!empty($goods->spec))
     {
     $goods_attr_id=$goods->spec;
@@ -159,7 +159,7 @@ if ($_REQUEST['step'] == 'add_to_cart')
         $result['message'] = "库存不足，请重新选择商品";
     }
 
-    }*/
+    }
     /* 检查：商品数量是否合法 */
     if (!is_numeric($goods->number) || intval($goods->number) <= 0)
     {
@@ -1229,23 +1229,13 @@ elseif($_REQUEST['step']=='pay_ok'){
 
     $payment_list=available_payment_list(0);  //支付方式
     $smarty->assign('payment_list',$payment_list);
+
     $is_wechat=is_wechat_browser();
-    $smarty->assign('is_wechat',      $is_wechat);
-    if($is_wechat){
-    foreach($payment_list as $payment){
-        if($payment['pay_code']=='wx_new_jspay'){
-            include_once('include/modules/payment/' . $payment['pay_code'] . '.php');
-            $pay_obj    = new $payment['pay_code'];
-
-            $pay_online = $pay_obj->get_code($order, unserialize_config($payment['pay_config']));
-
-            $smarty->assign('pay_online', $pay_online);
+        if($is_wechat){
+            session_start();
+            $_SESSION['my_mobile_order'] = $order['order_id'];
         }
-
-
-    }
-
-    }
+    $smarty->assign('is_wechat',$is_wechat);
 
 
 

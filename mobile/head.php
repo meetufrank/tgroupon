@@ -76,7 +76,7 @@ $db->query($sql);
 
 header("Location:index.php");
 
-
+include_once(ROOT_PATH .'include/lib_order.php');
 
 if ( $_SESSION['user_id'] != 0)
     {
