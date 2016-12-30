@@ -233,6 +233,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
         $sql = "SELECT * FROM " . $ecs->table('goods') . " WHERE goods_id = '$_REQUEST[goods_id]'";
         $goods = $db->getRow($sql);
 
+
         /* 虚拟卡商品复制时, 将其库存置为0*/
         if ($is_copy && $code != '')
         {
@@ -842,6 +843,12 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
       $father_id = empty($_POST['father_id']) ? '' : intval($_POST['father_id']);
       $more_price=empty($_POST['more_price']) ? 0.00 : floatval($_POST['more_price']);
 
+
+    //商品规格
+
+
+
+
     /* 入库 */
     if ($is_insert)
     {
@@ -851,13 +858,19 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                     "cat_id, brand_id, shop_price, market_price, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, " .
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral,fencheng, suppliers_id,arter_id,father_id)" .
+
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral,fencheng, suppliers_id,arter_id,father_id,more_price )" .
+
+
+
+
                 "VALUES ('$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', '$is_on_sale', '$is_alone_sale', $is_shipping, ".
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral','$fencheng', '$suppliers_id','$arter_id','$father_id',$more_price)";
+
+                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral','$fencheng', '$suppliers_id','$arter_id','$father_id',$more_price )";
         }
         else
         {
@@ -865,12 +878,16 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                     "cat_id, brand_id, shop_price, market_price, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, is_real, " .
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral,fencheng,arter_id,father_id)" .
+
+
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral,fencheng,arter_id,father_id,more_price )" .
+
                 "VALUES ('$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', 0, '$is_on_sale', '$is_alone_sale', $is_shipping, ".
+
                     " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral','$fencheng','$arter_id','$father_id',$more_price)";
         }
     }
@@ -907,7 +924,12 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "promote_end_date = '$promote_end_date', ".
                 "father_id = '$father_id', ".
                 "arter_id = '$arter_id', ".
-                "more_price = '$more_price', ";
+                "more_price = '$more_price',"
+
+
+                ;
+
+
 
         /* 如果有上传图片，需要更新数据库 */
         if ($goods_img)
@@ -1050,10 +1072,10 @@ if($_FILES['attr_img']){
     }
 
 }
-    // $attr_imgs = $up->getFileName();
-    // print_r($attr_img);
-    var_dump($attr_imgs);
-
+//     $attr_imgs = $up->getFileName();
+//     print_r($attr_img);
+//     var_dump($attr_imgs);
+// exit;
 
 
 

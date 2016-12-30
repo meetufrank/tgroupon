@@ -33,7 +33,7 @@
 {/foreach}
     <div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" value="{$consignee.address|escape}" name="address"/></div>
 
-    <div class="text-right visible-sm visible-xs"><a href="#" id="address" style="text-decoration: underline;">读取微信地址</a></div></form>
+    <div class="text-right visible-sm visible-xs"><a href="indexsan.php" id="editAddress" style="text-decoration: underline;">读取微信地址</a></div></form>
     ;
 
 	

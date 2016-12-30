@@ -15,20 +15,11 @@
 
 
 
-
-/*------------------------------------------------------ */
-//-- PROCESSOR
-/*------------------------------------------------------ */
-
-
-
-
-
+include_once(ROOT_PATH .'include/lib_order.php');
 
 if ( $_SESSION['user_id'] != 0)
     {
-      $sql  = "SELECT user_name, birthday, sex, question, answer, rank_points, pay_points,user_money, user_rank,".
-             " msn, qq, office_phone, home_phone, mobile_phone, passwd_question, passwd_answer ".
+      $sql  = "SELECT * ".
            "FROM " .$GLOBALS['ecs']->table('users') . " WHERE user_id = '$user_id'";
       $infos = $GLOBALS['db']->getRow($sql);
 
@@ -39,7 +30,7 @@ if ( $_SESSION['user_id'] != 0)
 
     /* 取得商品列表，计算合计 */
     $cart_goods = get_cart_goods();
-   // print_r($cart_goods);exit;
+
     //print_r($cart_goods);exit;
     $smarty->assign('goods_list', $cart_goods['goods_list']);
     $smarty->assign('total', $cart_goods['total']);
@@ -51,9 +42,7 @@ if ( $_SESSION['user_id'] != 0)
 
 
 function please_in(){
-    echo '
-  <script  type="text/javascript" charset="utf-8" >alert(\'您需要登录\');</script>
-    ';
+
     /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
         ecs_header("Location: flow.php?step=login\n");
         exit;

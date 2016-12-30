@@ -3,7 +3,7 @@ require(ROOT_PATH . 'include/lib_weixintong.php');
 	$time = time();
 	$access_token = access_token($db);
 	$url = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='.$access_token;
-	$sql_two="SELECT wxid FROM " . $GLOBALS['ecs']->table('users') . " WHERE user_id = '$up_uid'";	
+	$sql_two="SELECT wxid FROM " . $GLOBALS['ecs']->table('users') . " WHERE user_id = '$up_uid'";
 	$wxid=$GLOBALS['db']->GetOne($sql_two);
 	$w_title="您有新朋友加入了，赶紧看看吧";
 	$w_description="新朋友的消费您都将有提成哦";
@@ -26,7 +26,7 @@ require(ROOT_PATH . 'include/lib_weixintong.php');
    }';
 	$ret_json = curl_grab_page($url, $post_msg);
 	$ret = json_decode($ret_json);
-	if($ret->errmsg != 'ok') 
+	if($ret->errmsg != 'ok')
 	{
 		$access_token = new_access_token($db);
 		$url = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='.$access_token;
@@ -34,7 +34,7 @@ require(ROOT_PATH . 'include/lib_weixintong.php');
 		$ret = json_decode($ret_json);
 	}
 
-function new_access_token($db) 
+function new_access_token($db)
 {
 	$time = time();
 	$ret = $db->getRow("SELECT * FROM `wxch_config` WHERE `id` = 1");
@@ -49,7 +49,7 @@ function new_access_token($db)
 	}
 	return $ret->access_token;
 }
-function access_token($db) 
+function access_token($db)
 {
 	$ret = $db->getRow("SELECT * FROM `wxch_config` WHERE `id` = 1");
 	$appid = $ret['appid'];
@@ -57,7 +57,7 @@ function access_token($db)
 	$access_token = $ret['access_token'];
 	$dateline = $ret['dateline'];
 	$time = time();
-	if(($time - $dateline) >= 7200) 
+	if(($time - $dateline) >= 7200)
 	{
 		$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
 		$ret_json = curl_get_contents($url);
@@ -68,7 +68,7 @@ function access_token($db)
 			return $ret->access_token;
 		}
 	}
-	elseif(empty($access_token)) 
+	elseif(empty($access_token))
 	{
 		$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
 		$ret_json = curl_get_contents($url);
@@ -79,12 +79,12 @@ function access_token($db)
 			return $ret->access_token;
 		}
 	}
-	else 
+	else
 	{
 		return $access_token;
 	}
 }
-function curl_get_contents($url) 
+function curl_get_contents($url)
 {
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
@@ -98,13 +98,13 @@ function curl_get_contents($url)
 	curl_close($ch);
 	return $r;
 }
-function curl_grab_page($url,$data,$proxy='',$proxystatus='',$ref_url='') 
+function curl_grab_page($url,$data,$proxy='',$proxystatus='',$ref_url='')
 {
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)");
 	curl_setopt($ch, CURLOPT_TIMEOUT, 1);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	if ($proxystatus == 'true') 
+	if ($proxystatus == 'true')
 	{
 		curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, TRUE);
 		curl_setopt($ch, CURLOPT_PROXY, $proxy);

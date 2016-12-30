@@ -187,3 +187,37 @@ ADD COLUMN `attributeimg`  varchar(255) NULL AFTER `attributeprice`;
 
 ALTER TABLE `ecs_goods_attr`
 ADD COLUMN `attr_img`  varchar(255) NULL COMMENT '//具体商品属性表' AFTER `attr_price`;
+
+
+/*#2016/12/28 汪江   ecs_user_address  收货人的信息列表 添加默认地址字段
+*/
+
+ALTER TABLE `ecs_user_address`
+ADD COLUMN `default`  int(10) NULL COMMENT '//1为默认
+ADD COLUMN `attr_img`  varchar(255) NULL COMMENT '//具体商品属性表' AFTER `attr_price`;
+
+
+
+/*#2016/12/16 王晋   添加新表，价格区间表*/
+
+CREATE TABLE `ecs_money_type` (
+`money_id`  smallint(2) NOT NULL COMMENT '//筛选区间 ' ,
+`money_name`  varchar(20) NULL ,
+`min_money`  int NULL ,
+`max_money`  int  NULL ,
+
+PRIMARY KEY (`money_id`)
+);
+
+/*#2016/12/28 汪江   ecs_users 表中修改索引
+*/
+
+ALTER TABLE `ecs_users`
+DROP INDEX `user_name` ,
+ADD INDEX `user_name` (`user_name`) USING BTREE ;
+
+
+/*#2016/12/30 汪江   修改wx_open_id长度
+*/
+ALTER TABLE `ecs_users`
+MODIFY COLUMN `wx_open_id`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `tj_fencheng`;

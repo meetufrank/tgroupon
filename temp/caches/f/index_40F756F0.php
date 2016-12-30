@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:18:{i:0;s:40:"E:/www/tgroupon/themes/miqinew/index.dwt";i:1;s:60:"E:/www/tgroupon/themes/miqinew/library/page_header_index.lbi";i:2;s:62:"E:/www/tgroupon/themes/miqinew/library/category_tree_index.lbi";i:3;s:51:"E:/www/tgroupon/themes/miqinew/library/index_ad.lbi";i:4;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_r.lbi";i:5;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_b.lbi";i:6;s:52:"E:/www/tgroupon/themes/miqinew/library/group_buy.lbi";i:7;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_hot.lbi";i:8;s:62:"E:/www/tgroupon/themes/miqinew/library/recommend_promotion.lbi";i:9;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_new.lbi";i:10;s:57:"E:/www/tgroupon/themes/miqinew/library/recommend_best.lbi";i:11;s:52:"E:/www/tgroupon/themes/miqinew/library/cat_goods.lbi";i:12;s:48:"E:/www/tgroupon/themes/miqinew/library/top10.lbi";i:13;s:53:"E:/www/tgroupon/themes/miqinew/library/email_list.lbi";i:14;s:54:"E:/www/tgroupon/themes/miqinew/library/order_query.lbi";i:15;s:58:"E:/www/tgroupon/themes/miqinew/library/huiyuanchongzhi.lbi";i:16;s:56:"E:/www/tgroupon/themes/miqinew/library/index_history.lbi";i:17;s:54:"E:/www/tgroupon/themes/miqinew/library/page_footer.lbi";}s:7:"expires";i:1478339577;s:8:"maketime";i:1478335977;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php exit;?>a:3:{s:8:"template";a:18:{i:0;s:40:"E:/www/tgroupon/themes/miqinew/index.dwt";i:1;s:60:"E:/www/tgroupon/themes/miqinew/library/page_header_index.lbi";i:2;s:62:"E:/www/tgroupon/themes/miqinew/library/category_tree_index.lbi";i:3;s:51:"E:/www/tgroupon/themes/miqinew/library/index_ad.lbi";i:4;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_r.lbi";i:5;s:53:"E:/www/tgroupon/themes/miqinew/library/index_ad_b.lbi";i:6;s:52:"E:/www/tgroupon/themes/miqinew/library/group_buy.lbi";i:7;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_hot.lbi";i:8;s:62:"E:/www/tgroupon/themes/miqinew/library/recommend_promotion.lbi";i:9;s:56:"E:/www/tgroupon/themes/miqinew/library/recommend_new.lbi";i:10;s:57:"E:/www/tgroupon/themes/miqinew/library/recommend_best.lbi";i:11;s:52:"E:/www/tgroupon/themes/miqinew/library/cat_goods.lbi";i:12;s:48:"E:/www/tgroupon/themes/miqinew/library/top10.lbi";i:13;s:53:"E:/www/tgroupon/themes/miqinew/library/email_list.lbi";i:14;s:54:"E:/www/tgroupon/themes/miqinew/library/order_query.lbi";i:15;s:58:"E:/www/tgroupon/themes/miqinew/library/huiyuanchongzhi.lbi";i:16;s:56:"E:/www/tgroupon/themes/miqinew/library/index_history.lbi";i:17;s:54:"E:/www/tgroupon/themes/miqinew/library/page_footer.lbi";}s:7:"expires";i:1482906258;s:8:"maketime";i:1482902658;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="Generator" content="TGROUPON v2.7.3" />
@@ -713,7 +713,37 @@ catch (e) {
 		<div class="blank"></div>
             </li>
                         <li>
-              <p class="leftNav_p06"><a class="a1" href="category.php?id=1" title="彩妆">彩妆</a></p>
+              <p class="leftNav_p06"><a class="a1" href="category.php?id=146" title="测试类型">测试类型</a></p>
+              <div class="childer_hide" >
+                                                <a href="category.php?id=148" target="_blank">测试类型11</a>
+                                              </div>
+			  <div class="J_arrowBtn" style="top: 19px; display: block;"></div>
+			  <div class="leftSubNav" id="J_subCata" style="opacity: 1; left: 220px; display: block; top: 0px;">
+        
+          <div class="leftSubNav_list" >
+            <div class="leftSubNav_left">
+			                        <div class="leftSubNav_left_txt none">
+                <p class="p1" style=" background:none;"><a href="category.php?id=147" target="_blank">测试类型1</a></p>
+                <dl>
+                                    <dd><a href="category.php?id=148" target="_blank">测试类型11</a></dd>
+                  				  <div class="blank"></div>
+                </dl>
+              </div>
+			                 </div>
+			
+            <div class="leftSubNav_list_right">
+              <dl>
+                              </dl>
+              <div class="leftSubNav_list_img"> <a href="#" target="_blank"><img src="" border="0" width="296"></a> </div>
+            </div>
+          </div>
+       
+         
+        </div>
+		<div class="blank"></div>
+            </li>
+                        <li>
+              <p class="leftNav_p07"><a class="a1" href="category.php?id=1" title="彩妆">彩妆</a></p>
               <div class="childer_hide" >
                                                 <a href="category.php?id=47" target="_blank">眼线</a>
                                 <a href="category.php?id=48" target="_blank">眼影</a>
@@ -999,7 +1029,7 @@ catch (e) {
           <p class="endtime" value="1921651200"></p>
         </div>
         <div class="time_center">
-          <div class="time_img"> <a href="group_buy.php?act=view&amp;id=12"><img src="images/201311/thumb_img/1_thumb_G_1384988540522.gif" alt="KD876"  width="200" height="200"/></a> </div>
+          <div class="time_img"> <a href="group_buy.php?act=view&amp;id=12"><img src="images/201611/thumb_img/1_thumb_G_1479421908008.jpg" alt="KD876"  width="200" height="200"/></a> </div>
           <div class="time_price"><b>特卖价</b>
             <p>￥<span>80</span></p>
           </div>
@@ -1131,7 +1161,7 @@ catch (e) {
     </dd>
         <dd >
       <div class="hot_img"> <span class="hot"></span>
-        <div class="pic"><a href="goods.php?id=1"><img src="images/201311/thumb_img/1_thumb_G_1384988540522.gif" alt="希思黎轻柔护肤西柚柔肤水250ml" class="goodsimg" /></a></div>
+        <div class="pic"><a href="goods.php?id=1"><img src="images/201611/thumb_img/1_thumb_G_1479421908008.jpg" alt="希思黎轻柔护肤西柚柔肤水250ml" class="goodsimg" /></a></div>
         <div class="text">
           <p class="name"><a href="goods.php?id=1" title="希思黎轻柔护肤西柚柔肤水250ml">希思黎轻柔护肤西柚柔肤水250ml</a></p>
           <p class="brife"> 平衡肌肤PH值，及时补充水分，给予肌肤清新舒爽的感受！</p>
@@ -1149,21 +1179,21 @@ catch (e) {
     </dd>
         <dd >
       <div class="hot_img"> <span class="hot"></span>
-        <div class="pic"><a href="goods.php?id=122"><img src="images/201311/thumb_img/122_thumb_G_1385665161614.jpg" alt="玫琳凯中性洗面乳绿2号" class="goodsimg" /></a></div>
+        <div class="pic"><a href="goods.php?id=165"><img src="images/201612/thumb_img/165_thumb_G_1481850865322.jpg" alt="娃娃啊啊啊啊啊" class="goodsimg" /></a></div>
         <div class="text">
-          <p class="name"><a href="goods.php?id=122" title="玫琳凯中性洗面乳绿2号">玫琳凯中性洗面乳绿2号</a></p>
+          <p class="name"><a href="goods.php?id=165" title="娃娃啊啊啊啊啊">娃娃啊啊啊啊啊</a></p>
           <p class="brife"> </p>
           <p class="price" > <font class="aa"> 
              
-            ￥<span>69</span> 
+            ￥<span>2000</span> 
              
             
-            </font> <font class="bb">￥<span>83</span></font> </p>
+            </font> <font class="bb">￥<span>2400</span></font> </p>
         </div>
       </div>
-      <div class="hot_btn"> <a href="javascript:addToCartShowDiv(122,1,'hot')"></a> </div>
+      <div class="hot_btn"> <a href="javascript:addToCartShowDiv(165,1,'hot')"></a> </div>
       <div class="hot_line" > </div>
-      <div class="sucess_joinCart" id="addtocartdialog_retui_122_hot"></div>
+      <div class="sucess_joinCart" id="addtocartdialog_retui_165_hot"></div>
     </dd>
       </dl>
 </div>
@@ -1216,19 +1246,19 @@ catch (e) {
 <dd >
   <div class="hot_img"> <span class="hot"></span>
     <div class="text">
-      <p class="name"><a href="goods.php?id=122" title="玫琳凯中性洗面乳绿2号">玫琳凯中性洗面乳绿2号</a></p>
+      <p class="name"><a href="goods.php?id=165" title="娃娃啊啊啊啊啊">娃娃啊啊啊啊啊</a></p>
       <p class="brife"> </p>
       <p class="price" > <font class="aa"> 
          
-        ￥<span>69</span> 
+        ￥<span>2000</span> 
          
-        </font> <font class="bb">￥<span>83</span></font> </p>
+        </font> <font class="bb">￥<span>2400</span></font> </p>
     </div>
-    <div class="pic"> <a href="goods.php?id=122"><img src="images/201311/thumb_img/122_thumb_G_1385665161614.jpg" alt="玫琳凯中性洗面乳绿2号" class="goodsimg" /></a></div>
+    <div class="pic"> <a href="goods.php?id=165"><img src="images/201612/thumb_img/165_thumb_G_1481850865322.jpg" alt="娃娃啊啊啊啊啊" class="goodsimg" /></a></div>
   </div>
-   <div class="hot_btn"> <a href="javascript:addToCartShowDiv(122,1,'new')"  ></a> </div>
+   <div class="hot_btn"> <a href="javascript:addToCartShowDiv(165,1,'new')"  ></a> </div>
       <div class="hot_line" > </div>
-      <div class="sucess_joinCart" id="addtocartdialog_retui_122_new">
+      <div class="sucess_joinCart" id="addtocartdialog_retui_165_new">
 </div>
 </dd>
  
@@ -1239,7 +1269,7 @@ catch (e) {
    <dd class="hot_dd02" >
   <div class="hot_img"> <span class="hot1"></span>
     
-        <div class="pic">   <a href="goods.php?id=17"><img src="images/201502/thumb_img/17_thumb_G_1425037493452.jpg" alt="娇韵诗超V型纤容紧致瘦脸面膜75ml" class="goodsimg" /></a></div>
+        <div class="pic">   <a href="goods.php?id=17"><img src="images/201611/thumb_img/17_thumb_G_1479501429957.jpg" alt="娇韵诗超V型纤容紧致瘦脸面膜75ml" class="goodsimg" /></a></div>
            <div class="text">
           <p class="name"><a href="goods.php?id=17" title="娇韵诗超V型纤容紧致瘦脸面膜75ml">娇韵诗超V型纤容紧致瘦脸面膜75ml</a></p>
           <p class="brife"> 柔滑轻盈的慕斯乳霜质地，紧致并维护肤质，可消除浮肿，提升面部轮廓！</p>
@@ -1257,19 +1287,19 @@ catch (e) {
    <dd class="hot_dd02" >
   <div class="hot_img"> <span class="hot1"></span>
     
-        <div class="pic">   <a href="goods.php?id=122"><img src="images/201311/thumb_img/122_thumb_G_1385665161614.jpg" alt="玫琳凯中性洗面乳绿2号" class="goodsimg" /></a></div>
+        <div class="pic">   <a href="goods.php?id=165"><img src="images/201612/thumb_img/165_thumb_G_1481850865322.jpg" alt="娃娃啊啊啊啊啊" class="goodsimg" /></a></div>
            <div class="text">
-          <p class="name"><a href="goods.php?id=122" title="玫琳凯中性洗面乳绿2号">玫琳凯中性洗面乳绿2号</a></p>
+          <p class="name"><a href="goods.php?id=165" title="娃娃啊啊啊啊啊">娃娃啊啊啊啊啊</a></p>
           <p class="brife"> </p>
           
            <p class="price" > <font class="aa"> 
-                     ￥<span>69</span>                     </font><font class="bb">￥<span>83</span></font>
+                     ￥<span>2000</span>                     </font><font class="bb">￥<span>2400</span></font>
            </p>
         </div>
         </div>
-         <div class="hot_btn"><a href="javascript:addToCartShowDiv(122,1,'best')"  ></a> </div>
+         <div class="hot_btn"><a href="javascript:addToCartShowDiv(165,1,'best')"  ></a> </div>
       <div class="hot_line" > </div>
-      <div class="sucess_joinCart" id="addtocartdialog_retui_122_best">
+      <div class="sucess_joinCart" id="addtocartdialog_retui_165_best">
 </div>
         </dd>
   
@@ -1316,7 +1346,7 @@ catch (e) {
        
        
             <div class="brand_list">
-        <div class="brand_img"> <a href="goods.php?id=1"><img src="images/201311/thumb_img/1_thumb_G_1384988540522.gif" alt="希思黎轻柔护肤西柚柔肤水250ml" width="170" height="170" /></a></div>
+        <div class="brand_img"> <a href="goods.php?id=1"><img src="images/201611/thumb_img/1_thumb_G_1479421908008.jpg" alt="希思黎轻柔护肤西柚柔肤水250ml" width="170" height="170" /></a></div>
         <div class="brand_txt"> <b><a href="goods.php?id=1" title="希思黎轻柔护肤西柚柔肤水250ml">希思黎轻柔护肤西柚柔肤水250ml</a></b>
           <p> 
              
@@ -1340,7 +1370,7 @@ catch (e) {
        
        
             <div class="brand_list">
-        <div class="brand_img"> <a href="goods.php?id=17"><img src="images/201502/thumb_img/17_thumb_G_1425037493452.jpg" alt="娇韵诗超V型纤容紧致瘦脸面膜75ml" width="170" height="170" /></a></div>
+        <div class="brand_img"> <a href="goods.php?id=17"><img src="images/201611/thumb_img/17_thumb_G_1479501429957.jpg" alt="娇韵诗超V型纤容紧致瘦脸面膜75ml" width="170" height="170" /></a></div>
         <div class="brand_txt"> <b><a href="goods.php?id=17" title="娇韵诗超V型纤容紧致瘦脸面膜75ml">娇韵诗超V型纤容紧致瘦脸面膜75ml</a></b>
           <p> 
              
@@ -1702,7 +1732,7 @@ catch (e) {
     <div class="brand_list_out"> 
        
             <div class="brand_list">
-        <div class="brand_img"> <a href="goods.php?id=165"><img src="images/no_picture.gif" alt="娃娃啊啊啊啊啊" width="170" height="170" /></a></div>
+        <div class="brand_img"> <a href="goods.php?id=165"><img src="images/201612/thumb_img/165_thumb_G_1481850865322.jpg" alt="娃娃啊啊啊啊啊" width="170" height="170" /></a></div>
         <div class="brand_txt"> <b><a href="goods.php?id=165" title="娃娃啊啊啊啊啊">娃娃啊啊啊啊啊</a></b>
           <p> 
              
@@ -1714,7 +1744,7 @@ catch (e) {
        
        
             <div class="brand_list">
-        <div class="brand_img"> <a href="goods.php?id=164"><img src="images/no_picture.gif" alt="娃娃啊啊" width="170" height="170" /></a></div>
+        <div class="brand_img"> <a href="goods.php?id=164"><img src="images/201612/thumb_img/164_thumb_G_1482700763950.jpg" alt="娃娃啊啊" width="170" height="170" /></a></div>
         <div class="brand_txt"> <b><a href="goods.php?id=164" title="娃娃啊啊">娃娃啊啊</a></b>
           <p> 
              
@@ -1726,7 +1756,7 @@ catch (e) {
        
        
             <div class="brand_list">
-        <div class="brand_img"> <a href="goods.php?id=163"><img src="images/no_picture.gif" alt="娃娃" width="170" height="170" /></a></div>
+        <div class="brand_img"> <a href="goods.php?id=163"><img src="images/201611/thumb_img/165_thumb_G_1479754661779.jpg" alt="娃娃" width="170" height="170" /></a></div>
         <div class="brand_txt"> <b><a href="goods.php?id=163" title="娃娃">娃娃</a></b>
           <p> 
              
@@ -2288,15 +2318,45 @@ catch (e) {
                 <li>
         
       
-          <div class="topimg"> <a href="goods.php?id=165"><img src="images/no_picture.gif" alt="" style="width:220px; height:220px;" /></a>
+          <div class="topimg"> <a href="goods.php?id=164"><img src="images/201612/thumb_img/164_thumb_G_1482700763950.jpg" alt="" style="width:220px; height:220px;" /></a>
           
           <div class="top_num01"> <img src="themes/miqinew/images/top_1.gif" class="iteration"  /> </div>
           
           
            </div>
          
+          <div class="top_txt"> <b><a href="goods.php?id=164" title="">娃娃啊啊</a></b>
+            <p>本店价：<font class="f1">￥<span>10</span></font></p>
+            <p>15人已购买</p>
+          </div>
+        </li>
+                <li>
+        
+      
+          <div class="topimg"> <a href="goods.php?id=165"><img src="images/201612/thumb_img/165_thumb_G_1481850865322.jpg" alt="" style="width:220px; height:220px;" /></a>
+          
+          <div class="top_num01"> <img src="themes/miqinew/images/top_2.gif" class="iteration"  /> </div>
+          
+          
+           </div>
+         
           <div class="top_txt"> <b><a href="goods.php?id=165" title="">娃娃啊啊啊啊啊</a></b>
             <p>本店价：<font class="f1">￥<span>2000</span></font></p>
+            <p>1人已购买</p>
+          </div>
+        </li>
+                <li>
+        
+      
+          <div class="topimg"> <a href="goods.php?id=17"><img src="images/201611/thumb_img/17_thumb_G_1479501429957.jpg" alt="" style="width:220px; height:220px;" /></a>
+          
+          <div class="top_num01"> <img src="themes/miqinew/images/top_3.gif" class="iteration"  /> </div>
+          
+          
+           </div>
+         
+          <div class="top_txt"> <b><a href="goods.php?id=17" title="">娇韵诗超V型纤容紧致瘦脸面膜75ml</a></b>
+            <p>本店价：<font class="f1">￥<span>275</span></font></p>
             <p>1人已购买</p>
           </div>
         </li>
