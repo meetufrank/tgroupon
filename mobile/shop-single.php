@@ -360,7 +360,13 @@ $spysj = "select u.hav_logo,u.user_name,u.country from `ecs_goods` as g
 inner join `ecs_admin_user` as u on g.arter_id = u.user_id where g.goods_id = '$goodsid'";
 $spysj = $db->getAll($spysj);
 $smarty->assign('spysj',  $spysj);
-print_r($spysj);
+
+
+//商品规格
+$spguige = "select * from `ecs_goods` where goods_id = $goodsid";
+$spguige = $db->getAll($spguige);
+$smarty->assign('spguige',  $spguige);
+
 
 //商品相册
 $xiangce = "select * from `ecs_goods_gallery` where goods_id = $goodsid";
@@ -376,7 +382,7 @@ $smarty->assign('goodsdesc',  $goodsdesc);  //商品的详细描述
 
 
 //猜你喜欢
-$xinhuan = "select g.goods_name,g.goods_img,g.shop_price from `ecs_goods` as g  where is_best = 1 and goods_id != $goodsid
+$xinhuan = "select g.goods_id,g.goods_name,g.goods_img,g.shop_price from `ecs_goods` as g  where is_best = 1 and goods_id != $goodsid
 order by rand() LIMIT 4";
 $xh = $db->getAll($xinhuan);
 
