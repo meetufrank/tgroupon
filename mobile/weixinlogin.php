@@ -12,10 +12,10 @@
  * $Author: douqinghua $
  * $Id: flow.php 17218 2011-01-24 04:10:41Z douqinghua $
  */
-
+session_start();
 define('IN_ECTOUCH', true);
 require(dirname(__FILE__) . '/include/init.php');
-session_start();
+
 
 /*------------------------------------------------------ */
 //-- PROCESSOR
@@ -60,40 +60,42 @@ $rs =  json_decode(json_encode($user_info),true);//返回的json数组转换成a
 
 
 
-print_r($rs);
+
 
 
 //打印用户信息
+$unionid = $rs['unionid'];
 
-echo 'aa';
 $openid = $rs['openid'];
-print_r($openid);
+
 $nickname = $rs['nickname'];
-print_r($nickname);
+
 $sex = $rs['sex'];
 
 $headimgurl = $rs['headimgurl'];
 
-$sql = "select count(*) from `ecs_users` where wx_open_id = '$openid'";
+$sql = "select user_id from `ecs_users` where unionid = '$unionid'";
 $openids = $db->getOne($sql);
-print_r($openids);
+
 
 if(!$openids){
-	$sql = 'INSERT INTO ' . $ecs->table('users') . '(alias , wx_open_id , sex , reg_time  , headimgurl) VALUES ' .
-                    "('$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl')";
+	$sql = 'INSERT INTO ' . $ecs->table('users') . '(alias , wx_open_id , sex , reg_time  , headimgurl,unionid) VALUES ' .
+                    "('$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid')";
      $db->query($sql);
-	
-	
+     $uid=$db->insert_id();
+
+     $_SESSION['user_id'] = $uid;
+
 }else{
-	$sql = "update `ecs_users` set alias='$nickname',sex='$sex',reg_time='time()',headimgurl='$headimgurl' where wx_open_id='$openid'"; 
+	$sql = "update `ecs_users` set alias='$nickname',sex='$sex',reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid' where unionid='$unionid'";
 	$db->query($sql);
-	print_r($sql);
+   $_SESSION['user_id'] = $openids;
 }
 
 
 
-$_SESSION['user_id'] = $openid;
-$_SESSION['user_name']   = $nickname;
+
+
 
 header("Location:index.php");
 
