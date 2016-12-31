@@ -4,10 +4,10 @@
  */
 function addToCartShowDiv(goodsId, script_name,goods_recommend,parentId)
 {
- 
+
   if(!script_name)
   {
-	script_name = 0;	  
+	script_name = 0;
   }
   var goods        = new Object();
   var spec_arr     = new Array();
@@ -15,9 +15,9 @@ function addToCartShowDiv(goodsId, script_name,goods_recommend,parentId)
   var number       = 1;
   var formBuy      = document.forms['ECS_FORMBUY'];
   var quick		   = 0;
- 
 
-  // 检查是否有商品规格 
+
+  // 检查是否有商品规格
   if (formBuy)
   {
     spec_arr = getSelectedAttributes(formBuy);
@@ -34,13 +34,13 @@ function addToCartShowDiv(goodsId, script_name,goods_recommend,parentId)
   goods.spec     = spec_arr;
   goods.goods_id = goodsId;
   goods.number   = number;
- 
+
   goods.script_name   = (typeof(script_name) == "undefined") ? 0 : parseInt(script_name);
   goods.goods_recommend   = (typeof(goods_recommend) == "undefined") ? '' : goods_recommend;
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
 
   Ajax.call('flow.php?step=add_to_cart_showDiv', 'goods=' + $.toJSON(goods), addToCartShowDivResponse, 'POST', 'JSON');
-  
+
 }
 
 /* *
@@ -61,7 +61,7 @@ function addToCartShowDivResponse(result)
     // 没选规格，弹出属性选择框
     else if (result.error == 6)
     {
-			
+
       openSpeDivShowDiv(result.message, result.goods_id, result.parent, result.script_name,result.goods_recommend);
     }
     else
@@ -77,7 +77,7 @@ function addToCartShowDivResponse(result)
     {
       cartInfo.innerHTML = result.content;
     }
-	
+
 	if(result.goods_recommend && result.goods_recommend !='')
 	{
 		goods_recommend = "_"+result.goods_recommend;
@@ -86,23 +86,23 @@ function addToCartShowDivResponse(result)
 	{
 		goods_recommend = "";
 	}
-	
+
 	if(result.script_name == 1)
 	{
 		$("#addtocartdialog_retui_"+result.goods_id+goods_recommend).html(result.show_info);
-		
+
 		$("#addtocartdialog_retui_"+result.goods_id+goods_recommend).show();
 	}
 	else
 	{
 		$("#addtocartdialog .center_pop_txt").html(result.show_info);
-		$("#addtocartdialog").show();	
+		$("#addtocartdialog").show();
 	}
   }
 }
 
 //生成属性选择层
-function openSpeDivShowDiv(message, goods_id, parent,script_name ,goods_recommend) 
+function openSpeDivShowDiv(message, goods_id, parent,script_name ,goods_recommend)
 {
 
   var _id = "speDiv";
@@ -110,18 +110,18 @@ function openSpeDivShowDiv(message, goods_id, parent,script_name ,goods_recommen
   if (docEle(_id)) document.removeChild(docEle(_id));
   if (docEle(m)) document.removeChild(docEle(m));
   //计算上卷元素值
-  var scrollPos; 
-  if (typeof window.pageYOffset != 'undefined') 
-  { 
-    scrollPos = window.pageYOffset; 
-  } 
-  else if (typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat') 
-  { 
-    scrollPos = document.documentElement.scrollTop; 
-  } 
-  else if (typeof document.body != 'undefined') 
-  { 
-    scrollPos = document.body.scrollTop; 
+  var scrollPos;
+  if (typeof window.pageYOffset != 'undefined')
+  {
+    scrollPos = window.pageYOffset;
+  }
+  else if (typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat')
+  {
+    scrollPos = document.documentElement.scrollTop;
+  }
+  else if (typeof document.body != 'undefined')
+  {
+    scrollPos = document.body.scrollTop;
   }
 
   var i = 0;
@@ -141,7 +141,7 @@ function openSpeDivShowDiv(message, goods_id, parent,script_name ,goods_recommen
   newDiv.style.height = "260px";
   newDiv.style.top = (parseInt(scrollPos + 200)) + "px";
   newDiv.style.left = (parseInt(document.body.offsetWidth) - 200) / 2 + "px"; // 屏幕居中
-  newDiv.style.overflow = "auto"; 
+  newDiv.style.overflow = "auto";
   newDiv.style.background = "#FFF";
   newDiv.style.border = "3px solid #59B0FF";
   newDiv.style.padding = "5px";
@@ -159,20 +159,20 @@ function openSpeDivShowDiv(message, goods_id, parent,script_name ,goods_recommen
         {
           if (val_arr == 0)
           {
-            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' checked /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';      
+            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' checked /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';
           }
           else
           {
-            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';      
+            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';
           }
-        } 
+        }
         newDiv.innerHTML += "<input type='hidden' name='spec_list' value='" + val_arr + "' />";
       }
       else
       {
         for (var val_arr = 0; val_arr < message[spec]['values'].length; val_arr++)
         {
-          newDiv.innerHTML += "<input style='margin-left:15px;' type='checkbox' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + ' [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';     
+          newDiv.innerHTML += "<input style='margin-left:15px;' type='checkbox' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + ' [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';
         }
         newDiv.innerHTML += "<input type='hidden' name='spec_list' value='" + val_arr + "' />";
       }
@@ -194,16 +194,16 @@ function openSpeDivShowDiv(message, goods_id, parent,script_name ,goods_recommen
   newMask.style.filter = "alpha(opacity=30)";
   newMask.style.opacity = "0.40";
   document.body.appendChild(newMask);
-} 
+}
 
 //获取选择属性后，再次提交到购物车
-function submit_div_show_div(goods_id, parentId ,script_name,goods_recommend) 
+function submit_div_show_div(goods_id, parentId ,script_name,goods_recommend)
 {
   var goods        = new Object();
   var spec_arr     = new Array();
   var fittings_arr = new Array();
   var number       = 1;
-  var input_arr      = document.getElementsByTagName('input'); 
+  var input_arr      = document.getElementsByTagName('input');
   var quick		   = 1;
 
 
@@ -246,7 +246,7 @@ function submit_div_show_div(goods_id, parentId ,script_name,goods_recommend)
 }
 
 /* *
- * 添加商品到购物车 
+ * 添加商品到购物车
  */
 function addToCart(goodsId, parentId)
 {
@@ -257,7 +257,7 @@ function addToCart(goodsId, parentId)
   var formBuy      = document.forms['ECS_FORMBUY'];
   var quick		   = 0;
 
-  // 检查是否有商品规格 
+  // 检查是否有商品规格
   if (formBuy)
   {
     spec_arr = getSelectedAttributes(formBuy);
@@ -755,7 +755,7 @@ function display_mode_wholesale(str)
 {
     document.getElementById('display').value = str;
     setTimeout(doSubmit, 0);
-    function doSubmit() 
+    function doSubmit()
     {
         document.forms['wholesale_goods'].action = "wholesale.php";
         document.forms['wholesale_goods'].submit();
@@ -1019,7 +1019,7 @@ function addPackageToCartResponse(result)
     }
     else
     {
-      alert(result.message);    
+      alert(result.message);
     }
   }
   else
@@ -1076,31 +1076,31 @@ function setSuitShow(suitId)
 
 /* 以下四个函数为属性选择弹出框的功能函数部分 */
 //检测层是否已经存在
-function docEle() 
+function docEle()
 {
   return document.getElementById(arguments[0]) || false;
 }
 
 //生成属性选择层
-function openSpeDiv(message, goods_id, parent) 
+function openSpeDiv(message, goods_id, parent)
 {
   var _id = "speDiv";
   var m = "mask";
   if (docEle(_id)) document.removeChild(docEle(_id));
   if (docEle(m)) document.removeChild(docEle(m));
   //计算上卷元素值
-  var scrollPos; 
-  if (typeof window.pageYOffset != 'undefined') 
-  { 
-    scrollPos = window.pageYOffset; 
-  } 
-  else if (typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat') 
-  { 
-    scrollPos = document.documentElement.scrollTop; 
-  } 
-  else if (typeof document.body != 'undefined') 
-  { 
-    scrollPos = document.body.scrollTop; 
+  var scrollPos;
+  if (typeof window.pageYOffset != 'undefined')
+  {
+    scrollPos = window.pageYOffset;
+  }
+  else if (typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat')
+  {
+    scrollPos = document.documentElement.scrollTop;
+  }
+  else if (typeof document.body != 'undefined')
+  {
+    scrollPos = document.body.scrollTop;
   }
 
   var i = 0;
@@ -1120,7 +1120,7 @@ function openSpeDiv(message, goods_id, parent)
   newDiv.style.height = "260px";
   newDiv.style.top = (parseInt(scrollPos + 200)) + "px";
   newDiv.style.left = (parseInt(document.body.offsetWidth) - 200) / 2 + "px"; // 屏幕居中
-  newDiv.style.overflow = "auto"; 
+  newDiv.style.overflow = "auto";
   newDiv.style.background = "#FFF";
   newDiv.style.border = "3px solid #59B0FF";
   newDiv.style.padding = "5px";
@@ -1138,20 +1138,20 @@ function openSpeDiv(message, goods_id, parent)
         {
           if (val_arr == 0)
           {
-            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' checked /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';      
+            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' checked /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';
           }
           else
           {
-            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';      
+            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';
           }
-        } 
+        }
         newDiv.innerHTML += "<input type='hidden' name='spec_list' value='" + val_arr + "' />";
       }
       else
       {
         for (var val_arr = 0; val_arr < message[spec]['values'].length; val_arr++)
         {
-          newDiv.innerHTML += "<input style='margin-left:15px;' type='checkbox' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + ' [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';     
+          newDiv.innerHTML += "<input style='margin-left:15px;' type='checkbox' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + ' [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';
         }
         newDiv.innerHTML += "<input type='hidden' name='spec_list' value='" + val_arr + "' />";
       }
@@ -1173,16 +1173,16 @@ function openSpeDiv(message, goods_id, parent)
   newMask.style.filter = "alpha(opacity=30)";
   newMask.style.opacity = "0.40";
   document.body.appendChild(newMask);
-} 
+}
 
 //获取选择属性后，再次提交到购物车
-function submit_div(goods_id, parentId) 
+function submit_div(goods_id, parentId)
 {
   var goods        = new Object();
   var spec_arr     = new Array();
   var fittings_arr = new Array();
   var number       = 1;
-  var input_arr      = document.getElementsByTagName('input'); 
+  var input_arr      = document.getElementsByTagName('input');
   var quick		   = 1;
 
   var spec_arr = new Array();
@@ -1222,7 +1222,7 @@ function submit_div(goods_id, parentId)
 }
 
 // 关闭mask和新图层
-function cancel_div() 
+function cancel_div()
 {
   document.body.removeChild(docEle('speDiv'));
   document.body.removeChild(docEle('mask'));

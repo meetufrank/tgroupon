@@ -40,6 +40,7 @@
 
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
   <style>
   .add-to-cart-pay{
 		position: relative;
@@ -287,6 +288,26 @@
 		</div>
     </section>
 
+   <script type="text/javascript">
+          function attrshuaixuan(attrid){
+               $.ajax({
+                                    type:"post",
+                                    url:"shop-single.php?act=attrshuaixuan",
+                                    async:true,
+                                    data:{attrid:attrid},
+                                    dataType: "json",
+                                    success: function (result) {
+
+
+                                          }//回调函数结束
+                               });//ajax结束
+          }
+
+
+
+
+   </script>
+
     <!-- 电脑端商品详情选择-->
     <section class="fw-section bg-gray padding-bottom-3x  hidden-xs">
       <div class="container">
@@ -300,7 +321,7 @@
           <!--PC端商品选择详情-->
             <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
            		<div class="pc-dright-top">
-                	<div class="pc-color-select col-lg-6 col-md-6 col-sm-6" id="pc-select-color">
+                	<!-- <div class="pc-color-select col-lg-6 col-md-6 col-sm-6" id="pc-select-color">
                     	<span style="float:left; margin-top:5px;">选择颜色:</span>
                         <ul>
                         	<li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
@@ -317,8 +338,8 @@
                             <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
                         </ul>
                      	<div class="clear"></div>
-                    </div>
-                    <div class="pc-size-select col-lg-6 col-md-6 col-sm-6" id="pc-select-size">
+                    </div> -->
+                  <!--   <div class="pc-size-select col-lg-6 col-md-6 col-sm-6" id="pc-select-size">
                     	<span style="float:left; margin-top:5px;">选择尺寸:</span>
                         <ul>
                         	<li><a href="#" class="pc-size-detail pc-none">大</a></li>
@@ -326,8 +347,8 @@
                             <li><a href="#" class="pc-size-detail">小</a></li>
                         </ul>
                         <div class="clear"></div>
-                    </div>
-                    <div class="pc-group-select col-lg-6 col-md-6 col-sm-6" id="pc-select-group">
+                    </div> -->
+                  <!--   <div class="pc-group-select col-lg-6 col-md-6 col-sm-6" id="pc-select-group">
                     	<span style="float:left; margin-top:5px;">组合形式:</span>
                         <ul>
                         	<li><a href="#" class="pc-group-detail">单件</a></li>
@@ -335,8 +356,8 @@
                             <li><a href="#" class="pc-group-detail">103件</a></li>
                         </ul>
                         <div class="clear"></div>
-                    </div>
-                    <div class="pc-mold-select col-lg-6 col-md-6 col-sm-6" id="pc-select-mold">
+                    </div> -->
+                   <!--  <div class="pc-mold-select col-lg-6 col-md-6 col-sm-6" id="pc-select-mold">
                     	<span style="float:left; margin-top:5px;">外框类型:</span>
                         <ul>
                         	<li><a href="#" class="pc-mold-detail">水泥</a></li>
@@ -345,7 +366,22 @@
                         </ul>
                         <div class="clear"></div>
                     </div>
-                    <div class="clear"></div>
+                    <div class="clear"></div> -->
+                     {foreach from=$specification item=spec key=spec_key name=name}
+                           <div class="pc-group-select col-lg-6 col-md-6 col-sm-6" id="pc-select-group">
+                      <span style="float:left; margin-top:5px;">{$spec.name}:</span>
+                        <ul>
+                        {foreach from=$spec.values item=value key=key}
+
+                          <li>
+                              <input type="button" value="{$value.id}">
+                              <a href="#" onclick="attrshuaixuan({$value.id})" class="pc-group-detail">{$value.label}</a>
+                          </li>
+                        {/foreach}
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                     {/foreach}
                 </div>
                 <div class="pc-dright-bottom">
                 	<div class="col-lg-2 col-md-2 col-sm-2">
@@ -383,7 +419,7 @@
             <div class="mobile-detail-1">
                 <span class="mobile-shop-name">创意椅子哈哈哈哈哈哈哈测试哈哈哈测试</span>
             </div>
-            <div class="mobile-shop-price">￥128.00</div>
+            <div class="mobile-shop-price">￥1280.00</div>
             <div class="mobile-count-input">
                   <a class="mobile-incr-btn" href="#">–</a>
                   <input class="mobile-quantity" type="text" value="1">
@@ -392,7 +428,9 @@
         </div>
         <div class="clear"></div>
         <p class="mobile-cart-color-text">颜色<span style="margin-left:10px; font-size:17px;color:#09F" id="selectcolor"></span></p>
-        <div class="mobile-cart-color" id="mobile-select-color">
+
+      <form  name="ECS_FORMBUY">
+      <!--   <div class="mobile-cart-color" id="mobile-select-color"><input  name="spec_1"  value="367"/>
             <ul class="mobile-cart-color-select">
             	<li><a href="#" title="绿色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
                 <li><a href="#" title="紫色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
@@ -410,7 +448,7 @@
             <div class="clear"></div>
         </div>
         <p class="mobile-cart-size-text">尺寸</p>
-        <div class="mobile-cart-size">
+        <div class="mobile-cart-size"><input  name="spec_2"  value="377"/>
           	<ul class="mobile-cart-size-select" id="mobile-sizebox">
                 <li><a href="#" class="mobile-cart-size-select-details mobile-none" title="大码">大</a></li>
                 <li><a href="#" class="mobile-cart-size-select-details" title="中码">中</a></li>
@@ -419,7 +457,7 @@
             <div class="clear"></div>
         </div>
         <p class="mobile-cart-group-text">组合形式</p>
-        <div class="mobile-cart-group">
+        <div class="mobile-cart-group"><input  name="spec_3"  value="387"/>
           	<ul class="mobile-cart-group-select" id="mobile-groupbox">
                 <li><a href="#" class="mobile-cart-group-details" title="单件">单件</a></li>
                 <li><a href="#" class="mobile-cart-group-details" title="两件">两件</a></li>
@@ -429,7 +467,7 @@
             <div class="clear"></div>
         </div>
         <p class="mobile-cart-border-text">外框类型</p>
-        <div class="mobile-cart-border">
+        <div class="mobile-cart-border"><input  name="spec_4"  value="397"/>
           	<ul class="mobile-cart-border-select" id="mobile-borderbox">
                 <li><a href="#" class="mobile-cart-border-details" title="水泥">水泥</a></li>
                 <li><a href="#" class="mobile-cart-border-details" title="陶瓷">陶瓷</a></li>
@@ -437,7 +475,11 @@
                 <li><a href="#" class="mobile-cart-border-details" title="泥巴">麻绳</a></li>
             </ul>
             <div class="clear"></div>
-        </div>
+        </div> -->
+         {foreach from=$specification item=spec key=spec_key name=name}
+                 <p class="mobile-cart-border-text">{$spec.name}</p>
+         {/foreach}
+        </form>
     </section>
     <div class="clear"></div>
 	<!--艺术家-->
