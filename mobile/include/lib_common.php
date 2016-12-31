@@ -2388,13 +2388,14 @@ function get_final_price($goods_id, $goods_num = '1', $is_spec_price = false, $s
         if (!empty($spec))
         {
             $spec_price   = spec_price($spec);
-            $final_price += $spec_price;
+            $final_price = $spec_price;
 
 			//甜心修改调用属性价格
 			//$final_price=get_pro_price($spec,$final_price);
 		}
     }
-
+//     ECHO '$final_price'.$final_price;
+// ECHO ' more_price '.$goods['more_price'];
     //返回商品最终购买价格
     return $final_price+$goods['more_price'];
 }

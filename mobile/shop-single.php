@@ -16,7 +16,9 @@
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
+
 require(ROOT_PATH . 'include/lib_weixintong.php');
+include_once('head.php');
 if ((DEBUG_MODE & 2) != 2)
 {
     $smarty->caching = true;
@@ -28,6 +30,7 @@ $smarty->assign('affiliate', $affiliate);
 /*------------------------------------------------------ */
 //-- INPUT
 /*------------------------------------------------------ */
+
 
 $goods_id = isset($_REQUEST['id'])  ? intval($_REQUEST['id']) : 0;
 
@@ -391,7 +394,10 @@ $xh = $db->getAll($xinhuan);
 $smarty->assign('xh',  $xh);  //猜你喜欢
 
 
+
 $smarty->display('shop-single.dwt',      $cache_id);   //商品详情页
+print_r($_SESSION['user_id']) ;exit;
+
 
 /*------------------------------------------------------ */
 //-- PRIVATE FUNCTION

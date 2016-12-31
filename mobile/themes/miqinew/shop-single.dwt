@@ -268,253 +268,7 @@
   <!-- Page Wrapper -->
   <div class="page-wrapper">
 	<!-- 头部开始 -->
-   <header class="navbar navbar-sticky">
-
-      <!-- Site Logo -->
-      <a href="index.html" class="site-logo visible-desktop">
-        COLOR <span>&</span> SHAPE
-      </a><!-- site-logo.visible-desktop -->
-      <a href="index.html" class="site-logo visible-mobile">
-        COLOR <span>&</span> SHAPE
-      </a><!-- site-logo.visible-mobile -->
-
-
-      <!-- Toolbar -->
-      <div class="toolbar">
-        <div class="inner">
-          <a href="#menu" class="toolbar-toggle"><i class="material-icons menu"></i></a>
-          <a href="#cart" class="toolbar-toggle">
-            <i>
-              <span class="material-icons shopping_basket"></span>
-<!--              <span class="count">2</span>-->
-            </i>
-          </a>
-          <a href="#account" class="toolbar-toggle"><i class="material-icons person"></i></a>
-        </div>
-      </div><!-- .toolbar -->
-
-      <!-- Toolbar Dropdown -->
-      <div class="toolbar-dropdown">
-
-        <!-- Menu -->
-        <div class="toolbar-section" id="menu">
-          <div class="inner">
-            <ul class="main-navigation space-bottom">
-              <li><a href="index.html">首页</a></li>
-              <li><a href="shop-fullwidth-sl.html">商品</a></li>
-              <li><a href="artist-list.html">艺术家</a></li>
-              <li><a href="about-us.html">关于我们</a></li>
-            </ul><!-- .main-navigation -->
-
-          </div>
-          <!-- .inner -->
-        </div><!-- .toolbar-section#menu -->
-
-        <!-- Account (Login) -->
-        <div class="toolbar-section" id="account">
-          <h3 class="toolbar-title space-bottom">用户登录</h3>
-          <div class="inner">
-          	<a href="#userinfo" class="btn btn-primary waves-effect waves-light toggle-section">
-          		<i class="material-icons question_answer"></i>
-          		点击扫二维码登录
-      		</a>
-          </div><!-- .inner -->
-        </div><!-- .toolbar-section#account -->
-
-        <!-- Account (userinfo) -->
-        <div class="toolbar-section" id="userinfo">
-            <div class="clearfix">
-            <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section">退出</a>
-            <div class="quotation pull-left" style="width:auto;">
-              <div class="quotation-author-ava pull-left">
-                <img class="" src="{$ectouch_themes}/img/team/quote_author.jpg" alt="James Cameron">
-              </div>
-              &nbsp;&nbsp;
-              <span style="display:inline-block; line-height:74px;">微信名称</span>
-          	</div>
-      	  	</div>
-      	  	<hr class="padding-bottom">
-      	  	<ul class="main-navigation space-bottom">
-      	  		<li><a href="my_order.html">我的订单</a></li>
-      	  		<li><a href="#">我的收藏</a></li>
-      	  		<li><a class="relative" href="#">消息记录<!--<span class="count">2</span>--></a></li>
-      	  		<li><a href="#">管理地址</a></li>
-      	  	</ul>
-        </div>
-
-        <!-- Cart -->
-        <div class="toolbar-section" id="cart">
-          <div class="shopping-cart">
-          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px; ">
-          		<label class="checkbox">
-                  	<input style="position: absolute; opacity: 0;" type="checkbox">
-                  	<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
-                  <h4 style="margin-left:18px ;">全选</h4>
-                </label>
-                </div>
-            <!-- Item -->
-            <div class="item">
-            	<label class="checkbox">
-                  	<input style="position: absolute; opacity: 0;" type="checkbox">
-                  	<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
-                </label>
-              <a href="shop-single.html" class="item-thumb">
-                <img src="{$ectouch_themes}/img/cart/item01.jpg" alt="Item">
-              </a>
-              <div class="item-details">
-                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
-                <h4 class="item-price">$85.90</h4>
-                <div class="count-input">
-                  <a class="incr-btn" data-action="decrease" href="#">–</a>
-                  <input class="quantity" type="text" value="1">
-                  <a class="incr-btn" data-action="increase" href="#">+</a>
-                </div>
-              </div>
-              <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="Remove">
-                <i class="material-icons delete"></i>
-              </a>
-            </div><!-- .item -->
-            <!-- Item -->
-            <div class="item">
-            	<label class="checkbox">
-                  	<input style="position: absolute; opacity: 0;" type="checkbox">
-                  	<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
-                </label>
-              <a href="shop-single.html" class="item-thumb">
-                <img src="{$ectouch_themes}/img/cart/item02.jpg" alt="Item">
-              </a>
-              <div class="item-details">
-                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
-                <h4 class="item-price">$38.00</h4>
-                <div class="count-input">
-                  <a class="incr-btn" data-action="decrease" href="#">–</a>
-                  <input class="quantity" type="text" value="2">
-                  <a class="incr-btn" data-action="increase" href="#">+</a>
-                </div>
-              </div>
-              <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="Remove">
-                <i class="material-icons delete"></i>
-              </a>
-            </div><!-- .item -->
-            <!-- Subtotal -->
-            <div class="cart-subtotal space-bottom">
-              <div class="column">
-                <h3 class="toolbar-title">总价：</h3>
-              </div>
-              <div class="column">
-                <h3 class="amount">$161.90</h3>
-              </div>
-            </div><!-- .subtotal -->
-            <!-- Buttons -->
-            <div class="text-right">
-              <a href="#checkout" class="btn btn-primary waves-effect waves-light toggle-section">支付结算</a>
-            </div>
-          </div><!-- .shopping-cart -->
-        </div><!-- .toolbar-section#cart -->
-
-        <!-- Checkout -->
-        <div class="toolbar-section" id="checkout">
-          <form method="post" class="checkout-form container">
-            <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
-              <div class="column">
-                <h3 class="toolbar-title">订单确认</h3>
-              </div>
-              <div class="column">
-                <h3 class="amount"><small class="hidden-xs">数量：6&nbsp;&nbsp;&nbsp;</small>$161.90</h3>
-              </div>
-            </div><!-- .subtotal -->
-
-            <div class="form-group">
-              <label class="radio radio-inline">
-                <input type="radio" name="co_shipping" checked>
-                	联系人：里默默<br>
-					手机号：18954781245<br>
-					地   址 ：上海市五角场黄兴路100号1号楼102室
-              </label>
-            </div><!-- .form-group -->
-
-            <div class="form-group">
-              <label class="radio radio-inline">
-                <input type="radio" name="co_shipping">
-                	联系人：里默默<br>
-					手机号：18954781245<br>
-					地   址 ：上海市五角场黄兴路100号1号楼102室
-              </label>
-            </div><!-- .form-group -->
-            <h3><a class="toggle-section" href="#address">新增地址</a></h3>
-            <div class="text-right">
-              <a href="#cart" class="btn btn-default btn-ghost icon-left toggle-section">
-                	取消
-              </a>
-              <a href="#" class="btn btn-primary waves-effect waves-light">
-                	确认
-              </a>
-            </div>
-          </form><!-- .checkout-form.container -->
-        </div><!-- .toolbar-section#checkout -->
-
-        <!-- 填写地址 -->
-        <div class="toolbar-section" id="address">
-          <form method="post" class="checkout-form container">
-            <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
-              <div class="column">
-                <h3 class="toolbar-title">填写地址</h3>
-              </div>
-            </div><!-- .subtotal -->
-
-            <input type="text" class="form-control" name="" placeholder="收件人">
-            <input type="text" class="form-control" name="" placeholder="手机号码">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="form-element form-select">
-                  <select class="form-control" name="">
-                    <option value="">省</option>
-                    <option value="australia">Australia</option>
-                    <option value="gb">Great Britain</option>
-                    <option value="poland">Poland</option>
-                    <option value="switzerland">Switzerland</option>
-                    <option value="usa">USA</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-element form-select">
-                  <select class="form-control" name="">
-                    <option value="">市</option>
-                    <option value="1">State 1</option>
-                    <option value="2">State 2</option>
-                    <option value="3">State 3</option>
-                    <option value="4">State 4</option>
-                    <option value="5">State 5</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-element form-select">
-                  <select class="form-control" name="">
-                    <option value="">区</option>
-                    <option value="1">State 1</option>
-                    <option value="2">State 2</option>
-                    <option value="3">State 3</option>
-                    <option value="4">State 4</option>
-                    <option value="5">State 5</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <input type="text" class="form-control" name="" placeholder="详细地址">
-            <div class="text-right">
-              <a href="#checkout" class="btn btn-default btn-ghost icon-left toggle-section">
-                	返回
-              </a>
-              <a href="#checkout" class="btn btn-primary waves-effect waves-light toggle-section">
-                	确认
-              </a>
-            </div>
-            </form>
-            </div>
-      </div><!-- .toolbar-dropdown -->
-    </header><!-- .navbar.navbar-sticky -->
+   {include file="head.dwt"}
 	<!-- 头部结束-->
 
     <!-- Pager + Product Gallery -->
@@ -602,12 +356,12 @@
                 		</div>
                     </div>
                 	<div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:8px;min-height:48px;">
-                         <a href="#" class="add-to-cart-pay">
+                         <a href="#" class="add-to-cart-pay" onClick="addToCart(164,'',1)">
                                 <em>立即支付</em>
                          </a>
                     </div>
                    <div class="col-lg-2 col-md-2 col-sm-2" style="padding-top:8px;min-height:48px;">
-                        <a href="#" class="add-to-cart">
+                        <a href="#" class="add-to-cart"  onClick="addToCart({$goods.goods_id})">
                             <em>放入购物车</em>
                         </a>
                    </div>
@@ -775,7 +529,7 @@
 			  <div class="shop-item">
 				<div class="shop-thumbnail">
 				  <a href="shop-single.php?id={$xh.goods_id}" class="item-link"></a>
-				  <img src="../../{$xh.goods_img}" alt="Shop item">
+				  {if $xh.goods_img}<img src="../../{$xh.goods_img}" alt="Shop item">{/if}
 				</div>
 				<div class="shop-item-details">
 				  <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>
@@ -837,12 +591,12 @@
     <!-- .footer -->
     <div class="mobile-foot col-xs-12 hidden-sm hidden-md hidden-lg" style="position:fixed;bottom:0;padding:0px;">
 		<div class="col-xs-6" style="padding:0px;">
-        	<a href="#" class="mobile-add-to-cart">
+        	<a href="#" class="mobile-add-to-cart" onClick="addToCart({$goods.goods_id})" >
               放入购物车
             </a>
         </div>
         <div class="col-xs-6" style="padding:0px;">
-         <a href="#" class="mobile-add-to-cart-pay">
+         <a href="#" class="mobile-add-to-cart-pay" onClick="addToCart({$goods.goods_id},'',1)" >
               立即支付
          </a>
         </div>
@@ -850,7 +604,7 @@
   </div><!-- .page-wrapper -->
 
   <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
-  <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
+
   <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
   <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
   <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>

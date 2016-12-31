@@ -223,6 +223,15 @@ ALTER TABLE `ecs_users`
 MODIFY COLUMN `wx_open_id`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `tj_fencheng`;
 
 
+/*#2016/12/30 王晋     在购物车中添加字段
+*/
+
+ALTER TABLE `ecs_cart`
+ADD COLUMN `cart_type`  tinyint(1) NOT NULL DEFAULT 0 COMMENT '//1为立即支付' AFTER `new_fencheng`;
+
+MODIFY COLUMN `wx_open_id`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `tj_fencheng`;
+
+
 /*#2016/12/33 汪江   添加字段 unionid
 */
 ALTER TABLE `ecs_users`

@@ -1027,8 +1027,14 @@ function cart_weight_price($type = CART_GENERAL_GOODS)
  * @param   integer $parent     基本件
  * @return  boolean
  */
-function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
+function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0,$type=0)
 {
+
+    if($type){
+        $type=1;
+    }else{
+        $type=0;
+    }
     $GLOBALS['err']->clean();
     $_parent_id = $parent;
 
@@ -1146,6 +1152,7 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
         'is_gift'       => 0,
         'is_shipping'   => $goods['is_shipping'],
         'rec_type'      => CART_GENERAL_GOODS,
+        'cart_type'     =>$type,
 
     );
 
@@ -1237,55 +1244,84 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
     /* 如果数量不为0，作为基本件插入 */
     if ($num > 0)
     {
-        /* 检查该商品是否已经存在在购物车中 */
-        $sql = "SELECT goods_number FROM " .$GLOBALS['ecs']->table('cart').
-                " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
-                " AND parent_id = 0 AND goods_attr = '" .get_goods_attr_info($spec). "' " .
-                " AND extension_code <> 'package_buy' " .
-                " AND rec_type = 'CART_GENERAL_GOODS'";
+        if($type){   //若是点击立即支付
 
-        $row = $GLOBALS['db']->getRow($sql);
+                /* 检查该商品是否已经存在在购物车中 */
+                $sql = "SELECT rec_id FROM " .$GLOBALS['ecs']->table('cart').
+                        " WHERE user_id = '" .$_SESSION['user_id']. "' AND ".
+                         " cart_type = 1";
 
-        if($row) //如果购物车已经有此物品，则更新
-        {
-            $num += $row['goods_number'];
-            if(is_spec($spec) && !empty($prod) )
-            {
-             $goods_storage=$product_info['product_number'];
-            }
-            else
-            {
-                $goods_storage=$goods['goods_number'];
-            }
-            if ($GLOBALS['_CFG']['use_storage'] == 0 || $num <= $goods_storage)
-            {
+                $row = $GLOBALS['db']->getRow($sql);
+                if($row){
+                     $sql="delete  from ".$GLOBALS['ecs']->table('cart')." where rec_id=".$row['rec_id'];
+                     $GLOBALS['db']->query($sql);
+
+                }
+
+                //添加入购物车
                 $goods_price = get_final_price($goods_id, $num, true, $spec);
-                $sql = "UPDATE " . $GLOBALS['ecs']->table('cart') . " SET goods_number = '$num'" .
-                       " , goods_price = '$goods_price'".
-                       " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
-                       " AND parent_id = 0 AND goods_attr = '" .get_goods_attr_info($spec). "' " .
-                       " AND extension_code <> 'package_buy' " .
-                       "AND rec_type = 'CART_GENERAL_GOODS'";
-                $GLOBALS['db']->query($sql);
-            }
-            else
-            {
-               $GLOBALS['err']->add(sprintf($GLOBALS['_LANG']['shortage'], $num), ERR_OUT_OF_STOCK);
+                        $parent['goods_price']  = max($goods_price, 0);
+                        $parent['goods_number'] = $num;
+                        $parent['fencheng'] = $goods['fencheng'];
+                        $parent['parent_id']    = 0;
+                        $GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('cart'), $parent, 'INSERT');
+                        unset($_SESSION['lineid']);
+                        unset($_SESSION['new_fencheng']);
 
-                return false;
-            }
+        }else{
+                    /* 检查该商品是否已经存在在购物车中 */
+                $sql = "SELECT goods_number FROM " .$GLOBALS['ecs']->table('cart').
+                        " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
+                        " AND parent_id = 0 AND goods_attr = '" .get_goods_attr_info($spec). "' " .
+                        " AND extension_code <> 'package_buy' " .
+                        " AND rec_type = 'CART_GENERAL_GOODS'"." AND cart_type = 0";
+
+                $row = $GLOBALS['db']->getRow($sql);
+                if($row) //如果购物车已经有此物品，则更新
+                    {
+                        $num += $row['goods_number'];
+                        if(is_spec($spec) && !empty($prod) )
+                        {
+                         $goods_storage=$product_info['product_number'];
+                        }
+                        else
+                        {
+                            $goods_storage=$goods['goods_number'];
+                        }
+                        if ($GLOBALS['_CFG']['use_storage'] == 0 || $num <= $goods_storage)
+                        {
+                            $goods_price = get_final_price($goods_id, $num, true, $spec);
+                            $sql = "UPDATE " . $GLOBALS['ecs']->table('cart') . " SET goods_number = '$num'" .
+                                   " , goods_price = '$goods_price'".
+                                   " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
+                                   " AND parent_id = 0 AND goods_attr = '" .get_goods_attr_info($spec). "' " .
+                                   " AND extension_code <> 'package_buy' " .
+                                   "AND rec_type = 'CART_GENERAL_GOODS'";
+                            $GLOBALS['db']->query($sql);
+                        }
+                        else
+                        {
+                           $GLOBALS['err']->add(sprintf($GLOBALS['_LANG']['shortage'], $num), ERR_OUT_OF_STOCK);
+
+                            return false;
+                        }
+                    }
+                    else //购物车没有此物品，则插入
+                    {
+                        $goods_price = get_final_price($goods_id, $num, true, $spec);
+                        $parent['goods_price']  = max($goods_price, 0);
+                        $parent['goods_number'] = $num;
+                        $parent['fencheng'] = $goods['fencheng'];
+                        $parent['parent_id']    = 0;
+                        $GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('cart'), $parent, 'INSERT');
+                        unset($_SESSION['lineid']);
+                        unset($_SESSION['new_fencheng']);
+                    }
         }
-        else //购物车没有此物品，则插入
-        {
-            $goods_price = get_final_price($goods_id, $num, true, $spec);
-            $parent['goods_price']  = max($goods_price, 0);
-            $parent['goods_number'] = $num;
-			$parent['fencheng'] = $goods['fencheng'];
-            $parent['parent_id']    = 0;
-            $GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('cart'), $parent, 'INSERT');
-            unset($_SESSION['lineid']);
-            unset($_SESSION['new_fencheng']);
-        }
+
+
+
+
     }
 
     /* 把赠品删除 */
@@ -1617,11 +1653,12 @@ function order_refund($order, $refund_type, $refund_note, $refund_amount = 0)
  * @access  public
  * @return  array
  */
-function get_cart_goods($id='')
+function get_cart_goods($id='',$type=0)
 {
     if($id){
         $string=" and rec_id in (".$id.") ";
     }
+
     /* 初始化 */
     $goods_list = array();
     $total = array(
@@ -1631,11 +1668,13 @@ function get_cart_goods($id='')
         'save_rate'    => 0, // 节省百分比
         'goods_amount' => 0, // 本店售价合计（无格式）
     );
-
+        if($type){
+            $type=1;
+        }
     /* 循环、统计 */
    $sql = "SELECT *, IF(parent_id, parent_id, goods_id) AS pid , goods_number " .
             " FROM " . $GLOBALS['ecs']->table('cart') . " " .
-            " WHERE session_id = '" . SESS_ID . "' AND rec_type = '" . CART_GENERAL_GOODS . "'".$string .
+            " WHERE session_id = '" . SESS_ID . "' AND cart_type=".$type." AND rec_type = '" . CART_GENERAL_GOODS . "'".$string .
             " ORDER BY pid, parent_id";
     $res = $GLOBALS['db']->query($sql);
 

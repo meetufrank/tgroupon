@@ -46,21 +46,25 @@ $smarty->assign('lang',             $_LANG);
 $smarty->assign('show_marketprice', $_CFG['show_marketprice']);
 $smarty->assign('data_dir',    DATA_DIR);       // 数据目录
 include_once('head.php');
-//print_r(SESS_ID) ;exit;
+
 /*------------------------------------------------------ */
 //-- 添加商品到购物车
 /*------------------------------------------------------ */
 if ($_REQUEST['step'] == 'add_to_cart')
 {
 
+
     if ( $_SESSION['user_id'] == 0)
     {
-            please_in();
+           $result['error'] = 12;
+            echo json_encode($result);
+            exit;
     }
-    include_once('include/cls_json.php');
+
     $_POST['goods']=strip_tags(urldecode($_POST['goods']));
     $_POST['goods'] = json_str_iconv($_POST['goods']);
 
+  $type_num=intval($_REQUEST['type']);
     if (!empty($_REQUEST['goods_id']) && empty($_POST['goods']))
     {
         if (!is_numeric($_REQUEST['goods_id']) || intval($_REQUEST['goods_id']) <= 0)
@@ -70,7 +74,7 @@ if ($_REQUEST['step'] == 'add_to_cart')
         $goods_id = intval($_REQUEST['goods_id']);
         exit;
     }
-
+include_once('include/cls_json.php');
     $result = array('error' => 0, 'message' => '', 'content' => '', 'goods_id' => '');
     $json  = new JSON;
 
@@ -148,7 +152,7 @@ if ($_REQUEST['step'] == 'add_to_cart')
             $new_goods_attr_id[]=$value;
         }
     }
-    $goods_attr_id=implode('|', $new_goods_attr_id);
+    $goods_attr_id=implode(',', $new_goods_attr_id);
     $sql = "SELECT product_number ".
         'FROM ' . $GLOBALS['ecs']->table('products').
         "WHERE goods_attr = '" . $goods_attr_id . "'";
@@ -170,8 +174,9 @@ if ($_REQUEST['step'] == 'add_to_cart')
     /* 更新：购物车 */
     else
     {
+
         // 更新：添加到购物车
-        if (addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent))
+        if (addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num))
         {
             if ($_CFG['cart_confirm'] > 2)
             {
@@ -1082,7 +1087,11 @@ if(isset($_GET['cartid'])){
    //print_r($cart_list);exit;
    //
 }else{
-     ecs_header("Location: index.php\n");
+     $sql=" select rec_id  from ".$GLOBALS['ecs']->table('cart')." where user_id='".$_SESSION['user_id']."' AND cart_type=1";
+     $row=$GLOBALS['db']->getRow($sql);
+
+     $cart_list=get_cart_goods($row['rec_id'],1);
+     //print_r($cart_list);exit;
 }
  $smarty->assign('cart_list',$cart_list);
 
@@ -1193,6 +1202,7 @@ if(isset($_GET['cartid'])){
     /* 保存 session */
     $_SESSION['flow_order'] = $order;
     $smarty->assign('order',$order);
+
     $smarty->display('pays.dwt');
     exit;
 }

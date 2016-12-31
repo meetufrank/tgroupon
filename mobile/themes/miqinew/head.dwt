@@ -2,7 +2,7 @@
 
 <header class="navbar navbar-sticky">
 
-      <!-- Site Logo -->
+    <!-- Site Logo -->
       <a href="index.html" class="site-logo visible-desktop">
         COLOR <span>&</span> SHAPE
       </a><!-- site-logo.visible-desktop -->
@@ -11,14 +11,15 @@
       </a><!-- site-logo.visible-mobile -->
 
 
-      <!-- Toolbar -->
+
+<!-- Toolbar -->
       <div class="toolbar">
         <div class="inner">
           <a href="#menu" class="toolbar-toggle"><i class="material-icons menu"></i></a>
           <a href="#cart" class="toolbar-toggle" id="zhankai">
             <i>
               <span class="material-icons shopping_basket"></span>
-<!--              <span class="count">2</span> -->
+             <span class="count " id="cart_count">{if $total.total_number}{$total.total_number}{else}0{/if}</span>
             </i>
           </a>
           {if $user_status}
@@ -29,7 +30,6 @@
         </div>
       </div>
       <!-- .toolbar -->
-
       <!-- Toolbar Dropdown -->
       <div class="toolbar-dropdown">
 
@@ -46,17 +46,18 @@
           </div>
         </div>
 
-{if $user_status}
-        <!-- Account (userinfo) -->
+
+
+<!-- Account (userinfo) -->
         <div class="toolbar-section" id="userinfo" >
             <div class="clearfix">
             <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section">退出</a>
             <div class="quotation pull-left" style="width:auto;">
               <div class="quotation-author-ava pull-left">
-                <img class="" src="{$user_data.headimgurl}" alt="James Cameron">
+                <img class="" src="{$ectouch_themes}/img/team/quote_author.jpg" alt="James Cameron">
               </div>
               &nbsp;&nbsp;
-              <span style="display:inline-block; line-height:74px;">{$user_data.alias}</span>
+              <span style="display:inline-block; line-height:74px;">微信名称</span>
             </div>
             </div>
             <hr class="padding-bottom">
@@ -68,7 +69,8 @@
               <li><a href="#">管理地址</a></li>
             </ul>
         </div>
-{else}
+
+
          <!-- Account (Login) -->
         <div class="toolbar-section" id="account">
           <h3 class="toolbar-title space-bottom">用户登录</h3>
@@ -80,7 +82,7 @@
           </div>
         </div>
 
-{/if}
+
 
 
          <div class="toolbar-section" id="cart">
@@ -94,19 +96,26 @@
                 </div>
             <!-- Item -->
 
-            {foreach from=$goods_list item=goods}
+
+
+
+
+   {foreach from=$goods_list item=goods}
                 <div class="item">
                 <label class="checkbox" id="checkone">
                 <input style="position: absolute; opacity: 0;" type="checkbox" value="{$goods.rec_id}" checked="checked"  id="rec_id" name="rec_check">
                 <ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
                 </label>
                 <a href="shop-single.php?id={$goods.goods_id}" class="item-thumb">
-                <img src="../../{$goods.goods_thumb}" alt="Item">
+                {if $goods.goods_thumb}<img src="../../{$goods.goods_thumb}" alt="Item">{/if}
                 </a>
                 <div class="item-details"><h3 class="item-title">
                 <a href="shop-single.php?id={$goods.goods_id}">{$goods.goods_name}</a>
                 </h3>
+                <div>
+                <div class="pull-right" style="color:#000" >{$goods.goods_attr}</div>
                 <h4 class="item-price" data-price="{$goods.goods_price}">{$goods.goods_price}</h4>
+                </div>
                 <div class="count-input">
                 <a class="incr-btn" data-action="decrease" href="#" onclick="changenum({$goods.rec_id},-1)">–</a>
                 <input class="quantity" type="text" value="{$goods.goods_number}" min="1" max="1000" name="goods_number[{$goods.rec_id}]" id="goods_number_{$goods.rec_id}" onkeyup="changenum({$goods.rec_id},0)" readonly>
@@ -127,14 +136,13 @@
               </div>
             </div><!-- .subtotal -->
             <!-- Buttons -->
+            {if $goods_list}
             <div class="text-right">
               <a href="#" class="btn btn-primary waves-effect waves-light toggle-section" id="sub_cart">去结算</a>
             </div>
+            {/if}
           </div><!-- .shopping-cart -->
         </div><!-- .toolbar-section#cart -->
-
-
-
 
 
 
@@ -145,10 +153,13 @@
 
 
 <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
-<script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
-  <script src="{$ectouch_themes}/js/jquery.validate.js" type="text/javascript"></script>
-  <script src="{$ectouch_themes}/js/messages_zh.js" type="text/javascript"></script>
 
+<script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
+
+
+  <script src="{$ectouch_themes}/js/jquery.validate.js" type="text/javascript"></script>
+
+  <script src="{$ectouch_themes}/js/messages_zh.js" type="text/javascript"></script>
 
   <script type="text/javascript">
   $(document).ready(function () {
@@ -260,6 +271,9 @@ window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
           var goods_number = num + Number(diff);
           if( goods_number >= 1){
             //document.getElementById('goods_number_'+rec_id).value = goods_number;//更新数量
+            var cartnum=document.getElementById('cart_count').innerHTML;
+            document.getElementById('cart_count').innerHTML=Number(cartnum)+Number(diff);
+
             change_goods_number(rec_id,goods_number);
           }
         }
@@ -272,6 +286,7 @@ window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
                 dataType: "json",
                 data:{step:'ajax_update_cart',rec_id:rec_id,goods_number:goods_number},
                 success: function(data){
+
 
                    // document.getElementById('total_number').innerHTML = data.total_number;//更新数量
                   //document.getElementById('goods_subtotal').innerHTML = data.total_desc;//更新小计
@@ -333,27 +348,36 @@ function addToCart(goodsId, parentId,type)  //type 购物类型
   }
 
   goods.quick    = quick;
-  goods.spec     = spec_arr;
+  goods.spec     = [369,373];  //spec_arr
   goods.goods_id = goodsId;
   goods.number   = number;
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
-
+//console.log(goods);return false;
   ///Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse, 'POST', 'JSON');
   $.ajax({
               url:"flow.php",
               type:"POST",
               dataType:"json",
 
-              data:{step:'add_to_cart',goods:$.toJSON(goods) },
+              data:{step:'add_to_cart',goods:$.toJSON(goods),type:type },
               success: function(data){
-                addToCartResponse(data);
-                 if(type){
+                    if(data.error==12){
+                         window.location.href='flow.php?step=login';
+                         return;
+                    }
+                    if(type){
+                             window.location.href='flow.php?step=pay_select';return;
+                    }else{
+                      addToCartResponse(data);return;
+                    }
 
-                 }
+
+
+
 
               },
               error:function(){
-                   alert("false");
+                 return false;
               }
             });
 
@@ -369,16 +393,9 @@ function addToCartResponse(result)
 {
   if (result.error > 0)
   {
-    // 如果需要缺货登记，跳转
-    if (result.error == 2)
-    {
-      if (confirm(result.message))
-      {
-        location.href = 'user.php?act=add_booking&id=' + result.goods_id + '&spec=' + result.product_spec;
-      }
-    }
+
     // 没选规格，弹出属性选择框
-    else if (result.error == 6)
+     if (result.error == 6)
     {
       openSpeDiv(result.message, result.goods_id, result.parent);
     }
@@ -402,16 +419,20 @@ function addToCartResponse(result)
                 data:{step:'ajax_cart_goods'},
                 success: function(data){
                     //$(".item").find("input[type='checkbox']").iCheck("destroy");
-                   // console.log(data.goods_list);
+                   console.log(data);
                     $(".item").remove();
+                    $("#cart_count").text(data.total.total_number);
                     $.each(data.goods_list,function(i){
+
+
                         $("#zongjia").before(
                         '<div class="item"><label class="checkbox" id="checkone">'+
                 '<input style="position: absolute; opacity: 0;" type="checkbox" value="'+data.goods_list[i]['rec_id']+'" checked="checked"  id="rec_id" name="rec_check" >'+
                 '<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px;background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>'+
                 '</label> <a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'" class="item-thumb"><img src="../../'+data.goods_list[i]['goods_thumb']+'" alt="Item">'+
                 '</a><div class="item-details"><h3 class="item-title"><a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'">'+data.goods_list[i]['goods_name']+'</a>'+
-                '</h3><h4 class="item-price" data-price="'+data.goods_list[i]['goods_price']+'">'+data.goods_list[i]['goods_price']+'</h4><div class="count-input">'+
+                '</h3><div><div class="pull-right" style="color:#000" >'+data.goods_list[i]['goods_attr']+'</div><h4 class="item-price" data-price="'+data.goods_list[i]['goods_price']+'">'+data.goods_list[i]['goods_price']+
+                '</h4></div><div class="count-input">'+
                 '<a class="incr-btn" data-action="decrease" href="#" onclick="changenum('+data.goods_list[i]['rec_id']+',-1)">–</a>'+
                 '<input class="quantity" type="text" value="'+data.goods_list[i]['goods_number']+'" min="1" max="1000" name="goods_number['+data.goods_list[i]['rec_id']+']" '+
                 'id="goods_number_'+data.goods_list[i]['rec_id']+'" onkeyup="changenum('+data.goods_list[i]['rec_id']+',0)">'+
