@@ -1959,7 +1959,8 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	position: relative;
 	z-index: 9900;
 	width: 100%;
-	min-height: 80px;
+	/*min-height: 80px;*/
+	min-height: 50px;
 	background-color: #fff;
 	padding-left: 30px;
 	top: 0;
@@ -1976,9 +1977,10 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	vertical-align: middle;
 	color: #606060;
 	font-size: 20px;
-	font-weight: 500;
+	/*font-weight: 500;*/
+	font-weight: bold;
 	text-decoration: none;
-	padding: 25px 0;
+	padding: 15px 0;/*padding: 25px 0;*/
 	margin-right: 20px
 }
 .site-logo span {
@@ -3504,8 +3506,11 @@ to {
 	color: #999;
 	text-decoration: none
 }
-.widget>ul>li>a:hover {
-	color: #606060
+.widget>ul>li>a:hover,.widget>ul>li>a.focus {
+	color: #000;
+	font-size:16px;
+	font-weight:bold;
+	border-bottom: 1px solid #000;
 }
 .widget>ul>li>a>i {
 	font-size: 15px;
@@ -4175,7 +4180,7 @@ display:none
 	margin-top:8px;
 }
 .feature .feature-title a{
-	text-decoration:underline;
+	/*text-decoration:underline;*/
 	color:#333;
 }
 .feature .feature-title a:hover{

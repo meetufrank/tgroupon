@@ -43,12 +43,13 @@ if ( $_SESSION['user_id'] != 0)
 
 function please_in(){
 
-    /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
+        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
         ecs_header("Location: flow.php?step=login\n");
         exit;
 
 
 }
+
 
 
 

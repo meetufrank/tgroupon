@@ -143,6 +143,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
     //////艺术家
     $art_arr=art_list_info($config['site_artist']);
 
+
     $smarty->assign('firm_arr', $firm_arr);
     $smarty->assign('art_arr', $art_arr);
     unset($firm_arr, $art_arr);
@@ -266,13 +267,11 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 				'fencheng' => 0
             );
         }
-
         /* 获取商品类型存在规格的类型 */
         $specifications = get_goods_type_specifications();
         $goods['specifications_id'] = $specifications[$goods['goods_type']];
         $_attribute = get_goods_specifications_list($goods['goods_id']);
         $goods['_attribute'] = empty($_attribute) ? '' : 1;
-
         /* 根据商品重量的单位重新计算 */
         if ($goods['goods_weight'] > 0)
         {
@@ -495,7 +494,6 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     {
         admin_priv('goods_manage'); // 检查权限
     }
-
     /* 检查货号是否重复 */
     if ($_POST['goods_sn'])
     {
@@ -965,6 +963,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "goods_type = '$goods_type' " .
                 "WHERE goods_id = '$_REQUEST[goods_id]' LIMIT 1";
     }
+
     $db->query($sql);
 
     /* 商品编号 */
@@ -1040,7 +1039,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
          //商品属性图片
                //上传图片
-if($_FILES['attr_img']){
+if($_FILES['attr_img']['name'][0]){
 
            //图片上传处理
  $up = new FileUpload();
@@ -1050,6 +1049,7 @@ if($_FILES['attr_img']){
     $up -> set("maxsize", 2000000);
     $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
     $up -> set("israndname", true);
+
 
 
     //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
@@ -1066,7 +1066,9 @@ if($_FILES['attr_img']){
     } else {
         // echo '<pre>';
         // //获取上传失败以后的错误提示
-        // var_dump($up->getErrorMsg());
+       // var_dump($up->getErrorMsg());
+
+
         // echo '</pre>';
         sys_msg($up->getErrorMsg(), 1);
     }
@@ -1196,7 +1198,6 @@ if($_FILES['attr_img']){
         /* 处理关联文章 */
         handle_goods_article($goods_id);
     }
-
     /* 重新格式化图片名称 */
     $original_img = reformat_image_name('goods', $goods_id, $original_img, 'source');
     $goods_img = reformat_image_name('goods', $goods_id, $goods_img, 'goods');

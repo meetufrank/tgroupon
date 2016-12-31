@@ -377,6 +377,8 @@
           var goods_number = num + Number(diff);
           if( goods_number >= 1){
             $('.cart_number_'+rec_id).val(goods_number); //更新数量
+            var cartnum=document.getElementById('cart_count').innerHTML;
+            document.getElementById('cart_count').innerHTML=Number(cartnum)+Number(diff);
 
             change_cart_number(rec_id,goods_number);
           }

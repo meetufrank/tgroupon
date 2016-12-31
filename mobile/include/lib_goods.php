@@ -996,19 +996,21 @@ function spec_price($spec)
     {
         if(is_array($spec))
         {
-            foreach($spec as $key=>$val)
+            /*foreach($spec as $key=>$val)
             {
                 $spec[$key]=addslashes($val);
-            }
+            }*/
+            $spec=implode(',', $spec);
+
         }
         else
         {
             $spec=addslashes($spec);
         }
 
-        $where = db_create_in($spec, 'goods_attr_id');
+        $where = 'goods_attr ="'.$spec.'"';//db_create_in($spec, 'goods_attr');
 
-        $sql = 'SELECT SUM(attr_price) AS attr_price FROM ' . $GLOBALS['ecs']->table('goods_attr') . " WHERE $where";
+        $sql = 'SELECT  attributeprice  AS attr_price FROM ' . $GLOBALS['ecs']->table('products') . " WHERE $where";
         $price = floatval($GLOBALS['db']->getOne($sql));
     }
     else
@@ -1547,7 +1549,7 @@ function get_products_info($goods_id, $spec_goods_attr_id)
 
     if(isset($goods_attr_array['sort']))
     {
-        $goods_attr = implode('|', $goods_attr_array['sort']);
+        $goods_attr = implode(',', $goods_attr_array['sort']);
 
         $sql = "SELECT * FROM " .$GLOBALS['ecs']->table('products'). " WHERE goods_id = '$goods_id' AND goods_attr = '$goods_attr' LIMIT 0, 1";
         $return_array = $GLOBALS['db']->getRow($sql);

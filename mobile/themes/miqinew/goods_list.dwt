@@ -104,10 +104,10 @@
 		     $.ajax({
 				   type: "post",
 				   url: "goods_list.php?step=ajax_goods_list",
-				   data:{typeid:val,type:id,page_num:page},
+				   data:{typeid:val,type:id},
 				   dataType:"json",
 				   success: function (data) {
-               console.log(data);
+
 						var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
 						laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
 							document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
@@ -226,9 +226,10 @@
               <div class="shop-item">
                 <div class="shop-thumbnail">
                   <a href="shop-single.html" class="item-link"></a>
-
+              {{# if(d.data[i].goods_thumb){}}
                   <img src="../../{{ d.data[i].goods_thumb}}" alt="Shop item">
                 </div>
+                {{# }}}
                 <div class="shop-item-details">
                   <h3 class="shop-item-title"><a href="shop-single.html">{{ d.data[i].goods_name }}</a></h3>
                   <span class="shop-item-price">
