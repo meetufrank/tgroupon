@@ -95,6 +95,7 @@
 
 	</script>
     <script type="text/javascript">
+
        function showlist(val,id){
         if(id=='showsearch'){
          var val= $("#"+val).val();
@@ -107,11 +108,11 @@
 				   data:{typeid:val,type:id},
 				   dataType:"json",
 				   success: function (data) {
-
 						var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
 						laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
 							document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
-              insert_page(data);
+              return
+             insert_page(data);
 						});
 				  },
 				  error: function(data){
@@ -211,7 +212,7 @@
             </div><!-- .column -->
             <div class="column">
               <form method="get" class="search-box">
-                <input type="text" class="form-control" placeholder="请在此处搜索您想要的商品" value="{{d.search}}" id="searchvalue" >
+                <input type="text" class="form-control" placeholder="请在此处搜索您想要的商品" value="" id="searchvalue" >
                 <button type="submit">
                   <i class="material-icons search" onClick="showlist('searchvalue','showsearch')"></i>
                 </button>
@@ -245,6 +246,8 @@
 
 	</script>
 	<script type="text/javascript">
+
+
 	$.ajax({
 				   type: "post",
 				   url: "goods_list.php?step=ajax_goods_type",
@@ -270,7 +273,7 @@
 				   dataType:"json",
 				   success: function (data) {
 
-						var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
+               						var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
 						laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
 							document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
 						});
@@ -327,6 +330,7 @@ layui.use(['laypage', 'layer'], function(){
   });
 });
 }
+
 </script>
 
 </body><!-- <body> -->

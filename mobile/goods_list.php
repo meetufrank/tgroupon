@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2016-12-28 13:52:08
+ * @Last Modified time: 2016-12-31 13:12:13
  */
 define('IN_ECTOUCH', true);
 
@@ -101,7 +101,9 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
 
          $data['data']=$goods_list;
          $data['count']=$goods_count;
+         if($_POST['type']=='showsearch'){
          $data['search']=$_POST['typeid']?$_POST['typeid']:'';
+         }
          $num=ceil($goods_count/$page_count);
 
          $data['pages']=$num;

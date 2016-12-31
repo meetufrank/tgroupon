@@ -117,8 +117,17 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 			'getBrandWCPayRequest',
 			<?php echo $jsApiParameters; ?>,
 			function(res){
-				WeixinJSBridge.log(res.err_msg);
-				alert(res.err_code+res.err_desc+res.err_msg);
+				 WeixinJSBridge.log(res.err_msg);
+				// alert(res.err_code+res.err_desc+res.err_msg);
+				if (res.err_msg == "get_brand_wcpay_request:ok") {
+                    window.location.href="../../flow.php?step=pay_success";
+
+                }else if (res.err_msg == "get_brand_wcpay_request:cancel")  {
+                     alert("支付过程中用户取消");
+                 }else{
+                    //支付失败
+                    alert(res.err_msg)
+                 }
 			}
 		);
 	}

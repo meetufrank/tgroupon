@@ -1256,6 +1256,12 @@ elseif($_REQUEST['step']=='pay_ok'){
 }
 elseif($_REQUEST['step'] == 'pay_success'){
 
+    //猜你喜欢
+    $xinhuan = "select g.goods_id,g.goods_name,g.goods_img,g.shop_price from `ecs_goods` as g  where is_best = 1
+    order by rand() LIMIT 4";
+    $xh = $db->getAll($xinhuan);
+    //print_r($xh);exit;
+   $smarty->assign('xh',$xh);
    $smarty->display('pay_success.dwt');
    exit;
 }

@@ -300,7 +300,7 @@
           <!--PC端商品选择详情-->
             <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
            		<div class="pc-dright-top">
-                	<div class="pc-color-select col-lg-6 col-md-6 col-sm-6" id="pc-select-color">
+                	<!-- <div class="pc-color-select col-lg-6 col-md-6 col-sm-6" id="pc-select-color">
                     	<span style="float:left; margin-top:5px;">选择颜色:</span>
                         <ul>
                         	<li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
@@ -317,17 +317,33 @@
                             <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
                         </ul>
                      	<div class="clear"></div>
-                    </div>
-                    <div class="pc-size-select col-lg-6 col-md-6 col-sm-6" id="pc-select-size">
-                    	<span style="float:left; margin-top:5px;">选择尺寸:</span>
+                    </div> -->
+                    {foreach from=$specification item=spec key=spec_key}
+                          {foreach from=$spec.values item=value key=key}
+                                {foreach from=$spec.values item=value key=key}
+                              <div class="pc-group-select col-lg-6 col-md-6 col-sm-6" id="pc-select-group">
+                                <span style="float:left; margin-top:5px;">组合形式:</span>
+                                  <ul>
+                                    <li><a href="#" class="pc-group-detail">{$value.label}</a></li>
+                                      <li><a href="#" class="pc-group-detail">2件</a></li>
+                                      <li><a href="#" class="pc-group-detail">103件</a></li>
+                                  </ul>
+                                  <div class="clear"></div>
+                              </div>
+                                {/foreach}
+                          {/foreach}
+                    {/foreach}
+
+       <!--                <div class="pc-size-select col-lg-6 col-md-6 col-sm-6" id="pc-select-size">
+                      <span style="float:left; margin-top:5px;">选择尺寸:</span>
                         <ul>
-                        	<li><a href="#" class="pc-size-detail pc-none">大</a></li>
+                          <li><a href="#" class="pc-size-detail pc-none">大</a></li>
                             <li><a href="#" class="pc-size-detail">中</a></li>
                             <li><a href="#" class="pc-size-detail">小</a></li>
                         </ul>
                         <div class="clear"></div>
-                    </div>
-                    <div class="pc-group-select col-lg-6 col-md-6 col-sm-6" id="pc-select-group">
+                    </div> -->
+                 <!--    <div class="pc-group-select col-lg-6 col-md-6 col-sm-6" id="pc-select-group">
                     	<span style="float:left; margin-top:5px;">组合形式:</span>
                         <ul>
                         	<li><a href="#" class="pc-group-detail">单件</a></li>
@@ -345,7 +361,7 @@
                         </ul>
                         <div class="clear"></div>
                     </div>
-                    <div class="clear"></div>
+                    <div class="clear"></div> -->
                 </div>
                 <div class="pc-dright-bottom">
                 	<div class="col-lg-2 col-md-2 col-sm-2">
