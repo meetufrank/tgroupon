@@ -228,3 +228,10 @@ MODIFY COLUMN `wx_open_id`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general
 
 ALTER TABLE `ecs_cart`
 ADD COLUMN `cart_type`  tinyint(1) NOT NULL DEFAULT 0 COMMENT '//1为立即支付' AFTER `new_fencheng`;
+
+
+
+/*#2016/12/33 汪江   添加字段 unionid
+*/
+ALTER TABLE `ecs_users`
+ADD COLUMN `unionid`  varchar(255) NOT NULL COMMENT '//微信公众，开发平台用户唯一标识' AFTER `headimgurl`;

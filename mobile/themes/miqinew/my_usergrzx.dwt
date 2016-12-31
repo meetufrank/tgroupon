@@ -384,7 +384,7 @@
           </div>
           {/foreach}
           <!--收货地址1结束-->
-
+           <a href="indexsi.php" id="editAddress" style="text-decoration: underline;">读取微信地址</a>
           <div class="text-right" id="adddizhi">
               <a href="#"  id="Address_Manager" class="btn btn-primary waves-effect waves-light">添加地址</a>
             </div>
@@ -963,7 +963,7 @@
   <script type="text/javascript">
   	var statu = 0;
 	var edit = document.getElementById('edit');
-	var item = document.getElementById('shouhuo').getElementsByTagName('span');
+ var item = document.getElementById('shouhuo').getElementsByTagName('span');
 	console.log(item);
 	var item_length = item.length;
 	var item_value = new Array(item_length);

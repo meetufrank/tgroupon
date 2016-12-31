@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 21:53:09
  * @Last Modified by:   anchen
- * @Last Modified time: 2016-12-27 23:22:02
+ * @Last Modified time: 2016-12-30 17:48:57
  */
 
 define('IN_ECTOUCH', true);
@@ -38,17 +38,7 @@ require(ROOT_PATH . 'include/indexsan.php');
                     document.getElementById("showAddress").innerHTML="收件人："+res.userName+"  联系电话："+res.telNumber+"  收货地址："+res.proviceFirstStageName+res.addressCitySecondStageName+res.addressCountiesThirdStageName+res.addressDetailInfo+"  邮编："+res.addressPostalCode;
 
 
-                     $.ajax({
-                                    type:"post",
-                                    url:"my_usergrzx.php?act=wxaddress",
-                                    async:true,
-                                    data:{consignee:res.userName,tel:res.telNumber,province:res.proviceFirstStageName,city:res.addressCitySecondStageName,district:res.addressCountiesThirdStageName,address:res.addressDetailInfo},
-                                    dataType: "json",
-                                    success: function (result) {
 
-
-                                          }//回调函数结束
-                               });//ajax结束
 
 
 
