@@ -221,3 +221,9 @@ ADD INDEX `user_name` (`user_name`) USING BTREE ;
 */
 ALTER TABLE `ecs_users`
 MODIFY COLUMN `wx_open_id`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `tj_fencheng`;
+
+
+/*#2016/12/33 汪江   添加字段 unionid
+*/
+ALTER TABLE `ecs_users`
+ADD COLUMN `unionid`  varchar(255) NOT NULL COMMENT '//微信公众，开发平台用户唯一标识' AFTER `headimgurl`;
