@@ -25,7 +25,6 @@ require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 
 
 
-
 $user_id=$_SESSION['user_id'];
 
 
@@ -1355,6 +1354,10 @@ elseif ($action == 'cancel_order')
 /* 收货地址列表界面*/
 elseif ($action == 'address_list')
 {
+         if ($_SESSION['user_id'] <= 0)
+        {
+            please_in();
+        }
 
     include_once(ROOT_PATH . 'include/lib_transaction.php');
     include_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/shopping_flow.php');
@@ -1448,6 +1451,15 @@ elseif ($action == 'address_list')
     // $smarty->assign('integral_scale',   $_CFG['integral_scale']);
     // $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
 
+     $is_wechat=is_wechat_browser();
+        if($is_wechat){
+            $loginphone = "1";   //微信浏览器
+            $smarty->assign('loginphone',  $loginphone);
+          }else{
+
+              $loginpc = "2";  //非微信浏览器
+              $smarty->assign('loginpc',  $loginpc);
+            }
     $smarty->display('my_usergrzx.dwt');
 }
 

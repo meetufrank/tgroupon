@@ -383,8 +383,13 @@
                 </div>
           </div>
           {/foreach}
-          <!--收货地址1结束-->
-<a href=" http://meetuuu.com/mobile/weixindizhi.php" style="text-decoration: underline;">读取微信地址</a>
+          <!--收货地址1结束-->{if $loginpc}
+
+         {else}
+               <a href=" http://meetuuu.com/mobile/weixindizhi.php" style="text-decoration: underline;">读取微信地址</a>
+          {/if}
+
+
           <div class="text-right" id="adddizhi">
               <a  id="Address_Manager" class="btn btn-primary waves-effect waves-light">添加地址</a>
             </div>
