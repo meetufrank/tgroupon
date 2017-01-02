@@ -1106,6 +1106,7 @@ $smarty->assign('payment_list',$payment_list);
 
  if(isset($_GET['cartid'])){
    $cart_list = get_cart_goods($_GET['cartid']);
+    $smarty->assign('cart_list',$cart_list);
    //print_r($cart_list);exit;
   }
 // }else{
@@ -1116,7 +1117,7 @@ $smarty->assign('payment_list',$payment_list);
 //      //print_r($cart_list);exit;
 // }
 //print_r($cart_list);exit;
- $smarty->assign('cart_list',$cart_list);
+
 
   /*
         新加开始

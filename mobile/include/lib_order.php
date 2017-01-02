@@ -1668,10 +1668,13 @@ function order_refund($order, $refund_type, $refund_note, $refund_amount = 0)
  * @access  public
  * @return  array
  */
-function get_cart_goods($id='')
+function get_cart_goods($id=0,$type=0)
 {
+    if($type){
+        $string=" and cart_type=0  ";
+    }
     if($id){
-        $string=" and rec_id in (".$id.") ";
+        $string.=" and rec_id in (".$id.") ";
     }
 
     /* 初始化 */
