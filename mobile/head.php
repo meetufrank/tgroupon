@@ -27,7 +27,7 @@ if ( $_SESSION['user_id'] != 0)
     }
 
 
-
+//print_r($infos);exit;
     /* 取得商品列表，计算合计 */
     $cart_goods = get_cart_goods();
 
@@ -37,19 +37,69 @@ if ( $_SESSION['user_id'] != 0)
  $smarty->assign('user_data', $infos);
 
 
+    $is_wechat=is_wechat_browser();
+        if($is_wechat){
+            $loginphone = "1";   //微信浏览器
+            $smarty->assign('loginphone',  $loginphone);
+          }else{
+
+              $loginpc = "2";  //非微信浏览器
+              $smarty->assign('loginpc',  $loginpc);
+            }
 
 
 
 
+function is_weixin(){
+
+if ( strpos($_SERVER['HTTP_USER_AGENT'],
+
+'MicroMessenger') !== false ) {
+
+        return true;
+
+    }
+
+        return false;
+
+}
 function please_in(){
 
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+
+
+        if(!is_weixin()){
+            ecs_header("Location: https://open.weixin.qq.com/connect/qrconnect?appid=wx972a6f963cf1d611&response_type=code&scope=snsapi_login&redirect_uri=http://meetuuu.com/mobile/weixinlogin.php&state=668ee48328701ca10efef2517d8826e8" );
+               exit;
+          }else{
+
+
+              ecs_header("Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5aec13c030a530b&redirect_uri=http://meetuuu.com/mobile/loginphone.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect");
+               exit;
+            }
+
+
 
 
 }
 
+
+function ajax_please_in(){
+
+       $result['error'] = 12;
+
+        if(!is_weixin()){
+           $result['url'] =" https://open.weixin.qq.com/connect/qrconnect?appid=wx972a6f963cf1d611&response_type=code&scope=snsapi_login&redirect_uri=http://meetuuu.com/mobile/weixinlogin.php&state=668ee48328701ca10efef2517d8826e8";
+
+          }else{
+
+
+              $result['url'] ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5aec13c030a530b&redirect_uri=http://meetuuu.com/mobile/loginphone.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
+
+            }
+
+            echo json_encode($result);
+            exit;
+}
 
 
 

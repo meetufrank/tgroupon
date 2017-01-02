@@ -297,7 +297,7 @@ function getSelectedAttributes(formBuy)
       j++ ;
     }
   }
-alert(spec_arr);
+
   return spec_arr;
 }
 

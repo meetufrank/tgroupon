@@ -89,7 +89,7 @@
 
       	</div>
 
-
+<!--
       	<div class="col-sm-6 hidden-xs">
 
 		        	<div class="shopping-cart-1 padding-bottom-1x" style="padding:15px; margin-bottom: 30px;">
@@ -125,7 +125,7 @@
 									</div>
 					          </div>
 
-      	</div>
+      	</div>-->
 
 		</div><!-- .row -->
     </section><!-- .container -->
@@ -161,6 +161,10 @@
             data:{step:'update_order_pay',pay_list:pay_id,order_id:orderid},
             dataType:'json',
             success: function(data){
+                 if(data.error==12){
+                         window.location.href=data.url;
+                         return;
+                    }
                 if(data.step==1){
                     content=data.content;
                     layer.open({

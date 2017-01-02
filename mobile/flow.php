@@ -56,9 +56,7 @@ if ($_REQUEST['step'] == 'add_to_cart')
 
     if ( $_SESSION['user_id'] == 0)
     {
-           $result['error'] = 12;
-            echo json_encode($result);
-            exit;
+           ajax_please_in();
     }
 
     $_POST['goods']=strip_tags(urldecode($_POST['goods']));
@@ -214,7 +212,7 @@ elseif ($_REQUEST['step']== 'ajax_get_price') {
 
     if ( $_SESSION['user_id'] == 0)
     {
-            please_in();
+            ajax_please_in();
     }
     if(isset($_POST['address'])){
         $addressid=intval($_POST['address']);
@@ -1034,7 +1032,7 @@ elseif($_REQUEST['step'] == 'ajax_get_cart'){
     if ( $_SESSION['user_id'] == 0)
     {
 
-          please_in();
+          ajax_please_in();
     }
 
     $consignee = get_consignee_byid($_SESSION['user_id']);
@@ -1093,6 +1091,7 @@ if(isset($_GET['cartid'])){
      $cart_list=get_cart_goods($row['rec_id'],1);
      //print_r($cart_list);exit;
 }
+//print_r($cart_list);exit;
  $smarty->assign('cart_list',$cart_list);
 
   /*
@@ -2401,7 +2400,7 @@ elseif ($_REQUEST['step'] == 'new_done')
         if(isset($_POST['cart_id'])){
             $idstring=implode(',', $_POST['cart_id']);
         }else{
-
+           exit;
         }
 
 
@@ -2429,9 +2428,7 @@ elseif ($_REQUEST['step'] == 'new_done')
      */
     if ( $_SESSION['user_id'] == 0)
     {
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+        please_in();
     }
       $addressid = isset($_POST['address']) ? intval($_POST['address']) : 0;
     //$consignee = get_consignee($_SESSION['user_id'],$addressid);
@@ -2875,6 +2872,8 @@ elseif ($_REQUEST['step'] == 'new_done')
     "WHERE a.goods_id = b.goods_id AND b.session_id = '".SESS_ID."' AND b.rec_type = '$flow_type'";
     $db->query($sql);
     //增加销量排序用于排序 by wang end
+    /* 清空购物车 */
+    clear_cart_new($idstring);
 
  echo json_encode($order['order_id']);
 exit;
@@ -2892,7 +2891,7 @@ include_once('include/lib_clips.php');
      if ( $_SESSION['user_id'] == 0)
     {
 
-          please_in();
+          ajax_please_in();
     }
 
     $user_id=$_SESSION['user_id'];
