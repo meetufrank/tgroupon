@@ -395,8 +395,20 @@ $smarty->assign('xh',  $xh);  //猜你喜欢
 
 
 
+
+//商品属性筛选
+ if($_REQUEST['act'] == 'attrshuaixuan'){
+
+    $attrid = $_POST['attrid'];
+    $sql = "select * from `ecs_products` where FIND_IN_SET('$attrid',goods_attr) ";
+    $feiattrid = $db->getAll($sql);
+echo json_encode($feiattrid);
+
+ }
+
+
 $smarty->display('shop-single.dwt',      $cache_id);   //商品详情页
-print_r($_SESSION['user_id']) ;exit;
+print_r($_SESSION['user_id']) ;
 
 
 /*------------------------------------------------------ */

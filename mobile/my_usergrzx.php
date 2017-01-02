@@ -26,6 +26,7 @@ require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 
 
 
+$user_id=$_SESSION['user_id'];
 
 
 
@@ -1355,10 +1356,6 @@ elseif ($action == 'cancel_order')
 elseif ($action == 'address_list')
 {
 
-
-
-
-
     include_once(ROOT_PATH . 'include/lib_transaction.php');
     include_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/shopping_flow.php');
     $smarty->assign('lang',  $_LANG);
@@ -1454,12 +1451,74 @@ elseif ($action == 'address_list')
     $smarty->display('my_usergrzx.dwt');
 }
 
+
+//添加微信收货地址
+elseif ($action == 'wxaddress'){
+      //详细地址
+      $address = $_POST['address'];
+
+
+     //省
+      $province = $_POST['province'];
+
+
+     $province ="湖北省";
+
+        if(strpos($province, '壮族自治区')!==false){
+            $news=str_replace("壮族自治区","",$province);
+        }else if(strpos($province, '维吾尔自治区')!==false){
+            $news=str_replace("维吾尔自治区","",$province);
+        }else if(strpos($province, '自治区')!==false){
+            $news=str_replace("自治区","",$province);
+        }else if(strpos($province, '省')!==false){
+            $news=str_replace("省","",$province);
+        }else if(strpos($province, '市')!==false){
+            $news=str_replace("市","",$province);
+        }else{
+             $news = $province;
+        }
+    $sqlprovince = "select region_id from `ecs_region` where region_name LIKE '%$news%' and region_type = 1
+";
+    $provinceid = $db->getOne($sqlprovince);
+
+      $provinceid;
+     //市
+      $city = $_POST['city'];
+      if(strpos($city, '市')!==false){
+         $shis=str_replace("市","",$city);
+      }else{
+         $shis = $city;
+        }
+     $sqlcity = "select region_id from `ecs_region` where region_name LIKE '%$shis%' and region_type = 2
+";
+    $cityid = $db->getOne($sqlcity);
+
+
+
+     //区
+      $district = $_POST['district'];
+    $sqdistrict= "select region_id from `ecs_region` where region_name LIKE '%$district%' and region_type = 3
+";
+    $districtid = $db->getOne($sqdistrict);
+
+
+     //电话
+      $tel = $_POST['tel'];
+
+     //收货人姓名
+      $consignee = $_POST['consignee'];
+  $sql = "insert into `ecs_user_address`(user_id,consignee,tel,province,city,district,address) values($user_id,'$consignee','$tel',$provinceid,$cityid,$districtid,'$address')";
+
+$db->query($sql);
+
+
+}
 //设为默认地址
 elseif($action == 'morendizhi'){
   $addressid = $_POST['addressid'];
-  $sql1 ="update `ecs_user_address` set `default` = 1 where user_id = 1628 and address_id = $addressid";
+  $sql1 ="update `ecs_user_address` set `default` = 1 where user_id = $user_id and address_id = $addressid";
   $db->query($sql1);
-  $sql2 ="update `ecs_user_address` set `default` = 0 where user_id = 1628 and address_id != $addressid";
+  $sql2 ="update `ecs_user_address` set `default` = 0 where user_id = $user_id and address_id != $addressid";
   $db->query($sql2);
   echo 1;
 
@@ -1517,7 +1576,7 @@ elseif ($action == 'act_edit_address')
      // .
      // '<div class="text-right visible-sm visible-xs"><a href="#" style="text-decoration: underline;">读取微信地址</a></div>';
 
-     $sqlssq = "select ua.province,ua.city,ua.district from `ecs_user_address` as ua where user_id = 1628 and address_id = $id";
+     $sqlssq = "select ua.province,ua.city,ua.district from `ecs_user_address` as ua where user_id = $user_id and address_id = $id";
      $shengshiqu = $db->getAll($sqlssq);
 
      $smarty->assign('shengshiqu',$shengshiqu);
@@ -1553,28 +1612,7 @@ elseif ($action == 'act_edit_address')
 }
 
 
-//添加微信收货地址
-elseif ($action == 'wxaddress'){
-      //详细地址
-      $address = $_POST['address'];
-      print_r($address);
-     //省
-      $province = $_POST['province'];
-     //市
-      $city = $_POST['city'];
-     //区
-      $district = $_POST['district'];
-     //电话
-      $tel = $_POST['tel'];
-     //收货人姓名
-      $consignee = $_POST['consignee'];
-$sql = "insert into `ecs_user_address`(consignee) values('$consignee')";
-$db->query($sql);
 
-
-
-
-}
 //修改收货地址
 elseif ($action == 'editdizhi'){
      //地址id

@@ -1,4 +1,10 @@
 ﻿<?php
+session_start();
+define('IN_ECTOUCH', true);
+require(dirname(__FILE__) . '/include/init.php');
+
+
+
 $appid = "wxb5aec13c030a530b";  
 $secret = "2232d4acc3612e530f0ccc311c72d68c";  
 $code = $_GET["code"];
@@ -19,7 +25,7 @@ $get_user_info_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$
 $userinfo = getJson($get_user_info_url);
  
 //打印用户信息
-
+ 
  
 function getJson($url){
     $ch = curl_init();
@@ -31,25 +37,42 @@ function getJson($url){
     curl_close($ch);
     return json_decode($output, true);
 }
-$unionid = $rs['unionid'];
+ print_r($userinfo);
+ $unionid = $userinfo['unionid'];
+ $openid = $userinfo['openid'];
+ $nickname = $userinfo['nickname'];
+ $sex = $userinfo['sex'];
+ $headimgurl = $userinfo['headimgurl'];
+ 
+ 
+ $sql = "select user_id from `ecs_users` where unionid = '$unionid'";
+$openids = $db->getOne($sql);
 
-$openid = $rs['openid'];
-
-$nickname = $rs['nickname'];
-
-$sex = $rs['sex'];
 
 
+if(!$openids){
+	$sql = 'INSERT INTO ' . $ecs->table('users') . '(alias , wx_open_id , sex , reg_time  , headimgurl,unionid) VALUES ' .
+                    "('$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid')";
+     $db->query($sql);
+     $uid=$db->insert_id();
+
+     $_SESSION['user_id'] = $uid;
+
+}else{
+	$sql = "update `ecs_users` set alias='$nickname',sex='$sex',reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid' where unionid='$unionid'";
+	$db->query($sql);
+   $_SESSION['user_id'] = $openids;
+}
 
 
 
 
- $userinfo['unionid'];
-$userinfo['openid'];
-$userinfo['nickname'];
 
-print_r($userinfo['sex']);
-print_r($userinfo['headimgurl']);
 
+header("Location:index.php");
+ 
+ 
+ 
+ 
 
 ?>
