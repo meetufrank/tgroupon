@@ -17,9 +17,6 @@
 
 include_once(ROOT_PATH .'include/lib_order.php');
 
-
-define('PC_URL', $config['pc_url']);   //定义非微信浏览器跳转链接
-define('PHONE_URL', $config['phone_url']);   //定义微信浏览器跳转链接
 if ( $_SESSION['user_id'] != 0)
     {
       $sql  = "SELECT * ".
@@ -30,7 +27,7 @@ if ( $_SESSION['user_id'] != 0)
     }
 
 
-//print_r($infos);exit;
+
     /* 取得商品列表，计算合计 */
     $cart_goods = get_cart_goods(0,1);
 
@@ -40,70 +37,19 @@ if ( $_SESSION['user_id'] != 0)
  $smarty->assign('user_data', $infos);
 
 
-    $is_wechat=is_wechat_browser();
-        if($is_wechat){
-            $loginphone = "1";   //微信浏览器
-            $smarty->assign('loginphone',  $loginphone);
-          }else{
-
-              $loginpc = "2";  //非微信浏览器
-              $smarty->assign('loginpc',  $loginpc);
-            }
 
 
 
 
-function is_weixin(){
-
-if ( strpos($_SERVER['HTTP_USER_AGENT'],
-
-'MicroMessenger') !== false ) {
-
-        return true;
-
-    }
-
-        return false;
-
-}
 function please_in(){
 
-
-
-        if(!is_weixin()){
-
-            ecs_header("Location: ".PC_URL);
-               exit;
-          }else{
-
-
-              ecs_header("Location: ".PHONE_URL);
-               exit;
-            }
-
-
+        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
+        ecs_header("Location: flow.php?step=login\n");
+        exit;
 
 
 }
 
-
-function ajax_please_in(){
-
-       $result['error'] = 12;
-
-        if(!is_weixin()){
-           $result['url'] =PC_URL;
-
-          }else{
-
-
-              $result['url'] =PHONE_URL;
-
-            }
-
-            echo json_encode($result);
-            exit;
-}
 
 
 

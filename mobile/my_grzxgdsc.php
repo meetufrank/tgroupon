@@ -17,6 +17,13 @@ define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
 
+
+   if ($_SESSION['user_id'] <= 0)
+        {
+            please_in();
+        }
+
+
 $user_id=$_SESSION['user_id'];
 
 if($_GET['act'] == ''){
