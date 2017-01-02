@@ -356,7 +356,7 @@
                                 <div>
 	                                <p>收件人:<span>{$consignee.consignee|escape}</span></p>
 	                                <p>手机号:<span>{$consignee.tel}</span></p>
-	                                <p style="float:left">地&nbsp;&nbsp;&nbsp;址:</p>
+	                                <p style="float:left">地&nbsp;&nbsp;址:</p>
 	                                <p><span class="mobile-address">{$consignee.address|escape}</span></p>
                                 </div>
                                 <div class="pull-right hidden-xs" style="margin-top: -62px;">

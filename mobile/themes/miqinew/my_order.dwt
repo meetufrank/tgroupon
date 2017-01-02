@@ -170,9 +170,9 @@
      <!-- Nav Tabs -->
       <ul class="nav-tabs" role="tablist">
         <li class="active"><a href="my_user.php?act=order_list" role="tab" data-toggle="tab">我的订单</a></li>
-        <li><a href="#tab2" role="tab" data-toggle="tab">我的收藏</a></li>
-        <li><a href="#tab3" role="tab" data-toggle="tab">消息记录</a></li>
-        <li><a href="#tab4" role="tab" data-toggle="tab">管理地址</a></li>
+        <li><a href="my_grzxgdsc.php" role="tab" data-toggle="tab">我的收藏</a></li>
+        <li><a href="" role="tab" data-toggle="tab">消息记录</a></li>
+        <li><a href="my_usergrzx.php?act=address_list" role="tab" data-toggle="tab">管理地址</a></li>
         <li><a href="#tab5" role="tab" data-toggle="tab">商品销售</a></li>
       </ul>
       <!-- Tab panes -->
@@ -266,8 +266,6 @@
                     <a><i class="material-icons arrow_downward"></i></a>
                   </div>
               </div>
-
-
             </div>
 
             <div role="tabpanel" class="tab-pane transition fade" id="tab1_2">
@@ -377,11 +375,11 @@
 
                   <h4 class="text-primary">快递信息</h4>
                         <hr>
-                        {$co.order_id}
+
 
                   <!-- 订单id -->
-                  <input type="button" id="orderids" value="{$co.order_id}">
-                  <a id="Logistics" class="btn btn-primary"  href="#">快递跟踪</a>
+                  <input type="hidden"  value="{$co.order_id}" ="orderids">
+                  <a   class="btn btn-primary Logistics"  href="#" data-id="{$co.order_id}">快递跟踪</a>
                   <!-- <a href="my_user.php?act=order_tracking&order_id={$no.order_id}" class="c-btn3">订单跟踪</a> -->
                       </div>
                       </div>
@@ -566,9 +564,13 @@
       });
 
             //快递跟踪
-            $('#Logistics').click(function(){
+            $('.Logistics').each(function(){
+                    $(this).click(function(){
                              //获取订单编号
-                             var orderids = document.getElementById("orderids").value;
+
+                           var orderids = $(this).attr("data-id");
+                           //alert(orderids);
+                             // var orderids = document.getElementById("orderids{}").value;
                              $.ajax({
                                   type:"get",
                                   url:"my_user.php?act=order_tracking_news",
@@ -576,7 +578,6 @@
                                   data:{order_id:orderids},
                                   dataType: "json",
                                   success: function (result) {
-
                                              var content = "";
                                              var a ='';
                                              if(result.status == 200){  //成功
@@ -613,6 +614,9 @@
                                         }//回调函数结束
                              });//ajax结束
               });//快递跟踪点击函数
+
+            });
+
 
 
 
