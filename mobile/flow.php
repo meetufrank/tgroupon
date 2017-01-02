@@ -45,7 +45,7 @@ $smarty->assign('helps',            get_shop_help());       // 网店帮助
 $smarty->assign('lang',             $_LANG);
 $smarty->assign('show_marketprice', $_CFG['show_marketprice']);
 $smarty->assign('data_dir',    DATA_DIR);       // 数据目录
-include_once('head.php');
+include('head.php');
 
 /*------------------------------------------------------ */
 //-- 添加商品到购物车
@@ -174,7 +174,7 @@ include_once('include/cls_json.php');
     {
 
         // 更新：添加到购物车
-        if (addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num))
+        if ($cartid=addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num))
         {
             if ($_CFG['cart_confirm'] > 2)
             {
@@ -206,7 +206,11 @@ include_once('include/cls_json.php');
     }
 
     $result['confirm_type'] = !empty($_CFG['cart_confirm']) ? $_CFG['cart_confirm'] : 2;
+    if($type_num){
+        $result['cartid']=$cartid;
+    }
     die($json->encode($result));
+    exit;
 }
 elseif ($_REQUEST['step']== 'ajax_get_price') {
 
@@ -1068,7 +1072,7 @@ if(isset($_GET['cartid'])){
    exit;
    //
 }else{
-     ecs_header("Location: index.php\n");
+     ecs_header("Location: goods_list.php\n");
 }
 
 
@@ -1100,17 +1104,17 @@ $smarty->assign('payment_list',$payment_list);
 
  $user_id=$_SESSION['user_id'];
 
-if(isset($_GET['cartid'])){
+ if(isset($_GET['cartid'])){
    $cart_list = get_cart_goods($_GET['cartid']);
    //print_r($cart_list);exit;
-   //
-}else{
-     $sql=" select rec_id  from ".$GLOBALS['ecs']->table('cart')." where user_id='".$_SESSION['user_id']."' AND cart_type=1";
-     $row=$GLOBALS['db']->getRow($sql);
+  }
+// }else{
+//      $sql=" select rec_id  from ".$GLOBALS['ecs']->table('cart')." where user_id='".$_SESSION['user_id']."' AND cart_type=1";
+//      $row=$GLOBALS['db']->getRow($sql);
 
-     $cart_list=get_cart_goods($row['rec_id'],1);
-     //print_r($cart_list);exit;
-}
+//      $cart_list=get_cart_goods($row['rec_id'],1);
+//      //print_r($cart_list);exit;
+// }
 //print_r($cart_list);exit;
  $smarty->assign('cart_list',$cart_list);
 
