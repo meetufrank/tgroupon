@@ -289,14 +289,19 @@
     </section>
 
    <script type="text/javascript">
+
           function attrshuaixuan(attrid){
+
+            var id = document.getElementById("goodsid").value;
                $.ajax({
                                     type:"post",
                                     url:"shop-single.php?act=attrshuaixuan",
                                     async:true,
-                                    data:{attrid:attrid},
+                                    data:{attrid:attrid,'id':id},
                                     dataType: "json",
                                     success: function (result) {
+
+                                         alert("abcdefghijkmnjoadja");
 
 
                                           }//回调函数结束
@@ -310,6 +315,7 @@
 
     <!-- 电脑端商品详情选择-->
     <section class="fw-section bg-gray padding-bottom-3x  hidden-xs">
+     <input id="goodsid" type="hidden" value="{$goods_id}">
       <div class="container">
         <div class="product-info padding-top-2x text-center">
           <h1 class="h2 space-bottom-half">创 意 椅 子</h1>
