@@ -641,6 +641,12 @@ elseif ($_REQUEST['step'] == 'consignee')
     }
     else
     {
+
+         /* 获得用户所有的收货人信息 */
+        if ($_SESSION['user_id'] <= 0)
+        {
+            ajax_please_in();
+        }
         /*
          * 保存收货人信息
          */
@@ -658,9 +664,10 @@ elseif ($_REQUEST['step'] == 'consignee')
             'mobile'        => empty($_POST['mobile'])     ? '' :   compile_str(make_semiangle(trim($_POST['mobile']))),
             'sign_building' => empty($_POST['sign_building']) ? '' :compile_str($_POST['sign_building']),
             'best_time'     => empty($_POST['best_time'])  ? '' :   compile_str($_POST['best_time']),
+            'user_id'       =>$_SESSION['user_id']
         );
 
-        if ($_SESSION['user_id'] > 0)
+        if ($_SESSION['user_id'] > 0&&$consignee['address_id']>0)
         {
             include_once(ROOT_PATH . 'include/lib_transaction.php');
 
@@ -668,10 +675,23 @@ elseif ($_REQUEST['step'] == 'consignee')
             $consignee['user_id'] = $_SESSION['user_id'];
 
             save_consignee($consignee, true);
+        }else{
+            include_once(ROOT_PATH . 'include/lib_transaction.php');
+            $data=insert_consignee($consignee);
+            $sql="select region_name from ".$GLOBALS['ecs']->table('region')." where region_id=".$consignee['province'];
+            $data['province']=$GLOBALS['db']->getOne($sql);
+            $sql="select region_name from ".$GLOBALS['ecs']->table('region')." where region_id=".$consignee['city'];
+            $data['city']=$GLOBALS['db']->getOne($sql);
+            $sql="select region_name from ".$GLOBALS['ecs']->table('region')." where region_id=".$consignee['district'];
+            $data['district']=$GLOBALS['db']->getOne($sql);
+            echo json_encode($data);
+
         }
 
         /* 保存到session */
         $_SESSION['flow_consignee'] = stripslashes_deep($consignee);
+
+
 
        // ecs_header("Location: flow.php?step=checkout\n");
        exit;
