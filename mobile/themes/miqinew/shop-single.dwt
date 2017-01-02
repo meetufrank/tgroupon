@@ -348,7 +348,7 @@
                   <!--   <div class="pc-size-select col-lg-6 col-md-6 col-sm-6" id="pc-select-size">
                     	<span style="float:left; margin-top:5px;">选择尺寸:</span>
                         <ul>
-                        	<li><a href="#" class="pc-size-detail pc-none">大</a></li>
+                          <li><a href="#" class="pc-size-detail pc-none">大</a></li>
                             <li><a href="#" class="pc-size-detail">中</a></li>
                             <li><a href="#" class="pc-size-detail">小</a></li>
                         </ul>

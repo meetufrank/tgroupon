@@ -84,7 +84,7 @@
 
                   <div class="col-md-6 check_box"  >
                     <label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label{$consignee.address_id}"  >
-                     <input type="radio" name="co_shipping" {if $smarty.foreach.address.iteration==1}checked{/if} value="{$consignee.address_id}"  id="address{$consignee.address_id}"  >
+                     <input type="radio" name="my_co_shipping" {if $smarty.foreach.address.iteration==1}checked{/if} value="{$consignee.address_id}"  id="address{$consignee.address_id}"  >
                      </label>
                    {$consignee.province}{$consignee.city}{$consignee.district}{$consignee.address}
                   </div>
@@ -191,7 +191,7 @@
                                             &nbsp;
                                         </div>
                                         <div class="col-sm-3" style="padding-top: 3%;">
-                                            <h5>总计：<span class="amount_pay" style="color:#f20000"></span></h5>
+                                            <h5>总计：<span class="amount_pay" style="color:#f20000">{$cart_list.total.goods_price}</span></h5>
                                         </div>
                                         <div class="text-right order_ok" style="padding-right: 18px;"><a href="#" class="btn btn-primary" style="width:auto;" >确认订单</a></div>
                                    </div>
@@ -236,7 +236,7 @@
                                         <div class="pull-right come_price come_price_pc">￥<span>0</span></div>
                                     </div>
                                     <div class="clearfix" style="padding-top:20px; margin:0 0 30px 0; border-top: 1px solid #ededed; ">
-                                        <h5 class="text-right">总计：<span class="amount_pay" style="color:#f20000" >
+                                        <h5 class="text-right">总计：<span class="amount_pay" style="color:#f20000" >{$cart_list.total.goods_price}
                                         </span></h5>
                                     </div>
                                        <div><a href="#" class="btn btn-primary order_ok" >确认订单</a></div>
@@ -267,7 +267,9 @@
 
 
 
-    <script>
+    <script type="text/javascript">
+
+
  $(" #pay_consignee input[type='radio']").each(function(){
 
                        var id= $(this).attr("id");
@@ -283,7 +285,10 @@
                               dataType: "json",
                               data:{step:'ajax_get_price',address:addressid},
                               success: function(data){
-
+                                           if(data.error==12){
+                                                   window.location.href=data.url;
+                                                   return;
+                                              }
                                    $(".come_price span").text(data);
                                     jisuan();
 
@@ -293,6 +298,8 @@
                           });
 
 
+                       }else{
+                              $(".order_ok").css("display","none");
                        }
 
                       });
@@ -304,6 +311,11 @@
  $(function(){
 
 
+    if($("input:radio[name='my_co_shipping']").length > 0){
+              $(".order_ok").css("display","block");
+        }else{
+             $(".order_ok").css("display","none");
+        }
       validate();
 
     })
@@ -349,6 +361,10 @@
           dataType: "json",
           data:{step:'ajax_get_price',address:address},
           success: function(data){
+            if(data.error==12){
+                               window.location.href=data.url;
+                               return;
+                          }
                $(".come_price span").text(data);
               jisuan();
 
@@ -538,7 +554,7 @@
                         //市事件结束
                         },
               yes: function(index){
-                //console.log($('#address_form').serialize());
+                console.log($('#address_form').serialize());
 
                     $.ajax({
                           type:"POST",
@@ -546,7 +562,6 @@
                           data:$('#address_form').serialize(),
                           success: function(data){
                                  layer.close(index);
-                                 alert("adfa");
                                  //top.location.href = top.location.href;
                                   //window.location.href=window.location.href;
                                   window.location.reload();
