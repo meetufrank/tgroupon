@@ -104,6 +104,7 @@
                    <h5 style="margin-top: 15px; margin-left: 18px;" id="address_h5"><a href="#" id="Address_Manager" class="toggle-section" style="text-decoration: underline;">新增地址</a></h5>
         </div>
 </section>
+
 <div class="container-fluid" style="height:12px; margin-bottom: 10px; background:#f4f4f4;">&nbsp;</div>
         <!-- 订单信息 -->
         <section class="container">
@@ -292,6 +293,7 @@
                                    $(".come_price span").text(data);
                                     jisuan();
 
+
                               }
 
 
@@ -312,7 +314,7 @@
  $(function(){
 
 
-    if($("input:radio[name='my_co_shipping']").length > 0){
+    if($("input:radio[name='my_co_shipping']").length > 0&& $(".pc_paylist").length>0){
               $(".order_ok").css("display","block");
         }else{
              $(".order_ok").css("display","none");
@@ -364,7 +366,7 @@
           success: function(data){
             if(data.error==12){
                                window.location.href=data.url;
-                               return;
+
                           }
                $(".come_price span").text(data);
               jisuan();
@@ -523,7 +525,7 @@
                          $("#city").change(function(){
                             var id=$("#city").val();
                             $("#district").find("option").remove();
-                            $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
+                            $("#district").append('<option value="0" selected>{$lang.please_select}{$name_of_region[3]}</option>');
                             if(id!=0){
                              $.ajax({
                                 url:"ajax_region.php",
@@ -532,15 +534,11 @@
                                 success: function(data){
 
                                      $.each(data,function(i){
-                                     if(i==0){
-                                         $("#district").append(
-                                           ' <option value="'+data[i].region_id+'" selected >'+data[i].region_name+'</option>'
-                                         );
-                                     }else{
+
                                          $("#district").append(
                                            ' <option value="'+data[i].region_id+'" >'+data[i].region_name+'</option>'
                                          );
-                                     }
+
 
                                      });
 
@@ -568,8 +566,13 @@
                             if(data.error==12){
                                   window.location.href=data.url;
                             }
-                            var content=' <div class="row pay_label" style=" padding:2px 0; margin-bottom: 10px; margin-left: 0; margin-right: 0;cursor:pointer;" onclick="checkadd({'+data.address_id+');" id="div'+data.address_id+'"><div class="col-md-6 check_box"  ><label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label'+data.address_id+'"  ><div class="iradio"><input type="radio" name="my_co_shipping"  value="'+data.address_id+'"  id="address'+data.address_id+'"  ><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label> '+data.province+data.city+data.district+data.address+'</div><div class="col-md-3">收件人：'+data.consignee+'</div><div class="col-md-3">联系电话：'+data.tel+'</div> </div>';
-                            var content=' <div class="row pay_label" style=" padding:2px 0; margin-bottom: 10px; margin-left: 0; margin-right: 0;cursor:pointer;" onclick="checkadd({'+data.address_id+');" id="div'+data.address_id+'"><div class="col-md-6 check_box"  ><label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label'+data.address_id+'"  ><input type="radio" name="my_co_shipping"  value="'+data.address_id+'"  id="address'+data.address_id+'"  ></label> '+data.province+data.city+data.district+data.address+'</div><div class="col-md-3">收件人：'+data.consignee+'</div><div class="col-md-3">联系电话：'+data.tel+'</div> </div>';
+                            if($("input:radio[name='my_co_shipping']").length > 0){
+                                      var check='';
+                                }else{
+                                     var check='checked';
+                                }
+                            var content=' <div class="row pay_label" style=" padding:2px 0; margin-bottom: 10px; margin-left: 0; margin-right: 0;cursor:pointer;" onclick="checkadd('+data.address_id+')" id="div'+data.address_id+'"><div class="col-md-6 check_box"  ><label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label'+data.address_id+'"  ><div class="iradio '+check+'"><input type="radio" name="my_co_shipping"  value="'+data.address_id+'"  id="address'+data.address_id+'"  style="position: absolute; opacity: 0;" '+check+'><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label> '+data.province+data.city+data.district+data.address+'</div><div class="col-md-3">收件人：'+data.consignee+'</div><div class="col-md-3">联系电话：'+data.tel+'</div> </div>';
+
                             //console.log(data);
                              $("#address_h5").before(content);
 
