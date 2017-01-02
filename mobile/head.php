@@ -17,6 +17,9 @@
 
 include_once(ROOT_PATH .'include/lib_order.php');
 
+
+define('PC_URL', $config['pc_url']);   //定义非微信浏览器跳转链接
+define('PHONE_URL', $config['phone_url']);   //定义微信浏览器跳转链接
 if ( $_SESSION['user_id'] != 0)
     {
       $sql  = "SELECT * ".
@@ -68,12 +71,13 @@ function please_in(){
 
 
         if(!is_weixin()){
-            ecs_header("Location: https://open.weixin.qq.com/connect/qrconnect?appid=wx972a6f963cf1d611&response_type=code&scope=snsapi_login&redirect_uri=http://meetuuu.com/mobile/weixinlogin.php&state=668ee48328701ca10efef2517d8826e8" );
+
+            ecs_header("Location: ".PC_URL);
                exit;
           }else{
 
 
-              ecs_header("Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5aec13c030a530b&redirect_uri=http://meetuuu.com/mobile/loginphone.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect");
+              ecs_header("Location: ".PHONE_URL);
                exit;
             }
 
@@ -88,12 +92,12 @@ function ajax_please_in(){
        $result['error'] = 12;
 
         if(!is_weixin()){
-           $result['url'] =" https://open.weixin.qq.com/connect/qrconnect?appid=wx972a6f963cf1d611&response_type=code&scope=snsapi_login&redirect_uri=http://meetuuu.com/mobile/weixinlogin.php&state=668ee48328701ca10efef2517d8826e8";
+           $result['url'] =PC_URL;
 
           }else{
 
 
-              $result['url'] ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5aec13c030a530b&redirect_uri=http://meetuuu.com/mobile/loginphone.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
+              $result['url'] =PHONE_URL;
 
             }
 

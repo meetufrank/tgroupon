@@ -97,7 +97,7 @@ if(!$openids){
 
 
 
-header("Location:index.php");
+header("Location:goods_list.php");
 
 
 

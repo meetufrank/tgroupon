@@ -267,12 +267,9 @@
 
 
 
-    <script>
-    if($("input:radio[name='my_co_shipping']").length > 0){
-              $(".order_ok").css("display","block");
-        }else{
-             $(".order_ok").css("display","none");
-        }
+    <script type="text/javascript">
+
+
  $(" #pay_consignee input[type='radio']").each(function(){
 
                        var id= $(this).attr("id");
@@ -314,6 +311,11 @@
  $(function(){
 
 
+    if($("input:radio[name='my_co_shipping']").length > 0){
+              $(".order_ok").css("display","block");
+        }else{
+             $(".order_ok").css("display","none");
+        }
       validate();
 
     })
@@ -552,7 +554,7 @@
                         //市事件结束
                         },
               yes: function(index){
-                //console.log($('#address_form').serialize());
+                console.log($('#address_form').serialize());
 
                     $.ajax({
                           type:"POST",
