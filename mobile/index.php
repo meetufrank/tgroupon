@@ -14,15 +14,11 @@
 */
 //
 //
-session_start();
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
+
 require(ROOT_PATH . 'include/lib_weixintong.php');
-
-
-
-
 
 
 
@@ -169,6 +165,38 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
 
 		$tianxin_url = $db->getOne("SELECT cfg_value  FROM `wxch_cfg` WHERE `cfg_name` = 'tianxin_url'");
 		$smarty->assign('tianxin_url',  $tianxin_url);
+
+$_SESSION['user_id'];
+
+
+
+//判断是否为微信登录
+if(is_weixin()){
+
+  $loginphone = "1";   //微信浏览器
+  $smarty->assign('loginphone',  $loginphone);
+}else{
+
+  $loginpc = "2";  //非微信浏览器
+  $smarty->assign('loginpc',  $loginpc);
+}
+
+
+function is_weixin(){
+
+if ( strpos($_SERVER['HTTP_USER_AGENT'],
+
+'MicroMessenger') !== false ) {
+
+        return true;
+
+    }
+
+        return false;
+
+}
+
+
 
 $smarty->assign('name', $name);
 $smarty->display('index.dwt', $cache_id);

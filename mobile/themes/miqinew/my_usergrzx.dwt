@@ -311,7 +311,7 @@
     <section class="container padding-top-3x">
      <!-- Nav Tabs -->
       <ul class="nav-tabs" role="tablist">
-        <li ><a href="#tab1" role="tab" data-toggle="tab">我的订单</a></li>
+        <li ><a href="my_user.php?act=order_list" role="tab" data-toggle="tab">我的订单</a></li>
         <li><a href="my_grzxgdsc.php" role="tab" data-toggle="tab">我的收藏</a></li>
         <li><a href="" role="tab" data-toggle="tab">消息记录</a></li>
         <li class="active"><a href="my_usergrzx.php?act=address_list" role="tab" data-toggle="tab">管理地址</a></li>
@@ -356,7 +356,7 @@
                                 <div>
 	                                <p>收件人:<span>{$consignee.consignee|escape}</span></p>
 	                                <p>手机号:<span>{$consignee.tel}</span></p>
-	                                <p style="float:left">地&nbsp;&nbsp;&nbsp;址:</p>
+	                                <p style="float:left">地&nbsp;&nbsp;址:</p>
 	                                <p><span class="mobile-address">{$consignee.address|escape}</span></p>
                                 </div>
                                 <div class="pull-right hidden-xs" style="margin-top: -62px;">
@@ -383,10 +383,15 @@
                 </div>
           </div>
           {/foreach}
-          <!--收货地址1结束-->
+          <!--收货地址1结束-->{if $loginpc}
+
+         {else}
+               <a href=" http://meetuuu.com/mobile/weixindizhi.php" style="text-decoration: underline;">读取微信地址</a>
+          {/if}
+
 
           <div class="text-right" id="adddizhi">
-              <a href="#"  id="Address_Manager" class="btn btn-primary waves-effect waves-light">添加地址</a>
+              <a  id="Address_Manager" class="btn btn-primary waves-effect waves-light">添加地址</a>
             </div>
         </div>
 
@@ -638,7 +643,7 @@
    	+
    	'<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="详细地址" /></div>'
    	+
-   	'<div class="text-right visible-sm visible-xs"><a id="address" href="javascript:getaddr();"   style="text-decoration: underline;">读取微信地址</a></div>';
+   	'<div class="text-right visible-sm visible-xs"><a id="" href="indexsi.php"   style="text-decoration: underline;">读取微信地址</a></div>';
   	layer.open({
 			  title: [
 			    '编辑地址',
@@ -812,7 +817,7 @@
     +
     '<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="详细地址" name="address"/></div>'
     +
-    '<div class="text-right visible-sm visible-xs"><a href="javascript:getaddr();" style="text-decoration: underline;">读取微信地址</a></div></form>'
+    '<div class="text-right visible-sm visible-xs"><a href="" style="text-decoration: underline;"></a></div></form>'
     ;
 
 
@@ -963,7 +968,7 @@
   <script type="text/javascript">
   	var statu = 0;
 	var edit = document.getElementById('edit');
-	var item = document.getElementById('shouhuo').getElementsByTagName('span');
+ var item = document.getElementById('shouhuo').getElementsByTagName('span');
 	console.log(item);
 	var item_length = item.length;
 	var item_value = new Array(item_length);

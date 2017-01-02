@@ -655,6 +655,27 @@ function save_consignee($consignee, $default=false)
 
     return $res !== false;
 }
+/**
+ * 保存用户的收货人信息
+ *
+ *
+ * @access  public
+ * @param   array   $consignee
+ * @param   boolean $default        是否将该收货人信息设置为默认收货人信息
+ * @return  boolean
+ */
+function insert_consignee($consignee, $default=false)
+{
+
+
+        /* 添加地址 */
+        $res = $GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('user_address'), $consignee, 'INSERT');
+        $consignee['address_id'] = $GLOBALS['db']->insert_id();
+
+
+
+    return $consignee;
+}
 
 /**
  * 删除一个收货地址

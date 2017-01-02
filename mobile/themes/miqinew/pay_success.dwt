@@ -116,63 +116,25 @@
         <hr style="position:relative;">
       <h3 class="padding-top">猜 你 喜 欢</h3>
       <div class="row padding-top">
-        <div class="col-lg-3 col-sm-6 mobile-indent">
-          <div class="shop-item">
-            <div class="shop-thumbnail">
-              <a href="#" class="item-link"></a>
-              <img src="img/shop/th05.jpg" alt="Shop item">
-            </div>
-            <div class="shop-item-details">
-              <h3 class="shop-item-title"><a href="#">商品 名称</a></h3>
-              <span class="shop-item-price">
-                <span class="old-price">￥69.00</span>
-                ￥48.00
-              </span>
-            </div>
-          </div><!-- .shop-item -->
-        </div><!-- .col-lg-3.col-sm-6 -->
-        <div class="col-lg-3 col-sm-6 mobile-indent">
-          <div class="shop-item">
-            <div class="shop-thumbnail">
-              <a href="#" class="item-link"></a>
-              <img src="img/shop/th06.jpg" alt="Shop item">
-            </div>
-            <div class="shop-item-details">
-              <h3 class="shop-item-title"><a href="#">LED 大灯泡</a></h3>
-              <span class="shop-item-price">
-                ￥130.00
-              </span>
-            </div>
-          </div><!-- .shop-item -->
-        </div><!-- .col-lg-3.col-sm-6 -->
-        <div class="col-lg-3 col-sm-6 mobile-indent">
-          <div class="shop-item">
-            <div class="shop-thumbnail">
-              <a href="#" class="item-link"></a>
-              <img src="img/shop/th04.jpg" alt="Shop item">
-            </div>
-            <div class="shop-item-details">
-              <h3 class="shop-item-title"><a href="#">超级大灯泡</a></h3>
-              <span class="shop-item-price">
-                ￥178.00
-              </span>
-            </div>
-          </div><!-- .shop-item -->
-        </div><!-- .col-lg-3.col-sm-6 -->
-        <div class="col-lg-3 col-sm-6 mobile-indent">
-          <div class="shop-item">
-            <div class="shop-thumbnail">
-              <a href="#" class="item-link"></a>
-              <img src="img/shop/th08.jpg" alt="Shop item">
-            </div>
-            <div class="shop-item-details">
-              <h3 class="shop-item-title"><a href="#">包邮超级大灯泡</a></h3>
-              <span class="shop-item-price">
-                ￥112.35
-              </span>
-            </div>
-          </div><!-- .shop-item -->
-        </div><!-- .col-lg-3.col-sm-6 -->
+
+      {foreach from=$xh item=xh}
+      <div class="col-lg-3 col-sm-6 mobile-indent">
+        <div class="shop-item">
+        <div class="shop-thumbnail">
+          <a href="shop-single.php?id={$xh.goods_id}" class="item-link"></a>
+          {if $xh.goods_img}<img src="../../{$xh.goods_img}" alt="Shop item">{/if}
+        </div>
+        <div class="shop-item-details">
+          <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>
+          <span class="shop-item-price">
+          <span class="old-price"></span>
+            ￥{$xh.shop_price}
+          </span>
+        </div>
+        </div><!-- .shop-item -->
+      </div><!-- .col-lg-3.col-sm-6 -->
+        {/foreach}
+
       </div><!-- .row -->
     </section><!-- .container -->
 

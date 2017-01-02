@@ -45,22 +45,24 @@ $smarty->assign('helps',            get_shop_help());       // 网店帮助
 $smarty->assign('lang',             $_LANG);
 $smarty->assign('show_marketprice', $_CFG['show_marketprice']);
 $smarty->assign('data_dir',    DATA_DIR);       // 数据目录
-include_once('head.php');
-//print_r(SESS_ID) ;exit;
+include('head.php');
+
 /*------------------------------------------------------ */
 //-- 添加商品到购物车
 /*------------------------------------------------------ */
 if ($_REQUEST['step'] == 'add_to_cart')
 {
 
+
     if ( $_SESSION['user_id'] == 0)
     {
-            please_in();
+           ajax_please_in();
     }
-    include_once('include/cls_json.php');
+
     $_POST['goods']=strip_tags(urldecode($_POST['goods']));
     $_POST['goods'] = json_str_iconv($_POST['goods']);
 
+  $type_num=intval($_REQUEST['type']);
     if (!empty($_REQUEST['goods_id']) && empty($_POST['goods']))
     {
         if (!is_numeric($_REQUEST['goods_id']) || intval($_REQUEST['goods_id']) <= 0)
@@ -70,7 +72,7 @@ if ($_REQUEST['step'] == 'add_to_cart')
         $goods_id = intval($_REQUEST['goods_id']);
         exit;
     }
-
+include_once('include/cls_json.php');
     $result = array('error' => 0, 'message' => '', 'content' => '', 'goods_id' => '');
     $json  = new JSON;
 
@@ -148,7 +150,7 @@ if ($_REQUEST['step'] == 'add_to_cart')
             $new_goods_attr_id[]=$value;
         }
     }
-    $goods_attr_id=implode('|', $new_goods_attr_id);
+    $goods_attr_id=implode(',', $new_goods_attr_id);
     $sql = "SELECT product_number ".
         'FROM ' . $GLOBALS['ecs']->table('products').
         "WHERE goods_attr = '" . $goods_attr_id . "'";
@@ -170,8 +172,9 @@ if ($_REQUEST['step'] == 'add_to_cart')
     /* 更新：购物车 */
     else
     {
+
         // 更新：添加到购物车
-        if (addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent))
+        if ($cartid=addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num))
         {
             if ($_CFG['cart_confirm'] > 2)
             {
@@ -203,13 +206,17 @@ if ($_REQUEST['step'] == 'add_to_cart')
     }
 
     $result['confirm_type'] = !empty($_CFG['cart_confirm']) ? $_CFG['cart_confirm'] : 2;
+    if($type_num){
+        $result['cartid']=$cartid;
+    }
     die($json->encode($result));
+    exit;
 }
 elseif ($_REQUEST['step']== 'ajax_get_price') {
 
     if ( $_SESSION['user_id'] == 0)
     {
-            please_in();
+            ajax_please_in();
     }
     if(isset($_POST['address'])){
         $addressid=intval($_POST['address']);
@@ -638,6 +645,12 @@ elseif ($_REQUEST['step'] == 'consignee')
     }
     else
     {
+
+         /* 获得用户所有的收货人信息 */
+        if ($_SESSION['user_id'] <= 0)
+        {
+            ajax_please_in();
+        }
         /*
          * 保存收货人信息
          */
@@ -655,9 +668,10 @@ elseif ($_REQUEST['step'] == 'consignee')
             'mobile'        => empty($_POST['mobile'])     ? '' :   compile_str(make_semiangle(trim($_POST['mobile']))),
             'sign_building' => empty($_POST['sign_building']) ? '' :compile_str($_POST['sign_building']),
             'best_time'     => empty($_POST['best_time'])  ? '' :   compile_str($_POST['best_time']),
+            'user_id'       =>$_SESSION['user_id']
         );
 
-        if ($_SESSION['user_id'] > 0)
+        if ($_SESSION['user_id'] > 0&&$consignee['address_id']>0)
         {
             include_once(ROOT_PATH . 'include/lib_transaction.php');
 
@@ -665,10 +679,23 @@ elseif ($_REQUEST['step'] == 'consignee')
             $consignee['user_id'] = $_SESSION['user_id'];
 
             save_consignee($consignee, true);
+        }else{
+            include_once(ROOT_PATH . 'include/lib_transaction.php');
+            $data=insert_consignee($consignee);
+            $sql="select region_name from ".$GLOBALS['ecs']->table('region')." where region_id=".$consignee['province'];
+            $data['province']=$GLOBALS['db']->getOne($sql);
+            $sql="select region_name from ".$GLOBALS['ecs']->table('region')." where region_id=".$consignee['city'];
+            $data['city']=$GLOBALS['db']->getOne($sql);
+            $sql="select region_name from ".$GLOBALS['ecs']->table('region')." where region_id=".$consignee['district'];
+            $data['district']=$GLOBALS['db']->getOne($sql);
+            echo json_encode($data);
+
         }
 
         /* 保存到session */
         $_SESSION['flow_consignee'] = stripslashes_deep($consignee);
+
+
 
        // ecs_header("Location: flow.php?step=checkout\n");
        exit;
@@ -1029,7 +1056,7 @@ elseif($_REQUEST['step'] == 'ajax_get_cart'){
     if ( $_SESSION['user_id'] == 0)
     {
 
-          please_in();
+          ajax_please_in();
     }
 
     $consignee = get_consignee_byid($_SESSION['user_id']);
@@ -1045,7 +1072,7 @@ if(isset($_GET['cartid'])){
    exit;
    //
 }else{
-     ecs_header("Location: index.php\n");
+     ecs_header("Location: goods_list.php\n");
 }
 
 
@@ -1077,14 +1104,20 @@ $smarty->assign('payment_list',$payment_list);
 
  $user_id=$_SESSION['user_id'];
 
-if(isset($_GET['cartid'])){
+ if(isset($_GET['cartid'])){
    $cart_list = get_cart_goods($_GET['cartid']);
+    $smarty->assign('cart_list',$cart_list);
    //print_r($cart_list);exit;
-   //
-}else{
-     ecs_header("Location: index.php\n");
-}
- $smarty->assign('cart_list',$cart_list);
+  }
+// }else{
+//      $sql=" select rec_id  from ".$GLOBALS['ecs']->table('cart')." where user_id='".$_SESSION['user_id']."' AND cart_type=1";
+//      $row=$GLOBALS['db']->getRow($sql);
+
+//      $cart_list=get_cart_goods($row['rec_id'],1);
+//      //print_r($cart_list);exit;
+// }
+//print_r($cart_list);exit;
+
 
   /*
         新加开始
@@ -1193,6 +1226,7 @@ if(isset($_GET['cartid'])){
     /* 保存 session */
     $_SESSION['flow_order'] = $order;
     $smarty->assign('order',$order);
+
     $smarty->display('pays.dwt');
     exit;
 }
@@ -1246,6 +1280,12 @@ elseif($_REQUEST['step']=='pay_ok'){
 }
 elseif($_REQUEST['step'] == 'pay_success'){
 
+    //猜你喜欢
+    $xinhuan = "select g.goods_id,g.goods_name,g.goods_img,g.shop_price from `ecs_goods` as g  where is_best = 1
+    order by rand() LIMIT 4";
+    $xh = $db->getAll($xinhuan);
+    //print_r($xh);exit;
+   $smarty->assign('xh',$xh);
    $smarty->display('pay_success.dwt');
    exit;
 }
@@ -2385,7 +2425,7 @@ elseif ($_REQUEST['step'] == 'new_done')
         if(isset($_POST['cart_id'])){
             $idstring=implode(',', $_POST['cart_id']);
         }else{
-
+           exit;
         }
 
 
@@ -2413,9 +2453,7 @@ elseif ($_REQUEST['step'] == 'new_done')
      */
     if ( $_SESSION['user_id'] == 0)
     {
-        /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
-        exit;
+        please_in();
     }
       $addressid = isset($_POST['address']) ? intval($_POST['address']) : 0;
     //$consignee = get_consignee($_SESSION['user_id'],$addressid);
@@ -2859,6 +2897,8 @@ elseif ($_REQUEST['step'] == 'new_done')
     "WHERE a.goods_id = b.goods_id AND b.session_id = '".SESS_ID."' AND b.rec_type = '$flow_type'";
     $db->query($sql);
     //增加销量排序用于排序 by wang end
+    /* 清空购物车 */
+    clear_cart_new($idstring);
 
  echo json_encode($order['order_id']);
 exit;
@@ -2876,7 +2916,7 @@ include_once('include/lib_clips.php');
      if ( $_SESSION['user_id'] == 0)
     {
 
-          please_in();
+          ajax_please_in();
     }
 
     $user_id=$_SESSION['user_id'];

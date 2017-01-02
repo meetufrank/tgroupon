@@ -84,7 +84,7 @@
 
                   <div class="col-md-6 check_box"  >
                     <label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label{$consignee.address_id}"  >
-                     <input type="radio" name="co_shipping" {if $smarty.foreach.address.iteration==1}checked{/if} value="{$consignee.address_id}"  id="address{$consignee.address_id}"  >
+                     <input type="radio" name="my_co_shipping" {if $smarty.foreach.address.iteration==1}checked{/if} value="{$consignee.address_id}"  id="address{$consignee.address_id}"  >
                      </label>
                    {$consignee.province}{$consignee.city}{$consignee.district}{$consignee.address}
                   </div>
@@ -101,9 +101,10 @@
 
 
 
-                   <h5 style="margin-top: 15px; margin-left: 18px;"><a href="#" id="Address_Manager" class="toggle-section" style="text-decoration: underline;">新增地址</a></h5>
+                   <h5 style="margin-top: 15px; margin-left: 18px;" id="address_h5"><a href="#" id="Address_Manager" class="toggle-section" style="text-decoration: underline;">新增地址</a></h5>
         </div>
 </section>
+
 <div class="container-fluid" style="height:12px; margin-bottom: 10px; background:#f4f4f4;">&nbsp;</div>
         <!-- 订单信息 -->
         <section class="container">
@@ -191,7 +192,7 @@
                                             &nbsp;
                                         </div>
                                         <div class="col-sm-3" style="padding-top: 3%;">
-                                            <h5>总计：<span class="amount_pay" style="color:#f20000"></span></h5>
+                                            <h5>总计：<span class="amount_pay" style="color:#f20000">{$cart_list.total.goods_price}</span></h5>
                                         </div>
                                         <div class="text-right order_ok" style="padding-right: 18px;"><a href="#" class="btn btn-primary" style="width:auto;" >确认订单</a></div>
                                    </div>
@@ -236,7 +237,7 @@
                                         <div class="pull-right come_price come_price_pc">￥<span>0</span></div>
                                     </div>
                                     <div class="clearfix" style="padding-top:20px; margin:0 0 30px 0; border-top: 1px solid #ededed; ">
-                                        <h5 class="text-right">总计：<span class="amount_pay" style="color:#f20000" >
+                                        <h5 class="text-right">总计：<span class="amount_pay" style="color:#f20000" >{$cart_list.total.goods_price}
                                         </span></h5>
                                     </div>
                                        <div><a href="#" class="btn btn-primary order_ok" >确认订单</a></div>
@@ -267,7 +268,9 @@
 
 
 
-    <script>
+    <script type="text/javascript">
+
+
  $(" #pay_consignee input[type='radio']").each(function(){
 
                        var id= $(this).attr("id");
@@ -283,9 +286,13 @@
                               dataType: "json",
                               data:{step:'ajax_get_price',address:addressid},
                               success: function(data){
-
+                                           if(data.error==12){
+                                                   window.location.href=data.url;
+                                                   return;
+                                              }
                                    $(".come_price span").text(data);
                                     jisuan();
+
 
                               }
 
@@ -293,17 +300,25 @@
                           });
 
 
+                       }else{
+                              $(".order_ok").css("display","none");
                        }
 
                       });
                $('input').on('ifChecked', function(event){
               //  alert(event.type + ' callback');
+                //alert($(this).parent().find("input").val());
                      checkadd($(this).parent().find("input").val());
               });
 
  $(function(){
 
 
+    if($("input:radio[name='my_co_shipping']").length > 0&& $(".pc_paylist").length>0){
+              $(".order_ok").css("display","block");
+        }else{
+             $(".order_ok").css("display","none");
+        }
       validate();
 
     })
@@ -349,6 +364,10 @@
           dataType: "json",
           data:{step:'ajax_get_price',address:address},
           success: function(data){
+            if(data.error==12){
+                               window.location.href=data.url;
+
+                          }
                $(".come_price span").text(data);
               jisuan();
 
@@ -377,6 +396,8 @@
           var goods_number = num + Number(diff);
           if( goods_number >= 1){
             $('.cart_number_'+rec_id).val(goods_number); //更新数量
+            var cartnum=document.getElementById('cart_count').innerHTML;
+            document.getElementById('cart_count').innerHTML=Number(cartnum)+Number(diff);
 
             change_cart_number(rec_id,goods_number);
           }
@@ -504,7 +525,7 @@
                          $("#city").change(function(){
                             var id=$("#city").val();
                             $("#district").find("option").remove();
-                            $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
+                            $("#district").append('<option value="0" selected>{$lang.please_select}{$name_of_region[3]}</option>');
                             if(id!=0){
                              $.ajax({
                                 url:"ajax_region.php",
@@ -513,15 +534,11 @@
                                 success: function(data){
 
                                      $.each(data,function(i){
-                                     if(i==0){
-                                         $("#district").append(
-                                           ' <option value="'+data[i].region_id+'" selected >'+data[i].region_name+'</option>'
-                                         );
-                                     }else{
+
                                          $("#district").append(
                                            ' <option value="'+data[i].region_id+'" >'+data[i].region_name+'</option>'
                                          );
-                                     }
+
 
                                      });
 
@@ -536,18 +553,33 @@
                         //市事件结束
                         },
               yes: function(index){
-                //console.log($('#address_form').serialize());
+
+
+
 
                     $.ajax({
                           type:"POST",
                           url:"flow.php?step=consignee",
                           data:$('#address_form').serialize(),
+                          dataType:"JSON",
                           success: function(data){
+                            if(data.error==12){
+                                  window.location.href=data.url;
+                            }
+                            if($("input:radio[name='my_co_shipping']").length > 0){
+                                      var check='';
+                                }else{
+                                     var check='checked';
+                                }
+                            var content=' <div class="row pay_label" style=" padding:2px 0; margin-bottom: 10px; margin-left: 0; margin-right: 0;cursor:pointer;" onclick="checkadd('+data.address_id+')" id="div'+data.address_id+'"><div class="col-md-6 check_box"  ><label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label'+data.address_id+'"  ><div class="iradio '+check+'"><input type="radio" name="my_co_shipping"  value="'+data.address_id+'"  id="address'+data.address_id+'"  style="position: absolute; opacity: 0;" '+check+'><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label> '+data.province+data.city+data.district+data.address+'</div><div class="col-md-3">收件人：'+data.consignee+'</div><div class="col-md-3">联系电话：'+data.tel+'</div> </div>';
+
+                            //console.log(data);
+                             $("#address_h5").before(content);
+
                                  layer.close(index);
-                                 alert("adfa");
                                  //top.location.href = top.location.href;
                                   //window.location.href=window.location.href;
-                                  window.location.reload();
+                                 // window.location.reload();
                                 }
                                });
               },

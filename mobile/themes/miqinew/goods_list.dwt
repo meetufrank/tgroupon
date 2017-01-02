@@ -95,6 +95,7 @@
 
 	</script>
     <script type="text/javascript">
+
        function showlist(val,id){
         if(id=='showsearch'){
          var val= $("#"+val).val();
@@ -103,16 +104,12 @@
 
 		     $.ajax({
 				   type: "post",
-				   url: "goods_list.php?step=ajax_goods_list",
-				   data:{typeid:val,type:id,page_num:page},
+				   url: "goods_list.php?step=ajax_goods_count",
+				   data:{typeid:val,type:id},
 				   dataType:"json",
 				   success: function (data) {
-               console.log(data);
-						var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
-						laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
-							document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
-              insert_page(data);
-						});
+
+            insert_page(data,val,id);
 				  },
 				  error: function(data){
                     	alert("Json数据出错");
@@ -211,8 +208,8 @@
             </div><!-- .column -->
             <div class="column">
               <form method="get" class="search-box">
-                <input type="text" class="form-control" placeholder="请在此处搜索您想要的商品" value="{{d.search}}" id="searchvalue" >
-                <button type="submit">
+                <input type="text" class="form-control" placeholder="请在此处搜索您想要的商品" value="{{d.search?d.search:''}}" id="searchvalue" >
+                <button type="submit" onclick="javascript:;">
                   <i class="material-icons search" onClick="showlist('searchvalue','showsearch')"></i>
                 </button>
               </form><!-- form.search-box -->
@@ -225,10 +222,11 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="shop-item">
                 <div class="shop-thumbnail">
-                  <a href="shop-single.html" class="item-link"></a>
-
+                  <a href="shop-single.php?id={{d.data[i].goods_id}}" class="item-link"></a>
+              {{# if(d.data[i].goods_thumb){}}
                   <img src="../../{{ d.data[i].goods_thumb}}" alt="Shop item">
                 </div>
+                {{# }}}
                 <div class="shop-item-details">
                   <h3 class="shop-item-title"><a href="shop-single.html">{{ d.data[i].goods_name }}</a></h3>
                   <span class="shop-item-price">
@@ -244,6 +242,8 @@
 
 	</script>
 	<script type="text/javascript">
+
+
 	$.ajax({
 				   type: "post",
 				   url: "goods_list.php?step=ajax_goods_type",
@@ -265,14 +265,11 @@
 		});
 		$.ajax({
 				   type: "post",
-				   url: "goods_list.php?step=ajax_goods_list",
+				   url: "goods_list.php?step=ajax_goods_count",
 				   dataType:"json",
 				   success: function (data) {
 
-						var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
-						laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
-							document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
-						});
+
             insert_page(data);
 				  },
 				  error: function(data){
@@ -288,7 +285,9 @@
 <link rel="stylesheet" href="{$ectouch_themes}/layui/css/layui.css">
 <script type="text/livescript" src="{$ectouch_themes}/layui/layui.js"></script>
 <script type="text/javascript">
-function insert_page(data){
+function insert_page(data,val,id){
+  var val=val?val:'';
+  var id=id?id:'';
 layui.use('layer', function (){
   var layer = layui.layer;
 });
@@ -297,20 +296,19 @@ layui.use(['laypage', 'layer'], function(){
   ,layer = layui.layer;
     laypage({
     cont: 'demo_page'
-    ,pages: data.pages
+    ,pages: data
     ,skin: '#1E9FFF'
     ,jump: function(obj){
-
-      $.ajax({
+              $.ajax({
                type: "post",
                url: "goods_list.php?step=ajax_goods_list",
                dataType:"json",
-               data:{page_num:obj.curr},
+               data:{page_num:obj.curr,typeid:val,type:id},
                success: function (data) {
 
                 var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
                 laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
-                  document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
+                 document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
                 });
 
               },
@@ -326,6 +324,7 @@ layui.use(['laypage', 'layer'], function(){
   });
 });
 }
+
 </script>
 
 </body><!-- <body> -->
