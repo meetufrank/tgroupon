@@ -20,7 +20,7 @@ include_once(ROOT_PATH .'include/lib_order.php');
 if ( $_SESSION['user_id'] != 0)
     {
       $sql  = "SELECT * ".
-           "FROM " .$GLOBALS['ecs']->table('users') . " WHERE user_id = '$user_id'";
+           "FROM " .$GLOBALS['ecs']->table('users') . " WHERE user_id = ".$_SESSION['user_id'];
       $infos = $GLOBALS['db']->getRow($sql);
 
       $smarty->assign('user_status', 1);

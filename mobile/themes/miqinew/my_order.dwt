@@ -190,12 +190,12 @@
 
             <div role="tabpanel" class="tab-pane transition fade in active" id="tab1_1">
  <!--{foreach from=$no_orders.data item=no}-->
-                    <div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+                    <div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;" id="order_cart_{$no.order_id}">
                         <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
                           <div class="pull-left" style="padding-top:10px;">订单编号:{$no.order_sn}</div>
                             <!-- Buttons -->
                           <div class="pull-right hidden-xs hidden-sm">
-                            <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
+                            <a href="#" class="btn btn-default waves-effect waves-light cancel_order_pc" data-id="{$no.order_id}">取消订单</a>
                             <a href="flow.php?step=pay_ok&order_id={$no.order_id}" class="btn btn-primary waves-effect waves-light" target="_Blank">去支付</a>
                           </div>
 
@@ -247,7 +247,7 @@
                       <br>
 
                       <div class="visible-sm visible-xs">
-                        <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
+                        <a href="#" class="btn btn-default waves-effect waves-light cancel_order_mobile" data-id="{$no.order_id}" >取消订单</a>
                         <a href="flow.php?step=pay_ok&order_id={$no.order_id}" class="btn btn-primary waves-effect waves-light" target="_Blank">去支付</a>
                       </div>
 
@@ -468,6 +468,49 @@
   <!-- script for tan chuang -->
 
  <script type="text/javascript">
+ $(".cancel_order_mobile").each(function(){
+
+          $(this).click(function(){
+          var order_id=$(this).attr("data-id");
+          $(this).parents("#order_cart_"+order_id).remove();
+           $.ajax({
+                  url:"my_user.php?act=cancel_order_new",
+                  data:{order_id:order_id},
+                  dataType:"JSON",
+                  type:"POST",
+                  success: function(data){
+
+                   alert('aa');
+
+                  },
+                  error:function(){
+
+                  }
+                });
+      });
+
+ });
+ $(".cancel_order_pc").each(function(){
+      $(this).click(function(){
+          var order_id=$(this).attr("data-id");
+           $(this).parents("#order_cart_"+order_id).remove();
+
+           $.ajax({
+                  url:"my_user.php?act=cancel_order_new",
+                  data:{order_id:order_id},
+                  dataType:"json",
+                  type:"POST",
+                  success: function(data){
+
+
+                  },
+                  error:function(){
+
+                  }
+                });
+      });
+
+ });
                 var no_num=1;  //未付款初始化页数
                 var yes_num=1;  //未付款初始化页数
                 var come_num=1;  //未付款初始化页数

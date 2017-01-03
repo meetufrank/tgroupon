@@ -51,7 +51,7 @@
 <!-- Account (userinfo) -->
         <div class="toolbar-section" id="userinfo" >
             <div class="clearfix">
-            <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section">退出</a>
+            <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section" id="logout">退出</a>
             <div class="quotation pull-left" style="width:auto;">
               <div class="quotation-author-ava pull-left">
                 <img class="" src="{$userdata.headimgurl}" alt="James Cameron">
@@ -176,7 +176,19 @@
   <script type="text/javascript">
   $(document).ready(function () {
 
+$("#logout").click(function(){
 
+  $.ajax({
+              url:"my_user.php?act=logout_new",
+              success: function(data){
+
+              },
+              error:function(){
+                   alert("退出异常");
+              }
+            });
+
+});
  $("#sub_cart").click(function(){
                  var chk_value=[];
 

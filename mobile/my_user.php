@@ -827,6 +827,16 @@ elseif ($action == 'logout')
     $ucdata = empty($user->ucdata)? "" : $user->ucdata;
     show_message($_LANG['logout'] . $ucdata, array($_LANG['back_up_page'], $_LANG['back_home_lnk']), array($back_act, 'index.php'), 'info');
 }
+/* 退出会员中心 */
+elseif ($action == 'logout_new')
+{
+
+
+    $user->logout();
+
+    exit;
+
+}
 
 /* 个人资料页面 */
 elseif ($action == 'profile')
@@ -1316,12 +1326,12 @@ elseif ($action == 'async_order_list')
              }
 
              foreach ($order_list['data'] as $key => $value) {
-                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;" id="order_cart_'.$value['order_id'].'">
                         <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
                           <div class="pull-left" style="padding-top:10px;">订单编号:'.$value['order_sn'].'</div>
                             <!-- Buttons -->
                           <div class="pull-right hidden-xs hidden-sm">
-                            <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
+                            <a href="#" class="btn btn-default waves-effect waves-light cancel_order_pc" data-id="'.$value['order_id'].'">取消订单</a>
                             <a href="flow.php?step=pay_ok&order_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light">去支付</a>
                           </div>
 
@@ -1370,7 +1380,7 @@ elseif ($action == 'async_order_list')
                       <br>
 
                       <div class="visible-sm visible-xs">
-                        <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
+                        <a href="#" class="btn btn-default waves-effect waves-light cancel_order_mobile" data-id="'.$value['order_id'].'">取消订单</a>
                         <a href="flow.php?step=pay_ok&order_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light" target="_blank">去支付</a>
                       </div>
 
@@ -1714,7 +1724,7 @@ elseif ($action == 'cancel_order')
 
     if (cancel_order($order_id, $user_id))
     {
-        ecs_header("Location: user.php?act=order_list\n");
+        ecs_header("Location: my_user.php?act=order_list\n");
         exit;
     }
     else
@@ -1722,7 +1732,20 @@ elseif ($action == 'cancel_order')
         $err->show($_LANG['order_list_lnk'], 'user.php?act=order_list');
     }
 }
+/* 取消订单 */
+elseif ($action == 'cancel_order_new')
+{
 
+
+    $order_id = isset($_POST['order_id']) ? intval($_POST['order_id']) : 0;
+
+   $sql=" delete from ".$GLOBALS['ecs']->table("order_info")." where order_id=".$order_id." and user_id=".$_SESSION['user_id']." and shipping_status=0 and pay_status=0";
+    $res=$GLOBALS['db']->query($sql);
+    $result['success']=1;
+    echo json_encode($result);
+
+    exit;
+}
 /* 收货地址列表界面*/
 elseif ($action == 'address_list')
 {
