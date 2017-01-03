@@ -2495,6 +2495,11 @@ display:none
 	font-weight: 500;
 	text-align: right
 }
+.amount_yes,.amount_no,.amount_come,.amount_order_come,.amount_order_yes,.amount_order_no,.amount_pay{
+    font-size: 24px;
+	font-weight: 500;
+	text-align: right
+}
 .cart-subtotal small {
 	font-size: 16px;
 	color: #999;

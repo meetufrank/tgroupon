@@ -1332,7 +1332,7 @@ elseif ($action == 'async_order_list')
                             <!-- Buttons -->
                           <div class="pull-right hidden-xs hidden-sm">
                             <a href="#" class="btn btn-default waves-effect waves-light cancel_order_pc" data-id="'.$value['order_id'].'">取消订单</a>
-                            <a href="flow.php?step=pay_ok&order_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light">去支付</a>
+                            <a href="javascript:window.open(\'flow.php?step=pay_ok&order_id='.$value['order_id'].'\');" class="btn btn-primary waves-effect waves-light">去支付</a>
                           </div>
 
                           </div>
@@ -1405,7 +1405,7 @@ elseif ($action == 'async_order_list')
 
                       <div class="visible-sm visible-xs">
                         <a href="#" class="btn btn-default waves-effect waves-light cancel_order_mobile" data-id="'.$value['order_id'].'">取消订单</a>
-                        <a href="flow.php?step=pay_ok&order_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light" target="_blank">去支付</a>
+                        <a href="javascript:window.open(\'flow.php?step=pay_ok&order_id='.$value['order_id'].'\');" class="btn btn-primary waves-effect waves-light" target="_blank">去支付</a>
                       </div>
 
                     </div>';
