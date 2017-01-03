@@ -379,8 +379,8 @@ function get_user_orders_new($user_id, $status=1,$num = 10, $start = 0)
     }elseif($status==3){//待收货
        $string=" and pay_status=2 and shipping_status=1";
     }
-     $sql = " SELECT order_id, order_sn, order_status, shipping_id, shipping_status, pay_status, add_time,order_amount,consignee,address,tel,re1.region_name as province,re2.region_name as city,re3.region_name as district, " .
-           "(goods_amount + shipping_fee + insure_fee + pay_fee + pack_fee + card_fee + tax - discount) AS total_fee ".
+     $sql = " SELECT order_id, order_sn, order_status, shipping_id, post_price,shipping_status, pay_status, add_time,order_amount,consignee,address,tel,re1.region_name as province,re2.region_name as city,re3.region_name as district, " .
+           "(goods_amount + shipping_fee + insure_fee + pay_fee + pack_fee + card_fee + tax - discount ) AS total_fee ".
            " FROM " .$GLOBALS['ecs']->table('order_info')
             ." as oi inner join ".$GLOBALS['ecs']->table('region')."as re1 on re1.region_id=oi.province"
              ." inner join ".$GLOBALS['ecs']->table('region')."as re2 on re2.region_id=oi.city "
@@ -449,7 +449,8 @@ function get_user_orders_new($user_id, $status=1,$num = 10, $start = 0)
                        'address'        =>$row['province'].'市'.$row['city'].'市'.$row['district'].'&nbsp;&nbsp;&nbsp;'.$row['address'],
                        'consignee'      =>$row['consignee'],
                        'tel'            =>$row['tel'],
-                       'order_amount'   =>$row['order_amount']
+                       'order_amount'   =>$row['order_amount'],
+                       'post_price'     =>"￥".$row['post_price']
                        );
     }
 

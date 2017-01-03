@@ -1253,7 +1253,7 @@ elseif ($action == 'order_list')
     $no_arr = get_user_orders_new($user_id, 1,$size, $pager_no['start']);  //未付款订单列表
     $ye_arr = get_user_orders_new($user_id, 2,$size, $pager_yes['start']);  //待发货订单列表
     $come_arr = get_user_orders_new($user_id, 3,$size, $pager_come['start']);  //待收货订单列表
-
+//print_r($no_arr );exit;
      $no_orders_next = get_user_orders_new($user_id, 1,$size, $size+$pager_no['start']);  //未付款订单列表下页
     $ye_orders_next = get_user_orders_new($user_id, 2,$size, $size+$pager_yes['start']);  //待发货订单列表下页
     $come_orders_next = get_user_orders_new($user_id, 3,$size, $size+$pager_come['start']);  //待收货订单列表下页
@@ -1307,7 +1307,7 @@ elseif ($action == 'async_order_list')
 {
 
     include_once(ROOT_PATH . 'include/lib_transaction.php');
-    $page_num=1;
+    $page_num=10;
 
    if($_POST['type']==1){  //待付款ajax获取数据
             $start_no = $_POST['last_no'];  //待付款
@@ -1324,7 +1324,7 @@ elseif ($action == 'async_order_list')
                 $order_list['more']=1;
 
              }
-
+//print_r($no_orders);exit;
              foreach ($order_list['data'] as $key => $value) {
                  $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;" id="order_cart_'.$value['order_id'].'">
                         <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
@@ -1339,26 +1339,50 @@ elseif ($action == 'async_order_list')
                       <div class="row">
                           <div class="col-md-6">';
                 foreach ((array)$value['good_list'] as $k => $v) {
-                    $string.='<div class="item">';
+                    $string.='<div class="item hidden-xs">';
                     if($v['goods_thumb']){
-                       $string.='<a href="shop-single.php?id='.$v['goods_id'].' "class="item-thumb pull-left">
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="Item">
+                       $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
+                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
-                    $string.='<div class="item-details hidden-xs">
+                    $string.='<div class="item-details ">
                           <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
-                        </div>
-                        <div class="item-details visible-xs">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
+                          <div>
+                          <div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
+                          <h4 class="item-price" >数量：'.$v['goods_number'].'</h4>
+                          </div>
                           <h4 class="item-price">'.$v['subtotal'].'</h4>
                         </div>
                          </div>';
+                    $string.='<div class="item visible-xs"><div class="row"><div class="col-xs-3">';
+                    if($v['goods_thumb']){
+                       $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" >
+                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
+                        </a>';
+                    }
+                    $string.='</div><div class="col-xs-9" onclick="window.open(\'shop-single.php?id='.$v['goods_id'].'\');">'.$v['goods_name'].'
+                        </div>
+                        </div>
+                          <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">'.$v['goods_attr'].'</div>
+                          <div class="clearfix">
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['subtotal'].'</div>
+                            <div class="pull-right" style="padding-top:15px;">
+                                   数量：'.$v['goods_number'].'
+                            </div>
+                          </div>
+
+                      </div>';
 
                 }
-                $string.='<div class="cart-subtotal space-bottom">
+                $string.=' <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+                        <div class="column">
+                          <h3 class="toolbar-title">邮费：</h3>
+                        </div>
+                        <div class="column">
+                          <h3 class="amount_order_no">'.$value['post_price'].'</h3>
+                        </div>
+                      </div>
+                      <div class="cart-subtotal space-bottom">
                         <div class="column">
                           <h3 class="toolbar-title">总价：</h3>
                         </div>
@@ -1418,26 +1442,49 @@ elseif ($action == 'async_order_list')
                       <div class="row">
                           <div class="col-md-6">';
                 foreach ((array)$value['good_list'] as $k => $v) {
-                    $string.='<div class="item">';
+                    $string.='<div class="item hidden-xs">';
                     if($v['goods_thumb']){
-                        $string.='<a href="shop-single.php?id='.$v['goods_id'].'" class="item-thumb pull-left">
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="Item">
+                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
+                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
-                    $string.='<div class="item-details hidden-xs">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
-                        </div>
-                        <div class="item-details visible-xs">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
+                    $string.='<div class="item-details">
+                    <h3 class="item-title"><a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');">'.$v['goods_name'].'</a></h3><div><div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
+                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
                           <h4 class="item-price">'.$v['subtotal'].'</h4>
                         </div>
                          </div>';
+                    $string.='<div class="item visible-xs">
+                        <div class="row">
+                        <div class="col-xs-3">';
+                    if($v['goods_thumb']){
 
+                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
+                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
+                        </a>';
+                    }
+                    $string.='</div>
+                        <div class="col-xs-9">
+                          '.$v['goods_name'].'
+                        </div>
+                        </div>
+                          <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">'.$v['goods_attr'].'</div>
+                          <div class="clearfix">
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['subtotal'].'</div>
+                            <div class="pull-right" style="padding-top:15px;">
+                                   数量：'.$v['goods_number'].'
+                            </div>
+                          </div>
+                      </div>';
                 }
-                $string.='<div class="cart-subtotal space-bottom">
+                $string.='<div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+                        <div class="column">
+                          <h3 class="toolbar-title">邮费：</h3>
+                        </div>
+                        <div class="column">
+                          <h3 class="amount_order_yes">'.$value['post_price'].'</h3>
+                        </div>
+                      </div><div class="cart-subtotal space-bottom">
                         <div class="column">
                           <h3 class="toolbar-title">总价：</h3>
                         </div>
@@ -1493,26 +1540,50 @@ elseif ($action == 'async_order_list')
                       <div class="row">
                           <div class="col-md-6">';
                 foreach ((array)$value['good_list'] as $k => $v) {
-                    $string.='<div class="item">';
+                     $string.='<div class="item hidden-xs">';
                     if($v['goods_thumb']){
-                        $string.='<a href="shop-single.php?id='.$v['goods_id'].'" class="item-thumb pull-left">
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="Item">
+                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
+                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
-                    $string.='<div class="item-details hidden-xs">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
-                        </div>
-                        <div class="item-details visible-xs">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
+                    $string.='<div class="item-details">
+                    <h3 class="item-title"><a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');">'.$v['goods_name'].'</a></h3><div><div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
+                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
                           <h4 class="item-price">'.$v['subtotal'].'</h4>
                         </div>
                          </div>';
+                    $string.='<div class="item visible-xs">
+                        <div class="row">
+                        <div class="col-xs-3">';
+                    if($v['goods_thumb']){
+
+                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
+                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
+                        </a>';
+                    }
+                    $string.='</div>
+                        <div class="col-xs-9">
+                          '.$v['goods_name'].'
+                        </div>
+                        </div>
+                          <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">'.$v['goods_attr'].'</div>
+                          <div class="clearfix">
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['subtotal'].'</div>
+                            <div class="pull-right" style="padding-top:15px;">
+                                   数量：'.$v['goods_number'].'
+                            </div>
+                          </div>
+                      </div>';
 
                 }
-                $string.='<div class="cart-subtotal space-bottom">
+                $string.='<div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+                        <div class="column">
+                          <h3 class="toolbar-title">邮费：</h3>
+                        </div>
+                        <div class="column">
+                          <h3 class="amount_order_come">'.$value['post_price'].'</h3>
+                        </div>
+                      </div><div class="cart-subtotal space-bottom">
                         <div class="column">
                           <h3 class="toolbar-title">总价：</h3>
                         </div>

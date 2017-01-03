@@ -595,7 +595,7 @@
 
     //确认支付
    $('.order_ok').click(function(){
-    var address=$("input[name='co_shipping']");
+    var address=$("input[name='my_co_shipping']");
     var cart_id=[];
     $.each($(".pay_rec"),function(){
         cart_id.push($(this).val());
@@ -604,6 +604,7 @@
       var id= $(this).attr("id");
         if($("#"+id).attr('checked')=='checked'){
           addressid=$("#"+id).val();
+
         }
 
     });
