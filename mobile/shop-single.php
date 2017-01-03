@@ -34,6 +34,7 @@ $smarty->assign('affiliate', $affiliate);
 
 $goods_id = isset($_REQUEST['id'])  ? intval($_REQUEST['id']) : 0;
 
+
 /*------------------------------------------------------ */
 //-- 改变属性、数量时重新计算商品价格
 /*------------------------------------------------------ */
@@ -135,6 +136,75 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
     }
 
     die($json->encode($res));
+}elseif($_REQUEST['act'] == 'attrshuaixuan'){
+
+    //商品属性筛选
+    $attrid = $_POST['attrid'];
+    $a = $_POST['typenum'];
+
+    $sql = "select goods_attr from `ecs_products` where FIND_IN_SET('$attrid',goods_attr) and product_number > 0";
+    $feiattrid = $db->getAll($sql);
+    foreach ($feiattrid as $key => $value) {
+           $feiattrid[$key];
+
+
+            $goodsattr = explode(",",$value['goods_attr']);
+            count($goodsattr);
+           if($key==0){
+            $min_length_arr=$goodsattr;
+           }else{
+              if(count($goodsattr)<count($min_length_arr)){
+                $min_length_arr=$goodsattr;
+              }
+           }
+            foreach ($goodsattr as $k => $v) {
+                if($k != $a){
+                    $select[$k][]=$v;
+                }
+            }
+    }
+foreach ($min_length_arr as $key => $value) {
+    if($key != $a){
+                    $checked[$key]=$value;
+                }
+
+}
+
+
+$jiageimg = implode(",", $min_length_arr);
+
+ //   价格和商品
+   $sqls = "select attributeprice,attributeimg from `ecs_products` where goods_attr = '$jiageimg'";
+  $jiageimgs = $db->getRow($sqls);
+
+
+    $data['select']=$select;
+    $data['checked']=$checked;
+    $data['data'] = $jiageimgs;
+
+
+echo json_encode($data);
+
+              exit;
+
+}elseif($_REQUEST['act'] == 'shochang'){
+     $goodsid = $_POST['goodsid'];
+     //商品收藏与取消
+     $sql = "insert into `ecs_collect_goods`(user_id,goods_id,add_time) values($user_id,$goodsid,'time()')";
+     $db->query($sql);
+
+     exit;
+
+}elseif($_REQUEST['act'] == 'delsc'){
+     $goodsid = $_POST['goodsid'];
+     //商品收藏与取消
+
+     $sql = "delete  from `ecs_collect_goods` where user_id = $user_id and goods_id = $goodsid";
+     $db->query($sql);
+
+
+     exit;
+
 }
 
 
@@ -354,13 +424,8 @@ $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 
 		/*甜   心100  修复开发*/
 $smarty->assign('now_time',  gmtime());           // 当前系统时间
 
-//商品收藏与取消
-if($_REQUEST['act'] == 'shochang'){
-
- $sql = "insert into `ecs_collect_goods`(user_id,goods_id,add_time) values($user_id,'$consignee','$tel',$provinceid,$cityid,$districtid,'$address')";
 
 
-}
 //商品id  goods_id
 $goodsid = $_REQUEST['id'];
 
@@ -403,24 +468,6 @@ $smarty->assign('xh',  $xh);  //猜你喜欢
 
 
 
-//商品属性筛选
- if($_REQUEST['act'] == 'attrshuaixuan'){
-
-    $attrid = $_POST['attrid'];
-    $sql = "select goods_attr from `ecs_products` where FIND_IN_SET('$attrid',goods_attr) ";
-    $feiattrid = $db->getAll($sql);
-        foreach ($feiattrid as $key => $value) {
-
-                 $str=str_replace($attrid.',','',$value);
-
-
-                   $feiattrid[$key]=$str;
-               }
-              // print_r($feiattrid);
-              echo json_encode($feiattrid);
-               exit;
-
- }
 
  //商品规格
  $sqlguige ="select a.attr_name,g.attr_value from `ecs_goods_attr` as g inner JOIN

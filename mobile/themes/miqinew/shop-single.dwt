@@ -255,6 +255,51 @@
 	}
     </style>
 
+<script type="text/javascript">
+     function attrshuaixuan(attrid,typeid,typenum){
+
+        $("#type_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
+        $("#type_"+attrid).addClass("pc-group-change");
+        $("input[name='spec_"+typeid+"']").val(attrid);
+
+
+
+         $.ajax({
+                                    type:"post",
+                                    url:"shop-single.php?act=attrshuaixuan",
+                                    async:true,
+                                    data:{attrid:attrid,typenum:typenum},
+                                    dataType: "json",
+                                    success: function (data) {
+                                       $(".type_arr  ul li ").css("display",'none');
+                                        $("#pc-select-group"+typenum+"  ul li ").css("display",'block');
+
+                                      $.each(data.select,function(i) {
+
+                                        $.each(data.select[i],function(x){
+
+                                          $("#type_"+data.select[i][x]).parent("li").css("display",'block');
+
+                                        });
+
+
+                                      });
+                                      $.each(data.checked,function(i){
+                                          $("#type_"+data.checked[i]).parent().siblings('li').children('a').removeClass('pc-group-change');
+                                          $("#type_"+data.checked[i]).addClass("pc-group-change");
+                                        });
+                                     $(".pc-thumbnail").attr("src","././admin/"+data.data.attributeimg);
+                                     $("#pc_price").text("￥"+parseInt(data.data.attributeprice).toFixed(2));
+                                          }//回调函数结束
+                               });//ajax结束
+
+       }
+
+
+
+</script>
+
+
 
 
 </head>
@@ -299,7 +344,7 @@
       <div class="container">
         <div class="product-info padding-top-2x text-center">
           <h1 class="h2 space-bottom-half">创 意 椅 子</h1>
-          <h2 class="hidden-xs" style="color:#E7322E;">￥128.00</h2>
+          <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥128.00</h2>
           <!--PC端缩略图-->
           	<div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
 			   <img src="{$ectouch_themes}/img/shop/product-gallery/preview01.jpg" class="pc-thumbnail">
@@ -307,67 +352,24 @@
           <!--PC端商品选择详情-->
             <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
            		<div class="pc-dright-top">
-                	<!-- <div class="pc-color-select col-lg-6 col-md-6 col-sm-6" id="pc-select-color">
-                    	<span style="float:left; margin-top:5px;">选择颜色:</span>
-                        <ul>
-                        	<li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                            <li><a href="#"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                        </ul>
-                     	<div class="clear"></div>
-                    </div> -->
-                  <!--   <div class="pc-size-select col-lg-6 col-md-6 col-sm-6" id="pc-select-size">
-                    	<span style="float:left; margin-top:5px;">选择尺寸:</span>
-                        <ul>
-                          <li><a href="#" class="pc-size-detail pc-none">大</a></li>
-                            <li><a href="#" class="pc-size-detail">中</a></li>
-                            <li><a href="#" class="pc-size-detail">小</a></li>
-                        </ul>
-                        <div class="clear"></div>
-                    </div> -->
-                  <!--   <div class="pc-group-select col-lg-6 col-md-6 col-sm-6" id="pc-select-group">
-                    	<span style="float:left; margin-top:5px;">组合形式:</span>
-                        <ul>
-                        	<li><a href="#" class="pc-group-detail">单件</a></li>
-                            <li><a href="#" class="pc-group-detail">2件</a></li>
-                            <li><a href="#" class="pc-group-detail">103件</a></li>
-                        </ul>
-                        <div class="clear"></div>
-                    </div> -->
-                   <!--  <div class="pc-mold-select col-lg-6 col-md-6 col-sm-6" id="pc-select-mold">
-                    	<span style="float:left; margin-top:5px;">外框类型:</span>
-                        <ul>
-                        	<li><a href="#" class="pc-mold-detail">水泥</a></li>
-                            <li><a href="#" class="pc-mold-detail">陶瓷</a></li>
-                            <li><a href="#" class="pc-mold-detail">布艺</a></li>
-                        </ul>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="clear"></div> -->
-                     {foreach from=$specification item=spec key=spec_key name=name}
-                           <div class="pc-group-select col-lg-6 col-md-6 col-sm-6" id="pc-select-group">
-                      <span style="float:left; margin-top:5px;">{$spec.name}:</span>
-                        <ul>
-                        {foreach from=$spec.values item=value key=key}
+                    <form  name="ECS_FORMBUY">
+                           {foreach from=$specification item=spec key=spec_key name=name}
+                           <input type="hidden" name="spec_{$spec_key}" value="" >
 
-                          <li>
-                              <input type="button" value="{$value.id}">
-                              <a href="#" onclick="attrshuaixuan({$value.id})" class="pc-group-detail">{$value.label}</a>
-                          </li>
-                        {/foreach}
-                        </ul>
-                        <div class="clear"></div>
-                    </div>
-                     {/foreach}
+                                 <div class="pc-group-select col-lg-6 col-md-6 col-sm-6 type_arr" id="pc-select-group{$smarty.foreach.name.index}">
+                            <span style="float:left; margin-top:5px;">{$spec.name}:</span>
+                              <ul>
+                              {foreach from=$spec.values item=value key=key}
+<input type="hidden" name="" value="{$value.id}" >
+                                <li>
+                                    <a href="#" onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" class="pc-group-detail" id="type_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
+                                </li>
+                              {/foreach}
+                              </ul>
+                              <div class="clear"></div>
+                          </div>
+                           {/foreach}
+                    </form>
                 </div>
                 <div class="pc-dright-bottom">
                 	<div class="col-lg-2 col-md-2 col-sm-2">
@@ -622,6 +624,42 @@
 
   <script src="{$ectouch_themes}/Swiper-3.4.0/dist/js/swiper.min.js"></script>
   <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
+  <script type="text/javascript">
+    //点击收藏与取消收藏
+    var oDiv = document.getElementById('shochang');
+    var goodsid = document.getElementById('goodsid').value;
+    oDiv.onclick=function(){
+
+        if(this.style.color == 'red'){
+            $.ajax({
+                                    type:"post",
+                                    url:"shop-single.php?act=delsc",
+                                    async:true,
+                                    data:{goodsid:goodsid},
+                                    dataType: "json",
+                                    success: function (result) {
+
+
+                                          }//回调函数结束
+                               });//ajax结束
+            this.style.color = '#ccc';
+        }else{
+             $.ajax({
+                                    type:"post",
+                                    url:"shop-single.php?act=shochang",
+                                    async:true,
+                                    data:{goodsid:goodsid},
+                                    dataType: "json",
+                                    success: function (result) {
+
+
+                                          }//回调函数结束
+                               });//ajax结束
+            this.style.color = 'red';
+        }
+    };
+</script>
+
 
 <!--swiper,banner插件-->
   <script>
@@ -673,6 +711,10 @@
 	</script>
     <!--电脑端+手机端颜色选择时样式切换-->
     <script type="text/javascript">
+
+
+
+
 		$(document).ready(function (){
 		  $("#pc-select-color li a").each(function(index){
 			  $(this).click(function(){
