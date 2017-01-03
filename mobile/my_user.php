@@ -1603,7 +1603,7 @@ elseif ($action == 'async_order_list')
                   <br>
                   <h4 class="text-primary">快递信息</h4>
                         <hr>
-                  <a id="Logistics" class="btn btn-primary" href="#">快递跟踪</a>
+                  <a  class="btn btn-primary Logistics" href="#" data-id="'.$value['order_id'].'">快递跟踪</a>
                       </div>
                       </div>
                       </div>
@@ -1656,6 +1656,57 @@ elseif ($action == 'order_tracking')
     $smarty->display('user_transaction.dwt');
 }
 
+
+/* 包裹跟踪 by wang */
+elseif ($action == 'order_tracking_news')
+{
+    //$order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
+
+    $order_id = $_GET['order_id'];
+
+    $ajax = isset($_GET['ajax']) ? intval($_GET['ajax']) : 0;
+
+    include_once(ROOT_PATH . 'include/lib_transaction.php');
+    include_once(ROOT_PATH .'include/lib_order.php');
+
+    $sql = "SELECT order_id,order_sn,invoice_no,shipping_name,shipping_id FROM " .$ecs->table('order_info').
+            " WHERE user_id = '$user_id' AND order_id = ".$order_id;
+
+    $orders = $db->getRow($sql);
+
+
+
+    //生成快递100查询接口链接
+    if($orders['shipping_id']!=14){
+        $shipping   = get_shipping_object($orders['shipping_id']);
+        $query_link = $shipping->kuaidi100($orders['invoice_no']);
+        //优先使用curl模式发送数据
+        if (function_exists('curl_init') == 1){
+          $curl = curl_init();
+          curl_setopt ($curl, CURLOPT_URL, $query_link);
+          curl_setopt ($curl, CURLOPT_HEADER,0);
+          curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+          curl_setopt ($curl, CURLOPT_USERAGENT,$_SERVER['HTTP_USER_AGENT']);
+          curl_setopt ($curl, CURLOPT_TIMEOUT,5);
+          $get_content = curl_exec($curl);
+          curl_close ($curl);
+        }
+    }
+ // $smarty->assign('orders', $orders);
+  $getcontent = json_decode($get_content);
+
+  $getcontent->invoice_no=$orders['invoice_no'];
+  $getcontent->shipping_name=$orders['shipping_name'];
+  echo json_encode($getcontent);
+
+
+
+ //print_r(json_decode($get_content));
+ //$smarty->assign('trackinfo', $get_content);
+ //$smarty->display('my_order.dwt');
+
+
+}
 /* 查看订单详情 */
 elseif ($action == 'order_detail')
 {

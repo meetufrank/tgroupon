@@ -22,7 +22,7 @@ require(ROOT_PATH . 'include/lib_weixintong.php');
 /* 载入语言文件 */
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 
-
+include('head.php');
 
 
 $user_id=$_SESSION['user_id'];
@@ -1474,7 +1474,7 @@ elseif ($action == 'wxaddress'){
       $province = $_POST['province'];
 
 
-     $province ="湖北省";
+
 
         if(strpos($province, '壮族自治区')!==false){
             $news=str_replace("壮族自治区","",$province);
@@ -1506,7 +1506,7 @@ elseif ($action == 'wxaddress'){
     $cityid = $db->getOne($sqlcity);
 
 
-
+print_r($shis);
      //区
       $district = $_POST['district'];
     $sqdistrict= "select region_id from `ecs_region` where region_name LIKE '%$district%' and region_type = 3
@@ -1520,6 +1520,7 @@ elseif ($action == 'wxaddress'){
      //收货人姓名
       $consignee = $_POST['consignee'];
   $sql = "insert into `ecs_user_address`(user_id,consignee,tel,province,city,district,address) values($user_id,'$consignee','$tel',$provinceid,$cityid,$districtid,'$address')";
+  print_r($sql);
 
 $db->query($sql);
 
