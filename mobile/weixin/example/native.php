@@ -17,7 +17,7 @@ $notify = new NativePay();
  */
 
 $order_id=$order['order_id'];
-$sql="select eog.goods_name,eoi.order_amount,eoi.order_sn from ecs_order_goods as eog
+$sql="select eog.goods_name,eoi.goods_amount,eoi.order_sn from ecs_order_goods as eog
 INNER JOIN ecs_order_info as eoi
 INNER JOIN ecs_goods as eg
 on  eog.order_id=eoi.order_id and eog.goods_id=eg.goods_id
@@ -31,14 +31,14 @@ foreach ($orderdata as $key => $value) {
 }
 }
 $title=implode('、',$goodsname);
-$price=$orderdata[0]['order_amount']*100;
+$price=$orderdata[0]['goods_amount']*100;
 $goods_sn=$orderdata[0]['order_sn'];
 $input = new WxPayUnifiedOrder();
 $input->SetBody("形色主义：".$goods_sn);
 $input->SetAttach("$title");
 $input->SetOut_trade_no("$goods_sn");
 //$input->SetTotal_fee("$price");
-$input->SetTotal_fee("1");
+$input->SetTotal_fee("$price");
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("test");
