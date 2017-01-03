@@ -254,6 +254,9 @@
 		background-color:#C33;
 	}
     </style>
+
+
+
 </head>
 
 <!-- Body -->
@@ -288,30 +291,7 @@
 		</div>
     </section>
 
-   <script type="text/javascript">
 
-          function attrshuaixuan(attrid){
-
-            var id = document.getElementById("goodsid").value;
-               $.ajax({
-                                    type:"post",
-                                    url:"shop-single.php?act=attrshuaixuan",
-                                    async:true,
-                                    data:{attrid:attrid,'id':id},
-                                    dataType: "json",
-                                    success: function (result) {
-
-                                         alert("abcdefghijkmnjoadja");
-
-
-                                          }//回调函数结束
-                               });//ajax结束
-          }
-
-
-
-
-   </script>
 
     <!-- 电脑端商品详情选择-->
     <section class="fw-section bg-gray padding-bottom-3x  hidden-xs">
@@ -408,7 +388,7 @@
                         </a>
                    </div>
                    <div class="col-lg-5 col-md-4 col-sm-4" style="padding-top:10px;min-height:48px;">
-                     <span>收藏:</span><a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top"><i class="fa fa-heart"></i></a>
+                     <span>收藏:</span><a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top"><i id="shochang"  class="fa fa-heart"></i></a>
                     <span>分享:</span><a href="#" class="sb-facebook" data-toggle="tooltip" data-placement="top"><i class="fa fa-wechat" id="fenxiang"></i></a>
                    </div>
                 </div>
@@ -530,35 +510,13 @@
             <div class="col-md-6">
               <table class="table-no-border">
                 <tr>
-                  <th>{$spguige.guige1}</th>
-                  <td>{$spguige.canshu1}</td>
+                  <th>{$spguige.attr_name}:</th>
+                  <td>{$spguige.attr_value}</td>
                 </tr>
-                <tr>
-                  <th>{$spguige.guige2}</th>
-                  <td>{$spguige.canshu2}</td>
-                </tr>
-                <tr>
-                  <th>{$spguige.guige3}</th>
-                  <td>{$spguige.canshu3}</td>
-                </tr>
+
               </table>
             </div>
-            <div class="col-md-6">
-              <table class="table-no-border">
-                <tr>
-                  <th>{$spguige.guige4}</th>
-                  <td>{$spguige.canshu4}</td>
-                </tr>
-                <tr>
-                  <th>{$spguige.guige5}</th>
-                  <td>{$spguige.canshu5}</td>
-                </tr>
-                <tr>
-                  <th>{$spguige.guige6}</th>
-                  <td>{$spguige.canshu6}</td>
-                </tr>
-              </table>
-            </div>
+
             {/foreach}
           </div>
         </div>
@@ -647,11 +605,13 @@
          <a href="#" class="mobile-add-to-cart-pay" onClick="addToCart({$goods.goods_id},'',1)" >
               立即支付
          </a>
+
         </div>
     </div>
   </div><!-- .page-wrapper -->
 
   <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+
 
   <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
   <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
@@ -662,6 +622,7 @@
 
   <script src="{$ectouch_themes}/Swiper-3.4.0/dist/js/swiper.min.js"></script>
   <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
+
 <!--swiper,banner插件-->
   <script>
 	  var mySwiper = new Swiper ('.swiper-container', {

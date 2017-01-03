@@ -23,7 +23,7 @@ if ((DEBUG_MODE & 2) != 2)
 {
     $smarty->caching = true;
 }
-
+$user_id=$_SESSION['user_id'];
 $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
 $smarty->assign('affiliate', $affiliate);
 
@@ -177,6 +177,7 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         $linked_goods = get_linked_goods($goods_id);
 
         $goods['goods_style_name'] = add_style($goods['goods_name'], $goods['goods_name_style']);
+
         $goods['comment_count'] = get_comment_count($goods['goods_id']);
 
         /* 购买该商品可以得到多少钱的红包 */
@@ -353,7 +354,13 @@ $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 
 		/*甜   心100  修复开发*/
 $smarty->assign('now_time',  gmtime());           // 当前系统时间
 
+//商品收藏与取消
+if($_REQUEST['act'] == 'shochang'){
 
+ $sql = "insert into `ecs_collect_goods`(user_id,goods_id,add_time) values($user_id,'$consignee','$tel',$provinceid,$cityid,$districtid,'$address')";
+
+
+}
 //商品id  goods_id
 $goodsid = $_REQUEST['id'];
 
@@ -400,15 +407,32 @@ $smarty->assign('xh',  $xh);  //猜你喜欢
  if($_REQUEST['act'] == 'attrshuaixuan'){
 
     $attrid = $_POST['attrid'];
-    $sql = "select * from `ecs_products` where FIND_IN_SET('$attrid',goods_attr) ";
+    $sql = "select goods_attr from `ecs_products` where FIND_IN_SET('$attrid',goods_attr) ";
     $feiattrid = $db->getAll($sql);
-echo json_encode($feiattrid);
+        foreach ($feiattrid as $key => $value) {
+
+                 $str=str_replace($attrid.',','',$value);
+
+
+                   $feiattrid[$key]=$str;
+               }
+              // print_r($feiattrid);
+              echo json_encode($feiattrid);
+               exit;
 
  }
 
+ //商品规格
+ $sqlguige ="select a.attr_name,g.attr_value from `ecs_goods_attr` as g inner JOIN
+`ecs_attribute` as a ON
+g.attr_id = a.attr_id
+ where g.goods_id = $goodsid and attr_type = 0";
+ $spguige = $db->getAll($sqlguige);
+ $smarty->assign('spguige',  $spguige);  //商品规格
+
+
 
 $smarty->display('shop-single.dwt',      $cache_id);   //商品详情页
-print_r($_SESSION['user_id']) ;
 
 
 /*------------------------------------------------------ */
@@ -788,8 +812,10 @@ function get_goods_sales_count($goods_id)
 
 // 统计商品的评论数
 function get_comment_count($goods_id){
+
     $sql = 'SELECT count(*) FROM '.$GLOBALS['ecs']->table('comment').' where status=1 and id_value='.$goods_id;
     $res = $GLOBALS['db']->getOne($sql);
+
     return intval($res);
 }
 ?>

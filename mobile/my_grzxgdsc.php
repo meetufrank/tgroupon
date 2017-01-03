@@ -16,7 +16,7 @@
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
-
+include('head.php');
 
    if ($_SESSION['user_id'] <= 0)
         {
