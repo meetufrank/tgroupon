@@ -394,7 +394,7 @@ function addToCart(goodsId, parentId,type)  //type 购物类型
                          return;
                     }
                     if(type){
-                             window.location.href='flow.php?step=pay_select&&cartid='+data.cartid;return;
+                             window.open('flow.php?step=pay_select&&cartid='+data.cartid);return;
                     }else{
                       addToCartResponse(data);return;
                     }
