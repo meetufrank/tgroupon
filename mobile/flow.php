@@ -123,6 +123,7 @@ include_once('include/cls_json.php');
             $result['message'] = $spe_array;
 
             die($json->encode($result));
+           exit;
         }
     }
 
@@ -150,6 +151,7 @@ include_once('include/cls_json.php');
             $new_goods_attr_id[]=$value;
         }
     }
+
     $goods_attr_id=implode(',', $new_goods_attr_id);
     $sql = "SELECT product_number ".
         'FROM ' . $GLOBALS['ecs']->table('products').
@@ -159,6 +161,8 @@ include_once('include/cls_json.php');
     {
         $result['error']   = 1;
         $result['message'] = "库存不足，请重新选择商品";
+         die($json->encode($result));
+         exit;
     }
 
     }
@@ -167,48 +171,54 @@ include_once('include/cls_json.php');
     {
         $result['error']   = 1;
         $result['message'] = $_LANG['invalid_number'];
+         die($json->encode($result));
+         exit;
     }
+    $cartid=addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num);
+         if($type_num){
+            $result['cartid']=$cartid;
+        }
+
     //甜心结束
     /* 更新：购物车 */
-    else
-    {
+    // else
+    // {
 
-        // 更新：添加到购物车
-        if ($cartid=addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num))
-        {
-            if ($_CFG['cart_confirm'] > 2)
-            {
-                $result['message'] = '';
-            }
-            else
-            {
-                $result['message'] = $_CFG['cart_confirm'] == 1 ? $_LANG['addto_cart_success_1'] : $_LANG['addto_cart_success_2'];
-            }
+    //     // 更新：添加到购物车
+    //     if ($cartid=addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num))
+    //     {
+    //         if ($_CFG['cart_confirm'] > 2)
+    //         {
+    //             $result['message'] = '';
+    //         }
+    //         else
+    //         {
+    //             $result['message'] = $_CFG['cart_confirm'] == 1 ? $_LANG['addto_cart_success_1'] : $_LANG['addto_cart_success_2'];
+    //         }
 
-            $result['content'] = insert_cart_info();
-            $result['one_step_buy'] = $_CFG['one_step_buy'];
-            $result['cart_number'] = insert_cart_info_number();
-        }
-        else
-        {
-            $result['message']  = $err->last_message();
-            $result['error']    = $err->error_no;
-            $result['goods_id'] = stripslashes($goods->goods_id);
-            if (is_array($goods->spec))
-            {
-                $result['product_spec'] = implode(',', $goods->spec);
-            }
-            else
-            {
-                $result['product_spec'] = $goods->spec;
-            }
-        }
-    }
+    //         $result['content'] = insert_cart_info();
+    //         $result['one_step_buy'] = $_CFG['one_step_buy'];
+    //         $result['cart_number'] = insert_cart_info_number();
+    //     }
+    //     else
+    //     {
+    //         $result['message']  = $err->last_message();
+    //         $result['error']    = $err->error_no;
+    //         $result['goods_id'] = stripslashes($goods->goods_id);
+    //         if (is_array($goods->spec))
+    //         {
+    //             $result['product_spec'] = implode(',', $goods->spec);
+    //         }
+    //         else
+    //         {
+    //             $result['product_spec'] = $goods->spec;
+    //         }
+    //     }
+    // }
 
-    $result['confirm_type'] = !empty($_CFG['cart_confirm']) ? $_CFG['cart_confirm'] : 2;
-    if($type_num){
-        $result['cartid']=$cartid;
-    }
+    // $result['confirm_type'] = !empty($_CFG['cart_confirm']) ? $_CFG['cart_confirm'] : 2;
+
+
     die($json->encode($result));
     exit;
 }

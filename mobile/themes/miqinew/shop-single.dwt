@@ -261,16 +261,27 @@
         $("#type_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
         $("#type_"+attrid).addClass("pc-group-change");
         $("input[name='spec_"+typeid+"']").val(attrid);
+         var formBuy      = document.forms['ECS_FORMBUY'];
+          if (formBuy)
+          {
+            spec_arr = getSelectedAttributes(formBuy);
 
+
+          }
 
 
          $.ajax({
                                     type:"post",
                                     url:"shop-single.php?act=attrshuaixuan",
                                     async:true,
-                                    data:{attrid:attrid,typenum:typenum},
+                                    data:{attrid:attrid,typenum:typenum,spec_arr:spec_arr},
                                     dataType: "json",
                                     success: function (data) {
+                                      if(data.error==1){
+                                        alert('未找到该商品!');
+                                        window.location.href=window.location.href;
+                                        return;
+                                      }
                                        $(".type_arr  ul li ").css("display",'none');
                                         $("#pc-select-group"+typenum+"  ul li ").css("display",'block');
 

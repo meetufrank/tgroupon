@@ -575,6 +575,11 @@
 
                             //console.log(data);
                              $("#address_h5").before(content);
+                              if($("input:radio[name='my_co_shipping']").length > 0&& $(".pc_paylist").length>0){
+                                        $(".order_ok").css("display","block");
+                                  }else{
+                                       $(".order_ok").css("display","none");
+                                  }
 
                                  layer.close(index);
                                  //top.location.href = top.location.href;
