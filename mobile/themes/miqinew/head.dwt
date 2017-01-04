@@ -38,7 +38,7 @@
           <div class="inner">
             <ul class="main-navigation space-bottom">
               <li><a href="index.html">首页</a></li>
-              <li><a href="goods_list.php">商品</a></li>
+              <li><a href="javascript:window.open('goods_list.php');" >商品</a></li>
               <li><a href="artist-list.html">设计师</a></li>
               <li><a href="#">关于我们</a></li>
             </ul>
@@ -54,16 +54,16 @@
             <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section" id="logout">退出</a>
             <div class="quotation pull-left" style="width:auto;">
               <div class="quotation-author-ava pull-left">
-                <img class="" src="{$userdata.headimgurl}" alt="James Cameron">
+                <img class="" src="{$user_data.headimgurl}" alt="James Cameron">
               </div>
               &nbsp;&nbsp;
-              <span style="display:inline-block; line-height:74px;">{$userdata.alias}</span>
+              <span style="display:inline-block; line-height:74px;">{$user_data.alias}</span>
             </div>
             </div>
             <hr class="padding-bottom">
             <ul class="main-navigation space-bottom">
-              <li><a href="my_user.php?act=order_list">我的订单</a></li>
-              <li><a href="my_grzxgdsc.php">我的收藏</a></li>
+              <li><a href="javascript:window.open('my_user.php?act=order_list');" >我的订单</a></li>
+              <li><a href="javascript:window.open('my_grzxgdsc.php');">我的收藏</a></li>
 <!--              <li><a class="relative" href="#">消息记录<span class="count">2</span></a></li>-->
                 <li><a class="relative" href="#">消息记录</a></li>
               <li><a href="my_usergrzx.php?act=address_list">管理地址</a></li>
@@ -197,8 +197,8 @@ $("#logout").click(function(){
 
                   });
 
-
-window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
+window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
+//window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
 
 
     });
@@ -388,7 +388,7 @@ function addToCart(goodsId, parentId,type)  //type 购物类型
   }
 
   goods.quick    = quick;
-  goods.spec     = [369,373];  //spec_arr
+  goods.spec     = spec_arr;  //
   goods.goods_id = goodsId;
   goods.number   = number;
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);

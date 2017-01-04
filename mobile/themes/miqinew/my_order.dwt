@@ -196,7 +196,7 @@
                             <!-- Buttons -->
                           <div class="pull-right hidden-xs hidden-sm">
                             <a href="#" class="btn btn-default waves-effect waves-light cancel_order_pc" data-id="{$no.order_id}">取消订单</a>
-                            <a href="flow.php?step=pay_ok&order_id={$no.order_id}" class="btn btn-primary waves-effect waves-light" target="_Blank">去支付</a>
+                            <a href="javascript:window.open('flow.php?step=pay_ok&order_id={$no.order_id}');" class="btn btn-primary waves-effect waves-light" target="_Blank">去支付</a>
                           </div>
 
                           </div>
@@ -204,25 +204,54 @@
                           <div class="col-md-6">
                       <!-- Item -->
                     <!--{foreach from=$no.good_list item=gl}-->
-                      <div class="item">
+                      <div class="item hidden-xs">
                       {if $gl.goods_thumb}
-                        <a href="shop-single.php?id={$gl.goods_id}" class="item-thumb pull-left">
+                        <a href="javascript:window.open('shop-single.php?id={$gl.goods_id}');" class="item-thumb pull-left">
                           <img class="img-responsive" src="../../{$gl.goods_thumb}" alt="Item">
                         </a>
                         {/if}
-                        <div class="item-details hidden-xs">
-                          <h3 class="item-title"><a href="">{$gl.goods_name}</a></h3>
+                        <div class="item-details ">
+                          <h3 class="item-title"><a href="javascript:window.open('shop-single.php?id={$gl.goods_id}');">{$gl.goods_name}</a></h3>
+                          <div>
+                          <div class="pull-right" style="color: #000;">{$gl.goods_attr}</div>
                           <h4 class="item-price">数量：{$gl.goods_number}</h4>
+                          </div>
                           <h4 class="item-price">{$gl.goods_price}</h4>
                         </div>
-                        <div class="item-details visible-xs">
-                          <h3 class="item-title"><a href="shop-single.html">{$gl.goods_name}</a></h3>
-                          <h4 class="item-price">数量：{$gl.goods_number}</h4>
-                          <h4 class="item-price">{$gl.subtotal}</h4>
-                        </div>
-                         </div><!-- .item -->
-                      <!-- {/foreach} -->
 
+                         </div><!-- .item -->
+                         <div class="item visible-xs">
+                         <div class="row">
+                          <div class="col-xs-3">
+                          {if $gl.goods_thumb}
+                            <a href="javascript:window.open('shop-single.php?id={$gl.goods_id}');">
+                              <img class="img-responsive" src="../../{$gl.goods_thumb}" alt="{$gl.goods_name}">
+                            </a>
+                            {/if}
+                          </div>
+                          <div class="col-xs-9" onclick="window.open('shop-single.php?id={$gl.goods_id}');">
+                          {$gl.goods_name}
+                        </div>
+                        </div>
+                          <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$gl.goods_attr}</div>
+                          <div class="clearfix">
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">{$gl.subtotal}</div>
+                            <div class="pull-right" style="padding-top:15px;">
+                                   数量：{$gl.goods_number}
+                            </div>
+                          </div>
+
+                        </div>
+                      <!-- {/foreach} -->
+                      <!-- 邮费 -->
+                      <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+                        <div class="column">
+                          <h3 class="toolbar-title">邮费：</h3>
+                        </div>
+                        <div class="column">
+                          <h3 class="amount_order_no">{$no.post_price}</h3>
+                        </div>
+                      </div><!-- 邮费 -->
 
                       <!-- Subtotal -->
                       <div class="cart-subtotal space-bottom">
@@ -248,7 +277,7 @@
 
                       <div class="visible-sm visible-xs">
                         <a href="#" class="btn btn-default waves-effect waves-light cancel_order_mobile" data-id="{$no.order_id}" >取消订单</a>
-                        <a href="flow.php?step=pay_ok&order_id={$no.order_id}" class="btn btn-primary waves-effect waves-light" target="_Blank">去支付</a>
+                        <a href="javascript:window.open('flow.php?step=pay_ok&order_id={$no.order_id}');" class="btn btn-primary waves-effect waves-light" target="_Blank">去支付</a>
                       </div>
 
                     </div>
@@ -276,22 +305,55 @@
                           </div>
                       <div class="row">
                           <div class="col-md-6">
-                      <!-- Item -->
-                      <!--{foreach from=$ye.good_list item=yg}-->
-                      <div class="item">
 
-                        {if $yg.goods_thumb}
-                        <a href="shop-single.html" class="item-thumb">
-                          <img src="../../{$yg.goods_thumb}" alt="Item">
+                      <!--{foreach from=$ye.good_list item=yg}-->
+                       <!-- .item -->
+
+                      <div class="item hidden-xs">
+                      {if $yg.goods_thumb}
+                        <a href="javascript:window.open('shop-single.php?id={$yg.goods_id}');" class="item-thumb pull-left">
+                          <img class="img-responsive" src="../../{$yg.goods_thumb}" alt="{$yg.goods_name}">
                         </a>
-                        {/if}
+                         {/if}
                         <div class="item-details">
-                          <h3 class="item-title"><a href="shop-single.html">{$yg.goods_name}</a></h3>
-                          <h4 class="item-price">数量：{$yg.goods_number} </h4>
+                          <h3 class="item-title"><a href="javascript:window.open('shop-single.php?id={$yg.goods_id}');">{$yg.goods_name}</a></h3>
+                          <div>
+                            <div class="pull-right" style="color: #000;">{$yg.goods_attr}</div>
+                            <h4 class="item-price">数量：{$yg.goods_number} </h4>
+                          </div>
                           <h4 class="item-price">{$yg.subtotal}</h4>
                         </div>
                       </div><!-- .item -->
+                      <div class="item visible-xs">
+                        <div class="row">
+                        <div class="col-xs-3">
+                        {if $yg.goods_thumb}
+                          <a href="javascript:window.open('shop-single.php?id={$yg.goods_id}');">
+                            <img class="img-responsive" src="../../{$yg.goods_thumb}" alt="{$yg.goods_name}">
+                          </a>
+                           {/if}
+                        </div>
+                        <div class="col-xs-9">
+                          {$yg.goods_name}
+                        </div>
+                        </div>
+                          <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$yg.goods_attr}</div>
+                          <div class="clearfix">
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">{$yg.subtotal}</div>
+                            <div class="pull-right" style="padding-top:15px;">
+                                   数量：{$yg.goods_number}
+                            </div>
+                          </div>
+                      </div><!-- .item -->
                    <!--{/foreach}-->
+                   <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+                        <div class="column">
+                          <h3 class="toolbar-title">邮费：</h3>
+                        </div>
+                        <div class="column">
+                          <h3 class="amount_yes">{$ye.post_price}</h3>
+                        </div>
+                      </div>
                       <!-- Subtotal -->
                       <div class="cart-subtotal space-bottom">
                         <div class="column">
@@ -337,19 +399,43 @@
                           <div class="col-md-6">
                       <!-- Item -->
                       <!--{foreach from=$co.good_list item=cg}-->
-                      <div class="item">
+                      <div class="item hidden-xs">
 
                         {if $cg.goods_thumb}
-                        <a href="shop-single.html" class="item-thumb">
-                          <img src="../../{$cg.goods_thumb}" alt="Item">
+                        <a href="javascript:window.open('shop-single.php?id={$cg.goods_id}');" class="item-thumb">
+                          <img src="../../{$cg.goods_thumb}" alt="{$cg.goods_name}">
                         </a>
                         {/if}
                         <div class="item-details">
-                          <h3 class="item-title"><a href="shop-single.html">{$cg.goods_name}</a></h3>
+                          <h3 class="item-title"><a href="javascript:window.open('shop-single.php?id={$cg.goods_id}');">{$cg.goods_name}</a></h3>
+                          <div>
+                          <div class="pull-right" style="color: #000;">{$cg.goods_attr}</div>
                           <h4 class="item-price">数量：{$cg.goods_number} </h4>
+                          </div>
                           <h4 class="item-price">{$cg.subtotal}</h4>
                         </div>
                       </div><!-- .item -->
+                      <div class="item visible-xs">
+                        <div class="row">
+                        <div class="col-xs-3">
+                              {if $cg.goods_thumb}
+                            <a href="javascript:window.open('shop-single.php?id={$cg.goods_id}');" class="item-thumb">
+                              <img src="../../{$cg.goods_thumb}" alt="{$cg.goods_name}">
+                            </a>
+                            {/if}
+                        </div>
+                        <div class="col-xs-9">
+                          {$cg.goods_name}
+                        </div>
+                        </div>
+                          <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$cg.goods_attr}</div>
+                          <div class="clearfix">
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">{$cg.subtotal}</div>
+                            <div class="pull-right" style="padding-top:15px;">
+                                   数量：{$cg.goods_number}
+                            </div>
+                          </div>
+                      </div>
                        <!--{/foreach}-->
 
                       <!-- Subtotal -->
