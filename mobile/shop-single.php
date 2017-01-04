@@ -140,39 +140,62 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
 
     //商品属性筛选
     $attrid = $_POST['attrid'];
-    $a = $_POST['typenum'];
-
+    $a = $_POST['typenum'];   //类型名称
+    $spec_arr = $_POST['spec_arr'];
     $sql = "select goods_attr from `ecs_products` where FIND_IN_SET('$attrid',goods_attr) and product_number > 0";
     $feiattrid = $db->getAll($sql);
-    foreach ($feiattrid as $key => $value) {
-           $feiattrid[$key];
 
+    foreach ($feiattrid as $key => $value) {
 
             $goodsattr = explode(",",$value['goods_attr']);
-            count($goodsattr);
-           if($key==0){
-            $min_length_arr=$goodsattr;
-           }else{
-              if(count($goodsattr)<count($min_length_arr)){
-                $min_length_arr=$goodsattr;
-              }
-           }
+            $result=0;
+             foreach ($spec_arr as $sk=>$sv){   //查询属性条件是否全部匹配
+                if($v){
+                  if(in_array($sv,$goodsattr)){
+                    $result++;
+                  }
+                }else{
+                    $result++;
+                }
+
+             }
+
+             if($result==count($goodsattr)){   //默认选中
+                    foreach ($goodsattr as $sskk => $ssvv) {
+
+                                        $checked[$sskk]=$ssvv;
+
+
+                    }
+             }
+
+           //  count($goodsattr);
+           // if($key==0){
+           //  $min_length_arr=$goodsattr;
+           // }else{
+           //    if(count($goodsattr)<count($min_length_arr)){
+           //      $min_length_arr=$goodsattr;
+           //    }
+           // }
             foreach ($goodsattr as $k => $v) {
                 if($k != $a){
                     $select[$k][]=$v;
                 }
             }
     }
-foreach ($min_length_arr as $key => $value) {
-    if($key != $a){
-                    $checked[$key]=$value;
-                }
+// foreach ($min_length_arr as $key => $value) {
+//     if($key != $a){
+//                     $checked[$key]=$value;
+//                 }
 
+// }
+
+if(is_array($checked)){
+$jiageimg = implode(",", $checked);
 }
-
-
-$jiageimg = implode(",", $min_length_arr);
-
+// else{
+//     $data['error']=1;
+// }
  //   价格和商品
    $sqls = "select attributeprice,attributeimg from `ecs_products` where goods_attr = '$jiageimg'";
   $jiageimgs = $db->getRow($sqls);
@@ -475,9 +498,12 @@ $smarty->assign('xh',  $xh);  //猜你喜欢
 g.attr_id = a.attr_id
  where g.goods_id = $goodsid and attr_type = 0";
  $spguige = $db->getAll($sqlguige);
+
  $smarty->assign('spguige',  $spguige);  //商品规格
 
-
+//默认选中商品
+$sql = "select goods_attr from `ecs_products` where goods_id=".$goods_id." and product_number > 0";
+$arr = $db->getAll($sql);
 
 $smarty->display('shop-single.dwt',      $cache_id);   //商品详情页
 

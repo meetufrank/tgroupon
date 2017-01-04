@@ -408,6 +408,7 @@ function addToCart(goodsId, parentId,type)  //type 购物类型
                     if(type){
                              window.open('flow.php?step=pay_select&&cartid='+data.cartid);return;
                     }else{
+
                       addToCartResponse(data);return;
                     }
 
@@ -429,24 +430,13 @@ function addToCart(goodsId, parentId,type)  //type 购物类型
 /* *
  * 处理添加商品到购物车的反馈信息
  */
-function addToCartResponse(result)
+function addToCartResponse(data)
 {
-  if (result.error > 0)
-  {
 
-    // 没选规格，弹出属性选择框
-     if (result.error == 6)
-    {
-      openSpeDiv(result.message, result.goods_id, result.parent);
-    }
-    else
-    {
-      alert(result.message);
-    }
-  }
-  else
-  {
-    var cartInfo = document.getElementById('ECS_CARTINFO');
+   if(data.error==1){
+      alert(data.message);
+      return;
+   }
     var cart_url = 'flow.php';
     layer.open({
                 content: '已加入购物车',
@@ -490,34 +480,10 @@ function addToCartResponse(result)
                     alert("json出错");
                 }
             });
-    if (cartInfo)
-    {
-      cartInfo.innerHTML = result.content;
 
-    }
 
-    if (result.one_step_buy == '1')
-    {
-      location.href = cart_url;
-    }
-    else
-    {
-      switch(result.confirm_type)
-      {
-        case '1' :
-          if (confirm(result.message)) location.href = cart_url;
-          break;
-        case '2' :
-          if (!confirm(result.message)) location.href = cart_url;
-          break;
-        case '3' :
-          location.href = cart_url;
-          break;
-        default :
-          break;
-      }
-    }
-  }
+
+
 }
 
 
