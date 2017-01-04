@@ -256,6 +256,18 @@
     </style>
 
 <script type="text/javascript">
+$(function(){
+  var data={$select};
+  $(".type_arr  ul li ").css("display",'none');
+  $.each(data,function(i){
+    $.each(data[i],function(x){
+          $("#type_"+data[i][x]).parent("li").css("display",'block');
+    })
+
+
+  })
+
+});
      function attrshuaixuan(attrid,typeid,typenum){
 
         $("#type_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
@@ -355,25 +367,28 @@
       <div class="container">
         <div class="product-info padding-top-2x text-center">
           <h1 class="h2 space-bottom-half">创 意 椅 子</h1>
-          <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥128.00</h2>
+          <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥{$jiagedata.attributeprice}</h2>
           <!--PC端缩略图-->
           	<div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
-			   <img src="{$ectouch_themes}/img/shop/product-gallery/preview01.jpg" class="pc-thumbnail">
+            {if $jiagedata.attributeimg}
+			   <img src="././admin/{$jiagedata.attributeimg}" class="pc-thumbnail">
+            {/if}
             </div>
+         }
           <!--PC端商品选择详情-->
+
             <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
            		<div class="pc-dright-top">
                     <form  name="ECS_FORMBUY">
                            {foreach from=$specification item=spec key=spec_key name=name}
-                           <input type="hidden" name="spec_{$spec_key}" value="" >
+                           <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
 
                                  <div class="pc-group-select col-lg-6 col-md-6 col-sm-6 type_arr" id="pc-select-group{$smarty.foreach.name.index}">
                             <span style="float:left; margin-top:5px;">{$spec.name}:</span>
                               <ul>
                               {foreach from=$spec.values item=value key=key}
-<input type="hidden" name="" value="{$value.id}" >
                                 <li>
-                                    <a href="#" onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" class="pc-group-detail" id="type_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
+                                    <a href="#" onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="pc-group-detail pc-group-change"{else}class="pc-group-detail"{/if} id="type_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
                                 </li>
                               {/foreach}
                               </ul>

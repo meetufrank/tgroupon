@@ -502,10 +502,37 @@ g.attr_id = a.attr_id
  $smarty->assign('spguige',  $spguige);  //商品规格
 
 //默认选中商品
-$sql = "select goods_attr from `ecs_products` where goods_id=".$goods_id." and product_number > 0";
-$arr = $db->getAll($sql);
+ $sql = "select goods_attr from `ecs_products` where goods_id=".$goods_id." and product_number > 0 ";
+ $select_arr = $db->getAll($sql);
+// $sql="select min(goods_attr_id) as goods_attr from ecs_goods_attr  where goods_id=".$goods_id."  GROUP BY attr_id";
+    //默认选中属性
+        foreach ($select_arr as $key => $value) {
 
+            $goodsattr = explode(",",$value['goods_attr']);
+
+
+              if($key==0){
+                    $checked_arr=$goodsattr;
+                   }
+              foreach ($goodsattr as $k => $v) {
+
+                            $select[$k][]=$v;
+
+                    }
+    }
+
+// print_r($checked_arr);
+// print_r($select);exit;
+$jiageimg = implode(",", $checked_arr);
+ $sqls = "select attributeprice,attributeimg from `ecs_products` where goods_attr = '$jiageimg'";
+  $jiageimgs = $db->getRow($sqls);
+
+$smarty->assign('jiagedata',$jiageimgs);
+$smarty->assign('checked_arr',$checked_arr);
+
+$smarty->assign('select',json_encode($select));
 $smarty->display('shop-single.dwt',      $cache_id);   //商品详情页
+
 
 
 /*------------------------------------------------------ */
