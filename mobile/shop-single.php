@@ -142,9 +142,11 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
     $attrid = $_POST['attrid'];
     $a = $_POST['typenum'];   //类型名称
     $spec_arr = $_POST['spec_arr'];
+    $typeid=$_POST['typeid'];
     $sql = "select goods_attr from `ecs_products` where FIND_IN_SET('$attrid',goods_attr) and product_number > 0";
     $feiattrid = $db->getAll($sql);
-
+    $sql = "select goods_attr_id from `ecs_goods_attr` where  attr_id=".$typeid;
+    $friend_arr = $db->getAll($sql);
     foreach ($feiattrid as $key => $value) {
 
             $goodsattr = explode(",",$value['goods_attr']);
@@ -178,9 +180,9 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
            //    }
            // }
             foreach ($goodsattr as $k => $v) {
-                if($k != $a){
+
                     $select[$k][]=$v;
-                }
+
             }
     }
 // foreach ($min_length_arr as $key => $value) {
@@ -190,6 +192,14 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
 
 // }
 
+foreach ($friend_arr as $key => $value) {
+
+    $sql = "select count(*) from `ecs_products` where FIND_IN_SET('".$value['goods_attr_id']."',goods_attr) and product_number > 0";
+    $count = $db->getOne($sql);
+    if($count){
+    $select[$a][]=$value['goods_attr_id'];
+    }
+}
 if(is_array($checked)){
 $jiageimg = implode(",", $checked);
 }
@@ -197,7 +207,7 @@ $jiageimg = implode(",", $checked);
 //     $data['error']=1;
 // }
  //   价格和商品
-   $sqls = "select attributeprice,attributeimg from `ecs_products` where goods_attr = '$jiageimg'";
+   $sqls = "select attributeprice,attributeimg,product_number from `ecs_products` where goods_attr = '$jiageimg'";
   $jiageimgs = $db->getRow($sqls);
 
 
@@ -524,7 +534,7 @@ g.attr_id = a.attr_id
 // print_r($checked_arr);
 // print_r($select);exit;
 $jiageimg = implode(",", $checked_arr);
- $sqls = "select attributeprice,attributeimg from `ecs_products` where goods_attr = '$jiageimg'";
+ $sqls = "select attributeprice,attributeimg,product_number from `ecs_products` where goods_attr = '$jiageimg'";
   $jiageimgs = $db->getRow($sqls);
 
 $smarty->assign('jiagedata',$jiageimgs);
