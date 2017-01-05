@@ -257,6 +257,18 @@
     </style>
 
 <script type="text/javascript">
+$(function(){
+  var data=<?php echo $this->_var['select']; ?>;
+  $(".type_arr  ul li ").css("display",'none');
+  $.each(data,function(i){
+    $.each(data[i],function(x){
+          $("#type_"+data[i][x]).parent("li").css("display",'block');
+    })
+
+
+  })
+
+});
      function attrshuaixuan(attrid,typeid,typenum){
 
         $("#type_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
@@ -336,10 +348,10 @@
     <section class="fw-section bg-gray padding-top-3x">
       <div class="swiper-container">
             <div class="swiper-wrapper">
-					<?php $_from = $this->_var['xiangce']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'xiangce_0_74989400_1483504309');if (count($_from)):
-    foreach ($_from AS $this->_var['xiangce_0_74989400_1483504309']):
+					<?php $_from = $this->_var['xiangce']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'xiangce_0_91053700_1483517660');if (count($_from)):
+    foreach ($_from AS $this->_var['xiangce_0_91053700_1483517660']):
 ?>
-						<div class="swiper-slide"><img src="../<?php echo $this->_var['xiangce_0_74989400_1483504309']['img_url']; ?>"></div>
+						<div class="swiper-slide"><img src="../<?php echo $this->_var['xiangce_0_91053700_1483517660']['img_url']; ?>"></div>
 					<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
             </div>
 
@@ -358,12 +370,16 @@
       <div class="container">
         <div class="product-info padding-top-2x text-center">
           <h1 class="h2 space-bottom-half">创 意 椅 子</h1>
-          <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥128.00</h2>
+          <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥<?php echo $this->_var['jiagedata']['attributeprice']; ?></h2>
           
           	<div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
-			   <img src="<?php echo $this->_var['ectouch_themes']; ?>/img/shop/product-gallery/preview01.jpg" class="pc-thumbnail">
+            <?php if ($this->_var['jiagedata']['attributeimg']): ?>
+			   <img src="././admin/<?php echo $this->_var['jiagedata']['attributeimg']; ?>" class="pc-thumbnail">
+            <?php endif; ?>
             </div>
+         }
           
+
             <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
            		<div class="pc-dright-top">
                     <form  name="ECS_FORMBUY">
@@ -372,7 +388,7 @@ if ($this->_foreach['name']['total'] > 0):
     foreach ($_from AS $this->_var['spec_key'] => $this->_var['spec']):
         $this->_foreach['name']['iteration']++;
 ?>
-                           <input type="hidden" name="spec_<?php echo $this->_var['spec_key']; ?>" value="" >
+                           <input type="hidden" name="spec_<?php echo $this->_var['spec_key']; ?>" value="<?php echo $this->_var['checked_arr'][($this->_foreach['name']['iteration'] - 1)]; ?>" >
 
                                  <div class="pc-group-select col-lg-6 col-md-6 col-sm-6 type_arr" id="pc-select-group<?php echo ($this->_foreach['name']['iteration'] - 1); ?>">
                             <span style="float:left; margin-top:5px;"><?php echo $this->_var['spec']['name']; ?>:</span>
@@ -380,9 +396,8 @@ if ($this->_foreach['name']['total'] > 0):
                               <?php $_from = $this->_var['spec']['values']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'value');if (count($_from)):
     foreach ($_from AS $this->_var['key'] => $this->_var['value']):
 ?>
-<input type="hidden" name="" value="<?php echo $this->_var['value']['id']; ?>" >
                                 <li>
-                                    <a href="#" onclick="attrshuaixuan(<?php echo $this->_var['value']['id']; ?>,<?php echo $this->_var['spec_key']; ?>,<?php echo ($this->_foreach['name']['iteration'] - 1); ?>)" class="pc-group-detail" id="type_<?php echo $this->_var['value']['id']; ?>" data-type="<?php echo $this->_var['value']['id']; ?>"><?php echo $this->_var['value']['label']; ?><img src="<?php echo $this->_var['value']['attrimg']; ?>"></a>
+                                    <a href="#" onclick="attrshuaixuan(<?php echo $this->_var['value']['id']; ?>,<?php echo $this->_var['spec_key']; ?>,<?php echo ($this->_foreach['name']['iteration'] - 1); ?>)" <?php if ($this->_var['checked_arr'][($this->_foreach['name']['iteration'] - 1)] == $this->_var['value']['id']): ?>class="pc-group-detail pc-group-change"<?php else: ?>class="pc-group-detail"<?php endif; ?> id="type_<?php echo $this->_var['value']['id']; ?>" data-type="<?php echo $this->_var['value']['id']; ?>"><?php echo $this->_var['value']['label']; ?><img src="<?php echo $this->_var['value']['attrimg']; ?>"></a>
                                 </li>
                               <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
                               </ul>
@@ -498,14 +513,14 @@ if ($this->_foreach['name']['total'] > 0):
     <section class="container padding-top">
     <div class="row">
        <div class="artist-lf col-lg-6 col-md-6 col-sm-6">
-	      <?php $_from = $this->_var['spysj']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'spysj_0_75089500_1483504309');if (count($_from)):
-    foreach ($_from AS $this->_var['spysj_0_75089500_1483504309']):
+	      <?php $_from = $this->_var['spysj']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'spysj_0_91153700_1483517660');if (count($_from)):
+    foreach ($_from AS $this->_var['spysj_0_91153700_1483517660']):
 ?>
        		<p>
-            	<img src="<?php echo $this->_var['spysj_0_75089500_1483504309']['hav_logo']; ?>" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
-            	<span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;"><?php echo $this->_var['spysj_0_75089500_1483504309']['user_name']; ?></span>
+            	<img src="<?php echo $this->_var['spysj_0_91153700_1483517660']['hav_logo']; ?>" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
+            	<span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;"><?php echo $this->_var['spysj_0_91153700_1483517660']['user_name']; ?></span>
             	<img src="<?php echo $this->_var['ectouch_themes']; ?>/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
-            	<span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;"><?php echo $this->_var['spysj_0_75089500_1483504309']['country']; ?></span>
+            	<span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;"><?php echo $this->_var['spysj_0_91153700_1483517660']['country']; ?></span>
            	</p>
 		  <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
        </div>
@@ -527,23 +542,23 @@ if ($this->_foreach['name']['total'] > 0):
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane transition fade in active" id="description">
           <div class="row space-top">
-                <?php $_from = $this->_var['goodsdesc']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goodsdesc_0_75089500_1483504309');if (count($_from)):
-    foreach ($_from AS $this->_var['goodsdesc_0_75089500_1483504309']):
+                <?php $_from = $this->_var['goodsdesc']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goodsdesc_0_91153700_1483517660');if (count($_from)):
+    foreach ($_from AS $this->_var['goodsdesc_0_91153700_1483517660']):
 ?>
-		             <?php echo $this->_var['goodsdesc_0_75089500_1483504309']['goods_desc']; ?>
+		             <?php echo $this->_var['goodsdesc_0_91153700_1483517660']['goods_desc']; ?>
                 <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
           </div>
         </div>
         <div role="tabpanel" class="tab-pane transition fade" id="additional">
           <div class="row">
-          <?php $_from = $this->_var['spguige']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'spguige_0_75089500_1483504309');if (count($_from)):
-    foreach ($_from AS $this->_var['spguige_0_75089500_1483504309']):
+          <?php $_from = $this->_var['spguige']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'spguige_0_91153700_1483517660');if (count($_from)):
+    foreach ($_from AS $this->_var['spguige_0_91153700_1483517660']):
 ?>
             <div class="col-md-6">
               <table class="table-no-border">
                 <tr>
-                  <th><?php echo $this->_var['spguige_0_75089500_1483504309']['attr_name']; ?>:</th>
-                  <td><?php echo $this->_var['spguige_0_75089500_1483504309']['attr_value']; ?></td>
+                  <th><?php echo $this->_var['spguige_0_91153700_1483517660']['attr_name']; ?>:</th>
+                  <td><?php echo $this->_var['spguige_0_91153700_1483517660']['attr_value']; ?></td>
                 </tr>
 
               </table>
@@ -562,20 +577,20 @@ if ($this->_foreach['name']['total'] > 0):
       <h3 class="padding-top">猜 你 喜 欢</h3>
       <div class="row padding-top">
 
-	    <?php $_from = $this->_var['xh']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'xh_0_75089500_1483504309');if (count($_from)):
-    foreach ($_from AS $this->_var['xh_0_75089500_1483504309']):
+	    <?php $_from = $this->_var['xh']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'xh_0_91153700_1483517660');if (count($_from)):
+    foreach ($_from AS $this->_var['xh_0_91153700_1483517660']):
 ?>
 			<div class="col-lg-3 col-sm-6 mobile-indent">
 			  <div class="shop-item">
 				<div class="shop-thumbnail">
-				  <a href="shop-single.php?id=<?php echo $this->_var['xh_0_75089500_1483504309']['goods_id']; ?>" class="item-link"></a>
-				  <?php if ($this->_var['xh_0_75089500_1483504309']['goods_img']): ?><img src="../<?php echo $this->_var['xh_0_75089500_1483504309']['goods_img']; ?>" alt="Shop item"><?php endif; ?>
+				  <a href="shop-single.php?id=<?php echo $this->_var['xh_0_91153700_1483517660']['goods_id']; ?>" class="item-link"></a>
+				  <?php if ($this->_var['xh_0_91153700_1483517660']['goods_img']): ?><img src="../<?php echo $this->_var['xh_0_91153700_1483517660']['goods_img']; ?>" alt="Shop item"><?php endif; ?>
 				</div>
 				<div class="shop-item-details">
-				  <h3 class="shop-item-title"><a href="shop-single.php?id=<?php echo $this->_var['xh_0_75089500_1483504309']['goods_id']; ?>"><?php echo $this->_var['xh_0_75089500_1483504309']['goods_name']; ?></a></h3>
+				  <h3 class="shop-item-title"><a href="shop-single.php?id=<?php echo $this->_var['xh_0_91153700_1483517660']['goods_id']; ?>"><?php echo $this->_var['xh_0_91153700_1483517660']['goods_name']; ?></a></h3>
 				  <span class="shop-item-price">
 					<span class="old-price"></span>
-						￥<?php echo $this->_var['xh_0_75089500_1483504309']['shop_price']; ?>
+						￥<?php echo $this->_var['xh_0_91153700_1483517660']['shop_price']; ?>
 				  </span>
 				</div>
 			  </div>

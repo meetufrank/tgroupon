@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:2:{i:0;s:53:"E:/www/tgroupon/mobile/themes/miqinew/shop-single.dwt";i:1;s:46:"E:/www/tgroupon/mobile/themes/miqinew/head.dwt";}s:7:"expires";i:1483499920;s:8:"maketime";i:1483496320;}<!DOCTYPE html>
+<?php exit;?>a:3:{s:8:"template";a:2:{i:0;s:53:"E:/www/tgroupon/mobile/themes/miqinew/shop-single.dwt";i:1;s:46:"E:/www/tgroupon/mobile/themes/miqinew/head.dwt";}s:7:"expires";i:1483587536;s:8:"maketime";i:1483583936;}<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta name="Generator" content="TGROUPON v2.7.3" />
@@ -243,17 +243,36 @@
 	}
     </style>
 <script type="text/javascript">
+$(function(){
+  var data=null;
+  $(".type_arr  ul li ").css("display",'none');
+  $.each(data,function(i){
+    $.each(data[i],function(x){
+          $("#type_"+data[i][x]).parent("li").css("display",'block');
+    })
+  })
+});
      function attrshuaixuan(attrid,typeid,typenum){
         $("#type_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
         $("#type_"+attrid).addClass("pc-group-change");
         $("input[name='spec_"+typeid+"']").val(attrid);
+         var formBuy      = document.forms['ECS_FORMBUY'];
+          if (formBuy)
+          {
+            spec_arr = getSelectedAttributes(formBuy);
+          }
          $.ajax({
                                     type:"post",
                                     url:"shop-single.php?act=attrshuaixuan",
                                     async:true,
-                                    data:{attrid:attrid,typenum:typenum},
+                                    data:{attrid:attrid,typenum:typenum,spec_arr:spec_arr},
                                     dataType: "json",
                                     success: function (data) {
+                                      if(data.error==1){
+                                        alert('未找到该商品!');
+                                        window.location.href=window.location.href;
+                                        return;
+                                      }
                                        $(".type_arr  ul li ").css("display",'none');
                                         $("#pc-select-group"+typenum+"  ul li ").css("display",'block');
                                       $.each(data.select,function(i) {
@@ -300,10 +319,8 @@
              <span class="count " id="cart_count">0</span>
             </i>
           </a>
-          
-          <a href="#account"class="toolbar-toggle"><i class="material-icons person"></i></a>
-          
-        </div>
+                    <a href="#account"class="toolbar-toggle"><i class="material-icons person"></i></a>
+                  </div>
       </div>
       
       
@@ -343,13 +360,11 @@
         <div class="toolbar-section" id="account">
           <h3 class="toolbar-title space-bottom">用户登录</h3>
           <div class="inner">
-   
-            <a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx972a6f963cf1d611&response_type=code&scope=snsapi_login&redirect_uri=http://meetuuu.com/mobile/weixinlogin.php&state=668ee48328701ca10efef2517d8826e8" class="btn btn-primary waves-effect waves-light toggle-section">
+               <a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx972a6f963cf1d611&response_type=code&scope=snsapi_login&redirect_uri=http://meetuuu.com/mobile/weixinlogin.php&state=668ee48328701ca10efef2517d8826e8" class="btn btn-primary waves-effect waves-light toggle-section">
               <i class="material-icons question_answer"></i>
               点击扫二维码登录
           </a>
-        
-          </div>
+                  </div>
         </div>
          <div class="toolbar-section" id="cart">
           <div class="shopping-cart">
@@ -361,8 +376,7 @@
                 </label>
                 </div>
             
-   
-            
+               
             
             <div class="cart-subtotal space-bottom" id="zongjia">
               <div class="column">
@@ -587,23 +601,12 @@ function addToCart(goodsId, parentId,type)  //type 购物类型
 /* *
  * 处理添加商品到购物车的反馈信息
  */
-function addToCartResponse(result)
+function addToCartResponse(data)
 {
-  if (result.error > 0)
-  {
-    // 没选规格，弹出属性选择框
-     if (result.error == 6)
-    {
-      openSpeDiv(result.message, result.goods_id, result.parent);
-    }
-    else
-    {
-      alert(result.message);
-    }
-  }
-  else
-  {
-    var cartInfo = document.getElementById('ECS_CARTINFO');
+   if(data.error==1){
+      alert(data.message);
+      return;
+   }
     var cart_url = 'flow.php';
     layer.open({
                 content: '已加入购物车',
@@ -645,45 +648,15 @@ function addToCartResponse(result)
                     alert("json出错");
                 }
             });
-    if (cartInfo)
-    {
-      cartInfo.innerHTML = result.content;
-    }
-    if (result.one_step_buy == '1')
-    {
-      location.href = cart_url;
-    }
-    else
-    {
-      switch(result.confirm_type)
-      {
-        case '1' :
-          if (confirm(result.message)) location.href = cart_url;
-          break;
-        case '2' :
-          if (!confirm(result.message)) location.href = cart_url;
-          break;
-        case '3' :
-          location.href = cart_url;
-          break;
-        default :
-          break;
-      }
-    }
-  }
 }
-</script>
-	
+</script>	
     
     <section class="fw-section bg-gray padding-top-3x">
       <div class="swiper-container">
             <div class="swiper-wrapper">
-					
-						<div class="swiper-slide"><img src="../images/201612/goods_img/164_P_1482700762112.jpg"></div>
-					
-						<div class="swiper-slide"><img src="../images/201612/goods_img/164_P_1482700763400.jpg"></div>
-					
-            </div>
+											<div class="swiper-slide"><img src="../images/201612/goods_img/164_P_1482700762112.jpg"></div>
+											<div class="swiper-slide"><img src="../images/201612/goods_img/164_P_1482700763400.jpg"></div>
+					            </div>
             
     		<div class="swiper-pagination"></div>
             <!--<div class="swiper-button-prev" style="width:50px;">-PREV</div>
@@ -696,45 +669,36 @@ function addToCartResponse(result)
       <div class="container">
         <div class="product-info padding-top-2x text-center">
           <h1 class="h2 space-bottom-half">创 意 椅 子</h1>
-          <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥128.00</h2>
+          <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥</h2>
           
           	<div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
-			   <img src="themes/miqinew/img/shop/product-gallery/preview01.jpg" class="pc-thumbnail">
-            </div>
+                        </div>
+         }
           
             <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
            		<div class="pc-dright-top">
                     <form  name="ECS_FORMBUY">
-                           
-                           <input type="hidden" name="spec_223" value="" >
+                                                      <input type="hidden" name="spec_223" value="" >
                                  <div class="pc-group-select col-lg-6 col-md-6 col-sm-6 type_arr" id="pc-select-group0">
                             <span style="float:left; margin-top:5px;">颜色:</span>
                               <ul>
-                              
-<input type="hidden" name="" value="360" >
-                                <li>
+                                                              <li>
                                     <a href="#" onclick="attrshuaixuan(360,223,0)" class="pc-group-detail" id="type_360" data-type="360">白色<img src=""></a>
                                 </li>
-                              
-                              </ul>
+                                                            </ul>
                               <div class="clear"></div>
                           </div>
-                           
-                           <input type="hidden" name="spec_224" value="" >
+                                                      <input type="hidden" name="spec_224" value="" >
                                  <div class="pc-group-select col-lg-6 col-md-6 col-sm-6 type_arr" id="pc-select-group1">
                             <span style="float:left; margin-top:5px;">尺寸:</span>
                               <ul>
-                              
-<input type="hidden" name="" value="361" >
-                                <li>
+                                                              <li>
                                     <a href="#" onclick="attrshuaixuan(361,224,1)" class="pc-group-detail" id="type_361" data-type="361">小<img src=""></a>
                                 </li>
-                              
-                              </ul>
+                                                            </ul>
                               <div class="clear"></div>
                           </div>
-                           
-                    </form>
+                                               </form>
                 </div>
                 <div class="pc-dright-bottom">
                 	<div class="col-lg-2 col-md-2 col-sm-2">
@@ -828,27 +792,22 @@ function addToCartResponse(result)
             </ul>
             <div class="clear"></div>
         </div> -->
-         
-                 <p class="mobile-cart-border-text">颜色</p>
-         
-                 <p class="mobile-cart-border-text">尺寸</p>
-         
-        </form>
+                          <p class="mobile-cart-border-text">颜色</p>
+                          <p class="mobile-cart-border-text">尺寸</p>
+                 </form>
     </section>
     <div class="clear"></div>
 	
     <section class="container padding-top">
     <div class="row">
        <div class="artist-lf col-lg-6 col-md-6 col-sm-6">
-	      
-       		<p>
+	             		<p>
             	<img src="" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
             	<span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;">王晋大艺术家</span>
             	<img src="themes/miqinew/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
             	<span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;"></span>
            	</p>
-		  
-       </div>
+		         </div>
        <!--<div class="artist-rt col-lg-6 col-md-6 col-sm-6">
            <p style="font-size:16px; font-weight:bold; margin-bottom:0px;">艺术家说:</p>
            <div style="font-size:15px; font-weight:bold; margin-top:5px;">人生的磨难是很多的，所以我们不可对于每一件轻微的伤害都过于敏感。在生活磨难面前，精神上的坚强和无动于衷是我们抵抗罪恶和人生意外的最好武器。 —— 洛克</div>
@@ -867,15 +826,11 @@ function addToCartResponse(result)
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane transition fade in active" id="description">
           <div class="row space-top">
-                
-		             
-                
-          </div>
+                		                                       </div>
         </div>
         <div role="tabpanel" class="tab-pane transition fade" id="additional">
           <div class="row">
-          
-          </div>
+                    </div>
         </div>
       </div>
     </section>
@@ -885,67 +840,55 @@ function addToCartResponse(result)
       	<hr style="position:relative;">
       <h3 class="padding-top">猜 你 喜 欢</h3>
       <div class="row padding-top">
-	    
-			<div class="col-lg-3 col-sm-6 mobile-indent">
+	    			<div class="col-lg-3 col-sm-6 mobile-indent">
 			  <div class="shop-item">
 				<div class="shop-thumbnail">
 				  <a href="shop-single.php?id=165" class="item-link"></a>
-				  <img src="../images/201612/goods_img/165_G_1481850865334.jpg" alt="Shop item">
-				</div>
+				  <img src="../images/201612/goods_img/165_G_1481850865334.jpg" alt="Shop item">				</div>
 				<div class="shop-item-details">
 				  <h3 class="shop-item-title"><a href="shop-single.php?id=165">娃娃啊啊啊啊啊</a></h3>
 				  <span class="shop-item-price">
 					<span class="old-price"></span>
-						￥2000.00
-				  </span>
+						￥2000.00				  </span>
 				</div>
 			  </div>
 			</div>
-        
-			<div class="col-lg-3 col-sm-6 mobile-indent">
+        			<div class="col-lg-3 col-sm-6 mobile-indent">
 			  <div class="shop-item">
 				<div class="shop-thumbnail">
-				  <a href="shop-single.php?id=119" class="item-link"></a>
-				  <img src="../images/201311/goods_img/119_G_1385664985247.jpg" alt="Shop item">
-				</div>
+				  <a href="shop-single.php?id=22" class="item-link"></a>
+				  <img src="../images/201311/goods_img/22_G_1384994678394.jpg" alt="Shop item">				</div>
 				<div class="shop-item-details">
-				  <h3 class="shop-item-title"><a href="shop-single.php?id=119">蓓丽柔和泡沫洁面膏125ml</a></h3>
+				  <h3 class="shop-item-title"><a href="shop-single.php?id=22">娇兰金钻修颜粉饼SPF10</a></h3>
 				  <span class="shop-item-price">
 					<span class="old-price"></span>
-						￥350.00
-				  </span>
+						￥399.00				  </span>
 				</div>
 			  </div>
 			</div>
-        
-			<div class="col-lg-3 col-sm-6 mobile-indent">
-			  <div class="shop-item">
-				<div class="shop-thumbnail">
-				  <a href="shop-single.php?id=114" class="item-link"></a>
-				  <img src="../images/201311/goods_img/114_G_1385664673888.jpg" alt="Shop item">
-				</div>
-				<div class="shop-item-details">
-				  <h3 class="shop-item-title"><a href="shop-single.php?id=114">思亲肤绿茶泡沫洁面摩丝16</a></h3>
-				  <span class="shop-item-price">
-					<span class="old-price"></span>
-						￥59.00
-				  </span>
-				</div>
-			  </div>
-			</div>
-        
-			<div class="col-lg-3 col-sm-6 mobile-indent">
+        			<div class="col-lg-3 col-sm-6 mobile-indent">
 			  <div class="shop-item">
 				<div class="shop-thumbnail">
 				  <a href="shop-single.php?id=25" class="item-link"></a>
-				  <img src="../images/200905/goods_img/25_G_1241972709544.jpg" alt="Shop item">
-				</div>
+				  <img src="../images/200905/goods_img/25_G_1241972709544.jpg" alt="Shop item">				</div>
 				<div class="shop-item-details">
 				  <h3 class="shop-item-title"><a href="shop-single.php?id=25">小灵通/固话50元充值卡</a></h3>
 				  <span class="shop-item-price">
 					<span class="old-price"></span>
-						￥48.00
-				  </span>
+						￥48.00				  </span>
+				</div>
+			  </div>
+			</div>
+        			<div class="col-lg-3 col-sm-6 mobile-indent">
+			  <div class="shop-item">
+				<div class="shop-thumbnail">
+				  <a href="shop-single.php?id=17" class="item-link"></a>
+				  <img src="../images/201611/goods_img/17_G_1479501429811.jpg" alt="Shop item">				</div>
+				<div class="shop-item-details">
+				  <h3 class="shop-item-title"><a href="shop-single.php?id=17">娇韵诗超V型纤容紧致瘦脸面膜75ml</a></h3>
+				  <span class="shop-item-price">
+					<span class="old-price"></span>
+						￥275.00				  </span>
 				</div>
 			  </div>
 			</div>

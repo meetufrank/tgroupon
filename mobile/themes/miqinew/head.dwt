@@ -128,7 +128,7 @@
                 </div>
                 <div class="count-input">
                 <a class="incr-btn" data-action="decrease" href="#" onclick="changenum({$goods.rec_id},-1)">–</a>
-                <input class="quantity" type="text" value="{$goods.goods_number}" min="1" max="1000" name="goods_number[{$goods.rec_id}]" id="goods_number_{$goods.rec_id}" onkeyup="changenum({$goods.rec_id},0)" readonly>
+                <input class="quantity" type="text" value="{$goods.goods_number}" min="1" max="{$goods.goods_attr}" name="goods_number[{$goods.rec_id}]" id="goods_number_{$goods.rec_id}" onkeyup="changenum({$goods.rec_id},0)" readonly>
                 <a class="incr-btn" data-action="increase" href="#" onclick="changenum({$goods.rec_id},1)">+</a>
                 </div></div>
                 <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="移出购物车"><i class="material-icons delete"></i></a></div>

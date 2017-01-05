@@ -96,8 +96,11 @@ if(!$openids){
 
 
 
-
-header("Location:goods_list.php");
+if($_SESSION['back_url']){
+header("Location:".$_SESSION['back_url']);
+}else{
+   header("Location: goods_list.php");
+}
 
 
 

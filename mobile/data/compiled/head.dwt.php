@@ -110,28 +110,28 @@
 
 
 
-   <?php $_from = $this->_var['goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_17419000_1483499262');if (count($_from)):
-    foreach ($_from AS $this->_var['goods_0_17419000_1483499262']):
+   <?php $_from = $this->_var['goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_95882500_1483583945');if (count($_from)):
+    foreach ($_from AS $this->_var['goods_0_95882500_1483583945']):
 ?>
                 <div class="item headitem">
                 <label class="checkbox" id="checkone">
-                <input style="position: absolute; opacity: 0;" type="checkbox" value="<?php echo $this->_var['goods_0_17419000_1483499262']['rec_id']; ?>" checked="checked"  id="rec_id" name="rec_check">
+                <input style="position: absolute; opacity: 0;" type="checkbox" value="<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>" checked="checked"  id="rec_id" name="rec_check">
                 <ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
                 </label>
-                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_17419000_1483499262']['goods_id']; ?>" class="item-thumb">
-                <?php if ($this->_var['goods_0_17419000_1483499262']['goods_thumb']): ?><img src="../<?php echo $this->_var['goods_0_17419000_1483499262']['goods_thumb']; ?>" alt="Item"><?php endif; ?>
+                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_95882500_1483583945']['goods_id']; ?>" class="item-thumb">
+                <?php if ($this->_var['goods_0_95882500_1483583945']['goods_thumb']): ?><img src="../<?php echo $this->_var['goods_0_95882500_1483583945']['goods_thumb']; ?>" alt="Item"><?php endif; ?>
                 </a>
                 <div class="item-details"><h3 class="item-title">
-                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_17419000_1483499262']['goods_id']; ?>"><?php echo $this->_var['goods_0_17419000_1483499262']['goods_name']; ?></a>
+                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_95882500_1483583945']['goods_id']; ?>"><?php echo $this->_var['goods_0_95882500_1483583945']['goods_name']; ?></a>
                 </h3>
                 <div>
-                <div class="pull-right" style="color:#000" ><?php echo $this->_var['goods_0_17419000_1483499262']['goods_attr']; ?></div>
-                <h4 class="item-price" data-price="<?php echo $this->_var['goods_0_17419000_1483499262']['goods_price']; ?>"><?php echo $this->_var['goods_0_17419000_1483499262']['goods_price']; ?></h4>
+                <div class="pull-right" style="color:#000" ><?php echo $this->_var['goods_0_95882500_1483583945']['goods_attr']; ?></div>
+                <h4 class="item-price" data-price="<?php echo $this->_var['goods_0_95882500_1483583945']['goods_price']; ?>"><?php echo $this->_var['goods_0_95882500_1483583945']['goods_price']; ?></h4>
                 </div>
                 <div class="count-input">
-                <a class="incr-btn" data-action="decrease" href="#" onclick="changenum(<?php echo $this->_var['goods_0_17419000_1483499262']['rec_id']; ?>,-1)">–</a>
-                <input class="quantity" type="text" value="<?php echo $this->_var['goods_0_17419000_1483499262']['goods_number']; ?>" min="1" max="1000" name="goods_number[<?php echo $this->_var['goods_0_17419000_1483499262']['rec_id']; ?>]" id="goods_number_<?php echo $this->_var['goods_0_17419000_1483499262']['rec_id']; ?>" onkeyup="changenum(<?php echo $this->_var['goods_0_17419000_1483499262']['rec_id']; ?>,0)" readonly>
-                <a class="incr-btn" data-action="increase" href="#" onclick="changenum(<?php echo $this->_var['goods_0_17419000_1483499262']['rec_id']; ?>,1)">+</a>
+                <a class="incr-btn" data-action="decrease" href="#" onclick="changenum(<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>,-1)">–</a>
+                <input class="quantity" type="text" value="<?php echo $this->_var['goods_0_95882500_1483583945']['goods_number']; ?>" min="1" max="<?php echo $this->_var['goods_0_95882500_1483583945']['goods_attr']; ?>" name="goods_number[<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>]" id="goods_number_<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>" onkeyup="changenum(<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>,0)" readonly>
+                <a class="incr-btn" data-action="increase" href="#" onclick="changenum(<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>,1)">+</a>
                 </div></div>
                 <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="移出购物车"><i class="material-icons delete"></i></a></div>
                 <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
