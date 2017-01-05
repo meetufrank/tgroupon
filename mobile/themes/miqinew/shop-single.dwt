@@ -262,6 +262,7 @@ $(function(){
   $.each(data,function(i){
     $.each(data[i],function(x){
           $("#type_"+data[i][x]).parent("li").css("display",'block');
+          $("#mobiletype_"+data[i][x]).parent("li").css("display",'block');  //手机
     })
 
 
@@ -271,7 +272,9 @@ $(function(){
      function attrshuaixuan(attrid,typeid,typenum){
 
         $("#type_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
+        $("#mobiletype_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');  //手机
         $("#type_"+attrid).addClass("pc-group-change");
+        $("#mobiletype_"+attrid).addClass("pc-group-change");     //手机
         $("input[name='spec_"+typeid+"']").val(attrid);
          var formBuy      = document.forms['ECS_FORMBUY'];
           if (formBuy)
@@ -302,6 +305,8 @@ $(function(){
                                         $.each(data.select[i],function(x){
 
                                           $("#type_"+data.select[i][x]).parent("li").css("display",'block');
+                                          $("#mobiletype_"+data.select[i][x]).parent("li").css("display",'block');   //手机
+
 
                                         });
 
@@ -309,24 +314,46 @@ $(function(){
                                       });
                                       $.each(data.checked,function(i){
                                           $("#type_"+data.checked[i]).parent().siblings('li').children('a').removeClass('pc-group-change');
+                                           $("#mobiletype_"+data.checked[i]).parent().siblings('li').children('a').removeClass('pc-group-change');    //手机
                                           $("#type_"+data.checked[i]).addClass("pc-group-change");
+                                          $("#mobiletype_"+data.checked[i]).addClass("pc-group-change");    //手机
                                         });
                                      $(".pc-thumbnail").attr("src","././admin/"+data.data.attributeimg);
                                      $("#pc_price").text("￥"+data.data.attributeprice);
+                                     $("#mobile_price").text("￥"+data.data.attributeprice);  //手机
+                                     window.__product__=data.data.product_number;
+                                     $("#quantity").val(1);
+
                                           }//回调函数结束
                                });//ajax结束
 
        }
+window.__product__={$jiagedata.product_number};
+
+/*商品数量+1*/
+function numAdd(){
+    var quantity = document.getElementById("quantity").value;
+    var num_add = parseInt(quantity)+1;
+
+    if(quantity==""){
+        num_add = 1;
+    }
+    if(num_add>__product__){
+        document.getElementById("quantity").value=num_add-1;
+        alert("商品库存不足"+__product__);
+    }else{
+        document.getElementById("quantity").value=num_add;
+
+    }
+}
 
 /*商品数量-1*/
 function numDec(){
     var quantity = document.getElementById("quantity").value;
-    var price=document.getElementById("price").value;
+
     var num_dec = parseInt(quantity)-1;
     if(num_dec>0){
         document.getElementById("quantity").value=num_dec;
-        var Num=price*num_dec;
-         document.getElementById("totalPrice").innerHTML=Num.toFixed(2);
     }
 }
 
@@ -411,7 +438,7 @@ function numDec(){
                 	<div class="col-lg-2 col-md-2 col-sm-2">
                     	<div class="count-input">
                           <a class="incr-btn" onclick="numDec()" data-action="decrease" href="#">–</a>
-                          <input class="quantity" type="text" value="1">
+                          <input class="quantity"  id="quantity" type="text" value="1">
                           <a class="incr-btn" onclick="numAdd()" data-action="increase" href="#">+</a>
                 		</div>
                     </div>
@@ -437,13 +464,16 @@ function numDec(){
     <!--手机端商品详情选择-->
     <section class="mobile-detail hidden-lg hidden-md hidden-sm">
     	<div class="mobile-thumbnail col-xs-5" style="padding:5px;">
-        	<img src="{$ectouch_themes}/img/shop/product-gallery/preview03.jpg" id="Mobilethumbnail">
-        </div>
+           {if $jiagedata.attributeimg}
+               <img src="././admin/{$jiagedata.attributeimg}" id="Mobilethumbnail">
+            {/if}
+
+        </div
         <div class="col-xs-7">
             <div class="mobile-detail-1">
                 <span class="mobile-shop-name">创意椅子哈哈哈哈哈哈哈测试哈哈哈测试</span>
             </div>
-            <div class="mobile-shop-price">￥{$jiagedata.attributeprice}</div>
+            <div class="mobile-shop-price" id="mobile_price">￥{$jiagedata.attributeprice}</div>
             <div class="mobile-count-input">
                   <a class="mobile-incr-btn" href="#">–</a>
                   <input class="mobile-quantity" type="text" value="1">
@@ -451,59 +481,28 @@ function numDec(){
             </div>
         </div>
         <div class="clear"></div>
-        <p class="mobile-cart-color-text">颜色<span style="margin-left:10px; font-size:17px;color:#09F" id="selectcolor"></span></p>
 
-      <form  name="ECS_FORMBUY">
-      <!--   <div class="mobile-cart-color" id="mobile-select-color"><input  name="spec_1"  value="367"/>
-            <ul class="mobile-cart-color-select">
-            	<li><a href="#" title="绿色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="紫色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="红色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="青色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="蓝色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="粉色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-               	<li><a href="#" title="橙色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="褐色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="黄色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="黑色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="青色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="玫红色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-            </ul>
-            <div class="clear"></div>
-        </div>
-        <p class="mobile-cart-size-text">尺寸</p>
-        <div class="mobile-cart-size"><input  name="spec_2"  value="377"/>
-          	<ul class="mobile-cart-size-select" id="mobile-sizebox">
-                <li><a href="#" class="mobile-cart-size-select-details mobile-none" title="大码">大</a></li>
-                <li><a href="#" class="mobile-cart-size-select-details" title="中码">中</a></li>
-                <li><a href="#" class="mobile-cart-size-select-details" title="小码">小</a></li>
-            </ul>
-            <div class="clear"></div>
-        </div>
-        <p class="mobile-cart-group-text">组合形式</p>
-        <div class="mobile-cart-group"><input  name="spec_3"  value="387"/>
-          	<ul class="mobile-cart-group-select" id="mobile-groupbox">
-                <li><a href="#" class="mobile-cart-group-details" title="单件">单件</a></li>
-                <li><a href="#" class="mobile-cart-group-details" title="两件">两件</a></li>
-                <li><a href="#" class="mobile-cart-group-details" title="三件">三件</a></li>
-                <li><a href="#" class="mobile-cart-group-details" title="四件">四件</a></li>
-            </ul>
-            <div class="clear"></div>
-        </div>
-        <p class="mobile-cart-border-text">外框类型</p>
-        <div class="mobile-cart-border"><input  name="spec_4"  value="397"/>
-          	<ul class="mobile-cart-border-select" id="mobile-borderbox">
-                <li><a href="#" class="mobile-cart-border-details" title="水泥">水泥</a></li>
-                <li><a href="#" class="mobile-cart-border-details" title="陶瓷">陶瓷</a></li>
-                <li><a href="#" class="mobile-cart-border-details" title="布艺">布艺</a></li>
-                <li><a href="#" class="mobile-cart-border-details" title="泥巴">麻绳</a></li>
-            </ul>
-            <div class="clear"></div>
-        </div> -->
-         {foreach from=$specification item=spec key=spec_key name=name}
-                 <p class="mobile-cart-border-text">{$spec.name}</p>
-         {/foreach}
+        <!-- 手机商品详情属性筛选 -->
+        <form  name="ECS_FORMBUY">
+            {foreach from=$specification item=spec key=spec_key name=name}
+
+                     <p class="mobile-cart-border-text">{$spec.name}</p>
+                      <div class="mobile-cart-border type_arr">
+                          <ul class="mobile-cart-border-select" id="mobile-borderbox">
+                              {foreach from=$spec.values item=value key=key}
+                                  <li>
+                                      <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" href="#" class="mobile-cart-border-details" {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="pc-group-detail pc-group-change"{else}class="pc-group-detail"{/if} id="mobiletype_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
+                                  </li>
+                              {/foreach}
+                          </ul>
+                          <div class="clear"></div>
+                      </div>
+            {/foreach}
         </form>
+
+
+
+
     </section>
     <div class="clear"></div>
 	<!--艺术家-->

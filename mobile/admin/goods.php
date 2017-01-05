@@ -1002,7 +1002,8 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
         //商品属性图片
-               //上传图片
+                       //上传图片
+
 if($_FILES['attr_img']['name'][0]){
 
            //图片上传处理
@@ -1024,6 +1025,8 @@ if($_FILES['attr_img']['name'][0]){
 
 
 }
+
+
 //     $attr_imgs = $up->getFileName();
 //     print_r($attr_img);
 //     var_dump($attr_imgs);
