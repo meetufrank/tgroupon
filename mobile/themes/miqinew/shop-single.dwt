@@ -318,7 +318,17 @@ $(function(){
 
        }
 
-
+/*商品数量-1*/
+function numDec(){
+    var quantity = document.getElementById("quantity").value;
+    var price=document.getElementById("price").value;
+    var num_dec = parseInt(quantity)-1;
+    if(num_dec>0){
+        document.getElementById("quantity").value=num_dec;
+        var Num=price*num_dec;
+         document.getElementById("totalPrice").innerHTML=Num.toFixed(2);
+    }
+}
 
 </script>
 
@@ -400,9 +410,9 @@ $(function(){
                 <div class="pc-dright-bottom">
                 	<div class="col-lg-2 col-md-2 col-sm-2">
                     	<div class="count-input">
-                          <a class="incr-btn" data-action="decrease" href="#">–</a>
+                          <a class="incr-btn" onclick="numDec()" data-action="decrease" href="#">–</a>
                           <input class="quantity" type="text" value="1">
-                          <a class="incr-btn" data-action="increase" href="#">+</a>
+                          <a class="incr-btn" onclick="numAdd()" data-action="increase" href="#">+</a>
                 		</div>
                     </div>
                 	<div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:8px;min-height:48px;">
@@ -433,7 +443,7 @@ $(function(){
             <div class="mobile-detail-1">
                 <span class="mobile-shop-name">创意椅子哈哈哈哈哈哈哈测试哈哈哈测试</span>
             </div>
-            <div class="mobile-shop-price">￥1280.00</div>
+            <div class="mobile-shop-price">￥{$jiagedata.attributeprice}</div>
             <div class="mobile-count-input">
                   <a class="mobile-incr-btn" href="#">–</a>
                   <input class="mobile-quantity" type="text" value="1">
