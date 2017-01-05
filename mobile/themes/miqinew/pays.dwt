@@ -49,6 +49,35 @@
     padding-left:0;
     padding-right:0;
     }
+    input{
+      outline:none;
+    }
+    .new-address{
+      width:98%;
+      height:40px;
+      padding:0 1%;
+      margin-bottom:10px;
+      border: 1px solid #ededed;
+    }
+    .new-address::-webkit-input-placeholder {
+      color:#C1C1C1; /*WebKit browsers*/
+    }
+    .new-address::-moz-placeholder{
+      color:#C1C1C1; /*Mozilla Firefox 19+ */
+    }
+    .new-address-change{
+      width:98%;
+      height:40px;
+      padding:0 1%;
+      margin-bottom:10px;
+      border: 1px solid red;
+    }
+    .new-address-change::-webkit-input-placeholder {
+      color:red; /*WebKit browsers*/
+    }
+    .new-address-change::-moz-placeholder{
+      color:red; /*Mozilla Firefox 19+ */
+    }
   </style>
 
 </head>
@@ -438,10 +467,21 @@
             });
                  jisuan();
         }
+function checknewaddress(){
+       var user=$("input[name='consignee']").val();
 
+       if(user==''){
+           document.getElementById("newaddress").className="new-address-change";
+           return false;
+       }else if(user!==''){
+          document.getElementById("newaddress").className="new-address";
+       }
+
+
+}
     //新增地址
    $('#Address_Manager').click(function(){
-    var content =' <form method="post" class="checkout-form container" id="address_form"><div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="收件人" name="consignee"/></div>'
+    var content =' <form method="post" class="checkout-form container" id="address_form"><div><input type="text" class="new-address" placeholder="收件人" name="consignee" id="newaddress"/></div>'
     +
     '<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="手机" name="tel" /></div>'
     +
@@ -555,7 +595,7 @@
               yes: function(index){
 
 
-
+                   checknewaddress();return false;
 
                     $.ajax({
                           type:"POST",
@@ -629,7 +669,9 @@
 
       });
  </script>
-
+ <script type="text/javascript">
+  // 手机号码验证
+  </script>
 </body><!-- <body> -->
 
 </html>

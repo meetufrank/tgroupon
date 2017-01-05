@@ -127,9 +127,9 @@
                 <h4 class="item-price" data-price="{$goods.goods_price}">{$goods.goods_price}</h4>
                 </div>
                 <div class="count-input">
-                <a class="incr-btn" data-action="decrease" href="#" onclick="changenum({$goods.rec_id},-1)">–</a>
-                <input class="quantity" type="text" value="{$goods.goods_number}" min="1" max="{$goods.goods_attr}" name="goods_number[{$goods.rec_id}]" id="goods_number_{$goods.rec_id}" onkeyup="changenum({$goods.rec_id},0)" readonly>
-                <a class="incr-btn" data-action="increase" href="#" onclick="changenum({$goods.rec_id},1)">+</a>
+                <a class="incr-btn" data-action="decrease" href="#" onclick="changenum({$goods.rec_id},-1,{$goods.product_number})">–</a>
+                <input class="quantity" type="text" value="{$goods.goods_number}"  name="goods_number[{$goods.rec_id}]" id="goods_number_{$goods.rec_id}" min="1" max="{$goods.product_number}"onkeyup="changenum({$goods.rec_id},0,{$goods.product_number})" readonly>
+                <a class="incr-btn" data-action="increase" href="#" onclick="changenum({$goods.rec_id},1,{$goods.product_number})">+</a>
                 </div></div>
                 <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="移出购物车"><i class="material-icons delete"></i></a></div>
                 {/foreach}
@@ -240,9 +240,13 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
         $("#cart").on("click",".incr-btn",function(){
             var $button = $(this);
             var oldValue = $button.parent().find('.quantity').val();
+            var maxnum=$button.parent().find('.quantity').attr("max");
             $button.parent().find('.incr-btn[data-action="decrease"]').removeClass('inactive');
             if ($button.data('action') == "increase") {
                 var newVal = parseFloat(oldValue) + 1;
+                if(newVal>maxnum){
+                 var newVal=oldValue;
+                }
             } else {
                 // Don't allow decrementing below 1
                 if (oldValue > 1) {
@@ -305,11 +309,11 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
 
 
 
-        function changenum(rec_id,diff){
+        function changenum(rec_id,diff,maxnumber){
           event.preventDefault();
           var num = parseInt(document.getElementById('goods_number_'+rec_id).value);
           var goods_number = num + Number(diff);
-          if( goods_number >= 1){
+          if( goods_number >= 1 && goods_number<=maxnumber){
             //document.getElementById('goods_number_'+rec_id).value = goods_number;//更新数量
             var cartnum=document.getElementById('cart_count').innerHTML;
             document.getElementById('cart_count').innerHTML=Number(cartnum)+Number(diff);

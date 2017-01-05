@@ -1717,7 +1717,13 @@ function get_cart_goods($id=0,$type=0)
         {
             $virtual_goods_count++;
         }
-
+   /*
+       商品库存
+    */
+      if($row['product_id']){
+            $sql = "SELECT product_number FROM " . $GLOBALS['ecs']->table('products') . " WHERE product_id= ".$row['product_id'];
+            $row['product_number']=$GLOBALS['db']->getOne($sql);
+      }
         /* 查询规格 */
         if (trim($row['goods_attr']) != '')
         {

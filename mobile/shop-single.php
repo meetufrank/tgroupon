@@ -533,7 +533,13 @@ g.attr_id = a.attr_id
 
 // print_r($checked_arr);
 // print_r($select);exit;
-$jiageimg = implode(",", $checked_arr);
+if(!$checked_arr){
+
+    ecs_header("Location:goods_list.php");
+}else{
+    $jiageimg = implode(",", $checked_arr);
+}
+
  $sqls = "select attributeprice,attributeimg,product_number from `ecs_products` where goods_attr = '$jiageimg'";
   $jiageimgs = $db->getRow($sqls);
 
