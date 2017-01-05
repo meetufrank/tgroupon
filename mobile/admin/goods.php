@@ -999,6 +999,41 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     /* 处理属性 */
     if ((isset($_POST['attr_id_list']) && isset($_POST['attr_value_list'])) || (empty($_POST['attr_id_list']) && empty($_POST['attr_value_list'])))
     {
+
+
+        //商品属性图片
+               //上传图片
+if($_FILES['attr_img']['name'][0]){
+
+           //图片上传处理
+ $up = new FileUpload();
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+    $path="images/shuxing/";
+    $up -> set("path", ROOT_PATH.$path);
+    $up -> set("maxsize", 2000000);
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+    $up -> set("israndname", true);
+
+
+
+    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
+
+        $attr_imgs = $up->getFileName();
+
+
+
+
+}
+//     $attr_imgs = $up->getFileName();
+//     print_r($attr_img);
+//     var_dump($attr_imgs);
+// exit;
+//
+
+
+
+
+
         // 取得原有的属性值
         $goods_attr_list = array();
 
@@ -1037,53 +1072,6 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
 
-         //商品属性图片
-               //上传图片
-if($_FILES['attr_img']['name'][0]){
-
-           //图片上传处理
- $up = new FileUpload();
-    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
-    $path="images/shuxing/";
-    $up -> set("path", ROOT_PATH.$path);
-    $up -> set("maxsize", 2000000);
-    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
-    $up -> set("israndname", true);
-
-
-
-    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
-    if($up -> upload("attr_img")) {
-        // echo '<pre>';
-        // //获取上传后文件名子
-        // var_dump($up->getFileName());
-        // echo '</pre>';
-        // $attr_img=$config['mobilesite_url'].$path.$up->getFileName();
-
-        $attr_imgs = $up->getFileName();
-
-
-    } else {
-        // echo '<pre>';
-        // //获取上传失败以后的错误提示
-       // var_dump($up->getErrorMsg());
-
-
-        // echo '</pre>';
-        sys_msg($up->getErrorMsg(), 1);
-    }
-
-}
-//     $attr_imgs = $up->getFileName();
-//     print_r($attr_img);
-//     var_dump($attr_imgs);
-// exit;
-
-
-
-
-
-
         // 循环现有的，根据原有的做相应处理
         if(isset($_POST['attr_id_list']))
         {
@@ -1093,6 +1081,7 @@ if($_FILES['attr_img']['name'][0]){
                 $attr_value = $_POST['attr_value_list'][$key];
                 $attr_price = $_POST['attr_price_list'][$key];
                 $attr_img = $attr_imgs[$key];
+
 
 
                 if (!empty($attr_value))
