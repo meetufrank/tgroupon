@@ -716,13 +716,17 @@ function build_attr_html($cat_id, $goods_id = 0)
         //     ' <input type="hidden" name="attr_price_list[]" value="0" />';
 
          if($val['attr_type'] == 1 || $val['attr_type'] == 2) {
-                $html .=' <input type="file" name="attr_img[]" value="' . $val['attr_img'] . '" size="5" maxlength="10" />';
+                $html .=' <input type="file" name="attr_img['.$key.']" value="' . $val['attr_img'] . '" size="5" maxlength="10" />';
+                //$html .=' <input type="hidden" name="haveimg" value="1" />';
 
                 // if($val['attr_img'] )
                 // {
                 //      $html .='<img style="width:50px;height:50px;" src="' . $val['attr_img'] . '">';
 
                 // }
+            }else{
+               //$html .=' <input type="hidden" name="haveimg" value="0" />';
+
             }
 
         $html .= '</td></tr>';

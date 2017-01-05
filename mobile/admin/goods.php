@@ -999,11 +999,11 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     /* 处理属性 */
     if ((isset($_POST['attr_id_list']) && isset($_POST['attr_value_list'])) || (empty($_POST['attr_id_list']) && empty($_POST['attr_value_list'])))
     {
-
+ 
 
         //商品属性图片
                //上传图片
-if($_FILES['attr_img']['name'][0]){
+if($_FILES['attr_img']['name']){
 
            //图片上传处理
  $up = new FileUpload();
@@ -1013,21 +1013,23 @@ if($_FILES['attr_img']['name'][0]){
     $up -> set("maxsize", 2000000);
     $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
     $up -> set("israndname", true);
+	$up->upload('attr_img');
 
 
 
     //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
 
-        $attr_imgs = $up->getFileName();
+     $attr_imgs = $up->getFileName();
 
 
 
 
 }
 //     $attr_imgs = $up->getFileName();
-//     print_r($attr_img);
+ 
 //     var_dump($attr_imgs);
-// exit;
+// 
+//print_r( $attr_imgs);exit;
 //
 
 
@@ -1081,7 +1083,7 @@ if($_FILES['attr_img']['name'][0]){
                 $attr_value = $_POST['attr_value_list'][$key];
                 $attr_price = $_POST['attr_price_list'][$key];
                 $attr_img = $attr_imgs[$key];
-
+ 
 
 
                 if (!empty($attr_value))
@@ -1091,14 +1093,18 @@ if($_FILES['attr_img']['name'][0]){
                         // 如果原来有，标记为更新
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'update';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
-                        $goods_attr_list[$attr_id][$attr_value]['attr_img'] = $config['mobilesite_url'].$path.$attr_img;
+                        if($attr_img){
+                            $goods_attr_list[$attr_id][$attr_value]['attr_img'] = $config['mobilesite_url'].$path.$attr_img;
+                        }
                     }
                     else
                     {
                         // 如果原来没有，标记为新增
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'insert';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
-                        $goods_attr_list[$attr_id][$attr_value]['attr_img'] = $config['mobilesite_url'].$path.$attr_img;
+                        if($attr_img){
+                            $goods_attr_list[$attr_id][$attr_value]['attr_img'] = $config['mobilesite_url'].$path.$attr_img;
+                        }
                     }
                     $val_arr = explode(' ', $attr_value);
 
@@ -1116,8 +1122,7 @@ if($_FILES['attr_img']['name'][0]){
 
         $sql = "UPDATE " .$ecs->table('goods'). " SET keywords = '$keywords' WHERE goods_id = '$goods_id' LIMIT 1";
 
-        $db->query($sql);
-
+        $db->query($sql); 
         /* 插入、更新、删除数据 */
         foreach ($goods_attr_list as $attr_id => $attr_value_list)
         {
@@ -1135,7 +1140,7 @@ if($_FILES['attr_img']['name'][0]){
                 // }
                 elseif ($info['sign'] == 'update')
                 {
-                    $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_img = '$info[attr_img]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+                     $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_img = '$info[attr_img]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
                 }
                 else
                 {
@@ -1147,8 +1152,7 @@ if($_FILES['attr_img']['name'][0]){
 
         }
 
-    }
-
+    } 
     /* 处理会员价格 */
     if (isset($_POST['user_rank']) && isset($_POST['user_price']))
     {
