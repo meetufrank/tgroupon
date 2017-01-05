@@ -61,8 +61,6 @@ $rs =  json_decode(json_encode($user_info),true);//返回的json数组转换成a
 
 
 
-
-
 //打印用户信息
 $unionid = $rs['unionid'];
 

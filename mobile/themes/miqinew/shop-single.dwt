@@ -286,7 +286,7 @@ $(function(){
                                     type:"post",
                                     url:"shop-single.php?act=attrshuaixuan",
                                     async:true,
-                                    data:{attrid:attrid,typenum:typenum,spec_arr:spec_arr},
+                                    data:{attrid:attrid,typenum:typenum,spec_arr:spec_arr,typeid:typeid},
                                     dataType: "json",
                                     success: function (data) {
                                       if(data.error==1){
@@ -295,7 +295,7 @@ $(function(){
                                         return;
                                       }
                                        $(".type_arr  ul li ").css("display",'none');
-                                        $("#pc-select-group"+typenum+"  ul li ").css("display",'block');
+                                       // $("#pc-select-group"+typenum+"  ul li ").css("display",'block');
 
                                       $.each(data.select,function(i) {
 
@@ -312,7 +312,7 @@ $(function(){
                                           $("#type_"+data.checked[i]).addClass("pc-group-change");
                                         });
                                      $(".pc-thumbnail").attr("src","././admin/"+data.data.attributeimg);
-                                     $("#pc_price").text("￥"+parseInt(data.data.attributeprice).toFixed(2));
+                                     $("#pc_price").text("￥"+data.data.attributeprice);
                                           }//回调函数结束
                                });//ajax结束
 
@@ -366,7 +366,7 @@ $(function(){
      <input id="goodsid" type="hidden" value="{$goods_id}">
       <div class="container">
         <div class="product-info padding-top-2x text-center">
-          <h1 class="h2 space-bottom-half">创 意 椅 子</h1>
+          <h1 class="h2 space-bottom-half"></h1>
           <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥{$jiagedata.attributeprice}</h2>
           <!--PC端缩略图-->
           	<div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
@@ -374,7 +374,7 @@ $(function(){
 			   <img src="././admin/{$jiagedata.attributeimg}" class="pc-thumbnail">
             {/if}
             </div>
-         }
+
           <!--PC端商品选择详情-->
 
             <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
