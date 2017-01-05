@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:2:{i:0;s:53:"E:/www/tgroupon/mobile/themes/miqinew/shop-single.dwt";i:1;s:46:"E:/www/tgroupon/mobile/themes/miqinew/head.dwt";}s:7:"expires";i:1483587536;s:8:"maketime";i:1483583936;}<!DOCTYPE html>
+<?php exit;?>a:3:{s:8:"template";a:2:{i:0;s:53:"E:/www/tgroupon/mobile/themes/miqinew/shop-single.dwt";i:1;s:46:"E:/www/tgroupon/mobile/themes/miqinew/head.dwt";}s:7:"expires";i:1483587827;s:8:"maketime";i:1483584227;}<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta name="Generator" content="TGROUPON v2.7.3" />
@@ -265,7 +265,7 @@ $(function(){
                                     type:"post",
                                     url:"shop-single.php?act=attrshuaixuan",
                                     async:true,
-                                    data:{attrid:attrid,typenum:typenum,spec_arr:spec_arr},
+                                    data:{attrid:attrid,typenum:typenum,spec_arr:spec_arr,typeid:typeid},
                                     dataType: "json",
                                     success: function (data) {
                                       if(data.error==1){
@@ -274,7 +274,7 @@ $(function(){
                                         return;
                                       }
                                        $(".type_arr  ul li ").css("display",'none');
-                                        $("#pc-select-group"+typenum+"  ul li ").css("display",'block');
+                                       // $("#pc-select-group"+typenum+"  ul li ").css("display",'block');
                                       $.each(data.select,function(i) {
                                         $.each(data.select[i],function(x){
                                           $("#type_"+data.select[i][x]).parent("li").css("display",'block');
@@ -285,7 +285,7 @@ $(function(){
                                           $("#type_"+data.checked[i]).addClass("pc-group-change");
                                         });
                                      $(".pc-thumbnail").attr("src","././admin/"+data.data.attributeimg);
-                                     $("#pc_price").text("￥"+parseInt(data.data.attributeprice).toFixed(2));
+                                     $("#pc_price").text("￥"+data.data.attributeprice);
                                           }//回调函数结束
                                });//ajax结束
        }
@@ -668,12 +668,11 @@ function addToCartResponse(data)
      <input id="goodsid" type="hidden" value="164">
       <div class="container">
         <div class="product-info padding-top-2x text-center">
-          <h1 class="h2 space-bottom-half">创 意 椅 子</h1>
+          <h1 class="h2 space-bottom-half"></h1>
           <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥</h2>
           
           	<div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
                         </div>
-         }
           
             <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
            		<div class="pc-dright-top">
@@ -843,52 +842,52 @@ function addToCartResponse(data)
 	    			<div class="col-lg-3 col-sm-6 mobile-indent">
 			  <div class="shop-item">
 				<div class="shop-thumbnail">
-				  <a href="shop-single.php?id=165" class="item-link"></a>
-				  <img src="../images/201612/goods_img/165_G_1481850865334.jpg" alt="Shop item">				</div>
+				  <a href="shop-single.php?id=114" class="item-link"></a>
+				  <img src="../images/201311/goods_img/114_G_1385664673888.jpg" alt="Shop item">				</div>
 				<div class="shop-item-details">
-				  <h3 class="shop-item-title"><a href="shop-single.php?id=165">娃娃啊啊啊啊啊</a></h3>
+				  <h3 class="shop-item-title"><a href="shop-single.php?id=114">思亲肤绿茶泡沫洁面摩丝16</a></h3>
 				  <span class="shop-item-price">
 					<span class="old-price"></span>
-						￥2000.00				  </span>
+						￥59.00				  </span>
 				</div>
 			  </div>
 			</div>
         			<div class="col-lg-3 col-sm-6 mobile-indent">
 			  <div class="shop-item">
 				<div class="shop-thumbnail">
-				  <a href="shop-single.php?id=22" class="item-link"></a>
-				  <img src="../images/201311/goods_img/22_G_1384994678394.jpg" alt="Shop item">				</div>
+				  <a href="shop-single.php?id=152" class="item-link"></a>
+				  <img src="../images/201503/goods_img/152_G_1425527082169.jpg" alt="Shop item">				</div>
 				<div class="shop-item-details">
-				  <h3 class="shop-item-title"><a href="shop-single.php?id=22">娇兰金钻修颜粉饼SPF10</a></h3>
+				  <h3 class="shop-item-title"><a href="shop-single.php?id=152">友邦黄油弹</a></h3>
 				  <span class="shop-item-price">
 					<span class="old-price"></span>
-						￥399.00				  </span>
+						￥180.00				  </span>
 				</div>
 			  </div>
 			</div>
         			<div class="col-lg-3 col-sm-6 mobile-indent">
 			  <div class="shop-item">
 				<div class="shop-thumbnail">
-				  <a href="shop-single.php?id=25" class="item-link"></a>
-				  <img src="../images/200905/goods_img/25_G_1241972709544.jpg" alt="Shop item">				</div>
+				  <a href="shop-single.php?id=24" class="item-link"></a>
+				  <img src="../images/201311/goods_img/24_G_1385074818283.jpg" alt="Shop item">				</div>
 				<div class="shop-item-details">
-				  <h3 class="shop-item-title"><a href="shop-single.php?id=25">小灵通/固话50元充值卡</a></h3>
+				  <h3 class="shop-item-title"><a href="shop-single.php?id=24">贝玲妃留声机粉底霜9.5g</a></h3>
 				  <span class="shop-item-price">
 					<span class="old-price"></span>
-						￥48.00				  </span>
+						￥240.00				  </span>
 				</div>
 			  </div>
 			</div>
         			<div class="col-lg-3 col-sm-6 mobile-indent">
 			  <div class="shop-item">
 				<div class="shop-thumbnail">
-				  <a href="shop-single.php?id=17" class="item-link"></a>
-				  <img src="../images/201611/goods_img/17_G_1479501429811.jpg" alt="Shop item">				</div>
+				  <a href="shop-single.php?id=30" class="item-link"></a>
+				  <img src="../images/200905/goods_img/30_G_1241973114234.jpg" alt="Shop item">				</div>
 				<div class="shop-item-details">
-				  <h3 class="shop-item-title"><a href="shop-single.php?id=17">娇韵诗超V型纤容紧致瘦脸面膜75ml</a></h3>
+				  <h3 class="shop-item-title"><a href="shop-single.php?id=30">移动20元充值卡</a></h3>
 				  <span class="shop-item-price">
 					<span class="old-price"></span>
-						￥275.00				  </span>
+						￥18.00				  </span>
 				</div>
 			  </div>
 			</div>

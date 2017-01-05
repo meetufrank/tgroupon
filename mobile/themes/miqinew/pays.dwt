@@ -57,7 +57,7 @@
       height:40px;
       padding:0 1%;
       margin-bottom:10px;
-      border: 1px solid #ededed;
+      border:1px solid #ECECEC;
     }
     .new-address::-webkit-input-placeholder {
       color:#C1C1C1; /*WebKit browsers*/
@@ -70,7 +70,7 @@
       height:40px;
       padding:0 1%;
       margin-bottom:10px;
-      border: 1px solid red;
+      border:1px solid #ECECEC;
     }
     .new-address-change::-webkit-input-placeholder {
       color:red; /*WebKit browsers*/
@@ -467,26 +467,47 @@
             });
                  jisuan();
         }
-function checknewaddress(){
-       var user=$("input[name='consignee']").val();
+        function checknewaddress(){
+            var user=document.getElementById("newaddress").value.length;
+            var imobile=document.getElementById("newimobile").value;
+            var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+            var iselectProvince = $('#province option:selected').val();//选中的省份
+            var iselectCity = $('#city option:selected').val();//选中的市
+            var iselectDistrict = $('#district option:selected').val();//选中的区
 
-       if(user==''){
-           document.getElementById("newaddress").className="new-address-change";
-           return false;
-       }else if(user!==''){
-          document.getElementById("newaddress").className="new-address";
-       }
+           if(user>0){
+              document.getElementById("newaddress").className="new-address";
+           }else{
+              document.getElementById("newaddress").className="new-address-change";
+              document.getElementById("newaddress").setAttribute("placeholder","请输入用户名");
+              return false;
+           }
+           if(imobile==""||!mobile.test(imobile)){
+              document.getElementById("newimobile").className="new-address-change";
+              document.getElementById("newimobile").value='';
+              document.getElementById("newimobile").setAttribute("placeholder","手机号码不正确");
+              return false;
+           }
+          if(iselectProvince==0){
+            s = document.getElementById("province");
+            for(i=0;i<s.options.length;i++){
+            if(s.options[i].value=="0"){
+              s.options[i].innerHTML='<span style="color:red;">请正确选择</span>';
 
+              }
+            }
+            return false;
+          }
 
-}
+      }
     //新增地址
    $('#Address_Manager').click(function(){
     var content =' <form method="post" class="checkout-form container" id="address_form"><div><input type="text" class="new-address" placeholder="收件人" name="consignee" id="newaddress"/></div>'
     +
-    '<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="手机" name="tel" /></div>'
+    '<div><input type="text" class="new-address" placeholder="手机" name="tel" id="newimobile" /></div>'
     +
     '<div id="form-control"><div class="col-md-4 col-xs-12"><div class="form-element form-select">'+
-    '<select name="province" id="province"   class="form-control" >'+
+    '<select name="province" id="province" class="form-control" >'+
                ' <option value="0">{$lang.please_select}{$name_of_region[1]}</option>' +
                 '<!-- {foreach from=$province_list item=province} -->'+
                 '<option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>'+
@@ -507,7 +528,7 @@ function checknewaddress(){
                   '</select>'+
                  '</div></div></div>'
     +
-    '<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="详细地址" name="address"/></div>'
+    '<div><input type="text" class="new-address" placeholder="详细地址" name="address"/></div>'
     +
     '<div class="text-right visible-sm visible-xs"><a href="#" style="text-decoration: underline;">读取微信地址</a></div></form>'
     ;
