@@ -407,15 +407,18 @@ function card_fee($card_id, $goods_amount)
  * @param   string  $order_sn   订单号
  * @return  array   订单信息（金额都有相应格式化的字段，前缀是formated_）
  */
-function order_info($order_id, $order_sn = '')
+function order_info($order_id, $order_sn = '',$type=0)
 {
     /* 计算订单各种费用之和的语句 */
     $total_fee = " (goods_amount - discount + tax + shipping_fee + insure_fee + pay_fee + pack_fee + card_fee) AS total_fee ";
     $order_id = intval($order_id);
     if ($order_id > 0)
     {
+        if($type){
+             $where=" and pay_status=0 ";
+         }
         $sql = "SELECT *, " . $total_fee . " FROM " . $GLOBALS['ecs']->table('order_info') .
-                " WHERE order_id = '$order_id'";
+                " WHERE order_id = '$order_id' ".$where;
     }
     else
     {
@@ -423,7 +426,10 @@ function order_info($order_id, $order_sn = '')
                 " WHERE order_sn = '$order_sn'";
     }
     $order = $GLOBALS['db']->getRow($sql);
+     if(empty($order)){
+        return false;
 
+     }
     /* 格式化金额字段 */
     if ($order)
     {
@@ -476,8 +482,8 @@ function order_goods($order_id)
 {
     $sql = "SELECT og.rec_id, og.goods_id, og.goods_name, og.goods_sn, og.market_price, og.goods_number, " .
             "og.goods_price, og.goods_attr, og.is_real, og.parent_id, og.is_gift, " .
-            "og.goods_price * og.goods_number AS subtotal, og.extension_code, g.goods_thumb,g.more_price,og.goods_attr " .
-            "FROM " . $GLOBALS['ecs']->table('order_goods') . " as og left join " .$GLOBALS['ecs']->table('goods'). " g on og.goods_id = g.goods_id" .
+            "og.goods_price * og.goods_number AS subtotal, og.extension_code, pr.attributeimg as goods_thumb,g.more_price,og.goods_attr " .
+            "FROM " . $GLOBALS['ecs']->table('order_goods') . " as og left join " .$GLOBALS['ecs']->table('goods'). " as g on og.goods_id = g.goods_id left join " .$GLOBALS['ecs']->table('products')." as pr on og.product_id=pr.product_id ".
             " WHERE og.order_id = '$order_id'";
 
     $res = $GLOBALS['db']->query($sql);
@@ -1094,6 +1100,7 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0,$type=0)
     if (is_spec($spec) && !empty($prod))
     {
         $product_info = get_products_info($goods_id, $spec);
+
     }
     if (empty($product_info))
     {
@@ -1721,9 +1728,11 @@ function get_cart_goods($id=0,$type=0)
        商品库存
     */
       if($row['product_id']){
-            $sql = "SELECT product_number FROM " . $GLOBALS['ecs']->table('products') . " WHERE product_id= ".$row['product_id'];
-            $row['product_number']=$GLOBALS['db']->getOne($sql);
-      }
+            $sql = "SELECT product_number,attributeimg FROM " . $GLOBALS['ecs']->table('products') . " WHERE product_id= ".$row['product_id'];
+            $row_pro=$GLOBALS['db']->getRow($sql);
+            $row['product_number']=$row_pro['product_number'];
+            $row['goods_thumb'] =$row_pro['attributeimg'];
+                  }
         /* 查询规格 */
         if (trim($row['goods_attr']) != '')
         {
@@ -1740,7 +1749,7 @@ function get_cart_goods($id=0,$type=0)
         if (($GLOBALS['_CFG']['show_goods_in_cart'] == "2" || $GLOBALS['_CFG']['show_goods_in_cart'] == "3") && $row['extension_code'] != 'package_buy')
         {
             $goods_thumb = $GLOBALS['db']->getOne("SELECT `goods_thumb` FROM " . $GLOBALS['ecs']->table('goods') . " WHERE `goods_id`='{$row['goods_id']}'");
-            $row['goods_thumb'] = get_image_path($row['goods_id'], $goods_thumb, true);
+                //$row['goods_thumb'] = get_image_path($row['goods_id'], $goods_thumb, true);
         }
         if ($row['extension_code'] == 'package_buy')
         {

@@ -747,7 +747,7 @@ function update_address($address)
  *
  * @return   arr        $order          订单所有信息的数组
  */
-function get_order_detail($order_id, $user_id = 0)
+function get_order_detail($order_id, $user_id = 0,$type=0)
 {
     include_once(ROOT_PATH . 'include/lib_order.php');
 
@@ -758,7 +758,15 @@ function get_order_detail($order_id, $user_id = 0)
 
         return false;
     }
-    $order = order_info($order_id);
+    if($type){
+        $order = order_info($order_id,'',1);
+    }else{
+         $order = order_info($order_id);
+    }
+    if(!$order){
+        return false;
+    }
+
 
     //检查订单是否属于该用户
     if ($user_id > 0 && $user_id != $order['user_id'])
