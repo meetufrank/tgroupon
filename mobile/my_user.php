@@ -1351,7 +1351,7 @@ elseif ($action == 'async_order_list')
                           <div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
                           <h4 class="item-price" >数量：'.$v['goods_number'].'</h4>
                           </div>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
+                          <h4 class="item-price">'.$v['goods_price'].'</h4>
                         </div>
                          </div>';
                     $string.='<div class="item visible-xs"><div class="row"><div class="col-xs-3">';
@@ -1365,7 +1365,7 @@ elseif ($action == 'async_order_list')
                         </div>
                           <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">'.$v['goods_attr'].'</div>
                           <div class="clearfix">
-                            <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['subtotal'].'</div>
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['goods_price'].'</div>
                             <div class="pull-right" style="padding-top:15px;">
                                    数量：'.$v['goods_number'].'
                             </div>

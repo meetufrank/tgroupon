@@ -83,7 +83,7 @@ $arr=xml2array($xml);
 
 //print_r($arr);exit;
 
-if($arr['appid']=='wxb5aec13c030a530b'&&$arr['mch_id']=='1267579601'&&$arr['total_fee']==1&&$arr['result_code']=='SUCCESS'){
+if($arr['appid']=='wxb5aec13c030a530b'&&$arr['mch_id']=='1267579601'&&$arr['result_code']=='SUCCESS'){
     $sql="select order_amount from ecs_order_info where order_sn='".$arr['out_trade_no']."'";
     $result=$GLOBALS['db']->getOne($sql);
     $price=$result-$arr['cash_fee']/100;
