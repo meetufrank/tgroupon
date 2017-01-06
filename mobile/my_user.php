@@ -1342,7 +1342,7 @@ elseif ($action == 'async_order_list')
                     $string.='<div class="item hidden-xs">';
                     if($v['goods_thumb']){
                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
+                          <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
                     $string.='<div class="item-details ">
@@ -1357,7 +1357,7 @@ elseif ($action == 'async_order_list')
                     $string.='<div class="item visible-xs"><div class="row"><div class="col-xs-3">';
                     if($v['goods_thumb']){
                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" >
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
+                          <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
                     $string.='</div><div class="col-xs-9" onclick="window.open(\'shop-single.php?id='.$v['goods_id'].'\');">'.$v['goods_name'].'
@@ -1445,7 +1445,7 @@ elseif ($action == 'async_order_list')
                     $string.='<div class="item hidden-xs">';
                     if($v['goods_thumb']){
                         $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
+                          <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
                     $string.='<div class="item-details">
@@ -1460,7 +1460,7 @@ elseif ($action == 'async_order_list')
                     if($v['goods_thumb']){
 
                         $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
+                          <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
                     $string.='</div>
@@ -1543,7 +1543,7 @@ elseif ($action == 'async_order_list')
                      $string.='<div class="item hidden-xs">';
                     if($v['goods_thumb']){
                         $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
+                          <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
                     $string.='<div class="item-details">
@@ -1558,7 +1558,7 @@ elseif ($action == 'async_order_list')
                     if($v['goods_thumb']){
 
                         $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
-                          <img class="img-responsive" src="../'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
+                          <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
                     $string.='</div>

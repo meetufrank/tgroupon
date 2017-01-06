@@ -113,7 +113,7 @@
 
                   <div class="col-md-6 check_box"  >
                     <label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label{$consignee.address_id}"  >
-                     <input type="radio" name="my_co_shipping" {if $smarty.foreach.address.iteration==1}checked{/if} value="{$consignee.address_id}"  id="address{$consignee.address_id}"  >
+                     <input type="radio" name="my_co_shipping" {if $consignee.default==1}checked{elseif $smarty.foreach.address.iteration==1 }checked{/if} value="{$consignee.address_id}"  id="address{$consignee.address_id}"  >
                      </label>
                    {$consignee.province}{$consignee.city}{$consignee.district}{$consignee.address}
                   </div>
@@ -166,7 +166,7 @@
                                             <div class="row">
                                                 <div class="col-md-8 col-md-offset-2">
                                                     <a href="#" class="item-thumb">
-                                                      <img class="img-responsive" src="../../{$gl.goods_thumb}" alt="{$gl.goods_name}">
+                                                      <img class="img-responsive" src="././admin/{$gl.goods_thumb}" alt="{$gl.goods_name}">
                                                     </a>
                                                 </div>
                                             </div>
@@ -235,7 +235,7 @@
                                           <div class="row">
                                           <div class="col-xs-3">
                                             <a href="#">
-                                              <img class="img-responsive" src="../../{$gl.goods_thumb}" alt="{$gl.goods_name}">
+                                              <img class="img-responsive" src="././admin/{$gl.goods_thumb}" alt="{$gl.goods_name}">
                                             </a>
                                           </div>
                                           <div class="col-xs-9">
@@ -474,6 +474,7 @@
             var iselectProvince = $('#province option:selected').val();//选中的省份
             var iselectCity = $('#city option:selected').val();//选中的市
             var iselectDistrict = $('#district option:selected').val();//选中的区
+            var idetailadd=document.getElementById("detailadd").value;
 
            if(user>0){
               document.getElementById("newaddress").className="new-address";
@@ -488,17 +489,38 @@
               document.getElementById("newimobile").setAttribute("placeholder","手机号码不正确");
               return false;
            }
-          if(iselectProvince==0){
-            s = document.getElementById("province");
+          if(iselectProvince==0){//省份判断
+            s = document.getElementById("province")
             for(i=0;i<s.options.length;i++){
             if(s.options[i].value=="0"){
-              s.options[i].innerHTML='<span style="color:red;">请正确选择</span>';
-
+              s.options[i].innerHTML="请选择省份";
               }
             }
             return false;
           }
-
+          if(iselectCity==0){//市判断
+            s = document.getElementById("city")
+            for(i=0;i<s.options.length;i++){
+            if(s.options[i].value=="0"){
+              s.options[i].innerHTML="请选择城市";
+              }
+            }
+            return false;
+          }
+          if(iselectDistrict==0){//区判断
+            s = document.getElementById("district")
+            for(i=0;i<s.options.length;i++){
+            if(s.options[i].value=="0"){
+              s.options[i].innerHTML="请选择区";
+              }
+            }
+            return false;
+          }
+          if(idetailadd==""){
+            document.getElementById("detailadd").className="new-address-change";
+            document.getElementById("detailadd").setAttribute("placeholder","地址不能为空");
+            return false;
+          }
       }
     //新增地址
    $('#Address_Manager').click(function(){
@@ -528,7 +550,7 @@
                   '</select>'+
                  '</div></div></div>'
     +
-    '<div><input type="text" class="new-address" placeholder="详细地址" name="address"/></div>'
+    '<div><input type="text" class="new-address" placeholder="详细地址" name="address" id="detailadd"/></div>'
     +
     '<div class="text-right visible-sm visible-xs"><a href="#" style="text-decoration: underline;">读取微信地址</a></div></form>'
     ;
@@ -616,7 +638,7 @@
               yes: function(index){
 
 
-                   checknewaddress();return false;
+                   checknewaddress();
 
                     $.ajax({
                           type:"POST",

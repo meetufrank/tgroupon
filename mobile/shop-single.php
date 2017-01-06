@@ -462,6 +462,10 @@ $smarty->assign('now_time',  gmtime());           // 当前系统时间
 //商品id  goods_id
 $goodsid = $_REQUEST['id'];
 
+$spname = "select goods_name from `ecs_goods` where goods_id = $goods_id";
+$spnames = $db->getOne($spname);
+$smarty->assign('spnames',  $spnames);  //商品名称
+
 
 //商品关联艺术家
 $spysj = "select u.hav_logo,u.user_name,u.country from `ecs_goods` as g
@@ -485,6 +489,7 @@ $smarty->assign('xiangce',  $xiangce);  //商品相册
 //商品的详细描述
 $goodsdesc = "select `goods_desc` from `ecs_goods` where goods_id = $goodsid";
 $goodsdesc = $db->getAll($goodsdesc);
+
 $smarty->assign('goodsdesc',  $goodsdesc);  //商品的详细描述
 
 

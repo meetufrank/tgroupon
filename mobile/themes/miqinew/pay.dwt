@@ -34,7 +34,60 @@
 
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
+  <style>
+     @media (max-width:767px) {
+        .selectall{
+        padding-bottom:15px;
+      }
+    }
+    /* 小型设备（平板电脑，768px 起） */
+    @media (min-width:768px) {
+      .selectall{
+        padding-bottom:20px;
+      }
+    }
 
+    /* 中型设备（台式电脑，992px 起） */
+    @media (min-width:992px) {
+     .select-left{
+        float: left;
+        font-size:22px;
+      }
+      .select-right{
+        float:right;
+        font-size:22px;
+      }
+      .selectall{
+        padding-bottom:30px;
+      }
+    }
+
+    /* 大型设备（大台式电脑，1200px 起） */
+    @media (min-width:1200px) {
+      .select-left{
+        float: left;
+        font-size:22px;
+      }
+      .select-right{
+        float:right;
+        font-size:22px;
+      }
+      .shopping-cart-1{
+        padding-bottom:30px;
+      }
+      .selectall{
+        padding-bottom:35px;
+      }
+    }
+    .selectall{
+        border-bottom: 2px solid #ededed;
+        margin-bottom:30px;
+    }
+    .shopping-cart-1{
+        padding:15px;
+        padding-bottom:30px;
+    }
+  </style>
 </head>
 
 <!-- Body -->
@@ -62,15 +115,19 @@
       <div class="row">
       	<div class="col-sm-6">
 
-	        	<div class="shopping-cart-1 padding-bottom-1x" style="padding:15px; margin-bottom: 30px;">
-				          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
-				          			<h4 class="text-primary">选择支付方式</h4>
+	        	<div class="shopping-cart-1 padding-bottom-1x">
+				          		<div class="selectall">
+				          			<span class="text-primary select-left">选择支付方式</span>
+                        <div class="select-right">
+                          <span class="text-primary">订单编号:</span><span>{$order.order_sn}</span>
+                        </div>
+                        <div class="clear"></div>
 				                </div>
                          <input type="hidden" value="{$order.order_id}" name="orderid">
                          <!-- {foreach from=$payment_list item=payment} -->
 				                <div class="clearfix" style="position: relative;">
 
-			          				<input style="position:relative;" name="pay_list" type="radio" {if $order.pay_id eq $payment.pay_id}checked{/if} value="{$payment.pay_id}"><div class="pull-left" style="margin-left: 22px;">{$payment.pay_name}</div>{if $payment.logo}<div class="pull-left" style="margin-top:-5px;margin-left: 20px;"><img src="{$ectouch_themes}/{$payment.logo}"></div>{/if}
+			          				<input style="position:relative;" name="pay_list" type="radio" {if   $payment.pay_id eq 9}checked{/if} value="{$payment.pay_id}"><div class="pull-left" style="margin-left: 22px;">{$payment.pay_name}</div>{if $payment.logo}<div class="pull-left" style="margin-top:-5px;margin-left: 20px;"><img src="{$ectouch_themes}/{$payment.logo}"></div>{/if}
 
 			          			</div>
                         <!--{/foreach}-->
@@ -97,8 +154,8 @@
 					          			<h4 class="text-primary pull-left">订单信息</h4>
 					          			<div class="pull-right">订单编号：{$order.order_sn}</div>
 					                </div>
-                          <!--{foreach from=$goods_list item=og}-->
-					            <!-- Item -->
+                          {foreach from=$pay_goods_list item=og}
+
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
 					                <img src="../../{$og.goods_thumb}" alt="Item">
@@ -113,8 +170,8 @@
 					                <h4 class="item-price" style="font-size: 14px;">数量：{$og.goods_name} </h4>
 					                <h4 class="item-price" style="font-size: 14px;">{$og.goods_name}</h4>
 					              </div>
-					            </div><!-- .item -->
-                      <!--{/foreach}-->
+					            </div>
+                      {/foreach}
 
 
 					            	<h4 class="text-primary" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">收件人信息</h4>
@@ -206,7 +263,7 @@
             alert('支付超时');
          }
      });
- };
+ }
 
 
 

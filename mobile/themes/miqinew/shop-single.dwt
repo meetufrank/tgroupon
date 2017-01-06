@@ -43,53 +43,53 @@
   <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
   <style>
   .add-to-cart-pay{
-		position: relative;
-		display: inline-block;
-		vertical-align: middle;
-		width: 114px;
-		height: 36px;
-		line-height: 36px;
-		font-size: 12px;
-		font-weight: normal;
-		text-transform: uppercase;
-		text-align: center;
-		color: #fff;
-		background-color: #77cde3;
-		border-radius: 4px;
-		overflow: hidden;
-		-webkit-transition: background-color 0.3s;
-		-o-transition: background-color 0.3s;
-		transition: background-color 0.3s
-	}
-	.add-to-cart-pay:hover{
-		color: #fff;
-		background-color: #51bfdb
-	}
-	.add-to-cart-pay:focus, .add-to-cart-pay:active {
-		color: #fff
-	}
-	.add-to-cart-pay em {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		font-style: normal;
-		-webkit-transform: translateZ(0);
-		-moz-transform: translateZ(0);
-		-ms-transform: translateZ(0);
-		-o-transform: translateZ(0);
-		transform: translateZ(0);
-		-webkit-backface-visibility: hidden;
-		-moz-backface-visibility: hidden;
-		backface-visibility: hidden;
-		-webkit-transition: transform 0.3s;
-		-o-transition: transform 0.3s;
-		transition: transform 0.3s
-	}
-	.clear{
-		clear:both;
-	}
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 114px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    background-color: #77cde3;
+    border-radius: 4px;
+    overflow: hidden;
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s
+  }
+  .add-to-cart-pay:hover{
+    color: #fff;
+    background-color: #51bfdb
+  }
+  .add-to-cart-pay:focus, .add-to-cart-pay:active {
+    color: #fff
+  }
+  .add-to-cart-pay em {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-style: normal;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: transform 0.3s;
+    -o-transition: transform 0.3s;
+    transition: transform 0.3s
+  }
+  .clear{
+    clear:both;
+  }
     .swiper-container {
         width:100%;
         height:400px;
@@ -97,162 +97,162 @@
         margin-right: auto;
     }
     .swiper-slide {
-		text-align:center;
+    text-align:center;
         background-size: cover;
         background-position: center;
-	}
-	.swiper-slide img{
-		display:inline-block;
-	}
-	.pc-detaile-left{
-		min-width:300px;
-		min-height:300px;
-		border:4px solid white;
-		border-radius:3px;
-	}
-	.pc-detaile-right{
-		min-height:319px;
-	}
-	.pc-thumbnail{
-		 min-width:300px;
-		 min-height:300px;
-		 display:block;
-		 margin:0 auto;
-	}
-	.pc-dright-top{
-		 min-height:250px;
-	}
-	.pc-color-select{
-		margin-top:20px;
-	}
-	.pc-color-select ul{
-		max-width:200px;
-		min-height:100px;
-		display:inline-block;
-		float:left;
-		margin-left:5px;
-		list-style:none;
-	}
-	.pc-color-select ul li{
-		float:left;
-		padding-top:8px;
-		padding-left:10px;
-	}
-	.pc-color-select ul li a img{
-		width:20px;
-		height:20px;
-	}
-	.pc-size-select{
-		margin-top:20px;
-	}
-	.pc-size-select ul{
-		width:200px;
-		min-height:100px;
-		float:left;
-		margin-left:5px;
-		list-style:none;
-	}
-	.pc-size-select ul li{
-		float:left;
-		padding-left:5px;
-		padding-top:5px;
-	}
-	.pc-size-detail{
-		display:block;
-		width:30px;
-		height:30px;
-		text-align:center;
-		background-color:#CCCCCE;
-		border:2px solid #CCCCCE;
-		border-radius:1px;
-		color:#000;
-	}
-	.pc-size-change{
-		display:inline-block;
-		width:30px;
-		height:30px;
-		text-align:center;
-		background-colo:red;
-		border:2px #10acf7 solid;
-		border-radius:1px;
-		color:#000;
-	}
-	.pc-group-select ul{
-		width:200px;
-		min-height:100px;
-		float:left;
-		margin-left:5px;
-		list-style:none;
-	}
-	.pc-group-select ul li{
-		float:left;
-		padding-left:5px;
-		padding-top:5px;
-	}
-	.pc-group-detail{
-		display:block;
-		width:60px;
-		height:30px;
-		background-color:#CCCCCE;
-		border:2px #CCCCCE solid;
-		border-radius:1px;
-		color:black;
-	}
-	.pc-none{
-		background-color:#C33;
-	}
-	.pc-group-change{
-		display:block;
-		width:60px;
-		height:30px;
-		background-color:#CCCCCE;
-		border:2px #10acf7 solid;
-		border-radius:1px;
-		color:black;
-	}
-	.pc-mold-select ul{
-		width:200px;
-		min-height:100px;
-		float:left;
-		margin-left:5px;
-		list-style:none;
-	}
-	.pc-mold-select ul li{
-		float:left;
-		padding-left:5px;
-		padding-top:5px;
-	}
-	.pc-mold-detail{
-		display:block;
-		width:50px;
-		height:30px;
-		background-color:#CCCCCE;
-		border:2px #CCCCCE solid;
-		border-radius:1px;
-		color:black;
-	}
-	.pc-mold-change{
-		display:block;
-		width:50px;
-		height:30px;
-		background-color:#CCCCCE;
-		border:2px #10acf7 solid;
-		border-radius:1px;
-		color:black;
-	}
-	.pc-dright-bottom{
-		min-height:50px;
-	}
-	.mobile-color-change{
-		width: 40px;
-		height: 40px;
-		display: block;
-		overflow: hidden;
-		border: 3px solid #10acf7;
-	}
-	.mobile-none{
-		background-color:#C33;
-	}
+  }
+  .swiper-slide img{
+    display:inline-block;
+  }
+  .pc-detaile-left{
+    min-width:300px;
+    min-height:300px;
+    border:4px solid white;
+    border-radius:3px;
+  }
+  .pc-detaile-right{
+    min-height:319px;
+  }
+  .pc-thumbnail{
+     min-width:300px;
+     min-height:300px;
+     display:block;
+     margin:0 auto;
+  }
+  .pc-dright-top{
+     min-height:250px;
+  }
+  .pc-color-select{
+    margin-top:20px;
+  }
+  .pc-color-select ul{
+    max-width:200px;
+    min-height:100px;
+    display:inline-block;
+    float:left;
+    margin-left:5px;
+    list-style:none;
+  }
+  .pc-color-select ul li{
+    float:left;
+    padding-top:8px;
+    padding-left:10px;
+  }
+  .pc-color-select ul li a img{
+    width:20px;
+    height:20px;
+  }
+  .pc-size-select{
+    margin-top:20px;
+  }
+  .pc-size-select ul{
+    width:200px;
+    min-height:100px;
+    float:left;
+    margin-left:5px;
+    list-style:none;
+  }
+  .pc-size-select ul li{
+    float:left;
+    padding-left:5px;
+    padding-top:5px;
+  }
+  .pc-size-detail{
+    display:block;
+    width:30px;
+    height:30px;
+    text-align:center;
+    background-color:#CCCCCE;
+    border:2px solid #CCCCCE;
+    border-radius:1px;
+    color:#000;
+  }
+  .pc-size-change{
+    display:inline-block;
+    width:30px;
+    height:30px;
+    text-align:center;
+    background-colo:red;
+    border:2px #10acf7 solid;
+    border-radius:1px;
+    color:#000;
+  }
+  .pc-group-select ul{
+    width:200px;
+    min-height:100px;
+    float:left;
+    margin-left:5px;
+    list-style:none;
+  }
+  .pc-group-select ul li{
+    float:left;
+    padding-left:5px;
+    padding-top:5px;
+  }
+  .pc-group-detail{
+    display:block;
+    width:60px;
+    height:30px;
+    background-color:#CCCCCE;
+    border:2px #CCCCCE solid;
+    border-radius:1px;
+    color:black;
+  }
+  .pc-none{
+    background-color:#C33;
+  }
+  .pc-group-change{
+    display:block;
+    width:60px;
+    height:30px;
+    background-color:#CCCCCE;
+    border:2px #10acf7 solid;
+    border-radius:1px;
+    color:black;
+  }
+  .pc-mold-select ul{
+    width:200px;
+    min-height:100px;
+    float:left;
+    margin-left:5px;
+    list-style:none;
+  }
+  .pc-mold-select ul li{
+    float:left;
+    padding-left:5px;
+    padding-top:5px;
+  }
+  .pc-mold-detail{
+    display:block;
+    width:50px;
+    height:30px;
+    background-color:#CCCCCE;
+    border:2px #CCCCCE solid;
+    border-radius:1px;
+    color:black;
+  }
+  .pc-mold-change{
+    display:block;
+    width:50px;
+    height:30px;
+    background-color:#CCCCCE;
+    border:2px #10acf7 solid;
+    border-radius:1px;
+    color:black;
+  }
+  .pc-dright-bottom{
+    min-height:50px;
+  }
+  .mobile-color-change{
+    width: 40px;
+    height: 40px;
+    display: block;
+    overflow: hidden;
+    border: 3px solid #10acf7;
+  }
+  .mobile-none{
+    background-color:#C33;
+  }
     </style>
 
 <script type="text/javascript">
@@ -262,6 +262,7 @@ $(function(){
   $.each(data,function(i){
     $.each(data[i],function(x){
           $("#type_"+data[i][x]).parent("li").css("display",'block');
+          $("#mobiletype_"+data[i][x]).parent("li").css("display",'block');  //手机
     })
 
 
@@ -271,7 +272,9 @@ $(function(){
      function attrshuaixuan(attrid,typeid,typenum){
 
         $("#type_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
+        $("#mobiletype_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');  //手机
         $("#type_"+attrid).addClass("pc-group-change");
+        $("#mobiletype_"+attrid).addClass("pc-group-change");     //手机
         $("input[name='spec_"+typeid+"']").val(attrid);
          var formBuy      = document.forms['ECS_FORMBUY'];
           if (formBuy)
@@ -302,6 +305,8 @@ $(function(){
                                         $.each(data.select[i],function(x){
 
                                           $("#type_"+data.select[i][x]).parent("li").css("display",'block');
+                                          $("#mobiletype_"+data.select[i][x]).parent("li").css("display",'block');   //手机
+
 
                                         });
 
@@ -309,16 +314,79 @@ $(function(){
                                       });
                                       $.each(data.checked,function(i){
                                           $("#type_"+data.checked[i]).parent().siblings('li').children('a').removeClass('pc-group-change');
+                                           $("#mobiletype_"+data.checked[i]).parent().siblings('li').children('a').removeClass('pc-group-change');    //手机
                                           $("#type_"+data.checked[i]).addClass("pc-group-change");
+                                          $("#mobiletype_"+data.checked[i]).addClass("pc-group-change");    //手机
                                         });
                                      $(".pc-thumbnail").attr("src","././admin/"+data.data.attributeimg);
+                                     $(".mobile-thumbnail").attr("src","././admin/"+data.data.attributeimg);  //手机筛选图片
                                      $("#pc_price").text("￥"+data.data.attributeprice);
+                                     $("#mobile_price").text("￥"+data.data.attributeprice);  //手机
+                                     window.__product__=data.data.product_number;
+                                     $("#quantity").val(1);
+                                     $("#quantitymobile").val(1);
                                           }//回调函数结束
                                });//ajax结束
 
        }
+window.__product__={$jiagedata.product_number};
+
+/*商品数量+1*/
+function numAdd(){
+    var quantity = document.getElementById("quantity").value;
+    var num_add = parseInt(quantity)+1;
+
+    if(quantity==""){
+        num_add = 1;
+    }
+    if(num_add>__product__){
+        document.getElementById("quantity").value=num_add-1;
+        alert("商品库存不足"+__product__);
+    }else{
+        document.getElementById("quantity").value=num_add;
+
+    }
+}
+
+/*商品数量-1*/
+function numDec(){
+    var quantity = document.getElementById("quantity").value;
+
+    var num_dec = parseInt(quantity)-1;
+    if(num_dec>0){
+        document.getElementById("quantity").value=num_dec;
+    }
+}
 
 
+
+//手机加减
+/*商品数量+1*/
+function numAddmobile(){
+    var quantity = document.getElementById("quantitymobile").value;
+    var num_add = parseInt(quantity)+1;
+
+    if(quantity==""){
+        num_add = 1;
+    }
+    if(num_add>__product__){
+        document.getElementById("quantitymobile").value=num_add-1;
+        alert("商品库存不足"+__product__);
+    }else{
+        document.getElementById("quantitymobile").value=num_add;
+
+    }
+}
+
+/*商品数量-1*/
+function numDecmobile(){
+    var quantity = document.getElementById("quantitymobile").value;
+
+    var num_dec = parseInt(quantity)-1;
+    if(num_dec>0){
+        document.getElementById("quantitymobile").value=num_dec;
+    }
+}
 
 </script>
 
@@ -339,24 +407,24 @@ $(function(){
 
   <!-- Page Wrapper -->
   <div class="page-wrapper">
-	<!-- 头部开始 -->
+  <!-- 头部开始 -->
    {include file="head.dwt"}
-	<!-- 头部结束-->
+  <!-- 头部结束-->
 
     <!-- Pager + Product Gallery -->
     <section class="fw-section bg-gray padding-top-3x">
       <div class="swiper-container">
             <div class="swiper-wrapper">
-					{foreach from=$xiangce item=xiangce}
-						<div class="swiper-slide"><img src="../../{$xiangce.img_url}"></div>
-					{/foreach}
+          {foreach from=$xiangce item=xiangce}
+            <div class="swiper-slide"><img src="../../{$xiangce.img_url}"></div>
+          {/foreach}
             </div>
 
             <!--分页器 -->
-    		<div class="swiper-pagination"></div>
+        <div class="swiper-pagination"></div>
             <!--<div class="swiper-button-prev" style="width:50px;">-PREV</div>
             <div class="swiper-button-next" style="width:50px;">NEXT-</div>-->
-		</div>
+    </div>
     </section>
 
 
@@ -369,16 +437,16 @@ $(function(){
           <h1 class="h2 space-bottom-half"></h1>
           <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥{$jiagedata.attributeprice}</h2>
           <!--PC端缩略图-->
-          	<div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
-            {if $jiagedata.attributeimg}
-			   <img src="././admin/{$jiagedata.attributeimg}" class="pc-thumbnail">
-            {/if}
+            <div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
+                {if $jiagedata.attributeimg}
+                   <img src="././admin/{$jiagedata.attributeimg}" class="pc-thumbnail">
+                {/if}
             </div>
 
           <!--PC端商品选择详情-->
 
             <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
-           		<div class="pc-dright-top">
+              <div class="pc-dright-top">
                     <form  name="ECS_FORMBUY">
                            {foreach from=$specification item=spec key=spec_key name=name}
                            <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
@@ -398,14 +466,14 @@ $(function(){
                     </form>
                 </div>
                 <div class="pc-dright-bottom">
-                	<div class="col-lg-2 col-md-2 col-sm-2">
-                    	<div class="count-input">
-                          <a class="incr-btn" data-action="decrease" href="#">–</a>
-                          <input class="quantity" type="text" value="1">
-                          <a class="incr-btn" data-action="increase" href="#">+</a>
-                		</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2">
+                      <div class="count-input">
+                          <a class="incr-btn" onclick="numDec()" data-action="decrease" href="#">–</a>
+                          <input   id="quantity" type="text" value="1">
+                          <a class="incr-btn" onclick="numAdd()" data-action="increase" href="#">+</a>
                     </div>
-                	<div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:8px;min-height:48px;">
+                    </div>
+                  <div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:8px;min-height:48px;">
                          <a href="#" class="add-to-cart-pay" onClick="addToCart(164,'',1)">
                                 <em>立即支付</em>
                          </a>
@@ -426,88 +494,63 @@ $(function(){
     </section><!-- .fw-section.bg-gray -->
     <!--手机端商品详情选择-->
     <section class="mobile-detail hidden-lg hidden-md hidden-sm">
-    	<div class="mobile-thumbnail col-xs-5" style="padding:5px;">
-        	<img src="{$ectouch_themes}/img/shop/product-gallery/preview03.jpg" id="Mobilethumbnail">
+        <div class="mobile-thumbnail col-xs-5" style="padding:5px;">
+            {if $jiagedata.attributeimg}
+               <img src="././admin/{$jiagedata.attributeimg}" id="Mobilethumbnail" class="mobile-thumbnail">
+            {/if}
         </div>
+
+
+
+
         <div class="col-xs-7">
             <div class="mobile-detail-1">
-                <span class="mobile-shop-name">创意椅子哈哈哈哈哈哈哈测试哈哈哈测试</span>
+                <span class="mobile-shop-name">{$spnames}</span>
             </div>
-            <div class="mobile-shop-price">￥1280.00</div>
+            <div class="mobile-shop-price" id="mobile_price">￥{$jiagedata.attributeprice}</div>
             <div class="mobile-count-input">
-                  <a class="mobile-incr-btn" href="#">–</a>
-                  <input class="mobile-quantity" type="text" value="1">
-                  <a class="mobile-incr-btn" href="#">+</a>
+                  <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">–</a>
+                  <input class="mobile-quantity" id="quantitymobile" type="text" value="1">
+                  <a class="mobile-incr-btn" onclick="numAddmobile()" href="#">+</a>
             </div>
         </div>
         <div class="clear"></div>
-        <p class="mobile-cart-color-text">颜色<span style="margin-left:10px; font-size:17px;color:#09F" id="selectcolor"></span></p>
 
-      <form  name="ECS_FORMBUY">
-      <!--   <div class="mobile-cart-color" id="mobile-select-color"><input  name="spec_1"  value="367"/>
-            <ul class="mobile-cart-color-select">
-            	<li><a href="#" title="绿色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="紫色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="红色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="青色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="蓝色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-                <li><a href="#" title="粉色"><img src="{$ectouch_themes}/img/orange.png"></a></li>
-               	<li><a href="#" title="橙色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="褐色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="黄色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="黑色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="青色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-                <li><a href="#" title="玫红色"><img src="{$ectouch_themes}/img/bottle green.png"></a></li>
-            </ul>
-            <div class="clear"></div>
-        </div>
-        <p class="mobile-cart-size-text">尺寸</p>
-        <div class="mobile-cart-size"><input  name="spec_2"  value="377"/>
-          	<ul class="mobile-cart-size-select" id="mobile-sizebox">
-                <li><a href="#" class="mobile-cart-size-select-details mobile-none" title="大码">大</a></li>
-                <li><a href="#" class="mobile-cart-size-select-details" title="中码">中</a></li>
-                <li><a href="#" class="mobile-cart-size-select-details" title="小码">小</a></li>
-            </ul>
-            <div class="clear"></div>
-        </div>
-        <p class="mobile-cart-group-text">组合形式</p>
-        <div class="mobile-cart-group"><input  name="spec_3"  value="387"/>
-          	<ul class="mobile-cart-group-select" id="mobile-groupbox">
-                <li><a href="#" class="mobile-cart-group-details" title="单件">单件</a></li>
-                <li><a href="#" class="mobile-cart-group-details" title="两件">两件</a></li>
-                <li><a href="#" class="mobile-cart-group-details" title="三件">三件</a></li>
-                <li><a href="#" class="mobile-cart-group-details" title="四件">四件</a></li>
-            </ul>
-            <div class="clear"></div>
-        </div>
-        <p class="mobile-cart-border-text">外框类型</p>
-        <div class="mobile-cart-border"><input  name="spec_4"  value="397"/>
-          	<ul class="mobile-cart-border-select" id="mobile-borderbox">
-                <li><a href="#" class="mobile-cart-border-details" title="水泥">水泥</a></li>
-                <li><a href="#" class="mobile-cart-border-details" title="陶瓷">陶瓷</a></li>
-                <li><a href="#" class="mobile-cart-border-details" title="布艺">布艺</a></li>
-                <li><a href="#" class="mobile-cart-border-details" title="泥巴">麻绳</a></li>
-            </ul>
-            <div class="clear"></div>
-        </div> -->
-         {foreach from=$specification item=spec key=spec_key name=name}
-                 <p class="mobile-cart-border-text">{$spec.name}</p>
-         {/foreach}
+        <!-- 手机商品详情属性筛选 -->
+        <form  name="ECS_FORMBUY_MOBILE">
+            {foreach from=$specification item=spec key=spec_key name=name}
+            <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
+                     <p class="mobile-cart-border-text">{$spec.name}</p>
+                      <div class="mobile-cart-border type_arr">
+                          <ul class="mobile-cart-border-select" id="mobile-borderbox">
+                              {foreach from=$spec.values item=value key=key}
+                                  <li>
+                                      <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"{else}class="mobile-cart-border-details"{/if} id="mobiletype_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
+                                  </li>
+                              {/foreach}
+                          </ul>
+                          <div class="clear"></div>
+                      </div>
+            {/foreach}
         </form>
+
+
+
+
     </section>
     <div class="clear"></div>
-	<!--艺术家-->
+  <!--艺术家-->
     <section class="container padding-top">
     <div class="row">
        <div class="artist-lf col-lg-6 col-md-6 col-sm-6">
-	      {foreach from=$spysj item=spysj}
-       		<p>
-            	<img src="../{$spysj.hav_logo}" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
-            	<span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;">{$spysj.user_name}</span>
-            	<img src="{$ectouch_themes}/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
-            	<span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;">{$spysj.country}</span>
-           	</p>
-		  {/foreach}
+        {foreach from=$spysj item=spysj}
+          <p>
+              <img src="../{$spysj.hav_logo}" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
+              <span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;">{$spysj.user_name}</span>
+              <img src="{$ectouch_themes}/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
+              <span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;">{$spysj.country}</span>
+            </p>
+      {/foreach}
        </div>
        <!--<div class="artist-rt col-lg-6 col-md-6 col-sm-6">
            <p style="font-size:16px; font-weight:bold; margin-bottom:0px;">艺术家说:</p>
@@ -528,7 +571,7 @@ $(function(){
         <div role="tabpanel" class="tab-pane transition fade in active" id="description">
           <div class="row space-top">
                 {foreach from=$goodsdesc item=goodsdesc}
-		             {$goodsdesc.goods_desc}
+                 {$goodsdesc.goods_desc}
                 {/foreach}
           </div>
         </div><!-- .tab-pane -->
@@ -553,45 +596,45 @@ $(function(){
 
     <!-- Related Products -->
     <section class="container padding-top padding-bottom">
-    	<div style="width:100px; height:30px;background-color:#ededed;position:absolute; margin-top:10px;"></div>
-      	<hr style="position:relative;">
+      <div style="width:100px; height:30px;background-color:#ededed;position:absolute; margin-top:10px;"></div>
+        <hr style="position:relative;">
       <h3 class="padding-top">猜 你 喜 欢</h3>
       <div class="row padding-top">
 
-	    {foreach from=$xh item=xh}
-			<div class="col-lg-3 col-sm-6 mobile-indent">
-			  <div class="shop-item">
-				<div class="shop-thumbnail">
-				  <a href="shop-single.php?id={$xh.goods_id}" class="item-link"></a>
-				  {if $xh.goods_img}<img src="../../{$xh.goods_img}" alt="Shop item">{/if}
-				</div>
-				<div class="shop-item-details">
-				  <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>
-				  <span class="shop-item-price">
-					<span class="old-price"></span>
-						￥{$xh.shop_price}
-				  </span>
-				</div>
-			  </div><!-- .shop-item -->
-			</div><!-- .col-lg-3.col-sm-6 -->
+      {foreach from=$xh item=xh}
+      <div class="col-lg-3 col-sm-6 mobile-indent">
+        <div class="shop-item">
+        <div class="shop-thumbnail">
+          <a href="shop-single.php?id={$xh.goods_id}" class="item-link"></a>
+          {if $xh.goods_img}<img src="../../{$xh.goods_img}" alt="Shop item">{/if}
+        </div>
+        <div class="shop-item-details">
+          <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>
+          <span class="shop-item-price">
+          <span class="old-price"></span>
+            ￥{$xh.shop_price}
+          </span>
+        </div>
+        </div><!-- .shop-item -->
+      </div><!-- .col-lg-3.col-sm-6 -->
         {/foreach}
 
 
       </div><!-- .row -->
     </section><!-- .container -->
 
- 	<!-- Footer脚步 -->
+  <!-- Footer脚步 -->
     <footer class="footer padding-top-2x">
       <div class="column">
-      	<div class="feature text-center">
+        <div class="feature text-center">
             <div class="feature-icon">
               <i class="material-icons credit_card"></i>
             </div>
-			<h4 class="feature-title"><a id="Cooperate" href="about-us.html">与我们合作</a></h4>
+      <h4 class="feature-title"><a id="Cooperate" href="about-us.html">与我们合作</a></h4>
           </div>
       </div><!-- .column -->
       <div class="column">
-      	<div class="feature text-center">
+        <div class="feature text-center">
             <div class="feature-icon">
               <i class="material-icons settings"></i>
             </div>
@@ -599,7 +642,7 @@ $(function(){
           </div>
       </div><!-- .column -->
       <div class="column">
-      	<div class="feature text-center">
+        <div class="feature text-center">
             <div class="feature-icon">
               <i class="material-icons face"></i>
             </div>
@@ -608,24 +651,24 @@ $(function(){
       </div>
     </footer>
 
-	<section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
-		<div class="text-center">
-			<div class="hidden-xs">
-				<div>联系我们：电话|微信：13502637171（KITTY）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系邮箱：3412355834@qq.com</div>
-				<!-- <div>公司地址：广东省潮州市潮安区江东镇沙洲工业区</div> -->
-				<div style="margin-top: 10px;">ICP备案号</div>
-			</div>
-			<div class="visible-xs">
-				<div>联系我们：电话|微信：13502637171（KITTY）</div>
-				<div style="margin-top: 10px;">联系邮箱：3412355834@qq.com</div>
-				<div style="margin-top: 10px;">ICP备案号</div>
-			</div>
-		</div>
-	</section>
+  <section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
+    <div class="text-center">
+      <div class="hidden-xs">
+        <div>联系我们：电话|微信：13502637171（KITTY）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系邮箱：3412355834@qq.com</div>
+        <!-- <div>公司地址：广东省潮州市潮安区江东镇沙洲工业区</div> -->
+        <div style="margin-top: 10px;">ICP备案号</div>
+      </div>
+      <div class="visible-xs">
+        <div>联系我们：电话|微信：13502637171（KITTY）</div>
+        <div style="margin-top: 10px;">联系邮箱：3412355834@qq.com</div>
+        <div style="margin-top: 10px;">ICP备案号</div>
+      </div>
+    </div>
+  </section>
     <!-- .footer -->
     <div class="mobile-foot col-xs-12 hidden-sm hidden-md hidden-lg" style="position:fixed;bottom:0;padding:0px;">
-		<div class="col-xs-6" style="padding:0px;">
-        	<a href="#" class="mobile-add-to-cart" onClick="addToCart({$goods.goods_id})" >
+    <div class="col-xs-6" style="padding:0px;">
+          <a href="#" class="mobile-add-to-cart" onClick="addToCart({$goods.goods_id})" >
               放入购物车
             </a>
         </div>
@@ -689,113 +732,113 @@ $(function(){
 
 <!--swiper,banner插件-->
   <script>
-	  var mySwiper = new Swiper ('.swiper-container', {
-		direction: 'horizontal',
-		loop: true,
-		//双击放大
-/*		zoom : true,*/
-		// 如果需要前进后退按钮
-		nextButton: '.swiper-button-next',
-		prevButton: '.swiper-button-prev',
-		pagination: '.swiper-pagination',
+    var mySwiper = new Swiper ('.swiper-container', {
+    direction: 'horizontal',
+    loop: true,
+    //双击放大
+/*    zoom : true,*/
+    // 如果需要前进后退按钮
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+    pagination: '.swiper-pagination',
         paginationClickable: '.swiper-pagination',
         spaceBetween: 30,
         effect: 'slide'
-	  })
-  	</script>
+    })
+    </script>
 
 <!--电脑端点击分享二维码,手机端放大缩略图-->
 <script type="text/javascript">
   $(document).ready(function(){
-	  $("#fenxiang").click(function(){
-		  var content= '<img src="{$ectouch_themes}/img/fenxiangerweima.png">';
-			layer.open({
-				closeBtn: 0,
-				title: false,
-				type: 1,
-				content: content
-			});
-		});
-	$("#Mobilethumbnail").click(function(){
-		  var content= '<img src="{$ectouch_themes}/img/shop/product-gallery/preview03.jpg">';
-			layer.open({
-				closeBtn: 0,
-				title: false,
-				type: 1,
-				content: content,
-				style:'width:300px; height:250px;'
-			});
-		});
-	})
+    $("#fenxiang").click(function(){
+      var content= '<img src="{$ectouch_themes}/img/fenxiangerweima.png">';
+      layer.open({
+        closeBtn: 0,
+        title: false,
+        type: 1,
+        content: content
+      });
+    });
+  $("#Mobilethumbnail").click(function(){
+      var content= '<img src="{$ectouch_themes}/img/shop/product-gallery/preview03.jpg">';
+      layer.open({
+        closeBtn: 0,
+        title: false,
+        type: 1,
+        content: content,
+        style:'width:300px; height:250px;'
+      });
+    });
+  })
 </script>
 
 
     <script type="text/javascript">
-	 function click_scroll() {
- 		 document.getElementById("zhankai").click();
-	 }
-	</script>
+   function click_scroll() {
+     document.getElementById("zhankai").click();
+   }
+  </script>
     <!--电脑端+手机端颜色选择时样式切换-->
     <script type="text/javascript">
 
 
 
 
-		$(document).ready(function (){
-		  $("#pc-select-color li a").each(function(index){
-			  $(this).click(function(){
-				  $("#pc-select-color li a").removeClass("cart-color-details-change");
-				  $("#pc-select-color li a").eq(index).addClass("cart-color-details-change");
-		  		});
-		  	});
-			$("#pc-select-size li a").each(function(index){
-			  $(this).click(function(){
+    $(document).ready(function (){
+      $("#pc-select-color li a").each(function(index){
+        $(this).click(function(){
+          $("#pc-select-color li a").removeClass("cart-color-details-change");
+          $("#pc-select-color li a").eq(index).addClass("cart-color-details-change");
+          });
+        });
+      $("#pc-select-size li a").each(function(index){
+        $(this).click(function(){
 
-				  $("#pc-select-size li a").removeClass("pc-size-change");
-				  $("#pc-select-size li a").eq(index).addClass("pc-size-change");
-		  		});
-		  	});
-			$("#pc-select-group li a").each(function(index){
-			  $(this).click(function(){
-				  $("#pc-select-group li a").removeClass("pc-group-change");
-				  $("#pc-select-group li a").eq(index).addClass("pc-group-change");
-		  		});
-		  	});
-			$("#pc-select-mold li a").each(function(index){
-			  $(this).click(function(){
-				  $("#pc-select-mold li a").removeClass("pc-mold-change");
-				  $("#pc-select-mold li a").eq(index).addClass("pc-mold-change");
-		  		});
-		  	});
-			$("#mobile-select-color li a").each(function(index){
-			  $(this).click(function(){
-				  $("#mobile-select-color li a").removeClass("mobile-color-change");
-				  $("#mobile-select-color li a").eq(index).addClass("mobile-color-change");
-				  var adom = $(this);//根据标签的id获取标签a的dom节点
-				  var gettitle = adom.attr("title");//获取title内容
-				  var f = $("#selectcolor").text(gettitle);
-		  		});
-		  	});
-			$("#mobile-sizebox li a").each(function(index){
-			  $(this).click(function(){
-				  $("#mobile-sizebox li a").removeClass("mobile-cart-size-change");
-				  $("#mobile-sizebox li a").eq(index).addClass("mobile-cart-size-change");
-		  		});
-		  	});
-			$("#mobile-groupbox li a").each(function(index){
-			  $(this).click(function(){
-				  $("#mobile-groupbox li a").removeClass("mobile-cart-group-change");
-				  $("#mobile-groupbox li a").eq(index).addClass("mobile-cart-group-change");
-		  		});
-		  	});
-			$("#mobile-borderbox li a").each(function(index){
-			  $(this).click(function(){
-				  $("#mobile-borderbox li a").removeClass("mobile-cart-border-change");
-				  $("#mobile-borderbox li a").eq(index).addClass("mobile-cart-border-change");
-		  		});
-		  	});
- 		});
-	</script>
+          $("#pc-select-size li a").removeClass("pc-size-change");
+          $("#pc-select-size li a").eq(index).addClass("pc-size-change");
+          });
+        });
+      $("#pc-select-group li a").each(function(index){
+        $(this).click(function(){
+          $("#pc-select-group li a").removeClass("pc-group-change");
+          $("#pc-select-group li a").eq(index).addClass("pc-group-change");
+          });
+        });
+      $("#pc-select-mold li a").each(function(index){
+        $(this).click(function(){
+          $("#pc-select-mold li a").removeClass("pc-mold-change");
+          $("#pc-select-mold li a").eq(index).addClass("pc-mold-change");
+          });
+        });
+      $("#mobile-select-color li a").each(function(index){
+        $(this).click(function(){
+          $("#mobile-select-color li a").removeClass("mobile-color-change");
+          $("#mobile-select-color li a").eq(index).addClass("mobile-color-change");
+          var adom = $(this);//根据标签的id获取标签a的dom节点
+          var gettitle = adom.attr("title");//获取title内容
+          var f = $("#selectcolor").text(gettitle);
+          });
+        });
+      $("#mobile-sizebox li a").each(function(index){
+        $(this).click(function(){
+          $("#mobile-sizebox li a").removeClass("mobile-cart-size-change");
+          $("#mobile-sizebox li a").eq(index).addClass("mobile-cart-size-change");
+          });
+        });
+      $("#mobile-groupbox li a").each(function(index){
+        $(this).click(function(){
+          $("#mobile-groupbox li a").removeClass("mobile-cart-group-change");
+          $("#mobile-groupbox li a").eq(index).addClass("mobile-cart-group-change");
+          });
+        });
+      $("#mobile-borderbox li a").each(function(index){
+        $(this).click(function(){
+          $("#mobile-borderbox li a").removeClass("mobile-cart-border-change");
+          $("#mobile-borderbox li a").eq(index).addClass("mobile-cart-border-change");
+          });
+        });
+    });
+  </script>
 </body><!-- <body> -->
 
 </html>
