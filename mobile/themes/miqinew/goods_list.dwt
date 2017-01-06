@@ -183,15 +183,15 @@
               <div class="shop-item">
                 <div class="shop-thumbnail">
                   <a href="shop-single.php?id={{d.data[i].goods_id}}" class="item-link"></a>
-              {{# if(d.data[i].goods_thumb){}}
-                  <img src="../../{{ d.data[i].goods_thumb}}" alt="Shop item">
+              {{# if(d.data[i].attributeimg){}}
+                  <img src="././admin/{{ d.data[i].attributeimg}}" alt="Shop item">
                 </div>
                 {{# }}}
                 <div class="shop-item-details">
-                  <h3 class="shop-item-title"><a href="shop-single.html">{{ d.data[i].goods_name }}</a></h3>
+                  <h3 class="shop-item-title"><a href="shop-single.php?id={{d.data[i].goods_id}}">{{ d.data[i].goods_name }}</a></h3>
                   <span class="shop-item-price">
-                    <span class="old-price">￥{{ d.data[i].market_price }}</span>
-                    ￥{{ d.data[i].shop_price }}
+
+                    ￥{{ d.data[i].attributeprice }}
                   </span>
                 </div>
               </div><!-- .shop-item -->
