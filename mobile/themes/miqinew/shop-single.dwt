@@ -283,7 +283,11 @@
 .col-xs-3 {
     width: 25%;
 }
+#shangchuan img{
+  margin:auto;
+}
     </style>
+
 
 
 </head>
@@ -331,7 +335,7 @@
 
           <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥{$sub_price}</h2>
           <!--PC端缩略图-->
-            <div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
+            <div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs hidden-sm">
                 {if $jiagedata.attributeimg}
                    <img src="././admin/{$jiagedata.attributeimg}" class="pc-thumbnail">
                 {/if}
@@ -339,7 +343,7 @@
 
           <!--PC端商品选择详情-->
 
-            <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
+            <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs hidden-sm">
               <div class="pc-dright-top">
                     <form  name="ECS_FORMBUY">
                            {foreach from=$specification item=spec key=spec_key name=name}
@@ -388,26 +392,28 @@
       </div>
     </section><!-- .fw-section.bg-gray -->
     <!--手机端商品详情选择-->
-    <section class="mobile-detail hidden-lg hidden-md hidden-sm">
+    <section class="mobile-detail hidden-lg hidden-md">
         <div class="mobile-thumbnail col-xs-5" style="padding:5px;">
             {if $jiagedata.attributeimg}
                <img src="././admin/{$jiagedata.attributeimg}" id="Mobilethumbnail" class="mobile-thumbnail">
             {/if}
         </div>
 
-
-
-
         <div class="col-xs-7">
             <div class="mobile-detail-1">
-                <span class="mobile-shop-name">{$spnames}</span>
+                <span class="mobile-shop-name col-xs-9">{$spnames}ceshi</span>
+                <span class="sb-twitter col-xs-3"><i class="fa fa-heart"></i></span>
             </div>
-
-            <div class="mobile-shop-price" id="mobile_price">￥{$sub_price}</div>
-            <div class="mobile-count-input">
-                  <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">–</a>
-                  <input class="mobile-quantity" id="quantitymobile" type="text" value="1">
-                  <a class="mobile-incr-btn" onclick="numAddmobile()" href="#">+</a>
+            <div class="clear"></div>
+            <div class="mobile-shop-detail col-xs-12">
+              <div class="mobile-shop-price col-xs-5" id="mobile_price">￥{$sub_price}</div>
+                <div class="col-xs-7">
+                  <div class="mobile-count-input">
+                    <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">–</a>
+                    <input class="mobile-quantity" id="quantitymobile" type="text" value="1">
+                    <a class="mobile-incr-btn" onclick="numAddmobile()" href="#">+</a>
+                  </div>
+              </div>
             </div>
         </div>
         <div class="clear"></div>
@@ -463,9 +469,9 @@
 <!--        <li><a href="#reviews" role="tab" data-toggle="tab">Reviews <sup>3</sup></a></li>-->
       </ul><!-- .nav-tabs -->
       <!-- Tab panes -->
-      <div class="tab-content">
+      <div>
         <div role="tabpanel" class="tab-pane transition fade in active" id="description">
-          <div class="row space-top">
+          <div class="row space-top" id="shangchuan">
                 {foreach from=$goodsdesc item=goodsdesc}
                  {$goodsdesc.goods_desc}
                 {/foreach}
