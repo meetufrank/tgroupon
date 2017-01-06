@@ -34,7 +34,60 @@
 
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
+  <style>
+     @media (max-width:767px) {
+        .selectall{
+        padding-bottom:15px;
+      }
+    }
+    /* 小型设备（平板电脑，768px 起） */
+    @media (min-width:768px) {
+      .selectall{
+        padding-bottom:20px;
+      }
+    }
 
+    /* 中型设备（台式电脑，992px 起） */
+    @media (min-width:992px) {
+     .select-left{
+        float: left;
+        font-size:22px;
+      }
+      .select-right{
+        float:right;
+        font-size:22px;
+      }
+      .selectall{
+        padding-bottom:30px;
+      }
+    }
+
+    /* 大型设备（大台式电脑，1200px 起） */
+    @media (min-width:1200px) {
+      .select-left{
+        float: left;
+        font-size:22px;
+      }
+      .select-right{
+        float:right;
+        font-size:22px;
+      }
+      .shopping-cart-1{
+        padding-bottom:30px;
+      }
+      .selectall{
+        padding-bottom:35px;
+      }
+    }
+    .selectall{
+        border-bottom: 2px solid #ededed;
+        margin-bottom:30px;
+    }
+    .shopping-cart-1{
+        padding:15px;
+        padding-bottom:30px;
+    }
+  </style>
 </head>
 
 <!-- Body -->
@@ -62,9 +115,13 @@
       <div class="row">
       	<div class="col-sm-6">
 
-	        	<div class="shopping-cart-1 padding-bottom-1x" style="padding:15px; margin-bottom: 30px;">
-				          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
-				          			<h4 class="text-primary">选择支付方式</h4>
+	        	<div class="shopping-cart-1 padding-bottom-1x">
+				          		<div class="selectall">
+				          			<span class="text-primary select-left">选择支付方式</span>
+                        <div class="select-right">
+                          <span class="text-primary">订单编号:</span><span>{$order.order_sn}</span>
+                        </div>
+                        <div class="clear"></div>
 				                </div>
                          <input type="hidden" value="{$order.order_id}" name="orderid">
                          <!-- {foreach from=$payment_list item=payment} -->
