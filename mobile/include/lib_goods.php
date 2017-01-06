@@ -648,7 +648,6 @@ function get_goods_properties($goods_id)
     $res = $GLOBALS['db']->getAll($sql);
 
 
-
 	//修复多个属性重复显示的问题
 	foreach($res as $key=>$v){
 

@@ -53,9 +53,9 @@ class FileUpload {
 
       /* 如果是多个文件上传则$file["name"]会是一个数组 */
       if(is_Array($name)){
-        $errors=array();
+        $errors=array(); 
         /*多个文件上传则循环处理 ， 这个循环只有检查上传文件的作用，并没有真正上传 */
-        for($i = 0; $i < count($name); $i++){
+        foreach( $name  as  $i =>$v){ 
           /*设置文件信息 */
           if($this->setFiles($name[$i],$tmp_name[$i],$size[$i],$error[$i] )) {
             if(!$this->checkFileSize() || !$this->checkFileType()){
@@ -75,14 +75,14 @@ class FileUpload {
           /* 存放所有上传后文件名的变量数组 */
           $fileNames = array();
           /* 如果上传的多个文件都是合法的，则通过销魂循环向服务器上传文件 */
-          for($i = 0; $i < count($name); $i++){
+          foreach( $name  as  $i =>$v){
             if($this->setFiles($name[$i], $tmp_name[$i], $size[$i], $error[$i] )) {
               $this->setNewFileName();
               if(!$this->copyFile()){
                 $errors[] = $this->getError();
                 $return = false;
               }
-              $fileNames[] = $this->newFileName;
+              $fileNames[$i] = $this->newFileName;
             }
           }
           $this->newFileName = $fileNames;
@@ -161,8 +161,9 @@ class FileUpload {
         return false;
       $this->setOption('originName', $name);
       $this->setOption('tmpFileName',$tmp_name);
-      $aryStr = explode(".", $name);print_r ($name);
+      $aryStr = explode(".", $name); 
       $this->setOption('fileType', strtolower($aryStr[count($aryStr)-1]));
+      
       $this->setOption('fileSize', $size);
       return true;
     }
