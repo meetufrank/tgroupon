@@ -21,7 +21,7 @@ include_once(ROOT_PATH .'include/lib_order.php');
 define('PC_URL', $config['pc_url']);   //定义非微信浏览器跳转链接
 define('PHONE_URL', $config['phone_url']);   //定义微信浏览器跳转链接
 
-if($_POST){
+if(!$_POST){
   $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
   $_SESSION['back_url']=$url;
 }
