@@ -207,9 +207,11 @@ $jiageimg = implode(",", $checked);
 //     $data['error']=1;
 // }
  //   价格和商品
-   $sqls = "select attributeprice,attributeimg,product_number from `ecs_products` where goods_attr = '$jiageimg'";
+   $sqls = "select attributeprice,attributeimg,product_number,goods_id from `ecs_products` where goods_attr = '$jiageimg'";
   $jiageimgs = $db->getRow($sqls);
-
+  $sql="select more_price from ecs_goods  where goods_id=".$jiageimgs['goods_id'];
+  $more_price = $db->getOne($sqls);
+      $jiageimgs['attributeprice']+=$more_price;
 
     $data['select']=$select;
     $data['checked']=$checked;
@@ -462,9 +464,12 @@ $smarty->assign('now_time',  gmtime());           // 当前系统时间
 //商品id  goods_id
 $goodsid = $_REQUEST['id'];
 
-$spname = "select goods_name from `ecs_goods` where goods_id = $goods_id";
-$spnames = $db->getOne($spname);
+$spname = "select * from `ecs_goods` where goods_id = $goods_id";
+$shopdata = $db->getRow($spname);
+$spnames=$shopdata['goods_name'];
+$more_price=$shopdata['more_price'];
 $smarty->assign('spnames',  $spnames);  //商品名称
+
 
 
 //商品关联艺术家
@@ -547,10 +552,10 @@ if(!$checked_arr){
 
  $sqls = "select attributeprice,attributeimg,product_number from `ecs_products` where goods_attr = '$jiageimg'";
   $jiageimgs = $db->getRow($sqls);
-
+$sub_price=$jiageimgs['attributeprice']+$shopdata['more_price'];
 $smarty->assign('jiagedata',$jiageimgs);
 $smarty->assign('checked_arr',$checked_arr);
-
+$smarty->assign('sub_price',$sub_price);
 $smarty->assign('select',json_encode($select));
 $smarty->display('shop-single.dwt',      $cache_id);   //商品详情页
 

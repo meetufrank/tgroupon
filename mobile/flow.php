@@ -167,6 +167,7 @@ include_once('include/cls_json.php');
     }
 
     }
+
     /* 检查：商品数量是否合法 */
     if (!is_numeric($goods->number) || intval($goods->number) <= 0)
     {
@@ -175,6 +176,7 @@ include_once('include/cls_json.php');
          die($json->encode($result));
          exit;
     }
+
     $cartid=addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num);
          if($type_num){
             $result['cartid']=$cartid;
