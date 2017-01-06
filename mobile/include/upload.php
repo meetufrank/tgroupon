@@ -2,7 +2,7 @@
   /**
     file: fileupload.class.php 文件上传类FileUpload
     本类的实例对象用于处理上传文件，可以上传一个文件，也可同时处理多个文件上传
-  */
+  */ 
 class FileUpload {
     private $path = "./images/logo/";          //上传文件保存的路径
     private $allowtype = array('jpg','gif','png'); //设置限制上传文件的类型
