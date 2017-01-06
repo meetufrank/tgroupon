@@ -417,6 +417,7 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
 
                         $.ajax({
                             url:"ajax_save_content.php",
+                            type:"post",
                             data:{content:window.location.href},
                             success: function(data){
 
