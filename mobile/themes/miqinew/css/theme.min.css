@@ -1960,15 +1960,11 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	z-index: 9900;
 	width: 100%;
 	/*min-height: 80px;*/
-	min-height: 50px;
+	min-height:50px;
 	background-color: #fff;
 	padding-left: 30px;
 	top: 0;
 	left: 0
-}
-
-.navbar.navbar-sticky+* {
-	margin-top: 80px
 }
 .site-logo {
 	position: relative;
@@ -2539,7 +2535,7 @@ display:none
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 80px;
+	height: 50px;
 	content: '';
 	background-color: #fff
 }
@@ -5442,38 +5438,47 @@ img.mfp-img {
 	margin-bottom:10px;
 	margin-left:0px;
 }
-.mobile-shop-name{
-	display:block;
-	max-width:100px;
-	white-space:nowrap;
- 	text-overflow:ellipsis;
- 	-o-text-overflow:ellipsis;
- 	overflow: hidden;
-	font-size:16px;
-	font-weight:bold;
+.mobile-shop-name {
+    display: block;
+    max-width: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0px;
 }
-.mobile-shop-price{
-	color:red;
-	font-size:16px;
-	font-weight:bold;
+.mobile-shop-detail {
+    padding: 0px;
+    margin-top: 26px;
+    min-width:100px;
 }
-.mobile-count-input{
-	position: relative;
-    width: 150px;
-/*	margin-top: 10px;*/
+.mobile-shop-price {
+    line-height:50px;
+    height:50px;
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0px;
+}
+.mobile-count-input {
+    position: relative;
+    width: 80px;
+    margin-top: 10px;
     margin-right: 0px;
-/*    margin-bottom: 10px;*/
-    margin-left: 0px;
+    margin-bottom: 10px;
+    margin-left:0px;
 }
 .mobile-count-input .mobile-incr-btn:first-child {
     right: auto;
     left: 0;
 }
-.mobile-count-input .mobile-incr-btn{
+.mobile-count-input .mobile-incr-btn {
     display: block;
     position: absolute;
-    width:55px;
-    height: 36px;
+    width: 20px;
+    height: 30px;
     font-size: 18px;
     color: #606060;
     font-weight: 300;
@@ -5484,8 +5489,8 @@ img.mfp-img {
     right: 0;
 }
 .mobile-count-input input {
-    width:100%;
-    height: 36px;
+    width: 100%;
+    height: 30px;
     border: 2px solid #ededed;
     border-radius: 4px;
     background: none;
@@ -5494,6 +5499,20 @@ img.mfp-img {
     -moz-appearance: none;
     -o-appearance: none;
     appearance: none;
+}
+.mobile-count-input .mobile-incr-btn {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    font-size: 18px;
+    color: #606060;
+    font-weight: 300;
+    text-align: center;
+    line-height: 33px;
+    text-decoration: none;
+    top: 0;
+    right: 0;
 }
 .mobile-cart-color-text{
 	font-size:18px;
