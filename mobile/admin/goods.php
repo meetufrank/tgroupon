@@ -1096,7 +1096,7 @@ if($_FILES['attr_img']['name']){
                         // 如果原来有，标记为更新
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'update';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
-                        if($attr_img){
+                        if($attr_img){//var_dump($attr_img);
                             $goods_attr_list[$attr_id][$attr_value]['attr_img'] = $config['mobilesite_url'].$path.$attr_img;
                         }
                     }
@@ -1105,7 +1105,7 @@ if($_FILES['attr_img']['name']){
                         // 如果原来没有，标记为新增
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'insert';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
-                        if($attr_img){
+                        if($attr_img){///var_dump($attr_img);
                             $goods_attr_list[$attr_id][$attr_value]['attr_img'] = $config['mobilesite_url'].$path.$attr_img;
                         }
                     }
@@ -1142,8 +1142,13 @@ if($_FILES['attr_img']['name']){
                 //     $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_price = '$info[attr_price]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
                 // }
                 elseif ($info['sign'] == 'update')
-                {
-                     $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_img = '$info[attr_img]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+                {	 if($info[attr_img]){
+						
+					 
+						$sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_img = '$info[attr_img]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+					 
+					 }
+					// echo   $sql .'<br/>';
                 }
                 else
                 {
@@ -1155,7 +1160,7 @@ if($_FILES['attr_img']['name']){
 
         }
 
-    } 
+    }   
     /* 处理会员价格 */
     if (isset($_POST['user_rank']) && isset($_POST['user_price']))
     {
