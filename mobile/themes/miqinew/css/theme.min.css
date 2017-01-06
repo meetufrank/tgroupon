@@ -4812,12 +4812,9 @@ img.mfp-img {
 	background: none;
 	border: none;
 	cursor: default;
-	border-bottom: 2px solid #606060
+	border-bottom: 2px solid #606060;
 }
-.tab-content {
-	padding-top: 36px;
-	min-height: 500px;
-}
+
 .tab-content>.tab-pane {
 	display: none
 }
