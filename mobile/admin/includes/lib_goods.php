@@ -12,7 +12,7 @@
  * $Author: liubo $
  * $Id: lib_goods.php 17217 2011-01-19 06:29:08Z liubo $
  */
-
+ 
 if (!defined('IN_ECS'))
 {
     die('Hacking attempt');

@@ -317,9 +317,61 @@ $(function(){
                                });//ajax结束
 
        }
+<<<<<<< HEAD
+window.__product__={$jiagedata.product_number};
+
+
+//pc加减
+/*商品数量+1*/
+function numAdd(){
+    var quantity = document.getElementById("quantity").value;
+    var num_add = parseInt(quantity)+1;
+
+    if(quantity==""){
+        num_add = 1;
+    }
+    if(num_add>__product__){
+        document.getElementById("quantity").value=num_add-1;
+        alert("商品库存不足"+__product__);
+    }else{
+        document.getElementById("quantity").value=num_add;
+
+    }
+}
+=======
+>>>>>>> a966a7b960da1232ffe8714f7455e712aeaa1cfb
 
 
 
+
+
+//手机加减
+/*商品数量+1*/
+function numAddm(){
+    var quantity = document.getElementById("quantity").value;
+    var num_add = parseInt(quantity)+1;
+
+    if(quantity==""){
+        num_add = 1;
+    }
+    if(num_add>__product__){
+        document.getElementById("quantity").value=num_add-1;
+        alert("商品库存不足"+__product__);
+    }else{
+        document.getElementById("quantity").value=num_add;
+
+    }
+}
+
+/*商品数量-1*/
+function numDec(){
+    var quantity = document.getElementById("quantity").value;
+
+    var num_dec = parseInt(quantity)-1;
+    if(num_dec>0){
+        document.getElementById("quantity").value=num_dec;
+    }
+}
 </script>
 
 
@@ -366,7 +418,7 @@ $(function(){
      <input id="goodsid" type="hidden" value="{$goods_id}">
       <div class="container">
         <div class="product-info padding-top-2x text-center">
-          <h1 class="h2 space-bottom-half"></h1>
+          <h1 class="h2 space-bottom-half">{$spnames}</h1>
           <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥{$jiagedata.attributeprice}</h2>
           <!--PC端缩略图-->
           	<div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
@@ -400,10 +452,17 @@ $(function(){
                 <div class="pc-dright-bottom">
                 	<div class="col-lg-2 col-md-2 col-sm-2">
                     	<div class="count-input">
+<<<<<<< HEAD
+                          <a class="incr-btn" onclick="numDec()" data-action="decrease" href="#">–</a>
+                          <input class="quantity"  id="quantity" type="text" value="1">
+                          <a class="incr-btn" onclick="numAdd()" data-action="increase" href="#">+</a>
+                	</div>
+=======
                           <a class="incr-btn" data-action="decrease" href="#">–</a>
                           <input class="quantity" type="text" value="1">
                           <a class="incr-btn" data-action="increase" href="#">+</a>
                 		</div>
+>>>>>>> a966a7b960da1232ffe8714f7455e712aeaa1cfb
                     </div>
                 	<div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:8px;min-height:48px;">
                          <a href="#" class="add-to-cart-pay" onClick="addToCart(164,'',1)">
@@ -426,21 +485,62 @@ $(function(){
     </section><!-- .fw-section.bg-gray -->
     <!--手机端商品详情选择-->
     <section class="mobile-detail hidden-lg hidden-md hidden-sm">
+<<<<<<< HEAD
+        <div class="mobile-thumbnail col-xs-5" style="padding:5px;">
+           {if $jiagedata.attributeimg}
+               <img src="././admin/{$jiagedata.attributeimg}" id="Mobilethumbnail">    <!-- 商品属性联动图片 -->
+          {/if}
+        </div>
+
+=======
     	<div class="mobile-thumbnail col-xs-5" style="padding:5px;">
         	<img src="{$ectouch_themes}/img/shop/product-gallery/preview03.jpg" id="Mobilethumbnail">
         </div>
+>>>>>>> a966a7b960da1232ffe8714f7455e712aeaa1cfb
         <div class="col-xs-7">
             <div class="mobile-detail-1">
-                <span class="mobile-shop-name">创意椅子哈哈哈哈哈哈哈测试哈哈哈测试</span>
+                <span class="mobile-shop-name">{$spnames}</span>    <!-- 商品名称 -->
             </div>
+<<<<<<< HEAD
+            <div class="mobile-shop-price">￥{$jiagedata.attributeprice}</div>   <!-- 商品价格 -->
+            <div class="mobile-count-input">    <!-- 加减商品数量 -->
+=======
             <div class="mobile-shop-price">￥1280.00</div>
             <div class="mobile-count-input">
+>>>>>>> a966a7b960da1232ffe8714f7455e712aeaa1cfb
                   <a class="mobile-incr-btn" href="#">–</a>
                   <input class="mobile-quantity" type="text" value="1">
                   <a class="mobile-incr-btn" href="#">+</a>
             </div>
         </div>
         <div class="clear"></div>
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+
+        <!-- 手机商品详情属性筛选 -->
+        <form  name="ECS_FORMBUY">
+            {foreach from=$specification item=spec key=spec_key name=name}
+
+                     <p class="mobile-cart-border-text">{$spec.name}</p>
+                      <div class="mobile-cart-border type_arr">
+                          <ul class="mobile-cart-border-select" id="mobile-borderbox">
+                              {foreach from=$spec.values item=value key=key}
+                                  <li>
+                                      <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" href="#" class="mobile-cart-border-details" {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="pc-group-detail pc-group-change"{else}class="pc-group-detail"{/if} id="mobiletype_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
+                                  </li>
+                              {/foreach}
+                          </ul>
+                          <div class="clear"></div>
+                      </div>
+            {/foreach}
+=======
         <p class="mobile-cart-color-text">颜色<span style="margin-left:10px; font-size:17px;color:#09F" id="selectcolor"></span></p>
 
       <form  name="ECS_FORMBUY">
@@ -493,6 +593,7 @@ $(function(){
          {foreach from=$specification item=spec key=spec_key name=name}
                  <p class="mobile-cart-border-text">{$spec.name}</p>
          {/foreach}
+>>>>>>> a966a7b960da1232ffe8714f7455e712aeaa1cfb
         </form>
     </section>
     <div class="clear"></div>
