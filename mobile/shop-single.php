@@ -502,9 +502,13 @@ $smarty->assign('goodsdesc',  $goodsdesc);  //商品的详细描述
 
 
 //猜你喜欢
-$xinhuan = "select g.goods_id,g.goods_name,g.goods_img,g.shop_price from `ecs_goods` as g  where is_best = 1 and goods_id != $goodsid
-order by rand() LIMIT 4";
+$xinhuan = "select min(ep.product_id) as product_id,ep.goods_id,ep.attributeprice,ep.attributeimg,g.goods_name
+from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id
+where is_best = 1 and g.goods_id != $goodsid
+order by rand() LIMIT 4
+";
 $xh = $db->getAll($xinhuan);
+
 
 
 
