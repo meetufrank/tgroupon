@@ -117,7 +117,7 @@
                 <ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
                 </label>
                 <a href="shop-single.php?id={$goods.goods_id}" class="item-thumb">
-                {if $goods.goods_thumb}<img src="../../{$goods.goods_thumb}" alt="Item">{/if}
+                {if $goods.goods_thumb}<img src="././admin/{$goods.goods_thumb}" alt="Item">{/if}
                 </a>
                 <div class="item-details"><h3 class="item-title">
                 <a href="shop-single.php?id={$goods.goods_id}">{$goods.goods_name}</a>
@@ -220,9 +220,7 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
         $("#cart").on("click",".item-remove",function(){
             var  id=$(this).parents(".item").find('input[type="checkbox"]').val();
             var parentitem=$(this).parents(".item");
-          var num= $("#goods_number_"+id).val();
-           var cart_num=$("#cart_count").text();
-              document.getElementById('cart_count').innerHTML=Number(cart_num)-Number(num);
+
             $.ajax({
               url:"flow.php",
               data:{step:'drop_goods',id:id},
@@ -310,12 +308,14 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
 
 
         function changenum(rec_id,diff,maxnumber){
+
           event.preventDefault();
           var num = parseInt(document.getElementById('goods_number_'+rec_id).value);
           var goods_number = num + Number(diff);
           if( goods_number >= 1 && goods_number<=maxnumber){
             //document.getElementById('goods_number_'+rec_id).value = goods_number;//更新数量
             var cartnum=document.getElementById('cart_count').innerHTML;
+
             document.getElementById('cart_count').innerHTML=Number(cartnum)+Number(diff);
 
             change_goods_number(rec_id,goods_number);
@@ -363,8 +363,10 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
     </script>
     <script src="{$ectouch_themes}/js/jquery.json-2.3.js"></script>
   <script src="{$ectouch_themes}/js/jquery.json-2.3.min.js"></script>
-<script src="js/common.js"></script>
+  <script src="{$ectouch_themes}/js/jquerysession.js"></script>
+<script src="../js/common.js"></script>
 <script type="text/javascript">
+
 
 /* *
  * 添加商品到购物车
@@ -402,14 +404,13 @@ function addToCart(goodsId, parentId,type)  //type 购物类型
               url:"flow.php",
               type:"POST",
               dataType:"json",
-
               data:{step:'add_to_cart',goods:$.toJSON(goods),type:type },
               success: function(data){
                     if(data.error==12){
                          window.location.href=data.url;
                          return;
                     }
-                    if(type){
+                    if(type&&data.cartid){
                              window.open('flow.php?step=pay_select&&cartid='+data.cartid);return;
                     }else{
 
@@ -442,6 +443,7 @@ function addToCartResponse(data)
       return;
    }
     var cart_url = 'flow.php';
+    $.session.set('back_url', window.location.href);
     layer.open({
                 content: '已加入购物车',
                 skin: 'msg',

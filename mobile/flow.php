@@ -63,6 +63,7 @@ if ($_REQUEST['step'] == 'add_to_cart')
     $_POST['goods'] = json_str_iconv($_POST['goods']);
 
   $type_num=intval($_REQUEST['type']);
+
     if (!empty($_REQUEST['goods_id']) && empty($_POST['goods']))
     {
         if (!is_numeric($_REQUEST['goods_id']) || intval($_REQUEST['goods_id']) <= 0)
@@ -153,11 +154,11 @@ include_once('include/cls_json.php');
     }
 
     $goods_attr_id=implode(',', $new_goods_attr_id);
-    $sql = "SELECT product_number ".
+    $sql = "SELECT product_number,attributeimg ".
         'FROM ' . $GLOBALS['ecs']->table('products').
         "WHERE goods_attr = '" . $goods_attr_id . "'";
-    $goods_number = $GLOBALS['db']->getOne($sql);
-    if ($goods_number==0)
+    $goods_number = $GLOBALS['db']->getRow($sql);
+    if ($goods_number['product_number']==0)
     {
         $result['error']   = 1;
         $result['message'] = "库存不足，请重新选择商品";
@@ -1250,15 +1251,17 @@ elseif($_REQUEST['step']=='pay_ok'){
     $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
 
     /* 订单详情 */
-    $order = get_order_detail($order_id, $user_id);
-
-
-    if ($order === false)
-    {
-        $err->show($_LANG['back_home_lnk'], './');
-
+    $order = get_order_detail($order_id, $user_id,1);
+    if(!$order){
+        echo "<script>alert('该订单已经支付完成');window.location.href='my_user.php?act=order_list';</script>";
         exit;
     }
+    // if ($order === false)
+    // {
+    //     $err->show($_LANG['back_home_lnk'], './');
+
+    //     exit;
+    // }
 
 
 
@@ -1284,7 +1287,7 @@ elseif($_REQUEST['step']=='pay_ok'){
 
 
     $smarty->assign('order',      $order);
-    $smarty->assign('goods_list', $goods_list);
+    $smarty->assign('pay_goods_list', $goods_list);
     $smarty->display('pay.dwt');
     exit;
 }

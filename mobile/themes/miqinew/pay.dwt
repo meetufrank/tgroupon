@@ -127,7 +127,7 @@
                          <!-- {foreach from=$payment_list item=payment} -->
 				                <div class="clearfix" style="position: relative;">
 
-			          				<input style="position:relative;" name="pay_list" type="radio" {if $order.pay_id eq $payment.pay_id}checked{/if} value="{$payment.pay_id}"><div class="pull-left" style="margin-left: 22px;">{$payment.pay_name}</div>{if $payment.logo}<div class="pull-left" style="margin-top:-5px;margin-left: 20px;"><img src="{$ectouch_themes}/{$payment.logo}"></div>{/if}
+			          				<input style="position:relative;" name="pay_list" type="radio" {if   $payment.pay_id eq 9}checked{/if} value="{$payment.pay_id}"><div class="pull-left" style="margin-left: 22px;">{$payment.pay_name}</div>{if $payment.logo}<div class="pull-left" style="margin-top:-5px;margin-left: 20px;"><img src="{$ectouch_themes}/{$payment.logo}"></div>{/if}
 
 			          			</div>
                         <!--{/foreach}-->
@@ -154,8 +154,8 @@
 					          			<h4 class="text-primary pull-left">订单信息</h4>
 					          			<div class="pull-right">订单编号：{$order.order_sn}</div>
 					                </div>
-                          <!--{foreach from=$goods_list item=og}-->
-					            <!-- Item -->
+                          {foreach from=$pay_goods_list item=og}
+
 					            <div class="item">
 					              <a href="shop-single.html" class="item-thumb">
 					                <img src="../../{$og.goods_thumb}" alt="Item">
@@ -170,8 +170,8 @@
 					                <h4 class="item-price" style="font-size: 14px;">数量：{$og.goods_name} </h4>
 					                <h4 class="item-price" style="font-size: 14px;">{$og.goods_name}</h4>
 					              </div>
-					            </div><!-- .item -->
-                      <!--{/foreach}-->
+					            </div>
+                      {/foreach}
 
 
 					            	<h4 class="text-primary" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">收件人信息</h4>
@@ -263,7 +263,7 @@
             alert('支付超时');
          }
      });
- };
+ }
 
 
 
