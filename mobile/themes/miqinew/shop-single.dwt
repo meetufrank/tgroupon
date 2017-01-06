@@ -403,7 +403,7 @@ function numDec(){
      <input id="goodsid" type="hidden" value="{$goods_id}">
       <div class="container">
         <div class="product-info padding-top-2x text-center">
-          <h1 class="h2 space-bottom-half"></h1>
+          <h1 class="h2 space-bottom-half">{$spnames}</h1>
           <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥{$jiagedata.attributeprice}</h2>
           <!--PC端缩略图-->
           	<div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
@@ -471,7 +471,7 @@ function numDec(){
         </div
         <div class="col-xs-7">
             <div class="mobile-detail-1">
-                <span class="mobile-shop-name">创意椅子哈哈哈哈哈哈哈测试哈哈哈测试</span>
+                <span class="mobile-shop-name">{$spnames}</span>
             </div>
             <div class="mobile-shop-price" id="mobile_price">￥{$jiagedata.attributeprice}</div>
             <div class="mobile-count-input">
