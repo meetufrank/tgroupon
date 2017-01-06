@@ -193,7 +193,7 @@
   }
   .pc-group-detail{
     display:block;
-    width:80px;
+    width:60px;
     height:30px;
 
      background-color: rgb(230,230,230);
@@ -206,7 +206,7 @@
   }
   .pc-group-change{
     display:block;
-    width:80px;
+    width:60px;
     height:30px;
 
     background-color: rgb(230,230,230);
@@ -334,7 +334,7 @@
 }
  .pc-group-detail{
     display:block;
-    width:80px;
+    width:60px;
     height:30px;
     background-color:#CCCCCE;
     border:2px #CCCCCE solid;
@@ -343,7 +343,7 @@
   }
    .pc-group-change{
     display:block;
-    width:60px;
+    width:50px;
     height:30px;
     background-color:#CCCCCE;
     border:2px #10acf7 solid;
@@ -491,8 +491,19 @@
                           <ul class="mobile-cart-border-select" id="mobile-borderbox">
                               {foreach from=$spec.values item=value key=key}
                                   <li>
-                                      <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index},1)" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"{else}class="mobile-cart-border-details"{/if} id="mobiletype_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
+                                      <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index},1)" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"
+                                      {else}
+                                            class="mobile-cart-border-details"
+                                      {/if}
+                                      id="mobiletype_{$value.id}"
+                                      data-type="{$value.id}">
+
+                                               {$value.label}
+
+                                        <img src="{$value.attr_img}">
+                                      </a>
                                   </li>
+
                               {/foreach}
                           </ul>
                           <div class="clear"></div>
@@ -533,9 +544,12 @@
 <!--        <li><a href="#reviews" role="tab" data-toggle="tab">Reviews <sup>3</sup></a></li>-->
       </ul><!-- .nav-tabs -->
       <!-- Tab panes -->
-      <div>
+
+
+
+       <div class="tab-content">
         <div role="tabpanel" class="tab-pane transition fade in active" id="description">
-          <div class="row space-top" id="shangchuan">
+          <div class="row space-top">
                 {foreach from=$goodsdesc item=goodsdesc}
                  {$goodsdesc.goods_desc}
                 {/foreach}
@@ -572,7 +586,9 @@
         <div class="shop-item">
         <div class="shop-thumbnail">
           <a href="shop-single.php?id={$xh.goods_id}" class="item-link"></a>
+
           {if $xh.goods_img}<img src="../../{$xh.goods_img}" alt="Shop item">{/if}
+
         </div>
         <div class="shop-item-details">
           <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>
