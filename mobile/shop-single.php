@@ -209,9 +209,11 @@ $jiageimg = implode(",", $checked);
  //   价格和商品
    $sqls = "select attributeprice,attributeimg,product_number,goods_id from `ecs_products` where goods_attr = '$jiageimg'";
   $jiageimgs = $db->getRow($sqls);
+
   $sql="select more_price from ecs_goods  where goods_id=".$jiageimgs['goods_id'];
-  $more_price = $db->getOne($sqls);
-      $jiageimgs['attributeprice']+=$more_price;
+  $more_price = $db->getOne($sql);
+
+      $jiageimgs['attributeprice']=$jiageimgs['attributeprice']+$more_price;
 
     $data['select']=$select;
     $data['checked']=$checked;
@@ -553,6 +555,7 @@ if(!$checked_arr){
  $sqls = "select attributeprice,attributeimg,product_number from `ecs_products` where goods_attr = '$jiageimg'";
   $jiageimgs = $db->getRow($sqls);
 $sub_price=$jiageimgs['attributeprice']+$shopdata['more_price'];
+
 $smarty->assign('jiagedata',$jiageimgs);
 $smarty->assign('checked_arr',$checked_arr);
 $smarty->assign('sub_price',$sub_price);

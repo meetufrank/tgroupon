@@ -44,7 +44,7 @@
         </div>
 
 
-
+{if $user_status}
 <!-- Account (userinfo) -->
         <div class="toolbar-section" id="userinfo" >
             <div class="clearfix">
@@ -66,7 +66,7 @@
               <li><a href="my_usergrzx.php?act=address_list">管理地址</a></li>
             </ul>
         </div>
-
+      {else}
 
          <!-- Account (Login) -->
         <div class="toolbar-section" id="account">
@@ -90,7 +90,7 @@
         </div>
 
 
-
+ {/if}
 
          <div class="toolbar-section" id="cart">
           <div class="shopping-cart">
@@ -178,7 +178,7 @@ $("#logout").click(function(){
   $.ajax({
               url:"my_user.php?act=logout_new",
               success: function(data){
-
+                  window.location.href= window.location.href;
               },
               error:function(){
                    alert("退出异常");
@@ -410,11 +410,9 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
               success: function(data){
 
                     if(data.error==12){
-                    var locurl=data.url;
 
-                              window.location.href=locurl;
+                              window.location.href=data.url;
                               return;
-
                     }
 
                   if(type){

@@ -216,11 +216,7 @@
 						});
 				  },
 				  error: function(data){
-						layer.open({
-							content: 'Json数据出错'
-							,skin: 'msg'
-							,time: 1 //2秒后自动关闭
-  						});
+
                 }
 		});
 		$.ajax({
@@ -233,11 +229,7 @@
             insert_page(data);
 				  },
 				  error: function(data){
-                    	layer.open({
-							content: 'Json数据出错'
-							,skin: 'msg'
-							,time: 1 //2秒后自动关闭
-  						});
+
                 }
 		});
 
