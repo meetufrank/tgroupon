@@ -421,7 +421,7 @@
                           <ul class="mobile-cart-border-select" id="mobile-borderbox">
                               {foreach from=$spec.values item=value key=key}
                                   <li>
-                                      <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"{else}class="mobile-cart-border-details"{/if} id="mobiletype_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
+                                      <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index},1)" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"{else}class="mobile-cart-border-details"{/if} id="mobiletype_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
                                   </li>
                               {/foreach}
                           </ul>
@@ -526,7 +526,7 @@
     <div class="mobile-foot col-xs-12 hidden-sm hidden-md hidden-lg" style="position:fixed;bottom:0;padding:0px;">
     <div class="col-xs-6" style="padding:0px;">
 
-          <a href="#" class="mobile-add-to-cart" onClick="addToCart({$goods.goods_id},'',0,1)" >
+          <a href="#" class="mobile-add-to-cart" onClick="addToCart({$goods.goods_id},'','',1)" >
               放入购物车
             </a>
         </div>
@@ -566,20 +566,25 @@ $(function(){
   })
 
 });
-     function attrshuaixuan(attrid,typeid,typenum){
+     function attrshuaixuan(attrid,typeid,typenum,ismobile){
 
         $("#type_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
         $("#mobiletype_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');  //手机
         $("#type_"+attrid).addClass("pc-group-change");
         $("#mobiletype_"+attrid).addClass("pc-group-change");     //手机
         $("input[name='spec_"+typeid+"']").val(attrid);
+        if(ismobile){
          var formBuy      = document.forms['ECS_FORMBUY'];
+        }else{
+          var formBuy      = document.forms['ECS_FORMBUY_MOBILE'];
+        }
           if (formBuy)
           {
             spec_arr = getSelectedAttributes(formBuy);
 
 
           }
+
 
 
          $.ajax({

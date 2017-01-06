@@ -363,7 +363,6 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
     </script>
     <script src="{$ectouch_themes}/js/jquery.json-2.3.js"></script>
   <script src="{$ectouch_themes}/js/jquery.json-2.3.min.js"></script>
-  <script src="{$ectouch_themes}/js/jquerysession.js"></script>
 <script src="../js/common.js"></script>
 <script type="text/javascript">
 
@@ -371,13 +370,13 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
 /* *
  * 添加商品到购物车
  */
-function addToCart(goodsId, parentId,type,is_mobile)  //type 购物类型
+function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
 {
   var goods        = new Object();
   var spec_arr     = new Array();
   var fittings_arr = new Array();
 
-  if(is_mobile){
+  if(ismobile){
      var formBuy      = document.forms['ECS_FORMBUY_MOBILE'];
      var number=document.getElementById("quantitymobile").value;
   }else{
@@ -414,15 +413,34 @@ function addToCart(goodsId, parentId,type,is_mobile)  //type 购物类型
               success: function(data){
 
                     if(data.error==12){
-                         window.location.href=data.url;
-                         return;
-                    }
-                    if(type&&data.cartid){
-                             window.open('flow.php?step=pay_select&&cartid='+data.cartid);return;
-                    }else{
+                    var url=data.url;
 
-                      addToCartResponse(data);return;
+                        $.ajax({
+                            url:"ajax_save_content.php",
+                            data:{content:window.location.href},
+                            success: function(data){
+
+                              window.location.href=url;
+                              return;
+
+                            }
+                            });
+                         //$.session.set('back_url', window.location.href);
+
+
                     }
+                  if(type){
+
+                    if(data.cartid!=''){
+                             window.open('flow.php?step=pay_select&&cartid='+data.cartid);return;
+                      }
+                    }else{
+                       addToCartResponse(data);return;
+                    }
+
+
+
+
 
 
 
@@ -450,7 +468,7 @@ function addToCartResponse(data)
       return;
    }
     var cart_url = 'flow.php';
-    $.session.set('back_url', window.location.href);
+
     layer.open({
                 content: '已加入购物车',
                 skin: 'msg',
