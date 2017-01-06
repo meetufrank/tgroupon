@@ -11,7 +11,7 @@
  * ============================================================================
  * $Author: liubo $
  * $Id: goods.php 17217 2011-01-19 06:29:08Z liubo $
-*/ 
+*/
 
 define('IN_ECTOUCH', true);
 define('IN_ECS', true);
@@ -999,7 +999,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     /* 处理属性 */
     if ((isset($_POST['attr_id_list']) && isset($_POST['attr_value_list'])) || (empty($_POST['attr_id_list']) && empty($_POST['attr_value_list'])))
     {
- 
+
 
         //商品属性图片
                        //上传图片
@@ -1030,9 +1030,9 @@ if($_FILES['attr_img']['name']){
 
 
 //     $attr_imgs = $up->getFileName();
- 
+
 //     var_dump($attr_imgs);
-// 
+//
 //print_r( $attr_imgs);exit;
 //
 
@@ -1087,7 +1087,7 @@ if($_FILES['attr_img']['name']){
                 $attr_value = $_POST['attr_value_list'][$key];
                 $attr_price = $_POST['attr_price_list'][$key];
                 $attr_img = $attr_imgs[$key];
- 
+
 
 
                 if (!empty($attr_value))
@@ -1126,7 +1126,7 @@ if($_FILES['attr_img']['name']){
 
         $sql = "UPDATE " .$ecs->table('goods'). " SET keywords = '$keywords' WHERE goods_id = '$goods_id' LIMIT 1";
 
-        $db->query($sql); 
+        $db->query($sql);
         /* 插入、更新、删除数据 */
         foreach ($goods_attr_list as $attr_id => $attr_value_list)
         {
@@ -1144,10 +1144,10 @@ if($_FILES['attr_img']['name']){
                 // }
                 elseif ($info['sign'] == 'update')
                 {	 if($info[attr_img]){
-						
-					 
+
+
 						$sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_img = '$info[attr_img]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
-					 
+
 					 }
 					// echo   $sql .'<br/>';
                 }
@@ -1161,7 +1161,7 @@ if($_FILES['attr_img']['name']){
 
         }
 
-    }   
+    }
     /* 处理会员价格 */
     if (isset($_POST['user_rank']) && isset($_POST['user_price']))
     {
@@ -2584,7 +2584,6 @@ if($fileInfo['error']==0){
     }
     //确保文件名唯一，防止重名产生覆盖
     $uniName=md5(uniqid(microtime(true),true)).'.'.$ext;
-    //echo $uniName;exit;
     $destination=$path.'/'.$uniName;
 
     if(@move_uploaded_file($fileInfo['tmp_name'],$destination)){
@@ -2706,7 +2705,7 @@ if($fileInfo['error']==0){
         }
 
         /* 插入货品表 */
-        $sql = "INSERT INTO " . $GLOBALS['ecs']->table('products') . " (goods_id, goods_attr, product_sn, product_number,attributeprice,attributeimg)  VALUES ('" . $product['goods_id'] . "', '$goods_attr', '$value', '" . $product['product_number'][$key] . "', '" . $product['attributeprice'][$key] . "','$destination')";
+      echo  $sql = "INSERT INTO " . $GLOBALS['ecs']->table('products') . " (goods_id, goods_attr, product_sn, product_number,attributeprice,attributeimg)  VALUES ('" . $product['goods_id'] . "', '$goods_attr', '$value', '" . $product['product_number'][$key] . "', '" . $product['attributeprice'][$key] . "','$destination')";
 
         if (!$GLOBALS['db']->query($sql))
         {

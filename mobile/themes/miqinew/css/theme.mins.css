@@ -1965,9 +1965,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	top: 0;
 	left: 0
 }
-.navbar.navbar-sticky {
-	position: fixed
-}
 .navbar.navbar-sticky+* {
 	margin-top: 80px
 }
@@ -4809,9 +4806,7 @@ img.mfp-img {
 	padding-top: 36px;
 	min-height: 500px;
 }
-.tab-content>.tab-pane {
-	display: none
-}
+
 .tab-content>.active {
 	display: block
 }
