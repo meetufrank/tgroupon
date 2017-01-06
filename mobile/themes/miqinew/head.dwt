@@ -383,15 +383,12 @@ function addToCart(goodsId, parentId,type)  //type 购物类型
   {
     spec_arr = getSelectedAttributes(formBuy);
 
-
+    if (formBuy.elements['number'])
+    {
+      number = formBuy.elements['number'].value;
+    }
 
   quick = 1;
-  }
-
-
-  //手机加减库存需要复制下面if并改变id
-  if($("#quantity").val()){
-      number=$("#quantity").val();
   }
 
   goods.quick    = quick;
