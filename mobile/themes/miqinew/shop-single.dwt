@@ -40,7 +40,8 @@
 
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
+
+
   <style>
   .add-to-cart-pay{
     position: relative;
@@ -162,6 +163,7 @@
     width:30px;
     height:30px;
     text-align:center;
+
     background-color: rgb(230,230,230);
     border: 2px solid rgb(230,230,230);
     border-radius:1px;
@@ -172,6 +174,7 @@
     width:30px;
     height:30px;
     text-align:center;
+
    background-color: rgb(230,230,230);
     border:2px #10acf7 solid;
     border-radius:1px;
@@ -193,6 +196,7 @@
     display:block;
     width:60px;
     height:30px;
+
      background-color: rgb(230,230,230);
     border: 2px solid rgb(230,230,230);
     border-radius:1px;
@@ -205,6 +209,7 @@
     display:block;
     width:60px;
     height:30px;
+
     background-color: rgb(230,230,230);
     border: 2px solid rgb(230,230,230);
     border-radius:1px;
@@ -226,6 +231,7 @@
     display:block;
     width:50px;
     height:30px;
+
     background-color: rgb(230,230,230);
     border: 2px solid rgb(230,230,230);
     border-radius:1px;
@@ -255,7 +261,274 @@
   }
     </style>
 
-<script type="text/javascript">
+
+</head>
+
+<!-- Body -->
+<body class="page-preloading">
+
+  <!-- Page Pre-Loader -->
+  <div class="page-preloader">
+    <div class="preloader">
+      <img src="{$ectouch_themes}/img/preloader.gif" alt="Preloader">
+    </div>
+  </div><!-- .page-preloader -->
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+  <!-- 头部开始 -->
+   {include file="head.dwt"}
+  <!-- 头部结束-->
+
+    <!-- Pager + Product Gallery -->
+    <section class="fw-section bg-gray padding-top-3x">
+      <div class="swiper-container">
+            <div class="swiper-wrapper">
+          {foreach from=$xiangce item=xiangce}
+            <div class="swiper-slide"><img src="../../{$xiangce.img_url}"></div>
+          {/foreach}
+            </div>
+
+            <!--分页器 -->
+        <div class="swiper-pagination"></div>
+            <!--<div class="swiper-button-prev" style="width:50px;">-PREV</div>
+            <div class="swiper-button-next" style="width:50px;">NEXT-</div>-->
+    </div>
+    </section>
+
+
+
+    <!-- 电脑端商品详情选择-->
+    <section class="fw-section bg-gray padding-bottom-3x  hidden-xs">
+     <input id="goodsid" type="hidden" value="{$goods_id}">
+      <div class="container">
+        <div class="product-info padding-top-2x text-center">
+          <h1 class="h2 space-bottom-half"></h1>
+
+          <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥{$sub_price}</h2>
+          <!--PC端缩略图-->
+            <div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
+                {if $jiagedata.attributeimg}
+                   <img src="././admin/{$jiagedata.attributeimg}" class="pc-thumbnail">
+                {/if}
+            </div>
+
+          <!--PC端商品选择详情-->
+
+            <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
+              <div class="pc-dright-top">
+                    <form  name="ECS_FORMBUY">
+                           {foreach from=$specification item=spec key=spec_key name=name}
+                           <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
+
+                                 <div class="pc-group-select col-lg-6 col-md-6 col-sm-6 type_arr" id="pc-select-group{$smarty.foreach.name.index}">
+                            <span style="float:left; margin-top:5px;">{$spec.name}:</span>
+                              <ul>
+                              {foreach from=$spec.values item=value key=key}
+                                <li>
+                                    <a href="#" onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="pc-group-detail pc-group-change"{else}class="pc-group-detail"{/if} id="type_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
+                                </li>
+                              {/foreach}
+                              </ul>
+                              <div class="clear"></div>
+                          </div>
+                           {/foreach}
+                    </form>
+                </div>
+                <div class="pc-dright-bottom">
+                  <div class="col-lg-2 col-md-2 col-sm-2">
+                      <div class="count-input">
+                          <a class="incr-btn" onclick="numDec()" data-action="decrease" href="#">–</a>
+                          <input   id="quantity" type="text" value="1">
+                          <a class="incr-btn" onclick="numAdd()" data-action="increase" href="#">+</a>
+                    </div>
+                    </div>
+                  <div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:8px;min-height:48px;">
+
+                         <a href="#" class="add-to-cart-pay" onClick="addToCart({$goods.goods_id},'',1)">
+                                <em>立即支付</em>
+                         </a>
+                    </div>
+                   <div class="col-lg-2 col-md-2 col-sm-2" style="padding-top:8px;min-height:48px;">
+                        <a href="#" class="add-to-cart"  onClick="addToCart({$goods.goods_id})">
+                            <em>放入购物车</em>
+                        </a>
+                   </div>
+                   <div class="col-lg-5 col-md-4 col-sm-4" style="padding-top:10px;min-height:48px;">
+                     <span>收藏:</span><a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top"><i id="shochang"  class="fa fa-heart"></i></a>
+                    <span>分享:</span><a href="#" class="sb-facebook" data-toggle="tooltip" data-placement="top"><i class="fa fa-wechat" id="fenxiang"></i></a>
+                   </div>
+                </div>
+            </div>
+        </div><!-- .product-info -->
+      </div>
+    </section><!-- .fw-section.bg-gray -->
+    <!--手机端商品详情选择-->
+    <section class="mobile-detail hidden-lg hidden-md hidden-sm">
+        <div class="mobile-thumbnail col-xs-5" style="padding:5px;">
+            {if $jiagedata.attributeimg}
+               <img src="././admin/{$jiagedata.attributeimg}" id="Mobilethumbnail" class="mobile-thumbnail">
+            {/if}
+        </div>
+
+
+
+
+        <div class="col-xs-7">
+            <div class="mobile-detail-1">
+                <span class="mobile-shop-name">{$spnames}</span>
+            </div>
+
+            <div class="mobile-shop-price" id="mobile_price">￥{$sub_price}</div>
+            <div class="mobile-count-input">
+                  <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">–</a>
+                  <input class="mobile-quantity" id="quantitymobile" type="text" value="1">
+                  <a class="mobile-incr-btn" onclick="numAddmobile()" href="#">+</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+
+        <!-- 手机商品详情属性筛选 -->
+        <form  name="ECS_FORMBUY_MOBILE">
+            {foreach from=$specification item=spec key=spec_key name=name}
+            <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
+                     <p class="mobile-cart-border-text">{$spec.name}</p>
+                      <div class="mobile-cart-border type_arr">
+                          <ul class="mobile-cart-border-select" id="mobile-borderbox">
+                              {foreach from=$spec.values item=value key=key}
+                                  <li>
+                                      <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"{else}class="mobile-cart-border-details"{/if} id="mobiletype_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
+                                  </li>
+                              {/foreach}
+                          </ul>
+                          <div class="clear"></div>
+                      </div>
+            {/foreach}
+        </form>
+
+
+
+
+    </section>
+    <div class="clear"></div>
+  <!--艺术家-->
+    <section class="container padding-top">
+    <div class="row">
+       <div class="artist-lf col-lg-6 col-md-6 col-sm-6">
+        {foreach from=$spysj item=spysj}
+          <p>
+              <img src="../{$spysj.hav_logo}" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
+              <span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;">{$spysj.user_name}</span>
+              <img src="{$ectouch_themes}/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
+              <span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;">{$spysj.country}</span>
+            </p>
+      {/foreach}
+       </div>
+       <!--<div class="artist-rt col-lg-6 col-md-6 col-sm-6">
+           <p style="font-size:16px; font-weight:bold; margin-bottom:0px;">艺术家说:</p>
+           <div style="font-size:15px; font-weight:bold; margin-top:5px;">人生的磨难是很多的，所以我们不可对于每一件轻微的伤害都过于敏感。在生活磨难面前，精神上的坚强和无动于衷是我们抵抗罪恶和人生意外的最好武器。 —— 洛克</div>
+       </div>-->
+    </div>
+    </section>
+    <!-- Product Tabs -->
+    <section class="container padding-top-2x">
+      <!-- Nav Tabs -->
+      <ul class="nav-tabs text-center" role="tablist">
+        <li class="active"><a href="#description" role="tab" data-toggle="tab">产品介绍</a></li>
+        <li><a href="#additional" role="tab" data-toggle="tab">商品规格</a></li>
+<!--        <li><a href="#reviews" role="tab" data-toggle="tab">Reviews <sup>3</sup></a></li>-->
+      </ul><!-- .nav-tabs -->
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane transition fade in active" id="description">
+          <div class="row space-top">
+                {foreach from=$goodsdesc item=goodsdesc}
+                 {$goodsdesc.goods_desc}
+                {/foreach}
+          </div>
+        </div><!-- .tab-pane -->
+        <div role="tabpanel" class="tab-pane transition fade" id="additional">
+          <div class="row">
+          {foreach from=$spguige item=spguige}
+            <div class="col-md-6">
+              <table class="table-no-border">
+                <tr>
+                  <th>{$spguige.attr_name}:</th>
+                  <td>{$spguige.attr_value}</td>
+                </tr>
+
+              </table>
+            </div>
+
+            {/foreach}
+          </div>
+        </div>
+      </div>
+    </section><!-- .container -->
+
+    <!-- Related Products -->
+    <section class="container padding-top padding-bottom">
+      <div style="width:100px; height:30px;background-color:#ededed;position:absolute; margin-top:10px;"></div>
+        <hr style="position:relative;">
+      <h3 class="padding-top">猜 你 喜 欢</h3>
+      <div class="row padding-top">
+
+      {foreach from=$xh item=xh}
+      <div class="col-lg-3 col-sm-6 mobile-indent">
+        <div class="shop-item">
+        <div class="shop-thumbnail">
+          <a href="shop-single.php?id={$xh.goods_id}" class="item-link"></a>
+          {if $xh.goods_img}<img src="../../{$xh.goods_img}" alt="Shop item">{/if}
+        </div>
+        <div class="shop-item-details">
+          <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>
+          <span class="shop-item-price">
+          <span class="old-price"></span>
+            ￥{$xh.shop_price}
+          </span>
+        </div>
+        </div><!-- .shop-item -->
+      </div><!-- .col-lg-3.col-sm-6 -->
+        {/foreach}
+
+
+      </div><!-- .row -->
+    </section><!-- .container -->
+
+  <!-- Footer脚步 -->
+
+   {include file="foot.dwt"}
+    <!-- .footer -->
+    <div class="mobile-foot col-xs-12 hidden-sm hidden-md hidden-lg" style="position:fixed;bottom:0;padding:0px;">
+    <div class="col-xs-6" style="padding:0px;">
+
+          <a href="#" class="mobile-add-to-cart" onClick="addToCart({$goods.goods_id},'',0,1)" >
+              放入购物车
+            </a>
+        </div>
+        <div class="col-xs-6" style="padding:0px;">
+
+         <a href="#" class="mobile-add-to-cart-pay" onClick="addToCart({$goods.goods_id},'',1,1)" >
+              立即支付
+         </a>
+
+        </div>
+    </div>
+  </div><!-- .page-wrapper -->
+
+  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+
+
+  <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
+  <script src="{$ectouch_themes}/js/scripts.js"></script>
+
+  <script src="{$ectouch_themes}/Swiper-3.4.0/dist/js/swiper.min.js"></script>
+  <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
+  <script type="text/javascript">
 $(function(){
   var data={$select};
   $(".type_arr  ul li ").css("display",'none');
@@ -264,6 +537,8 @@ $(function(){
           $("#type_"+data[i][x]).parent("li").css("display",'block');
           $("#mobiletype_"+data[i][x]).parent("li").css("display",'block');  //手机
     })
+
+
   })
 
 });
@@ -388,309 +663,6 @@ function numDecmobile(){
 
 </script>
 
-
-
-
-</head>
-
-<!-- Body -->
-<body class="page-preloading">
-
-  <!-- Page Pre-Loader -->
-  <div class="page-preloader">
-    <div class="preloader">
-      <img src="{$ectouch_themes}/img/preloader.gif" alt="Preloader">
-    </div>
-  </div><!-- .page-preloader -->
-
-  <!-- Page Wrapper -->
-  <div class="page-wrapper">
-  <!-- 头部开始 -->
-   {include file="head.dwt"}
-  <!-- 头部结束-->
-
-    <!-- Pager + Product Gallery -->
-    <section class="fw-section bg-gray padding-top-3x">
-      <div class="swiper-container">
-            <div class="swiper-wrapper">
-          {foreach from=$xiangce item=xiangce}
-            <div class="swiper-slide"><img src="../../{$xiangce.img_url}"></div>
-          {/foreach}
-            </div>
-
-            <!--分页器 -->
-        <div class="swiper-pagination"></div>
-            <!--<div class="swiper-button-prev" style="width:50px;">-PREV</div>
-            <div class="swiper-button-next" style="width:50px;">NEXT-</div>-->
-    </div>
-    </section>
-
-
-
-    <!-- 电脑端商品详情选择-->
-    <section class="fw-section bg-gray padding-bottom-3x  hidden-xs">
-     <input id="goodsid" type="hidden" value="{$goods_id}">
-      <div class="container">
-        <div class="product-info padding-top-2x text-center">
-          <h1 class="h2 space-bottom-half"></h1>
-          <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥{$jiagedata.attributeprice}</h2>
-          <!--PC端缩略图-->
-            <div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
-                {if $jiagedata.attributeimg}
-                   <img src="././admin/{$jiagedata.attributeimg}" class="pc-thumbnail">
-                {/if}
-            </div>
-
-          <!--PC端商品选择详情-->
-
-            <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
-              <div class="pc-dright-top">
-                    <form  name="ECS_FORMBUY">
-                           {foreach from=$specification item=spec key=spec_key name=name}
-                           <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
-
-                                 <div class="pc-group-select col-lg-6 col-md-6 col-sm-6 type_arr" id="pc-select-group{$smarty.foreach.name.index}">
-                            <span style="float:left; margin-top:5px;">{$spec.name}:</span>
-                              <ul>
-                              {foreach from=$spec.values item=value key=key}
-                                <li>
-                                    <a href="#" onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="pc-group-detail pc-group-change"{else}class="pc-group-detail"{/if} id="type_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
-                                </li>
-                              {/foreach}
-                              </ul>
-                              <div class="clear"></div>
-                          </div>
-                           {/foreach}
-                    </form>
-                </div>
-                <div class="pc-dright-bottom">
-                  <div class="col-lg-2 col-md-2 col-sm-2">
-                      <div class="count-input">
-                          <a class="incr-btn" onclick="numDec()" data-action="decrease" href="#">–</a>
-                          <input   id="quantity" type="text" value="1">
-                          <a class="incr-btn" onclick="numAdd()" data-action="increase" href="#">+</a>
-                    </div>
-                    </div>
-                  <div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:8px;min-height:48px;">
-                         <a href="#" class="add-to-cart-pay" onClick="addToCart(164,'',1)">
-                                <em>立即支付</em>
-                         </a>
-                    </div>
-                   <div class="col-lg-2 col-md-2 col-sm-2" style="padding-top:8px;min-height:48px;">
-                        <a href="#" class="add-to-cart"  onClick="addToCart({$goods.goods_id})">
-                            <em>放入购物车</em>
-                        </a>
-                   </div>
-                   <div class="col-lg-5 col-md-4 col-sm-4" style="padding-top:10px;min-height:48px;">
-                     <span>收藏:</span><a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top"><i id="shochang"  class="fa fa-heart"></i></a>
-                    <span>分享:</span><a href="#" class="sb-facebook" data-toggle="tooltip" data-placement="top"><i class="fa fa-wechat" id="fenxiang"></i></a>
-                   </div>
-                </div>
-            </div>
-        </div><!-- .product-info -->
-      </div>
-    </section><!-- .fw-section.bg-gray -->
-    <!--手机端商品详情选择-->
-    <section class="mobile-detail hidden-lg hidden-md hidden-sm">
-        <div class="mobile-thumbnail col-xs-5" style="padding:5px;">
-            {if $jiagedata.attributeimg}
-               <img src="././admin/{$jiagedata.attributeimg}" id="Mobilethumbnail" class="mobile-thumbnail">
-            {/if}
-        </div>
-
-
-
-
-        <div class="col-xs-7">
-            <div class="mobile-detail-1">
-                <span class="mobile-shop-name">{$spnames}</span>
-            </div>
-            <div class="mobile-shop-price" id="mobile_price">￥{$jiagedata.attributeprice}</div>
-            <div class="mobile-count-input">
-                  <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">–</a>
-                  <input class="mobile-quantity" id="quantitymobile" type="text" value="1">
-                  <a class="mobile-incr-btn" onclick="numAddmobile()" href="#">+</a>
-            </div>
-        </div>
-        <div class="clear"></div>
-
-        <!-- 手机商品详情属性筛选 -->
-        <form  name="ECS_FORMBUY_MOBILE">
-            {foreach from=$specification item=spec key=spec_key name=name}
-            <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
-                     <p class="mobile-cart-border-text">{$spec.name}</p>
-                      <div class="mobile-cart-border type_arr">
-                          <ul class="mobile-cart-border-select" id="mobile-borderbox">
-                              {foreach from=$spec.values item=value key=key}
-                                  <li>
-                                      <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"{else}class="mobile-cart-border-details"{/if} id="mobiletype_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
-                                  </li>
-                              {/foreach}
-                          </ul>
-                          <div class="clear"></div>
-                      </div>
-            {/foreach}
-        </form>
-
-
-
-
-    </section>
-    <div class="clear"></div>
-  <!--艺术家-->
-    <section class="container padding-top">
-    <div class="row">
-       <div class="artist-lf col-lg-6 col-md-6 col-sm-6">
-        {foreach from=$spysj item=spysj}
-          <p>
-              <img src="../{$spysj.hav_logo}" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
-              <span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;">{$spysj.user_name}</span>
-              <img src="{$ectouch_themes}/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
-              <span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;">{$spysj.country}</span>
-            </p>
-      {/foreach}
-       </div>
-       <!--<div class="artist-rt col-lg-6 col-md-6 col-sm-6">
-           <p style="font-size:16px; font-weight:bold; margin-bottom:0px;">艺术家说:</p>
-           <div style="font-size:15px; font-weight:bold; margin-top:5px;">人生的磨难是很多的，所以我们不可对于每一件轻微的伤害都过于敏感。在生活磨难面前，精神上的坚强和无动于衷是我们抵抗罪恶和人生意外的最好武器。 —— 洛克</div>
-       </div>-->
-    </div>
-    </section>
-    <!-- Product Tabs -->
-    <section class="container padding-top-2x">
-      <!-- Nav Tabs -->
-      <ul class="nav-tabs text-center" role="tablist">
-        <li class="active"><a href="#description" role="tab" data-toggle="tab">产品介绍</a></li>
-        <li><a href="#additional" role="tab" data-toggle="tab">商品规格</a></li>
-<!--        <li><a href="#reviews" role="tab" data-toggle="tab">Reviews <sup>3</sup></a></li>-->
-      </ul><!-- .nav-tabs -->
-      <!-- Tab panes -->
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane transition fade in active" id="description">
-          <div class="row space-top">
-                {foreach from=$goodsdesc item=goodsdesc}
-                 {$goodsdesc.goods_desc}
-                {/foreach}
-          </div>
-        </div><!-- .tab-pane -->
-        <div role="tabpanel" class="tab-pane transition fade" id="additional">
-          <div class="row">
-          {foreach from=$spguige item=spguige}
-            <div class="col-md-6">
-              <table class="table-no-border">
-                <tr>
-                  <th>{$spguige.attr_name}:</th>
-                  <td>{$spguige.attr_value}</td>
-                </tr>
-
-              </table>
-            </div>
-
-            {/foreach}
-          </div>
-        </div>
-      </div>
-    </section><!-- .container -->
-
-    <!-- Related Products -->
-    <section class="container padding-top padding-bottom">
-      <div style="width:100px; height:30px;background-color:#ededed;position:absolute; margin-top:10px;"></div>
-        <hr style="position:relative;">
-      <h3 class="padding-top">猜 你 喜 欢</h3>
-      <div class="row padding-top">
-
-      {foreach from=$xh item=xh}
-      <div class="col-lg-3 col-sm-6 mobile-indent">
-        <div class="shop-item">
-        <div class="shop-thumbnail">
-          <a href="shop-single.php?id={$xh.goods_id}" class="item-link"></a>
-          {if $xh.goods_img}<img src="../../{$xh.goods_img}" alt="Shop item">{/if}
-        </div>
-        <div class="shop-item-details">
-          <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>
-          <span class="shop-item-price">
-          <span class="old-price"></span>
-            ￥{$xh.shop_price}
-          </span>
-        </div>
-        </div><!-- .shop-item -->
-      </div><!-- .col-lg-3.col-sm-6 -->
-        {/foreach}
-
-
-      </div><!-- .row -->
-    </section><!-- .container -->
-
-  <!-- Footer脚步 -->
-    <footer class="footer padding-top-2x">
-      <div class="column">
-        <div class="feature text-center">
-            <div class="feature-icon">
-              <i class="material-icons credit_card"></i>
-            </div>
-      <h4 class="feature-title"><a id="Cooperate" href="about-us.html">与我们合作</a></h4>
-          </div>
-      </div><!-- .column -->
-      <div class="column">
-        <div class="feature text-center">
-            <div class="feature-icon">
-              <i class="material-icons settings"></i>
-            </div>
-            <h4 class="feature-title"><a href="about-us.html">关于我们</a></h4>
-          </div>
-      </div><!-- .column -->
-      <div class="column">
-        <div class="feature text-center">
-            <div class="feature-icon">
-              <i class="material-icons face"></i>
-            </div>
-            <h4 class="feature-title"><a href="about-us.html">物流及售后服务</a></h4>
-          </div>
-      </div>
-    </footer>
-
-  <section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
-    <div class="text-center">
-      <div class="hidden-xs">
-        <div>联系我们：电话|微信：13502637171（KITTY）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系邮箱：3412355834@qq.com</div>
-        <!-- <div>公司地址：广东省潮州市潮安区江东镇沙洲工业区</div> -->
-        <div style="margin-top: 10px;">ICP备案号</div>
-      </div>
-      <div class="visible-xs">
-        <div>联系我们：电话|微信：13502637171（KITTY）</div>
-        <div style="margin-top: 10px;">联系邮箱：3412355834@qq.com</div>
-        <div style="margin-top: 10px;">ICP备案号</div>
-      </div>
-    </div>
-  </section>
-    <!-- .footer -->
-    <div class="mobile-foot col-xs-12 hidden-sm hidden-md hidden-lg" style="position:fixed;bottom:0;padding:0px;">
-    <div class="col-xs-6" style="padding:0px;">
-          <a href="#" class="mobile-add-to-cart" onClick="addToCart({$goods.goods_id})" >
-              放入购物车
-            </a>
-        </div>
-        <div class="col-xs-6" style="padding:0px;">
-         <a href="#" class="mobile-add-to-cart-pay" onClick="addToCart({$goods.goods_id},'',1)" >
-              立即支付
-         </a>
-
-        </div>
-    </div>
-  </div><!-- .page-wrapper -->
-
-  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
-
-
-  <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
-  <script src="{$ectouch_themes}/js/scripts.js"></script>
-
-  <script src="{$ectouch_themes}/Swiper-3.4.0/dist/js/swiper.min.js"></script>
-  <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
   <script type="text/javascript">
     //点击收藏与取消收藏
     var oDiv = document.getElementById('shochang');

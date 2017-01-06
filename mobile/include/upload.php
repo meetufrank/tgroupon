@@ -57,15 +57,17 @@ class FileUpload {
         /*多个文件上传则循环处理 ， 这个循环只有检查上传文件的作用，并没有真正上传 */
         foreach( $name  as  $i =>$v){ 
           /*设置文件信息 */
-          if($this->setFiles($name[$i],$tmp_name[$i],$size[$i],$error[$i] )) {
-            if(!$this->checkFileSize() || !$this->checkFileType()){
-              $errors[] = $this->getError();
-              $return=false;
-            }
-          }else{
-            $errors[] = $this->getError();
-            $return=false;
-          }
+		  IF($name[$i]){
+			  if($this->setFiles($name[$i],$tmp_name[$i],$size[$i],$error[$i] )) {
+				if(!$this->checkFileSize() || !$this->checkFileType()){
+				  $errors[] = $this->getError();
+				  $return=false;
+				}
+			  }else{
+				$errors[] = $this->getError();
+				$return=false;
+			  }
+		  }
           /* 如果有问题，则重新初使化属性 */
           if(!$return)
             $this->setFiles();

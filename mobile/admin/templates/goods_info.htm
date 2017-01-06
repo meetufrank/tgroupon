@@ -1,6 +1,6 @@
 <!-- $Id: goods_info.htm 17126 2010-04-23 10:30:26Z liuhui $ -->
 {include file="pageheader.htm"}
-{insert_scripts files="../data/static/js/utils.js,./js/selectzone.js,./js/colorselector.js"}
+{insert_scripts files="../data/static/js/utils.js,./js/selectzone.js,./js/colorselector.js,./js/jquery.js"}
 <script type="text/javascript" src="../data/static/js/calendar.php?lang={$cfg_lang}"></script>
 <link href="../data/static/js/calendar/calendar.css" rel="stylesheet" type="text/css" />
 
@@ -667,7 +667,7 @@
   function addSpec(obj)
   {
       var src   = obj.parentNode.parentNode;
-      var idx   = rowindex(src);
+     /* var idx   = rowindex(src); 
       var tbl   = document.getElementById('attrTable');
       var row   = tbl.insertRow(idx + 1);
       var cell1 = row.insertCell(-1);
@@ -675,8 +675,15 @@
       var regx  = /<a([^>]+)<\/a>/i;
 
       cell1.className = 'label';
-      cell1.innerHTML = src.childNodes[0].innerHTML.replace(/(.*)(addSpec)(.*)(\[)(\+)/i, "$1removeSpec$3$4-");
-      cell2.innerHTML = src.childNodes[1].innerHTML.replace(/readOnly([^\s|>]*)/i, '');
+      
+	  cell1.innerHTML = src.childNodes[0].innerHTML.replace(/(.*)(addSpec)(.*)(\[)(\+)/i, "$1removeSpec$3$4-");
+      cell2.innerHTML = src.childNodes[1].innerHTML.replace(/readOnly([^\s|>]*)/i, '');*/
+	  var html= src.innerHTML.replace(/(.*)(attr_img\[)(.*)(\])(.*)/i, "$1$2$4$5"); 
+
+	  html=html.replace(/readOnly([^\s|>]*)/i, '');
+	  html=html.replace(/(.*)(addSpec)(.*)(\[)(\+)/i, "$1removeSpec$3$4-");
+
+	  $('#attrTable').append(html);
   }
 
   /**
