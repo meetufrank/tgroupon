@@ -107,7 +107,7 @@
   .pc-detaile-left{
     min-width:300px;
     min-height:300px;
-    border:4px solid white;
+
     border-radius:3px;
   }
   .pc-detaile-right{
@@ -162,8 +162,8 @@
     width:30px;
     height:30px;
     text-align:center;
-    background-color:#CCCCCE;
-    border:2px solid #CCCCCE;
+    background-color: rgb(230,230,230);
+    border: 2px solid rgb(230,230,230);
     border-radius:1px;
     color:#000;
   }
@@ -172,7 +172,7 @@
     width:30px;
     height:30px;
     text-align:center;
-    background-colo:red;
+   background-color: rgb(230,230,230);
     border:2px #10acf7 solid;
     border-radius:1px;
     color:#000;
@@ -193,8 +193,8 @@
     display:block;
     width:60px;
     height:30px;
-    background-color:#CCCCCE;
-    border:2px #CCCCCE solid;
+     background-color: rgb(230,230,230);
+    border: 2px solid rgb(230,230,230);
     border-radius:1px;
     color:black;
   }
@@ -205,8 +205,8 @@
     display:block;
     width:60px;
     height:30px;
-    background-color:#CCCCCE;
-    border:2px #10acf7 solid;
+    background-color: rgb(230,230,230);
+    border: 2px solid rgb(230,230,230);
     border-radius:1px;
     color:black;
   }
@@ -226,8 +226,8 @@
     display:block;
     width:50px;
     height:30px;
-    background-color:#CCCCCE;
-    border:2px #CCCCCE solid;
+    background-color: rgb(230,230,230);
+    border: 2px solid rgb(230,230,230);
     border-radius:1px;
     color:black;
   }
@@ -264,8 +264,6 @@ $(function(){
           $("#type_"+data[i][x]).parent("li").css("display",'block');
           $("#mobiletype_"+data[i][x]).parent("li").css("display",'block');  //手机
     })
-
-
   })
 
 });

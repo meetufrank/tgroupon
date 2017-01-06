@@ -384,7 +384,7 @@ else
                     "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ".
             "WHERE g.is_delete = 0 AND g.is_on_sale = 1 AND g.is_alone_sale = 1 $attr_in ".
                 "AND (( 1 " . $categories . $keywords . $brand . $min_price . $max_price . $intro . $outstock . " ) ".$tag_where." ) " .
-            "ORDER BY g.$sort $order"; 
+            "ORDER BY g.$sort $order";
     $res = $db->SelectLimit($sql, $size, ($page - 1) * $size);
     $arr = array();
     while ($row = $db->FetchRow($res))
@@ -441,7 +441,7 @@ else
         $arr[$row['goods_id']]['goods_thumb']   = get_image_path($row['goods_id'], $row['goods_thumb'], true);
         $arr[$row['goods_id']]['goods_img']     = get_image_path($row['goods_id'], $row['goods_img']);
         $arr[$row['goods_id']]['url']           = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
-		
+
 		//甜 心  1 0 0修复销量不显示问题
 		$arr[$row['goods_id']]['sales_count']      = get_sales_volume($row['goods_id'])+$row['sales_volume_base']; //显示月销量 by wang
     }
@@ -457,7 +457,7 @@ else
     $smarty->assign('category',   $category);
     $smarty->assign('keywords',   htmlspecialchars(stripslashes($_REQUEST['keywords'])) );
     $smarty->assign('search_keywords',   trim(stripslashes(htmlspecialchars_decode($_REQUEST['keywords']))));
-   
+
     $smarty->assign('brand',      $_REQUEST['brand']);
     $smarty->assign('min_price',  $min_price);
     $smarty->assign('max_price',  $max_price);
@@ -492,7 +492,7 @@ else
         'outstock'   => $_REQUEST['outstock']
     );
     $pager['search'] = array_merge($pager['search'], $attr_arg);
-   
+
     $pager = get_pager('search.php', $pager['search'], $count, $page, $size);
     $pager['display'] = $display;
     $pager['sort'] = $sort;
@@ -615,11 +615,11 @@ function get_sales_volume($goods_id)
         'FROM ' . $GLOBALS['ecs']->table('order_info') . ' AS o, ' .
             $GLOBALS['ecs']->table('order_goods') . ' AS g ' .
         "WHERE o.order_id = g.order_id " .
-       
+
         "AND o.shipping_status " . db_create_in(array(SS_SHIPPED, SS_RECEIVED)) .
         " AND o.pay_status " . db_create_in(array(PS_PAYED, PS_PAYING)) .
         " AND g.goods_id = '$goods_id'" ;
-		
+
     return intval($GLOBALS['db']->getOne($sql));
 }
 ?>
