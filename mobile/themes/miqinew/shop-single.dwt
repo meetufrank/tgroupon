@@ -474,7 +474,7 @@ function numDec(){
                   </div>
                     </div>
                   <div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:8px;min-height:48px;">
-                         <a href="#" class="add-to-cart-pay" onClick="addToCart(164,'',1)">
+                         <a href="#" class="add-to-cart-pay" onClick="addToCart({$goods.goods_id},'',1)">
                                 <em>立即支付</em>
                          </a>
                     </div>
