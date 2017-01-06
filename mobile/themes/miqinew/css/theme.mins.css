@@ -1959,7 +1959,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	position: relative;
 	z-index: 9900;
 	width: 100%;
-	min-height: 80px;
+
 	background-color: #fff;
 	padding-left: 30px;
 	top: 0;
@@ -1978,9 +1978,9 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	vertical-align: middle;
 	color: #606060;
 	font-size: 20px;
-	font-weight: 500;
+	font-weight: bold;
 	text-decoration: none;
-	padding: 25px 0;
+	padding: 15px 0;
 	margin-right: 20px
 }
 .site-logo span {
@@ -4177,7 +4177,7 @@ display:none
 	margin-top:8px;
 }
 .feature .feature-title a{
-	text-decoration:underline;
+
 	color:#333;
 }
 .feature .feature-title a:hover{
@@ -5173,9 +5173,7 @@ img.mfp-img {
 	/*padding: 45px 25px 161115 by sun*/
 	padding: 0px 25px;
 }
-.footer .column:nth-of-type(even) {
-	background-color: #f0f0f0
-}
+
 @media screen and (max-width: 991px) {
 .footer .column {
 	display: block;
