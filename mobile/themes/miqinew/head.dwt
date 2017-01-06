@@ -35,7 +35,7 @@
           <div class="inner">
             <ul class="main-navigation space-bottom">
               <li><a href="index.html">首页</a></li>
-              <li><a href="javascript:window.open('goods_list.php');" >商品</a></li>
+              <li><a href="goods_list.php" >商品</a></li>
               <li><a href="artist-list.html">设计师</a></li>
               <li><a href="#">关于我们</a></li>
             </ul>

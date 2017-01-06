@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-01-07 00:06:25
+ * @Last Modified time: 2017-01-07 01:29:18
  */
 define('IN_ECTOUCH', true);
 
@@ -26,7 +26,7 @@ if ($_REQUEST['step'] == 'goods_list'){
 
 
 }
-elseif($_POST['step'] == 'ajax_goods_count'){
+elseif($_REQUEST['step'] == 'ajax_goods_count'){
 
          $page_count=15;   ///设置每页显示条数
 
@@ -95,7 +95,7 @@ elseif($_POST['step'] == 'ajax_goods_count'){
          exit;
 
 }
-elseif ($_POST['step'] == 'ajax_goods_list') {
+elseif ($_REQUEST['step'] == 'ajax_goods_list') {
 
        $page_count=15;   ///设置每页显示条数
        if(!intval($_POST['page_num'])){
@@ -182,11 +182,10 @@ elseif ($_POST['step'] == 'ajax_goods_list') {
 
 
        echo json_encode($data);
-       EXIT;
 
 
 }
-elseif ($_POST['step'] == 'ajax_goods_type') {  //获取商品类型
+elseif ($_REQUEST['step'] == 'ajax_goods_type') {  //获取商品类型
 
 
 
@@ -224,7 +223,6 @@ elseif ($_POST['step'] == 'ajax_goods_type') {  //获取商品类型
            $data[1]['style']='widget-price';
 
             echo json_encode($data);
-            EXIT;
 }
 
 
