@@ -3327,6 +3327,7 @@ elseif($_REQUEST['step'] == 'ajax_cart_goods')
     // $smarty->assign('total', $cart_goods['total']);
     $json  = new JSON;
     die($json->encode($cart_goods));
+    exit;
 }
 else
 {
