@@ -13,6 +13,7 @@
 
 
 <!-- Toolbar -->
+
       <div class="toolbar">
         <div class="inner">
           <a href="#menu" class="toolbar-toggle"><i class="material-icons menu"></i></a>
@@ -22,11 +23,7 @@
              <span class="count " id="cart_count">{if $total.total_number}{$total.total_number}{else}0{/if}</span>
             </i>
           </a>
-          {if $user_status}
-          <a href="#userinfo" class="toolbar-toggle"><i class="material-icons person"></i></a>
-          {else}
-          <a href="#account"class="toolbar-toggle"><i class="material-icons person"></i></a>
-          {/if}
+          {$login_css}
         </div>
       </div>
       <!-- .toolbar -->

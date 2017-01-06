@@ -41,6 +41,9 @@
     .nav-pills{
       margin-left:-18px;
       padding-bottom:10px;
+      margin-top: 10px;
+      margin-bottom:35px;
+      margin-left:0px;
     }
     .nav-pills>li {
       float: left;

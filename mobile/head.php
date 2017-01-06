@@ -34,8 +34,12 @@ if ( $_SESSION['user_id'] != 0)
       $infos = $GLOBALS['db']->getRow($sql);
 
       $smarty->assign('user_status', 1);
+      $css='<a href="#userinfo" class="toolbar-toggle"><i class="material-icons person"></i></a>';
+    }else{
+      $css='<a href="#account"class="toolbar-toggle"><i class="material-icons person"></i></a>';
     }
 
+$smarty->assign('login_css', $css);
 
 //print_r($infos);exit;
     /* 取得商品列表，计算合计 */
