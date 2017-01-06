@@ -235,7 +235,7 @@
                         </div>
                           <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$gl.goods_attr}</div>
                           <div class="clearfix">
-                            <div class="pull-left" style="padding-top:15px; color: #F20000;">{$gl.subtotal}</div>
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">{$gl.goods_price}</div>
                             <div class="pull-right" style="padding-top:15px;">
                                    数量：{$gl.goods_number}
                             </div>

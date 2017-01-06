@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2017-01-06 17:42:35
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-01-06 17:56:49
+ * @Last Modified time: 2017-01-06 19:17:53
  */
 
 define('IN_ECTOUCH', true);
@@ -11,7 +11,8 @@ define('IN_ECTOUCH', true);
 require(dirname(__FILE__) . '/include/init.php');
 session_start();
 
-$_SESSION['back_url']=$_POST['content'];
+$back_url = $_POST['content'];
+session_register("back_url");
 
 
 exit;

@@ -107,7 +107,7 @@
 
     <!-- Pager + Product Gallery -->
 
-      <div class="featured-image" style="background-image: url({$ectouch_themes}/img/featured-image/pay-success.png);"></div>
+      <div class="featured-image" style="background-image: url({$ectouch_themes}/img/featured-image/pay-success.jpg);"></div>
 
 
     <!-- Related Products -->

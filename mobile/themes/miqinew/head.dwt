@@ -415,26 +415,16 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
                     if(data.error==12){
                     var locurl=data.url;
 
-                        $.ajax({
-                            url:"ajax_save_content.php",
-                            type:"post",
-                            data:{content:window.location.href},
-                            success: function(result){
-
                               window.location.href=locurl;
                               return;
 
-                            }
-                            });
-                         //$.session.set('back_url', window.location.href);
-
-
                     }
+
                   if(type){
 
 
                               if(ismobile){
-                                    window.location.href="flow.php?step=pay_select&&cartid="+data.cartid;
+                                    window.location.href="flow.php?step=pay_select&&cartid="+data.cartid;return;
                               }else{
                                   window.open('flow.php?step=pay_select&&cartid='+data.cartid);return;
                               }

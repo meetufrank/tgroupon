@@ -5142,8 +5142,8 @@ img.mfp-img {
 
 @media screen and (max-width: 991px) {
 .footer .column {
-	display: block;
-	width: 100%;
+	/* display: block;
+	width: 100%; */
 	/*padding: 45px 25px 161115 by sun*/
 	padding: 0px 25px 2px 25px;
 }
