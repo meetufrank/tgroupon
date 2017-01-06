@@ -110,28 +110,28 @@
 
 
 
-   <?php $_from = $this->_var['goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_95882500_1483583945');if (count($_from)):
-    foreach ($_from AS $this->_var['goods_0_95882500_1483583945']):
+   <?php $_from = $this->_var['goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_42147400_1483588083');if (count($_from)):
+    foreach ($_from AS $this->_var['goods_0_42147400_1483588083']):
 ?>
                 <div class="item headitem">
                 <label class="checkbox" id="checkone">
-                <input style="position: absolute; opacity: 0;" type="checkbox" value="<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>" checked="checked"  id="rec_id" name="rec_check">
+                <input style="position: absolute; opacity: 0;" type="checkbox" value="<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>" checked="checked"  id="rec_id" name="rec_check">
                 <ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
                 </label>
-                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_95882500_1483583945']['goods_id']; ?>" class="item-thumb">
-                <?php if ($this->_var['goods_0_95882500_1483583945']['goods_thumb']): ?><img src="../<?php echo $this->_var['goods_0_95882500_1483583945']['goods_thumb']; ?>" alt="Item"><?php endif; ?>
+                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_42147400_1483588083']['goods_id']; ?>" class="item-thumb">
+                <?php if ($this->_var['goods_0_42147400_1483588083']['goods_thumb']): ?><img src="../<?php echo $this->_var['goods_0_42147400_1483588083']['goods_thumb']; ?>" alt="Item"><?php endif; ?>
                 </a>
                 <div class="item-details"><h3 class="item-title">
-                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_95882500_1483583945']['goods_id']; ?>"><?php echo $this->_var['goods_0_95882500_1483583945']['goods_name']; ?></a>
+                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_42147400_1483588083']['goods_id']; ?>"><?php echo $this->_var['goods_0_42147400_1483588083']['goods_name']; ?></a>
                 </h3>
                 <div>
-                <div class="pull-right" style="color:#000" ><?php echo $this->_var['goods_0_95882500_1483583945']['goods_attr']; ?></div>
-                <h4 class="item-price" data-price="<?php echo $this->_var['goods_0_95882500_1483583945']['goods_price']; ?>"><?php echo $this->_var['goods_0_95882500_1483583945']['goods_price']; ?></h4>
+                <div class="pull-right" style="color:#000" ><?php echo $this->_var['goods_0_42147400_1483588083']['goods_attr']; ?></div>
+                <h4 class="item-price" data-price="<?php echo $this->_var['goods_0_42147400_1483588083']['goods_price']; ?>"><?php echo $this->_var['goods_0_42147400_1483588083']['goods_price']; ?></h4>
                 </div>
                 <div class="count-input">
-                <a class="incr-btn" data-action="decrease" href="#" onclick="changenum(<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>,-1)">–</a>
-                <input class="quantity" type="text" value="<?php echo $this->_var['goods_0_95882500_1483583945']['goods_number']; ?>" min="1" max="<?php echo $this->_var['goods_0_95882500_1483583945']['goods_attr']; ?>" name="goods_number[<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>]" id="goods_number_<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>" onkeyup="changenum(<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>,0)" readonly>
-                <a class="incr-btn" data-action="increase" href="#" onclick="changenum(<?php echo $this->_var['goods_0_95882500_1483583945']['rec_id']; ?>,1)">+</a>
+                <a class="incr-btn" data-action="decrease" href="#" onclick="changenum(<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>,-1,<?php echo $this->_var['goods_0_42147400_1483588083']['product_number']; ?>)">–</a>
+                <input class="quantity" type="text" value="<?php echo $this->_var['goods_0_42147400_1483588083']['goods_number']; ?>"  name="goods_number[<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>]" id="goods_number_<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>" min="1" max="<?php echo $this->_var['goods_0_42147400_1483588083']['product_number']; ?>"onkeyup="changenum(<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>,0,<?php echo $this->_var['goods_0_42147400_1483588083']['product_number']; ?>)" readonly>
+                <a class="incr-btn" data-action="increase" href="#" onclick="changenum(<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>,1,<?php echo $this->_var['goods_0_42147400_1483588083']['product_number']; ?>)">+</a>
                 </div></div>
                 <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="移出购物车"><i class="material-icons delete"></i></a></div>
                 <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
@@ -242,9 +242,13 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
         $("#cart").on("click",".incr-btn",function(){
             var $button = $(this);
             var oldValue = $button.parent().find('.quantity').val();
+            var maxnum=$button.parent().find('.quantity').attr("max");
             $button.parent().find('.incr-btn[data-action="decrease"]').removeClass('inactive');
             if ($button.data('action') == "increase") {
                 var newVal = parseFloat(oldValue) + 1;
+                if(newVal>maxnum){
+                 var newVal=oldValue;
+                }
             } else {
                 // Don't allow decrementing below 1
                 if (oldValue > 1) {
@@ -307,11 +311,11 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
 
 
 
-        function changenum(rec_id,diff){
+        function changenum(rec_id,diff,maxnumber){
           event.preventDefault();
           var num = parseInt(document.getElementById('goods_number_'+rec_id).value);
           var goods_number = num + Number(diff);
-          if( goods_number >= 1){
+          if( goods_number >= 1 && goods_number<=maxnumber){
             //document.getElementById('goods_number_'+rec_id).value = goods_number;//更新数量
             var cartnum=document.getElementById('cart_count').innerHTML;
             document.getElementById('cart_count').innerHTML=Number(cartnum)+Number(diff);

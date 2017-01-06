@@ -330,6 +330,8 @@ $(function(){
        }
 window.__product__={$jiagedata.product_number};
 
+
+//pc加减
 /*商品数量+1*/
 function numAdd(){
     var quantity = document.getElementById("quantity").value;
@@ -357,6 +359,35 @@ function numDec(){
     }
 }
 
+
+
+//手机加减
+/*商品数量+1*/
+function numAddm(){
+    var quantity = document.getElementById("quantity").value;
+    var num_add = parseInt(quantity)+1;
+
+    if(quantity==""){
+        num_add = 1;
+    }
+    if(num_add>__product__){
+        document.getElementById("quantity").value=num_add-1;
+        alert("商品库存不足"+__product__);
+    }else{
+        document.getElementById("quantity").value=num_add;
+
+    }
+}
+
+/*商品数量-1*/
+function numDec(){
+    var quantity = document.getElementById("quantity").value;
+
+    var num_dec = parseInt(quantity)-1;
+    if(num_dec>0){
+        document.getElementById("quantity").value=num_dec;
+    }
+}
 </script>
 
 
@@ -440,7 +471,7 @@ function numDec(){
                           <a class="incr-btn" onclick="numDec()" data-action="decrease" href="#">–</a>
                           <input class="quantity"  id="quantity" type="text" value="1">
                           <a class="incr-btn" onclick="numAdd()" data-action="increase" href="#">+</a>
-                		</div>
+                	</div>
                     </div>
                 	<div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:8px;min-height:48px;">
                          <a href="#" class="add-to-cart-pay" onClick="addToCart(164,'',1)">
@@ -463,24 +494,32 @@ function numDec(){
     </section><!-- .fw-section.bg-gray -->
     <!--手机端商品详情选择-->
     <section class="mobile-detail hidden-lg hidden-md hidden-sm">
-    	<div class="mobile-thumbnail col-xs-5" style="padding:5px;">
+        <div class="mobile-thumbnail col-xs-5" style="padding:5px;">
            {if $jiagedata.attributeimg}
-               <img src="././admin/{$jiagedata.attributeimg}" id="Mobilethumbnail">
-            {/if}
+               <img src="././admin/{$jiagedata.attributeimg}" id="Mobilethumbnail">    <!-- 商品属性联动图片 -->
+          {/if}
+        </div>
 
-        </div
         <div class="col-xs-7">
             <div class="mobile-detail-1">
-                <span class="mobile-shop-name">{$spnames}</span>
+                <span class="mobile-shop-name">{$spnames}</span>    <!-- 商品名称 -->
             </div>
-            <div class="mobile-shop-price" id="mobile_price">￥{$jiagedata.attributeprice}</div>
-            <div class="mobile-count-input">
+            <div class="mobile-shop-price">￥{$jiagedata.attributeprice}</div>   <!-- 商品价格 -->
+            <div class="mobile-count-input">    <!-- 加减商品数量 -->
                   <a class="mobile-incr-btn" href="#">–</a>
                   <input class="mobile-quantity" type="text" value="1">
                   <a class="mobile-incr-btn" href="#">+</a>
             </div>
         </div>
         <div class="clear"></div>
+
+
+
+
+
+
+
+
 
         <!-- 手机商品详情属性筛选 -->
         <form  name="ECS_FORMBUY">
