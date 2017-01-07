@@ -509,7 +509,6 @@ $xh = $db->getAll($xinhuan);
 
 
 
-
 $smarty->assign('xh',  $xh);  //猜你喜欢
 
 

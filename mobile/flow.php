@@ -53,7 +53,7 @@ include('head.php');
 if ($_REQUEST['step'] == 'add_to_cart')
 {
 
-
+   print_r($_SESSION['user_id']);exit;
     if ( $_SESSION['user_id'] == 0)
     {
            ajax_please_in();

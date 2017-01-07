@@ -594,7 +594,7 @@
           <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>
           <span class="shop-item-price">
           <span class="old-price"></span>
-            ￥{$xh.shop_price}
+            ￥{$xh.attributeprice}
           </span>
         </div>
         </div><!-- .shop-item -->
