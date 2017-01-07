@@ -27,8 +27,7 @@ if($_SERVER['REQUEST_METHOD']!="POST"){
   $_SESSION['back_url']=$url;
 }
 
-
-if ( $_SESSION['user_id'] != 0)
+if ($_SESSION['user_id'])
     {
       $sql  = "SELECT * ".
            "FROM " .$GLOBALS['ecs']->table('users') . " WHERE user_id = ".$_SESSION['user_id'];
@@ -40,6 +39,7 @@ if ( $_SESSION['user_id'] != 0)
     }else{
       $css='<a href="#account"class="toolbar-toggle"><i class="material-icons person"></i></a>';
     }
+
 
 $smarty->assign('login_css', $css);
 

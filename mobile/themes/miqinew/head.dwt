@@ -170,12 +170,13 @@
 
   <script src="{$ectouch_themes}/js/messages_zh.js" type="text/javascript"></script>
 
-  <script type="text/javascript">
+  <script type="text/javascript">`
   $(document).ready(function () {
 
 $("#logout").click(function(){
 
   $.ajax({
+              type:"POST",
               url:"my_user.php?act=logout_new",
               success: function(data){
                   window.location.href= window.location.href;
@@ -187,6 +188,7 @@ $("#logout").click(function(){
 
 });
  $("#sub_cart").click(function(){
+ event.preventDefault();
                  var chk_value=[];
 
                   $('input[name="rec_check"]:checked').each(function(){
@@ -194,8 +196,8 @@ $("#logout").click(function(){
 
                   });
 
-window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
-//window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
+//window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
+window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
 
 
     });
@@ -219,6 +221,7 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
             var parentitem=$(this).parents(".item");
 
             $.ajax({
+              type:"POST",
               url:"flow.php",
               data:{step:'drop_goods',id:id},
               success: function(data){
@@ -468,6 +471,7 @@ function addToCartResponse(data)
                 time: 0.5 //0.5秒后自动关闭
                 });
             $.ajax({
+                type:"POST",
                 url:cart_url,
                 dataType: "json",
                 data:{step:'ajax_cart_goods'},

@@ -2,7 +2,7 @@
 session_start();
 define('IN_ECTOUCH', true);
 require(dirname(__FILE__) . '/include/init.php');
-
+include_once(dirname(__FILE__) .'/include/lib_order.php');
 
 
 $appid = "wxb5aec13c030a530b";
@@ -44,36 +44,42 @@ function getJson($url){
  $sex = $userinfo['sex'];
  $headimgurl = $userinfo['headimgurl'];
 
-
+if($_GET['code']){
  $sql = "select user_id from `ecs_users` where unionid = '$unionid'";
-$openids = $db->getOne($sql);
+
+$openids = $GLOBALS['db']->getOne($sql);
 
 
 
 if(!$openids){
 	$sql = 'INSERT INTO ' . $ecs->table('users') . '(alias , wx_open_id , sex , reg_time  , headimgurl,unionid) VALUES ' .
                     "('$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid')";
-     $db->query($sql);
-     $uid=$db->insert_id();
-
+     $GLOBALS['db']->query($sql);
+     $uid=$GLOBALS['db']->insert_id();
      $_SESSION['user_id'] = $uid;
+
 
 }else{
 	$sql = "update `ecs_users` set alias='$nickname',sex='$sex',reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid' where unionid='$unionid'";
-	$db->query($sql);
-   $_SESSION['user_id'] = $openids;
+	$GLOBALS['db']->query($sql);
+    $_SESSION['user_id'] = $openids;
+
+}
+
+
+// print_r($_SESSION['user_id']);exit;
+
+           if($_SESSION['back_url']){
+        header("Location:".$_SESSION['back_url']);
+        }else{
+           header("Location: goods_list.php");
+        }
+
 }
 
 
 
 
-
-
-if($_SESSION['back_url']){
-header("Location:".$_SESSION['back_url']);
-}else{
-   header("Location: goods_list.php");
-}
 
 
 

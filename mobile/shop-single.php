@@ -18,7 +18,8 @@ define('IN_ECTOUCH', true);
 require(dirname(__FILE__) . '/include/init.php');
 
 require(ROOT_PATH . 'include/lib_weixintong.php');
-include_once('head.php');
+include('head.php');
+
 if ((DEBUG_MODE & 2) != 2)
 {
     $smarty->caching = true;

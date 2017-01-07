@@ -53,8 +53,8 @@ include('head.php');
 if ($_REQUEST['step'] == 'add_to_cart')
 {
 
-
-    if ( $_SESSION['user_id'] == 0)
+   //print_r($_SESSION['user_id']);exit;
+    if ($_SESSION['user_id'] == 0)
     {
            ajax_please_in();
     }
@@ -415,6 +415,8 @@ elseif ($_REQUEST['step']== 'ajax_update_cart')
         $result['message'] = '';
         die($json->encode($result));
     }
+
+    exit;
 }
 elseif ($_REQUEST['step'] == 'link_buy')
 {
@@ -3046,7 +3048,7 @@ elseif ($_REQUEST['step'] == 'update_cart')
 
 elseif ($_REQUEST['step'] == 'drop_goods')
 {
-    $rec_id = intval($_GET['id']);
+    $rec_id = intval($_POST['id']);
     flow_drop_cart_goods($rec_id);
 
     //ecs_header("Location: flow.php\n");

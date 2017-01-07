@@ -3,15 +3,15 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-01-07 01:29:18
+ * @Last Modified time: 2017-01-07 12:39:31
  */
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
 
-require(ROOT_PATH . 'include/lib_order.php');
 
-include_once('head.php');
+
+include('head.php');
 
 
 if (!isset($_REQUEST['step']))
@@ -21,7 +21,7 @@ if (!isset($_REQUEST['step']))
 
 if ($_REQUEST['step'] == 'goods_list'){
 
-
+   $smarty->assign('userid',$_SESSION['user_id']);
        $smarty->display('goods_list.dwt');
 
 
