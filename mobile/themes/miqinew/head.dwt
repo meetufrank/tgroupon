@@ -414,7 +414,7 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
                               window.location.href=data.url;
                               return;
                     }
-
+                   if(data.cartid){
                   if(type){
 
 
@@ -427,6 +427,7 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
 
 
                     }
+                     }
                    else{
                        addToCartResponse(data);return;
                     }
@@ -482,7 +483,7 @@ function addToCartResponse(data)
                         '<div class="item headitem"><label class="checkbox" id="checkone">'+
                 '<input style="position: absolute; opacity: 0;" type="checkbox" value="'+data.goods_list[i]['rec_id']+'" checked="checked"  id="rec_id" name="rec_check" >'+
                 '<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px;background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>'+
-                '</label> <a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'" class="item-thumb"><img src="../../'+data.goods_list[i]['goods_thumb']+'" alt="Item">'+
+                '</label> <a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'" class="item-thumb"><img src="././admin/'+data.goods_list[i]['goods_thumb']+'" alt="Item">'+
                 '</a><div class="item-details"><h3 class="item-title"><a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'">'+data.goods_list[i]['goods_name']+'</a>'+
                 '</h3><div><div class="pull-right" style="color:#000" >'+data.goods_list[i]['goods_attr']+'</div><h4 class="item-price" data-price="'+data.goods_list[i]['goods_price']+'">'+data.goods_list[i]['goods_price']+
                 '</h4></div><div class="count-input">'+
