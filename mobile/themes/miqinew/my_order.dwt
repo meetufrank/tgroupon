@@ -324,7 +324,7 @@
                             <div class="pull-right" style="color: #000;">{$yg.goods_attr}</div>
                             <h4 class="item-price">数量：{$yg.goods_number} </h4>
                           </div>
-                          <h4 class="item-price">{$yg.subtotal}</h4>
+                          <h4 class="item-price">{$yg.goods_price}</h4>
                         </div>
                       </div><!-- .item -->
                       <div class="item visible-xs">
@@ -342,7 +342,7 @@
                         </div>
                           <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$yg.goods_attr}</div>
                           <div class="clearfix">
-                            <div class="pull-left" style="padding-top:15px; color: #F20000;">{$yg.subtotal}</div>
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">{$yg.goods_price}</div>
                             <div class="pull-right" style="padding-top:15px;">
                                    数量：{$yg.goods_number}
                             </div>
@@ -415,7 +415,7 @@
                           <div class="pull-right" style="color: #000;">{$cg.goods_attr}</div>
                           <h4 class="item-price">数量：{$cg.goods_number} </h4>
                           </div>
-                          <h4 class="item-price">{$cg.subtotal}</h4>
+                          <h4 class="item-price">{$cg.goods_price}</h4>
                         </div>
                       </div><!-- .item -->
                       <div class="item visible-xs">
@@ -433,7 +433,7 @@
                         </div>
                           <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$cg.goods_attr}</div>
                           <div class="clearfix">
-                            <div class="pull-left" style="padding-top:15px; color: #F20000;">{$cg.subtotal}</div>
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">{$cg.goods_price}</div>
                             <div class="pull-right" style="padding-top:15px;">
                                    数量：{$cg.goods_number}
                             </div>

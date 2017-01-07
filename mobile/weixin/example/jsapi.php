@@ -54,7 +54,7 @@ $price=$orderdata[0]['goods_amount']*100;
 $goods_sn=$orderdata[0]['order_sn'];
 //②、统一下单
 $input = new WxPayUnifiedOrder();
-$input->SetBody("形色主义：".$goods_sn);
+$input->SetBody("型色主义：".$goods_sn);
 $input->SetAttach("$title");
 $input->SetOut_trade_no("$goods_sn");
 //$input->SetTotal_fee("$price");

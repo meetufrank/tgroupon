@@ -37,7 +37,7 @@ function getJson($url){
     curl_close($ch);
     return json_decode($output, true);
 }
- print_r($userinfo);
+
  $unionid = $userinfo['unionid'];
  $openid = $userinfo['openid'];
  $nickname = $userinfo['nickname'];

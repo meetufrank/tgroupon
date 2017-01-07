@@ -1451,7 +1451,7 @@ elseif ($action == 'async_order_list')
                     $string.='<div class="item-details">
                     <h3 class="item-title"><a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');">'.$v['goods_name'].'</a></h3><div><div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
                           <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
+                          <h4 class="item-price">'.$v['goods_price'].'</h4>
                         </div>
                          </div>';
                     $string.='<div class="item visible-xs">
@@ -1470,7 +1470,7 @@ elseif ($action == 'async_order_list')
                         </div>
                           <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">'.$v['goods_attr'].'</div>
                           <div class="clearfix">
-                            <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['subtotal'].'</div>
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['goods_price'].'</div>
                             <div class="pull-right" style="padding-top:15px;">
                                    数量：'.$v['goods_number'].'
                             </div>
@@ -1549,7 +1549,7 @@ elseif ($action == 'async_order_list')
                     $string.='<div class="item-details">
                     <h3 class="item-title"><a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');">'.$v['goods_name'].'</a></h3><div><div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
                           <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
-                          <h4 class="item-price">'.$v['subtotal'].'</h4>
+                          <h4 class="item-price">'.$v['goods_price'].'</h4>
                         </div>
                          </div>';
                     $string.='<div class="item visible-xs">
@@ -1568,7 +1568,7 @@ elseif ($action == 'async_order_list')
                         </div>
                           <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">'.$v['goods_attr'].'</div>
                           <div class="clearfix">
-                            <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['subtotal'].'</div>
+                            <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['goods_price'].'</div>
                             <div class="pull-right" style="padding-top:15px;">
                                    数量：'.$v['goods_number'].'
                             </div>
