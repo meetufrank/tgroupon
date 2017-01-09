@@ -40,10 +40,10 @@ if($_GET['act'] == ''){
     $smarty->assign('spnum',  $spnum);
 
     //收藏的商品信息(商品图片,商品名称)
-    $sqlspxx = "select shoc.goods_id,shoc.rec_id,gs.goods_img,gs.goods_name from ecs_collect_goods as shoc inner JOIN
-    ecs_goods as gs on shoc.goods_id = gs.goods_id
-    where `user_id` = '$user_id' order by shoc.add_time";
-    $spxx = $db->getAll($sqlspxx);
+    $sqlspxx = "select * from `ecs_products` as p
+where  p.goods_id = $goodsid
+LIMIT 1";
+    $spxx = $db->query($sqlspxx);
     // var_dump($spxx);
     $smarty->assign('spxx',  $spxx);
 
@@ -87,7 +87,7 @@ elseif ($_GET['act'] == 'delsyj')
      WHERE scid = '$scysjid'";
      $db->query($sqlysjdel);
 
-	 print_r($sqlysjdel);
+
 }
 
 
