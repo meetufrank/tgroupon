@@ -827,16 +827,7 @@ elseif ($action == 'logout')
     $ucdata = empty($user->ucdata)? "" : $user->ucdata;
     show_message($_LANG['logout'] . $ucdata, array($_LANG['back_up_page'], $_LANG['back_home_lnk']), array($back_act, 'index.php'), 'info');
 }
-/* 退出会员中心 */
-elseif ($action == 'logout_new')
-{
 
-
-    $user->logout();
-
-    exit;
-
-}
 
 /* 个人资料页面 */
 elseif ($action == 'profile')

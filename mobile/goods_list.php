@@ -3,8 +3,10 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-01-07 12:39:31
+ * @Last Modified time: 2017-01-09 17:34:34
  */
+
+
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
@@ -21,7 +23,8 @@ if (!isset($_REQUEST['step']))
 
 if ($_REQUEST['step'] == 'goods_list'){
 
-   $smarty->assign('userid',$_SESSION['user_id']);
+
+
        $smarty->display('goods_list.dwt');
 
 

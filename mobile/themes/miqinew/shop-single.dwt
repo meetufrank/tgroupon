@@ -30,7 +30,7 @@
   <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
 
 
-  <link href="{$ectouch_themes}/css/theme.mins.css" rel="stylesheet" media="screen">
+
 
   <!-- swiper -->
   <link href="{$ectouch_themes}/Swiper-3.4.0/dist/css/swiper.css" rel="stylesheet" media="screen">

@@ -268,7 +268,7 @@ layui.use(['laypage', 'layer'], function(){
               },
               error: function(data){
                           layer.open({
-                  content: 'Json数据出错'
+                  content: 'hhahah'
                   ,skin: 'msg'
                   ,time: 1 //2秒后自动关闭
                   });
