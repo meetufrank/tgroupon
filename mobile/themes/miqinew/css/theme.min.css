@@ -2678,7 +2678,7 @@ to {
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	background-color:#007aff;;
+	background-color:#999;
 	opacity: 0.6;
 	margin: 0 5px;
 	-webkit-transition: opacity 0.25s;
@@ -3895,7 +3895,7 @@ display:none
 }
 @media screen and (max-width: 768px) {
 .hero-slider .slide {
-	height:400px
+	height:400px;
 }
 .hero-slider .owl-carousel .owl-controls .owl-nav {
 	display: none !important
@@ -5436,7 +5436,7 @@ img.mfp-img {
 }
 /*手机端商品详情+选择*/
 .mobile-detail-1{
-	margin-top:10px;
+	margin-top:20px;
 	margin-right:0px;
 	margin-bottom:10px;
 	margin-left:0px;
@@ -5448,7 +5448,7 @@ img.mfp-img {
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     overflow: hidden;
-    font-size:16px;
+    font-size:15px;
     font-weight: bold;
     padding: 0px;
 }
@@ -5518,7 +5518,7 @@ img.mfp-img {
     right: 0;
 }
 .mobile-cart-color-text{
-	font-size:16px;
+	font-size:14px;
 	font-weight:bold;
 	margin-top:10px;
 	margin-left:20px;
@@ -5551,7 +5551,7 @@ img.mfp-img {
 	min-height:30px;
 }
 .mobile-cart-size-text{
-	font-size:16px;
+	font-size:14px;
 	font-weight:bold;
 	margin-top:10px;
 	margin-left:20px;
@@ -5592,7 +5592,7 @@ img.mfp-img {
 	min-height:30px;
 }
 .mobile-cart-group-text{
-	font-size:16px;
+	font-size:14px;
 	font-weight:bold;
 	margin-left:20px;
 	margin-bottom:5px;
@@ -5631,7 +5631,7 @@ img.mfp-img {
 	min-height:30px;
 }
 .mobile-cart-border-text{
-	font-size:16px;
+	font-size:14px;
 	font-weight:bold;
 	margin-left:20px;
 	margin-bottom:5px;

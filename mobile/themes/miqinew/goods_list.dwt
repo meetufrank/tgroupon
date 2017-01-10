@@ -228,7 +228,7 @@
 				   success: function (data) {
 
 
-            insert_page(data);
+            insert_page(data,'','');
 				  },
 				  error: function(data){
 

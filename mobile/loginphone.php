@@ -3,7 +3,7 @@
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
-include_once(dirname(__FILE__) .'/include/lib_order.php');
+
 
 
 $appid = "wxb5aec13c030a530b";
@@ -52,27 +52,27 @@ $sql = "select user_id from `ecs_users` where unionid = '$unionid'";
 $openids = $GLOBALS['db']->getOne($sql);
 
 
-session_start();
+
 if(!$openids){
 	 $sql = 'INSERT INTO ' . $ecs->table('users') . '(alias , wx_open_id , sex , reg_time  , headimgurl,unionid) VALUES ' .
                     "('$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid')";
      $GLOBALS['db']->query($sql);
      $uid=$GLOBALS['db']->insert_id();
-     $_SESSION['user_id'] = $uid;
 
+      setcookie('user_id',$uid);
 
 }else{
 	 $sql = "UPDATE  `ecs_users` set alias='$nickname',sex=$sex,reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid' where unionid='$unionid'";
 	$GLOBALS['db']->query($sql);
-    $_SESSION['user_id'] = $openids;
 
+    setcookie('user_id',$openids);
 }
 
 
            if($_SESSION['back_url']){
-        header("Location:".$_SESSION['back_url']);
+        ecs_header("Location:".$_SESSION['back_url']);
         }else{
-          header("Location:goods_list.php");
+          ecs_header("Location:goods_list.php");
         }
 
 

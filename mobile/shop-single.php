@@ -12,13 +12,15 @@
  * $Author: liubo $
  * $Id: goods.php 17217 2011-01-19 06:29:08Z liubo $
 */
-session_start();
+
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
 
-require(ROOT_PATH . 'include/lib_weixintong.php');
+
+
 include('head.php');
+
 
 if ((DEBUG_MODE & 2) != 2)
 {
@@ -26,6 +28,7 @@ if ((DEBUG_MODE & 2) != 2)
 }
 
 $user_id=$_SESSION['user_id'];
+
 $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
 $smarty->assign('affiliate', $affiliate);
 
