@@ -15,26 +15,37 @@
 
 
 
-include_once(ROOT_PATH .'include/lib_order.php');
+
 
 
 define('PC_URL', $config['pc_url']);   //定义非微信浏览器跳转链接
 define('PHONE_URL', $config['phone_url']);   //定义微信浏览器跳转链接
 
 if($_SERVER['REQUEST_METHOD']!="POST"){
-
   $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
   $_SESSION['back_url']=$url;
+
+}
+if($_COOKIE['user_id']){
+  $_SESSION['user_id']=$_COOKIE['user_id'];
 }
 
 if ($_SESSION['user_id'])
     {
+      include_once(ROOT_PATH .'include/lib_order.php');
       $sql  = "SELECT * ".
            "FROM " .$GLOBALS['ecs']->table('users') . " WHERE user_id = ".$_SESSION['user_id'];
       $infos = $GLOBALS['db']->getRow($sql);
 
       $smarty->assign('user_status', 1);
       $css='<a href="#userinfo" class="toolbar-toggle"><i class="material-icons person"></i></a>';
+       /* 取得商品列表，计算合计 */
+    $cart_goods = get_cart_goods(0,1);
+
+
+        $smarty->assign('goods_list', $cart_goods['goods_list']);
+        $smarty->assign('total', $cart_goods['total']);
+     $smarty->assign('user_data', $infos);
 
     }else{
       $css='<a href="#account"class="toolbar-toggle"><i class="material-icons person"></i></a>';
@@ -43,14 +54,8 @@ if ($_SESSION['user_id'])
 
 $smarty->assign('login_css', $css);
 
-//print_r($infos);exit;
-    /* 取得商品列表，计算合计 */
-    $cart_goods = get_cart_goods(0,1);
 
-//print_r($cart_goods);exit;
-    $smarty->assign('goods_list', $cart_goods['goods_list']);
-    $smarty->assign('total', $cart_goods['total']);
- $smarty->assign('user_data', $infos);
+
 
 
     $is_wechat=is_wechat_browser();
@@ -81,8 +86,7 @@ if ( strpos($_SERVER['HTTP_USER_AGENT'],
 }
 function please_in(){
 
-$url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-$_SESSION['back_url']=$url;
+
         if(!is_weixin()){
 
             ecs_header("Location: ".PC_URL);
@@ -107,10 +111,9 @@ function ajax_please_in(){
 
           }else{
 
+            $result['url'] =PHONE_URL;
+          }
 
-              $result['url'] =PHONE_URL;
-
-            }
 
             echo json_encode($result);
             exit;

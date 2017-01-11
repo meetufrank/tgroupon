@@ -17,7 +17,8 @@ define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
 
-require(ROOT_PATH . 'include/lib_weixintong.php');
+
+
 include('head.php');
 
 
@@ -42,7 +43,9 @@ if ((DEBUG_MODE & 2) != 2)
 {
     $smarty->caching = true;
 }
+
 $user_id=$_SESSION['user_id'];
+
 $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
 $smarty->assign('affiliate', $affiliate);
 
@@ -630,6 +633,7 @@ $smarty->assign('jiagedata',$jiageimgs);
 $smarty->assign('checked_arr',$checked_arr);
 $smarty->assign('sub_price',$sub_price);
 $smarty->assign('select',json_encode($select));
+
 $smarty->display('shop-single.dwt',      $cache_id);   //商品详情页
 
 

@@ -13,6 +13,7 @@
 
 
 
+
       <div class="toolbar">
         <div class="inner">
           <a href="#menu" class="toolbar-toggle"><i class="material-icons menu"></i></a>
@@ -22,11 +23,7 @@
              <span class="count " id="cart_count"><?php if ($this->_var['total']['total_number']): ?><?php echo $this->_var['total']['total_number']; ?><?php else: ?>0<?php endif; ?></span>
             </i>
           </a>
-          <?php if ($this->_var['user_status']): ?>
-          <a href="#userinfo" class="toolbar-toggle"><i class="material-icons person"></i></a>
-          <?php else: ?>
-          <a href="#account"class="toolbar-toggle"><i class="material-icons person"></i></a>
-          <?php endif; ?>
+          <?php echo $this->_var['login_css']; ?>
         </div>
       </div>
       
@@ -38,7 +35,7 @@
           <div class="inner">
             <ul class="main-navigation space-bottom">
               <li><a href="index.html">首页</a></li>
-              <li><a href="javascript:window.open('goods_list.php');" >商品</a></li>
+              <li><a href="goods_list.php" >商品</a></li>
               <li><a href="artist-list.html">设计师</a></li>
               <li><a href="#">关于我们</a></li>
             </ul>
@@ -47,7 +44,7 @@
         </div>
 
 
-
+<?php if ($this->_var['user_status']): ?>
 
         <div class="toolbar-section" id="userinfo" >
             <div class="clearfix">
@@ -69,7 +66,7 @@
               <li><a href="my_usergrzx.php?act=address_list">管理地址</a></li>
             </ul>
         </div>
-
+      <?php else: ?>
 
          
         <div class="toolbar-section" id="account">
@@ -93,7 +90,7 @@
         </div>
 
 
-
+ <?php endif; ?>
 
          <div class="toolbar-section" id="cart">
           <div class="shopping-cart">
@@ -110,28 +107,28 @@
 
 
 
-   <?php $_from = $this->_var['goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_42147400_1483588083');if (count($_from)):
-    foreach ($_from AS $this->_var['goods_0_42147400_1483588083']):
+   <?php $_from = $this->_var['goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_81686200_1483761751');if (count($_from)):
+    foreach ($_from AS $this->_var['goods_0_81686200_1483761751']):
 ?>
                 <div class="item headitem">
                 <label class="checkbox" id="checkone">
-                <input style="position: absolute; opacity: 0;" type="checkbox" value="<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>" checked="checked"  id="rec_id" name="rec_check">
+                <input style="position: absolute; opacity: 0;" type="checkbox" value="<?php echo $this->_var['goods_0_81686200_1483761751']['rec_id']; ?>" checked="checked"  id="rec_id" name="rec_check">
                 <ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
                 </label>
-                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_42147400_1483588083']['goods_id']; ?>" class="item-thumb">
-                <?php if ($this->_var['goods_0_42147400_1483588083']['goods_thumb']): ?><img src="../<?php echo $this->_var['goods_0_42147400_1483588083']['goods_thumb']; ?>" alt="Item"><?php endif; ?>
+                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_81686200_1483761751']['goods_id']; ?>" class="item-thumb">
+                <?php if ($this->_var['goods_0_81686200_1483761751']['goods_thumb']): ?><img src="././admin/<?php echo $this->_var['goods_0_81686200_1483761751']['goods_thumb']; ?>" alt="Item"><?php endif; ?>
                 </a>
                 <div class="item-details"><h3 class="item-title">
-                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_42147400_1483588083']['goods_id']; ?>"><?php echo $this->_var['goods_0_42147400_1483588083']['goods_name']; ?></a>
+                <a href="shop-single.php?id=<?php echo $this->_var['goods_0_81686200_1483761751']['goods_id']; ?>"><?php echo $this->_var['goods_0_81686200_1483761751']['goods_name']; ?></a>
                 </h3>
                 <div>
-                <div class="pull-right" style="color:#000" ><?php echo $this->_var['goods_0_42147400_1483588083']['goods_attr']; ?></div>
-                <h4 class="item-price" data-price="<?php echo $this->_var['goods_0_42147400_1483588083']['goods_price']; ?>"><?php echo $this->_var['goods_0_42147400_1483588083']['goods_price']; ?></h4>
+                <div class="pull-right" style="color:#000" ><?php echo $this->_var['goods_0_81686200_1483761751']['goods_attr']; ?></div>
+                <h4 class="item-price" data-price="<?php echo $this->_var['goods_0_81686200_1483761751']['goods_price']; ?>"><?php echo $this->_var['goods_0_81686200_1483761751']['goods_price']; ?></h4>
                 </div>
                 <div class="count-input">
-                <a class="incr-btn" data-action="decrease" href="#" onclick="changenum(<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>,-1,<?php echo $this->_var['goods_0_42147400_1483588083']['product_number']; ?>)">–</a>
-                <input class="quantity" type="text" value="<?php echo $this->_var['goods_0_42147400_1483588083']['goods_number']; ?>"  name="goods_number[<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>]" id="goods_number_<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>" min="1" max="<?php echo $this->_var['goods_0_42147400_1483588083']['product_number']; ?>"onkeyup="changenum(<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>,0,<?php echo $this->_var['goods_0_42147400_1483588083']['product_number']; ?>)" readonly>
-                <a class="incr-btn" data-action="increase" href="#" onclick="changenum(<?php echo $this->_var['goods_0_42147400_1483588083']['rec_id']; ?>,1,<?php echo $this->_var['goods_0_42147400_1483588083']['product_number']; ?>)">+</a>
+                <a class="incr-btn" data-action="decrease" href="#" onclick="changenum(<?php echo $this->_var['goods_0_81686200_1483761751']['rec_id']; ?>,-1,<?php echo $this->_var['goods_0_81686200_1483761751']['product_number']; ?>)">–</a>
+                <input class="quantity" type="text" value="<?php echo $this->_var['goods_0_81686200_1483761751']['goods_number']; ?>"  name="goods_number[<?php echo $this->_var['goods_0_81686200_1483761751']['rec_id']; ?>]" id="goods_number_<?php echo $this->_var['goods_0_81686200_1483761751']['rec_id']; ?>" min="1" max="<?php echo $this->_var['goods_0_81686200_1483761751']['product_number']; ?>"onkeyup="changenum(<?php echo $this->_var['goods_0_81686200_1483761751']['rec_id']; ?>,0,<?php echo $this->_var['goods_0_81686200_1483761751']['product_number']; ?>)" readonly>
+                <a class="incr-btn" data-action="increase" href="#" onclick="changenum(<?php echo $this->_var['goods_0_81686200_1483761751']['rec_id']; ?>,1,<?php echo $this->_var['goods_0_81686200_1483761751']['product_number']; ?>)">+</a>
                 </div></div>
                 <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="移出购物车"><i class="material-icons delete"></i></a></div>
                 <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
@@ -175,15 +172,16 @@
 
   <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/messages_zh.js" type="text/javascript"></script>
 
-  <script type="text/javascript">
+  <script type="text/javascript">`
   $(document).ready(function () {
 
 $("#logout").click(function(){
 
   $.ajax({
+              type:"POST",
               url:"my_user.php?act=logout_new",
               success: function(data){
-
+                  window.location.href= window.location.href;
               },
               error:function(){
                    alert("退出异常");
@@ -192,6 +190,7 @@ $("#logout").click(function(){
 
 });
  $("#sub_cart").click(function(){
+ event.preventDefault();
                  var chk_value=[];
 
                   $('input[name="rec_check"]:checked').each(function(){
@@ -199,8 +198,8 @@ $("#logout").click(function(){
 
                   });
 
-window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
-//window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
+//window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
+window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
 
 
     });
@@ -222,10 +221,9 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
         $("#cart").on("click",".item-remove",function(){
             var  id=$(this).parents(".item").find('input[type="checkbox"]').val();
             var parentitem=$(this).parents(".item");
-          var num= $("#goods_number_"+id).val();
-           var cart_num=$("#cart_count").text();
-              document.getElementById('cart_count').innerHTML=Number(cart_num)-Number(num);
+
             $.ajax({
+              type:"POST",
               url:"flow.php",
               data:{step:'drop_goods',id:id},
               success: function(data){
@@ -312,12 +310,14 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
 
 
         function changenum(rec_id,diff,maxnumber){
+
           event.preventDefault();
           var num = parseInt(document.getElementById('goods_number_'+rec_id).value);
           var goods_number = num + Number(diff);
           if( goods_number >= 1 && goods_number<=maxnumber){
             //document.getElementById('goods_number_'+rec_id).value = goods_number;//更新数量
             var cartnum=document.getElementById('cart_count').innerHTML;
+
             document.getElementById('cart_count').innerHTML=Number(cartnum)+Number(diff);
 
             change_goods_number(rec_id,goods_number);
@@ -368,16 +368,27 @@ window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
 <script src="js/common.js"></script>
 <script type="text/javascript">
 
+
 /* *
  * 添加商品到购物车
  */
-function addToCart(goodsId, parentId,type)  //type 购物类型
+function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
 {
   var goods        = new Object();
   var spec_arr     = new Array();
   var fittings_arr = new Array();
-  var number       = 1;
-  var formBuy      = document.forms['ECS_FORMBUY'];
+
+  if(ismobile){
+     var formBuy      = document.forms['ECS_FORMBUY_MOBILE'];
+     var number=document.getElementById("quantitymobile").value;
+  }else{
+      var number=document.getElementById("quantity").value;
+      var formBuy      = document.forms['ECS_FORMBUY'];
+  }
+  if(!number){
+      var number = 1;
+  }
+
   var quick      = 0;
 
   // 检查是否有商品规格
@@ -385,10 +396,6 @@ function addToCart(goodsId, parentId,type)  //type 购物类型
   {
     spec_arr = getSelectedAttributes(formBuy);
 
-    if (formBuy.elements['number'])
-    {
-      number = formBuy.elements['number'].value;
-    }
 
   quick = 1;
   }
@@ -404,19 +411,34 @@ function addToCart(goodsId, parentId,type)  //type 购物类型
               url:"flow.php",
               type:"POST",
               dataType:"json",
-
               data:{step:'add_to_cart',goods:$.toJSON(goods),type:type},
               success: function(data){
-                    if(data.error==12){
-                         window.location.href=data.url;
-                         return;
-                    }
-                    if(type){
-                             window.open('flow.php?step=pay_select&&cartid='+data.cartid);return;
-                    }else{
 
-                      addToCartResponse(data);return;
+                    if(data.error==12){
+
+                              window.location.href=data.url;
+                              return;
                     }
+                   if(data.cartid){
+                  if(type){
+
+
+                              if(ismobile){
+                                    window.location.href="flow.php?step=pay_select&&cartid="+data.cartid;return;
+                              }else{
+                                  window.open('flow.php?step=pay_select&&cartid='+data.cartid);return;
+                              }
+
+
+
+                    }
+                     }
+                   else{
+                       addToCartResponse(data);return;
+                    }
+
+
+
 
 
 
@@ -444,12 +466,14 @@ function addToCartResponse(data)
       return;
    }
     var cart_url = 'flow.php';
+
     layer.open({
                 content: '已加入购物车',
                 skin: 'msg',
                 time: 0.5 //0.5秒后自动关闭
                 });
             $.ajax({
+                type:"POST",
                 url:cart_url,
                 dataType: "json",
                 data:{step:'ajax_cart_goods'},
@@ -465,7 +489,7 @@ function addToCartResponse(data)
                         '<div class="item headitem"><label class="checkbox" id="checkone">'+
                 '<input style="position: absolute; opacity: 0;" type="checkbox" value="'+data.goods_list[i]['rec_id']+'" checked="checked"  id="rec_id" name="rec_check" >'+
                 '<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px;background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>'+
-                '</label> <a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'" class="item-thumb"><img src="../'+data.goods_list[i]['goods_thumb']+'" alt="Item">'+
+                '</label> <a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'" class="item-thumb"><img src="././admin/'+data.goods_list[i]['goods_thumb']+'" alt="Item">'+
                 '</a><div class="item-details"><h3 class="item-title"><a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'">'+data.goods_list[i]['goods_name']+'</a>'+
                 '</h3><div><div class="pull-right" style="color:#000" >'+data.goods_list[i]['goods_attr']+'</div><h4 class="item-price" data-price="'+data.goods_list[i]['goods_price']+'">'+data.goods_list[i]['goods_price']+
                 '</h4></div><div class="count-input">'+
