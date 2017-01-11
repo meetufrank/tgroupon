@@ -20,6 +20,24 @@ require(dirname(__FILE__) . '/include/init.php');
 require(ROOT_PATH . 'include/lib_weixintong.php');
 include('head.php');
 
+
+
+
+
+include('Jssdk.php');
+
+$appId = 'wxb5aec13c030a530b';//打开微信公众平台-开发者中心 获取appId和appSecret
+$appSecret = '2232d4acc3612e530f0ccc311c72d68c';
+$jssdk = new \Jssdk($appId, $appSecret);
+$data = $jssdk->getSignPackage();
+
+$smarty->assign('data', $data);
+print_r($data);
+
+
+
+
+
 if ((DEBUG_MODE & 2) != 2)
 {
     $smarty->caching = true;
@@ -148,6 +166,7 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
     $feiattrid = $db->getAll($sql);
     $sql = "select goods_attr_id from `ecs_goods_attr` where  attr_id=".$typeid;
     $friend_arr = $db->getAll($sql);
+    $i=0;
     foreach ($feiattrid as $key => $value) {
 
             $goodsattr = explode(",",$value['goods_attr']);
@@ -172,33 +191,27 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
                     }
              }
 
-           //  count($goodsattr);
-           // if($key==0){
-           //  $min_length_arr=$goodsattr;
-           // }else{
-           //    if(count($goodsattr)<count($min_length_arr)){
-           //      $min_length_arr=$goodsattr;
-           //    }
-           // }
+
             foreach ($goodsattr as $k => $v) {
 
-                    $select[$k][]=$v;
+                    $select[$k][$i]['attr_id']=$v;
+                    $sql="select attr_id from `ecs_goods_attr` where  goods_attr_id=".$v;
+                    $select[$k][$i]['typeid']=$GLOBALS['db']->getOne($sql);
 
+               $i++;
             }
     }
-// foreach ($min_length_arr as $key => $value) {
-//     if($key != $a){
-//                     $checked[$key]=$value;
-//                 }
 
-// }
 
 foreach ($friend_arr as $key => $value) {
 
     $sql = "select count(*) from `ecs_products` where FIND_IN_SET('".$value['goods_attr_id']."',goods_attr) and product_number > 0";
     $count = $db->getOne($sql);
     if($count){
-    $select[$a][]=$value['goods_attr_id'];
+    $select[$a][$i]['attr_id']=$value['goods_attr_id'];
+    $sql="select attr_id from `ecs_goods_attr` where  goods_attr_id=".$value['goods_attr_id'];
+    $select[$a][$i]['typeid']=$GLOBALS['db']->getOne($sql);
+    $i++;
     }
 }
 if(is_array($checked)){
@@ -444,7 +457,7 @@ $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 
 			//20141204新增分享返积分
 			$dourl="";
 		}
-		require_once "wxjs/jssdk.php";
+	//	require_once "wxjs/jssdk.php";
 		$ret = $db->getRow("SELECT  *  FROM `wxch_config`");
 		$jssdk = new JSSDK($appid=$ret['appid'], $ret['appsecret']);
 		$signPackage = $jssdk->GetSignPackage();
@@ -532,27 +545,80 @@ g.attr_id = a.attr_id
  $select_arr = $db->getAll($sql);
 // $sql="select min(goods_attr_id) as goods_attr from ecs_goods_attr  where goods_id=".$goods_id."  GROUP BY attr_id";
     //默认选中属性
-        foreach ($select_arr as $key => $value) {
-
-            $goodsattr = explode(",",$value['goods_attr']);
 
 
-              if($key==0){
-                    $checked_arr=$goodsattr;
-                   }
-              foreach ($goodsattr as $k => $v) {
+    //     foreach ($select_arr as $key => $value) {
 
-                            $select[$k][]=$v;
+    //         $goodsattr = explode(",",$value['goods_attr']);
 
-                    }
-    }
+
+    //           if($key==0){
+    //                 $checked_arr=$goodsattr;
+    //                 foreach ($goodsattr as $k => $v) {
+
+    //                         $select[$k][$i]['attr_id']=$v;
+    //                         $sql="select attr_id from `ecs_goods_attr` where  goods_attr_id=".$v;
+    //                         $select[$k][$i]['typeid']=$GLOBALS['db']->getOne($sql);
+    //                    $i++;
+    //                 }
+    //                }
+
+
+    // }
 
 // print_r($checked_arr);
-// print_r($select);exit;
+ //print_r($select);exit;
+ $checked_string=$select_arr[0]['goods_attr'];
+$checked_arr = explode(",",$checked_string);
+
 if(!$checked_arr){
 
     ecs_header("Location:goods_list.php");
 }else{
+
+    $a=0;
+    foreach ($checked_arr as $k_b => $v_b) {
+        if($v_b){//
+
+                $sql = "select goods_attr from `ecs_products` where FIND_IN_SET('$v_b',goods_attr) and product_number > 0";
+               $feiattrid = $db->getAll($sql);
+               $sql="select attr_id from `ecs_goods_attr` where  goods_attr_id=".$v_b;
+               $typeid=$GLOBALS['db']->getOne($sql);
+               $sql = "select goods_attr_id from `ecs_goods_attr` where  attr_id=".$typeid;
+               $friend_arr = $db->getAll($sql);
+               $i=0;
+                foreach ($feiattrid as $key => $value) {
+
+                        $goodsattr = explode(",",$value['goods_attr']);
+
+
+                        foreach ($goodsattr as $k => $v) {
+
+                                $select[$k][$i]['attr_id']=$v;
+                                $sql="select attr_id from `ecs_goods_attr` where  goods_attr_id=".$v;
+                                $select[$k][$i]['typeid']=$GLOBALS['db']->getOne($sql);
+
+                           $i++;
+                        }
+                }
+
+
+foreach ($friend_arr as $key => $value) {
+
+    $sql = "select count(*) from `ecs_products` where FIND_IN_SET('".$value['goods_attr_id']."',goods_attr) and product_number > 0";
+    $count = $db->getOne($sql);
+    if($count){
+    $select[$a][$i]['attr_id']=$value['goods_attr_id'];
+    $sql="select attr_id from `ecs_goods_attr` where  goods_attr_id=".$value['goods_attr_id'];
+    $select[$a][$i]['typeid']=$GLOBALS['db']->getOne($sql);
+    $i++;
+    }
+    break;
+}//
+        }
+        $a++;
+    }
+
     $jiageimg = implode(",", $checked_arr);
 }
 

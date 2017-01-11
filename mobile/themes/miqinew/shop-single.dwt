@@ -3,24 +3,16 @@
 
 <head>
   <meta charset="utf-8">
-  <title>商品详情页</title>
+  <title>商品详情页-NEW</title>
 
   <!--SEO Meta Tags-->
-  <meta name="description" content="M-Store - Modern E-Commerce Template" />
   <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
   <meta name="author" content="Rokaux" />
 
   <!--Mobile Specific Meta Tag-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-  <!--Favicon-->
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-  <!-- Google Material Icons -->
-  <link href="{$ectouch_themes}/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
-
-  <!-- Brand Icons -->
+  <!-- Icons -->
   <link href="{$ectouch_themes}/css/vendor/font-awesome.css" rel="stylesheet" media="screen">
 
   <!-- Bootstrap -->
@@ -29,21 +21,42 @@
   <!-- Theme Styles -->
   <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
 
-
-  <link href="{$ectouch_themes}/css/theme.mins.css" rel="stylesheet" media="screen">
-
-  <!-- swiper -->
-  <link href="{$ectouch_themes}/Swiper-3.4.0/dist/css/swiper.css" rel="stylesheet" media="screen">
-
   <!-- Page Preloading -->
   <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
 
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
 
-
   <style>
-  .add-to-cart-pay{
+  @media screen and (max-width:768px) {
+	.mobile-cart-color-select li a img {
+    		width:30px;
+    		height:30px;
+		}
+	.mabeylike{
+		font-size:16px;
+		font-weight:bold;
+	}
+	.tab-shopsingle{
+		display:block;
+		float:left;
+		max-width:25%;
+		min-width:25%;
+		height:50px;
+		margin-bottom:5px;
+	}
+	.tab-shopsingle-right{
+		display:block;
+		float:left;
+		max-width:75%;
+		min-width:75%;
+		height:50px;
+		margin-bottom:5px;
+	}
+
+	}
+
+    .add-to-cart-pay{
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -55,19 +68,12 @@
     text-transform: uppercase;
     text-align: center;
     color: #fff;
-    background-color: rgb(179,179,179);
+    background-color:rgb(179,179,179);
     border-radius: 4px;
     overflow: hidden;
     -webkit-transition: background-color 0.3s;
     -o-transition: background-color 0.3s;
     transition: background-color 0.3s
-  }
-  .add-to-cart-pay:hover{
-    color: #fff;
-    background-color: rgb(179,179,179);
-  }
-  .add-to-cart-pay:focus, .add-to-cart-pay:active {
-    color: #fff
   }
   .add-to-cart-pay em {
     position: absolute;
@@ -88,26 +94,31 @@
     -o-transition: transform 0.3s;
     transition: transform 0.3s
   }
+  .add-to-cart {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 114px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    background-color:rgb(52,52,52);
+    border-radius: 4px;
+    overflow: hidden;
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+  }
   .clear{
     clear:both;
-  }
-    .swiper-container {
-        width:100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .swiper-slide {
-    text-align:center;
-        background-size: cover;
-        background-position: center;
-  }
-  .swiper-slide img{
-    display:inline-block;
   }
   .pc-detaile-left{
     min-width:300px;
     min-height:300px;
-
     border-radius:3px;
   }
   .pc-detaile-right{
@@ -162,9 +173,8 @@
     width:30px;
     height:30px;
     text-align:center;
-
-    background-color: rgb(230,230,230);
-    border: 2px solid rgb(230,230,230);
+    background-color:rgb(179,179,179);
+    border:2px solid rgb(179,179,179);
     border-radius:1px;
     color:#000;
   }
@@ -173,9 +183,9 @@
     width:30px;
     height:30px;
     text-align:center;
-
-   background-color: rgb(230,230,230);
+    background-colo:red;
     border:2px #10acf7 solid;
+
     border-radius:1px;
     color:#000;
   }
@@ -190,14 +200,15 @@
     float:left;
     padding-left:5px;
     padding-top:5px;
+
+
   }
   .pc-group-detail{
     display:block;
-    width:60px;
+    min-width:60px;
     height:30px;
-
-     background-color: rgb(230,230,230);
-    border: 2px solid rgb(230,230,230);
+    background-color:rgb(179,179,179);
+    border:2px rgb(179,179,179) solid;
     border-radius:1px;
     color:black;
   }
@@ -208,11 +219,10 @@
     display:block;
     width:60px;
     height:30px;
+     background-color:rgb(52,52,52);
 
-    background-color: rgb(230,230,230);
-    border: 2px solid rgb(230,230,230);
     border-radius:1px;
-    color:black;
+    color:white;
   }
   .pc-mold-select ul{
     width:200px;
@@ -230,9 +240,8 @@
     display:block;
     width:50px;
     height:30px;
-
-    background-color: rgb(230,230,230);
-    border: 2px solid rgb(230,230,230);
+    background-color:rgb(179,179,179);
+    border:2px rgb(179,179,179) solid;
     border-radius:1px;
     color:black;
   }
@@ -240,7 +249,7 @@
     display:block;
     width:50px;
     height:30px;
-    background-color:#CCCCCE;
+    background-color:rgb(179,179,179);
     border:2px #10acf7 solid;
     border-radius:1px;
     color:black;
@@ -248,52 +257,6 @@
   .pc-dright-bottom{
     min-height:50px;
   }
-
-  .mobile-add-to-cart {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    width: 100%;
-    height: 36px;
-    line-height: 36px;
-    font-size: 12px;
-    font-weight: normal;
-    text-transform: uppercase;
-    text-align: center;
-    color: #fff;
-    /* background-color: #4302FE; */
-    background-color: rgb(179,179,179);
-    /* border-radius: 4px; */
-    overflow: hidden;
-    -webkit-transition: background-color 0.3s;
-    -o-transition: background-color 0.3s;
-    transition: background-color 0.3s;
-}
-
-
-.mobile-add-to-cart-pay {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    width: 100%;
-    height: 36px;
-    line-height: 36px;
-    font-size: 12px;
-    font-weight: normal;
-    text-transform: uppercase;
-    text-align: center;
-    /* color: #fff; */
-    color: white;
-    /* background-color: #65B9D1; */
-    background-color: rgb(52,52,52);
-    /* border-radius: 4px; */
-    overflow: hidden;
-    -webkit-transition: background-color 0.3s;
-    -o-transition: background-color 0.3s;
-    transition: background-color 0.3s;
-}
-
-
   .mobile-color-change{
     width: 40px;
     height: 40px;
@@ -304,65 +267,17 @@
   .mobile-none{
     background-color:#C33;
   }
-.add-to-cart {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    width: 114px;
-    height: 36px;
-    line-height: 36px;
-    font-size: 12px;
-    font-weight: normal;
-    text-transform: uppercase;
-    text-align: center;
-    color: #fff;
-    background-color: rgb(52,52,52);
-    border-radius: 4px;
-    overflow: hidden;
-    -webkit-transition: background-color 0.3s;
-    -o-transition: background-color 0.3s;
-    transition: background-color 0.3s;
-}
-.sb-twitter {
-    color: #606060;
-}
-.col-xs-3 {
-    width: 25%;
-}
-#shangchuan img{
-  margin:auto;
-}
- .pc-group-detail{
-    display:block;
-    width:60px;
-    height:30px;
-    background-color:#CCCCCE;
-    border:2px #CCCCCE solid;
-    border-radius:1px;
-    color:black;
+  .owl-nav{
+	display:none;
+	}
+	#xiangqiangimg img{
+		margin:auto;
+	}
+  /* 商品属性不可选 */
+  .specDonotchoose{
+    border:1px dashed black;
   }
-   .pc-group-change{
-    display:block;
-    width:50px;
-    height:30px;
-    background-color:#CCCCCE;
-    border:2px #10acf7 solid;
-    border-radius:1px;
-    color:black;
-  }
-.mobile-shop-name {
-    display: block;
-    max-width: 100px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
-    overflow: hidden;
-    font-size: 5px;
-    font-weight: bold;
-    padding: 0px;
-}
-    </style>
-
+  </style>
 
 
 </head>
@@ -379,115 +294,119 @@
 
   <!-- Page Wrapper -->
   <div class="page-wrapper">
-  <!-- 头部开始 -->
+
+    <!-- Navbar -->
+    <!--旧版本头部可以直接剔除-开始-->
+     <!-- 头部开始 -->
    {include file="head.dwt"}
   <!-- 头部结束-->
+    <section class="hero-slider">
+      <div class="inner">
+        {foreach from=$xiangce item=xiangce}
+            <div class="slide pc-thumbnail" style="background-image:url(../{$xiangce.img_url});"></div>
+        {/foreach}
+      </div><!-- .inner -->
 
-    <!-- Pager + Product Gallery -->
-    <section class="fw-section bg-gray">
-      <div class="swiper-container">
-            <div class="swiper-wrapper">
-          {foreach from=$xiangce item=xiangce}
-            <div class="swiper-slide"><img src="../../{$xiangce.img_url}"></div>
-          {/foreach}
-            </div>
 
-            <!--分页器 -->
-        <div class="swiper-pagination"></div>
-            <!--<div class="swiper-button-prev" style="width:50px;">-PREV</div>
-            <div class="swiper-button-next" style="width:50px;">NEXT-</div>-->
-    </div>
+
+
+
     </section>
-
-
-
+    <!-- 详情页bannner -->
     <!-- 电脑端商品详情选择-->
-    <section class="fw-section bg-gray padding-bottom-3x  hidden-xs">
-     <input id="goodsid" type="hidden" value="{$goods_id}">
+    <section class="fw-section bg-gray padding-bottom-3x visible-lg visible-md">
+      <input id="goodsid" type="hidden" value="{$goods_id}">
       <div class="container">
         <div class="product-info padding-top-2x text-center">
-          <h1 class="h2 space-bottom-half"></h1>
-
+          <h1 class="h2 space-bottom-half">{$spnames}</h1>
           <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥{$sub_price}</h2>
           <!--PC端缩略图-->
-            <div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs hidden-sm">
+            <div class="pc-detaile-left col-lg-4 col-md-4 col-sm-4 hidden-xs">
                 {if $jiagedata.attributeimg}
-                   <img src="././admin/{$jiagedata.attributeimg}" class="pc-thumbnail">
+                     <img src="././admin/{$jiagedata.attributeimg}" class="pc-thumbnail">
                 {/if}
             </div>
-
           <!--PC端商品选择详情-->
-
-            <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs hidden-sm">
+            <div class="pc-detaile-right col-lg-8 col-md-8 col-sm-8 hidden-xs">
               <div class="pc-dright-top">
-                    <form  name="ECS_FORMBUY">
-                           {foreach from=$specification item=spec key=spec_key name=name}
-                           <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
+                  <!-- 商品属性筛选 -->
+                  <form  name="ECS_FORMBUY">
 
-                                 <div class="pc-group-select col-lg-6 col-md-6 col-sm-6 type_arr" id="pc-select-group{$smarty.foreach.name.index}">
-                            <span style="float:left; margin-top:5px;">{$spec.name}:</span>
-                              <ul>
-                              {foreach from=$spec.values item=value key=key}
-                                <li>
-                                    <a href="#" onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index})" {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="pc-group-detail pc-group-change"{else}class="pc-group-detail"{/if} id="type_{$value.id}" data-type="{$value.id}">{$value.label}<img src="{$value.attrimg}"></a>
-                                </li>
-                              {/foreach}
-                              </ul>
-                              <div class="clear"></div>
-                          </div>
-                           {/foreach}
-                    </form>
+                        {foreach from=$specification item=spec key=spec_key name=name}
+                            <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
+                            <div class="pc-group-select col-lg-6 col-md-6 col-sm-6 type_arr" id="pc-select-group{$smarty.foreach.name.index}">
+                              <span style="float:left; margin-top:5px;">{$spec.name}:</span>  <!-- 商品类型名称 -->
+                                <ul>
+                                    <!-- 商品属性进行筛选 -->
+                                    {foreach from=$spec.values item=value key=key}
+                                       <li>
+                                            <a href="#" onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index},0)" {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="pc-group-detail pc-group-change"{else}class="pc-group-detail"{/if} id="type_{$value.id}" data-type="{$value.id}">
+                                            {if $value.attrimg}
+                                                <img src="{$value.attrimg}">
+                                            {else}
+                                                 {$value.label}
+
+                                            {/if}
+                                            </a>
+                                        </li>
+                                    {/foreach}
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="clear"></div>
+                        {/foreach}
+                   </form>
                 </div>
                 <div class="pc-dright-bottom">
                   <div class="col-lg-2 col-md-2 col-sm-2">
                       <div class="count-input">
                           <a class="incr-btn" onclick="numDec()" data-action="decrease" href="#">–</a>
-                          <input   id="quantity" type="text" value="1">
+                          <input class="quantity" id="quantity" type="text" value="1">
                           <a class="incr-btn" onclick="numAdd()" data-action="increase" href="#">+</a>
                     </div>
                     </div>
                   <div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:8px;min-height:48px;">
-
-                         <a href="#" class="add-to-cart-pay" onClick="addToCart({$goods.goods_id},'',1)">
-                                <em>立即支付</em>
+                         <a href="#" class="add-to-cart-pay">
+                                <em>放入购物车{$data}</em>
                          </a>
                     </div>
                    <div class="col-lg-2 col-md-2 col-sm-2" style="padding-top:8px;min-height:48px;">
-                        <a href="#" class="add-to-cart"  onClick="addToCart({$goods.goods_id})">
-                            <em>放入购物车</em>
+                        <a href="#" class="add-to-cart">
+                            <em>立即支付</em>
                         </a>
                    </div>
                    <div class="col-lg-5 col-md-4 col-sm-4" style="padding-top:10px;min-height:48px;">
-                     <span>收藏:</span><a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top"><i class="fa fa-heart"></i></a>
+                     <span>收藏:</span><a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top"><i id="shochangpc" class="fa fa-heart"></i></a>
                     <span>分享:</span><a href="#" class="sb-facebook" data-toggle="tooltip" data-placement="top"><i class="fa fa-wechat" id="fenxiang"></i></a>
                    </div>
+
                 </div>
             </div>
         </div><!-- .product-info -->
       </div>
     </section><!-- .fw-section.bg-gray -->
     <!--手机端商品详情选择-->
-    <section class="mobile-detail hidden-lg hidden-md">
-        <div class="mobile-thumbnail col-xs-5" style="padding:5px;">
-            {if $jiagedata.attributeimg}
-               <img src="././admin/{$jiagedata.attributeimg}" id="Mobilethumbnail" class="mobile-thumbnail">
-            {/if}
+    <section class="mobile-detail visible-xs visible-sm">
+      <div class="mobile-thumbnail col-xs-5" style="padding:20px;">
+          {if $jiagedata.attributeimg}
+                 <img src="././admin/{$jiagedata.attributeimg}" id="Mobilethumbnail" class="mobile-thumbnail">
+          {/if}
         </div>
-
         <div class="col-xs-7">
             <div class="mobile-detail-1">
-                <span class="mobile-shop-name col-xs-9">{$spnames}</span>
-                <span class="sb-twitter col-xs-3"><i id="shochang"class="fa fa-heart"></i></span>
+                <span class="mobile-shop-name col-xs-9" style="">{$spnames}</span><span class="sb-twitter col-xs-3">
+                <i id="shochang"class="fa fa-heart"></i></span>
             </div>
             <div class="clear"></div>
             <div class="mobile-shop-detail col-xs-12">
-              <div class="mobile-shop-price col-xs-5" id="mobile_price">￥{$sub_price}</div>
+              <div class="mobile-shop-price col-xs-5" id="mobile_price">¥{$sub_price}</div>
                 <div class="col-xs-7">
-                  <div class="mobile-count-input">
-                    <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">–</a>
-                    <input class="mobile-quantity" id="quantitymobile" type="text" value="1">
-                    <a class="mobile-incr-btn" onclick="numAddmobile()" href="#">+</a>
-                  </div>
+                    <div class="mobile-count-input">
+                         <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">–</a>
+                         <input class="mobile-quantity" id="quantitymobile" type="text" value="1">
+                         <a class="mobile-incr-btn" onclick="numAddmobile()" href="#">+</a>
+                    </div>
               </div>
             </div>
         </div>
@@ -497,13 +416,13 @@
         <form  name="ECS_FORMBUY_MOBILE">
             {foreach from=$specification item=spec key=spec_key name=name}
             <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
-                     <p class="mobile-cart-border-text">{$spec.name}</p>
-                      <div class="mobile-cart-border type_arr">
-                          <ul class="mobile-cart-border-select" id="mobile-borderbox">
-                              {foreach from=$spec.values item=value key=key}
-                                  <li>
-                                      <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index},1)" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"
-                                      {else}
+                <p class="mobile-cart-group-text">{$spec.name}</p>
+                <div class="mobile-cart-group type_arr">
+                    <ul class="mobile-cart-group-select" id="mobile-groupbox">
+                        {foreach from=$spec.values item=value key=key}
+                             <li>
+                                 <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index},1)" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"
+                                 {else}
                                             class="mobile-cart-border-details"
                                       {/if}
                                       id="mobiletype_{$value.id}"
@@ -512,18 +431,14 @@
                                                {$value.label}
 
                                         <img src="{$value.attr_img}">
-                                      </a>
-                                  </li>
-
-                              {/foreach}
-                          </ul>
-                          <div class="clear"></div>
-                      </div>
+                                 </a>
+                             </li>
+                        {/foreach}
+                    </ul>
+                    <div class="clear"></div>
+                </div>
             {/foreach}
         </form>
-
-
-
 
     </section>
     <div class="clear"></div>
@@ -531,55 +446,52 @@
     <section class="container padding-top">
     <div class="row">
        <div class="artist-lf col-lg-6 col-md-6 col-sm-6">
-        {foreach from=$spysj item=spysj}
-          <p>
-              <img src="../{$spysj.hav_logo}" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
-              <span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;">{$spysj.user_name}</span>
-              <img src="{$ectouch_themes}/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
-              <span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;">{$spysj.country}</span>
-            </p>
-      {/foreach}
+            <!--艺术家-->
+           {foreach from=$spysj item=spysj}
+                 <p>
+                  <img src="../{$spysj.hav_logo}" style="width:80px;height:80px;border:1px solid transparent;border-radius:50px; float:left;">
+                  <span style="margin-top:20px;margin-left:15px; margin-right:15px;display:inline-block; font-size:20px; font-weight:blod;">{$spysj.user_name}</span>
+                  <img src="{$ectouch_themes}/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
+                  <span style="margin-top:15px;margin-left:15px;display:inline-block;font-size:20px; font-weight:blod;">{$spysj.country}</span>
+                </p>
+          {/foreach}
        </div>
-       <!--<div class="artist-rt col-lg-6 col-md-6 col-sm-6">
-           <p style="font-size:16px; font-weight:bold; margin-bottom:0px;">艺术家说:</p>
-           <div style="font-size:15px; font-weight:bold; margin-top:5px;">人生的磨难是很多的，所以我们不可对于每一件轻微的伤害都过于敏感。在生活磨难面前，精神上的坚强和无动于衷是我们抵抗罪恶和人生意外的最好武器。 —— 洛克</div>
-       </div>-->
     </div>
     </section>
     <!-- Product Tabs -->
-    <section class="container padding-top-2x">
+    <section class="container">
       <!-- Nav Tabs -->
       <ul class="nav-tabs text-center" role="tablist">
         <li class="active"><a href="#description" role="tab" data-toggle="tab">产品介绍</a></li>
         <li><a href="#additional" role="tab" data-toggle="tab">商品规格</a></li>
-<!--        <li><a href="#reviews" role="tab" data-toggle="tab">Reviews <sup>3</sup></a></li>-->
       </ul><!-- .nav-tabs -->
       <!-- Tab panes -->
-
-
-
-       <div class="tab-content">
+      <div class="tab-content">
         <div role="tabpanel" class="tab-pane transition fade in active" id="description">
           <div class="row space-top">
+            <div class="space-bottom" id="xiangqiangimg">
+                <!-- 产品介绍 -->
                 {foreach from=$goodsdesc item=goodsdesc}
-                 {$goodsdesc.goods_desc}
+                   {$goodsdesc.goods_desc}
                 {/foreach}
+            </div>
           </div>
         </div><!-- .tab-pane -->
         <div role="tabpanel" class="tab-pane transition fade" id="additional">
           <div class="row">
-          {foreach from=$spguige item=spguige}
-            <div class="col-md-6">
-              <table class="table-no-border">
-                <tr>
-                  <th>{$spguige.attr_name}:</th>
-                  <td>{$spguige.attr_value}</td>
-                </tr>
+                <!-- 商品规格 -->
+                {foreach from=$spguige item=spguige}
+                          <div class="col-md-6">
+                            <table class="table-no-border">
+                              <tr>
+                                <td class="tab-shopsingle">{$spguige.attr_name}:</th>
+                                <td class="tab-shopsingle-right">{$spguige.attr_value}</td>
+                              </tr>
+                            </table>
+                          </div>
+                {/foreach}
 
-              </table>
-            </div>
-
-            {/foreach}
+            <div class="clear"></div>
           </div>
         </div>
       </div>
@@ -587,76 +499,119 @@
 
     <!-- Related Products -->
     <section class="container padding-top padding-bottom">
-      <div style="width:100px; height:30px;background-color:#ededed;position:absolute; margin-top:10px;"></div>
+      <div style="width:100px; height:30px;background-color:#ededed;position:absolute; margin-top:10px;" class="hidden-xs"></div>
         <hr style="position:relative;">
-      <h3 class="padding-top">猜 你 喜 欢</h3>
+      <h3 class="padding-top mabeylike">猜 你 喜 欢</h3>
       <div class="row padding-top">
-
-      {foreach from=$xh item=xh}
-      <div class="col-lg-3 col-sm-6 mobile-indent">
-        <div class="shop-item">
-        <div class="shop-thumbnail">
-          <a href="shop-single.php?id={$xh.goods_id}" class="item-link"></a>
-
-          {if $xh.attributeimg}<img src="././admin/{$xh.attributeimg}" alt="Shop item">{/if}
-
-        </div>
-        <div class="shop-item-details">
-          <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>
-          <span class="shop-item-price">
-          <span class="old-price"></span>
-            ￥{$xh.attributeprice}
-          </span>
-        </div>
-        </div><!-- .shop-item -->
-      </div><!-- .col-lg-3.col-sm-6 -->
+        <!-- 猜你喜欢(商品货品中同一类型的第一个) -->
+        {foreach from=$xh item=xh}
+              <div class="col-lg-3 col-sm-6 mobile-indent">
+                <div class="shop-item">
+                  <div class="shop-thumbnail">
+                    <a href="shop-single.php?id={$xh.goods_id}" class="item-link"></a>
+                    {if $xh.attributeimg}<img src="././admin/{$xh.attributeimg}" alt="Shop item">{/if}
+                  </div>
+                  <div class="shop-item-details">
+                    <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>
+                    <span class="shop-item-price">
+                      <span class="old-price"></span>
+                      ￥{$xh.attributeprice}
+                    </span>
+                  </div>
+                </div><!-- .shop-item -->
+              </div><!-- .col-lg-3.col-sm-6 -->
         {/foreach}
-
 
       </div><!-- .row -->
     </section><!-- .container -->
 
   <!-- Footer脚步 -->
+    <footer class="footer padding-top-2x">
+      <div class="column">
+        <div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons credit_card"></i>
+            </div>
+      <h4 class="feature-title"><a id="Cooperate" href="about-us.html">与我们合作</a></h4>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+        <div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons settings"></i>
+            </div>
+            <h4 class="feature-title"><a href="about-us.html">关于我们</a></h4>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+        <div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons face"></i>
+            </div>
+            <h4 class="feature-title"><a href="about-us.html">物流及售后服务</a></h4>
+          </div>
+      </div>
+    </footer>
 
-   {include file="foot.dwt"}
+  <section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
+    <div class="text-center">
+      <div class="hidden-xs">
+        <div>联系我们：电话|微信：13502637171（KITTY）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系邮箱：3412355834@qq.com</div>
+        <!-- <div>公司地址：广东省潮州市潮安区江东镇沙洲工业区</div> -->
+        <div style="margin-top: 10px;">ICP备案号</div>
+      </div>
+      <div class="visible-xs">
+        <div>联系我们：电话|微信：13502637171（KITTY）</div>
+        <div style="margin-top: 10px;">联系邮箱：3412355834@qq.com</div>
+        <div style="margin-top: 10px;">ICP备案号</div>
+      </div>
+    </div>
+  </section>
     <!-- .footer -->
     <div class="mobile-foot col-xs-12 hidden-sm hidden-md hidden-lg" style="position:fixed;bottom:0;padding:0px;">
     <div class="col-xs-6" style="padding:0px;">
-
-          <a href="#" class="mobile-add-to-cart" onClick="addToCart({$goods.goods_id},'','',1)" >
+          <a href="#" class="mobile-add-to-cart">
               放入购物车
             </a>
         </div>
         <div class="col-xs-6" style="padding:0px;">
-
-         <a href="#" class="mobile-add-to-cart-pay" onClick="addToCart({$goods.goods_id},'',1,1)" >
+         <a href="#" class="mobile-add-to-cart-pay">
               立即支付
          </a>
-
         </div>
     </div>
   </div><!-- .page-wrapper -->
 
+
   <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
-
-
+  <script src="{$ectouch_themes}/js/vendor/jquery-2.1.4.min.js"></script>
   <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
   <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
   <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
   <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
   <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/owl.carousel.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/jquery.downCount.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/magnific-popup.min.js"></script>
   <script src="{$ectouch_themes}/js/scripts.js"></script>
-
-  <script src="{$ectouch_themes}/Swiper-3.4.0/dist/js/swiper.min.js"></script>
   <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
-  <script type="text/javascript">
+
+    <script type="text/javascript">
 $(function(){
   var data={$select};
-  $(".type_arr  ul li ").css("display",'none');
+
+
+  $(".type_arr  ul li a").removeAttr("onclick");
+  $(".type_arr  ul li a").addClass('specDonotchoose');
+
   $.each(data,function(i){
     $.each(data[i],function(x){
-          $("#type_"+data[i][x]).parent("li").css("display",'block');
-          $("#mobiletype_"+data[i][x]).parent("li").css("display",'block');  //手机
+          $("#type_"+data[i][x].attr_id).attr("onclick",'attrshuaixuan('+data[i][x].attr_id+','+data[i][x].typeid+','+i+',0)');   //电脑
+          $("#type_"+data[i][x].attr_id).removeClass("specDonotchoose");  //电脑
+          $("#mobiletype_"+data[i][x].attr_id).removeClass("specDonotchoose");  //手机
+           $("#mobiletype_"+data[i][x].attr_id).attr("onclick",'attrshuaixuan('+data[i][x].attr_id+','+data[i][x].typeid+','+i+',0)');   //电脑
+
+
     })
 
 
@@ -682,8 +637,6 @@ $(function(){
 
           }
 
-
-
          $.ajax({
                                     type:"post",
                                     url:"shop-single.php?act=attrshuaixuan",
@@ -691,20 +644,28 @@ $(function(){
                                     data:{attrid:attrid,typenum:typenum,spec_arr:spec_arr,typeid:typeid},
                                     dataType: "json",
                                     success: function (data) {
+                                      console.log(data);
                                       if(data.error==1){
                                         alert('未找到该商品!');
                                         window.location.href=window.location.href;
                                         return;
                                       }
-                                       $(".type_arr  ul li ").css("display",'none');
+                                       $(".type_arr  ul li a").removeAttr("onclick");
+                                       $(".type_arr  ul li a").addClass('specDonotchoose');
+
+
+
                                        // $("#pc-select-group"+typenum+"  ul li ").css("display",'block');
 
                                       $.each(data.select,function(i) {
 
                                         $.each(data.select[i],function(x){
 
-                                          $("#type_"+data.select[i][x]).parent("li").css("display",'block');
-                                          $("#mobiletype_"+data.select[i][x]).parent("li").css("display",'block');   //手机
+                                          $("#type_"+data.select[i][x].attr_id).attr("onclick",'attrshuaixuan('+data.select[i][x].attr_id+','+data.select[i][x].typeid+','+i+',0)');         //电脑
+                                          $("#type_"+data.select[i][x].attr_id).removeClass("specDonotchoose");  //电脑
+                                          $("#mobiletype_"+data.select[i][x].attr_id).attr("onclick",'attrshuaixuan('+data.select[i][x].attr_id+','+data.select[i][x].typeid+','+i+',0)');         //电脑
+                                          $("#mobiletype_"+data.select[i][x].attr_id).removeClass("specDonotchoose");  //电脑
+
 
 
                                         });
@@ -712,6 +673,8 @@ $(function(){
 
                                       });
                                       $.each(data.checked,function(i){
+                                          $("#type_"+data.checked[i]).removeAttr("onclick");
+                                          $("#mobiletype_"+data.checked[i]).removeAttr("onclick");
                                           $("#type_"+data.checked[i]).parent().siblings('li').children('a').removeClass('pc-group-change');
                                            $("#mobiletype_"+data.checked[i]).parent().siblings('li').children('a').removeClass('pc-group-change');    //手机
                                           $("#type_"+data.checked[i]).addClass("pc-group-change");
@@ -729,11 +692,13 @@ $(function(){
                                });//ajax结束
 
        }
+
 window.__product__={$jiagedata.product_number};
 window._shuxingimgs_="././admin/"+"{$jiagedata.attributeimg}";
 
 /*商品数量+1*/
 function numAdd(){
+
     var quantity = document.getElementById("quantity").value;
     var num_add = parseInt(quantity)+1;
 
@@ -789,13 +754,16 @@ function numDecmobile(){
     }
 }
 
+
 </script>
 
   <script type="text/javascript">
     //点击收藏与取消收藏
-    var oDiv = document.getElementById('shochang');
+    var oDiv = document.getElementById('shochang');   //手机
+    var oDivpc = document.getElementById('shochangpc');   //电脑
     var goodsid = document.getElementById('goodsid').value;
     oDiv.onclick=function(){
+
 
         if(this.style.color == 'red'){
             $.ajax({
@@ -809,7 +777,38 @@ function numDecmobile(){
 
                                           }//回调函数结束
                                });//ajax结束
-            this.style.color = '#ccc';
+            this.style.color = '';
+        }else{
+             $.ajax({
+                                    type:"post",
+                                    url:"shop-single.php?act=shochang",
+                                    async:true,
+                                    data:{goodsid:goodsid},
+                                    dataType: "json",
+                                    success: function (result) {
+
+
+                                          }//回调函数结束
+                               });//ajax结束
+            this.style.color = 'red';
+        }
+    };
+    oDivpc.onclick=function(){
+
+
+        if(this.style.color == 'red'){
+            $.ajax({
+                                    type:"post",
+                                    url:"shop-single.php?act=delsc",
+                                    async:true,
+                                    data:{goodsid:goodsid},
+                                    dataType: "json",
+                                    success: function (result) {
+
+
+                                          }//回调函数结束
+                               });//ajax结束
+            this.style.color = '';
         }else{
              $.ajax({
                                     type:"post",
@@ -827,116 +826,138 @@ function numDecmobile(){
     };
 </script>
 
+<script src="{$ectouch_themes}/js/qrcode.js"></script>
+  <script src="{$ectouch_themes}/js/jquery.qrcode.js"></script>
+ <script type="text/javascript">
+  $(function(){
 
-<!--swiper,banner插件-->
-  <script>
-    var mySwiper = new Swiper ('.swiper-container', {
-    direction: 'horizontal',
-    loop: true,
-    //双击放大
-/*    zoom : true,*/
-    // 如果需要前进后退按钮
-    nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
-    pagination: '.swiper-pagination',
-        paginationClickable: '.swiper-pagination',
-        spaceBetween: 30,
-        effect: 'slide'
-    })
-    </script>
-
-<!--电脑端点击分享二维码,手机端放大缩略图-->
-<script type="text/javascript">
-  $(document).ready(function(){
     $("#fenxiang").click(function(){
-      var content= '<img src="{$ectouch_themes}/img/fenxiangerweima.png">';
-      layer.open({
-        closeBtn: 0,
-        title: false,
-        type: 1,
-        content: content
-      });
-    });
-  $("#Mobilethumbnail").click(function(){
-      var content= '<img src="'+_shuxingimgs_+'">';
+
+      var content='<div class="webui-popover-content" style="border:10px solid #ffffff;"></div>';
+
       layer.open({
         closeBtn: 0,
         title: false,
         type: 1,
         content: content,
-        style:'width:300px; height:250px;'
+        success:function(){
+
+          $('.webui-popover-content').qrcode({
+          text: window.location.href,//二维码代表的字符串（本页面的URL）
+          width: 167,//二维码宽度
+          height: 167//二维码高度
+          })
+        }
+      });
+    });
+  $("#Mobilethumbnail").click(function(){
+
+      var content= '<img src="{$ectouch_themes}/img/shop/product-gallery/preview03.jpg">';
+      layer.open({
+        closeBtn: 0,
+        title: false,
+        type: 1,
+        content: content,
+        style:'width:80%;'
       });
     });
   })
 </script>
 
 
-    <script type="text/javascript">
-   function click_scroll() {
-     document.getElementById("zhankai").click();
-   }
-  </script>
-    <!--电脑端+手机端颜色选择时样式切换-->
-    <script type="text/javascript">
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 
+  <script>
+  // 注意：所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+  // 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+  // 完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
 
+  wx.config({
+    appId: '{$data["appId"]}',
+    timestamp: '{$data["timestamp"]}',
+    nonceStr: '{$data["nonceStr"]}',
+    signature: '{$data["signature"]}',
+  jsApiList: [
+  'checkJsApi',
+  'onMenuShareTimeline',
+  'onMenuShareAppMessage',
+  'onMenuShareQQ',
+  'onMenuShareWeibo',
+  'hideMenuItems',
+  'showMenuItems',
+  'hideAllNonBaseMenuItem',
+  'showAllNonBaseMenuItem',
+  'translateVoice',
+  'startRecord',
+  'stopRecord',
+  'onRecordEnd',
+  'playVoice',
+  'pauseVoice',
+  'stopVoice',
+  'uploadVoice',
+  'downloadVoice',
+  'chooseImage',
+  'previewImage',
+  'uploadImage',
+  'downloadImage',
+  'getNetworkType',
+  'openLocation',
+  'getLocation',
+  'hideOptionMenu',
+  'showOptionMenu',
+  'closeWindow',
+  'scanQRCode',
+  'chooseWXPay',
+  'openProductSpecificView',
+  'addCard',
+  'chooseCard',
+  'openCard'
+  ]
+  });
+wx.ready(function(){
+ wx.onMenuShareAppMessage({
+      title: '爱是相互的依靠',
+      desc: '这个冬天，让我们给你最温暖的守护，打开链接查看详情',
+      link: 'http://jihua.1671.net/sangeym/',
+      imgUrl: 'http://h5.billboardpr.com/snow/images/fximg.png',
+      trigger: function (res) {
 
-    $(document).ready(function (){
-      $("#pc-select-color li a").each(function(index){
-        $(this).click(function(){
-          $("#pc-select-color li a").removeClass("cart-color-details-change");
-          $("#pc-select-color li a").eq(index).addClass("cart-color-details-change");
-          });
-        });
-      $("#pc-select-size li a").each(function(index){
-        $(this).click(function(){
+      },
+      success: function (res) {
 
-          $("#pc-select-size li a").removeClass("pc-size-change");
-          $("#pc-select-size li a").eq(index).addClass("pc-size-change");
-          });
-        });
-      $("#pc-select-group li a").each(function(index){
-        $(this).click(function(){
-          $("#pc-select-group li a").removeClass("pc-group-change");
-          $("#pc-select-group li a").eq(index).addClass("pc-group-change");
-          });
-        });
-      $("#pc-select-mold li a").each(function(index){
-        $(this).click(function(){
-          $("#pc-select-mold li a").removeClass("pc-mold-change");
-          $("#pc-select-mold li a").eq(index).addClass("pc-mold-change");
-          });
-        });
-      $("#mobile-select-color li a").each(function(index){
-        $(this).click(function(){
-          $("#mobile-select-color li a").removeClass("mobile-color-change");
-          $("#mobile-select-color li a").eq(index).addClass("mobile-color-change");
-          var adom = $(this);//根据标签的id获取标签a的dom节点
-          var gettitle = adom.attr("title");//获取title内容
-          var f = $("#selectcolor").text(gettitle);
-          });
-        });
-      $("#mobile-sizebox li a").each(function(index){
-        $(this).click(function(){
-          $("#mobile-sizebox li a").removeClass("mobile-cart-size-change");
-          $("#mobile-sizebox li a").eq(index).addClass("mobile-cart-size-change");
-          });
-        });
-      $("#mobile-groupbox li a").each(function(index){
-        $(this).click(function(){
-          $("#mobile-groupbox li a").removeClass("mobile-cart-group-change");
-          $("#mobile-groupbox li a").eq(index).addClass("mobile-cart-group-change");
-          });
-        });
-      $("#mobile-borderbox li a").each(function(index){
-        $(this).click(function(){
-          $("#mobile-borderbox li a").removeClass("mobile-cart-border-change");
-          $("#mobile-borderbox li a").eq(index).addClass("mobile-cart-border-change");
-          });
-        });
+      },
+      cancel: function (res) {
+
+      },
+      fail: function (res) {
+
+      }
     });
-  </script>
+  wx.onMenuShareTimeline({
+      title: '爱是相互的依靠',
+    desc: '这个冬天，让我们给你最温暖的守护，打开链接查看详情',
+      link: 'http://jihua.1671.net/sangeym/',
+      imgUrl: 'http://h5.billboardpr.com/snow/images/fximg.png',
+      trigger: function (res) {
+
+      },
+      success: function (res) {
+
+      },
+      cancel: function (res) {
+
+      },
+      fail: function (res) {
+
+      }
+    });
+
+
+});
+
+</script>
+
 </body><!-- <body> -->
 
 </html>

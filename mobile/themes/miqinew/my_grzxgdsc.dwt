@@ -387,7 +387,7 @@
 						  <div class="shop-item">
 							<div class="shop-thumbnail">
 							  <a href="shop-single.php?id={$spxx.goods_id}" class="item-link"></a>
-							  <img src="../../{$spxx.goods_img}" alt="Shop item">
+							  <img src="../../{$spxx.attributeimg}" alt="Shop item">
 							  <div class="shop-item-tools">
 								<a href="#" onclick="shangpingdel({$spxx.rec_id})" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="">
 								  <i class="material-icons close"></i>
