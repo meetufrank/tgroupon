@@ -497,9 +497,10 @@ group by p.goods_id ";
 $spfxtp = $db->getRow($fenxiangtupian);
 $spfxtpimg = $spfxtp['attributeimg'];
 
-$fengxiangtupian = dirname(__FILE__).'/admin/'.$spfxtpimg;
+$fengxiangtupian = $fenxingtupian.$spfxtpimg;
 $smarty->assign('fengxiangtupian',  $fengxiangtupian);  //商品图片
-print_r($fengxiangtupian);
+
+
 
 //商品id  goods_id
 $goodsid = $_REQUEST['id'];

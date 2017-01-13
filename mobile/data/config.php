@@ -18,6 +18,8 @@ if (!defined('IN_ECTOUCH')){
 require(dirname(__FILE__) . '/convention.php');
 
 //网站全局配置
+$GLOBALS['fenxingtupian'] = 'http://meetuuu.com/mobile/admin/'; //分享图片地址
+
 $config['site_name'] = '上海商创网络科技有限公司'; //站点名称
 $config['site_url']="http://".$_SERVER['HTTP_HOST']."/"; //电脑版地址
 $config['mobilesite_url']=str_replace($_SERVER["DOCUMENT_ROOT"],'',ROOT_PATH); //手机版地址

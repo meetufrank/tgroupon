@@ -40,8 +40,7 @@
   <!-- by sun -->
   <style>
     .nav-pills{
-/*     	margin-left:-18px; */
-    	padding-bottom:10px;
+    	padding-bottom:30px;
     }
   	.nav-pills>li {
 	    float: left;
@@ -222,7 +221,6 @@
 						  </div><!-- .shop-item -->
 						</div>
 				   {/foreach}
-
 
 		        	</div>
 		        </div>
