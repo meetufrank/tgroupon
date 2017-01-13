@@ -66,6 +66,7 @@ img {
 	max-width: 100%;
 	height: auto
 }
+
 svg {
 	max-width: 100%
 }
@@ -531,8 +532,8 @@ a.bg-danger:hover {
 ul, ol {
 	padding-left:0px;
 	margin-top: 0;
-/*	margin-bottom: 24px;*/
-/*	line-height: 1.8*/
+	margin-bottom: 24px;
+	line-height: 1.8
 }
 ul ul, ul ol, ol ul, ol ol {
 	margin-bottom: 0
@@ -1104,7 +1105,6 @@ th {
 table {
 	width: 100%;
 	max-width: 100%;
-	margin-bottom: 24px
 }
 table>thead>tr>th, table>thead>tr>td, table>tbody>tr>th, table>tbody>tr>td, table>tfoot>tr>th, table>tfoot>tr>td {
 	padding:10px;
@@ -2926,7 +2926,7 @@ to {
 }
 .shop-item {
 	width: 100%;
-	margin-bottom: 36px
+	margin-bottom: 36px;
 }
 .shop-item .shop-thumbnail {
 	position: relative;
@@ -2989,8 +2989,6 @@ to {
 .shop-item .shop-item-tools {
 	position: absolute;
 	z-index: 2;
-	/*bottom: 100px;
-	right: 22px;*/
 	right:10px;
 	top:10px;
 	text-align: right;
@@ -4764,7 +4762,6 @@ img.mfp-img {
 	border-bottom-color: #333
 }
 .nav-tabs {
-	margin-bottom: 0;
 	padding-left: 0;
 	list-style: none;
 	border: none;
@@ -5448,8 +5445,7 @@ img.mfp-img {
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     overflow: hidden;
-    font-size:15px;
-    font-weight: bold;
+    font-size:16px;
     padding: 0px;
 }
 .mobile-shop-detail {

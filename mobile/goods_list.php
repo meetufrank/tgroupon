@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-01-10 14:02:55
+ * @Last Modified time: 2017-01-12 18:22:45
  */
 
 
@@ -53,12 +53,23 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
           }
        }elseif($_POST['type']=='showtype'){  //类型
            if(intval($_POST['typeid'])){      //商品类型筛选
-                $sql = 'SELECT cat_id FROM ' . $GLOBALS['ecs']->table('category') . " WHERE parent_id = ".$_POST['typeid'];
+               $new_arr[]=$_POST['typeid'];
+                 $sql = 'SELECT cat_id FROM ' . $GLOBALS['ecs']->table('category') . " WHERE parent_id = ".$_POST['typeid'];
                 $parent_id = $GLOBALS['db']->getALL($sql);
-                foreach ($parent_id as $key => $value) {
+
+               foreach ($parent_id as $key => $value) {
+
                     $new_arr[]=$value['cat_id'];
+                    $sql = 'SELECT cat_id FROM ' . $GLOBALS['ecs']->table('category') . " WHERE parent_id = ".$value['cat_id'];
+                    $cart_parent_id = $GLOBALS['db']->getALL($sql);
+                    foreach ($cart_parent_id as $kk => $vv) {
+                        $new_arr[]=$vv['cat_id'];
+                    }
                 }
-                $cart_id=implode(',',$new_arr);
+
+                  $cart_id=implode(',',$new_arr);
+
+
 
                 $where=" and g.cat_id in (".$cart_id.") ";
 
@@ -126,12 +137,21 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
           }
        }elseif($_POST['type']=='showtype'){  //类型
            if(intval($_POST['typeid'])){      //商品类型筛选
+               $new_arr[]=$_POST['typeid'];
                 $sql = 'SELECT cat_id FROM ' . $GLOBALS['ecs']->table('category') . " WHERE parent_id = ".$_POST['typeid'];
                 $parent_id = $GLOBALS['db']->getALL($sql);
                 foreach ($parent_id as $key => $value) {
+
                     $new_arr[]=$value['cat_id'];
+                    $sql = 'SELECT cat_id FROM ' . $GLOBALS['ecs']->table('category') . " WHERE parent_id = ".$value['cat_id'];
+                    $cart_parent_id = $GLOBALS['db']->getALL($sql);
+                    foreach ($cart_parent_id as $kk => $vv) {
+                        $new_arr[]=$vv['cat_id'];
+                    }
                 }
-                $cart_id=implode(',',$new_arr);
+
+                  $cart_id=implode(',',$new_arr);
+
 
                 $where=" and g.cat_id in (".$cart_id.") ";
 

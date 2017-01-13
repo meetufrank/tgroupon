@@ -1276,13 +1276,14 @@ elseif($_REQUEST['step']=='pay_ok'){
 
     /* 订单商品 */
     $goods_list = order_goods($order_id);
+    if($goods_list){
     foreach ($goods_list AS $key => $value)
     {
         $goods_list[$key]['market_price'] = price_format($value['market_price'], false);
         $goods_list[$key]['goods_price']  = price_format($value['goods_price'], false);
         $goods_list[$key]['subtotal']     = price_format($value['subtotal'], false);
     }
-
+    }
     $payment_list=available_payment_list(0);  //支付方式
     $smarty->assign('payment_list',$payment_list);
 

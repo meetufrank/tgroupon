@@ -167,12 +167,11 @@
         <meta charset="utf-8" />
 
         <meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1; user-scalable=no;" />
-        <script src="jquery-1.4.4.min.js"></script>
+        <script src="js/jquery-1.9.1.min.js"></script>
     </head>
 
     <script language="javascript">
-
-        function getaddr(){
+            function getaddr(){
 
             WeixinJSBridge.invoke('editAddress',{
 
@@ -192,15 +191,15 @@
 
                 if(res.err_msg == 'edit_address:ok'){
 
-                    document.getElementById("showAddress").innerHTML="收件人："+res.userName+"  联系电话："+res.telNumber+"  收货地址："+res.proviceFirstStageName+res.addressCitySecondStageName+res.addressCountiesThirdStageName+res.addressDetailInfo+"  邮编："+res.addressPostalCode;
+                    // document.getElementById("showAddress").innerHTML="收件人："+res.userName+"  联系电话："+res.telNumber+"  收货地址："+res.proviceFirstStageName+res.addressCitySecondStageName+res.addressCountiesThirdStageName+res.addressDetailInfo+"  邮编："+res.addressPostalCode;
                       $.ajax({
                                     type:"post",
                                     url:"my_usergrzx.php?act=wxaddress",
                                     async:true,
                                     data:{consignee:res.userName,tel:res.telNumber,province:res.proviceFirstStageName,city:res.addressCitySecondStageName,district:res.addressCountiesThirdStageName,address:res.addressDetailInfo},
-                                    dataType: "text",
+                                    dataType: "json",
                                     success: function (result) {
-                                           alert(result);
+                                           window.location.href="my_usergrzx.php?act=address_list";
                                           }//回调函数结束
                                });//ajax结束
                 }
@@ -217,9 +216,12 @@
 
 
 
-    
 
-        <div class="showaddr" id="showAddress" ><a id="editAddress" href="javascript:getaddr();"><strong>点击设置收货地址</strong></a></div>
+
+        <div class="showaddr" id="showAddress" ><a id="editAddress" href="javascript:getaddr();"><strong>点击设置收货地址</strong></a></div><div class="showaddr" id="showAddress" >
+        <div class="showaddr" id="showAddress" ><a id="editAddress" href="my_usergrzx.php?act=address_list"><strong>返回</strong></a></div>
+
+
 
 
 
