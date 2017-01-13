@@ -18,7 +18,6 @@ define('IN_ECTOUCH', true);
 require(dirname(__FILE__) . '/include/init.php');
 
 
-
 include('head.php');
 
 
@@ -241,23 +240,30 @@ echo json_encode($data);
 
               exit;
 
-}elseif($_REQUEST['act'] == 'shochang'){
+}elseif($_REQUEST['act'] == 'shochangsc'){
      $goodsid = $_POST['goodsid'];
-     //商品收藏与取消
-     $sql = "insert into `ecs_collect_goods`(user_id,goods_id,add_time) values($user_id,$goodsid,'time()')";
-     $db->query($sql);
 
-     exit;
+     //查询收藏表
+     $sqlsc = "select * from `ecs_collect_goods` as c where c.user_id = $user_id and c.goods_id =$goodsid";
+     $sqlscselect = $db->getRow($sqlsc);
+     if($sqlscselect){
+        $sql = "delete  from `ecs_collect_goods` where user_id = $user_id and goods_id = $goodsid";
+        $result = $db->query($sql);
 
-}elseif($_REQUEST['act'] == 'delsc'){
-     $goodsid = $_POST['goodsid'];
-     //商品收藏与取消
+         if($result){
+            $data='false';
+           echo json_encode($data);
+          }
+     }else{
+         $sqltianjia = "insert into `ecs_collect_goods`(user_id,goods_id,add_time) values($user_id,$goodsid,'time()')";
+         $result = $db->query($sqltianjia);
+         if($result){
+            $data='true';
+           echo json_encode($data);
+          }
+     }
 
-     $sql = "delete  from `ecs_collect_goods` where user_id = $user_id and goods_id = $goodsid";
-     $db->query($sql);
-
-
-     exit;
+exit;
 
 }
 
@@ -478,7 +484,22 @@ $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 
 		/*甜   心100  修复开发*/
 $smarty->assign('now_time',  gmtime());           // 当前系统时间
 
+//收藏状态
+$sczt = "select c.user_id from `ecs_collect_goods` as c
+where c.user_id = $user_id and c.goods_id =$goods_id";
+$sczthongse = $db->getOne($sczt);
+$smarty->assign('sczthongse',  $sczthongse);
 
+
+//分享图片
+$fenxiangtupian = "select * from `ecs_products` as p where p.goods_id = $goods_id
+group by p.goods_id ";
+$spfxtp = $db->getRow($fenxiangtupian);
+$spfxtpimg = $spfxtp['attributeimg'];
+
+$fengxiangtupian = dirname(__FILE__).'/admin/'.$spfxtpimg;
+$smarty->assign('fengxiangtupian',  $fengxiangtupian);  //商品图片
+print_r($fengxiangtupian);
 
 //商品id  goods_id
 $goodsid = $_REQUEST['id'];
@@ -519,9 +540,15 @@ $smarty->assign('goodsdesc',  $goodsdesc);  //商品的详细描述
 
 
 //猜你喜欢
-$xinhuan = "select min(ep.product_id) as product_id,ep.goods_id,ep.attributeprice,ep.attributeimg,g.goods_name
-from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id
-where is_best = 1 and g.goods_id != $goodsid
+$xinhuan = "select p.goods_id,p.attributeimg,p.attributeprice,g.goods_name from `ecs_products` as p
+inner join `ecs_goods` as g
+on p.goods_id = g.goods_id
+  where p.goods_id in
+(select g.goods_id from `ecs_goods` as g
+where g.is_best = 1 and g.goods_id != $goodsid
+)
+and p.product_number > 1
+group by p.goods_id
 order by rand() LIMIT 4
 ";
 $xh = $db->getAll($xinhuan);

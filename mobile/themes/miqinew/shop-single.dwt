@@ -277,6 +277,11 @@
   .specDonotchoose{
     border:1px dashed black;
   }
+
+  /* 收藏状态为红色 */
+  .schongse{
+    color:red;
+  }
   </style>
 
 
@@ -377,7 +382,7 @@
                         </a>
                    </div>
                    <div class="col-lg-5 col-md-4 col-sm-4" style="padding-top:10px;min-height:48px;">
-                     <span>收藏:</span><a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top"><i id="shochangpc" class="fa fa-heart"></i></a>
+                     <span>收藏:</span><a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top"><i id="shochangpc" class="fa fa-heart {if $sczthongse}schongse{/if}"></i></a>
                     <span>分享:</span><a href="#" class="sb-facebook" data-toggle="tooltip" data-placement="top"><i class="fa fa-wechat" id="fenxiang"></i></a>
                    </div>
 
@@ -396,7 +401,7 @@
         <div class="col-xs-7">
             <div class="mobile-detail-1">
                 <span class="mobile-shop-name col-xs-9" style="">{$spnames}</span><span class="sb-twitter col-xs-3">
-                <i id="shochang"class="fa fa-heart"></i></span>
+                <i id="shochang"class="fa fa-heart {if $sczthongse}schongse{/if}"></i></span>
             </div>
             <div class="clear"></div>
             <div class="mobile-shop-detail col-xs-12">
@@ -557,7 +562,7 @@
   <script src="{$ectouch_themes}/js/vendor/magnific-popup.min.js"></script>
   <script src="{$ectouch_themes}/js/scripts.js"></script>
   <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
-
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript">
 $(function(){
   var data={$select};
@@ -658,6 +663,9 @@ $(function(){
 window.__product__={$jiagedata.product_number};
 window._shuxingimgs_="././admin/"+"{$jiagedata.attributeimg}";
 
+
+
+
 /*商品数量+1*/
 function numAdd(){
 
@@ -725,66 +733,45 @@ function numDecmobile(){
     var oDivpc = document.getElementById('shochangpc');   //电脑
     var goodsid = document.getElementById('goodsid').value;
     oDiv.onclick=function(){
-
-
-        if(this.style.color == 'red'){
-            $.ajax({
+         $.ajax({
                                     type:"post",
-                                    url:"shop-single.php?act=delsc",
+                                    url:"shop-single.php?act=shochangsc",
                                     async:true,
                                     data:{goodsid:goodsid},
                                     dataType: "json",
                                     success: function (result) {
-
-
-                                          }//回调函数结束
-                               });//ajax结束
-            this.style.color = '';
-        }else{
-             $.ajax({
-                                    type:"post",
-                                    url:"shop-single.php?act=shochang",
-                                    async:true,
-                                    data:{goodsid:goodsid},
-                                    dataType: "json",
-                                    success: function (result) {
-
+                                          if(result=='true'){
+                                              $("#shochang").addClass("schongse");
+                                          }else{
+                                             $("#shochang").removeClass("schongse");
+                                          }
 
                                           }//回调函数结束
+
                                });//ajax结束
-            this.style.color = 'red';
-        }
+
     };
     oDivpc.onclick=function(){
 
 
-        if(this.style.color == 'red'){
-            $.ajax({
-                                    type:"post",
-                                    url:"shop-single.php?act=delsc",
-                                    async:true,
-                                    data:{goodsid:goodsid},
-                                    dataType: "json",
-                                    success: function (result) {
-
-
-                                          }//回调函数结束
-                               });//ajax结束
-            this.style.color = '';
-        }else{
              $.ajax({
                                     type:"post",
-                                    url:"shop-single.php?act=shochang",
+                                    url:"shop-single.php?act=shochangsc",
                                     async:true,
                                     data:{goodsid:goodsid},
                                     dataType: "json",
                                     success: function (result) {
-
+                                          if(result=='true'){
+                                              $("#shochangpc").addClass("schongse");
+                                          }else{
+                                             $("#shochangpc").removeClass("schongse");
+                                          }
 
                                           }//回调函数结束
+
                                });//ajax结束
-            this.style.color = 'red';
-        }
+
+
     };
 </script>
 
@@ -878,9 +865,9 @@ function numDecmobile(){
 wx.ready(function(){
  wx.onMenuShareAppMessage({
       title: '{$spnames}',
-      desc: '商品内容',
+      desc: '商品详情内容',
       link: '',
-      imgUrl: '',
+      imgUrl: '{$fengxiangtupian}',
       trigger: function (res) {
 
       },
@@ -895,10 +882,11 @@ wx.ready(function(){
       }
     });
   wx.onMenuShareTimeline({
-      title: '爱是相互的依靠',
-      desc: '这个冬天，让我们给你最温暖的守护，打开链接查看详情',
-      link: 'http://jihua.1671.net/sangeym/',
-      imgUrl:'{$ectouch_themes}/img/shugang.png',
+      title: '{$spnames}',
+      desc: '商品详情内容',
+      link: '',
+      imgUrl:'{$fengxiangtupian}',
+
       trigger: function (res) {
 
       },
@@ -919,5 +907,5 @@ wx.ready(function(){
 </script>
 
 </body><!-- <body> -->
-
+   <img src="././admin/{$spfxtpimg}">
 </html>

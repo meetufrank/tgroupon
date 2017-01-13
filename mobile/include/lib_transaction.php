@@ -204,6 +204,8 @@ function get_consignee_list($user_id)
  */
 function get_consignee_list_new($user_id)
 {
+
+
    $sql = "SELECT *  FROM " . $GLOBALS['ecs']->table('user_address') .
             "
              WHERE user_id = '$user_id'";
@@ -431,13 +433,14 @@ function get_user_orders_new($user_id, $status=1,$num = 10, $start = 0)
 
         /* 订单商品 */
     $goods_list = order_goods($row['order_id']);
+    if($goods_list){
     foreach ($goods_list AS $key => $value)
     {
         $goods_list[$key]['market_price'] = price_format($value['market_price'], false);
         $goods_list[$key]['goods_price']  = price_format($value['goods_price'], false);
         $goods_list[$key]['subtotal']     = price_format($value['subtotal']+$value['more_price']*$value['goods_number'], false);
     }
-
+    }
         $arr[] = array('order_id'       => $row['order_id'],
                        'order_sn'       => $row['order_sn'],
                        'order_time'     => local_date($GLOBALS['_CFG']['time_format'], $row['add_time']),

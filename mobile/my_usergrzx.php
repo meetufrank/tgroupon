@@ -1506,7 +1506,7 @@ elseif ($action == 'wxaddress'){
     $cityid = $db->getOne($sqlcity);
 
 
-print_r($shis);
+
      //区
       $district = $_POST['district'];
     $sqdistrict= "select region_id from `ecs_region` where region_name LIKE '%$district%' and region_type = 3
@@ -1520,9 +1520,16 @@ print_r($shis);
      //收货人姓名
       $consignee = $_POST['consignee'];
   $sql = "insert into `ecs_user_address`(user_id,consignee,tel,province,city,district,address) values($user_id,'$consignee','$tel',$provinceid,$cityid,$districtid,'$address')";
-  print_r($sql);
 
-$db->query($sql);
+
+$result=$db->query($sql);
+
+ if($result){
+    json_encode(1);
+ }else{
+    json_encode();
+ }
+exit;
 
 
 }

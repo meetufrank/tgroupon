@@ -40,11 +40,16 @@ if($_GET['act'] == ''){
     $smarty->assign('spnum',  $spnum);
 
     //收藏的商品信息(商品图片,商品名称)
-    $sqlspxx = "select * from `ecs_products` as p
-where  p.goods_id = $goodsid
-LIMIT 1";
-    $spxx = $db->query($sqlspxx);
-    // var_dump($spxx);
+    $sqlspxx = "
+select c.rec_id,g.goods_id,p.attributeimg,g.goods_name,p.product_number from `ecs_collect_goods` as c
+inner join `ecs_products` as p
+on c.goods_id = p.goods_id
+inner join `ecs_goods` as g
+on c.goods_id = g.goods_id
+where c.user_id = $user_id
+group by g.goods_id";
+    $spxx = $db->getAll($sqlspxx);
+
     $smarty->assign('spxx',  $spxx);
 
 
