@@ -1121,6 +1121,11 @@ $smarty->assign('payment_list',$payment_list);
 
  if(isset($_GET['cartid'])){
    $cart_list = get_cart_goods($_GET['cartid']);
+
+   if(!$cart_list['goods_list']){
+        echo "<script>alert('该订单已生成');window.location.href='my_user.php?act=order_list';</script>";
+        exit;
+   }
     $smarty->assign('cart_list',$cart_list);
    //print_r($cart_list);exit;
   }
@@ -1256,7 +1261,7 @@ elseif($_REQUEST['step']=='pay_ok'){
 
     /* 订单详情 */
     $order = get_order_detail($order_id, $user_id,1);
-    if(!$order){
+    if(!$order['order_id']){
         echo "<script>alert('该订单已经支付完成');window.location.href='my_user.php?act=order_list';</script>";
         exit;
     }
@@ -1297,10 +1302,13 @@ elseif($_REQUEST['step']=='pay_ok'){
 }
 elseif($_REQUEST['step'] == 'pay_success'){
 
-    //猜你喜欢
-    $xinhuan = "select g.goods_id,g.goods_name,g.goods_img,g.shop_price from `ecs_goods` as g  where is_best = 1
-    order by rand() LIMIT 4";
-    $xh = $db->getAll($xinhuan);
+   //猜你喜欢
+$xinhuan = "select min(ep.product_id) as product_id,ep.goods_id,ep.attributeprice,ep.attributeimg,g.goods_name
+from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id
+where is_best = 1 and g.goods_id != $goodsid
+order by rand() LIMIT 4
+";
+$xh = $db->getAll($xinhuan);
     //print_r($xh);exit;
    $smarty->assign('xh',$xh);
    $smarty->display('pay_success.dwt');

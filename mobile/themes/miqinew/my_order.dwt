@@ -34,7 +34,6 @@
   <!-- Page Preloading -->
   <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
 
-  <script type="text/javascript" src="{$ectouch_themes}/js/jquery-1.4.4.min.js"></script>
 
   <!-- by sun -->
   <style>
@@ -145,15 +144,7 @@
 
 
 
-<div class="fullscreen">
-      <div class="blank"></div>
-      <div data-role="content" class="smart-result">
-        <div class="content-primary">
-          <table id="queryResult" cellpadding="0" cellspacing="0"></table>
-        </div>
-      </div>
 
-    </div>
   <!-- Page Pre-Loader -->
   <div class="page-preloader">
     <div class="preloader">
