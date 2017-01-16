@@ -278,10 +278,11 @@
                 </div>
           </div>
           {/foreach}
-          <!--收货地址1结束-->{if $loginpc}
+          <!--收货地址1结束-->
+          {if $loginpc}
 
          {else}
-               <a href=" http://meetuuu.com/mobile/weixindizhi.php" style="text-decoration: underline;">读取微信地址</a>
+               <a href=" http://meetuuu.com/mobile/weixindizhi.php" id="editAddress" style="text-decoration: underline;">读取微信地址</a>
           {/if}
 
 

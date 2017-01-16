@@ -928,5 +928,5 @@ wx.ready(function(){
 </script>
 
 </body><!-- <body> -->
-   <img src="././admin/{$spfxtpimg}">
+
 </html>
