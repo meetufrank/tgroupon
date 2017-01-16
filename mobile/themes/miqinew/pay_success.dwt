@@ -122,7 +122,7 @@
         <div class="shop-item">
         <div class="shop-thumbnail">
           <a href="shop-single.php?id={$xh.goods_id}" class="item-link"></a>
-          {if $xh.attributeimg}<img src="../../{$xh.attributeimg}" alt="Shop item">{/if}
+          {if $xh.attributeimg}<img src="././admin/{$xh.attributeimg}" alt="Shop item">{/if}
         </div>
         <div class="shop-item-details">
           <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>

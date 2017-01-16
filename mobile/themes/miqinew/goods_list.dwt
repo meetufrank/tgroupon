@@ -243,7 +243,7 @@
 		});
 
 	</script>
-<link rel="stylesheet" href="{$ectouch_themes}/layui/css/layui.css">
+
 <script type="text/livescript" src="{$ectouch_themes}/layui/layui.js"></script>
 <script type="text/javascript">
 function insert_page(data,val,id){
