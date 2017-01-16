@@ -179,7 +179,11 @@ include_once('include/cls_json.php');
 
     $cartid=addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num);
          if($type_num){
+            setcookie('add_type',1);
             $result['cartid']=$cartid;
+
+        }else{
+            setcookie('add_type',0);
         }
 
     //甜心结束
@@ -1286,7 +1290,7 @@ elseif($_REQUEST['step']=='pay_ok'){
 
     $is_wechat=is_wechat_browser();
         if($is_wechat){
-            session_start();
+
             $_SESSION['my_mobile_order'] = $order['order_id'];
         }
     $smarty->assign('is_wechat',$is_wechat);
@@ -2603,8 +2607,13 @@ elseif ($_REQUEST['step'] == 'new_done')
     }
 
     /* 订单中的商品 */
-    $cart_goods = cart_goods($flow_type);
+    if($_COOKIE['add_type']){
+          $addtype=$_COOKIE['add_type'];
+    }else{
+        $addtype=0;
+    }
 
+    $cart_goods = cart_goods($flow_type,$addtype);
     if (empty($cart_goods))
     {
         show_message($_LANG['no_goods_in_cart'], $_LANG['back_home'], './', 'warning');

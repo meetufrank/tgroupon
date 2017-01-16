@@ -2367,6 +2367,14 @@ display:none
 	border-bottom: 2px solid #ededed;
 	margin-bottom: 30px
 }
+.shopping-cart-1 .item .item-thumb {
+    width: 163px;
+    padding-right: 25px;
+}
+.shopping-cart-1 .item .item-thumb, .shopping-cart .item .item-details {
+    display: table-cell;
+    vertical-align: top;
+}
 .shopping-cart .item .item-thumb, .shopping-cart .item .item-details {
 	display: table-cell;
 	vertical-align: top

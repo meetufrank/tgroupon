@@ -702,6 +702,7 @@
             url:"flow.php",
             data:{step:'new_done',address:addressid,cart_id:cart_id},
             success: function(data){
+
                     window.location.href="flow.php?step=pay_ok&order_id="+data;
 
                   }
