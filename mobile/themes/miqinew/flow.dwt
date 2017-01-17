@@ -16,6 +16,14 @@
 <script type="text/javascript" src="{$ectouch_themes}/js/TouchSlide.js"></script>
 <script type="text/javascript" src="{$ectouch_themes}/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="{$ectouch_themes}/js/ectouch.js"></script>
+<style>
+@media screen and (min-width:320px) and (max-width:374px){
+  .layui-m-layercont {
+      padding:0px 10px;
+  }
+}
+
+</style>
 </head>
 
 <body>

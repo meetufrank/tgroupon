@@ -38,13 +38,12 @@ if (isset($user_info->errcode)) {
 
 
 
+ $unionid = $user_info ->unionid;
 
-getlog(json_encode($userinfo),'用户信息');
- $unionid = $user_info['unionid'];
- $openid = $user_info['openid'];
- $nickname = $user_info['nickname'];
- $sex = $user_info['sex'];
- $headimgurl = $user_info['headimgurl'];
+ $openid = $user_info -> openid;
+ $nickname = $user_info->nickname;
+ $sex = $user_info->sex;
+ $headimgurl = $user_info->headimgurl;
 
 
 $sql = "select user_id from `ecs_users` where unionid = '$unionid'";
