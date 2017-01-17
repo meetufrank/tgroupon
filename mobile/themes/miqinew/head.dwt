@@ -79,7 +79,7 @@
               点击扫二维码登录
           </a>
         {else}
-        <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5aec13c030a530b&redirect_uri=http://meetuuu.com/mobile/loginphone.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect" class="btn btn-primary waves-effect waves-light toggle-section">
+        <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5aec13c030a530b&redirect_uri=http://meetuuu.com/mobile/loginphone.php&response_type=code&scope=snsapi_userinfo&state=123&connect_redirect=1#wechat_redirect" class="btn btn-primary waves-effect waves-light toggle-section">
               <i class="material-icons question_answer"></i>
               点击登录
           </a>

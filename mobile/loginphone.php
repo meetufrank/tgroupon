@@ -6,45 +6,44 @@ require(dirname(__FILE__) . '/include/init.php');
 
 
 
-$appid = "wxb5aec13c030a530b";
-$secret = "2232d4acc3612e530f0ccc311c72d68c";
-$code = $_GET["code"];
-//打印用户信息
-
-
-function getJson($url){
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    $output = curl_exec($ch);
-    curl_close($ch);
-    return json_decode($output, true);
+$code = $_GET['code'];
+$state = $_GET['state'];
+//换成自己的接口信息
+$appid = 'wxb5aec13c030a530b';
+$appsecret = '2232d4acc3612e530f0ccc311c72d68c';
+if (empty($code)) $this->error('授权失败');
+$token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$appsecret.'&code='.$code.'&grant_type=authorization_code';
+$token = json_decode(file_get_contents($token_url));
+if (isset($token->errcode)) {
+    echo '<h1>错误：</h1>'.$token->errcode;
+    echo '<br/><h2>错误信息：</h2>'.$token->errmsg;
+    exit;
+}
+$access_token_url = 'https://api.weixin.qq.com/sns/oauth2/refresh_token?appid='.$appid.'&grant_type=refresh_token&refresh_token='.$token->refresh_token;
+//转成对象
+$access_token = json_decode(file_get_contents($access_token_url));
+if (isset($access_token->errcode)) {
+    echo '<h1>错误：</h1>'.$access_token->errcode;
+    echo '<br/><h2>错误信息：</h2>'.$access_token->errmsg;
+    exit;
+}
+$user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token->access_token.'&openid='.$access_token->openid.'&lang=zh_CN';
+//转成对象
+$user_info = json_decode(file_get_contents($user_info_url));
+if (isset($user_info->errcode)) {
+    echo '<h1>错误：</h1>'.$user_info->errcode;
+    echo '<br/><h2>错误信息：</h2>'.$user_info->errmsg;
+    exit;
 }
 
-//第一步:取全局access_token
-$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$secret";
-$token = getJson($url);
 
 
-//第二步:取得openid
-$oauth2Url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code";
+ $unionid = $user_info ->unionid;
 
-$oauth2 = getJson($oauth2Url);
-
-//第三步:根据全局access_token和openid查询用户信息
-$access_token = $token["access_token"];
-$openid = $oauth2['openid'];
-$get_user_info_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openid&lang=zh_CN";
-$userinfo = getJson($get_user_info_url);
-
-
- $unionid = $userinfo['unionid'];
- $openid = $userinfo['openid'];
- $nickname = $userinfo['nickname'];
- $sex = $userinfo['sex'];
- $headimgurl = $userinfo['headimgurl'];
+ $openid = $user_info -> openid;
+ $nickname = $user_info->nickname;
+ $sex = $user_info->sex;
+ $headimgurl = $user_info->headimgurl;
 
 
 $sql = "select user_id from `ecs_users` where unionid = '$unionid'";

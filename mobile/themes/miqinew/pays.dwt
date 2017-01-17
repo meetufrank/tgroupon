@@ -552,7 +552,7 @@
     +
     '<div><input type="text" class="new-address" placeholder="详细地址" name="address" id="detailadd"/></div>'
     +
-    '<div class="text-right visible-sm visible-xs"><a href="#" style="text-decoration: underline;">读取微信地址</a></div></form>'
+    '<div class="text-right visible-sm visible-xs"><a href="#" style="text-decoration: underline;"></a></div></form>'
     ;
 
 

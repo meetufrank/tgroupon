@@ -168,7 +168,20 @@ require(ROOT_PATH . 'include/lib_weixintong.php');
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 
 
-
+<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+<script>
+     var obj = new WxLogin({
+                              id:"login_container", 
+                              appid: "", 
+                              scope: "", 
+                              redirect_uri: "",
+                              state: "",
+                              style: "width:200px;",
+                              href: ""
+                            });
+							
+	</script>						
+							
 if(isset($_REQUEST['code'])&&isset($_REQUEST['state'])&&$action == 'weixin'){
     include_once(ROOT_PATH . 'includes/website/jntoo.php');
 
