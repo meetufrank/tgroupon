@@ -121,7 +121,7 @@
                 <a href="shop-single.php?id={$goods.goods_id}">{$goods.goods_name}</a>
                 </h3>
                 <div>
-                <div class="pull-right" style="color:#000" >{$goods.goods_attr}</div>
+                <div style="color:#000" >{$goods.goods_attr}</div>
                 <h4 class="item-price" data-price="{$goods.goods_price}">{$goods.goods_price}</h4>
                 </div>
                 <div class="count-input">

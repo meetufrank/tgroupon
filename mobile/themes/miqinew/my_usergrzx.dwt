@@ -325,7 +325,7 @@
           <!--收货地址1结束-->{if $loginpc}
 
          {else}
-               <a href=" http://meetuuu.com/mobile/weixindizhi.php" style="text-decoration: underline;" class="duquaddress">读取微信地址</a>
+               <a href=" http://meetuuu.com/mobile/weixindizhi.php" class="duquaddress">读取微信地址</a>
           {/if}
 
 
