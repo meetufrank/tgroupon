@@ -12,7 +12,7 @@
  * $Author: douqinghua $
  * $Id: flow.php 17218 2011-01-24 04:10:41Z douqinghua $
  */
-session_start();
+
 define('IN_ECTOUCH', true);
 require(dirname(__FILE__) . '/include/init.php');
 

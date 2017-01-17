@@ -193,7 +193,7 @@ function get_consignee_list($user_id)
             " as ua INNER JOIN ecs_region as er1 ON er1.region_id=ua.province
              INNER JOIN ecs_region as er2 ON er2.region_id=ua.city
              INNER JOIN ecs_region as er3 ON er3.region_id=ua.district
-            WHERE user_id = '$user_id'";
+            WHERE user_id = ".$user_id;
 
     return $GLOBALS['db']->getAll($sql);
 }

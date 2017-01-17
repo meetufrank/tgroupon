@@ -179,7 +179,11 @@ include_once('include/cls_json.php');
 
     $cartid=addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num);
          if($type_num){
+            setcookie('add_type',1);
             $result['cartid']=$cartid;
+
+        }else{
+            setcookie('add_type',0);
         }
 
     //甜心结束
@@ -1260,11 +1264,8 @@ elseif($_REQUEST['step']=='pay_ok'){
     $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
 
     /* 订单详情 */
-    $order = get_order_detail($order_id, $user_id,1);
-    if(!$order['order_id']){
-        echo "<script>alert('该订单已经支付完成');window.location.href='my_user.php?act=order_list';</script>";
-        exit;
-    }
+    $order = get_order_detail($order_id, $user_id);
+
     // if ($order === false)
     // {
     //     $err->show($_LANG['back_home_lnk'], './');
@@ -1289,7 +1290,7 @@ elseif($_REQUEST['step']=='pay_ok'){
 
     $is_wechat=is_wechat_browser();
         if($is_wechat){
-            session_start();
+
             $_SESSION['my_mobile_order'] = $order['order_id'];
         }
     $smarty->assign('is_wechat',$is_wechat);
@@ -1306,7 +1307,7 @@ elseif($_REQUEST['step'] == 'pay_success'){
    //猜你喜欢
 $xinhuan = "select min(ep.product_id) as product_id,ep.goods_id,ep.attributeprice,ep.attributeimg,g.goods_name
 from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id
-where is_best = 1 and g.goods_id != $goodsid
+where is_best = 1
 order by rand() LIMIT 4
 ";
 $xh = $db->getAll($xinhuan);
@@ -2606,8 +2607,13 @@ elseif ($_REQUEST['step'] == 'new_done')
     }
 
     /* 订单中的商品 */
-    $cart_goods = cart_goods($flow_type);
+    if($_COOKIE['add_type']){
+          $addtype=$_COOKIE['add_type'];
+    }else{
+        $addtype=0;
+    }
 
+    $cart_goods = cart_goods($flow_type,$addtype);
     if (empty($cart_goods))
     {
         show_message($_LANG['no_goods_in_cart'], $_LANG['back_home'], './', 'warning');
