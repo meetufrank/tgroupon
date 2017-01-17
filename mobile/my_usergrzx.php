@@ -24,6 +24,9 @@ require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 
 include('head.php');
 
+include('weixindizhi.php');
+
+
 
 $user_id=$_SESSION['user_id'];
 

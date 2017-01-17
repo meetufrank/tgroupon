@@ -21,7 +21,6 @@ require(dirname(__FILE__) . '/include/init.php');
 //-- PROCESSOR
 /*------------------------------------------------------ */
 
-
 $code = $_GET['code'];
 $state = $_GET['state'];
 
