@@ -203,7 +203,7 @@
   <!-- 头部结束-->
 
     <!-- Content -->
-    <section class="container padding-top-3x">
+    <section class="container padding-top-1x">
      <!-- Nav Tabs -->
       <ul class="nav-tabs" role="tablist">
         <li ><a href="my_user.php?act=order_list" role="tab" data-toggle="tab">我的订单</a></li>
