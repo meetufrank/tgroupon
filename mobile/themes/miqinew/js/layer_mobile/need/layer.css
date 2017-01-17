@@ -1,8 +1,40 @@
-@media screen and (max-width:768px){
+/* iphone4,5,5s*/
+@media screen and (min-width:320px) and (max-width:374px){
 	.layui-m-layercont{
 		padding:0px 3px;
 	}
 }
+/* iphone6*/
+@media screen and (min-width:375px) and (max-width:413px){
+	.layui-m-layercont{
+		padding:5px 5px;
+	}
+}
+/* iphone6plus*/
+@media screen and (min-width:414px) and (max-width:767px){
+	.layui-m-layercont{
+		padding:10px 10px;
+	}
+}
+/* 小型设备（平板电脑，768px 起） */
+@media (min-width: 768px) {
+	.layui-m-layercont{
+		padding:30px 30px;
+	}		
+}
+/* 中型设备（台式电脑，992px 起） */
+@media (min-width:992px) {
+	.layui-m-layercont{
+		padding:30px 30px;
+	}		
+}
+/* 大型设备（大台式电脑，1200px 起） */
+@media (min-width:1200px) {
+	.layui-m-layercont{
+		padding:30px 30px;
+	}
+}
+
 .layui-m-layer {
 	position: relative;
 	z-index: 19891014
@@ -136,7 +168,6 @@ transform:translateY(0)
 	white-space: nowrap
 }
 .layui-m-layercont {
-	padding: 40px 30px;
 	line-height: 22px;/*text-align:center*/
 }
 .layui-m-layer1 .layui-m-layercont {
