@@ -3616,6 +3616,7 @@ to {
 @media screen and (max-width: 768px) {
 .sidebar {
 	position: fixed;
+	width:45%;
 	height: 100%;
 	z-index: 9910;
 	top: 0;
