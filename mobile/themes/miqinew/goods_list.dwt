@@ -105,19 +105,23 @@
     <script type="text/javascript">
 
        function showlist(val,id){
+        var search=0;
         if(id=='showsearch'){
          var val= $("#"+val).val();
 
-                  }
+          }
+        if($("#searchvalue").val()){
+             search=$("#searchvalue").val();
+         }
+
 
 		     $.ajax({
 				   type: "post",
 				   url: "goods_list.php?step=ajax_goods_count",
-				   data:{typeid:val,type:id},
-				   dataType:"json",
+				   data:{typeid:val,type:id,search:search},
 				   success: function (data) {
 
-            insert_page(data,val,id);
+            insert_page(data,val,id,search);
 				  },
 				  error: function(data){
                     	alert("Json数据出错");
@@ -177,7 +181,7 @@
             <div class="column">
               <form method="get" class="search-box">
                 <input type="text" class="form-control" placeholder="请在此处搜索您想要的商品" value="{{d.search?d.search:''}}" id="searchvalue" >
-                <button type="submit" onclick="javascript:;">
+                <button type="submit" onclick="javascript:return false;">
                   <i class="material-icons search" onClick="showlist('searchvalue','showsearch')"></i>
                 </button>
               </form><!-- form.search-box -->
@@ -228,16 +232,21 @@
 
                 }
 		});
+  var searches='{$search_val}';
 		$.ajax({
 				   type: "post",
 				   url: "goods_list.php?step=ajax_goods_count",
 				   dataType:"json",
 				   success: function (data) {
 
+            if(searches!=''){
+                $("#searchvalue").val(searches);
+            }
 
-            insert_page(data,'','');
+            insert_page(data,'','',searches);
 				  },
 				  error: function(data){
+
 
                 }
 		});
@@ -246,7 +255,7 @@
 
 <script type="text/livescript" src="{$ectouch_themes}/layui/layui.js"></script>
 <script type="text/javascript">
-function insert_page(data,val,id){
+function insert_page(data,val,id,search){
   var val=val?val:'';
   var id=id?id:'';
 layui.use('layer', function (){
@@ -260,11 +269,12 @@ layui.use(['laypage', 'layer'], function(){
     ,pages: data
     ,skin: '#1E9FFF'
     ,jump: function(obj){
+
               $.ajax({
                type: "post",
                url: "goods_list.php?step=ajax_goods_list",
                dataType:"json",
-               data:{page_num:obj.curr,typeid:val,type:id},
+               data:{page_num:obj.curr,typeid:val,type:id,search:search},
                success: function (data) {
 
                 var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
@@ -274,11 +284,12 @@ layui.use(['laypage', 'layer'], function(){
 
               },
               error: function(data){
+
                           layer.open({
-                  content: 'hhahah'
+                  content: '暂无商品'
                   ,skin: 'msg'
-                  ,time: 1 //2秒后自动关闭
                   });
+                  $("#searchvalue").val('');
                     }
           });
     }

@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-01-16 10:38:17
+ * @Last Modified time: 2017-01-17 10:18:27
  */
 
 
@@ -24,7 +24,7 @@ if (!isset($_REQUEST['step']))
 if ($_REQUEST['step'] == 'goods_list'){
 
 
-
+       $smarty->assign('search_val',$_COOKIE['search_content']);
        $smarty->display('goods_list.dwt');
 
 
@@ -32,19 +32,32 @@ if ($_REQUEST['step'] == 'goods_list'){
 elseif($_REQUEST['step'] == 'ajax_goods_count'){
 
          $page_count=15;   ///设置每页显示条数
-
+        if(!$_POST['search']){
+              setcookie('showsearch','',time()-3600);
+              setcookie('search_content','',time()-3600);
+        }
 
        if($_POST['type']=='showprice'){
           if(intval($_POST['typeid'])!=1){      //价格区间筛选
             //获取价格区间
             $price=get_price_type($_POST['typeid']);
 
-            $where=" and ep.attributeprice>=".$price['min_money']." and ep.attributeprice<=".$price['max_money'];
+            $where=" and (ep.attributeprice+g.more_price)>=".$price['min_money']." and (ep.attributeprice+g.more_price)<=".$price['max_money'];
             setcookie('showprice',$where);
             if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
-                $where.=$_COOKIE['showtype'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
+                        $str=$_COOKIE['search_content'];
+                        $num=abslength($str);
+                        $where.=$_COOKIE['showsearch'];
+                        for($i=$num;$i>0;$i--){
+                              $search_value=csubstr($str,0,$i);
+                              $where.=" '%".$search_value."%' ";
+                              $where.=$_COOKIE['showtype'];
+                              $where_array[]=$where;
+                        }
+                //$where.=$_COOKIE['showtype'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
             }else{
                 $where.=$_COOKIE['showtype'];
+                $where_array[]=$where;
             }
 
 
@@ -75,9 +88,19 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
 
                 setcookie('showtype',$where);
                 if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
-                       $where.=$_COOKIE['showprice'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
+                        $str=$_COOKIE['search_content'];
+                        $num=abslength($str);
+                        $where.=$_COOKIE['showsearch'];
+                        for($i=$num;$i>0;$i--){
+                              $search_value=csubstr($str,0,$i);
+                              $where.=" '%".$search_value."%' ";
+                              $where.=$_COOKIE['showprice'];
+                              $where_array[]=$where;
+                        }
+                       // $where.=$_COOKIE['showprice'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
                 }else{
                        $where.=$_COOKIE['showprice'];
+                       $where_array[]=$where;
                 }
 
            }else{
@@ -86,11 +109,23 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
        }elseif($_POST['type']=='showsearch'){
 
              if($_POST['typeid']){
-                   $where=" and g.goods_name like ";
-                   setcookie('showsearch',$where);
-                   $where.=" '%".$_POST['typeid']."%' ";
-                   $where.=$_COOKIE['showprice'].$_COOKIE['showtype'];
-                   setcookie('search_content',$_POST['typeid']);
+                    setcookie('search_content',$_POST['typeid']);
+                    $str=$_POST['typeid'];
+                    $num=abslength($str);
+                    $where=" and g.goods_name like ";
+                    setcookie('showsearch',$where);
+                    for($i=$num;$i>0;$i--){
+                          $search_value=csubstr($str,0,$i);
+                          $where.=" '%".$search_value."%' ";
+                          $where.=$_COOKIE['showprice'].$_COOKIE['showtype'];
+                          $where_array[]=$where;
+                    }
+
+                   // $where=" and g.goods_name like ";
+                   // setcookie('showsearch',$where);
+                   // $where.=" '%".$_POST['typeid']."%' ";
+                   // $where.=$_COOKIE['showprice'].$_COOKIE['showtype'];
+                   // setcookie('search_content',$_POST['typeid']);
 
                  }else{
                       setcookie('showsearch','',time()-3600);
@@ -99,9 +134,28 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
        }
 
 
-        /* 记录总数 */
-        $sql = "SELECT COUNT(distinct ep.goods_id) FROM " .$GLOBALS['ecs']->table('products'). " as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where;
-        $goods_count = $GLOBALS['db']->getOne($sql);
+       $no_str='';
+       $goods_count=0;
+   if(is_array($where_array)){
+        foreach($where_array as $key=>$value){
+              $data_list=array();
+              $data_list=get_goods_id($value,$no_str);
+              if(is_array($data_list)){
+                foreach ($data_list as $g_k => $g_v) {
+                $no_id[]=$g_v['goods_id'];
+                }
+                $no_str=implode(',',$no_id);
+                $goods_count+=get_goods_count($value,$no_str);
+              }
+
+              //$goods_list = array_merge($goods_list,$data_list);  //商品列表
+
+        }
+   }else{
+     // $goods_list=get_goods_list();
+      $goods_count+=get_goods_count();
+   }
+
 
          $num=ceil($goods_count/$page_count);
 
@@ -117,18 +171,32 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
        }else{
            $page_num=intval($_POST['page_num']);
        }
+       if(!$_POST['search']){
+              setcookie('showsearch','',time()-3600);
+              setcookie('search_content','',time()-3600);
+        }
        $limit="  limit ".($page_num-1)*$page_count." ,".$page_count." ";
        if($_POST['type']=='showprice'){
           if(intval($_POST['typeid'])!=1){      //价格区间筛选
             //获取价格区间
             $price=get_price_type($_POST['typeid']);
 
-            $where=" and ep.attributeprice>=".$price['min_money']." and ep.attributeprice<=".$price['max_money'];
+            $where=" and (ep.attributeprice+g.more_price)>=".$price['min_money']." and (ep.attributeprice+g.more_price)<=".$price['max_money'];
             setcookie('showprice',$where);
             if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
-                $where.=$_COOKIE['showtype'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
+                        $str=$_COOKIE['search_content'];
+                        $num=abslength($str);
+                        $where.=$_COOKIE['showsearch'];
+                        for($i=$num;$i>0;$i--){
+                              $search_value=csubstr($str,0,$i);
+                              $where.=" '%".$search_value."%' ";
+                              $where.=$_COOKIE['showtype'];
+                              $where_array[]=$where;
+                        }
+                //$where.=$_COOKIE['showtype'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
             }else{
                 $where.=$_COOKIE['showtype'];
+                $where_array[]=$where;
             }
 
 
@@ -157,9 +225,19 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
 
                 setcookie('showtype',$where);
                 if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
-                       $where.=$_COOKIE['showprice'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
+                        $str=$_COOKIE['search_content'];
+                        $num=abslength($str);
+                        $where.=$_COOKIE['showsearch'];
+                        for($i=$num;$i>0;$i--){
+                              $search_value=csubstr($str,0,$i);
+                              $where.=" '%".$search_value."%' ";
+                              $where.=$_COOKIE['showprice'];
+                              $where_array[]=$where;
+                        }
+                       //$where.=$_COOKIE['showprice'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
                 }else{
                        $where.=$_COOKIE['showprice'];
+                       $where_array[]=$where;
                 }
 
            }else{
@@ -168,11 +246,23 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
        }elseif($_POST['type']=='showsearch'){
 
              if($_POST['typeid']){
-                   $where=" and g.goods_name like ";
-                   setcookie('showsearch',$where);
-                   $where.=" '%".$_POST['typeid']."%' ";
-                   $where.=$_COOKIE['showprice'].$_COOKIE['showtype'];
-                   setcookie('search_content',$_POST['typeid']);
+                    setcookie('search_content',$_POST['typeid']);
+                    $str=$_POST['typeid'];
+                    $num=abslength($str);
+                    $where=" and g.goods_name like ";
+                    setcookie('showsearch',$where);
+                    for($i=$num;$i>0;$i--){
+                          $search_value=csubstr($str,0,$i);
+                          $where.=" '%".$search_value."%' ";
+                          $where.=$_COOKIE['showprice'].$_COOKIE['showtype'];
+                          $where_array[]=$where;
+                    }
+
+                   // $where=" and g.goods_name like ";
+                   // setcookie('showsearch',$where);
+                   // $where.=" '%".$_POST['typeid']."%' ";
+                   // $where.=$_COOKIE['showprice'].$_COOKIE['showtype'];
+                   // setcookie('search_content',$_POST['typeid']);
 
                  }else{
                       setcookie('showsearch','',time()-3600);
@@ -180,23 +270,50 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
                  }
        }
 
-       $sql="select min(ep.product_id) as product_id,ep.goods_id,(ep.attributeprice+g.more_price) as attributeprice,ep.attributeimg,g.goods_name from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where." GROUP BY ep.goods_id ".$limit;
+       $no_str='';
+       $goods_count=0;
+   if(is_array($where_array)){
+        foreach($where_array as $key=>$value){
+              $data_list=array();
+              $data_list=get_goods_list($value,$limit,$no_str);
+
+              if(is_array($data_list)){
+                foreach ($data_list as $g_k => $g_v) {
+                $goods_list[]=$data_list[$g_k];
+                $no_id[]=$g_v['goods_id'];
+                }
+                $no_str=implode(',',$no_id);
+                $goods_count+=get_goods_count($value,$no_str);
+              }
+
+
+        }
+   }else{
+      $goods_list=get_goods_list();
+      $goods_count+=get_goods_count();
+   }
+
+
+       // $sql="select min(ep.product_id) as product_id,ep.goods_id,(ep.attributeprice+g.more_price) as attributeprice,ep.attributeimg,g.goods_name from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where." GROUP BY ep.goods_id ".$limit;
         // $sql = "SELECT goods_id, goods_name, goods_type, goods_sn, market_price,shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, sales_volume_base,goods_thumb, " .
         //             " (promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today') AS is_promote ".
         //             " FROM " . $GLOBALS['ecs']->table('goods') . " AS g WHERE is_delete=0 AND is_on_sale=1 ".$where.$limit;
 
-       $goods_list = $GLOBALS['db']->getALL($sql);  //商品列表
+      // $goods_list = $GLOBALS['db']->getALL($sql);  //商品列表
 
 
 
-        /* 记录总数 */
-        $sql = "SELECT COUNT(distinct ep.goods_id) FROM " .$GLOBALS['ecs']->table('products'). " as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where;
-        $goods_count = $GLOBALS['db']->getOne($sql);
+
+        // /* 记录总数 */
+        // $sql = "SELECT COUNT(distinct ep.goods_id) FROM " .$GLOBALS['ecs']->table('products'). " as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where;
+        // $goods_count = $GLOBALS['db']->getOne($sql);
 
          $data['data']=$goods_list;
          $data['count']=$goods_count;
          if($_POST['type']=='showsearch'){
-         $data['search']=$_POST['typeid']?$_POST['typeid']:'';
+         $data['search']=$_POST['typeid'];
+         }else{
+          $data['search']=$_COOKIE['search_content'];
          }
          $num=ceil($goods_count/$page_count);
 
@@ -265,3 +382,31 @@ function get_price_type($id=''){
 
             return $price;
     }
+function get_goods_list($where='',$limit='',$str=''){
+   if($str){
+    $add_where="and g.goods_id not in (".$str.") ";
+   }
+      $sql="select min(ep.product_id) as product_id,ep.goods_id,(ep.attributeprice+g.more_price) as attributeprice,ep.attributeimg,g.goods_name from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where.$add_where." GROUP BY ep.goods_id ".$limit;
+      $data=$GLOBALS['db']->getALL($sql);
+      return $data;
+}
+
+function get_goods_count($where='',$str=''){
+  if($str){
+    $add_where="and g.goods_id not in (".$str.") ";
+   }
+  $sql = "SELECT COUNT(distinct ep.goods_id) FROM " .$GLOBALS['ecs']->table('products'). " as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$value.$add_where;
+  $goods_count = $GLOBALS['db']->getOne($sql);
+
+  return $goods_count;
+}
+
+function get_goods_id($where='',$str=''){
+if($str){
+    $add_where="and g.goods_id not in (".$str.") ";
+   }
+  $sql="select min(ep.product_id) as product_id,ep.goods_id from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where.$add_where." GROUP BY ep.goods_id ";
+      $data=$GLOBALS['db']->getALL($sql);
+
+      return $data;
+}
