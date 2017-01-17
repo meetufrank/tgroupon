@@ -4,10 +4,10 @@
 
     <!-- Site Logo -->
       <a href="index.html" class="site-logo visible-desktop">
-        COLOR <span>&</span> SHAPE
+        型&nbsp;色&nbsp;主&nbsp;义
       </a><!-- site-logo.visible-desktop -->
       <a href="index.html" class="site-logo visible-mobile">
-        COLOR <span>&</span> SHAPE
+        型&nbsp;色&nbsp;主&nbsp;义
       </a><!-- site-logo.visible-mobile -->
 
 
@@ -476,7 +476,7 @@ function addToCartResponse(data)
     layer.open({
                 content: '已加入购物车',
                 skin: 'msg',
-                time: 0.5 //0.5秒后自动关闭
+                time: 2 //2秒后自动关闭
                 });
             $.ajax({
                 type:"POST",
