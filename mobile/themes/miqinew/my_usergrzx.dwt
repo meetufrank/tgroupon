@@ -261,7 +261,7 @@
                     },function(res){
 
                         if(res.err_msg == 'edit_address:ok'){
-                           alert("加拉大家骄傲来得及案件达");
+
                             // document.getElementById("showAddress").innerHTML="收件人："+res.userName+"  联系电话："+res.telNumber+"  收货地址："+res.proviceFirstStageName+res.addressCitySecondStageName+res.addressCountiesThirdStageName+res.addressDetailInfo+"  邮编："+res.addressPostalCode;
                               $.ajax({
                                             type:"post",
@@ -270,7 +270,7 @@
                                             data:{consignee:res.userName,tel:res.telNumber,province:res.proviceFirstStageName,city:res.addressCitySecondStageName,district:res.addressCountiesThirdStageName,address:res.addressDetailInfo},
                                             dataType: "json",
                                             success: function (result) {
-                                                   window.location.href="my_usergrzx.php?act=address_list";
+
                                                   }//回调函数结束
                                        });//ajax结束
                         }

@@ -238,7 +238,7 @@
   }
   .pc-group-change{
     display:block;
-    width:50px;
+    width:45px;
     height:30px;
     background-color:rgb(52,52,52);
     border:1px solid rgb(52,52,52);
