@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-01-17 10:18:27
+ * @Last Modified time: 2017-01-17 19:00:50
  */
 
 
@@ -46,14 +46,36 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
             setcookie('showprice',$where);
             if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
                         $str=$_COOKIE['search_content'];
+                        $str=strFilter($str);
                         $num=abslength($str);
-                        $where.=$_COOKIE['showsearch'];
-                        for($i=$num;$i>0;$i--){
-                              $search_value=csubstr($str,0,$i);
-                              $where.=" '%".$search_value."%' ";
-                              $where.=$_COOKIE['showtype'];
-                              $where_array[]=$where;
-                        }
+                        $b_count=$num;
+
+                    for($a=$num-1;$a>=0;$a--){
+                      $count=0;
+                      $new_where=" ";//初始化
+                      $search_value=array();  //初始化数组
+                      $where.=$_COOKIE['showtype'].$_COOKIE['showsearch'];
+                      for($b=0;$b<$num-$a;$b++){
+                          $search_value[]=csubstr($str,$count,$b_count);
+
+                          $count++;
+                      }
+                      $search_count=count($search_value);   //查询结果字符串的长度
+                      $or_num=$search_count-1;  //or存在的个数
+                      $value_count=0; //初始化结果循环次数
+                      foreach($search_value as $s_k=>$s_v){
+
+                          $new_where.="  g.goods_name like '%".$s_v."%' ";
+                          if($value_count<$or_num){
+                            $new_where.=" or";
+                          }
+                          $value_count++;
+                      }
+
+                      $where.=$new_where." ) ";
+                      $where_array[]=$where;
+                     $b_count--;
+                    }
                 //$where.=$_COOKIE['showtype'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
             }else{
                 $where.=$_COOKIE['showtype'];
@@ -89,14 +111,36 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
                 setcookie('showtype',$where);
                 if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
                         $str=$_COOKIE['search_content'];
+                        $str=strFilter($str);
                         $num=abslength($str);
-                        $where.=$_COOKIE['showsearch'];
-                        for($i=$num;$i>0;$i--){
-                              $search_value=csubstr($str,0,$i);
-                              $where.=" '%".$search_value."%' ";
-                              $where.=$_COOKIE['showprice'];
-                              $where_array[]=$where;
-                        }
+                        $b_count=$num;
+
+                    for($a=$num-1;$a>=0;$a--){
+                      $count=0;
+                      $new_where=" ";//初始化
+                      $search_value=array();  //初始化数组
+                      $where.=$_COOKIE['showprice'].$_COOKIE['showsearch'];
+                      for($b=0;$b<$num-$a;$b++){
+                          $search_value[]=csubstr($str,$count,$b_count);
+
+                          $count++;
+                      }
+                      $search_count=count($search_value);   //查询结果字符串的长度
+                      $or_num=$search_count-1;  //or存在的个数
+                      $value_count=0; //初始化结果循环次数
+                      foreach($search_value as $s_k=>$s_v){
+
+                          $new_where.="  g.goods_name like '%".$s_v."%' ";
+                          if($value_count<$or_num){
+                            $new_where.=" or";
+                          }
+                          $value_count++;
+                      }
+
+                      $where.=$new_where." ) ";
+                      $where_array[]=$where;
+                     $b_count--;
+                    }
                        // $where.=$_COOKIE['showprice'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
                 }else{
                        $where.=$_COOKIE['showprice'];
@@ -110,15 +154,36 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
 
              if($_POST['typeid']){
                     setcookie('search_content',$_POST['typeid']);
-                    $str=$_POST['typeid'];
+                    $str=strFilter($_POST['typeid']);
                     $num=abslength($str);
-                    $where=" and g.goods_name like ";
-                    setcookie('showsearch',$where);
-                    for($i=$num;$i>0;$i--){
-                          $search_value=csubstr($str,0,$i);
-                          $where.=" '%".$search_value."%' ";
-                          $where.=$_COOKIE['showprice'].$_COOKIE['showtype'];
-                          $where_array[]=$where;
+                    $b_count=$num;
+
+                    for($a=$num-1;$a>=0;$a--){
+                      $count=0;
+                      $new_where=" ";//初始化
+                      $search_value=array();  //初始化数组
+                      $where=" and ( ";
+                      setcookie('showsearch',$where);
+                      for($b=0;$b<$num-$a;$b++){
+                          $search_value[]=csubstr($str,$count,$b_count);
+
+                          $count++;
+                      }
+                      $search_count=count($search_value);   //查询结果字符串的长度
+                      $or_num=$search_count-1;  //or存在的个数
+                      $value_count=0; //初始化结果循环次数
+                      foreach($search_value as $s_k=>$s_v){
+
+                          $new_where.="  g.goods_name like '%".$s_v."%' ";
+                          if($value_count<$or_num){
+                            $new_where.=" or";
+                          }
+                          $value_count++;
+                      }
+
+                      $where.=$new_where." ) ".$_COOKIE['showprice'].$_COOKIE['showtype'];
+                      $where_array[]=$where;
+                     $b_count--;
                     }
 
                    // $where=" and g.goods_name like ";
@@ -136,16 +201,18 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
 
        $no_str='';
        $goods_count=0;
+
    if(is_array($where_array)){
         foreach($where_array as $key=>$value){
               $data_list=array();
               $data_list=get_goods_id($value,$no_str);
+              $goods_count+=get_goods_count($value,$no_str);
               if(is_array($data_list)){
                 foreach ($data_list as $g_k => $g_v) {
                 $no_id[]=$g_v['goods_id'];
                 }
-                $no_str=implode(',',$no_id);
-                $goods_count+=get_goods_count($value,$no_str);
+                $no_str=@implode(',',$no_id);
+
               }
 
               //$goods_list = array_merge($goods_list,$data_list);  //商品列表
@@ -185,14 +252,36 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
             setcookie('showprice',$where);
             if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
                         $str=$_COOKIE['search_content'];
+                        $str=strFilter($str);
                         $num=abslength($str);
-                        $where.=$_COOKIE['showsearch'];
-                        for($i=$num;$i>0;$i--){
-                              $search_value=csubstr($str,0,$i);
-                              $where.=" '%".$search_value."%' ";
-                              $where.=$_COOKIE['showtype'];
-                              $where_array[]=$where;
-                        }
+                        $b_count=$num;
+
+                    for($a=$num-1;$a>=0;$a--){
+                      $count=0;
+                      $new_where=" ";//初始化
+                      $search_value=array();  //初始化数组
+                      $where.=$_COOKIE['showtype'].$_COOKIE['showsearch'];
+                      for($b=0;$b<$num-$a;$b++){
+                          $search_value[]=csubstr($str,$count,$b_count);
+
+                          $count++;
+                      }
+                      $search_count=count($search_value);   //查询结果字符串的长度
+                      $or_num=$search_count-1;  //or存在的个数
+                      $value_count=0; //初始化结果循环次数
+                      foreach($search_value as $s_k=>$s_v){
+
+                          $new_where.="  g.goods_name like '%".$s_v."%' ";
+                          if($value_count<$or_num){
+                            $new_where.=" or";
+                          }
+                          $value_count++;
+                      }
+
+                      $where.=$new_where." ) ";
+                      $where_array[]=$where;
+                     $b_count--;
+                    }
                 //$where.=$_COOKIE['showtype'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
             }else{
                 $where.=$_COOKIE['showtype'];
@@ -226,14 +315,36 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
                 setcookie('showtype',$where);
                 if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
                         $str=$_COOKIE['search_content'];
+                        $str=strFilter($str);
                         $num=abslength($str);
-                        $where.=$_COOKIE['showsearch'];
-                        for($i=$num;$i>0;$i--){
-                              $search_value=csubstr($str,0,$i);
-                              $where.=" '%".$search_value."%' ";
-                              $where.=$_COOKIE['showprice'];
-                              $where_array[]=$where;
-                        }
+                        $b_count=$num;
+
+                    for($a=$num-1;$a>=0;$a--){
+                      $count=0;
+                      $new_where=" ";//初始化
+                      $search_value=array();  //初始化数组
+                      $where.=$_COOKIE['showprice'].$_COOKIE['showsearch'];
+                      for($b=0;$b<$num-$a;$b++){
+                          $search_value[]=csubstr($str,$count,$b_count);
+
+                          $count++;
+                      }
+                      $search_count=count($search_value);   //查询结果字符串的长度
+                      $or_num=$search_count-1;  //or存在的个数
+                      $value_count=0; //初始化结果循环次数
+                      foreach($search_value as $s_k=>$s_v){
+
+                          $new_where.="  g.goods_name like '%".$s_v."%' ";
+                          if($value_count<$or_num){
+                            $new_where.=" or";
+                          }
+                          $value_count++;
+                      }
+
+                      $where.=$new_where." ) ";
+                      $where_array[]=$where;
+                     $b_count--;
+                    }
                        //$where.=$_COOKIE['showprice'].$_COOKIE['showsearch']." '%".$_COOKIE['search_content']."%' ";
                 }else{
                        $where.=$_COOKIE['showprice'];
@@ -247,15 +358,36 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
 
              if($_POST['typeid']){
                     setcookie('search_content',$_POST['typeid']);
-                    $str=$_POST['typeid'];
+                     $str=strFilter($_POST['typeid']);
                     $num=abslength($str);
-                    $where=" and g.goods_name like ";
-                    setcookie('showsearch',$where);
-                    for($i=$num;$i>0;$i--){
-                          $search_value=csubstr($str,0,$i);
-                          $where.=" '%".$search_value."%' ";
-                          $where.=$_COOKIE['showprice'].$_COOKIE['showtype'];
-                          $where_array[]=$where;
+                    $b_count=$num;
+
+                    for($a=$num-1;$a>=0;$a--){
+                      $count=0;
+                      $new_where=" ";//初始化
+                      $search_value=array();  //初始化数组
+                      $where=" and ( ";
+                      setcookie('showsearch',$where);
+                      for($b=0;$b<$num-$a;$b++){
+                          $search_value[]=csubstr($str,$count,$b_count);
+
+                          $count++;
+                      }
+                      $search_count=count($search_value);   //查询结果字符串的长度
+                      $or_num=$search_count-1;  //or存在的个数
+                      $value_count=0; //初始化结果循环次数
+                      foreach($search_value as $s_k=>$s_v){
+
+                          $new_where.="  g.goods_name like '%".$s_v."%' ";
+                          if($value_count<$or_num){
+                            $new_where.=" or";
+                          }
+                          $value_count++;
+                      }
+
+                      $where.=$new_where." ) ".$_COOKIE['showprice'].$_COOKIE['showtype'];
+                      $where_array[]=$where;
+                     $b_count--;
                     }
 
                    // $where=" and g.goods_name like ";
@@ -276,16 +408,15 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
         foreach($where_array as $key=>$value){
               $data_list=array();
               $data_list=get_goods_list($value,$limit,$no_str);
-
+              $goods_count+=get_goods_count($value,$no_str);
               if(is_array($data_list)){
                 foreach ($data_list as $g_k => $g_v) {
                 $goods_list[]=$data_list[$g_k];
                 $no_id[]=$g_v['goods_id'];
                 }
-                $no_str=implode(',',$no_id);
-                $goods_count+=get_goods_count($value,$no_str);
-              }
+                $no_str=@implode(',',$no_id);
 
+              }
 
         }
    }else{
@@ -395,7 +526,7 @@ function get_goods_count($where='',$str=''){
   if($str){
     $add_where="and g.goods_id not in (".$str.") ";
    }
-  $sql = "SELECT COUNT(distinct ep.goods_id) FROM " .$GLOBALS['ecs']->table('products'). " as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$value.$add_where;
+   $sql = "SELECT COUNT(distinct ep.goods_id) FROM " .$GLOBALS['ecs']->table('products'). " as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where.$add_where;
   $goods_count = $GLOBALS['db']->getOne($sql);
 
   return $goods_count;
