@@ -5641,7 +5641,7 @@ img.mfp-img {
 }
 .duquaddress{
 	display: block; 
-	width: 100px;
+	width:80px;
 	height: 30px;
 	border: 1px solid #CCC;
 	background: #9c9d9e;
@@ -5649,10 +5649,12 @@ img.mfp-img {
 	padding: 2px 6px;
 	color: #ffffff;
 	border-radius:5px;
+	text-align: center;
+	line-height: 1.5;
 }
 .addNewAddress{
 	display: block; 
-	width: 100px;
+	width:80px;
 	height: 30px;
 	border: 1px solid #CCC;
 	background: #9c9d9e;
@@ -5660,4 +5662,6 @@ img.mfp-img {
 	padding: 2px 6px;
 	color: #ffffff;
 	border-radius: 5px;
+	text-align: center;
+	line-height: 1.5;
 }
