@@ -560,7 +560,6 @@ a.bg-danger:hover {
 }
 ul, ol {
 	padding-left:0px;
-	margin-top: 0;
 	margin-bottom: 24px;
 	line-height: 1.8
 }
@@ -1923,7 +1922,8 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	color: #6441a5 !important
 }
 .sb-twitter {
-	color: #606060
+	color: #606060;
+	float: right;
 }
 /*.sb-twitter:hover, .sb-twitter:focus {
 	color: #55acee !important
@@ -1982,7 +1982,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	position: relative;
 	z-index: 9900;
 	width: 100%;
-	min-height:50px;
 	background-color: #fff;
 	padding-left: 30px;
 	top: 0;
@@ -2047,7 +2046,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	}
 	.toolbar-dropdown {
 		height: 80%;
-		background-color:rgba(255,255,255 ,0.9);
+		background-color:white;
 	}
 	.nav-tabs>li>a {
 	    font-size:14px;
@@ -5639,4 +5638,24 @@ img.mfp-img {
 	overflow:hidden;
 	color:black;
 	border:2px solid #10acf7;
+}
+.duquaddress{
+	display: block; 
+	width: 100px;
+	height: 30px;
+	border: 1px solid #CCC;
+	background: #9c9d9e;
+	font-size: 14px;
+	padding: 2px 6px;
+	color: #ffffff;
+}
+.toggle-section{
+	display: block; 
+	width: 100px;
+	height: 30px;
+	border: 1px solid #CCC;
+	background: #9c9d9e;
+	font-size: 14px;
+	padding: 2px 6px;
+	color: #ffffff;
 }
