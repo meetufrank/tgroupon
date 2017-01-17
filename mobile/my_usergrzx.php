@@ -25,6 +25,9 @@ require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 include('head.php');
 
 
+
+
+
 $user_id=$_SESSION['user_id'];
 
 
@@ -1453,6 +1456,7 @@ elseif ($action == 'address_list')
 
      $is_wechat=is_wechat_browser();
         if($is_wechat){
+            include('weixindizhi.php');
             $loginphone = "1";   //微信浏览器
             $smarty->assign('loginphone',  $loginphone);
           }else{

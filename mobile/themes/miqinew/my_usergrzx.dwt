@@ -40,7 +40,7 @@
   <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
   <script src="{$ectouch_themes}/js/jquery-1.4.4.min.js"></script>
 
-
+<script src="{$ectouch_themes}js/jquery-1.9.1.min.js"></script>
 
   <!-- by sun -->
   <style>
@@ -240,6 +240,50 @@
 
          </script>
 
+            <script type="text/javascript">
+
+            function getaddr(){
+
+                    WeixinJSBridge.invoke('editAddress',{
+
+                        "appId" : "{$appId}", //公众号名称，由商户传入
+
+                        "timeStamp" : "{$timestamp}", //时间戳 这里随意使用了一个值
+
+                        "nonceStr" : "{$nonceStr}", //随机串
+
+                        "signType" : "SHA1", //微信签名方式:sha1
+
+                        "addrSign" : "{$addrSign}", //微信签名
+
+                        "scope"    : "jsapi_address"
+
+                    },function(res){
+
+                        if(res.err_msg == 'edit_address:ok'){
+
+                            // document.getElementById("showAddress").innerHTML="收件人："+res.userName+"  联系电话："+res.telNumber+"  收货地址："+res.proviceFirstStageName+res.addressCitySecondStageName+res.addressCountiesThirdStageName+res.addressDetailInfo+"  邮编："+res.addressPostalCode;
+                              $.ajax({
+                                            type:"post",
+                                            url:"my_usergrzx.php?act=wxaddress",
+                                            async:true,
+                                            data:{consignee:res.userName,tel:res.telNumber,province:res.proviceFirstStageName,city:res.addressCitySecondStageName,district:res.addressCountiesThirdStageName,address:res.addressDetailInfo},
+                                            dataType: "json",
+                                            success: function (result) {
+
+                                                  }//回调函数结束
+                                       });//ajax结束
+                        }
+                        else{
+                            alert("获取地址失败，请重新点击");
+                        }
+
+                    });
+        }
+
+
+    </script>
+
 
 
           <!--收货地址1-->
@@ -281,7 +325,7 @@
           <!--收货地址1结束-->{if $loginpc}
 
          {else}
-               <a href=" http://meetuuu.com/mobile/weixindizhi.php" style="text-decoration: underline;">读取微信地址</a>
+               <a href=" http://meetuuu.com/mobile/weixindizhi.php" class="duquaddress">读取微信地址</a>
           {/if}
 
 

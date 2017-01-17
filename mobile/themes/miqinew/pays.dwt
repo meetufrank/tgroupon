@@ -130,7 +130,7 @@
 
 
 
-                   <h5 style="margin-top: 15px; margin-left: 18px;" id="address_h5"><a href="#" id="Address_Manager" class="toggle-section" style="text-decoration: underline;">新增地址</a></h5>
+                   <h5 style="margin-top: 15px; margin-left: 18px;" id="address_h5"><a href="#" id="Address_Manager" class="toggle-section addNewAddress">新增地址</a></h5>
         </div>
 </section>
 
@@ -552,7 +552,7 @@
     +
     '<div><input type="text" class="new-address" placeholder="详细地址" name="address" id="detailadd"/></div>'
     +
-    '<div class="text-right visible-sm visible-xs"><a href="#" style="text-decoration: underline;">读取微信地址</a></div></form>'
+    '<div class="text-right visible-sm visible-xs"><a href="#" style="text-decoration: underline;"></a></div></form>'
     ;
 
 
