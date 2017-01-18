@@ -88,13 +88,11 @@
                 <ul>
 				{{# for(var y = 0, ilen = d[i].data.length; y < ilen; y++){ }}
                    {{# if(d[i].title=='价格区间'){ }}
-                     <li><a href="#" id="showprice" onClick="showlist({{d[i].data[y].money_id}},'showprice')">{{d[i].data[y].money_name}}</a></li>
+                     <li class="pricechange"><a href="#" id="showprice" class="widgeta" onClick="showlist({{d[i].data[y].money_id}},'showprice')">{{d[i].data[y].money_name}}</a></li>
                    {{# } }}
                      {{#  if(d[i].title=='商品分类'){ }}
-                     <li><a href="#" id="showtype" onClick="showlist({{d[i].data[y].id}},'showtype')">{{d[i].data[y].name}}</a></li>
+                     <li class="companychange"><a href="#" id="showtype" class="widgetb" onClick="showlist({{d[i].data[y].id}},'showtype')">{{d[i].data[y].name}}</a></li>
                    {{# } }}
-
-
 
 				  {{# } }}
                 </ul>
@@ -215,10 +213,7 @@
 
 
 	</script>
-
 	<script type="text/javascript">
-
-
 	$.ajax({
 				   type: "post",
 				   url: "goods_list.php?step=ajax_goods_type",
