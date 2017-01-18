@@ -8332,8 +8332,7 @@ display:none
 @media screen and (max-width: 768px) {
 .navbar {
 	padding-left: 15px;
-	border:1px solid;
-	padding-bottom: 5px;
+	padding-bottom:6px;
 }
 .navbar:before {
 	display: block;

@@ -324,14 +324,16 @@
                 </div>
           </div>
           {/foreach}
-          <!--收货地址1结束-->{if $loginpc}
-
-         {else}
-               <a id="editAddress" href="javascript:getaddr();" class="btn btn-primary">读取微信地址</a>
-          {/if}
+          <!--收货地址1结束-->
 
 
           <div class="text-right" id="adddizhi">
+
+          {if $loginpc}
+
+          {else}
+               <a id="editAddress" href="javascript:getaddr();" class="btn btn-primary">读取微信地址</a>
+          {/if}
               <a  id="Address_Manager" class="btn btn-primary waves-effect waves-light">添加地址</a>
             </div>
         </div>
