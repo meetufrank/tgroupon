@@ -234,7 +234,7 @@
                 }
             });
           }else{
-            window.location.href='weixin/example/jsapi.php?orderid='+orderid;
+            window.location.href='weixin/example/jsapi.php';
           }
 
 
