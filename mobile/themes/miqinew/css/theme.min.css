@@ -144,26 +144,33 @@ svg {
 	}
 }
 @media screen and (max-width: 768px) {
-.featured-image {
-	height: 300px
-}
-.mobile-address{
-	margin-top:0px;float:left;width:70%; overflow:hidden;word-break:normal;display:inline-block;white-space:pre-wrap;text-justify:inter-ideograph; text-align:justify;
-}
-.adperson{
-	margin-left:35px; 
-}
-.adnumber{
-	margin-left:35px;
-}
-.all-price{
-	margin-top:30px; 
-    font-size: 20px;
-}
-.success-like{
-	font-size: 16px;
-}
-.lang-switcher {
+	.featured-image {
+		height: 300px
+	}
+	.mobile-address{
+		margin-top:0px;
+		float:left;width:70%; 
+		overflow:hidden;
+		word-break:normal;
+		display:inline-block;
+		white-space:pre-wrap;
+		text-justify:inter-ideograph;
+		text-align:justify;
+	}
+	.adperson{
+		margin-left:35px; 
+	}
+	.adnumber{
+		margin-left:35px;
+	}
+	.all-price{
+		margin-top:30px; 
+	    font-size: 20px;
+	}
+	.success-like{
+		font-size: 16px;
+	}
+	.lang-switcher {
 		z-index: 20
 	}
 	.site-logo {
@@ -323,48 +330,48 @@ kbd {
 	padding-bottom: 72px !important
 }
 @media screen and (max-width: 768px) {
-.space-top {
-	margin-top: 16px !important
-}
-.space-top-2x {
-	margin-top: 36px !important
-}
-.space-top-3x {
-	margin-top: 48px !important
-}
-.space-bottom {
-	margin-bottom: 16px !important
-}
-.space-bottom-2x {
-	margin-bottom: 36px !important
-}
-.space-bottom-3x {
-	margin-bottom: 48px !important
-}
-.padding-top {
-	padding-top: 16px !important
-}
-.padding-top-1x {
-	padding-top:0px !important
-}
-.padding-top-2x {
-	padding-top: 36px !important
-}
-.padding-top-3x {
-	padding-top:20px !important
-}
-.padding-bottom {
-	padding-bottom: 16px !important
-}
-.padding-bottom-2x {
-	padding-bottom: 36px !important
-}
-.padding-bottom-3x {
-	padding-bottom: 48px !important
-}
-.mobile-indent{
-	padding:0px 0px;
-}
+	.space-top {
+		margin-top: 16px !important
+	}
+	.space-top-2x {
+		margin-top: 36px !important
+	}
+	.space-top-3x {
+		margin-top: 48px !important
+	}
+	.space-bottom {
+		margin-bottom: 16px !important
+	}
+	.space-bottom-2x {
+		margin-bottom: 36px !important
+	}
+	.space-bottom-3x {
+		margin-bottom: 48px !important
+	}
+	.padding-top {
+		padding-top: 16px !important
+	}
+	.padding-top-1x {
+		padding-top:0px !important
+	}
+	.padding-top-2x {
+		padding-top: 36px !important
+	}
+	.padding-top-3x {
+		padding-top:20px !important
+	}
+	.padding-bottom {
+		padding-bottom: 16px !important
+	}
+	.padding-bottom-2x {
+		padding-bottom: 36px !important
+	}
+	.padding-bottom-3x {
+		padding-bottom: 48px !important
+	}
+	.mobile-indent{
+		padding:0px 0px;
+	}
 }
 .space-top-none {
 	margin-top: 0 !important
