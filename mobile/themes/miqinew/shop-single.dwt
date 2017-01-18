@@ -583,8 +583,8 @@ $(function(){
   var data={$select};
 
 
-  $(".type_arr  ul li a").removeAttr("onclick");
-  $(".type_arr  ul li a").addClass('specDonotchoose');
+  // $(".type_arr  ul li a").removeAttr("onclick");
+  // $(".type_arr  ul li a").addClass('specDonotchoose');
 
   $.each(data,function(i){
     $.each(data[i],function(x){
@@ -666,8 +666,8 @@ $(function(){
 
                                       });
                                       $.each(data.checked,function(i){
-                                          $("#type_"+data.checked[i].attrid).removeAttr("onclick");
-                                          $("#mobiletype_"+data.checked[i].attrid).removeAttr("onclick");
+                                          // $("#type_"+data.checked[i].attrid).removeAttr("onclick");
+                                          // $("#mobiletype_"+data.checked[i].attrid).removeAttr("onclick");
                                           $("#type_"+data.checked[i].attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
                                            $("#mobiletype_"+data.checked[i].attrid).parent().siblings('li').children('a').removeClass('pc-group-change');    //手机
                                           $("#type_"+data.checked[i].attrid).addClass("pc-group-change");
