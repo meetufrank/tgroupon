@@ -176,7 +176,7 @@
   $(document).ready(function () {
 
 $("#logout").click(function(){
-
+   $(".toolbar-toggle").attr("href","#account");
   $.ajax({
               type:"POST",
               url:"my_user.php?act=logout_new",

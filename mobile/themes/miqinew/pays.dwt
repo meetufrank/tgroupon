@@ -103,7 +103,7 @@
     <!-- Shop Catalog -->
 <section class="container">
         <!-- 快递地址 -->
-        <div class="shopping-cart-1 padding-bottom-1x" style="padding:15px; margin-bottom: 30px;" id="pay_consignee">
+        <div class="shopping-cart-1 padding-bottom-1x" style="padding:15px;" id="pay_consignee">
                 <div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
                     <h4 class="text-primary">快递地址</h4>
                 </div>
@@ -138,7 +138,7 @@
         <!-- 订单信息 -->
         <section class="container">
         <div class="shopping-cart-1" style="padding:15px; margin-bottom: 30px;">
-                                    <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px; padding-bottom:20px;">
+                                    <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
                                         <h4 class="text-primary pull-left">确认订单信息</h4>
                                    </div>
                                    <div class=" hidden-xs">
@@ -231,7 +231,7 @@
                                    <div class="hidden-sm hidden-md hidden-lg">
 
                                      <!--{foreach from=$cart_list.goods_list item=gl}-->
-                                     <div class="padding-bottom-2x mobile_paylist">
+                                     <div class="mobile_paylist">
                                           <div class="row">
                                           <div class="col-xs-3">
                                             <a href="#">
@@ -261,7 +261,7 @@
                                     <!--{/foreach}-->
                                     <!-- Item -->
 
-                                    <div class="clearfix" style="padding-top:20px; margin:0 0 30px 0; border-top: 1px solid #ededed; ">
+                                    <div class="clearfix" style="padding-top:20px; margin:0 0 15px 0; border-top: 1px solid #ededed; ">
                                         <span>邮费：</span>
                                         <div class="pull-right come_price come_price_pc">￥<span>0</span></div>
                                     </div>
