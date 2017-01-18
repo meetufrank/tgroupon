@@ -499,7 +499,7 @@
           <div class="row">
                 <!-- 商品规格 -->
 
-                          <div class="col-md-6">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <table class="table-no-border">
                                 {foreach from=$spguige item=spguige}
                                   <tr>

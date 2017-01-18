@@ -164,6 +164,9 @@ svg {
 	.site-logo{
 		font-size:20px; 
 	}
+	.tab-shopsingle{
+		padding-left: 240px;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
