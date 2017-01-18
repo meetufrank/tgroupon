@@ -190,6 +190,7 @@
             </div><!-- .column -->
           </div><!-- .shop-bar -->
 	  <div class="row">
+    {{# if(d.data){}}
 	  {{# for(var i = 0, len = d.data.length; i < len; i++){ }}
 
             <!-- Item -->
@@ -211,6 +212,9 @@
               </div><!-- .shop-item -->
             </div><!-- .col-md-4.col-sm-6 -->
 		{{# } }}
+      {{# }else{}}
+      未搜索到指定商品~
+      {{# }}}
       </div><!-- .row -->
 
 
@@ -279,18 +283,12 @@ layui.use(['laypage', 'layer'], function(){
                dataType:"json",
                data:{page_num:obj.curr,typeid:val,type:id,search:search},
                success: function (data) {
-                 if(data.data){
+
                 var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
                 laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
                  document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
                 });
-                 }else{
-                     layer.open({
-                  content: '暂无商品'
-                  ,skin: 'msg'
-                  });
-                  $("#searchvalue").val('');
-                    }
+
 
               },
               error: function(data){

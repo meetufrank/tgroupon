@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-01-17 19:00:50
+ * @Last Modified time: 2017-01-18 11:16:39
  */
 
 
@@ -44,6 +44,9 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
 
             $where=" and (ep.attributeprice+g.more_price)>=".$price['min_money']." and (ep.attributeprice+g.more_price)<=".$price['max_money'];
             setcookie('showprice',$where);
+            }else{
+             setcookie('showprice','',time()-3600);
+          }
             if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
                         $str=$_COOKIE['search_content'];
                         $str=strFilter($str);
@@ -83,9 +86,7 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
             }
 
 
-          }else{
-             setcookie('showprice','',time()-3600);
-          }
+
        }elseif($_POST['type']=='showtype'){  //类型
            if(intval($_POST['typeid'])){      //商品类型筛选
                $new_arr[]=$_POST['typeid'];
@@ -107,8 +108,13 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
 
 
                 $where=" and g.cat_id in (".$cart_id.") ";
-
                 setcookie('showtype',$where);
+
+           }else{
+               setcookie('showtype','',time()-3600);
+           }
+
+
                 if($_COOKIE['showsearch']&&$_COOKIE['search_content']){
                         $str=$_COOKIE['search_content'];
                         $str=strFilter($str);
@@ -147,9 +153,6 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
                        $where_array[]=$where;
                 }
 
-           }else{
-               setcookie('showtype','',time()-3600);
-           }
        }elseif($_POST['type']=='showsearch'){
 
              if($_POST['typeid']){
@@ -244,6 +247,7 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
         }
        $limit="  limit ".($page_num-1)*$page_count." ,".$page_count." ";
        if($_POST['type']=='showprice'){
+        $prev_search=$_COOKIE['search_content'];  //先拿到上一次搜索的内容
           if(intval($_POST['typeid'])!=1){      //价格区间筛选
             //获取价格区间
             $price=get_price_type($_POST['typeid']);
@@ -293,6 +297,7 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
              setcookie('showprice','',time()-3600);
           }
        }elseif($_POST['type']=='showtype'){  //类型
+        $prev_search=$_COOKIE['search_content'];  //先拿到上一次搜索的内容
            if(intval($_POST['typeid'])){      //商品类型筛选
                $new_arr[]=$_POST['typeid'];
                 $sql = 'SELECT cat_id FROM ' . $GLOBALS['ecs']->table('category') . " WHERE parent_id = ".$_POST['typeid'];
@@ -355,7 +360,7 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
                setcookie('showtype','',time()-3600);
            }
        }elseif($_POST['type']=='showsearch'){
-
+             $prev_search=$_COOKIE['search_content'];  //先拿到上一次搜索的内容
              if($_POST['typeid']){
                     setcookie('search_content',$_POST['typeid']);
                      $str=strFilter($_POST['typeid']);
@@ -445,6 +450,9 @@ elseif ($_REQUEST['step'] == 'ajax_goods_list') {
          $data['search']=$_POST['typeid'];
          }else{
           $data['search']=$_COOKIE['search_content'];
+         }
+         if(!$data['data']){
+          $data['prev_search']=$prev_search;
          }
          $num=ceil($goods_count/$page_count);
 
