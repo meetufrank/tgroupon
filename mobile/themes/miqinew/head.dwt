@@ -3,15 +3,9 @@
 <header class="navbar navbar-sticky">
 
     <!-- Site Logo -->
-      <a href="index.html" class="site-logo visible-desktop">
+      <a href="index.html" class="site-logo">
         型&nbsp;色&nbsp;主&nbsp;义
-      </a><!-- site-logo.visible-desktop -->
-      <a href="index.html" class="site-logo visible-mobile">
-        型&nbsp;色&nbsp;主&nbsp;义
-      </a><!-- site-logo.visible-mobile -->
-
-
-
+      </a>
 <!-- Toolbar -->
 
       <div class="toolbar">

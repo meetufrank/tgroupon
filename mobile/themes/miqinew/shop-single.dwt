@@ -357,7 +357,7 @@
                                        <li>
                                             <a href="#" onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index},0)" {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="pc-group-detail pc-group-change"{else}class="pc-group-detail"{/if} id="type_{$value.id}" data-type="{$value.id}">
                                              {if $value.attr_img}
-<img src="{$value.attr_img}" title="{$value.label}" style="width:45px; height:30px;">
+<img src="{$value.attr_img}" title="{$value.label}">
                                             {else}
                                                  {$value.label}
                                             {/if}

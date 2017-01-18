@@ -90,15 +90,25 @@ svg {
 	.sidebar {
 	    	padding:20px 15px;
 	}
+	.site-logo{
+		font-size:16px; 
+	}
+
 }
 @media screen and (min-width:375px) and (max-width:413px){
 	.sidebar {
 	    	padding: 30px 24px;
 	}
+	.site-logo{
+		font-size:20px; 
+	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
 	.sidebar {
 	    	padding: 30px 24px;
+	}
+	.site-logo{
+		font-size:20px; 
 	}
 }
 @media screen and (max-width: 480px) {
@@ -141,6 +151,9 @@ svg {
 	}
 	.hero-slider{
 		margin-top: 50px;
+	}
+	.site-logo{
+		font-size:20px; 
 	}
 }
 @media screen and (max-width: 768px) {
@@ -352,13 +365,13 @@ kbd {
 		padding-top: 16px !important
 	}
 	.padding-top-1x {
-		padding-top:0px !important
+		padding-top:30px !important
 	}
 	.padding-top-2x {
 		padding-top: 36px !important
 	}
 	.padding-top-3x {
-		padding-top:20px !important
+		padding-top:30px !important
 	}
 	.padding-bottom {
 		padding-bottom: 16px !important
@@ -2075,7 +2088,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	display: inline-block;
 	vertical-align: middle;
 	color: #606060;
-	font-size: 20px;
 	font-weight: bold;
 	text-decoration: none;
 	padding: 10px 0;
@@ -5710,4 +5722,14 @@ img.mfp-img {
 	border-radius: 5px;
 	text-align: center;
 	line-height: 1.5;
+}
+.pc-group-detail img{
+	display: block;
+	width: 45px;
+    height: 30px;
+    max-width: 100%;
+}
+.mobile-cart-border-details img{
+	display: block;
+	max-width: 100%;
 }
