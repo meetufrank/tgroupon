@@ -24,6 +24,10 @@ require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 
 include('head.php');
 
+   if ($_SESSION['user_id'] <= 0)
+        {
+            please_in();
+        }
 
 
 

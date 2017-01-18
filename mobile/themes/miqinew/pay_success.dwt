@@ -112,9 +112,10 @@
 
     <!-- Related Products -->
     <section class="container padding-top padding-bottom">
-      <div style="width:100px; height:30px;background-color:#ededed;position:absolute; margin-top:10px;"></div>
-        <hr style="position:relative;">
-      <h3 class="padding-top">猜 你 喜 欢</h3>
+      <div style="width:100px; height:30px;background-color:#ededed;position:absolute; margin-top:10px;" class="hidden-xs hidden-sm">
+      </div>
+      <hr style="position:relative;">
+      <h3 class="padding-top success-like">猜 你 喜 欢</h3>
       <div class="row padding-top">
 
       {foreach from=$xh item=xh}

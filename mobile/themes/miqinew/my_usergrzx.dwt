@@ -273,6 +273,8 @@
 
                                                   }//回调函数结束
                                        });//ajax结束
+                              window.location.reload("my_usergrzx.php?act=address_list");
+                              alert("测试");
                         }
                         else{
                             alert("获取地址失败，请重新点击");
@@ -325,7 +327,7 @@
           <!--收货地址1结束-->{if $loginpc}
 
          {else}
-               <a href=" http://meetuuu.com/mobile/weixindizhi.php" class="duquaddress">读取微信地址</a>
+               <a id="editAddress" href="javascript:getaddr();" class="duquaddress">读取微信地址</a>
           {/if}
 
 

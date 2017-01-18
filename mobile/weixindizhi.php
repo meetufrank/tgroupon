@@ -1,5 +1,5 @@
 ﻿    <?php
-echo "调用微信地址php文件测试";
+
     //微信参数
 
     $appId = 'wxb5aec13c030a530b';
