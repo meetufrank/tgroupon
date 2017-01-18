@@ -117,10 +117,10 @@
 
 	        	<div class="shopping-cart-1 padding-bottom-1x">
 				          		<div class="selectall">
-				          			<span class="text-primary select-left">选择支付方式</span>
                         <div class="select-right">
                           <span class="text-primary">订单编号:</span><span>{$order.order_sn}</span>
                         </div>
+                        <span class="text-primary select-left">选择支付方式</span>
                         <div class="clear"></div>
 				                </div>
                          <input type="hidden" value="{$order.order_id}" name="orderid">
@@ -131,11 +131,11 @@
 
 			          			</div>
                         <!--{/foreach}-->
-				          		<div class="padding-top-2x" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
+				          		  <div class="padding-top-2x visible-xs visible-sm" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
 				          			<h4 class="text-primary">确认付款</h4>
 				                </div>
 				                <div class="clearfix hidden-xs">
-				                <h3 class="amount_pay pull-left" style="color:#f20000">￥{$order.total_fee}</h3>
+				                <h3 class="amount_pay pull-left" style="color:#f20000">总金额:￥{$order.total_fee}</h3>
 				                <div class="pull-right"><a href="#" class="btn btn-primary payput" >确认支付</a></div>
 				                </div>
 				                <div class="visible-xs">
