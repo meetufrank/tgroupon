@@ -159,11 +159,29 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
     die($json->encode($res));
 }elseif($_REQUEST['act'] == 'attrshuaixuan'){
 
-    //商品属性筛选
-    $attrid = $_POST['attrid'];
-    $a = $_POST['typenum'];   //类型名称
-    $spec_arr = $_POST['spec_arr'];
     $typeid=$_POST['typeid'];
+    $attrid = $_POST['attrid'];
+    $want_back=$_POST['want_back'];
+    $spec_arr = $_POST['spec_arr'];
+    //商品属性筛选
+    if($want_back&&$want_back==$attrid){
+        $pro_where="";
+        $ga_where="";
+        foreach ($spec_arr as $sk=>$sv){   //删除该属性筛选
+                if($sv==$attrid){
+                  $spec_arr[$k]='';
+
+                }else{
+                    $attrid=$sv;
+                }
+
+             }
+      $sql = "select attr_id from `ecs_goods_attr` where goods_attr_id=".$attrid;
+      $typeid = $db->getOne($sql);
+    }
+
+    $a = $_POST['typenum'];   //类型名称
+
     $sql = "select goods_attr from `ecs_products` where FIND_IN_SET('$attrid',goods_attr) and product_number > 0";
     $feiattrid = $db->getAll($sql);
     $sql = "select goods_attr_id from `ecs_goods_attr` where  attr_id=".$typeid;
@@ -187,7 +205,7 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
              if($result==count($goodsattr)){   //默认选中
                     foreach ($goodsattr as $sskk => $ssvv) {
 
-                                        $checked[$sskk]=$ssvv;
+                                        $checked[$sskk]['attrid']=$ssvv;
 
 
                     }
@@ -217,13 +235,21 @@ foreach ($friend_arr as $key => $value) {
     }
 }
 if(is_array($checked)){
-$jiageimg = implode(",", $checked);
+
+        foreach ($checked as $key => $value) {
+             $jiage_arr[$key]=$value['attrid'];
+             $sql = "select attr_id from `ecs_goods_attr` where goods_attr_id=".$value['attrid'];
+             $checked[$key]['typeid']=$db->getOne($sql);
+        }
+        $jiageimg=@implode(',',$jiage_arr);
+
 }
+
 // else{
 //     $data['error']=1;
 // }
  //   价格和商品
-   $sqls = "select attributeprice,attributeimg,product_number,goods_id from `ecs_products` where goods_attr = '$jiageimg'";
+   $sqls = "select attributeprice,attributeimg,product_number,goods_id from `ecs_products` where goods_attr = '".$jiageimg."'";
   $jiageimgs = $db->getRow($sqls);
 
   $sql="select more_price from ecs_goods  where goods_id=".$jiageimgs['goods_id'];

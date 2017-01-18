@@ -601,7 +601,12 @@ $(function(){
 
 });
      function attrshuaixuan(attrid,typeid,typenum,ismobile){
-
+      var click_value=$("input[name='spec_"+typeid+"']").val();
+        if(click_value==attrid){
+           var want_back=attrid;                   //取消标示
+        }else{
+          var want_back=0;
+        }
         $("#type_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
         $("#mobiletype_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');  //手机
         $("#type_"+attrid).addClass("pc-group-change");
@@ -623,10 +628,16 @@ $(function(){
                                     type:"post",
                                     url:"shop-single.php?act=attrshuaixuan",
                                     async:true,
-                                    data:{attrid:attrid,typenum:typenum,spec_arr:spec_arr,typeid:typeid},
+                                    data:{attrid:attrid,typenum:typenum,spec_arr:spec_arr,typeid:typeid,want_back:want_back},
                                     dataType: "json",
                                     success: function (data) {
                                       console.log(data);
+                                      for (i = 0; i < formBuy.elements.length; i ++ )  //清空操作
+                                              {
+
+                                                  formBuy.elements[i].value="";
+
+                                              }
                                       if(data.error==1){
                                         alert('未找到该商品!');
                                         window.location.href=window.location.href;
@@ -655,12 +666,14 @@ $(function(){
 
                                       });
                                       $.each(data.checked,function(i){
-                                          $("#type_"+data.checked[i]).removeAttr("onclick");
-                                          $("#mobiletype_"+data.checked[i]).removeAttr("onclick");
-                                          $("#type_"+data.checked[i]).parent().siblings('li').children('a').removeClass('pc-group-change');
-                                           $("#mobiletype_"+data.checked[i]).parent().siblings('li').children('a').removeClass('pc-group-change');    //手机
-                                          $("#type_"+data.checked[i]).addClass("pc-group-change");
-                                          $("#mobiletype_"+data.checked[i]).addClass("pc-group-change");    //手机
+                                          $("#type_"+data.checked[i].attrid).removeAttr("onclick");
+                                          $("#mobiletype_"+data.checked[i].attrid).removeAttr("onclick");
+                                          $("#type_"+data.checked[i].attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
+                                           $("#mobiletype_"+data.checked[i].attrid).parent().siblings('li').children('a').removeClass('pc-group-change');    //手机
+                                          $("#type_"+data.checked[i].attrid).addClass("pc-group-change");
+                                          $("#mobiletype_"+data.checked[i].attrid).addClass("pc-group-change");    //手机
+                                          $("input[name='spec_"+data.checked[i].typeid+"']").val(data.checked[i].attrid);
+
                                         });
                                      $(".pc-thumbnail").attr("src","././admin/"+data.data.attributeimg);
                                      $(".mobile-thumbnail").attr("src","././admin/"+data.data.attributeimg);  //手机筛选图片
