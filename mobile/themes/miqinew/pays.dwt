@@ -701,9 +701,22 @@
             type:"POST",
             url:"flow.php",
             data:{step:'new_done',address:addressid,cart_id:cart_id},
+            dataType:"JSON",
             success: function(data){
+                    if(data.error==12){
+                              if(data.url){
+                              window.location.href=data.url;
+                              return;
+                              }
+                    }
+                    if(data.error==1){
+                      alert(data.msg);
+                      return;
+                    }
+                    if(data.error==0&&data.data!=''){
+                      window.location.href="flow.php?step=pay_ok&order_id="+data.data;
+                    }
 
-                    window.location.href="flow.php?step=pay_ok&order_id="+data;
 
                   }
                  });

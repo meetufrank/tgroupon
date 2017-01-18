@@ -2480,7 +2480,7 @@ elseif ($_REQUEST['step'] == 'new_done')
      */
     if ( $_SESSION['user_id'] == 0)
     {
-        please_in();
+        ajax_please_in();
     }
       $addressid = isset($_POST['address']) ? intval($_POST['address']) : 0;
     //$consignee = get_consignee($_SESSION['user_id'],$addressid);
@@ -2489,9 +2489,12 @@ elseif ($_REQUEST['step'] == 'new_done')
 /* 检查收货人信息是否完整 */
     if (!check_consignee_info($consignee, $flow_type))
     {
-        /* 如果不完整则转向到收货人信息填写界面 */
-        ecs_header("Location: flow.php?step=consignee\n");
-        exit;
+        $result['error'] = 1;
+
+        $result['msg']='请选择收货人信息';
+
+            echo json_encode($result);
+            exit;
     }
 
 
@@ -2616,14 +2619,19 @@ elseif ($_REQUEST['step'] == 'new_done')
     $cart_goods = cart_goods($flow_type,$addtype);
     if (empty($cart_goods))
     {
-        show_message($_LANG['no_goods_in_cart'], $_LANG['back_home'], './', 'warning');
+       $result['error'] = 1;
+
+        $result['msg']='购物车中没有商品';
+
+            echo json_encode($result);
+            exit;
     }
 
-    /* 检查商品总额是否达到最低限购金额 */
-    if ($flow_type == CART_GENERAL_GOODS && cart_amount(true, CART_GENERAL_GOODS) < $_CFG['min_goods_amount'])
-    {
-        show_message(sprintf($_LANG['goods_amount_not_enough'], price_format($_CFG['min_goods_amount'], false)));
-    }
+    // /* 检查商品总额是否达到最低限购金额 */
+    // if ($flow_type == CART_GENERAL_GOODS && cart_amount(true, CART_GENERAL_GOODS) < $_CFG['min_goods_amount'])
+    // {
+    //     show_message(sprintf($_LANG['goods_amount_not_enough'], price_format($_CFG['min_goods_amount'], false)));
+    // }
 
     /* 收货人信息 */
     foreach ($consignee as $key => $value)
@@ -2631,23 +2639,23 @@ elseif ($_REQUEST['step'] == 'new_done')
         $order[$key] = addslashes($value);
     }
 
-   /* 判断是不是实体商品 */
-    foreach ($cart_goods AS $val)
-    {
-        /* 统计实体商品的个数 */
-        if ($val['is_real'])
-        {
-            $is_real_good=1;
-        }
-    }
-    if(isset($is_real_good))
-    {
-        $sql="SELECT shipping_id FROM " . $ecs->table('touch_shipping') . " WHERE shipping_id=".$order['shipping_id'] ." AND enabled =1";
-        if(!$db->getOne($sql))
-        {
-           show_message($_LANG['flow_no_shipping']);
-        }
-    }
+   // /* 判断是不是实体商品 */
+   //  foreach ($cart_goods AS $val)
+   //  {
+   //      /* 统计实体商品的个数 */
+   //      if ($val['is_real'])
+   //      {
+   //          $is_real_good=1;
+   //      }
+   //  }
+   //  if(isset($is_real_good))
+   //  {
+   //      $sql="SELECT shipping_id FROM " . $ecs->table('touch_shipping') . " WHERE shipping_id=".$order['shipping_id'] ." AND enabled =1";
+   //      if(!$db->getOne($sql))
+   //      {
+   //         show_message($_LANG['flow_no_shipping']);
+   //      }
+   //  }
     /* 订单中的总额 */
     $total = order_fee($order, $cart_goods, $consignee);
     $total['amount']=$total['amount']+$price;
@@ -2703,24 +2711,24 @@ elseif ($_REQUEST['step'] == 'new_done')
 
     $order['order_amount']  = number_format($total['amount'], 2, '.', '');
 
-    /* 如果全部使用余额支付，检查余额是否足够 */
-    if ($payment['pay_code'] == 'balance' && $order['order_amount'] > 0)
-    {
-        if($order['surplus'] >0) //余额支付里如果输入了一个金额
-        {
-            $order['order_amount'] = $order['order_amount'] + $order['surplus'];
-            $order['surplus'] = 0;
-        }
-        if ($order['order_amount'] > ($user_info['user_money'] + $user_info['credit_line']))
-        {
-            show_message($_LANG['balance_not_enough']);
-        }
-        else
-        {
-            $order['surplus'] = $order['order_amount'];
-            $order['order_amount'] = 0;
-        }
-    }
+    // /* 如果全部使用余额支付，检查余额是否足够 */
+    // if ($payment['pay_code'] == 'balance' && $order['order_amount'] > 0)
+    // {
+    //     if($order['surplus'] >0) //余额支付里如果输入了一个金额
+    //     {
+    //         $order['order_amount'] = $order['order_amount'] + $order['surplus'];
+    //         $order['surplus'] = 0;
+    //     }
+    //     if ($order['order_amount'] > ($user_info['user_money'] + $user_info['credit_line']))
+    //     {
+    //         show_message($_LANG['balance_not_enough']);
+    //     }
+    //     else
+    //     {
+    //         $order['surplus'] = $order['order_amount'];
+    //         $order['order_amount'] = 0;
+    //     }
+    // }
 
     /* 如果订单金额为0（使用余额或积分或红包支付），修改订单状态为已确认、已付款 */
     if ($order['order_amount'] <= 0)
@@ -2931,8 +2939,9 @@ elseif ($_REQUEST['step'] == 'new_done')
     //增加销量排序用于排序 by wang end
     /* 清空购物车 */
     clear_cart_new($idstring);
-
- echo json_encode($order['order_id']);
+    $result['error']=0;
+    $result['data']=$order['order_id'];
+ echo json_encode($result);
 exit;
 
 
