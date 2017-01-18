@@ -1305,9 +1305,15 @@ elseif($_REQUEST['step']=='pay_ok'){
 elseif($_REQUEST['step'] == 'pay_success'){
 
    //猜你喜欢
-$xinhuan = "select min(ep.product_id) as product_id,ep.goods_id,ep.attributeprice,ep.attributeimg,g.goods_name
-from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id
-where is_best = 1
+$xinhuan = "select p.goods_id,p.attributeimg,p.attributeprice,g.goods_name from `ecs_products` as p
+inner join `ecs_goods` as g
+on p.goods_id = g.goods_id
+  where p.goods_id in
+(select g.goods_id from `ecs_goods` as g
+where g.is_best = 1 and g.goods_id != $goodsid
+)
+and p.product_number > 1 and p.attributeimg != ''
+group by p.goods_id
 order by rand() LIMIT 4
 ";
 $xh = $db->getAll($xinhuan);
