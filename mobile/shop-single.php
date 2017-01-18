@@ -243,6 +243,8 @@ if(is_array($checked)){
         }
         $jiageimg=@implode(',',$jiage_arr);
 
+}else{
+    exit;
 }
 
 // else{
