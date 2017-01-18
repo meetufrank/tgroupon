@@ -880,7 +880,7 @@ function get_order_sn()
  * @param   int     $type   类型：默认普通商品
  * @return  array   购物车商品数组
  */
-function cart_goods($type = CART_GENERAL_GOODS,$addtype)
+function cart_goods($type = CART_GENERAL_GOODS,$addtype,$cart_id=0)
 {
 
      $sql = "SELECT rec_id, user_id, goods_id, goods_name, goods_sn, goods_number, " .
@@ -888,7 +888,7 @@ function cart_goods($type = CART_GENERAL_GOODS,$addtype)
             "goods_price * goods_number AS subtotal " .
             "FROM " . $GLOBALS['ecs']->table('cart') .
             " WHERE session_id = '" . SESS_ID . "' " .
-            "AND cart_type=" .$addtype ; //rec_type = '$type'
+            "AND cart_type=" .$addtype." and rec_id in (".$cart_id.")" ; //rec_type = '$type'
 
 
     $arr = $GLOBALS['db']->getAll($sql);

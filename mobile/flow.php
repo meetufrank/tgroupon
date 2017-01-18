@@ -176,7 +176,7 @@ include_once('include/cls_json.php');
          die($json->encode($result));
          exit;
     }
-print_r($goods);exit;
+
     $cartid=addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num);
          if($type_num){
             setcookie('add_type',1);
@@ -2616,7 +2616,7 @@ elseif ($_REQUEST['step'] == 'new_done')
         $addtype=0;
     }
 
-    $cart_goods = cart_goods($flow_type,$addtype);
+    $cart_goods = cart_goods($flow_type,$addtype,$idstring);
     if (empty($cart_goods))
     {
        $result['error'] = 1;
@@ -2658,6 +2658,7 @@ elseif ($_REQUEST['step'] == 'new_done')
    //  }
     /* 订单中的总额 */
     $total = order_fee($order, $cart_goods, $consignee);
+
     $total['amount']=$total['amount']+$price;
     $order['bonus']        = $total['bonus'];
     $order['goods_amount'] = $total['goods_price']+$price;
