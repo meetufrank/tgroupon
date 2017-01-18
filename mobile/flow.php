@@ -1310,7 +1310,7 @@ inner join `ecs_goods` as g
 on p.goods_id = g.goods_id
   where p.goods_id in
 (select g.goods_id from `ecs_goods` as g
-where g.is_best = 1 and g.goods_id != $goodsid
+where g.is_best = 1
 )
 and p.product_number > 1 and p.attributeimg != ''
 group by p.goods_id
