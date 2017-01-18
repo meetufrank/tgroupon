@@ -72,7 +72,7 @@
         <i class="fa fa-th"></i>
       </div>
 
-      <div class="row padding-top">
+      <div class="row padding-top-goodlist">
 
         <!-- Sidebar (Filters) -->
         <div class="col-lg-2 col-md-3 col-sm-4">
