@@ -40,17 +40,11 @@ input, button, select, textarea {
 	line-height: inherit
 }
 a {
-/*	color: #77cde3;*/
 	-webkit-transition: color 0.3s;
 	-o-transition: color 0.3s;
 	transition: color 0.3s
 }
-/*a:hover {
-	color: #77cde3;
-	text-decoration: none
-}*/
 a:focus{
-/*	color: #77cde3;*/
 	outline: none
 }
 a.link-title {
@@ -129,6 +123,12 @@ svg {
 }
 .mobile-address{
 	margin-top:0px;float:left;width:70%; overflow:hidden;word-break:normal;display:inline-block;white-space:pre-wrap;text-justify:inter-ideograph; text-align:justify;
+}
+.adperson{
+	margin-left:35px; 
+}
+.adnumber{
+	margin-left:35px;
 }
 }
 .display-inline {

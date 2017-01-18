@@ -104,7 +104,7 @@
 <section class="container">
         <!-- 快递地址 -->
         <div class="shopping-cart-1 padding-bottom-1x" style="padding:15px;" id="pay_consignee">
-                <div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
+                <div style=" border-bottom: 2px solid #ededed; margin-bottom:15px; ">
                     <h4 class="text-primary">快递地址</h4>
                 </div>
 
@@ -117,10 +117,10 @@
                      </label>
                    {$consignee.province}{$consignee.city}{$consignee.district}{$consignee.address}
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3 adperson">
                     收件人：{$consignee.consignee}
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3 adnumber">
                     联系电话：{$consignee.tel}
                   </div>
 
