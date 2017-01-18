@@ -160,7 +160,7 @@
     {include file="head.dwt"}
 
     <!-- Content -->
-    <section class="container pc-padding-top-mydd">
+    <section class="container padding-top-3x">
      <!-- Nav Tabs -->
       <ul class="nav-tabs" role="tablist">
         <li class="active"><a href="my_user.php?act=order_list" role="tab" data-toggle="tab">我的订单</a></li>
