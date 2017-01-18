@@ -167,6 +167,9 @@ svg {
 	.pc-guige-class{
 		padding-left:50px;
 	}
+	.pc-padding-top-mydd{
+		padding-top:30px !important;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -235,6 +238,9 @@ svg {
 	}
 	.padding-top-goodlist{
 		padding-top:45px !important
+	}
+	.pc-padding-top-mydd{
+		padding-top: 0px !important;
 	}
 }
 .display-inline {
