@@ -101,7 +101,7 @@
     <!-- 头部结束 -->
 
     <!-- Shop Catalog -->
-<section class="container">
+<section class="container padding-top-4x">
         <!-- 快递地址 -->
         <div class="shopping-cart-1 padding-bottom-1x" style="padding:15px;" id="pay_consignee">
                 <div style=" border-bottom: 2px solid #ededed; margin-bottom:15px; ">
