@@ -248,6 +248,9 @@ svg {
 	.nav-tabs{
 		padding-top:35px;
 	}
+	.xinzeng-mobile{
+		margin-left: 35px;
+	}
 }
 .display-inline {
 	display: inline-block !important;
