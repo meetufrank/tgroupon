@@ -88,10 +88,10 @@
                 <ul>
 				{{# for(var y = 0, ilen = d[i].data.length; y < ilen; y++){ }}
                    {{# if(d[i].title=='价格区间'){ }}
-                     <li class="pricechange"><a href="#" id="showprice" class="widgeta" onClick="showlist({{d[i].data[y].money_id}},'showprice')">{{d[i].data[y].money_name}}</a></li>
+                     <li class="pricechange"><a href="#" id="showprice{{d[i].data[y].money_id}}" class="widgeta" onClick="showlist({{d[i].data[y].money_id}},'showprice')">{{d[i].data[y].money_name}}</a></li>
                    {{# } }}
                      {{#  if(d[i].title=='商品分类'){ }}
-                     <li class="companychange"><a href="#" id="showtype" class="widgetb" onClick="showlist({{d[i].data[y].id}},'showtype')">{{d[i].data[y].name}}</a></li>
+                     <li class="companychange"><a href="#" id="showtype{{d[i].data[y].id}}" class="widgetb" onClick="showlist({{d[i].data[y].id}},'showtype')">{{d[i].data[y].name}}</a></li>
                    {{# } }}
 
 				  {{# } }}
@@ -103,8 +103,9 @@
 	</script>
 
     <script type="text/javascript">
-
        function showlist(val,id){
+        $("#"+id+val).addClass("allpricechange");
+        $("#"+id+val).parent().siblings().children().removeClass("allpricechange");
         var search=0;
         if(id=='showsearch'){
          var val= $("#"+val).val();
