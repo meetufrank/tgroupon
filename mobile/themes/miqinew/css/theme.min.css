@@ -117,6 +117,32 @@ svg {
 	height: 400px
 }
 }
+@media screen and (min-width: 768px) {
+	.toolbar-dropdown {
+		height:100%;
+		background-color:white;
+	}
+	.nav-tabs>li>a {
+		font-size: 14px;
+	    padding:18px;
+	}
+	.pc-company-name{
+		 margin-top:22px;
+		 font-size: 18px;
+	}
+	.pc-group-select ul {
+    	min-height: 100px;
+    	float: left;
+    	margin-left: 5px;
+    	list-style: none;
+	}
+	.pc-mobile-container{
+		padding-top: 50px;
+	}
+	.hero-slider{
+		margin-top: 50px;
+	}
+}
 @media screen and (max-width: 768px) {
 .featured-image {
 	height: 300px
@@ -137,6 +163,47 @@ svg {
 .success-like{
 	font-size: 16px;
 }
+.lang-switcher {
+		z-index: 20
+	}
+	.site-logo {
+		z-index: 20;
+		margin-right: 15px
+	}
+	.site-logo.visible-desktop {
+		display: none
+	}
+	.site-logo.visible-mobile {
+		display: inline-block;
+		font-size:20px;
+	}
+	.site-logo img {
+		max-width: 42px
+	}
+	.toolbar-dropdown {
+		height: 80%;
+		background-color:white;
+	}
+	.nav-tabs>li>a {
+	    font-size:14px;
+	    padding:2px;
+	}
+	.pc-group-select ul {
+		max-width: 200px;
+    	min-height: 100px;
+    	float: left;
+    	margin-left: 5px;
+    	list-style: none;
+	}
+	.sb-twitter {
+		float: right;
+	}
+	.mobile-detail{
+		margin-top: 30px;
+	}
+	.padding-top-goodlist{
+		padding-top:45px !important
+	}
 }
 .display-inline {
 	display: inline-block !important;
@@ -2021,72 +2088,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 .site-logo.visible-mobile {
 	display: none
 }
-@media screen and (min-width: 768px) {
-	.toolbar-dropdown {
-		height:100%;
-		background-color:white;
-	}
-	.nav-tabs>li>a {
-		font-size: 14px;
-	    padding:18px;
-	}
-	.pc-company-name{
-		 margin-top:22px;
-		 font-size: 18px;
-	}
-	.pc-group-select ul {
-    	min-height: 100px;
-    	float: left;
-    	margin-left: 5px;
-    	list-style: none;
-	}
-	.pc-mobile-container{
-		padding-top: 50px;
-	}
-}
-@media screen and (max-width: 768px) {
-	.lang-switcher {
-		z-index: 20
-	}
-	.site-logo {
-		z-index: 20;
-		margin-right: 15px
-	}
-	.site-logo.visible-desktop {
-		display: none
-	}
-	.site-logo.visible-mobile {
-		display: inline-block;
-		font-size:20px;
-	}
-	.site-logo img {
-		max-width: 42px
-	}
-	.toolbar-dropdown {
-		height: 80%;
-		background-color:white;
-	}
-	.nav-tabs>li>a {
-	    font-size:14px;
-	    padding:2px;
-	}
-	.pc-group-select ul {
-		max-width: 200px;
-    	min-height: 100px;
-    	float: left;
-    	margin-left: 5px;
-    	list-style: none;
-	}
-	.sb-twitter {
-		float: right;
-	}
-	.mobile-detail{
-		margin-top: 30px;
-	}
-	.padding-top-goodlist{
-		padding-top:45px !important
-	}
-}
+
 @media screen and (max-width: 360px) {
 	.site-logo {
 		margin-right: 8px
