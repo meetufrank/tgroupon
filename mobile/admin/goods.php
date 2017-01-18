@@ -1160,7 +1160,7 @@ if($_FILES['attr_img']['name']){
             }
 
         }
-        print_r($sql);exit;
+
 
     }
     /* 处理会员价格 */
