@@ -30,7 +30,7 @@ foreach ($orderdata as $key => $value) {
     }
 }
 }
-$title=implode('、',$goodsname);
+$title=@implode('、',$goodsname);
 $price=$orderdata[0]['goods_amount']*100;
 $goods_sn=$orderdata[0]['order_sn'];
 $input = new WxPayUnifiedOrder();

@@ -131,15 +131,15 @@
 
 			          			</div>
                         <!--{/foreach}-->
-				          		  <div class="padding-top-2x visible-xs visible-sm" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
+				          		  <div class="padding-top-2x hidden-xs hidden-sm" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
 				          			<h4 class="text-primary">确认付款</h4>
 				                </div>
 				                <div class="clearfix hidden-xs">
-				                <h3 class="amount_pay pull-left" style="color:#f20000">总金额:￥{$order.total_fee}</h3>
+				                <h3 class="amount_pay pull-left" style="color:#f20000">￥{$order.total_fee}</h3>
 				                <div class="pull-right"><a href="#" class="btn btn-primary payput" >确认支付</a></div>
 				                </div>
 				                <div class="visible-xs">
-				                <h3 class="amount_pay" style="color:#f20000">￥{$order.total_fee}</h3>
+				                <h3 class="amount_pay all-price" style="color:#f20000">总金额:￥{$order.total_fee}</h3>
 				                <a href="#"  class="btn btn-primary payput" >确认支付</a>
 				                </div>
 				          </div>
@@ -234,7 +234,7 @@
                 }
             });
           }else{
-            window.location.href='weixin/example/jsapi.php?orderid='+orderid;
+            window.location.href='weixin/example/jsapi.php';
           }
 
 
