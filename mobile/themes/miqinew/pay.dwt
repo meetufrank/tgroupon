@@ -139,7 +139,7 @@
 				                <div class="pull-right"><a href="#" class="btn btn-primary payput" >确认支付</a></div>
 				                </div>
 				                <div class="visible-xs">
-				                <h3 class="amount_pay" style="color:#f20000">总金额:￥{$order.total_fee}</h3>
+				                <h3 class="amount_pay all-price" style="color:#f20000">总金额:￥{$order.total_fee}</h3>
 				                <a href="#"  class="btn btn-primary payput" >确认支付</a>
 				                </div>
 				          </div>
