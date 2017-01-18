@@ -48,7 +48,7 @@
 <!-- Account (userinfo) -->
         <div class="toolbar-section" id="userinfo" >
             <div class="clearfix">
-            <a href="#" class="btn btn-primary waves-effect waves-light pull-right toggle-section" id="logout">退出</a>
+            <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section" id="logout">退出</a>
             <div class="quotation pull-left" style="width:auto;">
               <div class="quotation-author-ava pull-left">
                 <img class="" src="{$user_data.headimgurl}" alt="James Cameron">
@@ -176,7 +176,7 @@
   $(document).ready(function () {
 
 $("#logout").click(function(){
-event.preventDefault();
+
   $.ajax({
               type:"POST",
               url:"my_user.php?act=logout_new",

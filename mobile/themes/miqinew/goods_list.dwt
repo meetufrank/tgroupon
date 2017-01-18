@@ -88,13 +88,11 @@
                 <ul>
 				{{# for(var y = 0, ilen = d[i].data.length; y < ilen; y++){ }}
                    {{# if(d[i].title=='价格区间'){ }}
-                     <li><a href="#" id="showprice" onClick="showlist({{d[i].data[y].money_id}},'showprice')">{{d[i].data[y].money_name}}</a></li>
+                     <li class="pricechange"><a href="#" id="showprice{{d[i].data[y].money_id}}" class="widgeta" onClick="showlist({{d[i].data[y].money_id}},'showprice')">{{d[i].data[y].money_name}}</a></li>
                    {{# } }}
                      {{#  if(d[i].title=='商品分类'){ }}
-                     <li><a href="#" id="showtype" onClick="showlist({{d[i].data[y].id}},'showtype')">{{d[i].data[y].name}}</a></li>
+                     <li class="companychange"><a href="#" id="showtype{{d[i].data[y].id}}" class="widgetb" onClick="showlist({{d[i].data[y].id}},'showtype')">{{d[i].data[y].name}}</a></li>
                    {{# } }}
-
-
 
 				  {{# } }}
                 </ul>
@@ -105,8 +103,9 @@
 	</script>
 
     <script type="text/javascript">
-
        function showlist(val,id){
+        $("#"+id+val).addClass("allpricechange");
+        $("#"+id+val).parent().siblings().children().removeClass("allpricechange");
         var search=0;
         if(id=='showsearch'){
          var val= $("#"+val).val();
@@ -190,6 +189,7 @@
             </div><!-- .column -->
           </div><!-- .shop-bar -->
 	  <div class="row">
+    {{# if(d.data){}}
 	  {{# for(var i = 0, len = d.data.length; i < len; i++){ }}
 
             <!-- Item -->
@@ -211,14 +211,14 @@
               </div><!-- .shop-item -->
             </div><!-- .col-md-4.col-sm-6 -->
 		{{# } }}
+      {{# }else{}}
+      未搜索到指定商品~
+      {{# }}}
       </div><!-- .row -->
 
 
 	</script>
-
 	<script type="text/javascript">
-
-
 	$.ajax({
 				   type: "post",
 				   url: "goods_list.php?step=ajax_goods_type",
@@ -279,18 +279,12 @@ layui.use(['laypage', 'layer'], function(){
                dataType:"json",
                data:{page_num:obj.curr,typeid:val,type:id,search:search},
                success: function (data) {
-                 if(data.data){
+
                 var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
                 laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
                  document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
                 });
-                 }else{
-                     layer.open({
-                  content: '暂无商品'
-                  ,skin: 'msg'
-                  });
-                  $("#searchvalue").val('');
-                    }
+
 
               },
               error: function(data){
