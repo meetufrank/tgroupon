@@ -498,16 +498,18 @@
         <div role="tabpanel" class="tab-pane transition fade" id="additional">
           <div class="row">
                 <!-- 商品规格 -->
-                {foreach from=$spguige item=spguige}
+
                           <div class="col-md-6">
                             <table class="table-no-border">
-                              <tr>
-                                <td class="tab-shopsingle">{$spguige.attr_name}:</th>
-                                <td class="tab-shopsingle-right">{$spguige.attr_value}</td>
-                              </tr>
+                                {foreach from=$spguige item=spguige}
+                                  <tr>
+                                    <td class="tab-shopsingle">{$spguige.attr_name}:</th>
+                                    <td class="tab-shopsingle-right">{$spguige.attr_value}</td>
+                                  </tr>
+                                {/foreach}
                             </table>
                           </div>
-                {/foreach}
+
 
             <div class="clear"></div>
           </div>
