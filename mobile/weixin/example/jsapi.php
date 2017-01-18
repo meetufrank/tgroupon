@@ -23,11 +23,11 @@ $openId = $tools->GetOpenid();
 
 define('IN_ECTOUCH', true);
 require('../../include/init.php');
-session_start();
+
 $orderid=$_SESSION['my_mobile_order'];
 if($orderid){
 $order_id=$orderid;
-$sql=" select pay_status from  ecs_order_info where order_id=".$orderid;
+$sql=" select pay_status from  ecs_order_info where order_id=".$order_id;
 $pay_status=$GLOBALS['db']->getOne($sql);
 if($pay_status==2){
       ecs_header("Location: ../../flow.php?step=pay_ok&order_id=".$order_id);
@@ -48,8 +48,9 @@ if($pay_status==2){
 }
 
 }
-$title=implode('、',$goodsname);
-//print_r($title);
+
+$title=@implode('、',$goodsname);
+
 $price=$orderdata[0]['goods_amount']*100;
 $goods_sn=$orderdata[0]['order_sn'];
 //②、统一下单
@@ -64,9 +65,11 @@ $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("test");
 $input->SetNotify_url("http://meetuuu.com/mobile/weixin/example/notify.php");
 $input->SetTrade_type("JSAPI");
+$input->SetProduct_id("$goods_sn");
 $input->SetOpenid($openId);
+print_r($order);
 $order = WxPayApi::unifiedOrder($input);
- //printf_info($order);
+
 $jsApiParameters = $tools->GetJsApiParameters($order);
 }
 
