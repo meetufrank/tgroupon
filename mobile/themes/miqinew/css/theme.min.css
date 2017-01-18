@@ -93,6 +93,9 @@ svg {
 	.site-logo{
 		font-size:16px; 
 	}
+	.hero-slider{
+		margin-top: 50px;
+	}
 
 }
 @media screen and (min-width:375px) and (max-width:413px){
@@ -102,6 +105,9 @@ svg {
 	.site-logo{
 		font-size:20px; 
 	}
+	.hero-slider{
+		margin-top: 50px;
+	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
 	.sidebar {
@@ -109,6 +115,9 @@ svg {
 	}
 	.site-logo{
 		font-size:20px; 
+	}
+	.hero-slider{
+		margin-top: 50px;
 	}
 }
 @media screen and (max-width: 480px) {
@@ -219,7 +228,7 @@ svg {
 		float: right;
 	}
 	.mobile-detail{
-		margin-top: 30px;
+		margin-top:10px;
 	}
 	.padding-top-goodlist{
 		padding-top:45px !important
@@ -2071,7 +2080,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	color: #e52d27 !important
 }
 .navbar {
-	position: relative;
 	z-index: 9900;
 	width: 100%;
 	background-color: #fff;
@@ -2561,7 +2569,9 @@ display:none
 }
 @media screen and (max-width: 768px) {
 .navbar {
-	padding-left: 15px
+	padding-left: 15px;
+	border:1px solid;
+	padding-bottom: 5px;
 }
 .navbar:before {
 	display: block;

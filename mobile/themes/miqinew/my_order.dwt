@@ -295,7 +295,7 @@
             <!--{foreach from=$ye_orders.data item=ye}-->
               <div class="shopping-cart-1 padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
                         <div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
-                          订单编号：356666636329
+                          订单编号：{$ye.order_sn}
                           </div>
                       <div class="row">
                           <div class="col-md-6">
@@ -387,7 +387,7 @@
             <!--{foreach from=$come_orders.data item=co}-->
               <div class="shopping-cart-1 padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
                         <div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
-                          订单编号：356666636329
+                          订单编号：{$co.order_sn}
                           </div>
                           <div class="row">
                           <div class="col-md-6">
