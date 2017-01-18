@@ -173,6 +173,9 @@ svg {
 	.padding-top-4x{
 		padding-top: 50px !important;
 	}
+	.padding-top-3x {
+		padding-top: 72px !important
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -249,7 +252,7 @@ svg {
 		padding-top:35px;
 	}
 	.xinzeng-mobile{
-		margin-left: 35px;
+		margin-left:34px;
 	}
 }
 .display-inline {
@@ -354,9 +357,7 @@ kbd {
 .padding-top-2x {
 	padding-top: 48px !important
 }
-.padding-top-3x {
-	padding-top: 72px !important
-}
+
 .padding-bottom-half {
 	padding-bottom: 12px !important
 }
@@ -414,6 +415,41 @@ kbd {
 	}
 	.duquaddress{
 		float: left;
+	}
+	.wechataddress{
+		display: inline-block;
+		color:#fff;
+	    height: 48px;
+	    line-height:48px;
+	    font-size: 14px;
+	    font-weight: normal;
+	    text-align: center;
+	    vertical-align: middle;
+	    text-decoration: none;
+	    text-transform: uppercase;
+	    border: 2px solid transparent;
+	    border-radius: 5px;
+	    padding: 0 22px;
+	    margin: 10px 0;
+	    margin-right: 8px;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    background-image: none;
+	    white-space: nowrap;
+	    -webkit-transform: translateZ(0);
+	    -moz-transform: translateZ(0);
+	    -ms-transform: translateZ(0);
+	    -o-transform: translateZ(0);
+	    transform: translateZ(0);
+	    -webkit-user-select: none;
+	    -moz-user-select: none;
+	    -ms-user-select: none;
+	    user-select: none;
+	    -webkit-transition: color 0.3s ease-out, background-color 0.3s ease-out;
+	    -o-transition: color 0.3s ease-out, background-color 0.3s ease-out;
+	    transition: color 0.3s ease-out, background-color 0.3s ease-out;
+	    background-color: #ededed;
+}
 	}
 }
 .space-top-none {
@@ -5744,7 +5780,6 @@ img.mfp-img {
 	display: block;
 	width:80px;
 	height:28px;
-	border: 1px solid #CCC;
 	background:#77cde3;
 	font-size: 14px;
 	padding: 2px 6px;
