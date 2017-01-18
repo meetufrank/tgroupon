@@ -1019,7 +1019,7 @@ if($_FILES['attr_img']['name']){
 
 
     //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
-       $up->upload('attr_img');
+
 
      $attr_imgs = $up->getFileName();
 
