@@ -176,7 +176,7 @@ include_once('include/cls_json.php');
          die($json->encode($result));
          exit;
     }
-
+print_r($goods);exit;
     $cartid=addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent,$type_num);
          if($type_num){
             setcookie('add_type',1);
