@@ -1111,7 +1111,6 @@ if($_FILES['attr_img']['name']){
                         }
                     }
                     $val_arr = explode(' ', $attr_value);
-
                     foreach ($val_arr AS $k => $v)
                     {
                         if (!isset($keywords_arr[$v]) && $attr_list[$attr_id] == "1")
@@ -1122,6 +1121,7 @@ if($_FILES['attr_img']['name']){
                 }
             }
         }
+
         $keywords = join(' ', array_flip($keywords_arr));
 
         $sql = "UPDATE " .$ecs->table('goods'). " SET keywords = '$keywords' WHERE goods_id = '$goods_id' LIMIT 1";
@@ -1160,6 +1160,7 @@ if($_FILES['attr_img']['name']){
             }
 
         }
+        print_r($sql);exit;
 
     }
     /* 处理会员价格 */

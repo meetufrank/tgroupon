@@ -356,22 +356,25 @@
                                     {foreach from=$spec.values item=value key=key}
                                        <li>
                                             <a href="#" onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index},0)" {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="pc-group-detail pc-group-change"{else}class="pc-group-detail"{/if} id="type_{$value.id}" data-type="{$value.id}">
-                                            {if $value.attrimg}
-                                                <img src="{$value.attrimg}">
+                                             {if $value.attr_img}
+<img src="{$value.attr_img}" title="{$value.label}" style="width:45px; height:30px;">
                                             {else}
                                                  {$value.label}
-
                                             {/if}
-                                            </a>
+
+                                        </a>
                                         </li>
                                     {/foreach}
+
                                 </ul>
                                 <div class="clear"></div>
                             </div>
 
                             <div class="clear"></div>
                         {/foreach}
+
                    </form>
+                  <!--  <img src="/xinse/mobile/images/shuxing/20170118151528_649.png"> -->
                 </div>
                 <div class="pc-dright-bottom">
                   <div class="col-lg-2 col-md-2 col-sm-2">
