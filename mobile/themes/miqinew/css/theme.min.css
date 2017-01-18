@@ -1724,7 +1724,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	transition: all 0.5s
 }
 .page-preloading .page-wrapper {
-	margin-bottom:40px;
 	opacity: 0;
 	-webkit-transition: all 0.5s 0.3s;
 	-o-transition: all 0.5s 0.3s;
@@ -1930,7 +1929,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 .sb-twitter {
 	color: #606060;
-	float: right;
 }
 /*.sb-twitter:hover, .sb-twitter:focus {
 	color: #55acee !important
@@ -2032,6 +2030,19 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 		font-size: 14px;
 	    padding:18px;
 	}
+	.pc-company-name{
+		 margin-top:22px;
+		 font-size: 18px;
+	}
+	.pc-group-select ul {
+    	min-height: 100px;
+    	float: left;
+    	margin-left: 5px;
+    	list-style: none;
+	}
+	.pc-mobile-container{
+		padding-top: 50px;
+	}
 }
 @media screen and (max-width: 768px) {
 	.lang-switcher {
@@ -2058,6 +2069,22 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	.nav-tabs>li>a {
 	    font-size:14px;
 	    padding:2px;
+	}
+	.pc-group-select ul {
+		max-width: 200px;
+    	min-height: 100px;
+    	float: left;
+    	margin-left: 5px;
+    	list-style: none;
+	}
+	.sb-twitter {
+		float: right;
+	}
+	.mobile-detail{
+		margin-top: 30px;
+	}
+	.padding-top-goodlist{
+		padding-top:45px !important
 	}
 }
 @media screen and (max-width: 360px) {
@@ -2171,7 +2198,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	position: absolute;
 	z-index: 10;
 	width: 780px;
-	height: 100%;
+	height:100%;
 	top: 0;
 	right: 0
 }

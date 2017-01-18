@@ -206,23 +206,13 @@
     text-align:center;
     background-colo:red;
     border:2px #10acf7 solid;
-
     border-radius:1px;
     color:#000;
-  }
-  .pc-group-select ul{
-    width:200px;
-    min-height:100px;
-    float:left;
-    margin-left:5px;
-    list-style:none;
   }
   .pc-group-select ul li{
     float:left;
     padding-left:5px;
     padding-top:5px;
-
-
   }
   .pc-group-detail{
     display:block;
@@ -246,7 +236,6 @@
     color:white;
   }
   .pc-mold-select ul{
-    width:200px;
     min-height:100px;
     float:left;
     margin-left:5px;
@@ -342,7 +331,7 @@
     <!-- 电脑端商品详情选择-->
     <section class="fw-section bg-gray padding-bottom-3x visible-lg visible-md">
       <input id="goodsid" type="hidden" value="{$goods_id}">
-      <div class="container">
+      <div class="container pc-mobile-container">
         <div class="product-info padding-top-2x text-center">
           <h1 class="h2 space-bottom-half">{$spnames}</h1>
           <h2 class="hidden-xs" style="color:#E7322E;" id="pc_price">￥{$sub_price}</h2>
@@ -361,7 +350,7 @@
                         {foreach from=$specification item=spec key=spec_key name=name}
                             <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
                             <div class="pc-group-select col-lg-6 col-md-6 col-sm-6 type_arr" id="pc-select-group{$smarty.foreach.name.index}">
-                              <span style="float:left; margin-top:5px;">{$spec.name}:</span>  <!-- 商品类型名称 -->
+                              <span class="pc-company-name" style="float:left;">{$spec.name}:</span>  <!-- 商品类型名称 -->
                                 <ul>
                                     <!-- 商品属性进行筛选 -->
                                     {foreach from=$spec.values item=value key=key}
