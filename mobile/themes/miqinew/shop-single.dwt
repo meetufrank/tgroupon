@@ -578,15 +578,15 @@ $(function(){
   var data={$select};
 
 
-  // $(".type_arr  ul li a").removeAttr("onclick");
+   $(".type_arr  ul li a").removeAttr("onclick");
   $(".type_arr  ul li a").addClass('specDonotchoose');
 
   $.each(data,function(i){
     $.each(data[i],function(x){
-          //$("#type_"+data[i][x].attr_id).attr("onclick",'attrshuaixuan('+data[i][x].attr_id+','+data[i][x].typeid+','+i+',0)');   //电脑
+          $("#type_"+data[i][x].attr_id).attr("onclick",'attrshuaixuan('+data[i][x].attr_id+','+data[i][x].typeid+','+i+',0)');   //电脑
           $("#type_"+data[i][x].attr_id).removeClass("specDonotchoose");  //电脑
           $("#mobiletype_"+data[i][x].attr_id).removeClass("specDonotchoose");  //手机
-         //  $("#mobiletype_"+data[i][x].attr_id).attr("onclick",'attrshuaixuan('+data[i][x].attr_id+','+data[i][x].typeid+','+i+',0)');   //电脑
+          $("#mobiletype_"+data[i][x].attr_id).attr("onclick",'attrshuaixuan('+data[i][x].attr_id+','+data[i][x].typeid+','+i+',0)');   //电脑
 
 
     })
