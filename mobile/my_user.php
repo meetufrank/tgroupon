@@ -1353,13 +1353,13 @@ elseif ($action == 'async_order_list')
                           <h4 class="item-price">'.$v['goods_price'].'</h4>
                         </div>
                          </div>';
-                    $string.='<div class="item visible-xs"><div class="row"><div class="col-xs-3">';
+                    $string.='<div class="item visible-xs"><div class="row"><div class="col-xs-5">';
                     if($v['goods_thumb']){
                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" >
                           <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
-                    $string.='</div><div class="col-xs-9" onclick="window.open(\'shop-single.php?id='.$v['goods_id'].'\');">'.$v['goods_name'].'
+                    $string.='</div><div class="col-xs-7" onclick="window.open(\'shop-single.php?id='.$v['goods_id'].'\');">'.$v['goods_name'].'
                         </div>
                         </div>
                           <div class="myorder-shop-item">'.$v['goods_attr'].'</div>
