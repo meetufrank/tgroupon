@@ -1455,7 +1455,7 @@ elseif ($action == 'async_order_list')
                          </div>';
                     $string.='<div class="item visible-xs">
                         <div class="row">
-                        <div class="col-xs-3">';
+                        <div class="col-xs-5">';
                     if($v['goods_thumb']){
 
                         $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
@@ -1463,12 +1463,12 @@ elseif ($action == 'async_order_list')
                         </a>';
                     }
                     $string.='</div>
-                        <div class="col-xs-9">
+                        <div class="col-xs-7">
                           '.$v['goods_name'].'
                         </div>
                         </div>
-                          <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">'.$v['goods_attr'].'</div>
-                          <div class="clearfix">
+                          <div style="margin-top:20px;padding:10px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">'.$v['goods_attr'].'</div>
+                          <div class="clearfix clearfix2">
                             <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['goods_price'].'</div>
                             <div class="pull-right" style="padding-top:15px;">
                                    数量：'.$v['goods_number'].'
@@ -1476,16 +1476,16 @@ elseif ($action == 'async_order_list')
                           </div>
                       </div>';
                 }
-                $string.='<div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+                $string.='<div class="cart-subtotal-youfei space-bottom" style="border-bottom: 2px solid #ededed;">
                         <div class="column">
-                          <h3 class="toolbar-title">邮费：</h3>
+                          <div>邮费：</div>
                         </div>
                         <div class="column">
-                          <h3 class="amount_order_yes">'.$value['post_price'].'</h3>
+                          <div class="amount_order_no1 wait-mobile-many">'.$value['post_price'].'</div>
                         </div>
                       </div><div class="cart-subtotal space-bottom">
                         <div class="column">
-                          <h3 class="toolbar-title">总价：</h3>
+                          <h4 class="toolbar-title">总价：</h4>
                         </div>
                         <div class="column">
                           <h3 class="amount_yes" style="color:#f20000">'.$value['total_fee'].'</h3>
