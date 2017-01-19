@@ -433,13 +433,23 @@
                        <!--{/foreach}-->
 
                       <!-- Subtotal -->
+                      <div class="cart-subtotal-youfei space-bottom" style="border-bottom: 2px solid #ededed;">
+                        <div class="column">
+                          <div>邮费：</div>
+                        </div>
+                        <div class="column">
+                          <div class="amount_order_no1 wait-mobile-many">{$ye.post_price}</div>
+                        </div>
+                      </div>
+                      <!-- Subtotal -->
                       <div class="cart-subtotal my-space-bottom">
                         <div class="column">
                           <h4>总价：</h4>
                         </div>
                         <div class="column">
-                          <h3 class="amount_come" style="color:#f20000">{$co.total_fee}</h3>
+                          <h3 class="amount_ye" style="color:#f20000">{$ye.total_fee}</h3>
                         </div>
+
                       </div><!-- .subtotal -->
 
                       </div>

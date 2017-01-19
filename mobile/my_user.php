@@ -1575,17 +1575,16 @@ elseif ($action == 'async_order_list')
                       </div>';
 
                 }
-                $string.='<div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+                $string.='<div class="cart-subtotal-youfei space-bottom" style="border-bottom: 2px solid #ededed;">
                         <div class="column">
-                          <h3 class="toolbar-title">邮费：</h3>
+                          <div>邮费：</div>
                         </div>
                         <div class="column">
-                          <h3 class="amount_order_come">'.$value['post_price'].'</h3>
+                          <div class="amount_order_come wait-mobile-many">'.$value['post_price'].'</div>
                         </div>
-                      </div>
-                      <div class="cart-subtotal my-space-bottom">
+                      </div><div class="cart-subtotal my-space-bottom">
                         <div class="column">
-                          <h4>总价：</h4>
+                          <h4 class="toolbar-title">总价：</h4>
                         </div>
                         <div class="column">
                           <h3 class="amount_come" style="color:#f20000">'.$value['total_fee'].'</h3>
