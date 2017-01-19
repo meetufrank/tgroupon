@@ -447,7 +447,7 @@
                           <h4>总价：</h4>
                         </div>
                         <div class="column">
-                          <h3 class="amount_ye" style="color:#f20000">{$ye.total_fee}</h3>
+                          <h3 class="amount_come" style="color:#f20000">{$ye.total_fee}</h3>
                         </div>
 
                       </div><!-- .subtotal -->

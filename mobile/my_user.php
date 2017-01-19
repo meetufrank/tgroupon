@@ -1488,7 +1488,7 @@ elseif ($action == 'async_order_list')
                           <h4 class="toolbar-title">总价：</h4>
                         </div>
                         <div class="column">
-                          <h3 class="amount_yes" style="color:#f20000">'.$value['total_fee'].'</h3>
+                          <h3 class="amount_ye" style="color:#f20000">'.$value['total_fee'].'</h3>
                         </div>
                       </div><!-- .subtotal -->
                       </div>
