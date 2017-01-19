@@ -183,7 +183,7 @@ include_once('include/cls_json.php');
             $result['cartid']=$cartid;
 
         }else{
-            setcookie('add_type',0);
+            setcookie('add_type','',time()-3600);
         }
 
     //甜心结束
