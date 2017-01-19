@@ -345,7 +345,7 @@
                           <div>邮费：</div>
                         </div>
                         <div class="column">
-                          <div class="amount_yes">{$ye.post_price}</div>
+                          <div class="amount_yes amount_order_no1 wait-mobile-many">{$ye.post_price}</div>
                         </div>
                       </div>
                       <!-- Subtotal -->
