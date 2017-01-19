@@ -1566,7 +1566,7 @@ elseif ($action == 'async_order_list')
                         </div>
                         </div>
                           <div class="myorder-shop-item">'.$v['goods_attr'].'</div>
-                          <div class="clearfix">
+                          <div class="clearfix clearfix2">
                             <div class="pull-left" style="color: #F20000;">'.$v['goods_price'].'</div>
                             <div class="pull-right">
                                    数量：'.$v['goods_number'].'

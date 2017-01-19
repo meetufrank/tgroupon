@@ -424,7 +424,7 @@
                         </div>
                           <div style="margin-top:20px;padding:10px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$cg.goods_attr}</div>
                           <div class="clearfix clearfix2">
-                            <div class="pull-left mobile-pullleft" style="color: #F20000;">{$cg.goods_price}</div>
+                            <div class="pull-left" style="color: #F20000;">{$cg.goods_price}</div>
                             <div class="pull-right">
                                    数量：{$cg.goods_number}
                             </div>
