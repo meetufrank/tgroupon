@@ -288,6 +288,13 @@ svg {
 	.wait-mobile-many{
 		font-size: 17px;
 	}
+	.cart-subtotal-youfei{
+		padding: 10px 0;
+	}
+}
+.cart-subtotal-youfei{
+		display: table;
+    	width: 100%;
 }
 .display-inline {
 	display: inline-block !important;
