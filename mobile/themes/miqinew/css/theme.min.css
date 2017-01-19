@@ -188,7 +188,10 @@ svg {
 	.my-space-bottom{
 		margin-bottom:24px !important
 	}
-
+	.cart-subtotal-youfei {
+    	padding-bottom: 20px;
+    	font-size:20px;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
