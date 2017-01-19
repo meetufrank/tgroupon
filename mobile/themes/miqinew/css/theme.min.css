@@ -99,6 +99,9 @@ svg {
 	.cart-subtotal{
 		padding-bottom:15px;
 	}
+	.shopping-cart .item .item-thumb {
+		width:130px;
+	}
 
 }
 @media screen and (min-width:375px) and (max-width:413px){
@@ -111,6 +114,9 @@ svg {
 	.hero-slider{
 		margin-top: 50px;
 	}
+	.shopping-cart .item .item-thumb {
+		width:140px;
+	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
 	.sidebar {
@@ -121,6 +127,9 @@ svg {
 	}
 	.hero-slider{
 		margin-top: 50px;
+	}
+	.shopping-cart .item .item-thumb {
+		width:150px;
 	}
 }
 @media screen and (max-width: 480px) {
@@ -191,6 +200,9 @@ svg {
 	.cart-subtotal-youfei{
     	padding-bottom:20px;
     	font-size:20px;
+	}
+	.shopping-cart .item .item-thumb {
+		width:163px;
 	}
 }
 @media screen and (max-width: 768px) {
