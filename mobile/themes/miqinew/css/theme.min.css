@@ -182,6 +182,9 @@ svg {
 	.myorder-shop-item{
 		padding:20px 0;
 	}
+	.shopping-cart-1 .item {
+		margin-bottom:30px;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -2525,7 +2528,6 @@ display:none
 	display: table;
 	width: 100%;
 	border-bottom: 2px solid #ededed;
-	margin-bottom: 30px
 }
 .shopping-cart-1 .item .item-thumb {
     width: 163px;
