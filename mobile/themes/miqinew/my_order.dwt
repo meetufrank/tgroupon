@@ -240,7 +240,7 @@
                       <!-- 邮费 -->
                       <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
                         <div class="column">
-                          <h3 class="toolbar-title">邮费：</h3>
+                          <h3>邮费：</h3>
                         </div>
                         <div class="column">
                           <h3 class="amount_order_no">{$no.post_price}</h3>
@@ -250,7 +250,7 @@
                       <!-- Subtotal -->
                       <div class="cart-subtotal space-bottom">
                         <div class="column">
-                          <h3 class="toolbar-title">总价：</h3>
+                          <h4>总价：</h4>
                         </div>
                         <div class="column">
                           <h3 class="amount_no" style="color:#f20000">{$no.total_fee}</h3>
@@ -342,7 +342,7 @@
                    <!--{/foreach}-->
                    <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
                         <div class="column">
-                          <h3 class="toolbar-title">邮费：</h3>
+                          <h3>邮费：</h3>
                         </div>
                         <div class="column">
                           <h3 class="amount_yes">{$ye.post_price}</h3>
@@ -351,7 +351,7 @@
                       <!-- Subtotal -->
                       <div class="cart-subtotal space-bottom">
                         <div class="column">
-                          <h3 class="toolbar-title">总价：</h3>
+                          <h4>总价：</h4>
                         </div>
                         <div class="column">
                           <h3 class="amount_ye" style="color:#f20000">{$ye.total_fee}</h3>
@@ -424,7 +424,7 @@
                         </div>
                           <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$cg.goods_attr}</div>
                           <div class="clearfix">
-                            <div class="pull-left" style="padding-top:15px; color: #F20000;">{$cg.goods_price}</div>
+                            <div class="pull-left mobile-pullleft" style="padding-top:15px; color: #F20000;">{$cg.goods_price}</div>
                             <div class="pull-right" style="padding-top:15px;">
                                    数量：{$cg.goods_number}
                             </div>
@@ -433,9 +433,9 @@
                        <!--{/foreach}-->
 
                       <!-- Subtotal -->
-                      <div class="cart-subtotal space-bottom">
+                      <div class="cart-subtotal my-space-bottom">
                         <div class="column">
-                          <h3 class="toolbar-title">总价：</h3>
+                          <h4>总价：</h4>
                         </div>
                         <div class="column">
                           <h3 class="amount_come" style="color:#f20000">{$co.total_fee}</h3>

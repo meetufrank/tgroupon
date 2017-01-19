@@ -185,6 +185,9 @@ svg {
 	.shopping-cart-1 .item {
 		margin-bottom:30px;
 	}
+	.my-space-bottom{
+		margin-bottom:24px !important
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -271,6 +274,12 @@ svg {
 	}
 	.myorder-mobile-price{
 		margin-bottom: 10px;
+	}
+	.mobile-pullleft{
+		padding-bottom: 14px;
+	}
+	.cart-subtotal {
+    	padding-top: 15px;
 	}
 }
 .display-inline {
@@ -2431,10 +2440,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 .toolbar-dropdown::-webkit-scrollbar {
 display:none
-}
-.toolbar-title {
-	font-size: 24px;
-	font-weight: normal
 }
 .main-navigation {
 	display: block;
