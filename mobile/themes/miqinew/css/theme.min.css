@@ -104,9 +104,10 @@ svg {
 	}
 	.shopping-cart .item .item-title {
 		font-size:17px;
+		font-weight: bolder;
 	}
 	.item-titls{
-
+		font-size: 14px;
 	}
 
 }
@@ -124,7 +125,11 @@ svg {
 		width:140px;
 	}
 	.shopping-cart .item .item-title {
-		font-size:19px;
+		font-size:20px;
+		font-weight: bolder;
+	}
+	.item-titls{
+		font-size: 14px;
 	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
@@ -141,7 +146,11 @@ svg {
 		width:150px;
 	}
 	.shopping-cart .item .item-title {
-		font-size:20px;
+		font-size:22px;
+		font-weight: bolder;
+	}
+	.item-titls{
+		font-size: 16px;
 	}
 }
 @media screen and (max-width: 480px) {
@@ -1286,7 +1295,7 @@ label.hover {
 	color: #606060;
 	font-weight: 300;
 	text-align: center;
-	line-height: 33px;
+	line-height:37px;
 	text-decoration: none;
 	top: 0;
 	right: 0
