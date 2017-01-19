@@ -164,18 +164,22 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
     $want_back=$_POST['want_back'];
     $spec_arr = $_POST['spec_arr'];
     //商品属性筛选
+
     if($want_back&&$want_back==$attrid){
         $pro_where="";
         $ga_where="";
         foreach ($spec_arr as $sk=>$sv){   //删除该属性筛选
-                if($sv==$attrid){
-                  $spec_arr[$k]='';
+
+                if($sv==$want_back){
+
+                  $spec_arr[$sk]='';
 
                 }else{
                     $attrid=$sv;
                 }
 
              }
+
       $sql = "select attr_id from `ecs_goods_attr` where goods_attr_id=".$attrid;
       $typeid = $db->getOne($sql);
     }
