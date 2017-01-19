@@ -603,16 +603,17 @@ $(function(){
      function attrshuaixuan(attrid,typeid,typenum,ismobile){
       var click_value=$("input[name='spec_"+typeid+"']").val();
 
-       $("#type_"+attrid).removeClass('pc-group-change');
-       $("#mobiletype_"+attrid).removeClass('pc-group-change');
+
         $("#type_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');
         $("#mobiletype_"+attrid).parent().siblings('li').children('a').removeClass('pc-group-change');  //手机
         if(click_value==attrid){
            var want_back=attrid;                   //取消标示
+
         }else{
           var want_back=0;
           $("#type_"+attrid).addClass("pc-group-change");
           $("#mobiletype_"+attrid).addClass("pc-group-change");     //手机
+
         }
 
         $("input[name='spec_"+typeid+"']").val(attrid);
@@ -627,8 +628,7 @@ $(function(){
 
 
           }
-$("input[name='spec_"+typeid+"']").val('');
-$("input[name='spec_"+typeid+"']").siblings().val('');
+
 
          $.ajax({
                                     type:"post",
@@ -638,7 +638,10 @@ $("input[name='spec_"+typeid+"']").siblings().val('');
                                     dataType: "json",
                                     success: function (data) {
                                       console.log(data);
-
+                                      $("#type_"+attrid).removeClass('pc-group-change');
+                                      $("#mobiletype_"+attrid).removeClass('pc-group-change');
+                                      $("input[name='spec_"+typeid+"']").val('');
+                                      $("input[name='spec_"+typeid+"']").siblings().val('');
 
                                       // if(data.error==1){
                                       //   alert('未找到该商品!');
