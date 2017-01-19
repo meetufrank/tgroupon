@@ -296,6 +296,11 @@ svg {
 		display: table;
     	width: 100%;
 }
+.cart-subtotal-youfei .column {
+	display: table-cell;
+	vertical-align: top;
+	width: 50%
+}
 .display-inline {
 	display: inline-block !important;
 	vertical-align: middle;
