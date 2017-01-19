@@ -331,21 +331,21 @@
                           {$yg.goods_name}
                         </div>
                         </div>
-                          <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$yg.goods_attr}</div>
-                          <div class="clearfix">
+                          <div style="margin-top:20px;padding:10px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$yg.goods_attr}</div>
+                          <div class="clearfix clearfix2">
                             <div class="pull-left">{$yg.goods_price}</div>
-                            <div class="pull-right" style="padding-top:15px;">
+                            <div class="pull-right">
                                    数量：{$yg.goods_number}
                             </div>
                           </div>
                       </div><!-- .item -->
                    <!--{/foreach}-->
-                   <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+                   <div class="cart-subtotal-youfei space-bottom" style="border-bottom: 2px solid #ededed;">
                         <div class="column">
-                          <h3>邮费：</h3>
+                          <div>邮费：</div>
                         </div>
                         <div class="column">
-                          <h3 class="amount_yes">{$ye.post_price}</h3>
+                          <div class="amount_yes">{$ye.post_price}</div>
                         </div>
                       </div>
                       <!-- Subtotal -->
