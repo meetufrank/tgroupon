@@ -238,7 +238,7 @@
                         </div>
                       <!-- {/foreach} -->
                       <!-- 邮费 -->
-                      <div class="cart-subtotal my-space-bottom" style="border-bottom: 2px solid #ededed;">
+                      <div class="cart-subtotal my-space-bottom wait-mobile-many" style="border-bottom: 2px solid #ededed;">
                         <div class="column">
                           <h3>邮费：</h3>
                         </div>

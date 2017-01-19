@@ -188,6 +188,9 @@ svg {
 	.my-space-bottom{
 		margin-bottom:24px !important
 	}
+	.wait-mobile-many{
+		font-size: 17px;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -283,6 +286,9 @@ svg {
 	}
 	.clearfix2{
 		padding: 10px 0;
+	}
+	.wait-mobile-many{
+		font-size: 17px;
 	}
 }
 .display-inline {
