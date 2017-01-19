@@ -2518,14 +2518,12 @@ display:none
 	position: relative;
 	display: table;
 	width: 100%;
-	padding: 0 45px 30px 0;
 	border-bottom: 2px solid #ededed;
 }
 .shopping-cart-1 .item {
 	position: relative;
 	display: table;
 	width: 100%;
-/*	padding: 0 45px 30px 0;*/
 	border-bottom: 2px solid #ededed;
 	margin-bottom: 30px
 }
