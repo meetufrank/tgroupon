@@ -274,7 +274,7 @@
                                                   }//回调函数结束
                                        });//ajax结束
                               window.location.reload("my_usergrzx.php?act=address_list");
-                              alert("测试");
+
                         }
                         else{
                             alert("获取地址失败，请重新点击");
