@@ -413,7 +413,7 @@
                         <div class="row">
                         <div class="col-xs-5">
                               {if $cg.goods_thumb}
-                            <a href="javascript:window.open('shop-single.php?id={$cg.goods_id}');" class="item-thumb">
+                            <a href="javascript:window.open('shop-single.php?id={$cg.goods_id}');">
                               <img src="././admin/{$cg.goods_thumb}" alt="{$cg.goods_name}">
                             </a>
                             {/if}
