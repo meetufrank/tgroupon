@@ -1345,7 +1345,7 @@ elseif ($action == 'async_order_list')
                         </a>';
                     }
                     $string.='<div class="item-details ">
-                          <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
+                          <h3 class="item-title"><a style="color:#77cde3" href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
                           <div>
                           <div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
                           <h4 class="item-price" >数量：'.$v['goods_number'].'</h4>
@@ -1364,8 +1364,8 @@ elseif ($action == 'async_order_list')
                         </div>
                           <div class="myorder-shop-item">'.$v['goods_attr'].'</div>
                           <div class="clearfix clearfix2">
-                            <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['goods_price'].'</div>
-                            <div class="pull-right" style="padding-top:15px;">
+                            <div class="pull-left" style="color: #F20000;">'.$v['goods_price'].'</div>
+                            <div class="pull-right">
                                    数量：'.$v['goods_number'].'
                             </div>
                           </div>

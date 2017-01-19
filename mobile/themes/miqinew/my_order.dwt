@@ -205,7 +205,7 @@
                         </a>
                         {/if}
                         <div class="item-details ">
-                          <h3 class="item-title"><a href="javascript:window.open('shop-single.php?id={$gl.goods_id}');">{$gl.goods_name}</a></h3>
+                          <h3 class="item-title"><a style="color:#77cde3" href="javascript:window.open('shop-single.php?id={$gl.goods_id}');">{$gl.goods_name}</a></h3>
                           <div>
                           <div class="pull-right" style="color: #000;">{$gl.goods_attr}</div>
                           <h4 class="item-price">数量：{$gl.goods_number}</h4>
