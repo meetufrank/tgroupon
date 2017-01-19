@@ -220,6 +220,7 @@
     height:30px;
     border-radius:1px;
     color:black;
+    background-color: rgb(52,52,52);
   }
   .pc-none{
     background-color:#C33;
@@ -280,7 +281,11 @@
 	}
   /* 商品属性不可选 */
   .specDonotchoose{
-    border:1px dashed black;
+    border:2px dashed black;
+  }
+  .specDonotchoose img{
+    max-width: 45px;
+    max-height: 25px;
   }
 
   /* 收藏状态为红色 */
