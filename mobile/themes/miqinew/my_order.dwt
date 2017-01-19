@@ -349,7 +349,7 @@
                         </div>
                       </div>
                       <!-- Subtotal -->
-                      <div class="cart-subtotal space-bottom">
+                      <div class="cart-subtotal my-space-bottom">
                         <div class="column">
                           <h4>总价：</h4>
                         </div>

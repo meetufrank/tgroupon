@@ -1483,7 +1483,7 @@ elseif ($action == 'async_order_list')
                         <div class="column">
                           <div class="amount_order_no1 wait-mobile-many">'.$value['post_price'].'</div>
                         </div>
-                      </div><div class="cart-subtotal space-bottom">
+                      </div><div class="cart-subtotal my-space-bottom">
                         <div class="column">
                           <h4 class="toolbar-title">总价：</h4>
                         </div>
