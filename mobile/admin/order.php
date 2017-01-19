@@ -2258,7 +2258,8 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit')
         $shipping_list = available_shipping_list($region_id_list);
 
         /* 取得配送费用 */
-        $total = order_weight_price($order_id);
+       // $total = order_weight_price($order_id);
+        $total = 0;
         foreach ($shipping_list AS $key => $shipping)
         {
             $shipping_fee = shipping_fee($shipping['shipping_code'],
