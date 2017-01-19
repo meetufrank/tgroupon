@@ -2491,10 +2491,7 @@ elseif ($_REQUEST['step'] == 'new_done')
       $addressid = isset($_POST['address']) ? intval($_POST['address']) : 0;
     //$consignee = get_consignee($_SESSION['user_id'],$addressid);
     $consignee = get_consignee_byid($_SESSION['user_id'],$addressid);
-
-/* 检查收货人信息是否完整 */
-    if (!check_consignee_info($consignee, $flow_type))
-    {
+    if(!$consignee){
         $result['error'] = 1;
 
         $result['msg']='请选择收货人信息';
@@ -2502,6 +2499,16 @@ elseif ($_REQUEST['step'] == 'new_done')
             echo json_encode($result);
             exit;
     }
+// /* 检查收货人信息是否完整 */
+//     if (!check_consignee_info($consignee, $flow_type))
+//     {
+//         $result['error'] = 1;
+
+//         $result['msg']='请选择收货人信息';
+
+//             echo json_encode($result);
+//             exit;
+//     }
 
 
 //查询偏远地区邮费
