@@ -220,7 +220,7 @@
     height:30px;
     border-radius:1px;
     color:black;
-    background-color: rgb(52,52,52);
+    background-color:#CCCCCE;
   }
   .pc-none{
     background-color:#C33;
