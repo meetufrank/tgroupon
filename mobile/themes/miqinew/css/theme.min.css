@@ -188,9 +188,7 @@ svg {
 	.my-space-bottom{
 		margin-bottom:24px !important
 	}
-	.wait-mobile-many{
-		font-size: 17px;
-	}
+
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -2618,6 +2616,10 @@ display:none
 	font-weight: 500;
 	text-align: right;
     color:red;
+}
+.amount_order_no1{
+	font-weight: 500;
+	text-align: right;
 }
 .amount_yes,.amount_no,.amount_come,.amount_order_come,.amount_order_yes,.amount_order_no,.amount_pay{
     font-size: 24px;
