@@ -232,6 +232,9 @@
     color:white;
     background-color:rgb(52,52,52)
   }
+  .pc-group-change img{
+    border:1px solid black;
+  }
   .pc-mold-select ul{
     min-height:100px;
     float:left;
