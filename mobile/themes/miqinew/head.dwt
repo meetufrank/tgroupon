@@ -111,9 +111,9 @@
                 <a href="shop-single.php?id={$goods.goods_id}" class="item-thumb">
                 {if $goods.goods_thumb}<img src="././admin/{$goods.goods_thumb}" alt="Item">{/if}
                 </a>
-                <div class="item-details"><h3 class="item-title">
+                <div class="item-details"><div class="item-title">
                 <a href="shop-single.php?id={$goods.goods_id}">{$goods.goods_name}</a>
-                </h3>
+                </div>
                 <div>
                 <div style="color:#000" >{$goods.goods_attr}</div>
                 <h4 class="item-price" data-price="{$goods.goods_price}">{$goods.goods_price}</h4>

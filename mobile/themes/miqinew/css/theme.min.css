@@ -2581,7 +2581,6 @@ display:none
 	vertical-align: top
 }
 .shopping-cart .item .item-thumb {
-	width: 163px;
 	padding-right: 25px
 }
 .shopping-cart .item .item-thumb>img {
@@ -2684,7 +2683,7 @@ display:none
 	padding-left: 15px;
 	padding-bottom: 5px;
 }
-.navbar:before {
+/*.navbar:before {
 	display: block;
 	position: absolute;
 	z-index: 7;
@@ -2694,7 +2693,7 @@ display:none
 	height: 50px;
 	content: '';
 	background-color: #fff
-}
+}*/
 .toolbar {
 	width: 210px
 }
