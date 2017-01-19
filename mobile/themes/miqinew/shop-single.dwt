@@ -216,7 +216,7 @@
   }
   .pc-group-detail{
     display:block;
-    min-width:50px;
+    min-width:45px;
     height:30px;
     background-color:rgb(179,179,179);
     border:2px rgb(179,179,179) solid;
