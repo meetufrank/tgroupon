@@ -233,7 +233,7 @@
     background-color:rgb(52,52,52)
   }
   .pc-group-change img{
-    border:1px solid black;
+    border:2px solid rgb(52,52,52);
   }
   .pc-mold-select ul{
     min-height:100px;
