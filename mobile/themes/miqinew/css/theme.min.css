@@ -176,6 +176,9 @@ svg {
 	.padding-top-3x {
 		padding-top: 72px !important
 	}
+	.myorder-shop-item{
+		padding:20px 0;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -253,6 +256,15 @@ svg {
 	}
 	.xinzeng-mobile{
 		margin-left:34px;
+	}
+	.myorder-shop-item{
+		padding:20px 0;
+	}
+	.shopping-cart .item {
+		margin-bottom:15px
+	}
+	.myorder-mobile-price{
+		margin-bottom: 10px;
 	}
 }
 .display-inline {
@@ -449,7 +461,6 @@ kbd {
 	    -o-transition: color 0.3s ease-out, background-color 0.3s ease-out;
 	    transition: color 0.3s ease-out, background-color 0.3s ease-out;
 	    background-color: #ededed;
-}
 	}
 }
 .space-top-none {
@@ -2504,9 +2515,8 @@ display:none
 	position: relative;
 	display: table;
 	width: 100%;
-	padding: 0 45px 30px 0;
+/*	padding: 0 45px 30px 0;*/
 	border-bottom: 2px solid #ededed;
-	margin-bottom: 30px
 }
 .shopping-cart-1 .item {
 	position: relative;
@@ -5777,16 +5787,15 @@ img.mfp-img {
 	text-align: center;
 }
 .addNewAddress{
-	display: block;
+	display:inline-block;
 	width:80px;
-	height:28px;
+	height:30px;
 	background:#77cde3;
 	font-size: 14px;
-	padding: 2px 6px;
 	color: #ffffff;
 	border-radius: 5px;
 	text-align: center;
-	line-height: 1.5;
+	line-height:30px;
 }
 .pc-group-detail img{
 	display: block;
@@ -5797,4 +5806,14 @@ img.mfp-img {
 .mobile-cart-border-details img{
 	display: block;
 	max-width: 100%;
+}
+.myorder-shop-item{
+	margin-top:20px;
+	border-top:1px solid #f5f5f5;
+	border-bottom:1px solid #f5f5f5; 
+	color: #000;
+}
+.myorder-mobile-price{
+	padding-top:15px;
+	color: #F20000;
 }
