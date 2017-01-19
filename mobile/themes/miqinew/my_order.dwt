@@ -238,12 +238,12 @@
                         </div>
                       <!-- {/foreach} -->
                       <!-- 邮费 -->
-                      <div class="cart-subtotal my-space-bottom wait-mobile-many" style="border-bottom: 2px solid #ededed;">
+                      <div class="cart-subtotal my-space-bottom" style="border-bottom: 2px solid #ededed;">
                         <div class="column">
-                          <h3>邮费：</h3>
+                          <h3 class="wait-mobile-many">邮费：</h3>
                         </div>
                         <div class="column">
-                          <h3 class="amount_order_no">{$no.post_price}</h3>
+                          <h3 class="amount_order_no wait-mobile-many">{$no.post_price}</h3>
                         </div>
                       </div><!-- 邮费 -->
 
