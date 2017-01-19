@@ -1541,7 +1541,7 @@ elseif ($action == 'async_order_list')
                 foreach ((array)$value['good_list'] as $k => $v) {
                      $string.='<div class="item hidden-xs">';
                     if($v['goods_thumb']){
-                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
+                        $string.='<a style="color:#77cde3" href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
                           <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
@@ -1556,7 +1556,7 @@ elseif ($action == 'async_order_list')
                         <div class="col-xs-3">';
                     if($v['goods_thumb']){
 
-                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
+                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');">
                           <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
@@ -1565,10 +1565,10 @@ elseif ($action == 'async_order_list')
                           '.$v['goods_name'].'
                         </div>
                         </div>
-                          <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">'.$v['goods_attr'].'</div>
+                          <div class="myorder-shop-item">'.$v['goods_attr'].'</div>
                           <div class="clearfix">
-                            <div class="pull-left" style="padding-top:15px; color: #F20000;">'.$v['goods_price'].'</div>
-                            <div class="pull-right" style="padding-top:15px;">
+                            <div class="pull-left" style="color: #F20000;">'.$v['goods_price'].'</div>
+                            <div class="pull-right">
                                    数量：'.$v['goods_number'].'
                             </div>
                           </div>
@@ -1582,9 +1582,10 @@ elseif ($action == 'async_order_list')
                         <div class="column">
                           <h3 class="amount_order_come">'.$value['post_price'].'</h3>
                         </div>
-                      </div><div class="cart-subtotal space-bottom">
+                      </div>
+                      <div class="cart-subtotal my-space-bottom">
                         <div class="column">
-                          <h3 class="toolbar-title">总价：</h3>
+                          <h4>总价：</h4>
                         </div>
                         <div class="column">
                           <h3 class="amount_come" style="color:#f20000">'.$value['total_fee'].'</h3>
