@@ -320,14 +320,14 @@
                       </div><!-- .item -->
                       <div class="item visible-xs">
                         <div class="row">
-                        <div class="col-xs-3">
+                        <div class="col-xs-5">
                         {if $yg.goods_thumb}
                           <a href="javascript:window.open('shop-single.php?id={$yg.goods_id}');">
                             <img class="img-responsive" src="././admin/{$yg.goods_thumb}" alt="{$yg.goods_name}">
                           </a>
                            {/if}
                         </div>
-                        <div class="col-xs-9">
+                        <div class="col-xs-7">
                           {$yg.goods_name}
                         </div>
                         </div>
@@ -345,7 +345,7 @@
                           <div>邮费：</div>
                         </div>
                         <div class="column">
-                          <div class="amount_yes amount_order_no1 wait-mobile-many">{$ye.post_price}</div>
+                          <div class="amount_order_no1 wait-mobile-many">{$ye.post_price}</div>
                         </div>
                       </div>
                       <!-- Subtotal -->
@@ -411,14 +411,14 @@
                       </div><!-- .item -->
                       <div class="item visible-xs">
                         <div class="row">
-                        <div class="col-xs-3">
+                        <div class="col-xs-5">
                               {if $cg.goods_thumb}
                             <a href="javascript:window.open('shop-single.php?id={$cg.goods_id}');" class="item-thumb">
                               <img src="././admin/{$cg.goods_thumb}" alt="{$cg.goods_name}">
                             </a>
                             {/if}
                         </div>
-                        <div class="col-xs-9">
+                        <div class="col-xs-7">
                           {$cg.goods_name}
                         </div>
                         </div>
