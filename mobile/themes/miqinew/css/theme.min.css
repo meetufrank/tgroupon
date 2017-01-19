@@ -281,6 +281,9 @@ svg {
 	.cart-subtotal {
     	padding-top: 15px;
 	}
+	.clearfix2{
+		padding: 10px 0;
+	}
 }
 .display-inline {
 	display: inline-block !important;

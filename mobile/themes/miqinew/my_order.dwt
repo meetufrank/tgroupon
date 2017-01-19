@@ -181,8 +181,8 @@
           </ul>
           <!-- Tab panes -->
           <div class="tab-content">
-
             <div role="tabpanel" class="tab-pane transition fade in active" id="tab1_1">
+             <!--待付款-->
  <!--{foreach from=$no_orders.data item=no}-->
                     <div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;" id="order_cart_{$no.order_id}">
                         <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
@@ -228,7 +228,7 @@
                         </div>
                         </div>
                           <div class="myorder-shop-item">{$gl.goods_attr}</div>
-                          <div class="clearfix">
+                          <div class="clearfix clearfix2">
                             <div class="pull-left" style="padding-top:15px; color: #F20000;">{$gl.goods_price}</div>
                             <div class="pull-right" style="padding-top:15px;">
                                    数量：{$gl.goods_number}
@@ -238,7 +238,7 @@
                         </div>
                       <!-- {/foreach} -->
                       <!-- 邮费 -->
-                      <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+                      <div class="cart-subtotal my-space-bottom" style="border-bottom: 2px solid #ededed;">
                         <div class="column">
                           <h3>邮费：</h3>
                         </div>
@@ -248,7 +248,7 @@
                       </div><!-- 邮费 -->
 
                       <!-- Subtotal -->
-                      <div class="cart-subtotal space-bottom">
+                      <div class="cart-subtotal my-space-bottom">
                         <div class="column">
                           <h4>总价：</h4>
                         </div>
@@ -290,7 +290,7 @@
                   </div>
               </div>
             </div>
-
+<!--待发货-->
             <div role="tabpanel" class="tab-pane transition fade" id="tab1_2">
             <!--{foreach from=$ye_orders.data item=ye}-->
               <div class="shopping-cart-1 padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
@@ -333,7 +333,7 @@
                         </div>
                           <div style="margin-top:20px;padding:20px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$yg.goods_attr}</div>
                           <div class="clearfix">
-                            <div class="pull-left myorder-mobile-price">{$yg.goods_price}</div>
+                            <div class="pull-left">{$yg.goods_price}</div>
                             <div class="pull-right" style="padding-top:15px;">
                                    数量：{$yg.goods_number}
                             </div>
@@ -382,7 +382,7 @@
               </div>
                  {/if}
             </div>
-
+<!--待收货-->
             <div role="tabpanel" class="tab-pane transition fade" id="tab1_3">
             <!--{foreach from=$come_orders.data item=co}-->
               <div class="shopping-cart-1 padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
@@ -433,7 +433,7 @@
                        <!--{/foreach}-->
 
                       <!-- Subtotal -->
-                      <div class="cart-subtotal my-space-bottom">
+                      <div class="cart-subtotal">
                         <div class="column">
                           <h4>总价：</h4>
                         </div>
@@ -464,12 +464,6 @@
                       </div>
                       </div>
                       </div>
-                      <!-- Buttons
-                      <div class="text-right">
-                        <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
-                        <a href="#" class="btn btn-primary waves-effect waves-light">去支付</a>
-                      </div>
-                      -->
 
                    <!--{/foreach}-->
 
