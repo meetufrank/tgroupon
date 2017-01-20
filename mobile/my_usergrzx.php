@@ -1501,7 +1501,7 @@ elseif ($action == 'wxaddress'){
 ";
     $provinceid = $db->getOne($sqlprovince);
 
-      $provinceid;
+      print_r($provinceid);exit;
      //市
       $city = $_POST['city'];
       if(strpos($city, '市')!==false){
