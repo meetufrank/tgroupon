@@ -1475,11 +1475,11 @@ elseif ($action == 'address_list')
 //添加微信收货地址
 elseif ($action == 'wxaddress'){
       //详细地址
-      $address = $_POST['address'];
+      $address = $_GET['address'];
 
 
      //省
-      $province = $_POST['province'];
+      $province = $_GET['province'];
 
 
 
@@ -1503,7 +1503,7 @@ elseif ($action == 'wxaddress'){
 
 
      //市
-      $city = $_POST['city'];
+      $city = $_GET['city'];
       if(strpos($city, '市')!==false){
          $shis=str_replace("市","",$city);
       }else{
@@ -1516,26 +1516,28 @@ elseif ($action == 'wxaddress'){
 
 
      //区
-      $district = $_POST['district'];
+      $district = $_GET['district'];
     $sqdistrict= "select region_id from `ecs_region` where region_name LIKE '%$district%' and region_type = 3 and parent_id = $cityid
 ";
     $districtid = $db->getOne($sqdistrict);
 
 
      //电话
-      $tel = $_POST['tel'];
+      $tel = $_GET['tel'];
 
      //收货人姓名
-      $consignee = $_POST['consignee'];
-  $sql = "insert into `ecs_user_address`(user_id,consignee,tel,province,city,district,address) values($user_id,'$consignee','$tel',$provinceid,$cityid,$districtid,'$address')";
+      $consignee = $_GET['consignee'];
+   $sql = "insert into `ecs_user_address` (user_id,consignee,tel,province,city,district,address) values($user_id,'$consignee','$tel',$provinceid,$cityid,$districtid,'$address')";
 
 
 $result=$db->query($sql);
 
  if($result){
-    json_encode(1);
+    $data['msg']='success';
+   echo json_encode($data);
  }else{
-    json_encode();
+    $data['msg']='error';
+    echo json_encode($data);
  }
 exit;
 

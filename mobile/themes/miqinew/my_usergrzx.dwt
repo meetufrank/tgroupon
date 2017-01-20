@@ -263,17 +263,23 @@
                         if(res.err_msg == 'edit_address:ok'){
 
                             // document.getElementById("showAddress").innerHTML="收件人："+res.userName+"  联系电话："+res.telNumber+"  收货地址："+res.proviceFirstStageName+res.addressCitySecondStageName+res.addressCountiesThirdStageName+res.addressDetailInfo+"  邮编："+res.addressPostalCode;
+                            // window.location.href="my_usergrzx.php?act=wxaddress&consignee="+res.userName+"&tel="+res.telNumber+"&province="+res.proviceFirstStageName+"&city="+res.addressCitySecondStageName+"&district="+res.addressCountiesThirdStageName+"&address="+res.addressDetailInfo;
+                            // return;
                               $.ajax({
-                                            type:"post",
+
                                             url:"my_usergrzx.php?act=wxaddress",
                                             async:true,
                                             data:{consignee:res.userName,tel:res.telNumber,province:res.proviceFirstStageName,city:res.addressCitySecondStageName,district:res.addressCountiesThirdStageName,address:res.addressDetailInfo},
                                             dataType: "json",
                                             success: function (result) {
+                                               if(result.msg=='success'){
+                                                 window.location.reload("my_usergrzx.php?act=address_list");
+                                               }
+
 
                                                   }//回调函数结束
                                        });//ajax结束
-                              window.location.reload("my_usergrzx.php?act=address_list");
+
 
                         }
                         else{
