@@ -864,7 +864,7 @@ function numDecmobile(){
           hammertime.get('pinch').set({enable:true });
           hammertime.add(new Hammer.Pinch());
           //添加事件
-          hammertime.on("pinch", function (e) {
+          hammertime.on("pinchin", function (e) {
              //控制台输出
              console.log(e);
           });
