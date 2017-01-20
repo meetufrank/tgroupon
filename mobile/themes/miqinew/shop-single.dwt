@@ -861,6 +861,7 @@ function numDecmobile(){
           alert('success');
           //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
           var hammertime = new Hammer(document.getElementById("mbsuofang"));
+          hammertime.add(new Hammer.Pinch());
           //添加事件
           hammertime.on("pinchin", function (e) {
              //控制台输出
