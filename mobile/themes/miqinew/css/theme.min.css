@@ -533,7 +533,7 @@ kbd {
 	    -webkit-transition: color 0.3s ease-out, background-color 0.3s ease-out;
 	    -o-transition: color 0.3s ease-out, background-color 0.3s ease-out;
 	    transition: color 0.3s ease-out, background-color 0.3s ease-out;
-	    background-color: #ededed;
+	    background-color:#77cde3;
 	}
 }
 .space-top-none {
@@ -5829,18 +5829,6 @@ img.mfp-img {
 	overflow:hidden;
 	color:black;
 	border:2px solid #10acf7;
-}
-.duquaddress{
-	display: block;
-	width:100px;
-	height: 30px;
-	border: 1px solid #CCC;
-	background:#77cde3;
-	font-size: 14px;
-	padding: 2px 6px;
-	color: #ffffff;
-	border-radius:5px;
-	text-align: center;
 }
 .addNewAddress{
 	display:inline-block;

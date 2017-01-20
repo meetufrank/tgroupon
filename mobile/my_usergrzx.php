@@ -1482,6 +1482,8 @@ elseif ($action == 'wxaddress'){
       $province = $_POST['province'];
 
 
+
+
         if(strpos($province, '壮族自治区')!==false){
             $news=str_replace("壮族自治区","",$province);
         }else if(strpos($province, '维吾尔自治区')!==false){
@@ -1499,7 +1501,7 @@ elseif ($action == 'wxaddress'){
 ";
     $provinceid = $db->getOne($sqlprovince);
 
-
+      print_r($provinceid);exit;
      //市
       $city = $_POST['city'];
       if(strpos($city, '市')!==false){
@@ -1507,7 +1509,7 @@ elseif ($action == 'wxaddress'){
       }else{
          $shis = $city;
         }
-     $sqlcity = "select region_id from `ecs_region` where region_name LIKE '%$shis%' and region_type = 2 and parent_id = $provinceid
+     $sqlcity = "select region_id from `ecs_region` where region_name LIKE '%$shis%' and region_type = 2
 ";
     $cityid = $db->getOne($sqlcity);
 
@@ -1515,7 +1517,7 @@ elseif ($action == 'wxaddress'){
 
      //区
       $district = $_POST['district'];
-    $sqdistrict= "select region_id from `ecs_region` where region_name LIKE '%$district%' and region_type = 3 and parent_id = $cityid
+    $sqdistrict= "select region_id from `ecs_region` where region_name LIKE '%$district%' and region_type = 3
 ";
     $districtid = $db->getOne($sqdistrict);
 
