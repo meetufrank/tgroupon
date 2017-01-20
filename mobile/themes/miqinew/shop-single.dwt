@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>商品详情页-NEW</title>
+  <title>商品详情页</title>
 
   <!--SEO Meta Tags-->
   <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
@@ -298,8 +298,6 @@
   .schongse{
     color:red;
   }
-
-
   .mobile-cart-border-details img {
     display: block;
     width: 45px;
