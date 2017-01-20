@@ -597,6 +597,20 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript">
 $(function(){
+  function viewport() {
+    var e = window, a = 'inner';
+    if (!('innerWidth' in window )) {
+        a = 'client';
+        e = document.documentElement || document.body;
+    }
+    return { width : e[ a+'Width' ] , height : e[ a+'Height' ] };
+}
+if (viewport().width < 768){
+   $("#xiangqiangimg img").click(function(event) {
+    window.location.href=$(this).attr("src");
+   });
+}
+
   var data={$select};
 
 
@@ -850,25 +864,67 @@ function numDecmobile(){
       });
     });
   $("#Mobilethumbnail").click(function(){
-      var content= '<img id="mbsuofang" src="'+_shuxingimgs_+'">';
+    var content= '<div class="test_mobile_pinch" ><img    id="mbsuofang" src="'+_shuxingimgs_+'"></div>';
       layer.open({
         closeBtn: 0,
         title: false,
         type: 1,
-        content: content,
-        style:'width:80%;',
-        success:function(){
-          alert('success');
-          //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
-          var hammertime = new Hammer(document.getElementById("mbsuofang"));
-          hammertime.get('pinch').set({enable:true });
-          hammertime.add(new Hammer.Pinch());
-          //添加事件
-          hammertime.on("pinchin", function (e) {
-             //控制台输出
-             console.log(e);
-          });
-        }
+        content: content
+    //     success:function(){
+    //       //alert('success');
+    //       //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
+    //       var ham = new Hammer(document.getElementById("mbsuofang"), {
+    //   domEvents: true
+    // });
+    //       var width = 500;
+    //       var height = 500;
+
+    // ham.get('pinch').set({ enable: true });
+    // $( "#mbsuofang" ).on( "pinch", function( e ) {
+
+    //    if ( width * e.originalEvent.gesture.scale >= 100 ) {
+
+    //    $( this ).css({
+    //      width: width * e.originalEvent.gesture.scale,
+    //      height: height * e.originalEvent.gesture.scale,
+
+
+    //    });
+    //    }
+    //    console.log( e.originalEvent.gesture.scale );
+    // } );
+    // $( "#mbsuofang" ).on( "pinchend", function( e ) {
+
+    //   width = width * e.originalEvent.gesture.scale;
+    //   height = height * e.originalEvent.gesture.scale;
+
+
+    // $( ".test_mobile_pinch" ).on( "panstart", function( e ) {
+    //   img = $( ".test_mobile_pinch img" );
+    //   margin = parseInt( img.css( "margin-left" ), 10 );
+    // } );
+    // $( ".test_mobile_pinch" ).on( "pan", function( e ) {
+    // console.log( "pan" );
+    //   var delta = margin + e.originalEvent.gesture.deltaX;
+    //   console.log( delta );
+    //   if ( delta >= -1750 && delta <= -150 ) {
+    //      img.css( {
+    //     "margin-left": margin + e.originalEvent.gesture.deltaX
+    //   } );
+    //   }
+    // });
+
+
+    //   console.log( width );
+    // } );
+    //       // hammertime.get('pinch').set({enable:true });
+    //       // hammertime.add(new Hammer.Pinch());
+    //       // //添加事件
+    //       // hammertime.on("pinchin", function (e) {
+    //       //    //控制台输出
+    //       //    console.log(e);
+    //       // });
+    //     }
 
       });
     });
