@@ -81,7 +81,7 @@
 	}
 	.layui-m-layer0 .layui-m-layerchild {
 		width: 90%;
-	}	
+	}
 }
 /* 中型设备（台式电脑，992px 起） */
 @media (min-width:992px) {
@@ -100,7 +100,7 @@
 	}
 	.layui-m-layer0 .layui-m-layerchild {
 		width: 90%;
-	}		
+	}
 }
 /* 大型设备（大台式电脑，1200px 起） */
 @media (min-width:1200px) {
@@ -135,8 +135,8 @@
 	position: fixed;
 	left: 0;
 	top: 0;
-	width: 100%;
-	height: 100%
+/* 	width: 100%;
+	height: 100% */
 }
 .layui-m-layershade {
 	background-color: rgba(0,0,0,.7);
