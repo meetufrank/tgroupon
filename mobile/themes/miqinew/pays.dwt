@@ -114,8 +114,8 @@
                   <div class="col-md-6 check_box"  >
                     <label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label{$consignee.address_id}"  >
                      <input type="radio" name="my_co_shipping" {if $consignee.default==1}checked{elseif $smarty.foreach.address.iteration==1 }checked{/if} value="{$consignee.address_id}"  id="address{$consignee.address_id}"  >
-                     </label>
-                   {$consignee.province}{$consignee.city}{$consignee.district}{$consignee.address}
+                     </label><!--{$consignee.city}{$consignee.district}-->
+                   {$consignee.province}{$consignee.address}
                   </div>
                   <div class="col-md-3 adperson">
                     收件人：{$consignee.consignee}
