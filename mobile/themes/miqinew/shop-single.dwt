@@ -303,7 +303,7 @@
   .mobile-cart-border-details img {
     display: block;
     width: 45px;
-    height: 30px;
+    height:26px;
     max-width: 100%;
     background-color: rgba(0,0,0,0);
 }
