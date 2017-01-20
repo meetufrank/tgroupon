@@ -17,7 +17,7 @@ define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
 
-//require(ROOT_PATH . 'include/lib_weixintong.php');
+require(ROOT_PATH . 'include/lib_weixintong.php');
 
 /* 载入语言文件 */
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
