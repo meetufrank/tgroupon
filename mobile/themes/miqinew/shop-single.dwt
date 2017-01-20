@@ -27,6 +27,8 @@
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
 
+  <!-- 图片缩放插件 -->
+  <script src="{$ectouch_themes}/js/hammer.min.js"></script>
   <style>
   @media screen and (max-width:768px) {
 	.mobile-cart-color-select li a img {
@@ -848,14 +850,24 @@ function numDecmobile(){
       });
     });
   $("#Mobilethumbnail").click(function(){
-
-      var content= '<img src="'+_shuxingimgs_+'">';
+      var content= '<img id="mbsuofang" src="'+_shuxingimgs_+'">';
       layer.open({
         closeBtn: 0,
         title: false,
         type: 1,
         content: content,
-        style:'width:80%;'
+        style:'width:80%;',
+        success:function(){
+          alert('success');
+          //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
+          var hammertime = new Hammer(document.getElementById("mbsuofang"));
+          //添加事件
+          hammertime.on("pinchin", function (e) {
+             //控制台输出
+             console.log(e);
+          });
+        }
+
       });
     });
   })
