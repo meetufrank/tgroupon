@@ -384,7 +384,7 @@
                   <div class="col-lg-2 col-md-2 col-sm-2">
                       <div class="count-input">
                           <a class="incr-btn" onclick="numDec()" data-action="decrease" href="#">–</a>
-                          <input class="quantity" id="quantity" type="text" value="1">
+                          <input class="quantity" id="quantity" type="text" value="1" readonly>
                           <a class="incr-btn" onclick="numAdd()" data-action="increase" href="#">+</a>
                     </div>
                     </div>
@@ -426,7 +426,7 @@
                 <div class="col-xs-7">
                     <div class="mobile-count-input">
                          <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">–</a>
-                         <input class="mobile-quantity" id="quantitymobile" type="text" value="1">
+                         <input class="mobile-quantity" id="quantitymobile" type="text" value="1" readonly>
                          <a class="mobile-incr-btn" onclick="numAddmobile()" href="#">+</a>
                     </div>
               </div>

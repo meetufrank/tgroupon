@@ -279,16 +279,18 @@
 
   <!-- tan chuang -->
 
-
+{if $no_orders.more}
               <div class="row padding-top" id="no_more">
                   <div class="text-center padding-bottom-2x">
-                  {if $no_orders.more}
+
                     <a href="#" class="btn btn-primary waves-effect waves-light" id="no_pay" >加载更多</a>
-                     {/if}
+
                     <br>
                     <a><i class="material-icons arrow_downward"></i></a>
+
                   </div>
               </div>
+              {/if}
             </div>
 <!--待发货-->
             <div role="tabpanel" class="tab-pane transition fade" id="tab1_2">

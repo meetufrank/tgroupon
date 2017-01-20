@@ -1256,11 +1256,16 @@ $smarty->assign('payment_list',$payment_list);
 }
 elseif($_REQUEST['step']=='pay_ok'){
 
+
     include_once(ROOT_PATH . 'include/lib_transaction.php');
     include_once(ROOT_PATH . 'include/lib_payment.php');
     include_once(ROOT_PATH . 'include/lib_order.php');
     include_once(ROOT_PATH . 'include/lib_clips.php');
+ if ( $_SESSION['user_id'] == 0)
+    {
 
+          please_in();
+    }
     $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
 
     /* 订单详情 */

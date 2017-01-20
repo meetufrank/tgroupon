@@ -270,13 +270,16 @@ window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
         var pay=0;
         var cart_num=0;
         $(".shopping-cart").children(".item").each(function () {
+        var quantity=parseFloat($(this).find("input[class='quantity']").val());
             if($(this).find("input[type='checkbox']")[0].checked){
                 var price =parseFloat($(this).find(".item-price span").text());
 
-                var quantity=parseFloat($(this).find("input[class='quantity']").val());
+
                 pay+=price*quantity;
-                cart_num+=quantity;
+
             }
+
+             cart_num+=quantity;
 
         });
         if(pay>0){

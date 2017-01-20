@@ -1235,7 +1235,7 @@ elseif ($action == 'order_list')
 
     $page = isset($_REQUEST['page']) ? intval($_REQUEST['page']) : 1;
    //初始化每页显示数据
-   $size=1;
+   $size=5;
 
       $string1="  and pay_status=0 and shipping_status=0";//待付款
       $string2="  and pay_status=2 and shipping_status=0";//待发货
@@ -1306,7 +1306,7 @@ elseif ($action == 'async_order_list')
 {
 
     include_once(ROOT_PATH . 'include/lib_transaction.php');
-    $page_num=1;
+    $page_num=5;
 
    if($_POST['type']==1){  //待付款ajax获取数据
             $start_no = $_POST['last_no'];  //待付款
