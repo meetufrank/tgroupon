@@ -296,6 +296,15 @@
   .schongse{
     color:red;
   }
+
+
+  .mobile-cart-border-details img {
+    display: block;
+    width: 45px;
+    height: 30px;
+    max-width: 100%;
+    background-color: rgba(0,0,0,0);
+}
   </style>
 
 
@@ -434,33 +443,35 @@
         </div>
         <div class="clear"></div>
 
-        <!-- 手机商品详情属性筛选 -->
-        <form  name="ECS_FORMBUY_MOBILE">
-            {foreach from=$specification item=spec key=spec_key name=name}
-            <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
-                <p class="mobile-cart-group-text">{$spec.name}</p>
-                <div class="mobile-cart-group type_arr">
-                    <ul class="mobile-cart-group-select" id="mobile-groupbox">
-                        {foreach from=$spec.values item=value key=key}
-                             <li>
-                                 <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index},1)" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"
-                                 {else}
-                                            class="mobile-cart-border-details"
-                                      {/if}
-                                      id="mobiletype_{$value.id}"
-                                      data-type="{$value.id}">
+          <!-- 手机商品详情属性筛选 -->
+          <form  name="ECS_FORMBUY_MOBILE">
+              {foreach from=$specification item=spec key=spec_key name=name}
+              <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
+                  <p class="mobile-cart-group-text">{$spec.name}</p>
+                  <div class="mobile-cart-group type_arr">
+                      <ul class="mobile-cart-group-select" id="mobile-groupbox">
+                          {foreach from=$spec.values item=value key=key}
+                               <li>
+                                   <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index},1)" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"
+                                   {else}
+                                              class="mobile-cart-border-details"
+                                        {/if}
+                                        id="mobiletype_{$value.id}"
+                                        data-type="{$value.id}">
 
-                                               {$value.label}
-
-                                        <img src="{$value.attr_img}">
-                                 </a>
-                             </li>
-                        {/foreach}
-                    </ul>
-                    <div class="clear"></div>
-                </div>
-            {/foreach}
-        </form>
+                                                  {if $value.attr_img}
+  <img src="{$value.attr_img}" title="{$value.label}">
+                                              {else}
+                                                   {$value.label}
+                                              {/if}
+                                   </a>
+                               </li>
+                          {/foreach}
+                      </ul>
+                      <div class="clear"></div>
+                  </div>
+              {/foreach}
+          </form>
 
     </section>
     <div class="clear"></div>
