@@ -383,12 +383,22 @@ function newWin(url, id){
 /* *
  * 添加商品到购物车
  */
-function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
+function addToCart(goodsId, parentId=0,type=0,ismobile=0)  //type 购物类型
 {
   var goods        = new Object();
   var spec_arr     = new Array();
   var fittings_arr = new Array();
-
+  if(parentId==''){
+        parentId=0;
+  }
+  if(type==''){
+        type=0;
+  }
+  if(ismobile==''){
+        ismobile=0;
+  }
+  var loca_str="addToCart("+goodsId+","+parentId+","+type+","+ismobile+")";
+  //alert(loca_str);
   if(ismobile){
      var formBuy      = document.forms['ECS_FORMBUY_MOBILE'];
      var number=document.getElementById("quantitymobile").value;
@@ -418,17 +428,21 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
 //console.log(goods);return false;
   ///Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse, 'POST', 'JSON');
- var w = window.open(), url, num = 0;
+if(type){
+  var w = window.open(),url, num = 0;
+}
+
   $.ajax({
               url:"flow.php",
               type:"POST",
               dataType:"json",
-              data:{step:'add_to_cart',goods:$.toJSON(goods),type:type },
+              data:{step:'add_to_cart',goods:$.toJSON(goods),type:type,comeback:loca_str},
               success: function(data){
 
                     if(data.error==12){
                               if(data.url){
                               window.location.href=data.url;
+                              w.close();
                               return;
                               }
                     }
@@ -437,7 +451,10 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
 
 
                               if(ismobile){
-                                    window.location.href="flow.php?step=pay_select&&cartid="+data.cartid;return;
+                                     w.close();
+                                    window.location.href="flow.php?step=pay_select&&cartid="+data.cartid;
+
+                                    return;
                               }else{
                                   //window.open('_blank').location.href='flow.php?step=pay_select&&cartid='+data.cartid;return;
                                  // newWin('flow.php?step=pay_select&&cartid='+data.cartid,'opendoor');
@@ -452,7 +469,12 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
                     }
                      }
                    else{
-                       addToCartResponse(data);return;
+                   if(type){
+                       w.close();
+                       }
+                       addToCartResponse(data);
+
+                       return;
                     }
 
 
@@ -464,11 +486,13 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
 
               },
               error:function(){
+              if(type){
                w.close();
                num = 20;
-
+                }
               }
             });
+if(type){
 
         var utime = setInterval(function(){
         if (url) {
@@ -481,7 +505,7 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
 
         num++;
     }, 50);
-
+}
 
 
 }

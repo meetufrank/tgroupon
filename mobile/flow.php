@@ -52,16 +52,36 @@ include('head.php');
 /*------------------------------------------------------ */
 if ($_REQUEST['step'] == 'add_to_cart')
 {
-
+include_once('include/cls_json.php');
+    $result = array('error' => 0, 'message' => '', 'content' => '', 'goods_id' => '');
+    $json  = new JSON;
    //print_r($_SESSION['user_id']);exit;
+
+//print_r($_POST['goods']);
+
     if ($_SESSION['user_id'] == 0)
     {
+
+           $_POST['goods']=$json->decode($_POST['goods']);
+           setcookie('add_cart',addslashes($_POST['comeback']));
+           setcookie('post_goods',json_encode($_POST['goods']));
+
+
            ajax_please_in();
+    }else{
+        setcookie('add_cart','',time()-3600);
+        setcookie('post_goods','',time()-3600);
     }
 
-    $_POST['goods']=strip_tags(urldecode($_POST['goods']));
-    $_POST['goods'] = json_str_iconv($_POST['goods']);
+ if(!$_COOKIE['post_goods']){
+   $_POST['goods']=strip_tags(urldecode($_POST['goods']));
 
+   }else{
+
+   $_POST['goods']=strip_tags(urldecode($_COOKIE['post_goods']));
+   }
+   $_POST['goods'] = json_str_iconv($_POST['goods']);
+$goods = $json->decode($_POST['goods']);
   $type_num=intval($_REQUEST['type']);
 
     if (!empty($_REQUEST['goods_id']) && empty($_POST['goods']))
@@ -73,9 +93,7 @@ if ($_REQUEST['step'] == 'add_to_cart')
         $goods_id = intval($_REQUEST['goods_id']);
         exit;
     }
-include_once('include/cls_json.php');
-    $result = array('error' => 0, 'message' => '', 'content' => '', 'goods_id' => '');
-    $json  = new JSON;
+
 
     if (empty($_POST['goods']))
     {
@@ -83,7 +101,7 @@ include_once('include/cls_json.php');
         die($json->encode($result));
     }
 
-    $goods = $json->decode($_POST['goods']);
+
 
 
     /* 检查：如果商品有规格，而post的数据没有规格，把商品的规格属性通过JSON传到前台 */

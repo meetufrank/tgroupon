@@ -81,12 +81,14 @@ if(!$openids){
      $db->query($sql);
      $uid=$db->insert_id();
 
-     $_SESSION['user_id'] = $uid;
+     //$_SESSION['user_id'] = $uid;
+     setcookie('user_id',$uid);
 
 }else{
 	$sql = "update `ecs_users` set alias='$nickname',sex='$sex',reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid' where unionid='$unionid'";
 	$db->query($sql);
-   $_SESSION['user_id'] = $openids;
+  // $_SESSION['user_id'] = $openids;
+   setcookie('user_id',$openids);
 }
 
 

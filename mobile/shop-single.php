@@ -516,6 +516,13 @@ $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 
 		/*甜   心100  修复开发*/
 $smarty->assign('now_time',  gmtime());           // 当前系统时间
 
+//是否点击过加入购物车进行登录操作
+if($_COOKIE['add_cart']){
+
+    $smarty->assign('come_add_cart',1);
+    $smarty->assign('comestr',$_COOKIE['add_cart']);
+}
+
 //收藏状态
 $sczt = "select c.user_id from `ecs_collect_goods` as c
 where c.user_id = $user_id and c.goods_id =$goods_id";
