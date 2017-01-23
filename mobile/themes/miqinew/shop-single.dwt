@@ -605,7 +605,8 @@ $(function(){
 }
 if (viewport().width < 768){
    $("#xiangqiangimg img").click(function(event) {
-    window.location.href=$(this).attr("src");
+    //window.location.href=$(this).attr("src");
+    window.location.href='{$ectouch_themes}/Swiper-3.4.0/demos/23-thumbs-gallery-loop.html';
    });
 }
 
