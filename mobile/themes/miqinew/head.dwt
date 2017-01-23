@@ -309,7 +309,16 @@ window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
 
 <script type="text/javascript">
 
-
+function newWin(url, id){
+              var a = document.createElement('a');
+              a.setAttribute('href', url);
+              a.setAttribute('target','_blank');
+              a.setAttribute('id', id);// 防止反复添加
+              if(!document.getElementById(id)){
+              document.body.appendChild(a);
+              }
+              a.click();
+              }
 
         function changenum(rec_id,diff,maxnumber){
 
@@ -409,6 +418,7 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
 //console.log(goods);return false;
   ///Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse, 'POST', 'JSON');
+ var w = window.open(), url, num = 0;
   $.ajax({
               url:"flow.php",
               type:"POST",
@@ -429,7 +439,12 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
                               if(ismobile){
                                     window.location.href="flow.php?step=pay_select&&cartid="+data.cartid;return;
                               }else{
-                                  window.open('flow.php?step=pay_select&&cartid='+data.cartid);return;
+                                  //window.open('_blank').location.href='flow.php?step=pay_select&&cartid='+data.cartid;return;
+                                 // newWin('flow.php?step=pay_select&&cartid='+data.cartid,'opendoor');
+
+                                 url = 'flow.php?step=pay_select&&cartid='+data.cartid;
+                                    // w.location.href = 'flow.php?step=pay_select&&cartid='+data.cartid;
+
                               }
 
 
@@ -449,9 +464,23 @@ function addToCart(goodsId, parentId,type,ismobile)  //type 购物类型
 
               },
               error:function(){
-                 return false;
+               w.close();
+               num = 20;
+
               }
             });
+
+        var utime = setInterval(function(){
+        if (url) {
+            w.location = url;
+            clearInterval(utime);
+        } else if(num > 20) {
+            w.close();
+            clearInterval(utime);
+        }
+
+        num++;
+    }, 50);
 
 
 
