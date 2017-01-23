@@ -426,7 +426,7 @@
         </div>
         <div class="col-xs-7">
             <div class="mobile-detail-1">
-                <span class="mobile-shop-name col-xs-9" style="">{$spnames}</span><span class="sb-twitter col-xs-3">
+                <span class="mobile-shop-name col-xs-9" style="">{$spnames}</span><span class="sb-twitter aiheart col-xs-3">
                 <i id="shochang"class="fa fa-heart {if $sczthongse}schongse{/if}"></i></span>
             </div>
             <div class="clear"></div>
