@@ -130,7 +130,12 @@
 
 
 
-                   <h5 style="margin-top: 15px;" id="address_h5"> <a href="#" id="Address_Manager" class="toggle-section addNewAddress">新增地址</a></h5>
+                   <h5 style="margin-top: 15px;" id="address_h5"><a href="#" onclick="callpay()" class="toggle-section addNewAddress">读取微信地址</a>&nbsp;&nbsp;<a href="#" id="Address_Manager" class="toggle-section addNewAddress">新增地址</a>
+
+
+
+                   </h5>
+
 
         </div>
 </section>
@@ -730,6 +735,55 @@
  <script type="text/javascript">
   // 手机号码验证
   </script>
+   <script language="javascript">
+            function callpay()
+            {
+                WeixinJSBridge.invoke('editAddress',{
+                    "appId" : "{$appId}",
+                    "scope" : "jsapi_address",
+                    "signType" : "sha1",
+                    "addrSign" : "{$signature}",
+                    "timeStamp" : "{$timestamp}",
+                    "nonceStr" : "{$noncestr}",
+                },function(res){
+
+                    // document.form1.address1.value         = res.proviceFirstStageName;   //省
+                    // document.form1.address2.value         = res.addressCitySecondStageName;  //市
+                    // document.form1.address3.value         = res.addressCountiesThirdStageName;  //区
+                    // document.form1.detail.value           = res.addressDetailInfo;   //详细
+                    // document.form1.national.value         = res.nationalCode;   //国家码
+                    // document.form1.user.value            = res.userName;     //收货人
+                    // document.form1.phone.value            = res.telNumber;   //电话
+                    // document.form1.postcode.value         = res.addressPostalCode;  //邮编
+                    // document.form1.errmsg.value         = res.err_msg;
+
+
+                      if(res.err_msg == 'edit_address:ok'){
+
+
+                              $.ajax({
+
+                                            url:"my_usergrzx.php?act=wxaddress",
+                                            async:true,
+                                            data:{consignee:res.userName,tel:res.telNumber,province:res.proviceFirstStageName,city:res.addressCitySecondStageName,district:res.addressCountiesThirdStageName,address:res.addressDetailInfo},
+                                            dataType: "json",
+                                            success: function (result) {
+                                               if(result.msg=='success'){
+                                                 window.location.reload("my_usergrzx.php?act=address_list");
+                                               }
+
+
+                                                  }//回调函数结束
+                                       });//ajax结束
+
+
+                        }
+                        else{
+                            alert("获取地址失败，请重新点击");
+                        }
+                });
+            }
+        </script>
 </body><!-- <body> -->
 
 </html>
