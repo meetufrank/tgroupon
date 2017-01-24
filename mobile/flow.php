@@ -1268,7 +1268,39 @@ $smarty->assign('payment_list',$payment_list);
     /* 保存 session */
     $_SESSION['flow_order'] = $order;
     $smarty->assign('order',$order);
+    include('weixindizhi.php');
+     $weixin = new class_weixin();
+$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
+if (!isset($_GET["code"])){
+    $jumpurl = $weixin->oauth2_authorize($url, "snsapi_base", "fangbei");
+    Header("Location: $jumpurl");
+}else{
+    $oauth2_access_token = $weixin->oauth2_access_token($_GET["code"]);
+    $access_token = $oauth2_access_token['access_token'];
+}
+
+
+$timestamp = strval(time());
+$noncestr = $weixin->create_noncestr();
+
+$obj['appId']               = $weixin->appid;
+$obj['url']                 = $url;
+$obj['timeStamp']           = $timestamp;
+$obj['noncestr']            = $noncestr;
+$obj['accesstoken']         = $access_token;
+
+
+
+
+
+$signature  = $weixin->get_biz_sign($obj);
+
+
+ $smarty->assign('appId', $weixin->appid);
+ $smarty->assign('timestamp', $timestamp);
+ $smarty->assign('noncestr', $noncestr);
+ $smarty->assign('signature', $signature);
     $smarty->display('pays.dwt');
     exit;
 }
