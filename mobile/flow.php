@@ -1254,11 +1254,6 @@ $smarty->assign('payment_list',$payment_list);
 
 
 
-
-
-
-
-
     /*
         新加结束
      */

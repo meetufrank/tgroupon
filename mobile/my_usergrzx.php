@@ -196,31 +196,31 @@ if ($action == 'default')
             $smarty->assign('next_rank_name', sprintf($_LANG['next_level'], $rank['next_rank'] ,$rank['next_rank_name']));
         }
     }
-	$info = get_user_default($user_id);
+    $info = get_user_default($user_id);
 
-	$sql = "SELECT wxid FROM " .$GLOBALS['ecs']->table('users'). " WHERE user_id = '$user_id'";
+    $sql = "SELECT wxid FROM " .$GLOBALS['ecs']->table('users'). " WHERE user_id = '$user_id'";
     $wxid = $GLOBALS['db']->getOne($sql);
-	if(!empty($wxid)){
-		$weixinInfo = $GLOBALS['db']->getRow("SELECT nickname, headimgurl, subscribe_time FROM wxch_user WHERE wxid = '$wxid'");
-		$info['avatar'] = empty($weixinInfo['headimgurl']) ? '':$weixinInfo['headimgurl'];
-		$info['nickname'] = $weixinInfo['nickname'];
+    if(!empty($wxid)){
+        $weixinInfo = $GLOBALS['db']->getRow("SELECT nickname, headimgurl, subscribe_time FROM wxch_user WHERE wxid = '$wxid'");
+        $info['avatar'] = empty($weixinInfo['headimgurl']) ? '':$weixinInfo['headimgurl'];
+        $info['nickname'] = $weixinInfo['nickname'];
         $info['subscribe_time'] = date("Y-m-d",$weixinInfo['subscribe_time']);
-	}
-	/*TGROUPON新增显示分销会员标准*/
-	$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
-	$level_register_up = (float)$affiliate['config']['level_register_up'];
-	$rank_points =  $GLOBALS['db']->getOne("SELECT rank_points FROM " . $GLOBALS['ecs']->table('users')."where user_id=".$_SESSION["user_id"]);
-	if($rank_points>$level_register_up||$rank_points==$level_register_up){
-		$tianxin="掌柜：是";
-	}else{
-		$cha_point=$level_register_up-$rank_points;
-		$tianxin="掌柜：否     <a href='./'>点此链接购买成为掌柜</a>";
-	}
+    }
+    /*TGROUPON新增显示分销会员标准*/
+    $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
+    $level_register_up = (float)$affiliate['config']['level_register_up'];
+    $rank_points =  $GLOBALS['db']->getOne("SELECT rank_points FROM " . $GLOBALS['ecs']->table('users')."where user_id=".$_SESSION["user_id"]);
+    if($rank_points>$level_register_up||$rank_points==$level_register_up){
+        $tianxin="掌柜：是";
+    }else{
+        $cha_point=$level_register_up-$rank_points;
+        $tianxin="掌柜：否     <a href='./'>点此链接购买成为掌柜</a>";
+    }
 
-	$smarty->assign('user_id',        $_SESSION['user_id']);
-	$smarty->assign('tianxin',        $tianxin);
-	/*TGROUPON新增显示分销会员标准*/
-	$smarty->assign('service_phone',        $_CFG['service_phone']);
+    $smarty->assign('user_id',        $_SESSION['user_id']);
+    $smarty->assign('tianxin',        $tianxin);
+    /*TGROUPON新增显示分销会员标准*/
+    $smarty->assign('service_phone',        $_CFG['service_phone']);
     $smarty->assign('info',        $info);
     $smarty->assign('user_notice', $_CFG['user_notice']);
     $smarty->assign('prompt',      get_user_prompt($user_id));
@@ -234,8 +234,8 @@ if ($action == 'dianpu')
         $back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
     }
 
-	$dianpu = $db->getOne('SELECT nicheng FROM ' . $ecs->table('users') . ' WHERE user_id='.$user_id.'');
-	$smarty->assign('dianpu', $dianpu);
+    $dianpu = $db->getOne('SELECT nicheng FROM ' . $ecs->table('users') . ' WHERE user_id='.$user_id.'');
+    $smarty->assign('dianpu', $dianpu);
 
     $smarty->display('my_usergrzx.dwt');
 }
@@ -246,22 +246,22 @@ if ($action == 'act_dianpu')
         $back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
     }
 
-	$nicheng=trim($_REQUEST['nicheng']);
-	if($nicheng=='')
-	{
-	show_message('店铺名不能为空');
-	}
-	else
-	{
-	$u_id = $db->getOne("SELECT user_id FROM " . $ecs->table('users') . " WHERE nicheng='".$nicheng."' and user_id!=".$user_id."");
-	if($u_id>0)
-	{
-	show_message('店铺名重复');
-	}
-	}
+    $nicheng=trim($_REQUEST['nicheng']);
+    if($nicheng=='')
+    {
+    show_message('店铺名不能为空');
+    }
+    else
+    {
+    $u_id = $db->getOne("SELECT user_id FROM " . $ecs->table('users') . " WHERE nicheng='".$nicheng."' and user_id!=".$user_id."");
+    if($u_id>0)
+    {
+    show_message('店铺名重复');
+    }
+    }
 
-	$db->query("update " . $ecs->table('users') . " set nicheng='".$nicheng."' WHERE user_id=".$user_id."");
-	$smarty->assign('dianpu', $nicheng);
+    $db->query("update " . $ecs->table('users') . " set nicheng='".$nicheng."' WHERE user_id=".$user_id."");
+    $smarty->assign('dianpu', $nicheng);
 
     $smarty->display('my_usergrzx.dwt');
 }
@@ -269,45 +269,45 @@ if ($action == 'act_dianpu')
 //  第三方登录接口
 elseif($action == 'oath')
 {
-	$type = empty($_REQUEST['type']) ?  '' : $_REQUEST['type'];
+    $type = empty($_REQUEST['type']) ?  '' : $_REQUEST['type'];
 
-	include_once(ROOT_PATH . 'include/website/jntoo.php');
+    include_once(ROOT_PATH . 'include/website/jntoo.php');
 
-	$c = &website($type);
-	if($c)
-	{
-		if (empty($_REQUEST['callblock']))
-		{
-			if (empty($_REQUEST['callblock']) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
-			{
-				$back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? 'index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
-			}
-			else
-			{
+    $c = &website($type);
+    if($c)
+    {
+        if (empty($_REQUEST['callblock']))
+        {
+            if (empty($_REQUEST['callblock']) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
+            {
+                $back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? 'index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
+            }
+            else
+            {
 
-				$back_act = 'user.php';
-			}
-		}
-		else
-		{
-			$back_act = trim($_REQUEST['callblock']);
-		}
+                $back_act = 'user.php';
+            }
+        }
+        else
+        {
+            $back_act = trim($_REQUEST['callblock']);
+        }
 
-		if($back_act[4] != ':') $back_act = $ecs->url().$back_act;
-		$open = empty($_REQUEST['open']) ? 0 : intval($_REQUEST['open']);
+        if($back_act[4] != ':') $back_act = $ecs->url().$back_act;
+        $open = empty($_REQUEST['open']) ? 0 : intval($_REQUEST['open']);
 
-		$url = $c->login($ecs->url().'user.php?act=oath_login&type='.$type.'&callblock='.urlencode($back_act).'&open='.$open);
+        $url = $c->login($ecs->url().'user.php?act=oath_login&type='.$type.'&callblock='.urlencode($back_act).'&open='.$open);
 
-		if(!$url)
-		{
-			show_message( $c->get_error() , '首页', $ecs->url() , 'error');
-		}
-		header('Location: '.$url);
-	}
-	else
-	{
-		show_message('服务器尚未注册该插件！' , '首页',$ecs->url() , 'error');
-	}
+        if(!$url)
+        {
+            show_message( $c->get_error() , '首页', $ecs->url() , 'error');
+        }
+        header('Location: '.$url);
+    }
+    else
+    {
+        show_message('服务器尚未注册该插件！' , '首页',$ecs->url() , 'error');
+    }
 }
 
 //  处理第三方登录接口
@@ -621,65 +621,65 @@ elseif ($action == 'act_login')
         }
     }
     */
-	$login_type = intval($_POST['login_type']);
+    $login_type = intval($_POST['login_type']);
   if($login_type==3)
   {
            $card_info = $db->getRow("select * from " . $ecs->table('user_card') ." where card_no='$username' and card_pass='$password' and is_show =1 " );
-		   //var_dump($card_info);exit;
-		  if($card_info)
-		  {
-			 $user_id = intval($card_info['user_id']);
-			 if($user_id)
-			  {
-				 $user_name = $db->getOne("select user_name from " . $ecs->table('users') ." where user_id='$user_id'" );
+           //var_dump($card_info);exit;
+          if($card_info)
+          {
+             $user_id = intval($card_info['user_id']);
+             if($user_id)
+              {
+                 $user_name = $db->getOne("select user_name from " . $ecs->table('users') ." where user_id='$user_id'" );
 
-					 if ($user_name)
-				   {
-					  $_SESSION['user_id'] = $user_id;
-					  $_SESSION['user_name']   = $username;
-					show_message($_LANG['login_success'] . $ucdata , array($_LANG['back_up_page'], $_LANG['profile_lnk']), array($back_act,'user.php'), 'info');
-				   }
-				   else
-				   {
-					$_SESSION['login_fail'] ++ ;
-					show_message($_LANG['login_failure'], $_LANG['relogin_lnk'], 'user.php', 'error');
-				   }
-			  }
-			  else
-			  {
-				include_once(ROOT_PATH . 'include/lib_passport.php');
-			        $cu_user_name = 'cu_'.$card_info['card_no'];
-					$user_name = 'cu_'.$card_info['card_no'];
-					$email = $card_info['email']==''?$cu_user_name.'@temp.com':$card_info['email'];
-					$other = array();
-					include_once(ROOT_PATH . 'includes/lib_passport.php');
-					if (register($cu_user_name, $password, $email, $other) !== false)
-					{
-						$db->autoExecute($ecs->table('user_card'), array('user_id'=>$_SESSION['user_id'],'bind_time'=>gmtime(),'card_status'=>1), 'UPDATE', " id='$card_info[id]' ");
-						$ucdata = empty($user->ucdata)? "" : $user->ucdata;
-						show_message(sprintf($_LANG['login_success'], $cu_user_name . $ucdata), array($_LANG['back_up_page'], $_LANG['profile_lnk']), array($back_act, 'user.php'), 'info');
-					}
-					else
-					{
-						$_SESSION['login_fail'] ++ ;
-					    show_message($_LANG['login_failure'], $_LANG['relogin_lnk'], 'user.php', 'error');
-					}
+                     if ($user_name)
+                   {
+                      $_SESSION['user_id'] = $user_id;
+                      $_SESSION['user_name']   = $username;
+                    show_message($_LANG['login_success'] . $ucdata , array($_LANG['back_up_page'], $_LANG['profile_lnk']), array($back_act,'user.php'), 'info');
+                   }
+                   else
+                   {
+                    $_SESSION['login_fail'] ++ ;
+                    show_message($_LANG['login_failure'], $_LANG['relogin_lnk'], 'user.php', 'error');
+                   }
+              }
+              else
+              {
+                include_once(ROOT_PATH . 'include/lib_passport.php');
+                    $cu_user_name = 'cu_'.$card_info['card_no'];
+                    $user_name = 'cu_'.$card_info['card_no'];
+                    $email = $card_info['email']==''?$cu_user_name.'@temp.com':$card_info['email'];
+                    $other = array();
+                    include_once(ROOT_PATH . 'includes/lib_passport.php');
+                    if (register($cu_user_name, $password, $email, $other) !== false)
+                    {
+                        $db->autoExecute($ecs->table('user_card'), array('user_id'=>$_SESSION['user_id'],'bind_time'=>gmtime(),'card_status'=>1), 'UPDATE', " id='$card_info[id]' ");
+                        $ucdata = empty($user->ucdata)? "" : $user->ucdata;
+                        show_message(sprintf($_LANG['login_success'], $cu_user_name . $ucdata), array($_LANG['back_up_page'], $_LANG['profile_lnk']), array($back_act, 'user.php'), 'info');
+                    }
+                    else
+                    {
+                        $_SESSION['login_fail'] ++ ;
+                        show_message($_LANG['login_failure'], $_LANG['relogin_lnk'], 'user.php', 'error');
+                    }
 
-			  }
+              }
 
-		  }
-		  else
-		  {
-			   $num = $db->getOne("select count(*) from " . $ecs->table('user_card') ." where card_no='$username' and card_pass ='$password'  and user_id=0 and is_show=1 " );
-			   if($num==1)
-			   {
+          }
+          else
+          {
+               $num = $db->getOne("select count(*) from " . $ecs->table('user_card') ." where card_no='$username' and card_pass ='$password'  and user_id=0 and is_show=1 " );
+               if($num==1)
+               {
 
-				  show_message('此卡号还未绑定，您可以用此新注册一个会员帐号并绑定此卡号，如果您已有本站会员帐号，请登录后在会员中心绑定此卡号后方可登录!', array('立即注册并绑定此卡号','重新登录'), array('user.php?act=register&card_no='.$username.'&card_pass='.$password,'user.php'), 'error');
+                  show_message('此卡号还未绑定，您可以用此新注册一个会员帐号并绑定此卡号，如果您已有本站会员帐号，请登录后在会员中心绑定此卡号后方可登录!', array('立即注册并绑定此卡号','重新登录'), array('user.php?act=register&card_no='.$username.'&card_pass='.$password,'user.php'), 'error');
 
-			   }
+               }
 
-			   show_message('会员卡卡号不存在', '请重新登录', 'user.php', 'error');
-		  }
+               show_message('会员卡卡号不存在', '请重新登录', 'user.php', 'error');
+          }
 
   }
     //用户名是邮箱格式 by wang
@@ -1141,8 +1141,8 @@ elseif ($action == 'act_edit_password')
 
         if ($user->edit_user(array('username'=> (empty($code) ? $_SESSION['user_name'] : $user_info['user_name']), 'old_password'=>$old_password, 'password'=>$new_password), empty($code) ? 0 : 1))
         {
-			$sql="UPDATE ".$ecs->table('users'). "SET `ec_salt`='0' WHERE user_id= '".$user_id."'";
-			$db->query($sql);
+            $sql="UPDATE ".$ecs->table('users'). "SET `ec_salt`='0' WHERE user_id= '".$user_id."'";
+            $db->query($sql);
             $user->logout();
             show_message($_LANG['edit_password_success'], $_LANG['relogin_lnk'], 'user.php?act=login', 'info');
         }
@@ -1443,6 +1443,7 @@ elseif ($action == 'address_list')
             //print_r($province_list);
 
 
+      //print_r($wxyitiao);exit;
 
 
     // //赋值于模板
@@ -1458,9 +1459,12 @@ elseif ($action == 'address_list')
     // $smarty->assign('integral_scale',   $_CFG['integral_scale']);
     // $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
 
+
      $is_wechat=is_wechat_browser();
         if($is_wechat){
             include('weixindizhi.php');
+
+
             $loginphone = "1";   //微信浏览器
             $smarty->assign('loginphone',  $loginphone);
           }else{
@@ -1468,6 +1472,39 @@ elseif ($action == 'address_list')
               $loginpc = "2";  //非微信浏览器
               $smarty->assign('loginpc',  $loginpc);
             }
+
+    $weixin = new class_weixin();
+$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
+if (!isset($_GET["code"])){
+    $jumpurl = $weixin->oauth2_authorize($url, "snsapi_base", "fangbei");
+    Header("Location: $jumpurl");
+}else{
+    $oauth2_access_token = $weixin->oauth2_access_token($_GET["code"]);
+    $access_token = $oauth2_access_token['access_token'];
+}
+
+
+$timestamp = strval(time());
+$noncestr = $weixin->create_noncestr();
+
+$obj['appId']               = $weixin->appid;
+$obj['url']                 = $url;
+$obj['timeStamp']           = $timestamp;
+$obj['noncestr']            = $noncestr;
+$obj['accesstoken']         = $access_token;
+
+
+
+
+
+$signature  = $weixin->get_biz_sign($obj);
+
+
+ $smarty->assign('appId', $weixin->appid);
+ $smarty->assign('timestamp', $timestamp);
+ $smarty->assign('noncestr', $noncestr);
+ $smarty->assign('signature', $signature);
     $smarty->display('my_usergrzx.dwt');
 }
 
@@ -2284,18 +2321,18 @@ elseif ($action == 'act_account')
 
         /* 取得在线支付方式的支付按钮 */
         $pay_obj = new $payment_info['pay_code'];
-				//开始甜心开发，兼容微信支付
-		$order['pay_id']=4;
-		$GLOBALS['db']->autoExecute($ecs->table('order_info'), $order, 'INSERT');
-		$new_order_id = $db->insert_id();
-		$amount	=	$order['order_amount'];
-		$type=PAY_SURPLUS;
+                //开始甜心开发，兼容微信支付
+        $order['pay_id']=4;
+        $GLOBALS['db']->autoExecute($ecs->table('order_info'), $order, 'INSERT');
+        $new_order_id = $db->insert_id();
+        $amount =   $order['order_amount'];
+        $type=PAY_SURPLUS;
 
-		$is_paid=0;
-		$sql = 'INSERT INTO ' .$GLOBALS['ecs']->table('pay_log')." (order_id, order_amount, order_type, is_paid)".
+        $is_paid=0;
+        $sql = 'INSERT INTO ' .$GLOBALS['ecs']->table('pay_log')." (order_id, order_amount, order_type, is_paid)".
             " VALUES  ('$new_order_id', '$amount', '$type', '$is_paid')";
-		$GLOBALS['db']->query($sql);
-		//结束
+        $GLOBALS['db']->query($sql);
+        //结束
         $payment_info['pay_button'] = $pay_obj->get_code($order, $payment);
 
         /* 模板赋值 */
@@ -2612,125 +2649,125 @@ elseif ($action == 'return_to_cart')
 }
 elseif ($action == 'user_card')
 {
-	if($_POST['bind'])
-	{
-	   $card_no =trim($_POST['card_no']);
-	   $card_pass =trim($_POST['card_pass']);
-	   if(empty($card_no))
-	   {
-	      show_message("卡号为空");
-	   }
+    if($_POST['bind'])
+    {
+       $card_no =trim($_POST['card_no']);
+       $card_pass =trim($_POST['card_pass']);
+       if(empty($card_no))
+       {
+          show_message("卡号为空");
+       }
 
-	   $sql = "select * from " . $ecs->table('user_card') . " where card_no='$card_no' ";
-	   $card_info = $db->getRow($sql);
-	   if($card_info)
-	   {
-	      $user_card_num = $db->getOne("select count(*) from "  . $ecs->table('user_card') . " where card_no='$card_no'  and user_id='$_SESSION[user_id]' " );
-	      if($user_card_num>=1)
-		  {
-		     show_message("您已绑定过一个会员止，由于一个会员最多绑定一个会员卡，无法绑定其它卡");
-		  }
+       $sql = "select * from " . $ecs->table('user_card') . " where card_no='$card_no' ";
+       $card_info = $db->getRow($sql);
+       if($card_info)
+       {
+          $user_card_num = $db->getOne("select count(*) from "  . $ecs->table('user_card') . " where card_no='$card_no'  and user_id='$_SESSION[user_id]' " );
+          if($user_card_num>=1)
+          {
+             show_message("您已绑定过一个会员止，由于一个会员最多绑定一个会员卡，无法绑定其它卡");
+          }
 
-		  if($card_info['user_id'] ==$_SESSION['user_id'])
-		  {
-		      show_message("您已绑定了此卡");
-		  }
-		  if(!$card_info['is_show'])
-		  {
-		      show_message("此卡已被禁用");
-		  }
-		  elseif($card_info['user_id'] >0)
-		  {
-		      show_message("此卡已被其它会员绑定");
-		  }
-		  elseif($card_info['card_pass'] ==$card_pass['card_pass'])
-		  {
-		      show_message("卡密错误！");
-		  }
-		  else
-		  {
-		     $db->query("update " . $ecs->table('user_card') . " set user_id='$_SESSION[user_id]', bind_time ='". gmtime() ."', card_status=1 where card_no='$card_no' limit 1 ");
-			 $arr['user_money'] = floatval($card_info['user_money']);
-			 $arr['pay_points'] = $card_info['pay_points'];
-			 $arr['rank_points'] = $card_info['rank_points'];
-			 if($card_info['card_level'])
-			 {
-				 $card_rank = $db->getOne(" select rank_id from " . $ecs->table('user_rank') . " where rank_name='$card_info[card_level]' ");
-				 if($card_rank)  $arr['user_rank'] = $card_rank;
-				 $sql = 'UPDATE ' . $ecs->table('users') . " SET `user_rank`='$card_rank'  WHERE `user_id`='" . $_SESSION['user_id'] . "'";
+          if($card_info['user_id'] ==$_SESSION['user_id'])
+          {
+              show_message("您已绑定了此卡");
+          }
+          if(!$card_info['is_show'])
+          {
+              show_message("此卡已被禁用");
+          }
+          elseif($card_info['user_id'] >0)
+          {
+              show_message("此卡已被其它会员绑定");
+          }
+          elseif($card_info['card_pass'] ==$card_pass['card_pass'])
+          {
+              show_message("卡密错误！");
+          }
+          else
+          {
+             $db->query("update " . $ecs->table('user_card') . " set user_id='$_SESSION[user_id]', bind_time ='". gmtime() ."', card_status=1 where card_no='$card_no' limit 1 ");
+             $arr['user_money'] = floatval($card_info['user_money']);
+             $arr['pay_points'] = $card_info['pay_points'];
+             $arr['rank_points'] = $card_info['rank_points'];
+             if($card_info['card_level'])
+             {
+                 $card_rank = $db->getOne(" select rank_id from " . $ecs->table('user_rank') . " where rank_name='$card_info[card_level]' ");
+                 if($card_rank)  $arr['user_rank'] = $card_rank;
+                 $sql = 'UPDATE ' . $ecs->table('users') . " SET `user_rank`='$card_rank'  WHERE `user_id`='" . $_SESSION['user_id'] . "'";
                  $db->query($sql);
-			 }
-			 log_account_change($_SESSION['user_id'], $arr['user_money'], 0, $arr['rank_points'], $arr['pay_points'], '绑定会卡'.$card_no.'充值等级积分:'.$arr['rank_points'].',消费积分'.$arr['pay_points']);
-			 $sql = 'UPDATE ' . $ecs->table('user_card') . " SET `user_money`='0', `pay_points`='0', `rank_points`='0'  WHERE `card_no`='" . $card_no . "'";
-			 $db->query($sql);
+             }
+             log_account_change($_SESSION['user_id'], $arr['user_money'], 0, $arr['rank_points'], $arr['pay_points'], '绑定会卡'.$card_no.'充值等级积分:'.$arr['rank_points'].',消费积分'.$arr['pay_points']);
+             $sql = 'UPDATE ' . $ecs->table('user_card') . " SET `user_money`='0', `pay_points`='0', `rank_points`='0'  WHERE `card_no`='" . $card_no . "'";
+             $db->query($sql);
 
 
              show_message("绑定成功", '用户信息', 'user.php?act=user_card', 'info');
 
-		  }
-	   }
-	   else
-	   {
-	     show_message("卡号不存在", '重新绑定', 'user.php?act=user_card', 'info');
-	   }
+          }
+       }
+       else
+       {
+         show_message("卡号不存在", '重新绑定', 'user.php?act=user_card', 'info');
+       }
 
-	   exit;
-	}
+       exit;
+    }
 
-	if($_POST['unbind'])
-	{
-	   $card_no =trim($_POST['card_no']);
-	   $card_pass =trim($_POST['card_pass']);
-	   if(empty($card_no))
-	   {
-	      show_message("卡号为空", '重新解绑', 'user.php?act=user_card', 'info');
-	   }
-	   $num = $db->getOne("select count(*) from " . $ecs->table('user_card') . " where card_no='$card_no' and card_pass='$card_pass' and user_id='$_SESSION[user_id]' and is_show =1 ");
-	   if($num>0)
-	   {
-	      $db->query("update " . $ecs->table('user_card') . " set user_id='', bind_time ='', card_status=0  where card_no='$card_no' and user_id='$_SESSION[user_id]' and is_show =1");
-		  show_message("解绑成功", '会员信息', 'user.php?act=user_card', 'info');
-	   }
-	   else
-	   {
-	     show_message("密码错误或未查到您绑定的卡号信息，无法解绑", '重新解绑', 'user.php?act=user_card', 'info');
-	   }
-	   exit;
-	}
-
-	if($_POST['chgcardpass'])
-	{
-	   $card_no =trim($_POST['card_no']);
-	   $card_pass =trim($_POST['card_pass']);
-	   if(empty($card_no) || empty($card_pass))
-	   {
-	      show_message("卡号卡密不能为空");
-	   }
-	   $num = $db->getOne("select count(*) from " . $ecs->table('user_card') . " where card_no='$card_no' and user_id='$_SESSION[user_id]' and is_show =1 ");
-	   //echo $num;
-	   if($num>0)
-	   {
-	      $db->query("update " . $ecs->table('user_card') . " set card_pass='$card_pass' where card_no='$card_no' and user_id='$_SESSION[user_id]' and is_show =1 ");
-		  show_message("修改密码成功");
-	   }
-	   else
-	   {
-	     show_message("未查到您绑定的卡号信息，无法修改密码");
-	   }
-	   exit;
-	}
-
-
-	$sql = "select * from " . $ecs->table('user_card') . " where user_id='$_SESSION[user_id]' ";
-	$res =$db->query($sql);
-	$card_list = array();
-	while($row=$db->fetchRow($res))
+    if($_POST['unbind'])
     {
-	    $row['str_bind_time'] = local_date('Y-m-d H:I:s',$row['bind_time']);
-		$card_list[] = $row;
-	}
+       $card_no =trim($_POST['card_no']);
+       $card_pass =trim($_POST['card_pass']);
+       if(empty($card_no))
+       {
+          show_message("卡号为空", '重新解绑', 'user.php?act=user_card', 'info');
+       }
+       $num = $db->getOne("select count(*) from " . $ecs->table('user_card') . " where card_no='$card_no' and card_pass='$card_pass' and user_id='$_SESSION[user_id]' and is_show =1 ");
+       if($num>0)
+       {
+          $db->query("update " . $ecs->table('user_card') . " set user_id='', bind_time ='', card_status=0  where card_no='$card_no' and user_id='$_SESSION[user_id]' and is_show =1");
+          show_message("解绑成功", '会员信息', 'user.php?act=user_card', 'info');
+       }
+       else
+       {
+         show_message("密码错误或未查到您绑定的卡号信息，无法解绑", '重新解绑', 'user.php?act=user_card', 'info');
+       }
+       exit;
+    }
+
+    if($_POST['chgcardpass'])
+    {
+       $card_no =trim($_POST['card_no']);
+       $card_pass =trim($_POST['card_pass']);
+       if(empty($card_no) || empty($card_pass))
+       {
+          show_message("卡号卡密不能为空");
+       }
+       $num = $db->getOne("select count(*) from " . $ecs->table('user_card') . " where card_no='$card_no' and user_id='$_SESSION[user_id]' and is_show =1 ");
+       //echo $num;
+       if($num>0)
+       {
+          $db->query("update " . $ecs->table('user_card') . " set card_pass='$card_pass' where card_no='$card_no' and user_id='$_SESSION[user_id]' and is_show =1 ");
+          show_message("修改密码成功");
+       }
+       else
+       {
+         show_message("未查到您绑定的卡号信息，无法修改密码");
+       }
+       exit;
+    }
+
+
+    $sql = "select * from " . $ecs->table('user_card') . " where user_id='$_SESSION[user_id]' ";
+    $res =$db->query($sql);
+    $card_list = array();
+    while($row=$db->fetchRow($res))
+    {
+        $row['str_bind_time'] = local_date('Y-m-d H:I:s',$row['bind_time']);
+        $card_list[] = $row;
+    }
     $smarty->assign('card_list', $card_list);
-	$smarty->display('my_usergrzx.dwt');
+    $smarty->display('my_usergrzx.dwt');
 }
 /* 编辑使用余额支付的处理 */
 elseif ($action == 'act_edit_surplus')
@@ -2989,8 +3026,8 @@ elseif ($action == 'affiliate')
     $smarty->assign('userid', $user_id);
     $smarty->assign('shopurl', $ecs->url());
     $smarty->assign('logosrc', 'themes/' . $_CFG['template'] . '/images/logo.gif');
-	//甜心显示会员等级和下面人数
-	$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
+    //甜心显示会员等级和下面人数
+    $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
     $smarty->assign('affiliate', $affiliate);
 
     empty($affiliate) && $affiliate = array();
@@ -3022,9 +3059,9 @@ elseif ($action == 'affiliate')
             $smarty->assign('affdb', $affdb);
         }
     }
-	//结束
-	//显示详细下线会员
-	$auid = $_SESSION['user_id'];
+    //结束
+    //显示详细下线会员
+    $auid = $_SESSION['user_id'];
     $user_list['user_list'] = array();
 
     $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
@@ -3056,47 +3093,47 @@ elseif ($action == 'affiliate')
             $sql = "SELECT user_id, user_name, '$i' AS level, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time ".
                     " FROM " . $GLOBALS['ecs']->table('users') . " WHERE user_id IN($up_uid)" .
                     " ORDER by level, user_id";
-					//echo $sql;
+                    //echo $sql;
             $user_list['user_list'] = array_merge($user_list['user_list'], $db->getAll($sql));
         }
     }
 
-	$smarty->assign('user_list',    $user_list['user_list']);
-	//显示详细下线会员结束
+    $smarty->assign('user_list',    $user_list['user_list']);
+    //显示详细下线会员结束
 
-	//显示分成记录
-	$logdb = get_affiliate_ck();
+    //显示分成记录
+    $logdb = get_affiliate_ck();
 
-	$smarty->assign('logdb',        $logdb['logdb']);
-	//显示分成记录结束
-	/*新增显示用户的上下级关系  by tianxin100*/
-	$user_id=$_SESSION['user_id'];
-	$row[user_id]=$user_id;
-	$num=2;//需要查看到第几级的上级
-	$children=array();
-	for($i=0; $i < $num; $i++){
-		if($row[user_id]){
-		$row = $db->getAll("SELECT * FROM " . $GLOBALS['ecs']->table('users').
+    $smarty->assign('logdb',        $logdb['logdb']);
+    //显示分成记录结束
+    /*新增显示用户的上下级关系  by tianxin100*/
+    $user_id=$_SESSION['user_id'];
+    $row[user_id]=$user_id;
+    $num=2;//需要查看到第几级的上级
+    $children=array();
+    for($i=0; $i < $num; $i++){
+        if($row[user_id]){
+        $row = $db->getAll("SELECT * FROM " . $GLOBALS['ecs']->table('users').
                         " WHERE parent_id = '$row[user_id]'"
                     );
-		if(!empty($row)){
-			$children[$i]=$row;
-			}
-	}
-	}
-	$smarty->assign('userid', $user_id);
+        if(!empty($row)){
+            $children[$i]=$row;
+            }
+    }
+    }
+    $smarty->assign('userid', $user_id);
     $smarty->assign('shopurl', $ecs->url());
-	$smarty->assign('children', $children);
-	/*新增显示用户的上下级关系*/
+    $smarty->assign('children', $children);
+    /*新增显示用户的上下级关系*/
     $smarty->display('user_clips.dwt');
 }
 //显示一级分销代理
 elseif ($action == 'fenxiao1')
 {
-	//推荐注册分成
-	$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
-	$user_list['user_list'] = array();
-	$auid = $_SESSION['user_id'];
+    //推荐注册分成
+    $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
+    $user_list['user_list'] = array();
+    $auid = $_SESSION['user_id'];
     $num = 3;
     $up_uid = "'$auid'";
     $all_count = 0;
@@ -3121,47 +3158,47 @@ elseif ($action == 'fenxiao1')
             $sql = "SELECT user_id, user_name, '$i' AS level, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time,wxid ".
                     " FROM " . $GLOBALS['ecs']->table('users') . " WHERE user_id IN($up_uid)" .
                     " ORDER by level, user_id";
-			$user_info=$db->getAll($sql);
-			foreach($user_info as $key=>$value){
+            $user_info=$db->getAll($sql);
+            foreach($user_info as $key=>$value){
 
-				$sql="SELECT count(*) as order_num ,sum(goods_amount - discount)  as order_amount FROM ".$GLOBALS['ecs']->table('order_info')."WHERE user_id=".$value['user_id'];
-				$order_info=$db->getRow($sql);
-				$k=$i-1;
-				$affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
+                $sql="SELECT count(*) as order_num ,sum(goods_amount - discount)  as order_amount FROM ".$GLOBALS['ecs']->table('order_info')."WHERE user_id=".$value['user_id'];
+                $order_info=$db->getRow($sql);
+                $k=$i-1;
+                $affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
                 if ($affiliate['item'][$k]['level_money'])
                 {
                     $affiliate['item'][$k]['level_money'] /= 100;
                 }
-				$setmoney = round($order_info['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
-				$user_info[$key]['order_num']=$order_info['order_num'];
-				$user_info[$key]['order_amount']=$order_info['order_amount'];
-				$user_info[$key]['setmoney']=$setmoney;
+                $setmoney = round($order_info['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
+                $user_info[$key]['order_num']=$order_info['order_num'];
+                $user_info[$key]['order_amount']=$order_info['order_amount'];
+                $user_info[$key]['setmoney']=$setmoney;
 
-			}
+            }
             $user_list['user_list'] = array_merge($user_list['user_list'], $user_info);
         }
     }
-	$new_arr=array();
-	foreach($user_list['user_list'] as $key =>$value){
+    $new_arr=array();
+    foreach($user_list['user_list'] as $key =>$value){
 
-		if($value['level']==1){
+        if($value['level']==1){
 
-			$wxid=$value['wxid'];
-			$value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
-			$value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
-			$new_arr[]=$value;
-		}
-	}
-	$smarty->assign('user_list',    $new_arr);
-	$smarty->display('user_clips.dwt');
+            $wxid=$value['wxid'];
+            $value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
+            $value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
+            $new_arr[]=$value;
+        }
+    }
+    $smarty->assign('user_list',    $new_arr);
+    $smarty->display('user_clips.dwt');
 }
 //显示二级分销代理
 elseif ($action == 'fenxiao2')
 {
-	//推荐注册分成
-	$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
-	$user_list['user_list'] = array();
-	$auid = $_SESSION['user_id'];
+    //推荐注册分成
+    $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
+    $user_list['user_list'] = array();
+    $auid = $_SESSION['user_id'];
     $num = 3;
     $up_uid = "'$auid'";
     $all_count = 0;
@@ -3186,48 +3223,48 @@ elseif ($action == 'fenxiao2')
             $sql = "SELECT user_id, user_name, '$i' AS level, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time,wxid ".
                     " FROM " . $GLOBALS['ecs']->table('users') . " WHERE user_id IN($up_uid)" .
                     " ORDER by level, user_id";
-			$user_info=$db->getAll($sql);
-			foreach($user_info as $key=>$value){
+            $user_info=$db->getAll($sql);
+            foreach($user_info as $key=>$value){
 
-				$sql="SELECT count(*) as order_num ,sum(goods_amount - discount)  as order_amount FROM ".$GLOBALS['ecs']->table('order_info')."WHERE user_id=".$value['user_id'];
-				$order_info=$db->getRow($sql);
-				$k=$i-1;
-				$affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
+                $sql="SELECT count(*) as order_num ,sum(goods_amount - discount)  as order_amount FROM ".$GLOBALS['ecs']->table('order_info')."WHERE user_id=".$value['user_id'];
+                $order_info=$db->getRow($sql);
+                $k=$i-1;
+                $affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
                 if ($affiliate['item'][$k]['level_money'])
                 {
                     $affiliate['item'][$k]['level_money'] /= 100;
                 }
-				$setmoney = round($order_info['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
-				$user_info[$key]['order_num']=$order_info['order_num'];
-				$user_info[$key]['order_amount']=$order_info['order_amount'];
-				$user_info[$key]['setmoney']=$setmoney;
+                $setmoney = round($order_info['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
+                $user_info[$key]['order_num']=$order_info['order_num'];
+                $user_info[$key]['order_amount']=$order_info['order_amount'];
+                $user_info[$key]['setmoney']=$setmoney;
 
-			}
+            }
             $user_list['user_list'] = array_merge($user_list['user_list'], $user_info);
         }
     }
-	$new_arr=array();
-	foreach($user_list['user_list'] as $key =>$value){
+    $new_arr=array();
+    foreach($user_list['user_list'] as $key =>$value){
 
-		if($value['level']==2){
+        if($value['level']==2){
 
-			$wxid=$value['wxid'];
-			$value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
-			$value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
-			$new_arr[]=$value;
-		}
-	}
-	//print_r( $new_arr);
-	$smarty->assign('user_list',    $new_arr);
-	$smarty->display('user_clips.dwt');
+            $wxid=$value['wxid'];
+            $value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
+            $value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
+            $new_arr[]=$value;
+        }
+    }
+    //print_r( $new_arr);
+    $smarty->assign('user_list',    $new_arr);
+    $smarty->display('user_clips.dwt');
 }
 //显示三级分销代理
 elseif ($action == 'fenxiao3')
 {
-	//推荐注册分成
-	$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
-	$user_list['user_list'] = array();
-	$auid = $_SESSION['user_id'];
+    //推荐注册分成
+    $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
+    $user_list['user_list'] = array();
+    $auid = $_SESSION['user_id'];
     $num = 3;
     $up_uid = "'$auid'";
     $all_count = 0;
@@ -3252,47 +3289,47 @@ elseif ($action == 'fenxiao3')
             $sql = "SELECT user_id, user_name, '$i' AS level, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time,wxid ".
                     " FROM " . $GLOBALS['ecs']->table('users') . " WHERE user_id IN($up_uid)" .
                     " ORDER by level, user_id";
-			$user_info=$db->getAll($sql);
-			foreach($user_info as $key=>$value){
+            $user_info=$db->getAll($sql);
+            foreach($user_info as $key=>$value){
 
-				$sql="SELECT count(*) as order_num ,sum(goods_amount - discount)  as order_amount FROM ".$GLOBALS['ecs']->table('order_info')."WHERE user_id=".$value['user_id'];
-				$order_info=$db->getRow($sql);
-				$k=$i-1;
-				$affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
+                $sql="SELECT count(*) as order_num ,sum(goods_amount - discount)  as order_amount FROM ".$GLOBALS['ecs']->table('order_info')."WHERE user_id=".$value['user_id'];
+                $order_info=$db->getRow($sql);
+                $k=$i-1;
+                $affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
                 if ($affiliate['item'][$k]['level_money'])
                 {
                     $affiliate['item'][$k]['level_money'] /= 100;
                 }
-				$setmoney = round($order_info['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
-				$user_info[$key]['order_num']=$order_info['order_num'];
-				$user_info[$key]['order_amount']=$order_info['order_amount'];
-				$user_info[$key]['setmoney']=$setmoney;
+                $setmoney = round($order_info['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
+                $user_info[$key]['order_num']=$order_info['order_num'];
+                $user_info[$key]['order_amount']=$order_info['order_amount'];
+                $user_info[$key]['setmoney']=$setmoney;
 
-			}
+            }
             $user_list['user_list'] = array_merge($user_list['user_list'], $user_info);
         }
     }
-	$new_arr=array();
-	foreach($user_list['user_list'] as $key =>$value){
+    $new_arr=array();
+    foreach($user_list['user_list'] as $key =>$value){
 
-		if($value['level']==3){
+        if($value['level']==3){
 
-			$wxid=$value['wxid'];
-			$value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
-			$value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
-			$new_arr[]=$value;
-		}
-	}
-	$smarty->assign('user_list',    $new_arr);
-	$smarty->display('user_clips.dwt');
+            $wxid=$value['wxid'];
+            $value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
+            $value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
+            $new_arr[]=$value;
+        }
+    }
+    $smarty->assign('user_list',    $new_arr);
+    $smarty->display('user_clips.dwt');
 }
 //显示四级分销代理
 elseif ($action == 'fenxiao4')
 {
-	//推荐注册分成
-	$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
-	$user_list['user_list'] = array();
-	$auid = $_SESSION['user_id'];
+    //推荐注册分成
+    $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
+    $user_list['user_list'] = array();
+    $auid = $_SESSION['user_id'];
     $num = 4;
     $up_uid = "'$auid'";
     $all_count = 0;
@@ -3317,51 +3354,51 @@ elseif ($action == 'fenxiao4')
             $sql = "SELECT user_id, user_name, '$i' AS level, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time,wxid ".
                     " FROM " . $GLOBALS['ecs']->table('users') . " WHERE user_id IN($up_uid)" .
                     " ORDER by level, user_id";
-			$user_info=$db->getAll($sql);
-			foreach($user_info as $key=>$value){
+            $user_info=$db->getAll($sql);
+            foreach($user_info as $key=>$value){
 
-				$sql="SELECT count(*) as order_num ,sum(goods_amount - discount)  as order_amount FROM ".$GLOBALS['ecs']->table('order_info')."WHERE user_id=".$value['user_id'];
-				$order_info=$db->getRow($sql);
-				$k=$i-1;
-				$affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
+                $sql="SELECT count(*) as order_num ,sum(goods_amount - discount)  as order_amount FROM ".$GLOBALS['ecs']->table('order_info')."WHERE user_id=".$value['user_id'];
+                $order_info=$db->getRow($sql);
+                $k=$i-1;
+                $affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
                 if ($affiliate['item'][$k]['level_money'])
                 {
                     $affiliate['item'][$k]['level_money'] /= 100;
                 }
-				$setmoney = round($order_info['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
-				$user_info[$key]['order_num']=$order_info['order_num'];
-				$user_info[$key]['order_amount']=$order_info['order_amount'];
-				$user_info[$key]['setmoney']=$setmoney;
+                $setmoney = round($order_info['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
+                $user_info[$key]['order_num']=$order_info['order_num'];
+                $user_info[$key]['order_amount']=$order_info['order_amount'];
+                $user_info[$key]['setmoney']=$setmoney;
 
-			}
+            }
             $user_list['user_list'] = array_merge($user_list['user_list'], $user_info);
         }
     }
-	$new_arr=array();
-	foreach($user_list['user_list'] as $key =>$value){
+    $new_arr=array();
+    foreach($user_list['user_list'] as $key =>$value){
 
-		if($value['level']==4){
+        if($value['level']==4){
 
-			$wxid=$value['wxid'];
-			$value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
-			$value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
-			$new_arr[]=$value;
-		}
-	}
-	$smarty->assign('user_list',    $new_arr);
-	$smarty->display('user_clips.dwt');
+            $wxid=$value['wxid'];
+            $value['head_url']=$GLOBALS['db']->getOne("SELECT  headimgurl FROM wxch_user WHERE wxid = '$wxid'");
+            $value['nickname']=$GLOBALS['db']->getOne("SELECT nickname FROM wxch_user WHERE wxid = '$wxid'");
+            $new_arr[]=$value;
+        }
+    }
+    $smarty->assign('user_list',    $new_arr);
+    $smarty->display('user_clips.dwt');
 }
 //显示分销会员的分层订单
 elseif ($action =='myorder')
 {
-	//显示分成记录
-	$user_id=$_GET['user_id'];
-	$level=$_GET['level'];
-	$logdb = get_affiliate_ck($user_id,$level);
-	$smarty->assign('logdb',        $logdb['logdb']);
-	$smarty->assign('level',        $level);
-	//显示分成记录结束
-	$smarty->display('user_clips.dwt');
+    //显示分成记录
+    $user_id=$_GET['user_id'];
+    $level=$_GET['level'];
+    $logdb = get_affiliate_ck($user_id,$level);
+    $smarty->assign('logdb',        $logdb['logdb']);
+    $smarty->assign('level',        $level);
+    //显示分成记录结束
+    $smarty->display('user_clips.dwt');
 }
 //显示分销商的下线
 /* 查看订单详情 */
@@ -3436,18 +3473,18 @@ elseif ($action == 'myorder_detail')
     $order['order_status'] = $_LANG['os'][$order['order_status']];
     $order['pay_status'] = $_LANG['ps'][$order['pay_status']];
     $order['shipping_status'] = $_LANG['ss'][$order['shipping_status']];
-	//读取分成比列
-	$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
-	$level=$_GET['level'];
-	$k=$level-1;
-	$affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
+    //读取分成比列
+    $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
+    $level=$_GET['level'];
+    $k=$level-1;
+    $affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
     if ($affiliate['item'][$k]['level_money'])
     {
        $affiliate['item'][$k]['level_money'] /= 100;
     }
-	$setmoney = round($order['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
-	$order['setmoney']=$setmoney ;
-	$order['level_money_all']=$affiliate['item'][$k]['level_money'];
+    $setmoney = round($order['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
+    $order['setmoney']=$setmoney ;
+    $order['level_money_all']=$affiliate['item'][$k]['level_money'];
     $smarty->assign('order',      $order);
     $smarty->assign('goods_list', $goods_list);
     $smarty->display('my_usergrzx.dwt');
@@ -3952,24 +3989,24 @@ elseif ($action == 'clear_history')
 elseif ($action == 'point')
 {
 
-	$user_id=$_SESSION['user_id'];
-	$account_type = '';
+    $user_id=$_SESSION['user_id'];
+    $account_type = '';
     $account_list = get_accountlist($user_id, $account_type);
-	//print_r($account_list['account']);
+    //print_r($account_list['account']);
     $smarty->assign('account_list', $account_list['account']);
-	//查找用户的积分变化记录
-	/*
-	$sql = "SELECT * FROM " . $ecs->table('account_log') . " WHERE user_id = ".$_SESSION['user_id'];
-	$log = $GLOBALS['db']->getAll($sql);
+    //查找用户的积分变化记录
+    /*
+    $sql = "SELECT * FROM " . $ecs->table('account_log') . " WHERE user_id = ".$_SESSION['user_id'];
+    $log = $GLOBALS['db']->getAll($sql);
 
-	foreach($log  as $k=>$v){
+    foreach($log  as $k=>$v){
 
-		$v['change_time']=local_date("Y-m-d H:i:s",$v['change_time']);
+        $v['change_time']=local_date("Y-m-d H:i:s",$v['change_time']);
 
-		$log[$k]['change_time']=$v['change_time'];
-	}*/
-	$smarty->assign('log', $log );
-	$smarty->display('user_clips.dwt');
+        $log[$k]['change_time']=$v['change_time'];
+    }*/
+    $smarty->assign('log', $log );
+    $smarty->display('user_clips.dwt');
 }
 //生成随机数 by wang
 function random($length = 6, $numeric = 0) {
@@ -4131,34 +4168,34 @@ function get_affiliate_ck($user_id,$level)
         $logdb[] = $rt;
     }
 
-	$logdbnew=array();
-	foreach($logdb  as $key=>$value){
+    $logdbnew=array();
+    foreach($logdb  as $key=>$value){
 
-		if($value['user_id']==$user_id){
+        if($value['user_id']==$user_id){
 
-			$logdbnew[$key]=$value;
-			$user_id=$value['user_id'];
-			$sql = "SELECT wxid FROM " .$GLOBALS['ecs']->table('users'). " WHERE user_id = '$user_id'";
-			$wxid = $GLOBALS['db']->getOne($sql);
-			if(!empty($wxid)){
-				$weixinInfo = $GLOBALS['db']->getRow("SELECT nickname, headimgurl FROM wxch_user WHERE wxid = '$wxid'");
-				$logdbnew[$key]['avatar'] = empty($weixinInfo['headimgurl']) ? '':$weixinInfo['headimgurl'];
-				$logdbnew[$key]['username'] = empty($weixinInfo['nickname']) ? '':$weixinInfo['nickname'];
-			}
-				$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
-				$k=$level-1;
-				$affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
+            $logdbnew[$key]=$value;
+            $user_id=$value['user_id'];
+            $sql = "SELECT wxid FROM " .$GLOBALS['ecs']->table('users'). " WHERE user_id = '$user_id'";
+            $wxid = $GLOBALS['db']->getOne($sql);
+            if(!empty($wxid)){
+                $weixinInfo = $GLOBALS['db']->getRow("SELECT nickname, headimgurl FROM wxch_user WHERE wxid = '$wxid'");
+                $logdbnew[$key]['avatar'] = empty($weixinInfo['headimgurl']) ? '':$weixinInfo['headimgurl'];
+                $logdbnew[$key]['username'] = empty($weixinInfo['nickname']) ? '':$weixinInfo['nickname'];
+            }
+                $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
+                $k=$level-1;
+                $affiliate['item'][$k]['level_money'] = (float)$affiliate['item'][$k]['level_money'];
                 if ($affiliate['item'][$k]['level_money'])
                 {
                     $affiliate['item'][$k]['level_money'] /= 100;
                 }
-				$setmoney = round($value['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
-				$logdbnew[$key]['set_money']=$setmoney;
-				$logdbnew[$key]['level_money']=$affiliate['item'][$k]['level_money'];
+                $setmoney = round($value['order_amount'] * $affiliate['item'][$k]['level_money'], 2);
+                $logdbnew[$key]['set_money']=$setmoney;
+                $logdbnew[$key]['level_money']=$affiliate['item'][$k]['level_money'];
 
 
-		}
-	}
+        }
+    }
 
     $arr = array('logdb' => $logdbnew, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
 
