@@ -428,7 +428,7 @@ function addToCart(goodsId, parentId=0,type=0,ismobile=0)  //type 购物类型
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
 //console.log(goods);return false;
   ///Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse, 'POST', 'JSON');
-if(type){
+if(type&&!ismobile){
   var w = window.open(),url, num = 0;
 }
 
@@ -451,7 +451,7 @@ if(type){
 
 
                               if(ismobile){
-                                     w.close();
+
                                     window.location.href="flow.php?step=pay_select&&cartid="+data.cartid;
 
                                     return;

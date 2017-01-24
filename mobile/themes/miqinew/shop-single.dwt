@@ -607,7 +607,13 @@ $(function(){
 if (viewport().width < 768){
    $("#xiangqiangimg img").click(function(event) {
     //window.location.href=$(this).attr("src");
-    window.location.href='{$ectouch_themes}/Swiper-3.4.0/demos/23-thumbs-gallery-loop.html';
+    var arr = new Array();
+   //console.log($("#xiangqiangimg img"));
+   $("#xiangqiangimg img").each(function(i){
+      arr[i]=$(this).attr("src");
+   });
+   var imgstr=JSON.stringify(arr);
+    window.location.href='mobileimg.php?imgstr='+imgstr;
    });
 }
 

@@ -5,7 +5,7 @@
     <title>详情图片</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="../dist/css/swiper.min.css">
+    <link rel="stylesheet" href="{$ectouch_themes}/Swiper-3.4.0/dist/css/swiper.min.css">
 
     <!-- Demo styles -->
     <style>
@@ -58,7 +58,7 @@
         height:20px;
         text-align:center;
         color: white;
-        float: right; 
+        float: right;
         border: 1px solid white;
         line-height:20px;
     }
@@ -76,8 +76,10 @@
     <!-- Swiper -->
     <div class="swiper-container gallery-top">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/1)"></div>
-            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/2)"></div>
+            <!--{foreach from=$imgarr item=ia}-->
+            <div class="swiper-slide" style="background-image:url({$ia})"></div>
+            <!--{/foreach}-->
+           <!--  <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/2)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/3)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/4)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/5)"></div>
@@ -85,17 +87,20 @@
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/7)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/8)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/9)"></div>
-            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/10)"></div>
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/10)"></div> -->
         </div>
         <!-- Add Arrows -->
 <!--         <div class="swiper-button-next swiper-button-white"></div>
         <div class="swiper-button-prev swiper-button-white"></div> -->
         <div class="swiper-pagination"></div>
-    </div>   
+    </div>
     <hr class="swiper-hr"></div>
     <div class="swiper-container gallery-thumbs">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/1)"></div>
+           <!--{foreach from=$imgarr item=ia}-->
+            <div class="swiper-slide" style="background-image:url({$ia})"></div>
+            <!--{/foreach}-->
+            <!-- <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/1)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/2)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/3)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/4)"></div>
@@ -104,12 +109,12 @@
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/7)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/8)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/9)"></div>
-            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/10)"></div>
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/10)"></div> -->
         </div>
     </div>
 
     <!-- Swiper JS -->
-    <script src="../dist/js/swiper.js"></script>
+    <script src="{$ectouch_themes}/Swiper-3.4.0/dist/js/swiper.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
@@ -118,21 +123,21 @@
         prevButton: '.swiper-button-prev',
         spaceBetween: 10,
         loop:true,
-        loopedSlides: 5, //looped slides should be the same   
+        loopedSlides: {$imgcount}, //looped slides should be the same
         pagination:'.swiper-pagination',
-        paginationType:'fraction' 
+        paginationType:'fraction'
     });
     var galleryThumbs = new Swiper('.gallery-thumbs', {
         spaceBetween: 10,
-        slidesPerView: 4,
+        slidesPerView: {$imgcount},
         touchRatio: 0.2,
         loop:true,
-        loopedSlides: 5, //looped slides should be the same
+        loopedSlides: {$imgcount}, //looped slides should be the same
         slideToClickedSlide: true
     });
     galleryTop.params.control = galleryThumbs;
     galleryThumbs.params.control = galleryTop;
-    
+
     </script>
 </body>
 </html>
