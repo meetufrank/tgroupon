@@ -1282,8 +1282,7 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0,$type=0)
                 $sql = "SELECT goods_number FROM " .$GLOBALS['ecs']->table('cart').
                         " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
                         " AND parent_id = 0 AND goods_attr = '" .get_goods_attr_info($spec). "' " .
-                        " AND extension_code <> 'package_buy' " .
-                        " AND rec_type = 'CART_GENERAL_GOODS'"." AND cart_type = ".$type;
+                        " AND cart_type = ".$type;
 
                 $row = $GLOBALS['db']->getRow($sql);
                 if($row) //如果购物车已经有此物品，则更新
@@ -1309,14 +1308,12 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0,$type=0)
                                    " , goods_price = '$goods_price'".
                                    " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
                                    " AND parent_id = 0 AND goods_attr = '" .get_goods_attr_info($spec). "' " .
-                                   " AND extension_code <> 'package_buy' " .
-                                   "AND rec_type = 'CART_GENERAL_GOODS'"."  AND cart_type = ".$type;
+                                   "  AND cart_type = ".$type;
                             $GLOBALS['db']->query($sql);
 
                             $sql=" select rec_id from ".$GLOBALS['ecs']->table('cart') . " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
                                    " AND parent_id = 0 AND goods_attr = '" .get_goods_attr_info($spec). "' " .
-                                   " AND extension_code <> 'package_buy' " .
-                                   "AND rec_type = 'CART_GENERAL_GOODS'"."  AND cart_type = ".$type;
+                                   "  AND cart_type = ".$type;
                            $cartid=$GLOBALS['db']->getOne($sql);
                         }
                         else
