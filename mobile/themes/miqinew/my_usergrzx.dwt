@@ -240,7 +240,7 @@
 
          </script>
 
-            <script type="text/javascript">
+           <!--  <script type="text/javascript">
 
             function getaddr(){
 
@@ -290,9 +290,73 @@
         }
 
 
-    </script>
+    </script> -->
+    <script language="javascript">
+            function callpay()
+            {
+                WeixinJSBridge.invoke('editAddress',{
+                    "appId" : "{$appId}",
+                    "scope" : "jsapi_address",
+                    "signType" : "sha1",
+                    "addrSign" : "{$signature}",
+                    "timeStamp" : "{$timestamp}",
+                    "nonceStr" : "{$noncestr}",
+                },function(res){
+
+                    // document.form1.address1.value         = res.proviceFirstStageName;   //省
+                    // document.form1.address2.value         = res.addressCitySecondStageName;  //市
+                    // document.form1.address3.value         = res.addressCountiesThirdStageName;  //区
+                    // document.form1.detail.value           = res.addressDetailInfo;   //详细
+                    // document.form1.national.value         = res.nationalCode;   //国家码
+                    // document.form1.user.value            = res.userName;     //收货人
+                    // document.form1.phone.value            = res.telNumber;   //电话
+                    // document.form1.postcode.value         = res.addressPostalCode;  //邮编
+                    // document.form1.errmsg.value         = res.err_msg;
 
 
+                      if(res.err_msg == 'edit_address:ok'){
+
+
+                              $.ajax({
+
+                                            url:"my_usergrzx.php?act=wxaddress",
+                                            async:true,
+                                            data:{consignee:res.userName,tel:res.telNumber,province:res.proviceFirstStageName,city:res.addressCitySecondStageName,district:res.addressCountiesThirdStageName,address:res.addressDetailInfo},
+                                            dataType: "json",
+                                            success: function (result) {
+                                               if(result.msg=='success'){
+                                                 window.location.reload("my_usergrzx.php?act=address_list");
+                                               }
+
+
+                                                  }//回调函数结束
+                                       });//ajax结束
+
+
+                        }
+                        else{
+                            alert("获取地址失败，请重新点击");
+                        }
+                });
+            }
+        </script>
+      <!--   <form name="form1" target="_blank">
+            <table border="1">
+                <colgroup><col width="20%"><col width="80%"></colgroup>
+                <TR><th>结果</th><th><INPUT value="" name="errmsg" id="9"></th>
+                <TR><th>国家码</th><th><INPUT value="" name="national" id="6"></th>
+                <TR><th>区</th><th><INPUT value="" name="address3" id="3"></th>
+                <TR><th>省</th><th><INPUT value="" name="address1" id="1"></th>
+                <tr><th>市</th><th><INPUT value="" name="address2" id="2"></th>
+                <TR><th>详细</th><th><INPUT value="" name="detail"   id="4"></th>
+                <TR><th>收货人</th><th><INPUT value="" name="user" id="7"></th>
+                <TR><th>电话</th><th><INPUT value="" name="phone"    id="5"></th>
+                <TR><th>邮编</th><th><INPUT value="" name="postcode" id="8"></th>
+            </table>
+        </form>
+        <div>
+            <button type="button" onclick="callpay()">获取收货地址</button>
+        </div> -->
 
           <!--收货地址1-->
        {foreach from=$consignee_list item=consignee key=sn}
@@ -338,7 +402,7 @@
           {if $loginpc}
 
           {else}
-               <a id="editAddress" href="javascript:getaddr();" class="wechataddress duquaddress">读取微信地址</a>
+               <a onclick="callpay()" class="wechataddress duquaddress">读取微信地址</a>
           {/if}
               <a  id="Address_Manager" class="btn btn-primary waves-effect waves-light">添加地址</a>
               <div class="clear"></div>

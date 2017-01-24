@@ -130,7 +130,8 @@
 
 
 
-                   <h5 style="margin-top: 15px;" id="address_h5"><a href="#" id="Address_Manager" class="toggle-section addNewAddress">新增地址</a></h5>
+                   <h5 style="margin-top: 15px;" id="address_h5"> <a href="#" id="Address_Managers" class="toggle-section addNewAddress">读取微信地址</a><a href="#" id="Address_Manager" class="toggle-section addNewAddress">新增地址</a></h5>
+
         </div>
 </section>
 
