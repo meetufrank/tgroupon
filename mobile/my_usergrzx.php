@@ -1464,7 +1464,6 @@ elseif ($action == 'address_list')
         if($is_wechat){
             include('weixindizhi.php');
 
-
             $loginphone = "1";   //微信浏览器
             $smarty->assign('loginphone',  $loginphone);
           }else{
