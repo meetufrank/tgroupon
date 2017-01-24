@@ -442,7 +442,9 @@ if(type&&!ismobile){
                     if(data.error==12){
                               if(data.url){
                               window.location.href=data.url;
+                              if(type){
                               w.close();
+                              }
                               return;
                               }
                     }
@@ -452,14 +454,14 @@ if(type&&!ismobile){
 
                               if(ismobile){
 
-                                    window.location.href="flow.php?step=pay_select&&cartid="+data.cartid;
+                                    window.location.href="flow.php?step=pay_select&cartid="+data.cartid+"&type=1";
 
                                     return;
                               }else{
                                   //window.open('_blank').location.href='flow.php?step=pay_select&&cartid='+data.cartid;return;
                                  // newWin('flow.php?step=pay_select&&cartid='+data.cartid,'opendoor');
 
-                                 url = 'flow.php?step=pay_select&&cartid='+data.cartid;
+                                 url = 'flow.php?step=pay_select&cartid='+data.cartid+"&type=1";
                                     // w.location.href = 'flow.php?step=pay_select&&cartid='+data.cartid;
 
                               }

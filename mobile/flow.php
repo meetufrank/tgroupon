@@ -1284,7 +1284,7 @@ $smarty->assign('payment_list',$payment_list);
 
 
         if (!isset($_GET["code"])){
-             setcookie('cartid',$cartid);
+             setcookie('cartid',$_GET['cartid']);
               $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
             $jumpurl = $weixin->oauth2_authorize($url, "snsapi_base", "fangbei");
 

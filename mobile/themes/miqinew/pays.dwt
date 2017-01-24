@@ -130,7 +130,11 @@
 
 
 
-                   <h5 style="margin-top: 15px;" id="address_h5"><a href="#" onclick="callpay()" class="toggle-section addNewAddress">读取微信地址</a>&nbsp;&nbsp;<a href="#" id="Address_Manager" class="toggle-section addNewAddress">新增地址</a>
+                   <h5 style="margin-top: 15px;" id="address_h5">
+                   {if $loginphone}
+                   <a href="#" onclick="callpay()" class="toggle-section addNewAddress">读取微信地址</a>
+                   {/if}
+                   &nbsp;&nbsp;<a href="#" id="Address_Manager" class="toggle-section addNewAddress">新增地址</a>
 
 
 
