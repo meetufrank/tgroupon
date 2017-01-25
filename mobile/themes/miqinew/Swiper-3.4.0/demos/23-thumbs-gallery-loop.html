@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>详情图片</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.5, user-scalable=yes">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="{$ectouch_themes}/Swiper-3.4.0/dist/css/swiper.min.css">
 
@@ -32,11 +32,11 @@
         background-position: center;
     }
     .gallery-top {
-        height:70%;
+        height:auto;
         width: 100%;
     }
     .gallery-thumbs {
-        height: 20%;
+        height: auto;
         box-sizing: border-box;
         padding: 10px 0;
     }
@@ -61,12 +61,18 @@
         float: right;
         border: 1px solid white;
         line-height:20px;
+        margin-top:10px;
+        margin-bottom:10px;  
     }
     .clear{
         clear: both;
     }
     .swiper-pagination{
         color: white;
+    }
+    .swiper-slide img{
+        width:100%;
+        height:auto;
     }
     </style>
 </head>
@@ -77,7 +83,7 @@
     <div class="swiper-container gallery-top">
         <div class="swiper-wrapper">
             <!--{foreach from=$imgarr item=ia}-->
-            <div class="swiper-slide" style="background-image:url({$ia})"></div>
+            <div class="swiper-slide"><img src="$ia}"></div>
             <!--{/foreach}-->
            <!--  <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/2)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/3)"></div>
@@ -90,15 +96,13 @@
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/10)"></div> -->
         </div>
         <!-- Add Arrows -->
-<!--         <div class="swiper-button-next swiper-button-white"></div>
-        <div class="swiper-button-prev swiper-button-white"></div> -->
         <div class="swiper-pagination"></div>
     </div>
     <hr class="swiper-hr"></div>
     <div class="swiper-container gallery-thumbs">
         <div class="swiper-wrapper">
            <!--{foreach from=$imgarr item=ia}-->
-            <div class="swiper-slide" style="background-image:url({$ia})"></div>
+            <div class="swiper-slide"><img src="{$ia}"></div>
             <!--{/foreach}-->
             <!-- <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/1)"></div>
             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/2)"></div>

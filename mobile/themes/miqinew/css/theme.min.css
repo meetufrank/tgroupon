@@ -110,7 +110,7 @@ svg {
 		font-size: 14px;
 	}
 	.aiheart{
-		padding-right: 3px;
+		margin-right: -5px;
 	}
 
 }
@@ -135,7 +135,7 @@ svg {
 		font-size: 14px;
 	}
 	.aiheart{
-		padding-right: 3px;
+		margin-right: -5px;
 	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
@@ -159,7 +159,7 @@ svg {
 		font-size: 16px;
 	}
 	.aiheart{
-		padding-right:3px;
+		margin-right: -5px;
 	}
 }
 @media screen and (max-width: 480px) {
