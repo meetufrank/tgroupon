@@ -47,6 +47,13 @@ if ($_SESSION['user_id'])
         $smarty->assign('total', $cart_goods['total']);
      $smarty->assign('user_data', $infos);
 
+
+     //个人中心是否显示销量的判断
+      $sql="select count(*) from ".$ecs->table('users')." where user_id=".$_SESSION['user_id']." and (is_line!=0 or is_art!=0)";    //查询提现金额
+      $income=$GLOBALS['db']->getOne($sql);
+
+      $smarty->assign('is_income',$income);
+
     }else{
       $css='<a href="#account"class="toolbar-toggle"><i class="material-icons person"></i></a>';
     }

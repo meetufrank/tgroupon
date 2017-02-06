@@ -64,3 +64,5 @@ $config['ver_url'] = 'http://www.ectouch.cn/';
 
 $config['pc_url']='https://open.weixin.qq.com/connect/qrconnect?appid=wx972a6f963cf1d611&response_type=code&scope=snsapi_login&redirect_uri=http://meetuuu.com/mobile/weixinlogin.php&state=668ee48328701ca10efef2517d8826e8';              //电脑端微信登录链接
 $config['phone_url']='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5aec13c030a530b&redirect_uri=http://meetuuu.com/mobile/loginphone.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';              //微信浏览器登录链接
+
+

@@ -193,12 +193,13 @@ ADD COLUMN `attr_img`  varchar(255) NULL COMMENT '//具体商品属性表' AFTER
 */
 
 ALTER TABLE `ecs_user_address`
-ADD COLUMN `default`  int(10) NULL COMMENT '//1为默认
+ADD COLUMN `default`  int(10) NULL COMMENT '//1为默认'
 ADD COLUMN `attr_img`  varchar(255) NULL COMMENT '//具体商品属性表' AFTER `attr_price`;
 
 
 
-/*#2016/12/16 王晋   添加新表，价格区间表*/
+/*#2016/12/16 王晋   添加新表，价格区间表
+*/
 
 CREATE TABLE `ecs_money_type` (
 `money_id`  smallint(2) NOT NULL COMMENT '//筛选区间 ' ,
@@ -235,3 +236,36 @@ ADD COLUMN `cart_type`  tinyint(1) NOT NULL DEFAULT 0 COMMENT '//1为立即支�
 */
 ALTER TABLE `ecs_users`
 ADD COLUMN `unionid`  varchar(255) NOT NULL COMMENT '//微信公众，开发平台用户唯一标识' AFTER `headimgurl`;
+
+
+
+/*#2017/02/06 王晋  会员表中添加字段
+*/
+ALTER TABLE `ecs_users`
+ADD COLUMN `is_art`  int(2) NOT NULL DEFAULT 0 COMMENT '//是否绑定艺术家' AFTER `unionid`;
+
+
+/*#2017/02/06 王晋  会员表中添加字段
+*/
+ALTER TABLE `ecs_users`
+ADD COLUMN `all_money`  double(7,2) NOT NULL DEFAULT 0 COMMENT '//提现总额' AFTER `is_art`;
+
+
+/*#2017/02/06 王晋  新建提现记录表
+*/
+CREATE TABLE `NewTable` (
+`log_id`  mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '//提现记录id' ,
+`log_userid`  mediumint(8) NOT NULL COMMENT '//提现用户id' ,
+`log_content`  text NULL COMMENT '//反馈信息' ,
+`log_time`  timestamp NULL ON UPDATE CURRENT_TIMESTAMP ,
+PRIMARY KEY (`log_id`)
+)
+;
+
+/*#2017/02/06 王晋  修改提现记录表
+*/
+ALTER TABLE `ecs_txlog`
+MODIFY COLUMN `log_time`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `log_content`;
+
+
+
