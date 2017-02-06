@@ -97,6 +97,7 @@ $modules['08_members']['line_shop']             = 'line_shop.php?act=list';  //�
 
 //$modules['10_priv_admin']['admin_logs']             = 'admin_logs.php?act=list';
 $modules['10_priv_admin']['admin_list']             = 'privilege.php?act=list';
+$modules['10_priv_admin']['privilegeyishujia']   = 'privilegeyishujia.php?act=list';  //设计师
 $modules['10_priv_admin']['admin_role']             = 'role.php?act=list';
 //$modules['10_priv_admin']['agency_list']            = 'agency.php?act=list';
 //$modules['10_priv_admin']['suppliers_list']         = 'suppliers.php?act=list'; // 供货商
