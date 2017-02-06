@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TGROUPON 管理员信息以及权限管理程序
+ * TGROUPON 艺术家信息以及权限管理程序
  * ============================================================================
  * * 版权所有 2005-2012 TGROUPON中国，并保留所有权利。
  * 网站地址: http://www.tgroupon.cn；
@@ -167,7 +167,7 @@ elseif ($_REQUEST['act'] == 'list')
 
     /* 显示页面 */
     assign_query_info();
-    $smarty->display('privilege_list.htm');
+    $smarty->display('privilegeyishujia_list.htm');
 }
 
 /*------------------------------------------------------ */
@@ -197,7 +197,7 @@ elseif ($_REQUEST['act'] == 'add')
 
     /* 显示页面 */
     assign_query_info();
-    $smarty->display('privilege_info.htm');
+    $smarty->display('privilegeyishujia_info.htm');
 }
 
 /*------------------------------------------------------ */
@@ -278,9 +278,10 @@ elseif ($_REQUEST['act'] == 'insert')
 
 
     $sql = "INSERT INTO ".$ecs->table('admin_user')." (user_name, email, password, add_time, nav_list, action_list, role_id,country,hav_logo,ysj_fencheng) ".
-           "VALUES ('".trim($_POST['user_name'])."', '".trim($_POST['email'])."', '$password', '$add_time', '$row[nav_list]', '$action_list', '$role_id','".trim($_POST['country'])."','".$url_img."','".trim($_POST['ysj_fencheng'])."')";
+           "VALUES ('".trim($_POST['user_name'])."', '".trim($_POST['email'])."', '$password', '$add_time', '$row[nav_list]', '$action_list', 4,'".trim($_POST['country'])."','".$url_img."','".trim($_POST['ysj_fencheng'])."')";
 
     $db->query($sql);
+
     /* 转入权限分配列表 */
     $new_id = $db->Insert_ID();
 
@@ -302,7 +303,7 @@ elseif ($_REQUEST['act'] == 'insert')
  }
 
 /*------------------------------------------------------ */
-//-- 编辑管理员信息
+//-- 编辑艺术家信息
 /*------------------------------------------------------ */
 elseif ($_REQUEST['act'] == 'edit')
 {
@@ -321,7 +322,7 @@ elseif ($_REQUEST['act'] == 'edit')
         admin_priv('admin_manage');
     }
 
-    /* 获取管理员信息 */
+    /* 获取艺术家信息 */
     $sql = "SELECT user_id, user_name, email, password, agency_id, role_id,country,ysj_fencheng FROM " .$ecs->table('admin_user').
            " WHERE user_id = '".$_REQUEST['id']."'";
     $user_info = $db->getRow($sql);
@@ -336,7 +337,7 @@ elseif ($_REQUEST['act'] == 'edit')
 
     /* 模板赋值 */
     $smarty->assign('ur_here',     $_LANG['admin_edit']);
-    $smarty->assign('action_link', array('text' => $_LANG['admin_list'], 'href'=>'privilege.php?act=list'));
+    $smarty->assign('action_link', array('text' => $_LANG['admin_list'], 'href'=>'privilegeyishujia.php?act=list'));
     $smarty->assign('user',        $user_info);
 
     /* 获得该管理员的权限 */
@@ -351,11 +352,11 @@ elseif ($_REQUEST['act'] == 'edit')
     $smarty->assign('action',      'edit');
 
     assign_query_info();
-    $smarty->display('privilege_info.htm');
+    $smarty->display('privilegeyishujia_info.htm');
 }
 
 /*------------------------------------------------------ */
-//-- 更新管理员信息
+//-- 更新艺术家信息
 /*------------------------------------------------------ */
 elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
 {
@@ -483,7 +484,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
         if(empty($url_img)){$img_list='';}else{$img_list=' ,hav_logo=\''.$url_img.'\'';}
        if(empty($_POST['country'])){$country_list='';}else{$country_list=' ,country=\''.$_POST['country'].'\'';}
     }
-    //更新管理员信息
+    //更新艺术家信息
     if($pwd_modified)
     {
         $sql = "UPDATE " .$ecs->table('admin_user'). " SET ".
@@ -617,7 +618,7 @@ elseif ($_REQUEST['act'] == 'modif')
     /* 模板赋值 */
     $smarty->assign('lang',        $_LANG);
     $smarty->assign('ur_here',     $_LANG['modif_info']);
-    $smarty->assign('action_link', array('text' => $_LANG['admin_list'], 'href'=>'privilege.php?act=list'));
+    $smarty->assign('action_link', array('text' => $_LANG['admin_list'], 'href'=>'privilegeyishujia.php?act=list'));
     $smarty->assign('user',        $user_info);
     $smarty->assign('menus',       $modules);
     $smarty->assign('nav_arr',     $nav_lst);
@@ -627,7 +628,7 @@ elseif ($_REQUEST['act'] == 'modif')
 
     /* 显示页面 */
     assign_query_info();
-    $smarty->display('privilege_info.htm');
+    $smarty->display('privilegeyishujia_info.htm');
 }
 
 /*------------------------------------------------------ */
@@ -649,7 +650,7 @@ elseif ($_REQUEST['act'] == 'allot')
     /* 如果被编辑的管理员拥有了all这个权限，将不能编辑 */
     if ($priv_str == 'all')
     {
-       $link[] = array('text' => $_LANG['back_admin_list'], 'href'=>'privilege.php?act=list');
+       $link[] = array('text' => $_LANG['back_admin_list'], 'href'=>'privilegeyishujia.php?act=list');
        sys_msg($_LANG['edit_admininfo_cannot'], 0, $link);
     }
 
@@ -685,14 +686,14 @@ elseif ($_REQUEST['act'] == 'allot')
     /* 赋值 */
     $smarty->assign('lang',        $_LANG);
     $smarty->assign('ur_here',     $_LANG['allot_priv'] . ' [ '. $_GET['user'] . ' ] ');
-    $smarty->assign('action_link', array('href'=>'privilege.php?act=list', 'text' => $_LANG['admin_list']));
+    $smarty->assign('action_link', array('href'=>'privilegeyishujia.php?act=list', 'text' => $_LANG['admin_list']));
     $smarty->assign('priv_arr',    $priv_arr);
     $smarty->assign('form_act',    'update_allot');
     $smarty->assign('user_id',     $_GET['id']);
 
     /* 显示页面 */
     assign_query_info();
-    $smarty->display('privilege_allot.htm');
+    $smarty->display('privilegeyishujia_allot.htm');
 }
 
 /*------------------------------------------------------ */
@@ -780,7 +781,7 @@ function get_admin_userlist()
 {
     $list = array();
     $sql  = 'SELECT user_id, user_name, email, add_time, last_login '.
-            'FROM ' .$GLOBALS['ecs']->table('admin_user')."WHERE role_id = 0 ".' ORDER BY user_id DESC';
+            'FROM ' .$GLOBALS['ecs']->table('admin_user')."WHERE role_id = 4 ".' ORDER BY user_id DESC';
     $list = $GLOBALS['db']->getAll($sql);
 
     foreach ($list AS $key=>$val)

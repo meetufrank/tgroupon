@@ -296,7 +296,7 @@
 
   /* 收藏状态为红色 */
   .schongse{
-    color:red;
+    color:rgb(200, 0, 0);
   }
   .mobile-cart-border-details img {
     display: block;
