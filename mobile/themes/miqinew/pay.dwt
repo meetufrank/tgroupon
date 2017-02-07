@@ -256,7 +256,7 @@
 
              }  else if(data.step == 3){
 
-                window.location.href="flow.php?step=pay_success";
+                window.location.href="flow.php?step=pay_success{$linestring2}";
              }
          },
         error:function(){

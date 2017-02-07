@@ -17,6 +17,8 @@ define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
 include('head.php');
+//定义选中样式
+$smarty->assign('my_active',2);
 
    if ($_SESSION['user_id'] <= 0)
         {

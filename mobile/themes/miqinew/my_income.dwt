@@ -180,14 +180,7 @@
     <!-- Content -->
     <section class="container padding-top-3x">
      <!-- Nav Tabs -->
-      <ul class="nav-tabs" role="tablist">
-        <li ><a href="my_user.php?act=order_list" role="tab" data-toggle="tab">我的订单</a></li>
-        <li><a href="my_grzxgdsc.php" role="tab" data-toggle="tab">我的收藏</a></li>
-        <li><a href="" role="tab" data-toggle="tab">消息记录</a></li>
-        <li ><a href="my_usergrzx.php?act=address_list" role="tab" data-toggle="tab">管理地址</a></li>
-        {if $is_income}<li class="active"><a href="my_income.php?act=income" role="tab" data-toggle="tab">商品销售</a></li>{/if}
-      </ul>
-      <!-- Tab panes -->
+      {include file="my_head.dwt"}      <!-- Tab panes -->
       <div class="tab-content">
 
         <div role="tabpanel" class="tab-pane transition fade in active" id="tab5">
@@ -213,7 +206,7 @@
 		        	</div>
 		        	</div>
 		        	<hr>
-		        	<table class="table">
+		        	<table class="table" id="fenchenglist">
 						<thead>
 					    <tr>
 					      <th>成单时间</th>
@@ -222,29 +215,15 @@
 					      <th>提成金额</th>
 					    </tr>
 					  	</thead>
-						<tbody>
-             <!--{foreach from=$fc_list item=fl}-->
-					    <tr>
-					      <td>{$fl.time}</td>
-					      <td>{$fl.alias}{$fl.goods_name|truncate:5}</td>
-					      <td>{if $fl.type==1}销售提成{elseif $fl.type==2}艺术家提成{else}推荐提成{/if}</td>
-					      <td>{$fl.money}元</td>
-					    </tr>
-              <!--{/foreach}-->
+						<tbody id="view">
+
 
 					 	 </tbody>
 		        	</table>
 
 		        	<!-- Pagination -->
-					<div class="layui-box layui-laypage layui-laypage-default">
-						<span class="layui-laypage-curr"><em class="layui-laypage-em"></em><em>1</em></span>
-						<a href="javascript:;" data-page="2">2</a>
-						<a href="javascript:;" data-page="3">3</a>
-						<a href="javascript:;" data-page="4">4</a>
-						<a href="javascript:;" data-page="5">5</a>
-						<span>…</span>
-						<a href="javascript:;" class="layui-laypage-last" title="尾页" data-page="100">末页</a>
-						<a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+					<div class="layui-box layui-laypage layui-laypage-default" id="shouyi_page">
+
 					</div>
 
 		        </div>
@@ -367,6 +346,61 @@
 		which.size=iCount.length+1;
 	}
  </script>
+ <link rel="stylesheet" href="{$ectouch_themes}/layui/css/layui.css">
+ <script type="text/livescript" src="{$ectouch_themes}/layui/layui.js"></script>
+ <script src="{$ectouch_themes}/js/laytpl/laytpl.js" type="text/javascript"></script>
+ <script id="demo" type="text/html">
+ {{# if(d){}}
+      {{# for(var i = 0, len = d.length; i < len; i++){ }}
+    <tr>
+                          <td>{{d[i].time}}</td>
+                          <td>{{d[i].alias}}{{d[i].goods_name}}</td>
+                          <td>{{# if(d[i].type==0){}}产品提成{{# }else if(d[i].type==2){}}艺术家提成{{# }else if(d[i].type==1){ }}销售提成{{# }}}</td>
+                          <td>{{d[i].money}}元</td>
+   </tr>
+   {{# } }}
+      {{# }else{}}
+      &nbsp;&nbsp;还未有分成记录~~
+      {{# }}}
+ </script>
+<script type="text/javascript">
+insert_page();
+function insert_page(){
+
+layui.use('layer', function (){
+  var layer = layui.layer;
+});
+layui.use(['laypage', 'layer'], function(){
+  var laypage = layui.laypage
+  ,layer = layui.layer;
+    laypage({
+    cont: 'shouyi_page'
+    ,pages: {$fencheng_pages}
+    ,skin: '#1E9FFF'
+    ,jump: function(obj){
+
+              $.ajax({
+               type: "post",
+               url: "my_income.php?act=ajax_get_fencheng",
+               dataType:"json",
+               data:{page_num:obj.curr},
+               success: function (data) {
+                    var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
+                laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
+                 document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
+             });
+              },
+              error: function(data){
+
+                    }
+          });
+    }
+  });
+});
+}
+
+</script>
+
 </body><!-- <body> -->
 
 </html>

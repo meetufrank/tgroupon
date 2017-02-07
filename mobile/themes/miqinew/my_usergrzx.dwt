@@ -205,13 +205,7 @@
     <!-- Content -->
     <section class="container padding-top-3x">
      <!-- Nav Tabs -->
-      <ul class="nav-tabs" role="tablist">
-        <li ><a href="my_user.php?act=order_list" role="tab" data-toggle="tab">我的订单</a></li>
-        <li><a href="my_grzxgdsc.php" role="tab" data-toggle="tab">我的收藏</a></li>
-        <li><a href="" role="tab" data-toggle="tab">消息记录</a></li>
-        <li class="active"><a href="my_usergrzx.php?act=address_list" role="tab" data-toggle="tab">管理地址</a></li>
-       {if $is_income} <li><a href="my_income.php?act=income" role="tab" data-toggle="tab">商品销售</a></li>{/if}
-      </ul>
+      {include file="my_head.dwt"}
       <!-- Tab panes -->
       <div class="tab-content">
 
@@ -325,7 +319,7 @@
                                             dataType: "json",
                                             success: function (result) {
                                                if(result.msg=='success'){
-                                                 window.location.reload("my_usergrzx.php?act=address_list");
+                                                 window.location.reload("my_usergrzx.php?act=address_list{$linestring2}");
                                                }
 
 

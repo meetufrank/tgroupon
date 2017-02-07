@@ -268,4 +268,12 @@ ALTER TABLE `ecs_txlog`
 MODIFY COLUMN `log_time`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `log_content`;
 
 
+/*#2017/02/06 王晋  用户表中添加字段
+*/
+ALTER TABLE `ecs_users`
+ADD COLUMN `xs_fencheng`  double(4,2) NOT NULL DEFAULT 0 COMMENT '//线下店销售分成' AFTER `all_money`;
 
+/*#2017/02/06 王晋  修改艺术家字段
+*/
+ALTER TABLE `ecs_admin_user`
+MODIFY COLUMN `ysj_tixian`  mediumint(8) NOT NULL DEFAULT 0 COMMENT '//艺术家绑定提现用户id' AFTER `ysj_fencheng`;

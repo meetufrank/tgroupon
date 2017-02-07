@@ -3172,23 +3172,30 @@ function get_money($orderid,$user_id)   //某订单id
 {
 
         $sql="SELECT goods_price,lineshop_id,goods_id,fencheng,goods_number from ecs_order_goods  WHERE order_id=".$orderid;
-        $data = $GLOBALS['db']->getAll($sql);    //查询该订单是否跟某个线下店有关
-       foreach ($data as $k=>$v){
+        $datas = $GLOBALS['db']->getAll($sql);    //查询该订单是否跟某个线下店有关
+
+       foreach ($datas as $k=>$v){
         $my_fencheng=1; //初始化形色个人比例
+        $data=$datas[$k];
         $sql="SELECT  ysj_fencheng,arter_id,father_id from  ecs_goods as eg INNER JOIN ecs_admin_user as eau  ON eg.arter_id=eau.user_id where goods_id=".$data['goods_id'];
-        $admin_fencheng = $GLOBALS['db']->GetRow($sql);    //查询艺术家分成比例
+        $admin_fencheng = $GLOBALS['db']->getRow($sql);    //查询艺术家分成比例
         //print_r($sql);exit;
         //计算该艺术家该订单所得分成
 
         if(!empty($admin_fencheng['arter_id'])){
             $ysj_money=$data['goods_number']*$data['goods_price']*$admin_fencheng['ysj_fencheng']/100;
-            $result=fencheng_insert($data['goods_id'],$data['lineshop_id'],$user_id,$ysj_money,$admin_fencheng['arter_id'],2);//插入分成表
+            //查询该艺术家所绑定的会员id
+             $sql="select ysj_tixian from ecs_admin_user where user_id=".$admin_fencheng['arter_id'];
+             $ysj_tixian=$GLOBALS['db']->getOne($sql);
+            $result=fencheng_insert($data['goods_id'],$data['lineshop_id'],$user_id,$ysj_money,$ysj_tixian,2);//插入分成表
 
             if($result){
 
-                updatedata('ysj_tixian=ysj_tixian+'.$ysj_money,'user_id='.$admin_fencheng['arter_id'],'ecs_admin_user');
+                updatedata('hav_money=hav_money+'.$ysj_money,'user_id='.$ysj_tixian,'ecs_users');
                 $my_fencheng=$my_fencheng-$admin_fencheng['ysj_fencheng']/100;   //成功则扣掉分成
              }
+
+
         }
 
         //查询该用户推荐
@@ -3213,18 +3220,13 @@ function get_money($orderid,$user_id)   //某订单id
             if($tuijian['tuijian']<0){    //当购买用户为第一次购买(无任何角色推荐)
                 $tj_id=$data['lineshop_id'];
              updatedata(' tuijian= '.$tj_id,' user_id='.$user_id,' ecs_users');
-
+             $my_fencheng=get_lineratio($tj_id,$user_id,$data,$my_fencheng);  //线下店推荐分成
 
             }elseif($tuijian['tuijian']>0){//
                 $tj_id=$tuijian['tuijian'];
+                $my_fencheng=get_lineratio($tj_id,$user_id,$data,$my_fencheng);  //线下店推荐分成
             }else{
                 $tj_id=0;
-
-            }
-            if($tj_id>0){//推荐分成处理
-
-                $my_fencheng=get_lineratio($tj_id,$data,$my_fencheng);  //线下店推荐分成
-
 
             }
 
@@ -3237,7 +3239,7 @@ function get_money($orderid,$user_id)   //某订单id
 
             if($tuijian['tuijian']>0){    //如果用户推荐人为线下店
               $tj_id=$tuijian['tuijian'];
-              $my_fencheng=get_lineratio($tj_id,$data,$my_fencheng);  //线下店推荐分成
+              $my_fencheng=get_lineratio($tj_id,$user_id,$data,$my_fencheng);  //线下店推荐分成
 
             }elseif($tuijian['tuijian']<0){
                 updatedata(' tuijian=0 ',' user_id='.$user_id,' ecs_users');
@@ -3253,6 +3255,7 @@ function get_money($orderid,$user_id)   //某订单id
            $my_money=$data['goods_number']*$data['goods_price']*$my_fencheng;
 
            $result=fencheng_insert($data['goods_id'],$data['lineshop_id'],$user_id,$my_money,$data['father_id'],3);
+
     }
 
 
@@ -3268,7 +3271,7 @@ function get_money($orderid,$user_id)   //某订单id
 
  function fencheng_insert($goods_id,$lineshop_id,$user_id,$money,$get_id,$type){   //商品id，线下店id，用户id，所得金钱，受益方id，收益类型
 
-$sql="INSERT INTO ecs_fencheng SET goodsid=".intval($goods_id).", line_shopid=".intval($lineshop_id).", userid=".intval($user_id).", money=".floatval($money).", get_shopid=".intval($get_id).",type=".$type;
+ $sql="INSERT INTO ecs_fencheng SET goodsid=".intval($goods_id).", line_shopid=".intval($lineshop_id).", userid=".intval($user_id).", money=".floatval($money).", get_shopid=".intval($get_id).",type=".$type;
     $result=$GLOBALS['db']->query($sql);
 
     return $result;
@@ -3289,7 +3292,7 @@ function updatedata($string,$where,$table){
 /*
     线下店推荐分成金额
  */
-function get_lineratio($tj_id,$data,$my_fencheng){  //线下店id,订单数组，当前形色剩余比例
+function get_lineratio($tj_id,$user_id,$data,$my_fencheng){  //线下店id,订单数组，当前形色剩余比例
     if(is_array($data)){
 
         $sql="SELECT tj_fencheng from ecs_users  WHERE user_id=".$tj_id; //查询该线下店推荐分成

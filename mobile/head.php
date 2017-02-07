@@ -29,7 +29,13 @@ if($_SERVER['REQUEST_METHOD']!="POST"){
 if($_COOKIE['user_id']){
   $_SESSION['user_id']=$_COOKIE['user_id'];
 }
-
+if(intval($_REQUEST['lineshop'])){   //线下店标示
+     $lineshopid=intval($_REQUEST['lineshop']);
+     $linestring2="&lineshop=".$lineshopid;
+      $linestring1="?lineshop=".$lineshopid;
+     $smarty->assign('linestring2',$linestring2);
+      $smarty->assign('linestring1',$linestring1);
+}
 if ($_SESSION['user_id'])
     {
       include_once(ROOT_PATH .'include/lib_order.php');

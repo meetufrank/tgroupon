@@ -126,7 +126,7 @@
           {if $xh.attributeimg}<img src="././admin/{$xh.attributeimg}" alt="Shop item">{/if}
         </div>
         <div class="shop-item-details">
-          <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}">{$xh.goods_name}</a></h3>
+          <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}{$linestring2}">{$xh.goods_name}</a></h3>
           <span class="shop-item-price">
           <span class="old-price"></span>
             ￥{$xh.attributeprice}
