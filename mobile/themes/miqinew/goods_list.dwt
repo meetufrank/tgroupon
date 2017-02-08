@@ -181,7 +181,7 @@
             </div><!-- .column -->
             <div class="column">
               <form method="get" class="search-box">
-                <input type="text" class="form-control" placeholder="请在此处搜索您想要的商品" value="{{d.search?d.search:''}}" id="searchvalue" >
+                <input type="text" class="form-control" placeholder="请在此处搜索您想要的商品" value="{{d.search?d.search:''}}" id="searchvalue" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您想要的商品'">
                 <button type="submit" onclick="javascript:return false;">
                   <i class="material-icons search" onClick="showlist('searchvalue','showsearch')"></i>
                 </button>
