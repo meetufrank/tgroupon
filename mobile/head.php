@@ -31,8 +31,16 @@ if($_COOKIE['user_id']){
 }
 if(intval($_REQUEST['lineshop'])){   //线下店标示
      $lineshopid=intval($_REQUEST['lineshop']);
-     $linestring2="&lineshop=".$lineshopid;
+     $sql="select is_line where user_id=".$lineshopid;
+     $is_line=$GLOBALS['db']->getOne($sql);
+     if($is_line==1){
+      $linestring2="&lineshop=".$lineshopid;
       $linestring1="?lineshop=".$lineshopid;
+
+     }else{
+      $linestring2="";
+      $linestring1="";
+     }
      $smarty->assign('linestring2',$linestring2);
       $smarty->assign('linestring1',$linestring1);
 }

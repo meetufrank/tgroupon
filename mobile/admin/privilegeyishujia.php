@@ -229,6 +229,14 @@ elseif ($_REQUEST['act'] == 'insert')
         }
     }
 
+  if(!empty($_POST['user_code'])){
+     $sql=" select user_id from  ecs_users where weiyi_num=".$_POST['user_code'];
+     $user_id=$GLOBALS['db']->getOne($sql);
+    if(!$user_id){
+        sys_msg(sprintf('请输入正确的用户编号', stripslashes($_POST['user_code'])), 1);
+    }
+  }
+
     if($_FILES['pic']['name']){
                   //图片上传处理
  $up = new FileUpload();
@@ -277,8 +285,8 @@ elseif ($_REQUEST['act'] == 'insert')
         $row = $db->getRow($sql);
 
 
-    $sql = "INSERT INTO ".$ecs->table('admin_user')." (user_name, email, password, add_time, nav_list, action_list, role_id,country,hav_logo,ysj_fencheng) ".
-           "VALUES ('".trim($_POST['user_name'])."', '".trim($_POST['email'])."', '$password', '$add_time', '$row[nav_list]', '$action_list', 4,'".trim($_POST['country'])."','".$url_img."','".trim($_POST['ysj_fencheng'])."')";
+    $sql = "INSERT INTO ".$ecs->table('admin_user')." (user_name, email, password, add_time, nav_list, action_list, role_id,country,hav_logo,ysj_fencheng,ysj_tixian) ".
+           "VALUES ('".trim($_POST['user_name'])."', '".trim($_POST['email'])."', '$password', '$add_time', '$row[nav_list]', '$action_list', 4,'".trim($_POST['country'])."','".$url_img."','".trim($_POST['ysj_fencheng'])."',".$user_id.")";
 
     $db->query($sql);
 

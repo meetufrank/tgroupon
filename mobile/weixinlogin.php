@@ -76,13 +76,17 @@ $openids = $db->getOne($sql);
 
 
 if(!$openids){
+
 	$sql = 'INSERT INTO ' . $ecs->table('users') . '(alias , wx_open_id , sex , reg_time  , headimgurl,unionid) VALUES ' .
                     "('$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid')";
      $db->query($sql);
      $uid=$db->insert_id();
-
-     //$_SESSION['user_id'] = $uid;
      setcookie('user_id',$uid);
+    $idstring=md5($uid,true);
+    $sql = "update `ecs_users` set weiyi_num=".$idstring." where user_id=".$uid;
+    $db->query($sql);
+     //$_SESSION['user_id'] = $uid;
+
 
 }else{
 	$sql = "update `ecs_users` set alias='$nickname',sex='$sex',reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid' where unionid='$unionid'";

@@ -273,7 +273,7 @@ elseif ($_REQUEST['act'] == 'edit')
     $user   = $users->get_user_info($row['user_name']);
 
     $sql = "SELECT u.user_id, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn,
-    u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo,u.hav_money,u.tj_fencheng".
+    u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo,u.hav_money,u.tj_fencheng,u.xs_fencheng".
         " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 
     $row = $db->GetRow($sql);
@@ -302,6 +302,7 @@ elseif ($_REQUEST['act'] == 'edit')
         $user['hav_logo']  = $row['hav_logo'];
         $user['hav_money']  = $row['hav_money'];
         $user['tj_fencheng'] = $row['tj_fencheng'];
+        $user['xs_fencheng'] = $row['xs_fencheng'];
     }
     else
     {
@@ -409,6 +410,7 @@ elseif ($_REQUEST['act'] == 'update')
     $credit_line = empty($_POST['credit_line']) ? 0 : floatval($_POST['credit_line']);
     $sf = empty($_POST['shenfen']) ? 0 : intval($_POST['shenfen']);
     $fc = empty($_POST['tj_fencheng']) ? 0 : intval($_POST['tj_fencheng']);
+    $xs = empty($_POST['xs_fencheng']) ? 0 : intval($_POST['xs_fencheng']);
     if ($_FILES['pic']['name']) {
 
 
@@ -442,7 +444,7 @@ elseif ($_REQUEST['act'] == 'update')
  }
 
 
- print_r($url_img);
+
     $users  =& init_users();
 
     if (!$users->edit_user(array('username'=>$username, 'password'=>$password, 'email'=>$email, 'gender'=>$sex, 'bday'=>$birthday ), 1))
@@ -503,6 +505,7 @@ elseif ($_REQUEST['act'] == 'update')
     $other['mobile_phone'] = isset($_POST['extend_field5']) ? htmlspecialchars(trim($_POST['extend_field5'])) : '';
 	$other['parent_id'] = isset($_POST['parent_id']) ? htmlspecialchars(trim($_POST['parent_id'])) : '';
     $other['tj_fencheng'] = isset($_POST['tj_fencheng']) ? htmlspecialchars(trim($_POST['tj_fencheng'])) : '';
+    $other['xs_fencheng'] = isset($_POST['xs_fencheng']) ? htmlspecialchars(trim($_POST['xs_fencheng'])) : '';
 	$parent_id=$other['parent_id'];
 
 	if(!empty($parent_id))
@@ -952,7 +955,7 @@ function user_list()
 
         /* 分页大小 */
         $filter = page_and_size($filter);
-        $sql = "SELECT user_id, user_name, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time ".
+        $sql = "SELECT user_id, user_name, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time,weiyi_num ".
                 " FROM " . $GLOBALS['ecs']->table('users') . $ex_where .
                 " ORDER by " . $filter['sort_by'] . ' ' . $filter['sort_order'] .
                 " LIMIT " . $filter['start'] . ',' . $filter['page_size'];
@@ -976,7 +979,6 @@ function user_list()
 
     $arr = array('user_list' => $user_list, 'filter' => $filter,
         'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
-
     return $arr;
 }
 //定义，显示某个会员下面的分成订单情况
