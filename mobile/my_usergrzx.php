@@ -23,6 +23,8 @@ require(ROOT_PATH . 'include/lib_weixintong.php');
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 
 include('head.php');
+//定义选中样式
+$smarty->assign('my_active',4);
 
    if ($_SESSION['user_id'] <= 0)
         {

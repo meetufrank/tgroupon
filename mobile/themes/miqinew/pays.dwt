@@ -709,7 +709,7 @@
 
     $.ajax({
             type:"POST",
-            url:"flow.php",
+            url:"flow.php{$linestring1}",
             data:{step:'new_done',address:addressid,cart_id:cart_id},
             dataType:"JSON",
             success: function(data){
@@ -724,7 +724,7 @@
                       return;
                     }
                     if(data.error==0&&data.data!=''){
-                      window.location.href="flow.php?step=pay_ok&order_id="+data.data;
+                      window.location.href="flow.php?step=pay_ok{$linestring2}&order_id="+data.data;
                     }
 
 
@@ -773,7 +773,7 @@
                                             dataType: "json",
                                             success: function (result) {
                                                if(result.msg=='success'){
-                                                 window.location.reload("my_usergrzx.php?act=address_list");
+                                                 window.location.reload("my_usergrzx.php?act=address_list{$linestring2}");
                                                }
 
 

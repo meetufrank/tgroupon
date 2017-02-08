@@ -1,5 +1,6 @@
 
 
+
 <header class="navbar navbar-sticky">
 
     <!-- Site Logo -->
@@ -29,7 +30,7 @@
           <div class="inner">
             <ul class="main-navigation space-bottom">
               <li><a href="index.html">首页</a></li>
-              <li><a href="goods_list.php" >商品</a></li>
+              <li><a href="goods_list.php{$linestring1}" >商品</a></li>
               <li><a href="artist-list.html">设计师</a></li>
               <li><a href="#">关于我们</a></li>
             </ul>
@@ -53,11 +54,11 @@
             </div>
             <hr style="height:3px;">
             <ul class="main-navigation space-bottom">
-              <li><a href="javascript:window.open('my_user.php?act=order_list');" >我的订单</a></li>
-              <li><a href="javascript:window.open('my_grzxgdsc.php');">我的收藏</a></li>
+              <li><a href="my_user.php?act=order_list{$linestring2}" >我的订单</a></li>
+              <li><a href="my_grzxgdsc.php{$linestring1}">我的收藏</a></li>
 <!--              <li><a class="relative" href="#">消息记录<span class="count">2</span></a></li>-->
                 <li><a class="relative" href="#">消息记录</a></li>
-              <li><a href="my_usergrzx.php?act=address_list">管理地址</a></li>
+              <li><a href="my_usergrzx.php?act=address_list{$linestring2}">管理地址</a></li>
             </ul>
         </div>
 
@@ -108,11 +109,11 @@
 
                 <ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
                 </label>
-                <a href="shop-single.php?id={$goods.goods_id}" class="item-thumb">
+                <a href="shop-single.php?id={$goods.goods_id}{$linestring2}" class="item-thumb">
                 {if $goods.goods_thumb}<img src="././admin/{$goods.goods_thumb}" alt="Item">{/if}
                 </a>
                 <div class="item-details"><div class="item-title">
-                <a href="shop-single.php?id={$goods.goods_id}">{$goods.goods_name}</a>
+                <a href="shop-single.php?id={$goods.goods_id}{$linestring2}">{$goods.goods_name}</a>
                 </div>
                 <div class="item-titls">
                 <div style="color:#000" >{$goods.goods_attr}</div>
@@ -194,7 +195,7 @@ $("#logout").click(function(){
                   });
 
 //window.open('flow.php?step=pay_select&cartid='+chk_value.join(","));
-window.location.href="flow.php?step=pay_select&cartid="+chk_value.join(",");
+window.location.href="flow.php?step=pay_select{$linestring2}&cartid="+chk_value.join(",");
 
 
     });
@@ -433,7 +434,7 @@ if(type&&!ismobile){
 }
 
   $.ajax({
-              url:"flow.php",
+              url:"flow.php{$linestring1}",
               type:"POST",
               dataType:"json",
               data:{step:'add_to_cart',goods:$.toJSON(goods),type:type,comeback:loca_str},
@@ -454,14 +455,14 @@ if(type&&!ismobile){
 
                               if(ismobile){
 
-                                    window.location.href="flow.php?step=pay_select&cartid="+data.cartid+"&type=1";
+                                    window.location.href="flow.php?step=pay_select{$linestring2}&cartid="+data.cartid+"&type=1";
 
                                     return;
                               }else{
                                   //window.open('_blank').location.href='flow.php?step=pay_select&&cartid='+data.cartid;return;
                                  // newWin('flow.php?step=pay_select&&cartid='+data.cartid,'opendoor');
 
-                                 url = 'flow.php?step=pay_select&cartid='+data.cartid+"&type=1";
+                                 url = 'flow.php?step=pay_select{$linestring2}&cartid='+data.cartid+"&type=1";
                                     // w.location.href = 'flow.php?step=pay_select&&cartid='+data.cartid;
 
                               }
@@ -471,9 +472,7 @@ if(type&&!ismobile){
                     }
                      }
                    else{
-                   if(type){
-                       w.close();
-                       }
+
                        addToCartResponse(data);
 
                        return;
@@ -547,8 +546,8 @@ function addToCartResponse(data)
                         '<div class="item headitem"><label class="checkbox" id="checkone">'+
                         '<input style="position: absolute; opacity: 0;" type="checkbox" value="'+data.goods_list[i]['rec_id']+'" checked="checked"  id="rec_id" name="rec_check">'+
                 '<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>'+
-                '</label> <a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'" class="item-thumb"><img src="././admin/'+data.goods_list[i]['goods_thumb']+'" alt="Item">'+
-                '</a><div class="item-details"><div class="item-title"><a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'">'+data.goods_list[i]['goods_name']+'</a>'+
+                '</label> <a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'{$linestring2}" class="item-thumb"><img src="././admin/'+data.goods_list[i]['goods_thumb']+'" alt="Item">'+
+                '</a><div class="item-details"><div class="item-title"><a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'{$linestring2}">'+data.goods_list[i]['goods_name']+'</a>'+
                 '</div><div class="item-titls"><div style="color:#000" >'+data.goods_list[i]['goods_attr']+'</div><h4 class="item-price" data-price="'+data.goods_list[i]['goods_price']+'">'+data.goods_list[i]['goods_price']+
                 '</h4></div><div class="count-input">'+
                 '<a class="incr-btn" data-action="decrease" href="#" onclick="changenum('+data.goods_list[i]['rec_id']+',-1)">–</a>'+

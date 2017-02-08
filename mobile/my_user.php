@@ -79,7 +79,8 @@ require(ROOT_PATH . 'include/lib_weixintong.php');
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
 
 include_once('head.php');
-
+//定义选中样式
+$smarty->assign('my_active',1);
 if(isset($_REQUEST['code'])&&isset($_REQUEST['state'])&&$action == 'weixin'){
     include_once(ROOT_PATH . 'includes/website/jntoo.php');
 
@@ -1331,7 +1332,7 @@ elseif ($action == 'async_order_list')
                             <!-- Buttons -->
                           <div class="pull-right hidden-xs hidden-sm">
                             <a href="#" class="btn btn-default waves-effect waves-light cancel_order_pc" data-id="'.$value['order_id'].'">取消订单</a>
-                            <a href="javascript:window.open(\'flow.php?step=pay_ok&order_id='.$value['order_id'].'\');" class="btn btn-primary waves-effect waves-light">去支付</a>
+                            <a href="flow.php?step=pay_ok&order_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light">去支付</a>
                           </div>
 
                           </div>
@@ -1340,12 +1341,12 @@ elseif ($action == 'async_order_list')
                 foreach ((array)$value['good_list'] as $k => $v) {
                     $string.='<div class="item hidden-xs">';
                     if($v['goods_thumb']){
-                       $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
+                       $string.='<a href="shop-single.php?id='.$v['goods_id'].$linestring2.'" class="item-thumb pull-left">
                           <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
                     $string.='<div class="item-details ">
-                          <h3 class="item-title"><a style="color:#77cde3" href="shop-single.php?id='.$v['goods_id'].'">'.$v['goods_name'].'</a></h3>
+                          <h3 class="item-title"><a style="color:#77cde3" href="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'</a></h3>
                           <div>
                           <div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
                           <h4 class="item-price" >数量：'.$v['goods_number'].'</h4>
@@ -1355,11 +1356,11 @@ elseif ($action == 'async_order_list')
                          </div>';
                     $string.='<div class="item visible-xs"><div class="row"><div class="col-xs-5">';
                     if($v['goods_thumb']){
-                       $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" >
+                       $string.='<a href="shop-single.php?id='.$v['goods_id'].$linestring2.'" >
                           <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
-                    $string.='</div><div class="col-xs-7" onclick="window.open(\'shop-single.php?id='.$v['goods_id'].'\');">'.$v['goods_name'].'
+                    $string.='</div><div class="col-xs-7" onclick="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'
                         </div>
                         </div>
                           <div class="myorder-shop-item">'.$v['goods_attr'].'</div>
@@ -1404,7 +1405,7 @@ elseif ($action == 'async_order_list')
 
                       <div class="visible-sm visible-xs">
                         <a href="#" class="btn btn-default waves-effect waves-light cancel_order_mobile" data-id="'.$value['order_id'].'">取消订单</a>
-                        <a href="javascript:window.open(\'flow.php?step=pay_ok&order_id='.$value['order_id'].'\');" class="btn btn-primary waves-effect waves-light" target="_blank">去支付</a>
+                        <a href="flow.php?step=pay_ok&order_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light" target="_blank">去支付</a>
                       </div>
 
                     </div>';
@@ -1443,12 +1444,12 @@ elseif ($action == 'async_order_list')
                 foreach ((array)$value['good_list'] as $k => $v) {
                     $string.='<div class="item hidden-xs">';
                     if($v['goods_thumb']){
-                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
+                        $string.='<a href="shop-single.php?id='.$v['goods_id'].$linestring2.'" class="item-thumb pull-left">
                           <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
                     $string.='<div class="item-details">
-                    <h3 class="item-title"><a style="color:#77cde3" href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');">'.$v['goods_name'].'</a></h3><div><div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
+                    <h3 class="item-title"><a style="color:#77cde3" href="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'</a></h3><div><div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
                           <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
                           <h4 class="item-price">'.$v['goods_price'].'</h4>
                         </div>
@@ -1458,7 +1459,7 @@ elseif ($action == 'async_order_list')
                         <div class="col-xs-5">';
                     if($v['goods_thumb']){
 
-                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
+                        $string.='<a href="shop-single.php?id='.$v['goods_id'].$linestring2.'" class="item-thumb pull-left">
                           <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
@@ -1541,12 +1542,12 @@ elseif ($action == 'async_order_list')
                 foreach ((array)$value['good_list'] as $k => $v) {
                      $string.='<div class="item hidden-xs">';
                     if($v['goods_thumb']){
-                        $string.='<a style="color:#77cde3" href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');" class="item-thumb pull-left">
+                        $string.='<a style="color:#77cde3" href="shop-single.php?id='.$v['goods_id'].$linestring2.'" class="item-thumb pull-left">
                           <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }
                     $string.='<div class="item-details">
-                    <h3 class="item-title"><a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');">'.$v['goods_name'].'</a></h3><div><div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
+                    <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'</a></h3><div><div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
                           <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
                           <h4 class="item-price">'.$v['goods_price'].'</h4>
                         </div>
@@ -1556,7 +1557,7 @@ elseif ($action == 'async_order_list')
                         <div class="col-xs-3">';
                     if($v['goods_thumb']){
 
-                        $string.='<a href="javascript:window.open(\'shop-single.php?id='.$v['goods_id'].'\');">
+                        $string.='<a href="shop-single.php?id='.$v['goods_id'].$linestring2.'">
                           <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
                         </a>';
                     }

@@ -180,13 +180,7 @@
     <!-- Content -->
     <section class="container padding-top-3x">
      <!-- Nav Tabs -->
-      <ul class="nav-tabs" role="tablist">
-        <li><a href="my_user.php?act=order_list" role="tab" data-toggle="tab">我的订单</a></li>
-        <li class="active"><a href="" role="tab" data-toggle="tab">我的收藏</a></li>
-        <li><a href="#tab3" role="tab" data-toggle="tab">消息记录</a></li>
-        <li><a href="my_usergrzx.php?act=address_list" role="tab" data-toggle="tab">管理地址</a></li>
-        {if $is_income}<li><a href="my_income.php?act=income" role="tab" data-toggle="tab">商品销售</a></li>{/if}
-      </ul>
+      {include file="my_head.dwt"}
       <!-- Tab panes -->
       <div class="tab-content">
 
@@ -207,7 +201,7 @@
 						  <div class="col-md-3 col-sm-6" id="spdel{$spxx.rec_id}">
 						  <div class="shop-item">
 							<div class="shop-thumbnail">
-							  <a href="shop-single.php?id={$spxx.goods_id}" class="item-link"></a>
+							  <a href="shop-single.php?id={$spxx.goods_id}{$linestring2}" class="item-link"></a>
 							  <img src="././admin/{$spxx.attributeimg}" alt="Shop item">
 							  <div class="shop-item-tools">
 								<a href="#" onclick="shangpingdel({$spxx.rec_id})" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="">

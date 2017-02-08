@@ -2628,6 +2628,11 @@ elseif ($_REQUEST['step'] == 'new_done')
         'post_price'      =>$price
         );
 
+if($lineshopid){   //订单录入线下店购买标示
+    $order['lineshop_id']=$lineshopid;
+    $sql=" select xs_fencheng from ecs_users where user_id=".$lineshopid." and is_line=1";
+    $xs_fencheng=$GLOBALS['db']->getOne($sql);
+}
     /* 扩展信息 */
     if (isset($_SESSION['flow_type']) && intval($_SESSION['flow_type']) != CART_GENERAL_GOODS)
     {
@@ -2891,22 +2896,23 @@ elseif ($_REQUEST['step'] == 'new_done')
     $order['order_id'] = $new_order_id;
 
 
+
  /* 插入订单商品 */
     if ($idstring) {
          $sql = "INSERT INTO " . $ecs->table('order_goods') . "( " .
                 "order_id, goods_id, goods_name, goods_sn, product_id, goods_number, market_price, ".
-                "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id,lineshop_id,fencheng) ".
+                "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id) ".
             " SELECT '$new_order_id', goods_id, goods_name, goods_sn, product_id, goods_number, market_price, ".
-                "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id,lineid,new_fencheng".
+                "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id".
             " FROM " .$ecs->table('cart') .
             " WHERE session_id = '".SESS_ID."' AND rec_type = '$flow_type' AND rec_id in (".$idstring.")";
     }else{
 
         $sql = "INSERT INTO " . $ecs->table('order_goods') . "( " .
                 "order_id, goods_id, goods_name, goods_sn, product_id, goods_number, market_price, ".
-                "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id,lineshop_id,fencheng) ".
+                "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id) ".
             " SELECT '$new_order_id', goods_id, goods_name, goods_sn, product_id, goods_number, market_price, ".
-                "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id,lineid,new_fencheng".
+                "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id".
             " FROM " .$ecs->table('cart') .
             " WHERE session_id = '".SESS_ID."' AND rec_type = '$flow_type'";
 
@@ -2915,6 +2921,11 @@ elseif ($_REQUEST['step'] == 'new_done')
 
 
     $orderid=$db->query($sql);
+    if($xs_fencheng&&$lineshopid){
+        $sql="update ecs_order_goods set lineshop_id=".$lineshopid.",fencheng=".$xs_fencheng." where order_id=".$new_order_id;
+        $db->query($sql);
+    }
+
 
     /* 修改拍卖活动状态 */
     if ($order['extension_code']=='auction')
@@ -3031,6 +3042,9 @@ elseif ($_REQUEST['step'] == 'new_done')
     clear_cart_new($idstring);
     $result['error']=0;
     $result['data']=$order['order_id'];
+
+
+
  echo json_encode($result);
 exit;
 
