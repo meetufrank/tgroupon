@@ -287,13 +287,8 @@
 	//提现记录
    $('#Apply_Record').click(function(){
 
-    var logstring={$logstring};
-    //console.log(logstring);return;
-    var content='';
-    $.each(logstring,function(i) {
-       content+='<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">'+logstring[i].log_time+'</div><div class="col-lg-8 col-md-6 col-sm-6 col-xs-6">'+logstring[i].log_content+'</div>'
-    });
-        content+='<div style="padding-top:40px;">&nbsp;</div>';
+
+    var content='<div id="content"></div><div style="padding-top:40px;" id="tx_page">&nbsp;</div>';
    	// var content ='<div class="col-xs-2">2016.11.3 </div>'
    	// +
    	// '<div class="col-xs-8">管理员Kitty同意了你的提现申请，本次提现金额为：300元</div>'
@@ -313,6 +308,9 @@
 			  content:content,
 			  btn: '我知道了',
 			  shadeClose: false,
+              success:function(){
+                   insert_tx_page();
+              }
 			});
 			});
 
@@ -363,6 +361,15 @@
       &nbsp;&nbsp;还未有分成记录~~
       {{# }}}
  </script>
+ <script id="demo1" type="text/html">
+    {{# if(d){}}
+        {{# for(var i = 0, len = d.length; i < len; i++){ }}
+     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">{{d[i].log_time}}</div><div class="col-lg-8 col-md-6 col-sm-6 col-xs-6">{{d[i].log_content}}</div>
+     {{# } }}
+      {{# }else{}}
+      &nbsp;&nbsp;还未有提现记录~~
+      {{# }}}
+ </script>
 <script type="text/javascript">
 insert_page();
 function insert_page(){
@@ -388,6 +395,39 @@ layui.use(['laypage', 'layer'], function(){
                     var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容
                 laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
                  document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
+             });
+              },
+              error: function(data){
+
+                    }
+          });
+    }
+  });
+});
+}
+function insert_tx_page(){
+
+layui.use('layer', function (){
+  var layer = layui.layer;
+});
+layui.use(['laypage', 'layer'], function(){
+  var laypage = layui.laypage
+  ,layer = layui.layer;
+    laypage({
+    cont: 'tx_page'
+    ,pages: {$tixian_pages}
+    ,skin: '#1E9FFF'
+    ,jump: function(obj){
+
+              $.ajax({
+               type: "post",
+               url: "my_income.php?act=ajax_get_tixian",
+               dataType:"json",
+               data:{page_num:obj.curr},
+               success: function (data) {
+                    var gettpl = document.getElementById('demo1').innerHTML;   //获取拼接部分的内容
+                laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
+                 document.getElementById('content').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
              });
               },
               error: function(data){

@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2017-02-06 13:22:33
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-02-07 18:45:12
+ * @Last Modified time: 2017-02-08 13:55:04
  */
 define('IN_ECTOUCH', true);
 
@@ -21,7 +21,7 @@ if($_REQUEST['act']==''){
     $act=$_REQUEST['act'];
 }
 $page_num=1;  //分成每页显示数量
-$log_num=10;    //提现记录每页显示数量
+$log_num=1;    //提现记录每页显示数量
 /*
    我的收益，商品销量
  */
@@ -45,6 +45,14 @@ $sql=" select count(*) from ".$ecs->table('fencheng')." where get_shopid=".$user
 $fencheng_count=$GLOBALS['db']->getOne($sql);
 $fencheng_pages=ceil($fencheng_count/$page_num);
 $smarty->assign('fencheng_pages',$fencheng_pages);
+
+//查询提现记录总数量
+$sql=" select count(*) from ".$ecs->table('txlog')." where log_userid=".$userid;
+$tixian_count=$GLOBALS['db']->getOne($sql);
+$tixian_pages=ceil($tixian_count/$log_num);
+$smarty->assign('tixian_pages',$tixian_pages);
+
+
 //   $fc_list=get_fencheng_list($userid,$fencheng_limit);
 
 
@@ -100,7 +108,21 @@ $smarty->assign('logstring',json_encode($logarr));
 
    echo json_encode($fc_list);
 exit;
+}elseif($act=='ajax_get_tixian'){
+   $page=intval($_POST['page_num']);
+   if(!$page){
+    $page=1;
+   }
+   $limit=" limit ".($page-1)*$page_num.",".$page_num;
+   if($userid){
+   $tx_list=get_tixian_list($userid,$limit);
+   }
+
+
+   echo json_encode($tx_list);
+exit;
 }
+
 
 
 //获取分成列表
@@ -116,4 +138,14 @@ foreach ($fc_list as $key => $value) {
    $fc_list[$key]['goods_name']=mb_substr($value['goods_name'],0,5,'utf-8');
 }
    return $fc_list;
+}
+//获取提现列表
+function get_tixian_list($userid,$tixian_limit){
+
+  $sql="select log_content,DATE_FORMAT(log_time,'%Y/%m/%d %H:%i') as log_time from ecs_txlog where log_userid=".$userid." order by log_time desc".$tixian_limit;   //查询分成列表
+  $tx_list=$GLOBALS['db']->getAll($sql);
+
+
+  return $tx_list;
+
 }
