@@ -20,8 +20,8 @@ if($_REQUEST['act']==''){
 }else{
     $act=$_REQUEST['act'];
 }
-$page_num=1;  //分成每页显示数量
-$log_num=1;    //提现记录每页显示数量
+$page_num=3;  //分成每页显示数量
+$log_num=4;    //提现记录每页显示数量
 /*
    我的收益，商品销量
  */
@@ -39,7 +39,8 @@ if($act=='income'){
     ecs_header("Location:my_user.php?act=order_list");
     exit;
   }
-$fencheng_limit=' limit 0,'.$page_num;
+// $fencheng_limit=' limit 0,'.$page_num;
+
 //查询分成记录总数量
 $sql=" select count(*) from ".$ecs->table('fencheng')." where get_shopid=".$userid;
 $fencheng_count=$GLOBALS['db']->getOne($sql);
@@ -60,10 +61,10 @@ $smarty->assign('tixian_pages',$tixian_pages);
 // $smarty->assign('fc_list',$fc_list);
 
 
-$sql="select log_content,DATE_FORMAT(log_time,'%Y/%m/%d %H:%i') as log_time from ".$ecs->table('txlog')." where log_userid=".$userid." order by log_time desc";
-$logarr=$GLOBALS['db']->getAll($sql);
+// $sql="select log_content,DATE_FORMAT(log_time,'%Y/%m/%d %H:%i') as log_time from ".$ecs->table('txlog')." where log_userid=".$userid." order by log_time desc";
+// $logarr=$GLOBALS['db']->getAll($sql);
 
-$smarty->assign('logstring',json_encode($logarr));
+// $smarty->assign('logstring',json_encode($logarr));
  // print_r($logarr);exit;
    $smarty->display('my_income.dwt');
    exit;
@@ -113,7 +114,7 @@ exit;
    if(!$page){
     $page=1;
    }
-   $limit=" limit ".($page-1)*$page_num.",".$page_num;
+   $limit=" limit ".($page-1)*$log_num.",".$log_num;
    if($userid){
    $tx_list=get_tixian_list($userid,$limit);
    }
