@@ -288,7 +288,7 @@
    $('#Apply_Record').click(function(){
 
 
-    var content='<div id="content"></div><div style="padding-top:40px;" id="tx_page">&nbsp;</div>';
+    var content='<div id="content1" style="width:100%;"></div><div id="tx_page">&nbsp;</div>';
    	// var content ='<div class="col-xs-2">2016.11.3 </div>'
    	// +
    	// '<div class="col-xs-8">管理员Kitty同意了你的提现申请，本次提现金额为：300元</div>'
@@ -307,7 +307,7 @@
 			  ],
 			  content:content,
 			  btn: '我知道了',
-			  shadeClose: false,
+			  shadeClose:true,
               success:function(){
                    insert_tx_page();
               }
@@ -364,7 +364,8 @@
  <script id="demo1" type="text/html">
     {{# if(d){}}
         {{# for(var i = 0, len = d.length; i < len; i++){ }}
-     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">{{d[i].log_time}}</div><div class="col-lg-8 col-md-6 col-sm-6 col-xs-6">{{d[i].log_content}}</div>
+     <div class="tixiantime">{{d[i].log_time}}</div><div class="tixianmain">{{d[i].log_content}}</div>
+     <div class="clear"></div>
      {{# } }}
       {{# }else{}}
       &nbsp;&nbsp;还未有提现记录~~
@@ -374,9 +375,9 @@
 insert_page();
 function insert_page(){
 
-layui.use('layer', function (){
-  var layer = layui.layer;
-});
+// layui.use('layer', function (){
+//   var layer = layui.layer;
+// });
 layui.use(['laypage', 'layer'], function(){
   var laypage = layui.laypage
   ,layer = layui.layer;
@@ -384,6 +385,7 @@ layui.use(['laypage', 'layer'], function(){
     cont: 'shouyi_page'
     ,pages: {$fencheng_pages}
     ,skin: '#1E9FFF'
+    ,groups:3
     ,jump: function(obj){
 
               $.ajax({
@@ -407,9 +409,9 @@ layui.use(['laypage', 'layer'], function(){
 }
 function insert_tx_page(){
 
-layui.use('layer', function (){
-  var layer = layui.layer;
-});
+// layui.use('layer', function (){
+//   var layer = layui.layer;
+// });
 layui.use(['laypage', 'layer'], function(){
   var laypage = layui.laypage
   ,layer = layui.layer;
@@ -417,6 +419,7 @@ layui.use(['laypage', 'layer'], function(){
     cont: 'tx_page'
     ,pages: {$tixian_pages}
     ,skin: '#1E9FFF'
+    ,groups:3
     ,jump: function(obj){
 
               $.ajax({
@@ -427,7 +430,7 @@ layui.use(['laypage', 'layer'], function(){
                success: function (data) {
                     var gettpl = document.getElementById('demo1').innerHTML;   //获取拼接部分的内容
                 laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据
-                 document.getElementById('content').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
+                 document.getElementById('content1').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。
              });
               },
               error: function(data){
