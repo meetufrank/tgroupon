@@ -209,10 +209,10 @@
 		        	<table class="table" id="fenchenglist">
 						<thead>
 					    <tr>
-					      <th>成单时间</th>
-					      <th>产品名称</th>
-					      <th>提成类型</th>
-					      <th>提成金额</th>
+					      <th class="myincometh">成单时间</th>
+					      <th class="myincometh">产品名称</th>
+					      <th class="myincometh">提成类型</th>
+					      <th class="myincometh">提成金额</th>
 					    </tr>
 					  	</thead>
 						<tbody id="view">
@@ -291,7 +291,7 @@
     //console.log(logstring);return;
     var content='';
     $.each(logstring,function(i) {
-       content+='<div class="col-xs-2">'+logstring[i].log_time+'</div><div class="col-xs-8">'+logstring[i].log_content+'</div>'
+       content+='<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">'+logstring[i].log_time+'</div><div class="col-lg-8 col-md-6 col-sm-6 col-xs-6">'+logstring[i].log_content+'</div>'
     });
         content+='<div style="padding-top:40px;">&nbsp;</div>';
    	// var content ='<div class="col-xs-2">2016.11.3 </div>'

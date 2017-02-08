@@ -174,9 +174,9 @@ svg {
 }
 }
 @media screen and (max-width: 991px) {
-.featured-image {
-	height: 400px
-}
+	.featured-image {
+		height: 400px
+	}
 }
 @media screen and (min-width: 768px) {
 	.toolbar-dropdown {
@@ -236,6 +236,9 @@ svg {
 	}
 	.shopping-cart .item .item-title {
 		font-size:23px;
+	}
+	table>thead>tr>th, table>thead>tr>td, table>tbody>tr>th, table>tbody>tr>td, table>tfoot>tr>th, table>tfoot>tr>td {
+		padding:10px;
 	}
 }
 @media screen and (max-width: 768px) {
@@ -338,6 +341,12 @@ svg {
 	}
 	.cart-subtotal-youfei{
 		padding: 10px 0;
+	}
+	.myincometh{
+		font-size:15px;
+		width:25%;
+		padding-bottom: 5px;
+    	padding-top: 5px;
 	}
 }
 .cart-subtotal-youfei{
@@ -1388,9 +1397,8 @@ table {
 	max-width: 100%;
 }
 table>thead>tr>th, table>thead>tr>td, table>tbody>tr>th, table>tbody>tr>td, table>tfoot>tr>th, table>tfoot>tr>td {
-	padding:10px;
 	line-height:1.5;
-	vertical-align: top;
+	vertical-align:middle;
 	border-bottom: 1px solid #ededed
 }
 table>thead>tr>th, table>thead>tr>td {
