@@ -48,6 +48,7 @@ if ($_REQUEST['act'] == 'list')
 		$aa['number']=$number[0];
 		$kk[]=$aa;
 	}
+
     $smarty->assign('user_list',   $kk);
     $smarty->assign('filter',       $user_list['filter']);
     $smarty->assign('record_count', $user_list['record_count']);
@@ -391,7 +392,36 @@ elseif ($_REQUEST['act'] == 'edit')
     $smarty->assign('special_ranks',    get_rank_list(true));
     $smarty->display('user_info.htm');
 }
+// 生成二维码链接
+elseif($_REQUEST['act'] == 'erweima'){
+   $userid = $_GET['id'];
+   $smarty->assign('userid',$userid);
 
+   $smarty->display('user_infoerweima.htm');
+}
+// 根据货号查询商品id
+elseif($_REQUEST['act'] == 'goodsid'){
+
+
+   $huohaoid = $_POST['huohao'];
+   $userid = $_POST['userid'];
+   $sql = "select goods_id from ecs_goods where goods_sn = '$huohaoid'";
+   $goodsid = $db->getOne($sql);
+
+     if($goodsid){
+       $data['msg']="http://meetuuu.com/mobile/shop-single.php?id=$goodsid&"."kjzid=".$userid;
+       $data['goodsid']=$goodsid;
+       $data['userid']=$userid;
+       echo json_encode($data);
+     }else{
+         $data['msg']='error';
+         $data['aa']='aa';
+        echo json_encode($data);
+
+     }
+    exit;
+
+}
 /*------------------------------------------------------ */
 //-- 更新用户帐号
 /*------------------------------------------------------ */
@@ -955,6 +985,7 @@ function user_list()
 
         /* 分页大小 */
         $filter = page_and_size($filter);
+
         $sql = "SELECT user_id, user_name, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time,weiyi_num ".
                 " FROM " . $GLOBALS['ecs']->table('users') . $ex_where .
                 " ORDER by " . $filter['sort_by'] . ' ' . $filter['sort_order'] .

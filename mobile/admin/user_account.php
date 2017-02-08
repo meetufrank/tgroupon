@@ -71,6 +71,14 @@ if ($_REQUEST['act'] == 'list')
     $smarty->assign('full_page',    1);
 
     assign_query_info();
+
+      // 提现申请表列表展示
+    $txshengqing = "select t.id,u.user_name,t.money,t.time,t.`status` from `ecs_tixian`  as t
+inner join `ecs_users` as u
+on t.line_shopid = u.user_id";
+    $txsq = $db->getAll($txshengqing);
+
+    $smarty->assign('txsq',$txsq);
     $smarty->display('user_account_list.htm');
 }
 
@@ -133,7 +141,35 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit')
     $smarty->assign('action_link', array('href' => $href, 'text' => $_LANG['09_user_account']));
 
     assign_query_info();
+
+
+
+    // 提现申请编辑展示
+    $txid = $_GET['id'];
+    $txbainji = "select t.id,u.user_name,t.money,t.time,t.`status` from `ecs_tixian`  as t
+inner join `ecs_users` as u
+on t.line_shopid = u.user_id
+where t.id = $txid";
+    $txbianjixs = $db->getAll($txbainji);
+    $smarty->assign('txbianjixs',$txbianjixs);
+    // print_r($txbianjixs);exit;
+
     $smarty->display('user_account_info.htm');
+}
+
+
+
+
+// 修改审核
+elseif ($_REQUEST['act'] == 'xiugai'){
+   $radionck = $_POST['radionck'];
+   $id = $_POST['id'];
+
+   $sql = "update `ecs_tixian` set `status` = $radionck  where id = $id";
+   $db->query($sql);
+
+
+
 }
 
 /*------------------------------------------------------ */
@@ -535,7 +571,7 @@ function account_list()
 
         $sql = "SELECT COUNT(*) FROM " .$GLOBALS['ecs']->table('user_account'). " ua left join ".
                    $GLOBALS['ecs']->table('users') . " u on ua.user_id = u.user_id " . $where;
-       
+
         $filter['record_count'] = $GLOBALS['db']->getOne($sql);
 
         /* 分页大小 */
