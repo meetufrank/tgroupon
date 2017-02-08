@@ -250,6 +250,7 @@ $_LANG['line_shop_add'] = '新增线下店签约';
 /* 权限管理 */
 $_LANG['admin_list'] = '管理员列表';
 $_LANG['privilegeyishujia'] = '设计师列表';
+$_LANG['fengchen'] = '分成列表';
 $_LANG['admin_list_role'] = '角色列表';
 $_LANG['admin_role'] = '角色管理';
 $_LANG['admin_add'] = '添加管理员';

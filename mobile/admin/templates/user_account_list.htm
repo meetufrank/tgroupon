@@ -31,16 +31,21 @@
 {/if}
 <table cellpadding="3" cellspacing="1">
   <tr>
-    <th><a href="javascript:listTable.sort('user_name', 'DESC'); ">{$lang.user_id}</a>{$sort_user_name}</th>
+   <!--  <th><a href="javascript:listTable.sort('user_name', 'DESC'); ">{$lang.user_id}</a>{$sort_user_name}</th>
     <th><a href="javascript:listTable.sort('add_time', 'DESC'); ">{$lang.add_date}</a>{$sort_add_time}</th>
     <th><a href="javascript:listTable.sort('process_type', 'DESC'); ">{$lang.process_type}</a>{$sort_process_type}</th>
     <th><a href="javascript:listTable.sort('amount', 'DESC'); ">{$lang.surplus_amount}</a>{$sort_amount}</th>
     <th><a href="javascript:listTable.sort('payment', 'DESC'); ">{$lang.pay_mothed}</a>{$sort_payment}</th>
-    <th><a href="javascript:listTable.sort('is_paid', 'DESC'); ">{$lang.status}</a>{$sort_is_paid}</th>
-    <th>{$lang.admin_user}</th>
+    <th><a href="javascript:listTable.sort('is_paid', 'DESC'); ">{$lang.status}</a>{$sort_is_paid}</th> -->
+    <th><a>线下店名称</a></th>
+    <th><a>提现金额</a></th>
+    <th><a>申请时间</a></th>
+    <th><a>剩余处理时间</a></th>
+    <th><a>状态</a></th>
+   <!--  <th>{$lang.admin_user}</th> -->
     <th>{$lang.handler}</th>
   </tr>
-  {foreach from=$list item=item}
+ <!--  {foreach from=$list item=item}
   <tr>
     <td>{if $item.user_name}{$item.user_name}{else}{$lang.no_user}{/if}</td>
     <td align="center">{$item.add_date}</td>
@@ -62,6 +67,17 @@
   <tr>
     <td class="no-records" colspan="8">{$lang.no_records}</td>
   </tr>
+  {/foreach} -->
+
+  {foreach from=$txsq item=item}
+    <tr>
+        <td align="center">{$item.user_name}</td>
+        <td align="center">{$item.money}</td>
+        <td align="center">{$item.time}</td>
+        <td align="center">{if $item.status == 0}未受理{elseif $item.status == 1}已受理{elseif $item.status == 2}拒绝{elseif $item.status == 3}已完成{/if}</td>
+        <td align="center"><a href="user_account.php?act=edit&id={$item.id}" title="{$lang.surplus}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a></td>
+
+    </tr>
   {/foreach}
 
 <table id="page-table" cellspacing="0">

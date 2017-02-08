@@ -1,27 +1,24 @@
 <!-- $Id: user_account_info.htm 14216 2008-03-10 02:27:21Z testyang $ -->
-{include file="pageheaderxingtong.htm"}
+{include file="pageheader.htm"}
 {insert_scripts files="./js/validator.js"}
 <div class="main-div">
-  <form action="user_account.php" method="post" name="theForm" onsubmit="">
+  <form action="user_account.php" method="post" name="theForm" onsubmit="return validate()">
     <table width="100%">
-     <!--  <tr>
+      <tr>
         <td class="label">{$lang.user_id}：</td>
         <td>
           <input type="text" name="user_id" value="{$user_name}" size="20"
           {if $user_surplus.process_type eq 2 || $user_surplus.process_type eq 3 || $action eq "edit"} readonly="true" {/if}/>
         </td>
-      </tr> -->
-    <!--   <tr>
+      </tr>
+      <tr>
         <td class="label">{$lang.surplus_amount}：</td>
         <td>
           <input type="text" name="amount" value="{$user_surplus.amount}" size="20"
           {if $user_surplus.process_type eq 2 || $user_surplus.process_type eq 3 || $action eq "edit"} readonly="true" {/if}/>
         </td>
-      </tr> -->
-
-
-
-     <!--  <tr>
+      </tr>
+      <tr>
         <td class="label">{$lang.pay_mothed}：</td>
         <td>
           <select name="payment" {if $user_surplus.process_type eq 2 || $user_surplus.process_type eq 3}disabled="true" {/if}>
@@ -46,7 +43,6 @@
           {/if}
         </td>
       </tr>
-
       <tr>
         <td class="label">{$lang.surplus_notic}：</td>
         <td>
@@ -69,38 +65,8 @@
           <input type="radio" name="is_paid" value="2"
           {if $user_surplus.is_paid eq 2} checked="true" {/if} {if $user_surplus.process_type eq 2 || $user_surplus.process_type eq 3 ||$action eq "edit"} disabled="true"{/if}/>{$lang.cancel}
         </td>
-      </tr> -->
-      {foreach from="$txbianjixs" item=item}
-            <tr>
-              <td class="label">线下店名称:</td>
-              <td>
-                <input type="text" readOnly="true" name="amount" value="{$item.user_name}" size="20">
-                <input type="hidden"  id="txid" value="{$item.id}" size="20">
-              </td>
-            </tr>
-            <tr>
-              <td class="label">提现金额:</td>
-              <td>
-                <input type="text" readOnly="true" name="amount" value="{$item.money}" size="20">
-              </td>
-            </tr>
-            <tr>
-              <td class="label">提现时间:</td>
-              <td>
-                <input type="text" readOnly="true" name="amount" value="{$item.time}" size="20">
-              </td>
-            </tr>
-            <tr>
-              <td class="label">审核状态:</td>
-              <td>
-                <input type="radio" name="radioname" value="0" {if $item.status eq 0} checked{/if}>未受理
-                <input type="radio" name="radioname" value="1" {if $item.status eq 1} checked{/if}>已受理
-                <input type="radio" name="radioname" value="2" {if $item.status eq 2} checked{/if}>拒绝
-                <input type="radio" name="radioname" value="3" {if $item.status eq 3} checked{/if}>已完成
-              </td>
-            </tr>
-      {/foreach}
-    <!--   <tr>
+      </tr>
+      <tr>
         <td class="label">&nbsp;</td>
         <td>
           <input type="hidden" name="id" value="{$user_surplus.id}" />
@@ -110,52 +76,43 @@
           <input type="reset" value="{$lang.button_reset}" class="button" />
           {/if}
         </td>
-      </tr> -->
-      <tr>
-        <td colspan="2" align="center">
-             <input id="btn" type="submit" value="确定" class="button" onClick="sub()"  />
-        </td>
-     </tr>
+      </tr>
     </table>
   </form>
 </div>
-{insert_scripts files="../js/jquery-1.9.1.min.js"}
-<script language="javaScript">
-    // var radiock = $("input[name='radioname']:checked").val();
 
-    function sub(){
-
-                var txid=document.getElementById("txid").value;
-
-                var chkObjs = document.getElementsByName("radioname");
-                for(var i=0;i<chkObjs.length;i++){
-                    if(chkObjs[i].checked){
-                        var radionck = chkObjs[i].value;
-
-                         $.ajax({
-                                              type:"POST",
-                                              url:"user_account.php?act=xiugai",
-                                              async:true,
-                                              data:{radionck:radionck,id:txid},
-                                              dataType:"JSON",
-                                              success:function(data){
-
-
-                                                      }
-
-                                   });//ajax结束
-                    }
-                }
-
-
-
-
-    }
-
-</script>
 <script language="JavaScript">
 <!--
 {literal}
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+
+/**
+ * 检查表单输入的数据
+ */
+function validate()
+{
+    validator = new Validator("theForm");
+
+    validator.required("user_id",   user_id_empty);
+    validator.required("amount",    deposit_amount_empty);
+    validator.isNumber("amount",    deposit_amount_error, true);
+
+    var deposit_amount = document['theForm'].elements['amount'].value;
+    if (deposit_amount.length > 0)
+    {
+        if (deposit_amount == 0 || deposit_amount < 0)
+        {
+            alert(deposit_amount_error);
+            return false;
+        }
+    }
+
+    return validator.passed();
+}
 
 //-->
 {/literal}

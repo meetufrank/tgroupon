@@ -71,6 +71,13 @@ if ($_REQUEST['act'] == 'list')
     $smarty->assign('full_page',    1);
 
     assign_query_info();
+
+
+
+
+
+
+
     $smarty->display('user_account_list.htm');
 }
 
@@ -537,7 +544,7 @@ function account_list()
                    $GLOBALS['ecs']->table('users') . " AS u " . $where; */
         $sql = "SELECT COUNT(*) FROM " .$GLOBALS['ecs']->table('user_account'). " ua left join ".
         		$GLOBALS['ecs']->table('users') . " u on ua.user_id = u.user_id " . $where;
-         
+
         $filter['record_count'] = $GLOBALS['db']->getOne($sql);
 
         /* 分页大小 */
