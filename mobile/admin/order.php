@@ -3410,6 +3410,7 @@ elseif ($_REQUEST['act'] == 'operate')
     /* 收货确认 */
     elseif (isset($_POST['receive']))
     {
+
         $require_note   = $_CFG['order_receive_note'] == 1;
         $action         = $_LANG['op_receive'];
         $operation      = 'receive';
@@ -4595,6 +4596,9 @@ elseif ($_REQUEST['act'] == 'operate_post')
             $arr['pay_status'] = PS_PAYED;
             $order['pay_status'] = PS_PAYED;
         }
+        $sql="select user_id from ecs_order_info where order_id=".$order_id;
+        $userid=$GLOBALS['db']->getOne($sql);
+        get_money($order_id,$userid);   //计算分成
         update_order($order_id, $arr);
 
         /* 记录log */
