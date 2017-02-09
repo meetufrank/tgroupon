@@ -75,9 +75,34 @@ if ($_REQUEST['act'] == 'list')
       // 提现申请表列表展示
     $txshengqing = "select t.id,u.user_name,t.money,t.time,t.`status` from `ecs_tixian`  as t
 inner join `ecs_users` as u
-on t.line_shopid = u.user_id";
+on t.line_shopid = u.user_id order by t.`status`,t.time desc";
     $txsq = $db->getAll($txshengqing);
+   foreach ($txsq as $k=>$v){
 
+     $sqtime = $txsq[$k]['time'];  //申请时间
+
+        //$sqtime = $txsq[0][time];  //申请时间
+    $sqtimes = strtotime($sqtime); //申请时间转换成时间戳
+    $dt = date("Y-m-d H:i:s");//当前时间
+
+    $dts = strtotime($dt);//当前时间时间戳
+
+    $timewutian = date("Y-m-d H:i:s",strtotime("+5 day",strtotime($sqtime)));//加五天
+    $timewutians = strtotime($timewutian);//加五天时间戳
+    $second = $timewutians - $dts;   //时间戳相减(加五天时间 - 申请时间 = 剩余时间戳)
+    // $timesy = date('Y-m-d H:i:s',$sqtimes);//剩余时间
+
+    $timesyhanzi = time2string($second);//剩余时间格式汉字
+
+    $txsq[$k]['datetime'] = $timesyhanzi;
+   }
+
+//print_r($second);exit;
+
+
+
+    //print_r($timesyhanzi);exit;
+    // $smarty->assign('timesyhanzi',$timesyhanzi);
     $smarty->assign('txsq',$txsq);
     $smarty->display('user_account_list.htm');
 }
@@ -629,5 +654,14 @@ function account_list()
 
     return $arr;
 }
-
+function time2string($second){
+            $day = floor($second/(3600*24));
+            $second = $second%(3600*24);//除去整天之后剩余的时间
+            $hour = floor($second/3600);
+            $second = $second%3600;//除去整小时之后剩余的时间
+            $minute = floor($second/60);
+            $second = $second%60;//除去整分钟之后剩余的时间
+            //返回字符串
+            return $day.'天'.$hour.'小时'.$minute.'分';
+    }
 ?>

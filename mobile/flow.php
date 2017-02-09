@@ -1162,6 +1162,23 @@ $smarty->assign('payment_list',$payment_list);
     $smarty->assign('cart_list',$cart_list);
    //print_r($cart_list);exit;
   }
+  if(!isset($_GET['lineshop'])){
+    if($_COOKIE['lineshopid']){
+     $lineshopid=$_COOKIE['lineshopid'];
+     $sql="select is_line from ecs_users where user_id=".$lineshopid;
+     $is_line=$GLOBALS['db']->getOne($sql);
+     if($is_line==1){
+      $linestring2="&lineshop=".$lineshopid;
+      $linestring1="?lineshop=".$lineshopid;
+
+     }else{
+      $linestring2="";
+      $linestring1="";
+     }
+     $smarty->assign('linestring2',$linestring2);
+      $smarty->assign('linestring1',$linestring1);
+      }
+  }
 // }else{
 //      $sql=" select rec_id  from ".$GLOBALS['ecs']->table('cart')." where user_id='".$_SESSION['user_id']."' AND cart_type=1";
 //      $row=$GLOBALS['db']->getRow($sql);
@@ -1286,6 +1303,9 @@ $smarty->assign('payment_list',$payment_list);
 
         if (!isset($_GET["code"])){
              setcookie('cartid',$_GET['cartid']);
+             if($_GET['lineshop']){
+                setcookie('lineshopid',$_GET['lineshop']);
+            }
               $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
             $jumpurl = $weixin->oauth2_authorize($url, "snsapi_base", "fangbei");
 
@@ -1295,6 +1315,7 @@ $smarty->assign('payment_list',$payment_list);
 
 
             setcookie('cartid','',time()-3600);
+            setcookie('lineshopid',time()-3600);
             $oauth2_access_token = $weixin->oauth2_access_token($_GET["code"]);
             $access_token = $oauth2_access_token['access_token'];
         }

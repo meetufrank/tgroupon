@@ -375,11 +375,13 @@ function get_user_orders_new($user_id, $status=1,$num = 10, $start = 0)
     /* 取得订单列表 */
     $arr    = array();
     if($status==1){  //待付款
-      $string="  and pay_status=0 and shipping_status=0";
+      $string="  and order_status!=2 and order_status!=3 and order_status!=4 and pay_status=0 and shipping_status=0";
     }elseif($status==2){//待发货
-      $string="  and pay_status=2 and shipping_status=0";
+      $string="  and order_status!=2 and order_status!=3 and order_status!=4 and pay_status=2 and shipping_status=0";
     }elseif($status==3){//待收货
-       $string=" and pay_status=2 and shipping_status=1";
+       $string=" and order_status!=2 and order_status!=3 and order_status!=4 and pay_status=2 and shipping_status=1";
+    }elseif($status==4){//已完成
+       $string=" and order_status!=2 and order_status!=3 and order_status!=4 and pay_status=2 and shipping_status=2";
     }
      $sql = " SELECT order_id, order_sn, order_status, shipping_id, post_price,shipping_status, pay_status, add_time,order_amount,consignee,address,tel,re1.region_name as province,re2.region_name as city,re3.region_name as district, " .
            "(goods_amount + shipping_fee + insure_fee + pay_fee + pack_fee + card_fee + tax - discount ) AS total_fee ".
