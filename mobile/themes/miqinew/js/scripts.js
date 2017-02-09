@@ -154,6 +154,13 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 	});
 
+	$("body").click(function (e) {
+    if (!$(e.target).closest(".navbar").length) {
+        closeToolBox();
+		toolbarDropdown.removeClass('open');
+   	}
+   
+	}); 
 
 	// Toggle Submenu
 	//------------------------------------------------------------------------------
