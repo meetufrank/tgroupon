@@ -9,10 +9,10 @@
       </a>
 <!-- Toolbar -->
 
-      <div class="toolbar">
+      <div class="toolbar"  id="toolbar-foucuse">
         <div class="inner">
           <a href="#menu" class="toolbar-toggle"><i class="material-icons menu"></i></a>
-          <a href="#cart" class="toolbar-toggle" id="zhankai">
+          <a href="#cart" class="toolbar-toggle">
             <i>
               <span class="material-icons shopping_basket"></span>
              <span class="count " id="cart_count">{if $total.total_number}{$total.total_number}{else}0{/if}</span>
@@ -23,7 +23,7 @@
       </div>
       <!-- .toolbar -->
       <!-- Toolbar Dropdown -->
-      <div class="toolbar-dropdown">
+      <div class="toolbar-dropdown" id="toolbar-foucuse-hide">
 
         <!-- Menu -->
         <div class="toolbar-section" id="menu">
@@ -371,11 +371,9 @@ function newWin(url, id){
 
 
         <script type="text/javascript">
-     function click_scroll() {
-         document.getElementById("zhankai").click();
-
-
-     }
+  function click_scroll() {
+        document.getElementById("zhankai").click();
+   }
     </script>
     <script src="{$ectouch_themes}/js/jquery.json-2.3.js"></script>
   <script src="{$ectouch_themes}/js/jquery.json-2.3.min.js"></script>
@@ -575,4 +573,16 @@ function addToCartResponse(data)
 
 
 
+</script>
+<script>
+$("body").click(function (e) {
+    if (!$(e.target).closest(".navbar").length) {
+        $("#toolbar-foucuse-hide").hide();
+        $(".toolbar-toggle").removeClass('active');
+        window.location.reload();
+    }
+//    $(".toolbar-dropdown").click(funtion(event){  
+//       event.stopPropagation();
+//   }) 
+}); 
 </script>

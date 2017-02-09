@@ -74,14 +74,18 @@
             <tr>
               <td class="label">线下店名称:</td>
               <td>
+
                 <input type="text" readOnly="true" name="amount" value="{$item.user_name}" size="20">
+                <!-- 提现用户id -->
+                <input type="hidden"  name="lineshopid" id="lineshopid" value="{$item.line_shopid}" size="20">
+                <!-- 提现用户id -->
                 <input type="hidden"  id="txid" value="{$item.id}" size="20">
               </td>
             </tr>
             <tr>
               <td class="label">提现金额:</td>
               <td>
-                <input type="text" readOnly="true" name="amount" value="{$item.money}" size="20">
+                <input type="text" readOnly="true" id="money" name="amount" value="{$item.money}" size="20">
               </td>
             </tr>
             <tr>
@@ -93,13 +97,24 @@
             <tr>
               <td class="label">审核状态:</td>
               <td>
-                <input type="radio" name="radioname" value="0" {if $item.status eq 0} checked{/if}>未受理
+            <!--     <input type="radio" name="radioname" value="0" {if $item.status eq 0} checked{/if}>未受理 -->
                 <input type="radio" name="radioname" value="1" {if $item.status eq 1} checked{/if}>已受理
                 <input type="radio" name="radioname" value="2" {if $item.status eq 2} checked{/if}>拒绝
                 <input type="radio" name="radioname" value="3" {if $item.status eq 3} checked{/if}>已完成
               </td>
             </tr>
+
+                <tr>
+                  <td class="label">备注:</td>
+                  <td><textarea name="beizhu" id="beizhu" cols="40" rows="5">{$txlog.remark}</textarea></td>
+                </tr>
+                <tr>
+                  <td class="label">拒绝理由:</td>
+                  <td><textarea name="objection" id="objection" cols="40" rows="5">{$txlog.objection}</textarea></td>
+                </tr>
+
       {/foreach}
+
     <!--   <tr>
         <td class="label">&nbsp;</td>
         <td>
@@ -126,7 +141,10 @@
     function sub(){
 
                 var txid=document.getElementById("txid").value;
-
+                var lineshopid=document.getElementById("lineshopid").value;
+                var beizhu=document.getElementById("beizhu").value;
+                var objection=document.getElementById("objection").value;
+                var money=document.getElementById("money").value;
                 var chkObjs = document.getElementsByName("radioname");
                 for(var i=0;i<chkObjs.length;i++){
                     if(chkObjs[i].checked){
@@ -136,7 +154,7 @@
                                               type:"POST",
                                               url:"user_account.php?act=xiugai",
                                               async:true,
-                                              data:{radionck:radionck,id:txid},
+                                              data:{radionck:radionck,id:txid,lineshopid:txid,beizhu:beizhu,objection:objection,money:money,userid:lineshopid},
                                               dataType:"JSON",
                                               success:function(data){
 

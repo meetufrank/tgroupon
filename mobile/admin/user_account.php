@@ -146,14 +146,18 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit')
 
     // 提现申请编辑展示
     $txid = $_GET['id'];
-    $txbainji = "select t.id,u.user_name,t.money,t.time,t.`status` from `ecs_tixian`  as t
+    $txbainji = "select t.id,t.line_shopid,u.user_name,t.money,t.time,t.`status` from `ecs_tixian`  as t
 inner join `ecs_users` as u
 on t.line_shopid = u.user_id
 where t.id = $txid";
     $txbianjixs = $db->getAll($txbainji);
     $smarty->assign('txbianjixs',$txbianjixs);
-    // print_r($txbianjixs);exit;
-
+    //print_r($txbianjixs);exit;
+    //审核记录展示(备注，拒绝理由)
+    $txlogsql = "select * from `ecs_txlog` where log_userid = $txid order by log_time desc limit 1";
+    $txlog = $db->getRow($txlogsql);
+    // print_r($txlog);exit;
+    $smarty->assign('txlog',$txlog);
     $smarty->display('user_account_info.htm');
 }
 
@@ -163,10 +167,32 @@ where t.id = $txid";
 // 修改审核
 elseif ($_REQUEST['act'] == 'xiugai'){
    $radionck = $_POST['radionck'];
+   $money = $_POST['money'];
    $id = $_POST['id'];
+   $userid = $_POST['userid'];
+   $beizhu = $_POST['beizhu'];
+   $objection = $_POST['objection'];
+
+   if($radionck == 1){
+      $logcontent = "提现金额为".$money."元,已受理,请您耐心等候。";
+   }else if($radionck == 2){
+      $jujuetx = "update `ecs_users` set hav_money =0  where user_id = $userid";
+      $db->query($jujuetx);
+      $logcontent = "提现金额为".$money."已拒绝您的提现申请，详情请询问本站客服。";
+   }else if($radionck == 3){
+      $wctx = "update `ecs_users` set hav_money = $money where user_id = $userid";
+      $db->query($wctx);
+      $logcontent = "提现金额为".$money."已完成您的提现申请。";
+   }
 
    $sql = "update `ecs_tixian` set `status` = $radionck  where id = $id";
    $db->query($sql);
+
+   $txlogsql = "insert into `ecs_txlog`(log_userid,log_content,log_time,remark,objection) values($lineshopid,'$logcontent',now(),'$beizhu','$objection')";
+   $db->query($txlogsql);
+
+   //添加审核日志记录信息
+
 
 
 
