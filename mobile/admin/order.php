@@ -1617,19 +1617,19 @@ elseif ($_REQUEST['act'] == 'step_post')
         $order = array(
             'shipping_id' => $shipping_id,
             'shipping_name' => addslashes($shipping['shipping_name']),
-            'shipping_fee' => $shipping_fee
+            'shipping_fee' => 0                //'shipping_fee' => $shipping_fee
         );
 
-        if (isset($_POST['insure']))
-        {
-            /* 计算保价费 */
-            $order['insure_fee'] = shipping_insure_fee($shipping['shipping_code'], order_amount($order_id), $shipping['insure']);
-        }
-        else
-        {
-            $order['insure_fee'] = 0;
-        }
-
+        // if (isset($_POST['insure']))
+        // {
+        //     /* 计算保价费 */
+        //     $order['insure_fee'] = shipping_insure_fee($shipping['shipping_code'], order_amount($order_id), $shipping['insure']);
+        // }
+        // else
+        // {
+        //     $order['insure_fee'] = 0;
+        // }
+       $order['insure_fee'] = 0;  //新加
         update_order($order_id, $order);
 
         update_order_amount($order_id);

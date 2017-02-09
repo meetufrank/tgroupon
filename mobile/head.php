@@ -26,13 +26,17 @@ if($_SERVER['REQUEST_METHOD']!="POST"){
   $_SESSION['back_url']=$url;
 
 }
-
+$_SESSION['user_id']=10;
 if($_COOKIE['user_id']){
   $_SESSION['user_id']=$_COOKIE['user_id'];
 }
-
-if(intval($_REQUEST['lineshop'])){   //线下店标示
-     $lineshopid=intval($_REQUEST['lineshop']);
+if($_COOKIE['lineshop']){
+  $lineshopid=$_COOKIE['lineshop'];
+}
+if(intval($_REQUEST['lineshop'])){
+  $lineshopid=intval($_REQUEST['lineshop']);
+}
+if($lineshopid){   //线下店标示
      $sql="select is_line from ecs_users where user_id=".$lineshopid;
      $is_line=$GLOBALS['db']->getOne($sql);
      if($is_line==1){

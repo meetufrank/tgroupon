@@ -347,7 +347,7 @@ window.location.href="flow.php?step=pay_select{$linestring2}&cartid="+chk_value.
                     }
                 },
                 error: function(){
-                    alert("json出错");
+
                 }
             });
 

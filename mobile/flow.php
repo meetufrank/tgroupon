@@ -1153,12 +1153,16 @@ $smarty->assign('payment_list',$payment_list);
    //print_r($cart_list);exit;
   }else{
     $carid = $_COOKIE['cartid'];
-     $cart_list = get_cart_goods($carid);
-
-   if(!$cart_list['goods_list']){
+    if($carid){
+        $cart_list = get_cart_goods($carid);
+        if(!$cart_list['goods_list']){
         echo "<script>alert('该订单已生成');window.location.href='my_user.php?act=order_list';</script>";
         exit;
-   }
+       }
+    }
+
+
+
     $smarty->assign('cart_list',$cart_list);
    //print_r($cart_list);exit;
   }
@@ -1314,8 +1318,7 @@ $smarty->assign('payment_list',$payment_list);
         }else{
 
 
-            setcookie('cartid','',time()-3600);
-            setcookie('lineshopid',time()-3600);
+
             $oauth2_access_token = $weixin->oauth2_access_token($_GET["code"]);
             $access_token = $oauth2_access_token['access_token'];
         }
@@ -2552,7 +2555,8 @@ elseif ($_REQUEST['step'] == 'new_done')
     include_once('include/lib_payment.php');
 
 
-
+    setcookie('cartid','',time()-3600);
+    setcookie('lineshopid',time()-3600);
         if(isset($_POST['cart_id'])){
             $idstring=implode(',', $_POST['cart_id']);
         }else{
