@@ -29,11 +29,13 @@
     <div class="text-center">
       <div class="hidden-xs">
 
-        <div style="margin-top: 10px;">ICP备案号</div>
+        <div style="margin-top: 10px;">粤ICP备17001641号-1
+</div>
       </div>
       <div class="visible-xs">
 
-        <div style="margin-top:-20px;">ICP备案号</div>
+        <div style="margin-top:-20px;">粤ICP备17001641号-1
+</div>
       </div>
     </div>
 	    
