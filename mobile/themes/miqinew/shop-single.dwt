@@ -57,6 +57,9 @@
     vertical-align: top;
     border-bottom: 1px solid #ededed;
   }
+  .space-bottom {
+    margin-bottom:40px !important;
+  }
 	}
 @media screen and (max-width:320px){
     .mobile-shop-detail {
