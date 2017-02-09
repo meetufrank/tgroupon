@@ -41,7 +41,7 @@
     <th><a>线下店名称</a></th>
     <th><a>提现金额</a></th>
     <th><a>申请时间</a></th>
-   <!--  <th><a>剩余处理时间</a></th> -->
+    <th><a>剩余处理时间</a></th>
     <th><a>状态</a></th>
    <!--  <th>{$lang.admin_user}</th> -->
     <th>{$lang.handler}</th>
@@ -76,9 +76,9 @@
         <td align="center">{$item.user_name}</td>
         <td align="center">{$item.money}</td>
         <td align="center">{$item.time}</td>
+        <td align="center">{if $item.status == 0}{$item.datetime}{else}{/if}</td>
         <td align="center">{if $item.status == 0}未受理{elseif $item.status == 1}已受理{elseif $item.status == 2}拒绝{elseif $item.status == 3}已完成{/if}</td>
         <td align="center"><a href="user_account.php?act=edit&id={$item.id}" title="{$lang.surplus}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a></td>
-
     </tr>
   {/foreach}
 </table>
