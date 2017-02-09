@@ -59,6 +59,9 @@ if(!$openids){
      $uid=$GLOBALS['db']->insert_id();
 
       setcookie('user_id',$uid);
+      $idstring=md5($uid,true);
+    $sql = "update `ecs_users` set weiyi_num=".$idstring." where user_id=".$uid;
+    $db->query($sql);
 
 }else{
 	 $sql = "UPDATE  `ecs_users` set alias='$nickname',sex=$sex,reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid' where unionid='$unionid'";

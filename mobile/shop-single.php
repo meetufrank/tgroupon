@@ -643,7 +643,7 @@ $checked_arr = explode(",",$checked_string);
 
 if(!$checked_arr){
 
-    ecs_header("Location:goods_list.php");
+    ecs_header("Location:goods_list.php".$linestring1);
 }else{
 
     $a=0;

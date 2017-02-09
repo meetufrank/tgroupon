@@ -26,7 +26,8 @@
       <a href="javascript:listTable.sort('user_id'); ">{$lang.record_id}</a>{$sort_user_id}
     </th>
     <th><a href="javascript:listTable.sort('user_name'); ">{$lang.username}</a>{$sort_user_name}</th>
-    <th><a href="javascript:listTable.sort('email'); ">{$lang.email}</a>{$sort_email}</th>
+    <!-- <th><a href="javascript:listTable.sort('email'); ">{$lang.email}</a>{$sort_email}</th> -->
+    <th>用户编号</th>
     <th>{$lang.user_money}</th>
     <th>{$lang.frozen_money}</th>
     <th>{$lang.rank_points}</th>
@@ -41,7 +42,8 @@
   <tr>
     <td><input type="checkbox" name="checkboxes[]" value="{$user.user_id}" notice="{if $user.user_money ne 0}1{else}0{/if}"/>{$user.user_id}</td>
     <td class="first-cell">{$user.user_name|escape}</td>
-    <td><span onclick="listTable.edit(this, 'edit_email', {$user.user_id})">{$user.email}</span></td>
+    <!-- <td><span onclick="listTable.edit(this, 'edit_email', {$user.user_id})">{$user.email}</span></td> -->
+    <td>{$user.weiyi_num}</td>
     <td>{$user.user_money}</td>
     <td>{$user.frozen_money}</td>
     <td>{$user.rank_points}</td>

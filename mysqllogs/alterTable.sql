@@ -276,7 +276,7 @@ ADD COLUMN `xs_fencheng`  double(4,2) NOT NULL DEFAULT 0 COMMENT '//线下店销
 /*#2017/02/06 王晋  修改艺术家字段
 */
 ALTER TABLE `ecs_admin_user`
-MODIFY COLUMN `ysj_tixian`  mediumint(8) NOT NULL DEFAULT 0 COMMENT '//艺术家绑定提现用户id' AFTER `ysj_fencheng`;
+
 
 /*#2017/02/08 汪江  添加提现审核日志表中的审核备注字段
 */
@@ -287,3 +287,13 @@ ADD COLUMN `remark`  text NOT NULL COMMENT '//审核备注' AFTER `log_time`;
 */
 ALTER TABLE `ecs_txlog`
 ADD COLUMN `objection`  text NOT NULL COMMENT '//拒绝理由' AFTER `remark`;
+
+/*#2017/02/06 王晋  用户表中添加唯一编号
+*/
+ALTER TABLE `ecs_users`
+ADD COLUMN `weiyi_num`  varchar(255) NULL COMMENT '//唯一编号' AFTER `xs_fencheng`;
+
+/*#2017/02/06 王晋  修改表注释
+*/
+ALTER TABLE `ecs_users`
+MODIFY COLUMN `xs_fencheng`  double(4,2) NOT NULL DEFAULT 0.00 COMMENT '//线下店产品分成' AFTER `all_money`;

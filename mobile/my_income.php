@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2017-02-06 13:22:33
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-02-08 13:55:04
+ * @Last Modified time: 2017-02-08 15:58:41
  */
 define('IN_ECTOUCH', true);
 
@@ -13,7 +13,14 @@ require(dirname(__FILE__) . '/include/init.php');
 include_once('head.php');
 //定义选中样式
 $smarty->assign('my_active',5);
- $userid=6;
+ // $userid=6;
+
+   if ($_SESSION['user_id'] <= 0)
+        {
+            please_in();
+        }else{
+          $userid=$_SESSION['user_id'];
+        }
 
 if($_REQUEST['act']==''){
   $act="income";
