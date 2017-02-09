@@ -312,16 +312,7 @@ window.location.href="flow.php?step=pay_select{$linestring2}&cartid="+chk_value.
 
 <script type="text/javascript">
 
-function newWin(url, id){
-              var a = document.createElement('a');
-              a.setAttribute('href', url);
-              a.setAttribute('target','_blank');
-              a.setAttribute('id', id);// 防止反复添加
-              if(!document.getElementById(id)){
-              document.body.appendChild(a);
-              }
-              a.click();
-              }
+
 
         function changenum(rec_id,diff,maxnumber){
 
@@ -377,27 +368,19 @@ function newWin(url, id){
     </script>
     <script src="{$ectouch_themes}/js/jquery.json-2.3.js"></script>
   <script src="{$ectouch_themes}/js/jquery.json-2.3.min.js"></script>
-    <script src="././js/common.js"></script>
+
 <script type="text/javascript">
 
 
 /* *
  * 添加商品到购物车
  */
-function addToCart(goodsId, parentId=0,type=0,ismobile=0)  //type 购物类型
+function addToCart(goodsId,parentId,type,ismobile)  //type 购物类型
 {
   var goods        = new Object();
   var spec_arr     = new Array();
   var fittings_arr = new Array();
-  if(parentId==''){
-        parentId=0;
-  }
-  if(type==''){
-        type=0;
-  }
-  if(ismobile==''){
-        ismobile=0;
-  }
+
   var loca_str="addToCart("+goodsId+","+parentId+","+type+","+ismobile+")";
   //alert(loca_str);
   if(ismobile){
@@ -570,7 +553,29 @@ function addToCartResponse(data)
 
 
 }
+/**
+ * 获得选定的商品属性
+ */
+function getSelectedAttributes(formBuy)
+{
+  var spec_arr = new Array();
+  var j = 0;
 
+  for (i = 0; i < formBuy.elements.length; i ++ )
+  {
+    var prefix = formBuy.elements[i].name.substr(0, 5);
+
+    if (prefix == 'spec_' )
+    {
+      spec_arr[j] = formBuy.elements[i].value;
+      j++ ;
+    }
+  }
+
+
+
+  return spec_arr;
+}
 
 
 </script>

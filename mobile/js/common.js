@@ -248,7 +248,7 @@ function submit_div_show_div(goods_id, parentId ,script_name,goods_recommend)
 /* *
  * 添加商品到购物车
  */
-function addToCart(goodsId, parentId)
+function addToCart_old(goodsId, parentId)
 {
   var goods        = new Object();
   var spec_arr     = new Array();
@@ -304,7 +304,7 @@ function getSelectedAttributes(formBuy)
 /* *
  * 处理添加商品到购物车的反馈信息
  */
-function addToCartResponse(result)
+function addToCartResponse_old(result)
 {
   if (result.error > 0)
   {

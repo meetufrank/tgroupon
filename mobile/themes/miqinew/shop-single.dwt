@@ -398,12 +398,12 @@
                     </div>
                     </div>
                   <div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:8px;min-height:48px;">
-                         <a href="#" class="add-to-cart-pay" onClick="addToCart({$goods_id})">
+                         <a href="#" class="add-to-cart-pay" onClick="addToCart({$goods_id},0,0,0);" >
                                 <em>放入购物车{$data}</em>
                          </a>
                     </div>
-                   <div class="col-lg-2 col-md-2 col-sm-2"  style="padding-top:8px;min-height:48px;">
-                        <a href="#" class="add-to-cart" onClick="addToCart({$goods_id},'',1)">
+                   <div class="col-lg-2 col-md-2 col-sm-2"  style="padding-top:8px;min-height:48px;" >
+                        <a href="#" class="add-to-cart" onClick="addToCart({$goods_id},0,1,0);">
                             <em>立即支付</em>
                         </a>
                    </div>
@@ -567,12 +567,12 @@
     <!-- .footer -->
     <div class="mobile-foot col-xs-12 hidden-sm hidden-md hidden-lg" style="position:fixed;bottom:0;padding:0px;">
     <div class="col-xs-6" style="padding:0px;">
-          <a href="#" class="mobile-add-to-cart" onClick="addToCart({$goods_id},'','',1)">
+          <a href="#" class="mobile-add-to-cart" onClick="addToCart({$goods_id},0,0,1);" >
               放入购物车
             </a>
         </div>
         <div class="col-xs-6" style="padding:0px;">
-         <a href="#" class="mobile-add-to-cart-pay" onClick="addToCart({$goods_id},'',1,1)">
+         <a href="#" class="mobile-add-to-cart-pay" onClick="addToCart({$goods_id},0,1,1);" >
               立即支付
          </a>
         </div>
