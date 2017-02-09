@@ -575,14 +575,14 @@ function addToCartResponse(data)
 
 </script>
 <script>
-$("body").click(function (e) {
-    if (!$(e.target).closest(".navbar").length) {
-        $("#toolbar-foucuse-hide").hide();
-        $(".toolbar-toggle").removeClass('active');
-        window.location.reload();
-    }
+//$("body").click(function (e) {
+//    if (!$(e.target).closest(".navbar").length) {
+//        $("#toolbar-foucuse-hide").hide();
+//        $(".toolbar-toggle").removeClass('active');
+//        window.location.reload();
+ //   }
 //    $(".toolbar-dropdown").click(funtion(event){  
 //       event.stopPropagation();
 //   }) 
-}); 
+//}); 
 </script>
