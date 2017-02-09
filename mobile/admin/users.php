@@ -48,7 +48,7 @@ if ($_REQUEST['act'] == 'list')
 		$aa['number']=$number[0];
 		$kk[]=$aa;
 	}
-
+    // print_r($user_list);exit;
     $smarty->assign('user_list',   $kk);
     $smarty->assign('filter',       $user_list['filter']);
     $smarty->assign('record_count', $user_list['record_count']);
