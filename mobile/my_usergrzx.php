@@ -1465,16 +1465,7 @@ elseif ($action == 'address_list')
      $is_wechat=is_wechat_browser();
         if($is_wechat){
             include('weixindizhi.php');
-
-            $loginphone = "1";   //微信浏览器
-            $smarty->assign('loginphone',  $loginphone);
-          }else{
-
-              $loginpc = "2";  //非微信浏览器
-              $smarty->assign('loginpc',  $loginpc);
-            }
-
-    $weixin = new class_weixin();
+             $weixin = new class_weixin();
 $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 if (!isset($_GET["code"])){
@@ -1506,6 +1497,15 @@ $signature  = $weixin->get_biz_sign($obj);
  $smarty->assign('timestamp', $timestamp);
  $smarty->assign('noncestr', $noncestr);
  $smarty->assign('signature', $signature);
+            $loginphone = "1";   //微信浏览器
+            $smarty->assign('loginphone',  $loginphone);
+          }else{
+
+              $loginpc = "2";  //非微信浏览器
+              $smarty->assign('loginpc',  $loginpc);
+            }
+
+
     $smarty->display('my_usergrzx.dwt');
 }
 
