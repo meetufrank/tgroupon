@@ -172,6 +172,7 @@
             <li class="active"><a href="#tab1_1" role="tab" data-toggle="tab">待付款<span id="no_pay_num">{$record_count_no}</span></a></li>
             <li><a href="#tab1_2" role="tab" data-toggle="tab">待发货<span>{$record_count_yes}</span></a></li>
             <li><a href="#tab1_3" role="tab" data-toggle="tab">待收货<span>{$record_count_come}</span></a></li>
+            <li><a href="#tab1_4" role="tab" data-toggle="tab">已完成<span>{$record_count_come}</span></a></li>
           </ul>
           <!-- Tab panes -->
           <div class="tab-content">
@@ -483,6 +484,111 @@
               </div>
                   {/if}
             </div>
+<!--已完成-->
+            <div role="tabpanel" class="tab-pane transition fade" id="tab1_4">
+            <!--{foreach from=$come_orders.data item=co}-->
+              <div class="shopping-cart-1 padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+                        <div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
+                          订单编号：{$co.order_sn}
+                          </div>
+                          <div class="row">
+                          <div class="col-md-6">
+                      <!-- Item -->
+                      <!--{foreach from=$co.good_list item=cg}-->
+                      <div class="item hidden-xs">
+
+                        {if $cg.goods_thumb}
+                        <a href="shop-single.php?id={$cg.goods_id}{$linestring2}" class="item-thumb pull-left">
+                          <img src="././admin/{$cg.goods_thumb}" alt="{$cg.goods_name}">
+                        </a>
+                        {/if}
+                        <div class="item-details">
+                          <h3 class="item-title"><a style="color:#77cde3" href="shop-single.php?id={$cg.goods_id}{$linestring2}">{$cg.goods_name}</a></h3>
+                          <div>
+                          <div class="pull-right" style="color: #000;">{$cg.goods_attr}</div>
+                          <h4 class="item-price">数量：{$cg.goods_number} </h4>
+                          </div>
+                          <h4 class="item-price">{$cg.goods_price}</h4>
+                        </div>
+                      </div><!-- .item -->
+                      <div class="item visible-xs">
+                        <div class="row">
+                        <div class="col-xs-5">
+                              {if $cg.goods_thumb}
+                            <a href="shop-single.php?id={$cg.goods_id}{$linestring2}">
+                              <img src="././admin/{$cg.goods_thumb}" alt="{$cg.goods_name}">
+                            </a>
+                            {/if}
+                        </div>
+                        <div class="col-xs-7">
+                          {$cg.goods_name}
+                        </div>
+                        </div>
+                          <div style="margin-top:20px;padding:10px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$cg.goods_attr}</div>
+                          <div class="clearfix clearfix2">
+                            <div class="pull-left" style="color: #F20000;">{$cg.goods_price}</div>
+                            <div class="pull-right">
+                                   数量：{$cg.goods_number}
+                            </div>
+                          </div>
+                      </div>
+                       <!--{/foreach}-->
+
+                      <!-- Subtotal -->
+                      <div class="cart-subtotal-youfei space-bottom" style="border-bottom: 2px solid #ededed;">
+                        <div class="column">
+                          <div>邮费：</div>
+                        </div>
+                        <div class="column">
+                          <div class="amount_order_no1 wait-mobile-many">{$ye.post_price}</div>
+                        </div>
+                      </div>
+                      <!-- Subtotal -->
+                      <div class="cart-subtotal">
+                        <div class="column">
+                          <h4>总价：</h4>
+                        </div>
+                        <div class="column">
+                          <h3 class="amount_come" style="color:#f20000">{$ye.total_fee}</h3>
+                        </div>
+
+                      </div><!-- .subtotal -->
+
+                      </div>
+                      <div class="col-md-6">
+                        <h4 class="text-primary">收件人信息</h4>
+                        <hr>
+                        <div>
+                        收件人：{$co.consignee}<br>
+                  手机号：{$co.tel}<br>
+                  地   址 ：{$co.address}
+                  </div>
+                  <br>
+
+                  <h4 class="text-primary">快递单号:123456789</h4>
+                  <hr>
+
+
+                  <!-- 订单id -->
+                  <input type="hidden"  value="{$co.order_id}" ="orderids">
+                  <!-- <a   class="btn btn-primary Logistics"  href="#" data-id="{$co.order_id}">快递跟踪</a>  -->                
+                      </div>
+                      </div>
+                      </div>
+
+                   <!--{/foreach}-->
+
+                   {if $come_orders.more}
+                    <div class="row padding-top" id="come_more">
+                  <div class="text-center padding-bottom-2x">
+                    <a href="#" class="btn btn-primary waves-effect waves-light" id="come_pay">加载更多</a>
+                    <br>
+                    <a><i class="material-icons arrow_downward"></i></a>
+                  </div>
+              </div>
+                  {/if}
+            </div> <!--已完成-->
+                  
           </div>
         </div>
 
