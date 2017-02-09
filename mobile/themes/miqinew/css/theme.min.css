@@ -521,6 +521,9 @@ kbd {
 	.padding-top {
 		padding-top: 16px !important
 	}
+	.padding-top-mobile-1x{
+		padding-top:10px !important
+	}
 	.padding-top-1x {
 		padding-top:30px !important
 	}
@@ -595,9 +598,6 @@ kbd {
 .page-edit .edit-link {
 	display: inline-block;
 	margin-top: 24px
-}
-.text-center {
-	text-align: center
 }
 .text-right {
 	text-align: right

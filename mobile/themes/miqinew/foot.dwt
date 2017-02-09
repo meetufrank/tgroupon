@@ -25,7 +25,7 @@
       </div>
     </footer><!-- .footer -->
 
-  <section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
+  <section class="container space-top space-bottom padding-top-mobile-1x">
     <div class="text-center">
       <div class="hidden-xs">
 
