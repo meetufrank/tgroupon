@@ -122,7 +122,7 @@
       <div class="col-lg-3 col-sm-6 mobile-indent">
         <div class="shop-item">
         <div class="shop-thumbnail">
-          <a href="shop-single.php?id={$xh.goods_id}" class="item-link"></a>
+          <a href="shop-single.php?id={$xh.goods_id}{$linestring2}" class="item-link"></a>
           {if $xh.attributeimg}<img src="././admin/{$xh.attributeimg}" alt="Shop item">{/if}
         </div>
         <div class="shop-item-details">

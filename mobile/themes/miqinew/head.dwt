@@ -239,9 +239,11 @@ window.location.href="flow.php?step=pay_select{$linestring2}&cartid="+chk_value.
             var maxnum=$button.parent().find('.quantity').attr("max");
             $button.parent().find('.incr-btn[data-action="decrease"]').removeClass('inactive');
             if ($button.data('action') == "increase") {
+
                 var newVal = parseFloat(oldValue) + 1;
                 if(newVal>maxnum){
                  var newVal=oldValue;
+                 alert('库存不足');
                 }
             } else {
                 // Don't allow decrementing below 1
@@ -434,7 +436,7 @@ if(type&&!ismobile){
 }
 
   $.ajax({
-              url:"flow.php{$linestring1}",
+              url:"flow.php",
               type:"POST",
               dataType:"json",
               data:{step:'add_to_cart',goods:$.toJSON(goods),type:type,comeback:loca_str},

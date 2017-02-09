@@ -29,9 +29,10 @@ if($_SERVER['REQUEST_METHOD']!="POST"){
 if($_COOKIE['user_id']){
   $_SESSION['user_id']=$_COOKIE['user_id'];
 }
+
 if(intval($_REQUEST['lineshop'])){   //线下店标示
      $lineshopid=intval($_REQUEST['lineshop']);
-     $sql="select is_line where user_id=".$lineshopid;
+     $sql="select is_line from ecs_users where user_id=".$lineshopid;
      $is_line=$GLOBALS['db']->getOne($sql);
      if($is_line==1){
       $linestring2="&lineshop=".$lineshopid;

@@ -1301,6 +1301,12 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0,$type=0)
                         {
                             $goods_storage=$goods['goods_number'];
                         }
+                        if($num > $goods_storage){
+                            $result['error']   = 1;
+                            $result['message'] = "库存不足";
+                             die(json_encode($result));
+                             exit;
+                        }
                         if ($GLOBALS['_CFG']['use_storage'] == 0 || $num <= $goods_storage)
                         {
                             $goods_price = get_final_price($goods_id, $num, true, $spec);

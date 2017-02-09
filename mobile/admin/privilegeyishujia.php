@@ -230,13 +230,17 @@ elseif ($_REQUEST['act'] == 'insert')
     }
 
   if(!empty($_POST['user_code'])){
-     $sql=" select user_id from  ecs_users where weiyi_num=".$_POST['user_code'];
+     $sql=" select user_id from  ecs_users where weiyi_num='".$_POST['user_code']."'";
      $user_id=$GLOBALS['db']->getOne($sql);
     if(!$user_id){
         sys_msg(sprintf('请输入正确的用户编号', stripslashes($_POST['user_code'])), 1);
     }
+    $sql=" UPDATE ecs_users set is_art=1 where user_id=".$user_id;
+    $GLOBALS['db']->query($sql);
   }
-
+if(!$user_id){
+    sys_msg(sprintf('需要绑定微信号', stripslashes($_POST['user_code'])), 1);
+  }
     if($_FILES['pic']['name']){
                   //图片上传处理
  $up = new FileUpload();
@@ -331,11 +335,13 @@ elseif ($_REQUEST['act'] == 'edit')
     }
 
     /* 获取艺术家信息 */
-    $sql = "SELECT user_id, user_name, email, password, agency_id, role_id,country,ysj_fencheng FROM " .$ecs->table('admin_user').
+    $sql = "SELECT user_id, user_name, email, password, agency_id, role_id,country,ysj_fencheng,ysj_tixian FROM " .$ecs->table('admin_user').
            " WHERE user_id = '".$_REQUEST['id']."'";
     $user_info = $db->getRow($sql);
 
-
+    $sql=" select weiyi_num from ecs_users where user_id=".$user_info['ysj_tixian'];
+     $weiyi_num = $db->getOne($sql);
+     $smarty->assign('weiyi_num',$weiyi_num);
     /* 取得该管理员负责的办事处名称 */
     if ($user_info['agency_id'] > 0)
     {
@@ -375,6 +381,26 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
     $admin_email = !empty($_REQUEST['email'])     ? trim($_REQUEST['email'])     : '';
     $country = !empty($_REQUEST['country'])     ? trim($_REQUEST['country'])     : '';
     $ysj_fencheng = !empty($_REQUEST['ysj_fencheng'])   ? trim($_REQUEST['ysj_fencheng'])  : '';
+
+ if(!empty($_POST['user_code'])){
+     $sql=" select ysj_tixian from ecs_admin_user where user_id=".$admin_id;
+     $tx_id=$GLOBALS['db']->getOne($sql);
+     if($tx_id){
+        $sql=" UPDATE ecs_users set is_art=0 where user_id=".$tx_id;
+        $GLOBALS['db']->query($sql);
+     }
+      $sql=" select user_id from  ecs_users where weiyi_num='".$_POST['user_code']."'";
+     $user_id=$GLOBALS['db']->getOne($sql);
+    if(!$user_id){
+        sys_msg(sprintf('请输入正确的用户编号', stripslashes($_POST['user_code'])), 1);
+    }
+   $sql=" UPDATE ecs_users set is_art=1 where user_id=".$user_id;
+    $GLOBALS['db']->query($sql);
+
+  }
+  if(!$user_id){
+    sys_msg(sprintf('需要绑定微信号', stripslashes($_POST['user_code'])), 1);
+  }
 
     if($_FILES['pic']['name']){
                      //图片上传处理
@@ -499,7 +525,8 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
                "user_name = '$admin_name', ".
                "email = '$admin_email', ".
                "ec_salt = '$ec_salt' ,".
-               "ysj_fencheng = '$ysj_fencheng' ".
+               "ysj_fencheng = '$ysj_fencheng', ".
+               "ysj_tixian = '$user_id' ".
                $action_list.$img_list.$country_list.
                $role_id.
                $password.
@@ -514,7 +541,8 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
         $sql = "UPDATE " .$ecs->table('admin_user'). " SET ".
                "user_name = '$admin_name', ".
                "email = '$admin_email' ,".
-               "ysj_fencheng = '$ysj_fencheng' ".
+               "ysj_fencheng = '$ysj_fencheng' ,".
+               "ysj_tixian = '$user_id' ".
                $action_list.$img_list.$country_list.
                $role_id.
                $nav_list.
@@ -524,6 +552,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
     }
 
    $db->query($sql);
+
    /* 记录管理员操作 */
    admin_log($_POST['user_name'], 'edit', 'privilege');
 

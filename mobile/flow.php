@@ -176,10 +176,11 @@ $goods = $json->decode($_POST['goods']);
         'FROM ' . $GLOBALS['ecs']->table('products').
         "WHERE goods_attr = '" . $goods_attr_id . "'";
     $goods_number = $GLOBALS['db']->getRow($sql);
-    if ($goods_number['product_number']==0)
+
+    if ($goods_number['product_number']==0||intval($goods->number)>$goods_number['product_number'])
     {
         $result['error']   = 1;
-        $result['message'] = "库存不足，请重新选择商品";
+        $result['message'] = "库存不足";
          die($json->encode($result));
          exit;
     }

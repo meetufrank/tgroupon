@@ -53,18 +53,19 @@ $openids = $GLOBALS['db']->getOne($sql);
 
 
 if(!$openids){
-	 $sql = 'INSERT INTO ' . $ecs->table('users') . '(alias , wx_open_id , sex , reg_time  , headimgurl,unionid) VALUES ' .
-                    "('$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid')";
+	 $sql = 'INSERT INTO ' . $ecs->table('users') . '(user_name,alias , wx_open_id , sex , reg_time  , headimgurl,unionid) VALUES ' .
+                    "('$nickname','$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid')";
      $GLOBALS['db']->query($sql);
      $uid=$GLOBALS['db']->insert_id();
 
       setcookie('user_id',$uid);
-      $idstring=md5($uid,true);
-    $sql = "update `ecs_users` set weiyi_num=".$idstring." where user_id=".$uid;
+      $idstring=uniqid();
+
+   $sql = "UPDATE ecs_users set weiyi_num='".$idstring."' where user_id=".$uid;
     $db->query($sql);
 
 }else{
-	 $sql = "UPDATE  `ecs_users` set alias='$nickname',sex=$sex,reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid' where unionid='$unionid'";
+	 $sql = "UPDATE  ecs_users set user_name='$nickname',alias='$nickname',sex=$sex,reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid' where unionid='$unionid'";
 	$GLOBALS['db']->query($sql);
 
     setcookie('user_id',$openids);
