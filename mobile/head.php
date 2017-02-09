@@ -26,10 +26,11 @@ if($_SERVER['REQUEST_METHOD']!="POST"){
   $_SESSION['back_url']=$url;
 
 }
+
 if($_COOKIE['user_id']){
   $_SESSION['user_id']=$_COOKIE['user_id'];
 }
-$_SESSION['user_id']=13;
+
 if(intval($_REQUEST['lineshop'])){   //线下店标示
      $lineshopid=intval($_REQUEST['lineshop']);
      $sql="select is_line from ecs_users where user_id=".$lineshopid;
@@ -44,7 +45,10 @@ if(intval($_REQUEST['lineshop'])){   //线下店标示
      }
      $smarty->assign('linestring2',$linestring2);
       $smarty->assign('linestring1',$linestring1);
+
 }
+
+
 if ($_SESSION['user_id'])
     {
       include_once(ROOT_PATH .'include/lib_order.php');
@@ -57,6 +61,19 @@ if ($_SESSION['user_id'])
        /* 取得商品列表，计算合计 */
     $cart_goods = get_cart_goods(0,1);
 
+     //查询这个用户是否为线下店
+
+        if($infos['is_line']==1){   //若是
+          $fx_link='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+              $check_link=strpos($fx_link, '?');
+               if($check_link){
+                    $fx_link.="&lineshop=".$_SESSION['user_id'];
+               }else{
+                    $fx_link.="?lineshop=".$_SESSION['user_id'];
+               }
+
+         $smarty->assign('fx_link',$fx_link);  //分享图片链接
+        }
 
         $smarty->assign('goods_list', $cart_goods['goods_list']);
         $smarty->assign('total', $cart_goods['total']);
@@ -68,6 +85,8 @@ if ($_SESSION['user_id'])
       $income=$GLOBALS['db']->getOne($sql);
 
       $smarty->assign('is_income',$income);
+
+
 
     }else{
       $css='<a href="#account"class="toolbar-toggle"><i class="material-icons person"></i></a>';
@@ -91,7 +110,14 @@ $smarty->assign('login_css', $css);
             }
 
 
+include('Jssdk.php');
 
+$appId = 'wxb5aec13c030a530b';//打开微信公众平台-开发者中心 获取appId和appSecret
+$appSecret = '2232d4acc3612e530f0ccc311c72d68c';
+$jssdk = new \Jssdk($appId, $appSecret);
+$datajssdk = $jssdk->getSignPackage();
+
+$smarty->assign('datajssdk', $datajssdk);
 
 function is_weixin(){
 
