@@ -246,7 +246,7 @@ svg {
 	}
 	.tixianmain{
 		float: left;
-		width: 60%;		
+		width: 60%;
 	}
 }
 @media screen and (max-width: 768px) {
@@ -366,7 +366,7 @@ svg {
 	}
 	.tixianmain{
 		float: left;
-		width:65%;		
+		width:65%;
 	}
 	.layui-layer {
 	    -webkit-overflow-scrolling: touch;
@@ -2712,7 +2712,7 @@ display:none
 .amount_order_no1{
 	text-align: right;
 }
-.amount_ye,.amount_no,.amount_come,.amount_order_come,.amount_order_yes,.amount_order_no,.amount_pay{
+.amount_ye,.amount_no,.amount_come,.amount_done,.amount_order_come,.amount_order_yes,.amount_order_no,.amount_pay{
     font-size: 24px;
 	font-weight: 500;
 	text-align: right

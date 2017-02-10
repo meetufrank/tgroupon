@@ -1617,22 +1617,22 @@ elseif ($_REQUEST['act'] == 'step_post')
         $order = array(
             'shipping_id' => $shipping_id,
             'shipping_name' => addslashes($shipping['shipping_name']),
-            'shipping_fee' => $shipping_fee
+            'shipping_fee' => 0                //'shipping_fee' => $shipping_fee
         );
 
-        if (isset($_POST['insure']))
-        {
-            /* 计算保价费 */
-            $order['insure_fee'] = shipping_insure_fee($shipping['shipping_code'], order_amount($order_id), $shipping['insure']);
-        }
-        else
-        {
-            $order['insure_fee'] = 0;
-        }
-
+        // if (isset($_POST['insure']))
+        // {
+        //     /* 计算保价费 */
+        //     $order['insure_fee'] = shipping_insure_fee($shipping['shipping_code'], order_amount($order_id), $shipping['insure']);
+        // }
+        // else
+        // {
+        //     $order['insure_fee'] = 0;
+        // }
+       $order['insure_fee'] = 0;  //新加
         update_order($order_id, $order);
 
-        update_order_amount($order_id);
+        // update_order_amount($order_id);
 
 
         /* 更新 pay_log */
@@ -2251,23 +2251,24 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit')
             die ('Hacking Attemp');
         }
 
-        /* 取得可用的配送方式列表 */
-        $region_id_list = array(
-            $order['country'], $order['province'], $order['city'], $order['district']
-        );
-        $shipping_list = available_shipping_list($region_id_list);
+        // /* 取得可用的配送方式列表 */
+        // $region_id_list = array(
+        //     $order['country'], $order['province'], $order['city'], $order['district']
+        // );
+       //$shipping_list = available_shipping_list($region_id_list);
+         $shipping_list = shipping_list_new($region_id_list);
 
         /* 取得配送费用 */
        // $total = order_weight_price($order_id);
-        $total = 0;
-        foreach ($shipping_list AS $key => $shipping)
-        {
-            $shipping_fee = shipping_fee($shipping['shipping_code'],
-                unserialize($shipping['configure']), $total['weight'], $total['amount'], $total['number']);
-            $shipping_list[$key]['shipping_fee'] = $shipping_fee;
-            $shipping_list[$key]['format_shipping_fee'] = price_format($shipping_fee);
-           // $shipping_list[$key]['free_money'] = price_format($shipping['configure']['free_money']);
-        }
+        // $total = 0;
+        // foreach ($shipping_list AS $key => $shipping)
+        // {
+        //     $shipping_fee = shipping_fee($shipping['shipping_code'],
+        //         unserialize($shipping['configure']), $total['weight'], $total['amount'], $total['number']);
+        //     $shipping_list[$key]['shipping_fee'] = $shipping_fee;
+        //     $shipping_list[$key]['format_shipping_fee'] = price_format($shipping_fee);
+        //    // $shipping_list[$key]['free_money'] = price_format($shipping['configure']['free_money']);
+        // }
         $smarty->assign('shipping_list', $shipping_list);
     }
 

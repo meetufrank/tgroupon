@@ -191,32 +191,61 @@ where t.id = $txid";
 
 // 修改审核
 elseif ($_REQUEST['act'] == 'xiugai'){
-   $radionck = $_POST['radionck'];
-   $money = $_POST['money'];
-   $id = $_POST['id'];
-   $userid = $_POST['userid'];
+   $radionck = $_POST['radioname'];
+   $money = $_POST['amount'];
+   $id = $_POST['txid'];
+   $userid = $_POST['lineshopid'];
    $beizhu = $_POST['beizhu'];
    $objection = $_POST['objection'];
 
+   $sql="select money,status,time from ecs_tixian where id=".$id." and status!=2 and status!=3";
+   $data=$GLOBALS['db']->getRow($sql);
+   $money=$data['money'];
+   $status=$data['status'];
+   if(!$money){
+          $link[0]['text'] = '返回提现详情';
+        $link[0]['href'] = 'user_account.php?act=edit&id='.$id;
+         sys_msg('您已结束该条提现操作', 0, $link);
+         exit;
+   }
    if($radionck == 1){
       $logcontent = "提现金额为".$money."元,已受理,请您耐心等候。";
    }else if($radionck == 2){
-      $jujuetx = "update `ecs_users` set hav_money =0  where user_id = $userid";
+     if($status==0){
+        $link[0]['text'] = '返回提现详情';
+        $link[0]['href'] = 'user_account.php?act=edit&id='.$id;
+         sys_msg('请先受理这条提现请求', 0, $link);
+         exit;
+     }
+     $jujuetx = "update `ecs_users` set hav_money=hav_money+$money,all_money=all_money-$money  where user_id = $userid";
       $db->query($jujuetx);
-      $logcontent = "提现金额为".$money."已拒绝您的提现申请，详情请询问本站客服。";
+      $logcontent = "提现金额为".$money."已拒绝您的提现申请，理由：".$objection;
    }else if($radionck == 3){
-      $wctx = "update `ecs_users` set hav_money = $money where user_id = $userid";
-      $db->query($wctx);
+      if($status==0){
+        $link[0]['text'] = '返回提现详情';
+        $link[0]['href'] = 'user_account.php?act=edit&id='.$id;
+         sys_msg('请先受理这条提现请求', 0, $link);
+         exit;
+     }
+     $time=$data['time'];
+     $now=date('Y-m-d H:i:s');
+     $sql=" delete from ecs_fencheng where time between '".$time."' and '".$now."'";
+    $GLOBALS['db']->query($sql);
+
       $logcontent = "提现金额为".$money."已完成您的提现申请。";
    }
 
-   $sql = "update `ecs_tixian` set `status` = $radionck  where id = $id";
+  $sql = "update `ecs_tixian` set `status` = $radionck  where id = $id";
    $db->query($sql);
 
-   $txlogsql = "insert into `ecs_txlog`(log_userid,log_content,log_time,remark,objection) values($lineshopid,'$logcontent',now(),'$beizhu','$objection')";
+   $txlogsql = "insert into `ecs_txlog`(log_content,log_time,remark,objection) values('$logcontent',now(),'$beizhu','$objection')";
    $db->query($txlogsql);
 
-   //添加审核日志记录信息
+       $link[0]['text'] = '返回提现列表';
+        $link[0]['href'] = 'user_account.php?act=list';
+         sys_msg('操作成功', 0, $link);
+         exit;
+
 
 
 

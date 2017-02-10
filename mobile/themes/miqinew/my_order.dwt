@@ -497,7 +497,7 @@
                       <!--{foreach from=$do.good_list item=dg}-->
                       <div class="item hidden-xs">
 
-                        {if $cg.goods_thumb}
+                        {if $dg.goods_thumb}
                         <a href="shop-single.php?id={$dg.goods_id}{$linestring2}" class="item-thumb pull-left">
                           <img src="././admin/{$dg.goods_thumb}" alt="{$dg.goods_name}">
                         </a>

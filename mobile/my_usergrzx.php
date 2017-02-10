@@ -1565,7 +1565,7 @@ elseif ($action == 'wxaddress'){
 
      //收货人姓名
       $consignee = $_GET['consignee'];
-   $sql = "insert into `ecs_user_address` (user_id,consignee,tel,province,city,district,address) values($user_id,'$consignee','$tel',$provinceid,$cityid,$districtid,'$address')";
+   $sql = "insert into `ecs_user_address` (user_id,consignee,tel,province,city,district,address,country) values($user_id,'$consignee','$tel',$provinceid,$cityid,$districtid,'$address',1)";
 
 
 $result=$db->query($sql);

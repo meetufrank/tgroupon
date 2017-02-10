@@ -299,3 +299,11 @@ ADD COLUMN `weiyi_num`  varchar(255) NULL COMMENT '//唯一编号' AFTER `xs_fen
 */
 ALTER TABLE `ecs_users`
 MODIFY COLUMN `xs_fencheng`  double(4,2) NOT NULL DEFAULT 0.00 COMMENT '//线下店产品分成' AFTER `all_money`;
+
+
+
+
+/*#2017/02/06 王晋  提现表修改
+*/
+ALTER TABLE `ecs_tixian`
+MODIFY COLUMN `time`  datetime NOT NULL DEFAULT '' COMMENT '//提现时间' AFTER `money`;

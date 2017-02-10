@@ -88,6 +88,12 @@ function available_shipping_list($region_id_list)
 
     return $GLOBALS['db']->getAll($sql);
 }
+function shipping_list_new(){
+    $sql = 'SELECT * FROM ' . $GLOBALS['ecs']->table('touch_shipping')  .
+             '  where enabled = 1 ORDER BY shipping_order';
+
+    return $GLOBALS['db']->getAll($sql);
+}
 
 /**
  * 取得某配送方式对应于某收货地址的区域信息
@@ -1287,11 +1293,10 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0,$type=0)
                 $row = $GLOBALS['db']->getRow($sql);
                 if($row) //如果购物车已经有此物品，则更新
                     {
-                        if($type){
-                            $num=1;
-                        }else{
+                        if(!$type){
                             $num += $row['goods_number'];
                         }
+
 
                         if(is_spec($spec) && !empty($prod) )
                         {

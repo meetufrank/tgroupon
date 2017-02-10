@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2017-02-06 13:22:33
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-02-08 15:58:41
+ * @Last Modified time: 2017-02-10 12:12:13
  */
 define('IN_ECTOUCH', true);
 
@@ -27,8 +27,8 @@ if($_REQUEST['act']==''){
 }else{
     $act=$_REQUEST['act'];
 }
-$page_num=3;  //分成每页显示数量
-$log_num=4;    //提现记录每页显示数量
+$page_num=10;  //分成每页显示数量
+$log_num=5;    //提现记录每页显示数量
 /*
    我的收益，商品销量
  */
@@ -49,7 +49,7 @@ if($act=='income'){
 // $fencheng_limit=' limit 0,'.$page_num;
 
 //查询分成记录总数量
-$sql=" select count(*) from ".$ecs->table('fencheng')." where get_shopid=".$userid;
+$sql=" select count(*) from ".$ecs->table('fencheng')." where get_shopid=".$userid." and status=0 ";
 $fencheng_count=$GLOBALS['db']->getOne($sql);
 $fencheng_pages=ceil($fencheng_count/$page_num);
 $smarty->assign('fencheng_pages',$fencheng_pages);
@@ -87,7 +87,8 @@ $smarty->assign('tixian_pages',$tixian_pages);
    $tixian=$GLOBALS['db']->getOne($sql);
 
  if($tixian>=500||$days>=30&&$tixian>0){
-    $sql="insert into ecs_tixian(line_shopid,money,status) values(".$userid.",".$tixian.",0)";
+     $time=date('Y-m-d H:i:s');
+    $sql="insert into ecs_tixian(line_shopid,money,status,time) values(".$userid.",".$tixian.",0,'".$time."')";
     $GLOBALS['db']->query($sql);
 
     $sql=" update ".$ecs->table('users')." set hav_money=hav_money-".$tixian.",all_money=all_money+".$tixian." where user_id=".$userid;
