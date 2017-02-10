@@ -119,6 +119,9 @@ svg {
 		font-size:12px;
 		font-weight: 400px;
 	}
+	#view{
+		font-size: 14px;
+	}
 
 }
 @media screen and (min-width:375px) and (max-width:413px){
@@ -150,6 +153,9 @@ svg {
 	.myincometh{
 		font-size:14px;
 	}
+	#view>tr>td{
+		line-height: 2.5
+	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
 	.sidebar {
@@ -180,6 +186,9 @@ svg {
 	}
 	.myincometh{
 		font-size:15px;
+	}
+	#view>tr>td{
+		line-height: 2.5
 	}
 }
 @media screen and (max-width: 480px) {
@@ -401,9 +410,6 @@ svg {
     	margin-bottom:8px;
     	font-weight:400;
     	width:65px;
-	}
-	#view{
-		font-size: 14px;
 	}
 }
 .cart-subtotal-youfei{
