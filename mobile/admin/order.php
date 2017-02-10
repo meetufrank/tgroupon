@@ -1632,7 +1632,7 @@ elseif ($_REQUEST['act'] == 'step_post')
        $order['insure_fee'] = 0;  //新加
         update_order($order_id, $order);
 
-        update_order_amount($order_id);
+        // update_order_amount($order_id);
 
 
         /* 更新 pay_log */

@@ -2,7 +2,7 @@
 {include file="pageheaderxingtong.htm"}
 {insert_scripts files="./js/validator.js"}
 <div class="main-div">
-  <form action="user_account.php" method="post" name="theForm" onsubmit="">
+  <form action="user_account.php?act=xiugai" method="post" name="theForm" onsubmit="">
     <table width="100%">
      <!--  <tr>
         <td class="label">{$lang.user_id}：</td>
@@ -79,7 +79,7 @@
                 <!-- 提现用户id -->
                 <input type="hidden"  name="lineshopid" id="lineshopid" value="{$item.line_shopid}" size="20">
                 <!-- 提现用户id -->
-                <input type="hidden"  id="txid" value="{$item.id}" size="20">
+                <input type="hidden"  id="txid" value="{$item.id}" size="20" name="txid">
               </td>
             </tr>
             <tr>
@@ -98,6 +98,7 @@
               <td class="label">审核状态:</td>
               <td>
             <!--     <input type="radio" name="radioname" value="0" {if $item.status eq 0} checked{/if}>未受理 -->
+                <input type="radio" name="radioname" value="0" {if $item.status eq 0} checked{/if}>未受理
                 <input type="radio" name="radioname" value="1" {if $item.status eq 1} checked{/if}>已受理
                 <input type="radio" name="radioname" value="2" {if $item.status eq 2} checked{/if}>拒绝
                 <input type="radio" name="radioname" value="3" {if $item.status eq 3} checked{/if}>已完成
@@ -128,49 +129,14 @@
       </tr> -->
       <tr>
         <td colspan="2" align="center">
-             <input id="btn" type="submit" value="确定" class="button" onClick="sub()"  />
+             <input id="btn" type="submit" value="确定" class="button"   />
         </td>
      </tr>
     </table>
   </form>
 </div>
 {insert_scripts files="../js/jquery-1.9.1.min.js"}
-<script language="javaScript">
-    // var radiock = $("input[name='radioname']:checked").val();
 
-    function sub(){
-
-                var txid=document.getElementById("txid").value;
-                var lineshopid=document.getElementById("lineshopid").value;
-                var beizhu=document.getElementById("beizhu").value;
-                var objection=document.getElementById("objection").value;
-                var money=document.getElementById("money").value;
-                var chkObjs = document.getElementsByName("radioname");
-                for(var i=0;i<chkObjs.length;i++){
-                    if(chkObjs[i].checked){
-                        var radionck = chkObjs[i].value;
-
-                         $.ajax({
-                                              type:"POST",
-                                              url:"user_account.php?act=xiugai",
-                                              async:true,
-                                              data:{radionck:radionck,id:txid,lineshopid:txid,beizhu:beizhu,objection:objection,money:money,userid:lineshopid},
-                                              dataType:"JSON",
-                                              success:function(data){
-
-
-                                                      }
-
-                                   });//ajax结束
-                    }
-                }
-
-
-
-
-    }
-
-</script>
 <script language="JavaScript">
 <!--
 {literal}
