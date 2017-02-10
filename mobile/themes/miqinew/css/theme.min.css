@@ -154,7 +154,7 @@ svg {
 		font-size:14px;
 	}
 	#view>tr>td{
-		line-height: 2
+		line-height:1.5
 	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
