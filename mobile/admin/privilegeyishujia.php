@@ -274,6 +274,7 @@ if(!$user_id){
     /* 获取添加日期及密码 */
     $add_time = gmtime();
 
+
     $password  = md5($_POST['password']);
     $role_id = '';
     $action_list = '';
@@ -291,6 +292,7 @@ if(!$user_id){
 
     $sql = "INSERT INTO ".$ecs->table('admin_user')." (user_name, email, password, add_time, nav_list, action_list, role_id,country,hav_logo,ysj_fencheng,ysj_tixian) ".
            "VALUES ('".trim($_POST['user_name'])."', '".trim($_POST['email'])."', '$password', '$add_time', '$row[nav_list]', '$action_list', 4,'".trim($_POST['country'])."','".$url_img."','".trim($_POST['ysj_fencheng'])."',".$user_id.")";
+
 
     $db->query($sql);
 
