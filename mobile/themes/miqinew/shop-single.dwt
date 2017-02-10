@@ -437,7 +437,7 @@
               <div class="mobile-shop-price col-xs-4" id="mobile_price">¥{$sub_price}</div>
                 <div class="col-xs-8">
                     <div class="mobile-count-input">
-                         <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">–</a>
+                         <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">-</a>
                          <input class="mobile-quantity" id="quantitymobile" type="text" value="1" readonly>
                          <a class="mobile-incr-btn" onclick="numAddmobile()" href="#">+</a>
                     </div>
