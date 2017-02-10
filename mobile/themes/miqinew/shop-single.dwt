@@ -750,7 +750,7 @@ function numAdd(){
     }
     if(num_add>__product__){
         document.getElementById("quantity").value=num_add-1;
-        alert("库存不足");
+        alert("商品库存不足"+__product__);
     }else{
         document.getElementById("quantity").value=num_add;
 
@@ -780,7 +780,7 @@ function numAddmobile(){
     }
     if(num_add>__product__){
         document.getElementById("quantitymobile").value=num_add-1;
-        alert("库存不足");
+        alert("商品库存不足"+__product__);
     }else{
         document.getElementById("quantitymobile").value=num_add;
 
