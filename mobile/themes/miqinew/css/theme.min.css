@@ -115,6 +115,10 @@ svg {
 	.nav-tabs>li>a {
 	    font-size:12px;
 	}
+	.myincometh{
+		font-size:12px;
+		font-weight: 400px;
+	}
 
 }
 @media screen and (min-width:375px) and (max-width:413px){
@@ -141,7 +145,10 @@ svg {
 		margin-right: -5px;
 	}
 	.nav-tabs>li>a {
-	    font-size:12px;
+	    font-size:14px;
+	}
+	.myincometh{
+		font-size:14px;
 	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
@@ -170,6 +177,9 @@ svg {
 	.nav-tabs>li>a {
 	    font-size:14px;
 	    padding:2px;
+	}
+	.myincometh{
+		font-size:15px;
 	}
 }
 @media screen and (max-width: 480px) {
@@ -363,7 +373,6 @@ svg {
 		padding: 10px 0;
 	}
 	.myincometh{
-		font-size:14px;
 		color: #999;
 		width:25%;
 		padding-bottom: 5px;
