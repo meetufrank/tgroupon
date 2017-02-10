@@ -1406,7 +1406,7 @@ elseif($_REQUEST['step']=='pay_ok'){
 elseif($_REQUEST['step'] == 'pay_success'){
 
    //猜你喜欢
-$xinhuan = "select p.goods_id,p.attributeimg,p.attributeprice,g.goods_name from `ecs_products` as p
+$xinhuan = "select p.goods_id,p.attributeimg,p.attributeprice+g.more_price as attributeprice,g.goods_name from `ecs_products` as p
 inner join `ecs_goods` as g
 on p.goods_id = g.goods_id
   where p.goods_id in
