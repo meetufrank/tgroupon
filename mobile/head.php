@@ -85,7 +85,7 @@ if ($_SESSION['user_id'])
 
 
      //个人中心是否显示销量的判断
-      $sql="select count(*) from ".$ecs->table('users')." where user_id=".$_SESSION['user_id']." and (is_line!=0 or is_art!=0)";    //查询提现金额
+      $sql="select count(*) from ".$ecs->table('users')." where user_id=".$_SESSION['user_id']." and (is_line!=0 or is_art!=0)";    //查询是否为空间主和线下店
       $income=$GLOBALS['db']->getOne($sql);
 
       $smarty->assign('is_income',$income);
