@@ -246,7 +246,7 @@ svg {
 	}
 	.tixianmain{
 		float: left;
-		width: 60%;		
+		width: 60%;
 	}
 }
 @media screen and (max-width: 768px) {
@@ -366,7 +366,7 @@ svg {
 	}
 	.tixianmain{
 		float: left;
-		width:65%;		
+		width:65%;
 	}
 	.layui-layer {
 	    -webkit-overflow-scrolling: touch;
@@ -521,6 +521,9 @@ kbd {
 	.padding-top {
 		padding-top: 16px !important
 	}
+	.padding-top-mobile-1x{
+		padding-top:10px !important
+	}
 	.padding-top-1x {
 		padding-top:30px !important
 	}
@@ -595,9 +598,6 @@ kbd {
 .page-edit .edit-link {
 	display: inline-block;
 	margin-top: 24px
-}
-.text-center {
-	text-align: center
 }
 .text-right {
 	text-align: right
@@ -2712,7 +2712,7 @@ display:none
 .amount_order_no1{
 	text-align: right;
 }
-.amount_ye,.amount_no,.amount_come,.amount_order_come,.amount_order_yes,.amount_order_no,.amount_pay{
+.amount_ye,.amount_no,.amount_come,.amount_done,.amount_order_come,.amount_order_yes,.amount_order_no,.amount_pay{
     font-size: 24px;
 	font-weight: 500;
 	text-align: right

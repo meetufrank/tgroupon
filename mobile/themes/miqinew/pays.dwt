@@ -434,17 +434,10 @@
 
           var goods_number = num + Number(diff);
           if( goods_number >= 1){
-            $('.cart_number_'+rec_id).val(goods_number); //更新数量
-            var cartnum=document.getElementById('cart_count').innerHTML;
-            document.getElementById('cart_count').innerHTML=Number(cartnum)+Number(diff);
 
-            change_cart_number(rec_id,goods_number);
-          }
-        }
 
-        function change_cart_number(rec_id, goods_number)
-        {
-          $.ajax({
+
+             $.ajax({
                 type:"POST",
                 url:"flow.php",
                 dataType: "json",
@@ -454,15 +447,21 @@
                    // document.getElementById('total_number').innerHTML = data.total_number;//更新数量
                   $('.goods_subtotal'+rec_id).html(data.goods_subtotal) ;//更新小计
                    jisuan();
+                    $('.cart_number_'+rec_id).val(goods_number); //更新数量
+
 
                 },
                 error: function(){
-                    alert("json出错");
+
+                    alert("库存不足");
+
                 }
             });
-
-
+          }
         }
+
+
+
 
         function dropcart(id){
           event.preventDefault();

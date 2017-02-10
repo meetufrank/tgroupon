@@ -24,14 +24,7 @@ include('head.php');
 
 
 
-include('Jssdk.php');
 
-$appId = 'wxb5aec13c030a530b';//打开微信公众平台-开发者中心 获取appId和appSecret
-$appSecret = '2232d4acc3612e530f0ccc311c72d68c';
-$jssdk = new \Jssdk($appId, $appSecret);
-$datajssdk = $jssdk->getSignPackage();
-
-$smarty->assign('datajssdk', $datajssdk);
 
 
 
@@ -536,7 +529,8 @@ group by p.goods_id ";
 $spfxtp = $db->getRow($fenxiangtupian);
 $spfxtpimg = $spfxtp['attributeimg'];
 
-$fengxiangtupian = $fenxingtupian.$spfxtpimg;
+$fengxiangtupian = $config['fenxingtupian'].$spfxtpimg;
+
 $smarty->assign('fengxiangtupian',  $fengxiangtupian);  //商品图片
 
 

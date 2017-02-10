@@ -1287,11 +1287,10 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0,$type=0)
                 $row = $GLOBALS['db']->getRow($sql);
                 if($row) //如果购物车已经有此物品，则更新
                     {
-                        if($type){
-                            $num=1;
-                        }else{
+                        if(!$type){
                             $num += $row['goods_number'];
                         }
+
 
                         if(is_spec($spec) && !empty($prod) )
                         {

@@ -276,6 +276,8 @@ ADD COLUMN `xs_fencheng`  double(4,2) NOT NULL DEFAULT 0 COMMENT '//线下店销
 /*#2017/02/06 王晋  修改艺术家字段
 */
 ALTER TABLE `ecs_admin_user`
+MODIFY COLUMN `ysj_tixian`  mediumint(8) NOT NULL DEFAULT 0 COMMENT '//艺术家绑定提现用户id' AFTER `ysj_fencheng`;
+
 
 
 /*#2017/02/08 汪江  添加提现审核日志表中的审核备注字段
