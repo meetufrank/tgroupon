@@ -88,6 +88,12 @@ function available_shipping_list($region_id_list)
 
     return $GLOBALS['db']->getAll($sql);
 }
+function shipping_list_new(){
+    $sql = 'SELECT * FROM ' . $GLOBALS['ecs']->table('touch_shipping')  .
+             '  where enabled = 1 ORDER BY shipping_order';
+
+    return $GLOBALS['db']->getAll($sql);
+}
 
 /**
  * 取得某配送方式对应于某收货地址的区域信息
