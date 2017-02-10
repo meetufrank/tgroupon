@@ -145,7 +145,7 @@ svg {
 		margin-right: -5px;
 	}
 	.nav-tabs>li>a {
-	    font-size:14px;
+	    font-size:15px;
 	}
 	.myincometh{
 		font-size:14px;
@@ -401,6 +401,9 @@ svg {
     	margin-bottom:8px;
     	font-weight:400;
     	width:65px;
+	}
+	#view{
+		font-size: 14px;
 	}
 }
 .cart-subtotal-youfei{
