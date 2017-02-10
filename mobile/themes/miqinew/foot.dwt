@@ -1,26 +1,17 @@
  <footer class="footer padding-top-2x">
       <div class="column">
         <div class="feature text-center">
-            <div class="feature-icon">
-              <!-- <i class="material-icons credit_card"></i> -->
-            </div>
-      <h4 class="feature-title"><a id="Cooperate" href="#">服务中心</a></h4>
+      <div class="feature-title"><a id="Cooperate" href="#">服务中心</a></div>
           </div>
       </div><!-- .column -->
       <div class="column">
         <div class="feature text-center">
-            <div class="feature-icon">
-              <!-- <i class="material-icons settings"></i> -->
-            </div>
-            <h4 class="feature-title"><a href="#">关于我们</a></h4>
+            <div class="feature-title"><a href="#">关于我们</a></div>
           </div>
       </div><!-- .column -->
       <div class="column">
         <div class="feature text-center">
-            <div class="feature-icon">
-              <!-- <i class="material-icons face"></i> -->
-            </div>
-            <h4 class="feature-title"><a href="#">商业合作</a></h4>
+            <div class="feature-title"><a href="#">商业合作</a></div>
           </div>
       </div>
     </footer><!-- .footer -->
