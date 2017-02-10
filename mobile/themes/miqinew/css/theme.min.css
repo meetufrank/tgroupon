@@ -5677,7 +5677,7 @@ img.mfp-img {
 }
 .mobile-count-input {
     position: relative;
-    width: 80px;
+    width:100px;
     margin-top: 10px;
     margin-right: 0px;
     margin-bottom: 10px;
@@ -5698,8 +5698,6 @@ img.mfp-img {
     text-align: center;
     line-height: 33px;
     text-decoration: none;
-    top: 0;
-    right: 0;
 }
 .mobile-count-input input {
     width: 100%;
@@ -5724,8 +5722,6 @@ img.mfp-img {
     text-align: center;
     line-height: 33px;
     text-decoration: none;
-    top: 0;
-    right: 0;
 }
 .mobile-cart-color-text{
 	font-size:14px;
