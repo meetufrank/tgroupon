@@ -112,6 +112,9 @@ svg {
 	.aiheart{
 		margin-right: -5px;
 	}
+	.nav-tabs>li>a {
+	    font-size:12px;
+	}
 
 }
 @media screen and (min-width:375px) and (max-width:413px){
@@ -137,6 +140,9 @@ svg {
 	.aiheart{
 		margin-right: -5px;
 	}
+	.nav-tabs>li>a {
+	    font-size:12px;
+	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
 	.sidebar {
@@ -161,17 +167,21 @@ svg {
 	.aiheart{
 		margin-right: -5px;
 	}
+	.nav-tabs>li>a {
+	    font-size:14px;
+	    padding:2px;
+	}
 }
 @media screen and (max-width: 480px) {
-.shopping-cart .item {
-	padding-bottom: 20px
-}
-.shopping-cart .item .item-thumb, .shopping-cart .item .item-details {
-	display:inline-block
-}
-.shopping-cart .item .item-thumb {
-	margin-bottom: 20px
-}
+	.shopping-cart .item {
+		padding-bottom: 20px
+	}
+	.shopping-cart .item .item-thumb, .shopping-cart .item .item-details {
+		display:inline-block
+	}
+	.shopping-cart .item .item-thumb {
+		margin-bottom: 20px
+	}
 }
 @media screen and (max-width: 991px) {
 	.featured-image {
@@ -302,10 +312,6 @@ svg {
 	.toolbar-dropdown {
 		height: 80%;
 		background-color:white;
-	}
-	.nav-tabs>li>a {
-	    font-size:14px;
-	    padding:2px;
 	}
 	.pc-group-select ul {
 		max-width: 200px;
