@@ -238,7 +238,7 @@ elseif ($_REQUEST['act'] == 'xiugai'){
   $sql = "update `ecs_tixian` set `status` = $radionck  where id = $id";
    $db->query($sql);
 
-   $txlogsql = "insert into `ecs_txlog`(log_content,log_time,remark,objection) values('$logcontent',now(),'$beizhu','$objection')";
+    $txlogsql = "insert into `ecs_txlog`(log_userid,log_content,log_time,remark,objection) values($userid,'$logcontent',now(),'$beizhu','$objection')";
    $db->query($txlogsql);
 
        $link[0]['text'] = '返回提现列表';

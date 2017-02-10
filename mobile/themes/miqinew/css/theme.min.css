@@ -112,6 +112,16 @@ svg {
 	.aiheart{
 		margin-right: -5px;
 	}
+	.nav-tabs>li>a {
+	    font-size:12px;
+	}
+	.myincometh{
+		font-size:12px;
+		font-weight: 400px;
+	}
+	#view{
+		font-size: 14px;
+	}
 
 }
 @media screen and (min-width:375px) and (max-width:413px){
@@ -137,6 +147,15 @@ svg {
 	.aiheart{
 		margin-right: -5px;
 	}
+	.nav-tabs>li>a {
+	    font-size:15px;
+	}
+	.myincometh{
+		font-size:14px;
+	}
+	#view>tr>td{
+		line-height: 2
+	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
 	.sidebar {
@@ -161,17 +180,27 @@ svg {
 	.aiheart{
 		margin-right: -5px;
 	}
+	.nav-tabs>li>a {
+	    font-size:14px;
+	    padding:2px;
+	}
+	.myincometh{
+		font-size:15px;
+	}
+	#view>tr>td{
+		line-height: 2.5
+	}
 }
 @media screen and (max-width: 480px) {
-.shopping-cart .item {
-	padding-bottom: 20px
-}
-.shopping-cart .item .item-thumb, .shopping-cart .item .item-details {
-	display:inline-block
-}
-.shopping-cart .item .item-thumb {
-	margin-bottom: 20px
-}
+	.shopping-cart .item {
+		padding-bottom: 20px
+	}
+	.shopping-cart .item .item-thumb, .shopping-cart .item .item-details {
+		display:inline-block
+	}
+	.shopping-cart .item .item-thumb {
+		margin-bottom: 20px
+	}
 }
 @media screen and (max-width: 991px) {
 	.featured-image {
@@ -248,6 +277,12 @@ svg {
 		float: left;
 		width: 60%;
 	}
+	.feature .feature-title {
+		font-size: 16px;
+		font-weight: normal;
+		margin-top:15px;
+    	margin-bottom: 15px;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -296,10 +331,6 @@ svg {
 	.toolbar-dropdown {
 		height: 80%;
 		background-color:white;
-	}
-	.nav-tabs>li>a {
-	    font-size:14px;
-	    padding:2px;
 	}
 	.pc-group-select ul {
 		max-width: 200px;
@@ -351,7 +382,6 @@ svg {
 		padding: 10px 0;
 	}
 	.myincometh{
-		font-size:14px;
 		color: #999;
 		width:25%;
 		padding-bottom: 5px;
@@ -373,6 +403,13 @@ svg {
 	    left: 0;
 	    margin: 0;
 	    padding: 0;
+	}
+	.feature .feature-title {
+		font-size:15px;
+		margin-top:8px;
+    	margin-bottom:8px;
+    	font-weight:400;
+    	width:65px;
 	}
 }
 .cart-subtotal-youfei{
@@ -4322,24 +4359,7 @@ display:none
 	position: relative;
 	width: 100%;
 	margin-bottom: 24px;
-/*	overflow: hidden*/
 }
-/*.teammate .teammate-thumb>img {
-	display: block;
-	width: 100%;
-	opacity: 1;
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	backface-visibility: hidden;
-	-webkit-transform: scale(1);
-	-moz-transform: scale(1);
-	-ms-transform: scale(1);
-	-o-transform: scale(1);
-	transform: scale(1);
-	-webkit-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s
-}*/
 .teammate .teammate-name {
 	font-size: 16px;
 	font-weight: normal;
@@ -4354,8 +4374,6 @@ display:none
 	position: absolute;
 	z-index: 1;
 	width: 100%;
-	/*top: 50%;
-	left: 0;*/
 	margin-top:50%;
 	opacity: 0;
 	-webkit-transform: translateY(-25%);
@@ -4383,23 +4401,13 @@ display:none
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%)
 }
-/*.feature {
-	margin-bottom: 30px
-}*/
 .feature .feature-icon {
 	display: inline-block;
 	font-size: 36px;
 	color: #cecece;
 	margin-bottom: 16px
 }
-.feature .feature-title {
-	font-size: 16px;
-	font-weight: normal;
-	/*margin-bottom: 8px*/
-	margin-top:8px;
-}
 .feature .feature-title a{
-	/*text-decoration:underline;*/
 	color:#333;
 }
 .feature .feature-title a:hover{
@@ -5677,7 +5685,7 @@ img.mfp-img {
 }
 .mobile-count-input {
     position: relative;
-    width: 80px;
+    width:100px;
     margin-top: 10px;
     margin-right: 0px;
     margin-bottom: 10px;
@@ -5698,8 +5706,6 @@ img.mfp-img {
     text-align: center;
     line-height: 33px;
     text-decoration: none;
-    top: 0;
-    right: 0;
 }
 .mobile-count-input input {
     width: 100%;
@@ -5717,15 +5723,13 @@ img.mfp-img {
     display: block;
     position: absolute;
     width: 20px;
-    height: 30px;
     font-size: 18px;
     color: #606060;
-    font-weight: 300;
     text-align: center;
-    line-height: 33px;
+    line-height:30px;
     text-decoration: none;
-    top: 0;
-    right: 0;
+    right:0;
+    top:0;
 }
 .mobile-cart-color-text{
 	font-size:14px;

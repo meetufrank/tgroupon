@@ -434,10 +434,10 @@
             </div>
             <div class="clear"></div>
             <div class="mobile-shop-detail col-xs-12">
-              <div class="mobile-shop-price col-xs-5" id="mobile_price">¥{$sub_price}</div>
-                <div class="col-xs-7">
+              <div class="mobile-shop-price col-xs-4" id="mobile_price">¥{$sub_price}</div>
+                <div class="col-xs-8">
                     <div class="mobile-count-input">
-                         <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">–</a>
+                         <a class="mobile-incr-btn" onclick="numDecmobile()" href="#">-</a>
                          <input class="mobile-quantity" id="quantitymobile" type="text" value="1" readonly>
                          <a class="mobile-incr-btn" onclick="numAddmobile()" href="#">+</a>
                     </div>
@@ -750,7 +750,7 @@ function numAdd(){
     }
     if(num_add>__product__){
         document.getElementById("quantity").value=num_add-1;
-        alert("商品库存不足"+__product__);
+        alert("库存不足");
     }else{
         document.getElementById("quantity").value=num_add;
 
@@ -780,7 +780,7 @@ function numAddmobile(){
     }
     if(num_add>__product__){
         document.getElementById("quantitymobile").value=num_add-1;
-        alert("商品库存不足"+__product__);
+        alert("库存不足");
     }else{
         document.getElementById("quantitymobile").value=num_add;
 
