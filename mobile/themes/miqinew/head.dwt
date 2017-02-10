@@ -59,6 +59,7 @@
 <!--              <li><a class="relative" href="#">消息记录<span class="count">2</span></a></li>-->
                 <li><a class="relative" href="#">消息记录</a></li>
               <li><a href="my_usergrzx.php?act=address_list{$linestring2}">管理地址</a></li>
+              {if $is_income} <li><a href="my_income.php{$linestring1}">商品销量</a></li>{/if}
             </ul>
         </div>
 
