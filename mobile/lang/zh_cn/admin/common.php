@@ -130,31 +130,31 @@ $_LANG['kilogram'] = '千克';
 
 /* 菜单分类部分 */
 $_LANG['02_cat_and_goods'] = '商品管理';
-$_LANG['03_promotion'] = '促销管理';
+// $_LANG['03_promotion'] = '促销管理';
 $_LANG['04_order'] = '订单管理';
 $_LANG['05_banner'] = '广告管理';
 $_LANG['06_stats'] = '报表统计';
-$_LANG['07_content'] = '文章管理';
+// $_LANG['07_content'] = '文章管理';
 $_LANG['08_members'] = '会员管理';
 $_LANG['09_others'] = '杂项管理';
 $_LANG['10_priv_admin'] = '权限管理';
-$_LANG['11_system'] = '系统设置';
-$_LANG['12_template'] = '模板管理';
+// $_LANG['11_system'] = '系统设置';
+// $_LANG['12_template'] = '模板管理';
 $_LANG['13_backup'] = '数据库管理';
 $_LANG['14_sms'] = '短信管理';
-$_LANG['15_rec'] = '分销设置';
+// $_LANG['15_rec'] = '分销设置';
 $_LANG['16_email_manage'] = '邮件群发管理';
-$_LANG['17_wechat'] = '商创TGROUPON';
-$_LANG['18_shouce'] = '使用手册';
+// $_LANG['17_wechat'] = '商创TGROUPON';
+// $_LANG['18_shouce'] = '使用手册';
 
 /* 商品管理 */
 $_LANG['01_goods_list'] = '商品列表';
 $_LANG['02_goods_add'] = '添加新商品';
 $_LANG['03_category_list'] = '商品分类';
-$_LANG['04_comment_manage'] = '用户评论管理';//  甜  心100tianxin  100   添加
+// $_LANG['04_comment_manage'] = '用户评论管理';//  甜  心100tianxin  100   添加
 $_LANG['04_category_add'] = '添加分类';
 $_LANG['05_comment_manage'] = '用户评论';
-$_LANG['06_goods_brand_list'] = '品牌管理';
+// $_LANG['06_goods_brand_list'] = '品牌管理';
 $_LANG['07_brand_add'] = '添加品牌';
 $_LANG['08_goods_type'] = '商品类型';
 $_LANG['09_attribute_list'] = '商品属性';
@@ -176,42 +176,42 @@ $_LANG['51_virtual_card_add'] = '添加虚拟商品';
 $_LANG['52_virtual_card_change'] = '更改加密串';
 $_LANG['goods_auto'] = '商品自动上下架';
 $_LANG['article_auto'] = '文章自动发布';
-$_LANG['navigator'] = '菜单管理';
+// $_LANG['navigator'] = '菜单管理';
 
 /* 促销管理 */
-$_LANG['02_snatch_list'] = '夺宝奇兵';
-$_LANG['snatch_add'] = '添加夺宝奇兵';
-$_LANG['04_bonustype_list'] = '红包类型';
-$_LANG['bonustype_add'] = '添加红包类型';
-$_LANG['05_bonus_list'] = '线下红包';
-$_LANG['bonus_add'] = '添加会员红包';
-$_LANG['06_pack_list'] = '商品包装';
-$_LANG['07_card_list'] = '祝福贺卡';
-$_LANG['pack_add'] = '添加新包装';
-$_LANG['card_add'] = '添加新贺卡';
-$_LANG['08_group_buy'] = '团购活动';
-$_LANG['09_topic'] = '专题管理';
-$_LANG['topic_add'] = '添加专题';
-$_LANG['topic_list'] = '专题列表';
-$_LANG['10_auction'] = '拍卖活动';
-$_LANG['12_favourable'] = '优惠活动';
-$_LANG['13_wholesale'] = '批发管理';
-$_LANG['ebao_commend'] = '易宝推荐';
-$_LANG['14_package_list'] = '超值礼包';
-$_LANG['package_add'] = '添加超值礼包';
+// $_LANG['02_snatch_list'] = '夺宝奇兵';
+// $_LANG['snatch_add'] = '添加夺宝奇兵';
+// $_LANG['04_bonustype_list'] = '红包类型';
+// $_LANG['bonustype_add'] = '添加红包类型';
+// $_LANG['05_bonus_list'] = '线下红包';
+// $_LANG['bonus_add'] = '添加会员红包';
+// $_LANG['06_pack_list'] = '商品包装';
+// $_LANG['07_card_list'] = '祝福贺卡';
+// $_LANG['pack_add'] = '添加新包装';
+// $_LANG['card_add'] = '添加新贺卡';
+// $_LANG['08_group_buy'] = '团购活动';
+// $_LANG['09_topic'] = '专题管理';
+// $_LANG['topic_add'] = '添加专题';
+// $_LANG['topic_list'] = '专题列表';
+// $_LANG['10_auction'] = '拍卖活动';
+// $_LANG['12_favourable'] = '优惠活动';
+// $_LANG['13_wholesale'] = '批发管理';
+// $_LANG['ebao_commend'] = '易宝推荐';
+// $_LANG['14_package_list'] = '超值礼包';
+// $_LANG['package_add'] = '添加超值礼包';
 
 /* 订单管理 */
 $_LANG['02_order_list'] = '订单列表';
-$_LANG['03_order_query'] = '订单查询';
-$_LANG['04_merge_order'] = '合并订单';
+// $_LANG['03_order_query'] = '订单查询';
+// $_LANG['04_merge_order'] = '合并订单';
 $_LANG['05_edit_order_print'] = '订单打印';
-$_LANG['06_undispose_booking'] = '缺货登记';
+// $_LANG['06_undispose_booking'] = '缺货登记';
 $_LANG['08_add_order'] = '添加订单';
 $_LANG['09_delivery_order'] = '发货单列表';
-$_LANG['10_back_order'] = '退货单列表';
+// $_LANG['10_back_order'] = '退货单列表';
 
 /* 广告管理 */
-$_LANG['ad_position'] = '广告管理';
+// $_LANG['ad_position'] = '广告管理';
 $_LANG['ad_list'] = '广告列表';
 
 /* 报表统计 */
@@ -227,14 +227,14 @@ $_LANG['visit_buy_per'] = '访问购买率';
 $_LANG['z_clicks_stats'] = '站外投放JS';
 
 /* 文章管理 */
-$_LANG['02_articlecat_list'] = '文章分类';
-$_LANG['articlecat_add'] = '添加文章分类';
-$_LANG['03_article_list'] = '文章列表';
-$_LANG['article_add'] = '添加新文章';
-$_LANG['shop_article'] = '网店文章';
-$_LANG['shop_info'] = '网店信息';
-$_LANG['shop_help'] = '网店帮助';
-$_LANG['vote_list'] = '在线调查';
+// $_LANG['02_articlecat_list'] = '文章分类';
+// $_LANG['articlecat_add'] = '添加文章分类';
+// $_LANG['03_article_list'] = '文章列表';
+// $_LANG['article_add'] = '添加新文章';
+// $_LANG['shop_article'] = '网店文章';
+// $_LANG['shop_info'] = '网店信息';
+// $_LANG['shop_help'] = '网店帮助';
+// $_LANG['vote_list'] = '在线调查';
 
 /* 会员管理 */
 $_LANG['08_unreply_msg'] = '会员留言';
@@ -262,34 +262,34 @@ $_LANG['suppliers_list'] = '供货商列表';
 
 
 /* 系统设置 */
-$_LANG['01_shop_config'] = '基本设置';
-$_LANG['shop_authorized'] = '授权证书';
-$_LANG['shp_webcollect'] = '网罗天下';
-$_LANG['02_payment_list'] = '支付方式';
-$_LANG['03_shipping_list'] = '配送方式';
-$_LANG['04_mail_settings'] = '邮件服务器设置';
-$_LANG['05_area_list'] = '地区列表';
-$_LANG['07_cron_schcron'] = '计划任务';
-$_LANG['08_friendlink_list'] = '友情链接';
-$_LANG['shipping_area_list'] = '配送区域';
-$_LANG['sitemap'] = '站点地图';
-$_LANG['check_file_priv'] = '文件权限检测';
-$_LANG['captcha_manage'] = '验证码管理';
-$_LANG['fckfile_manage'] = 'Fck上传文件管理';
-$_LANG['ucenter_setup'] = 'UCenter设置';
-$_LANG['file_check'] = '文件校验';
-$_LANG['021_reg_fields'] = '会员注册项设置';
-$_LANG['website'] = '授权登录';
-$_LANG['user_card'] = '会员卡管理';
-$_LANG['category_icon'] = '分类图标';
+// $_LANG['01_shop_config'] = '基本设置';
+// $_LANG['shop_authorized'] = '授权证书';
+// $_LANG['shp_webcollect'] = '网罗天下';
+// $_LANG['02_payment_list'] = '支付方式';
+// $_LANG['03_shipping_list'] = '配送方式';
+// $_LANG['04_mail_settings'] = '邮件服务器设置';
+// $_LANG['05_area_list'] = '地区列表';
+// $_LANG['07_cron_schcron'] = '计划任务';
+// $_LANG['08_friendlink_list'] = '友情链接';
+// $_LANG['shipping_area_list'] = '配送区域';
+// $_LANG['sitemap'] = '站点地图';
+// $_LANG['check_file_priv'] = '文件权限检测';
+// $_LANG['captcha_manage'] = '验证码管理';
+// $_LANG['fckfile_manage'] = 'Fck上传文件管理';
+// $_LANG['ucenter_setup'] = 'UCenter设置';
+// $_LANG['file_check'] = '文件校验';
+// $_LANG['021_reg_fields'] = '会员注册项设置';
+// $_LANG['website'] = '授权登录';
+// $_LANG['user_card'] = '会员卡管理';
+// $_LANG['category_icon'] = '分类图标';
 
 /* 模板管理 */
-$_LANG['02_template_select'] = '模板选择';
-$_LANG['03_template_setup'] = '设置模板';
-$_LANG['04_template_library'] = '库项目管理';
-$_LANG['mail_template_manage'] = '邮件模板';
-$_LANG['05_edit_languages'] = '语言项编辑';
-$_LANG['06_template_backup'] = '模板设置备份';
+// $_LANG['02_template_select'] = '模板选择';
+// $_LANG['03_template_setup'] = '设置模板';
+// $_LANG['04_template_library'] = '库项目管理';
+// $_LANG['mail_template_manage'] = '邮件模板';
+// $_LANG['05_edit_languages'] = '语言项编辑';
+// $_LANG['06_template_backup'] = '模板设置备份';
 /* 数据库管理 */
 $_LANG['02_db_manage'] = '数据备份';
 $_LANG['03_db_optimize'] = '数据表优化';
@@ -298,56 +298,56 @@ $_LANG['05_synchronous'] = '同步数据';
 $_LANG['convert'] = '转换数据';
 
 /* 短信管理 */
-$_LANG['02_sms_my_info'] = '账号信息';
-$_LANG['03_sms_send'] = '发送短信';
-$_LANG['04_sms_charge'] = '账户充值';
-$_LANG['05_sms_send_history'] = '发送记录';
-$_LANG['06_sms_charge_history'] = '充值记录';
+// $_LANG['02_sms_my_info'] = '账号信息';
+// $_LANG['03_sms_send'] = '发送短信';
+// $_LANG['04_sms_charge'] = '账户充值';
+// $_LANG['05_sms_send_history'] = '发送记录';
+// $_LANG['06_sms_charge_history'] = '充值记录';
 
-$_LANG['affiliate'] = '推荐设置';
-$_LANG['affiliate_ck'] = '分成管理';
-$_LANG['danpin_tuiguang'] = '单品推广设置';
-$_LANG['zdy_parent'] = '查看|编辑推荐关系';
-$_LANG['flashplay'] = '首页主广告管理';
-$_LANG['search_log'] = '搜索关键字';
-$_LANG['email_list'] = '邮件订阅管理';
-$_LANG['magazine_list'] = '杂志管理';
-$_LANG['attention_list'] = '关注管理';
-$_LANG['view_sendlist'] = '邮件队列管理';
+// $_LANG['affiliate'] = '推荐设置';
+// $_LANG['affiliate_ck'] = '分成管理';
+// $_LANG['danpin_tuiguang'] = '单品推广设置';
+// $_LANG['zdy_parent'] = '查看|编辑推荐关系';
+// $_LANG['flashplay'] = '首页主广告管理';
+// $_LANG['search_log'] = '搜索关键字';
+// $_LANG['email_list'] = '邮件订阅管理';
+// $_LANG['magazine_list'] = '杂志管理';
+// $_LANG['attention_list'] = '关注管理';
+// $_LANG['view_sendlist'] = '邮件队列管理';
 
 /* 积分兑换管理 */
-$_LANG['15_exchange_goods'] = '积分商城';
+// $_LANG['15_exchange_goods'] = '积分商城';
 $_LANG['15_exchange_goods_list'] = '积分商城商品列表';
 $_LANG['exchange_goods_add'] = '添加新商品';
 
 //商创TGROUPON
-$_LANG['wx_1api']         = '微信接口';
-$_LANG['wx_3menu']        = '微信菜单设置';
-$_LANG['wx_2config']         = 'TGROUPON设置';
-$_LANG['wx_4autoreg']         = '自动注册设置';
-$_LANG['wx_bonus']         = '关注送红包';
-$_LANG['wx_regmsg']         = '关注回复内容';
-$_LANG['wx_lang']         = '语言设置';
-$_LANG['wx_keywords']         = '关键词自动回复';
-$_LANG['wx_point']         = '积分增加';
-$_LANG['wx_fun']         = '功能变量';
-$_LANG['wx_prize']         = '抽奖规则';
-$_LANG['wx_zjd']         = '砸金蛋';
-$_LANG['wx_dzp']         = '大转盘';
-$_LANG['wx_qr']         = '多功能二维码';
-$_LANG['wx_order']         = '发货提醒';
-$_LANG['wx_pay']         = '付款提醒';
-$_LANG['wx_reorder']         = '订单提醒';
-$_LANG['wx_fans']         = '粉丝管理';
-$_LANG['wx_oauth']         = '微信OAuth';
-$_LANG['wx_tuijian']         = '扫码引荐';
-$_LANG['wx_list']         = '推荐人列表';
-$_LANG['wx_tuijian_reply']   = '发展会员关注提醒';
+// $_LANG['wx_1api']         = '微信接口';
+// $_LANG['wx_3menu']        = '微信菜单设置';
+// $_LANG['wx_2config']         = 'TGROUPON设置';
+// $_LANG['wx_4autoreg']         = '自动注册设置';
+// $_LANG['wx_bonus']         = '关注送红包';
+// $_LANG['wx_regmsg']         = '关注回复内容';
+// $_LANG['wx_lang']         = '语言设置';
+// $_LANG['wx_keywords']         = '关键词自动回复';
+// $_LANG['wx_point']         = '积分增加';
+// $_LANG['wx_fun']         = '功能变量';
+// $_LANG['wx_prize']         = '抽奖规则';
+// $_LANG['wx_zjd']         = '砸金蛋';
+// $_LANG['wx_dzp']         = '大转盘';
+// $_LANG['wx_qr']         = '多功能二维码';
+// $_LANG['wx_order']         = '发货提醒';
+// $_LANG['wx_pay']         = '付款提醒';
+// $_LANG['wx_reorder']         = '订单提醒';
+// $_LANG['wx_fans']         = '粉丝管理';
+// $_LANG['wx_oauth']         = '微信OAuth';
+// $_LANG['wx_tuijian']         = '扫码引荐';
+// $_LANG['wx_list']         = '推荐人列表';
+// $_LANG['wx_tuijian_reply']   = '发展会员关注提醒';
 
 
 //手册
-$_LANG['ectouch']         = '商城设置手册';
-$_LANG['weixintong']         = 'TGROUPON使用手册';
+// $_LANG['ectouch']         = '商城设置手册';
+// $_LANG['weixintong']         = 'TGROUPON使用手册';
 
 /* cls_image类的语言项 */
 $_LANG['directory_readonly'] = '目录 % 不存在或不可写';
