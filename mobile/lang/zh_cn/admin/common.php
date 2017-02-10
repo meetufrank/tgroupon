@@ -13,13 +13,13 @@
  * $Id: common.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['app_name'] = 'TGROUPON';
-$_LANG['cp_home'] = 'TGROUPON 管理中心';
-$_LANG['copyright'] = '版权所有 &copy; 2005-2012 TGROUPON中国，并保留所有权利。';
-$_LANG['query_info'] = '共执行 %d 个查询，用时 %s 秒';
-$_LANG['memory_info'] = '，内存占用 %0.3f MB';
-$_LANG['gzip_enabled'] = '，Gzip 已启用';
-$_LANG['gzip_disabled'] = '，Gzip 已禁用';
+$_LANG['app_name'] = '型色主义后台';
+$_LANG['cp_home'] = '型色主义后台 管理中心';
+$_LANG['copyright'] = '型色主义后台';
+// $_LANG['query_info'] = '共执行 %d 个查询，用时 %s 秒';
+// $_LANG['memory_info'] = '，内存占用 %0.3f MB';
+// $_LANG['gzip_enabled'] = '，Gzip 已启用';
+// $_LANG['gzip_disabled'] = '，Gzip 已禁用';
 $_LANG['loading'] = '正在处理您的请求...';
 $_LANG['js_languages']['process_request'] = '正在处理您的请求...';
 $_LANG['js_languages']['todolist_caption'] = '记事本';
@@ -89,7 +89,7 @@ $_LANG['refresh'] = '刷新';
 $_LANG['update_sort'] = '更新排序';
 $_LANG['modify_failure'] = '修改失败!';
 $_LANG['attradd_succed'] = '操作成功!';
-$_LANG['todolist'] = '记事本';
+// $_LANG['todolist'] = '记事本';
 $_LANG['n_a'] = 'N/A';
 
 /* 提示 */

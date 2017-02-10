@@ -62,7 +62,7 @@
 </div>
 <br />
 <!-- Virtual Card -->
-<div class="list-div">
+<!-- <div class="list-div">
 <table cellspacing='1' cellpadding='3'>
   <tr>
     <th colspan="4" class="group-title">{$lang.virtual_card_stat}</th>
@@ -86,11 +86,11 @@
     <td><strong>{$virtual_card.promote}</strong></td>
   </tr>
 </table>
-</div>
+</div> -->
 <!-- end order statistics -->
 <br />
 <!-- start access statistics -->
-<div class="list-div">
+<!-- <div class="list-div">
 <table cellspacing='1' cellpadding='3'>
   <tr>
     <th colspan="4" class="group-title">{$lang.acess_stat}</th>
@@ -108,11 +108,11 @@
     <td><strong>{$comment_number}</strong></td>
   </tr>
 </table>
-</div>
+</div> -->
 <!-- end access statistics -->
 <br />
 <!-- start system information -->
-<div class="list-div">
+<!-- <div class="list-div">
 <table cellspacing='1' cellpadding='3'>
   <tr>
     <th colspan="4" class="group-title">{$lang.system_info}</th>
@@ -166,7 +166,7 @@
     <td></td>
   </tr>
 </table>
-</div>
+</div> -->
 {literal}
 {insert_scripts files="../data/static/js/utils.js"}
 <script type="Text/Javascript" language="JavaScript">
@@ -190,10 +190,10 @@ onload = function()
         if(lis.length>1)
         {
           api_styel();
-        }      
+        }
       }
     }
- 
+
       function api_styel()
       {
         if(document.getElementById("Marquee") != null)
@@ -207,7 +207,7 @@ onload = function()
             {
               Mar.style.height = "36px";
             }
-            
+
             var child_div=Mar.getElementsByTagName("div");
 
         var picH = 16;//移动高度
@@ -215,7 +215,7 @@ onload = function()
         var scrolltime=30;//移动频度(毫秒)越大越慢
         var stoptime=4000;//间断时间(毫秒)
         var tmpH = 0;
-        
+
         function start()
         {
           if(tmpH < picH)
