@@ -3,7 +3,7 @@
 {include file="pageheader.htm"}
 {insert_scripts files="../data/static/js/utils.js,./js/listtable.js"}
 <div class="form-div">
-  <form action="javascript:searchUser()" name="searchForm">
+  <!-- <form action="javascript:searchUser()" name="searchForm">
     <img src="images/icon_search.gif" width="25" height="22" border="0" alt="SEARCH" />
     {$lang.user_id} <input type="text" name="keyword" size="10" />
       <select name="process_type">
@@ -22,7 +22,9 @@
         <option value="2">{$lang.cancel}</option>
       </select>
       <input type="submit" value="{$lang.button_search}" class="button" />
-  </form>
+  </form> -->
+
+  <input type="button" id="qingkong" value="清空角色数据">
 </div>
 
 <form method="POST" action="" name="listForm">
