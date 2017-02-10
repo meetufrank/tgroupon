@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2017-02-06 13:22:33
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-02-10 12:12:13
+ * @Last Modified time: 2017-02-10 17:15:54
  */
 define('IN_ECTOUCH', true);
 
@@ -136,7 +136,7 @@ exit;
 
 //获取分成列表
 function get_fencheng_list($userid,$fencheng_limit){
-  $sql="select ef.money,DATE_FORMAT(ef.time,'%Y/%m/%d %H:%i') as time,eg.goods_name,ef.type,eu.alias from ecs_fencheng as ef INNER JOIN ecs_goods as eg
+  $sql="select ef.money,DATE_FORMAT(ef.time,'%m/%d %H:%i') as time,eg.goods_name,ef.type,eu.alias from ecs_fencheng as ef INNER JOIN ecs_goods as eg
       on eg.goods_id=ef.goodsid
       INNER JOIN ecs_users as eu
       on ef.userid=eu.user_id
