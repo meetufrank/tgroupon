@@ -19,10 +19,10 @@
         class="tab-back" id="detail-tab">{$lang.tab_detail}</span><span
         class="tab-back" id="mix-tab">{$lang.tab_mix}</span>{if $goods_type_list}<span
         class="tab-back" id="properties-tab">{$lang.tab_properties}</span>{/if}<span
-        class="tab-back" id="gallery-tab">{$lang.tab_gallery}</span><span
+        class="tab-back" id="gallery-tab">{$lang.tab_gallery}</span><!-- <span
         class="tab-back" id="linkgoods-tab">{$lang.tab_linkgoods}</span>{if $code eq ''}<span
         class="tab-back" id="groupgoods-tab">{$lang.tab_groupgoods}</span>{/if}<span
-        class="tab-back" id="article-tab">{$lang.tab_article}</span>
+        class="tab-back" id="article-tab">{$lang.tab_article}</span> -->
       </p>
     </div>
 
@@ -35,8 +35,8 @@
         <table width="90%" id="general-table" align="center">
           <tr>
             <td class="label">{$lang.lab_goods_name}</td>
-            <td><input type="text" name="goods_name" value="{$goods.goods_name|escape}" style="float:left;color:{$goods_name_color};" size="30" /><div style="background-color:{$goods_name_color};float:left;margin-left:2px;" id="font_color" onclick="ColorSelecter.Show(this);"><img src="images/color_selecter.gif" style="margin-top:-1px;" /></div><input type="hidden" id="goods_name_color" name="goods_name_color" value="{$goods_name_color}" />&nbsp;
-            <select name="goods_name_style">
+            <td><input type="text" name="goods_name" value="{$goods.goods_name|escape}" style="float:left;color:{$goods_name_color};" size="30" /><div style="background-color:{$goods_name_color};float:left;margin-left:2px; display:none;" id="font_color" onclick="ColorSelecter.Show(this);"><img src="images/color_selecter.gif" style="margin-top:-1px;" /></div><input type="hidden" id="goods_name_color" name="goods_name_color" value="{$goods_name_color}" />&nbsp;
+            <select name="goods_name_style" style="display:none;">
               <option value="">{$lang.select_font}</option>
               {html_options options=$lang.font_styles selected=$goods_name_style}
             </select>
@@ -48,7 +48,7 @@
             <td><input type="text" name="goods_sn" value="{$goods.goods_sn|escape}" size="20" onblur="checkGoodsSn(this.value,'{$goods.goods_id}')" /><span id="goods_sn_notice"></span><br />
             <span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticeGoodsSN">{$lang.notice_goods_sn}</span></td>
           </tr>
-          <tr>
+          <tr style="display:none;">
             <td class="label">{$lang.lab_goods_cat}</td>
             <td><select name="cat_id" onchange="hideCatDiv()" ><option value="0">{$lang.select_please}</option>{$cat_list}</select>
               {if $is_add}
@@ -63,7 +63,7 @@
                {$lang.require_field}
             </td>
           </tr>
-          <tr>
+          <tr style="display:none;">
             <td class="label">{$lang.lab_other_cat}</td>
             <td>
               <input type="button" value="{$lang.add}" onclick="addOtherCat(this.parentNode)" class="button" />
@@ -72,7 +72,7 @@
               {/foreach}
             </td>
           </tr>
-          <tr>
+          <tr style="display:none;">
             <td class="label">{$lang.lab_goods_brand}</td>
             <td><select name="brand_id" onchange="hideBrandDiv()" ><option value="0">{$lang.select_please}{html_options options=$brand_list selected=$goods.brand_id}</select>
               {if $is_add}
@@ -123,7 +123,7 @@
       </select></td>
           </tr>
          {/if}
-          <tr>
+          <tr style="display:none;">
             <td class="label">{$lang.lab_shop_price}</td>
             <td><input type="text" name="shop_price" value="{$goods.shop_price}" size="20" onblur="priceSetted()"/>
             <input type="button" value="{$lang.compute_by_mp}" onclick="marketPriceSetted()" />
@@ -135,7 +135,7 @@
           </tr>
 
           {if $user_rank_list}
-          <tr>
+          <tr style="display:none;">
             <td class="label"><a href="javascript:showNotice('noticeUserPrice');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a>{$lang.lab_user_price}</td>
             <td>
               {foreach from=$user_rank_list item=user_rank}
@@ -149,7 +149,7 @@
           {/if}
 
           <!--鍟嗗搧浼樻儬浠锋牸-->
-          <tr>
+          <tr style="display:none;">
             <td class="label"><a href="javascript:showNotice('volumePrice');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a>{$lang.lab_volume_price}</td>
             <td>
               <table width="100%" id="tbody-volume" align="center">
@@ -173,48 +173,48 @@
           <!--鍟嗗搧浼樻儬浠锋牸 end -->
 
 		  <!--TGROUPON新增分成金额设定-->
-          <tr>
+          <tr style="display:none;">
             <td class="label">分成金额</td>
             <td><input type="text" name="fencheng" value="{$goods.fencheng}" size="20" />
             <br /><span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="rankIntegral">该商品出售后，需要用于分成的金额</span></td>
           </tr>
-          <tr>
+          <tr style="display:none;">
             <td class="label">{$lang.lab_goods_brief}</td>
             <td><textarea name="goods_brief" cols="40" rows="3">{$goods.goods_brief|escape}</textarea></td>
           </tr>
-          <tr>
+          <tr style="display:none;">
             <td class="label">{$lang.lab_market_price}</td>
             <td><input type="text" name="market_price" value="{$goods.market_price}" size="20" />
               <input type="button" value="{$lang.integral_market_price}" onclick="integral_market_price()" />
             </td>
           </tr>
-          <tr>
+          <tr style="display:none;">
             <td class="label"><a href="javascript:showNotice('giveIntegral');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a> {$lang.lab_give_integral}</td>
             <td><input type="text" name="give_integral" value="{$goods.give_integral}" size="20" />
             <br /><span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="giveIntegral">{$lang.notice_give_integral}</span></td>
           </tr>
-          <tr>
+          <tr style="display:none;">
             <td class="label"><a href="javascript:showNotice('rankIntegral');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a> {$lang.lab_rank_integral}</td>
             <td><input type="text" name="rank_integral" value="{$goods.rank_integral}" size="20" />
             <br /><span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="rankIntegral">{$lang.notice_rank_integral}</span></td>
           </tr>
-          <tr>
+          <tr style="display:none;">
             <td class="label"><a href="javascript:showNotice('noticPoints');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a> {$lang.lab_integral}</td>
             <td><input type="text" name="integral" value="{$goods.integral}" size="20" onblur="parseint_integral()";/>
               <br /><span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticPoints">{$lang.notice_integral}</span>
             </td>
           </tr>
-          <tr>
+          <tr style="display:none;">
             <td class="label"><label for="is_promote"><input type="checkbox" id="is_promote" name="is_promote" value="1" {if $goods.is_promote}checked="checked"{/if} onclick="handlePromote(this.checked);" /> {$lang.lab_promote_price}</label></td>
             <td id="promote_3"><input type="text" id="promote_1" name="promote_price" value="{$goods.promote_price}" size="20" /></td>
           </tr>
-          <tr id="promote_4">
+          <tr id="promote_4" style="display:none;">
             <td class="label" id="promote_5">{$lang.lab_promote_date}</td>
             <td id="promote_6">
               <input name="promote_start_date" type="text" id="promote_start_date" size="12" value='{$goods.promote_start_date}' readonly="readonly" /><input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('promote_start_date', '%Y-%m-%d', false, false, 'selbtn1');" value="{$lang.btn_select}" class="button"/> - <input name="promote_end_date" type="text" id="promote_end_date" size="12" value='{$goods.promote_end_date}' readonly="readonly" /><input name="selbtn2" type="button" id="selbtn2" onclick="return showCalendar('promote_end_date', '%Y-%m-%d', false, false, 'selbtn2');" value="{$lang.btn_select}" class="button"/>
             </td>
           </tr>
-          <tr>
+          <tr style="display:none;">
             <td class="label">{$lang.lab_picture}</td>
             <td>
               <input type="file" name="goods_img" size="35" />
@@ -226,7 +226,7 @@
               <br /><input type="text" size="40" value="{$lang.lab_picture_url}" style="color:#aaa;" onfocus="if (this.value == '{$lang.lab_picture_url}'){this.value='http://';this.style.color='#000';}" name="goods_img_url"/>
             </td>
           </tr>
-          <tr id="auto_thumb_1">
+          <tr id="auto_thumb_1" style="display:none;">
             <td class="label"> {$lang.lab_thumb}</td>
             <td id="auto_thumb_3">
               <input type="file" name="goods_thumb" size="35" />
@@ -339,7 +339,7 @@
               <a href="javascript:;" onclick="addImg(this)">[+]</a>
               {$lang.img_desc} <input type="text" name="img_desc[]" size="20" />
               {$lang.img_url} <input type="file" name="img_url[]" />
-              <input type="text" size="40" value="{$lang.img_file}" style="color:#aaa;" onfocus="if (this.value == '{$lang.img_file}'){this.value='http://';this.style.color='#000';}" name="img_file[]"/>
+              <input type="text" size="40" value="{$lang.img_file}" style="display:none; color:#aaa;" onfocus="if (this.value == '{$lang.img_file}'){this.value='http://';this.style.color='#000';}" name="img_file[]"/>
             </td>
           </tr>
         </table>
@@ -467,7 +467,7 @@
           <input type="hidden" name="extension_code" value="{$code}" />
           {/if}
           <input type="submit" value="{$lang.button_submit}" class="button" onclick="validate('{$goods.goods_id}')" />
-          <input type="reset" value="{$lang.button_reset}" class="button" />
+          <!-- <input type="reset" value="{$lang.button_reset}" class="button" /> -->
         </div>
         <input type="hidden" name="act" value="{$form_act}" />
       </form>
@@ -667,7 +667,7 @@
   function addSpec(obj)
   {
       var src   = obj.parentNode.parentNode;
-     /* var idx   = rowindex(src); 
+     /* var idx   = rowindex(src);
       var tbl   = document.getElementById('attrTable');
       var row   = tbl.insertRow(idx + 1);
       var cell1 = row.insertCell(-1);
@@ -675,10 +675,10 @@
       var regx  = /<a([^>]+)<\/a>/i;
 
       cell1.className = 'label';
-      
+
 	  cell1.innerHTML = src.childNodes[0].innerHTML.replace(/(.*)(addSpec)(.*)(\[)(\+)/i, "$1removeSpec$3$4-");
       cell2.innerHTML = src.childNodes[1].innerHTML.replace(/readOnly([^\s|>]*)/i, '');*/
-	  var html= src.innerHTML.replace(/(.*)(attr_img\[)(.*)(\])(.*)/i, "$1$2$4$5"); 
+	  var html= src.innerHTML.replace(/(.*)(attr_img\[)(.*)(\])(.*)/i, "$1$2$4$5");
 
 	  html=html.replace(/readOnly([^\s|>]*)/i, '');
 	  html=html.replace(/(.*)(addSpec)(.*)(\[)(\+)/i, "$1removeSpec$3$4-");

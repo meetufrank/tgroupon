@@ -9,7 +9,7 @@
     <select name="brand_id"><option value="0">{$lang.goods_brand}</option>{html_options options=$brand_list}</select>
     <!-- 推荐 -->
     <select name="intro_type"><option value="0">{$lang.intro_type}</option>{html_options options=$intro_list selected=$smarty.get.intro_type}</select>
-     {if $suppliers_exists eq 1}    
+     {if $suppliers_exists eq 1}
       <!-- 供货商 -->
       <select name="suppliers_id"><option value="0">{$lang.intro_type}</option>{html_options options=$suppliers_list_name selected=$smarty.get.suppliers_id}</select>
       {/if}
