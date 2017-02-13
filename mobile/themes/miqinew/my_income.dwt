@@ -353,7 +353,7 @@
     <tr>
                           <td>{{d[i].time}}</td>
                           <td>{{d[i].alias}}{{d[i].goods_name}}</td>
-                          <td>{{# if(d[i].type==0){}}销售利润{{# }else if(d[i].type==2){}}设计师提成{{# }else if(d[i].type==1){ }}介绍费{{# }}}</td>
+                          <td>{{# if(d[i].type==0){}}销售利润{{# }else if(d[i].type==2){}}设计提成{{# }else if(d[i].type==1){ }}推荐提成{{# }}}</td>
                           <td>{{d[i].money}}元</td>
    </tr>
    {{# } }}

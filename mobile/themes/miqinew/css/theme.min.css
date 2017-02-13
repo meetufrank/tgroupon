@@ -122,7 +122,13 @@ svg {
 	#view{
 		font-size: 14px;
 	}
-
+	.site-logo{
+		margin-left: -10px;
+    	margin-top: 18px;
+	}
+	.site-logo img {
+		max-width:100px
+	}
 }
 @media screen and (min-width:375px) and (max-width:413px){
 	.sidebar {
@@ -155,6 +161,13 @@ svg {
 	}
 	#view>tr>td{
 		line-height:1.5
+	}
+	.site-logo{
+		margin-left: -10px;
+    	margin-top:15px;
+	}
+	.site-logo img {
+		max-width:150px
 	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
@@ -189,6 +202,13 @@ svg {
 	}
 	#view>tr>td{
 		line-height: 2.5
+	}
+	.site-logo{
+		margin-left: -10px;
+    	margin-top:10px;
+	}
+	.site-logo img {
+		max-width:190px
 	}
 }
 @media screen and (max-width: 480px) {
@@ -283,6 +303,15 @@ svg {
 		margin-top:15px;
     	margin-bottom: 15px;
 	}
+	.site-logo {
+    	padding-top: 5px;
+	    padding-right: 5px;
+	    padding-bottom: 5px;
+	    padding-left:15px;
+	}
+	.site-logo img {
+		max-width:250px;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -314,19 +343,12 @@ svg {
 	.lang-switcher {
 		z-index: 20
 	}
-	.site-logo {
-		z-index: 20;
-		margin-right: 15px
-	}
 	.site-logo.visible-desktop {
 		display: none
 	}
 	.site-logo.visible-mobile {
 		display: inline-block;
 		font-size:20px;
-	}
-	.site-logo img {
-		max-width: 42px
 	}
 	.toolbar-dropdown {
 		height: 80%;
@@ -2304,23 +2326,19 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	z-index: 9900;
 	width: 100%;
 	background-color: #fff;
-	padding-left: 30px;
 	top: 0;
 	left: 0
 }
 .navbar-sticky{
 	position: fixed;
+	height: 50px;
 }
 .site-logo {
 	position: relative;
 	z-index: 9;
 	display: inline-block;
 	vertical-align: middle;
-	color: #606060;
-	font-weight: bold;
 	text-decoration: none;
-	padding: 10px 0;
-	margin-right: 20px
 }
 .site-logo span {
 	font-weight: normal
@@ -2331,16 +2349,9 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 .site-logo img {
 	width: 100%;
-	max-width: 115px
 }
 .site-logo.visible-mobile {
 	display: none
-}
-
-@media screen and (max-width: 360px) {
-	.site-logo {
-		margin-right: 8px
-	}
 }
 .lang-switcher {
 	position: relative;
