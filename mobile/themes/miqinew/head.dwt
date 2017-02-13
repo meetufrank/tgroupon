@@ -5,7 +5,7 @@
 
     <!-- Site Logo -->
       <a href="index.html" class="site-logo">
-        型&nbsp;色&nbsp;主&nbsp;义
+      	<img src="{$ectouch_themes}/img/Logo.png">
       </a>
 <!-- Toolbar -->
 
