@@ -6,18 +6,18 @@
     <!-- 分类 -->
     <select name="cat_id"><option value="0">{$lang.goods_cat}</option>{$cat_list}</select>
     <!-- 品牌 -->
-    <select name="brand_id"><option value="0">{$lang.goods_brand}</option>{html_options options=$brand_list}</select>
+    <select name="brand_id" style="display:none;"><option value="0">{$lang.goods_brand}</option>{html_options options=$brand_list}</select>
     <!-- 推荐 -->
     <select name="intro_type"><option value="0">{$lang.intro_type}</option>{html_options options=$intro_list selected=$smarty.get.intro_type}</select>
-     {if $suppliers_exists eq 1}    
+     {if $suppliers_exists eq 1}
       <!-- 供货商 -->
-      <select name="suppliers_id"><option value="0">{$lang.intro_type}</option>{html_options options=$suppliers_list_name selected=$smarty.get.suppliers_id}</select>
+      <select name="suppliers_id" style="display:none;"><option value="0">{$lang.intro_type}</option>{html_options options=$suppliers_list_name selected=$smarty.get.suppliers_id}</select>
       {/if}
       <!-- 上架 -->
-      <select name="is_on_sale"><option value=''>{$lang.intro_type}</option><option value="1">{$lang.on_sale}</option><option value="0">{$lang.not_on_sale}</option></select>
+      <select name="is_on_sale" style="display:none;"><option value=''>{$lang.intro_type}</option><option value="1">{$lang.on_sale}</option><option value="0">{$lang.not_on_sale}</option></select>
     {/if}
     <!-- 关键字 -->
-    {$lang.keyword} <input type="text" name="keyword" size="15" />
+    商品名称或货号 <input type="text" name="keyword" size="15" />
     <input type="submit" value="{$lang.button_search}" class="button" />
   </form>
 </div>

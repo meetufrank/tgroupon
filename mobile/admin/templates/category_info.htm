@@ -20,13 +20,13 @@
         </td>
       </tr>
 
-      <tr id="measure_unit">
+      <tr id="measure_unit" style="display:none;">
         <td class="label">{$lang.measure_unit}:</td>
         <td>
           <input type="text" name='measure_unit' value='{$cat_info.measure_unit}' size="12" />
         </td>
       </tr>
-      <tr>
+      <tr style="display:none;">
         <td class="label">{$lang.sort_order}:</td>
         <td>
           <input type="text" name='sort_order' {if $cat_info.sort_order}value='{$cat_info.sort_order}'{else} value="50"{/if} size="15" />
@@ -40,7 +40,7 @@
           <input type="radio" name="is_show" value="0" {if $cat_info.is_show eq 0} checked="true"{/if} /> {$lang.no}
         </td>
       </tr>
-      <tr>
+      <tr style="display:none;">
         <td class="label">{$lang.show_in_nav}:</td>
         <td>
           <input type="radio" name="show_in_nav" value="1" {if $cat_info.show_in_nav neq 0} checked="true"{/if}/> {$lang.yes}
@@ -90,17 +90,17 @@
 
           </script>
 
-         
+
           <table width="100%" id="tbody-attr" align="center">
             {if $attr_cat_id eq 0}
             <tr>
-              <td>   
-                   <a href="javascript:;" onclick="addFilterAttr(this)">[+]</a> 
+              <td>
+                   <a href="javascript:;" onclick="addFilterAttr(this)">[+]</a>
                    <select onChange="changeCat(this)"><option value="0">{$lang.sel_goods_type}</option>{$goods_type_list}</select>&nbsp;&nbsp;
-                   <select name="filter_attr[]"><option value="0">{$lang.sel_filter_attr}</option></select><br />                   
+                   <select name="filter_attr[]"><option value="0">{$lang.sel_filter_attr}</option></select><br />
               </td>
-            </tr> 
-            {/if}           
+            </tr>
+            {/if}
             {foreach from=$filter_attr_list item=filter_attr name="filter_attr_tab"}
             <tr>
               <td>
@@ -198,7 +198,7 @@ function addFilterAttr(obj)
   {
     validator.addErrorMsg(filter_attr_not_selected);
   }
-  
+
   for (i = 0; i < filterAttr.length; i++)
   {
     for (j = i + 1; j <filterAttr.length; j++)
@@ -206,8 +206,8 @@ function addFilterAttr(obj)
       if (filterAttr.item(i).value == filterAttr.item(j).value)
       {
         validator.addErrorMsg(filter_attr_not_repeated);
-      } 
-    } 
+      }
+    }
   }
 
   if (!validator.passed())
