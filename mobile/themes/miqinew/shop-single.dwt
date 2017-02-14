@@ -498,8 +498,8 @@
     <section class="container">
       <!-- Nav Tabs -->
       <ul class="nav-tabs text-center" role="tablist">
-        <li class="active"><a href="#description" role="tab" data-toggle="tab">产品介绍</a></li>
-        <li><a href="#additional" role="tab" data-toggle="tab">商品规格</a></li>
+        <li class="active"><a href="#description" role="tab" data-toggle="tab" style="font-size:16px">产品介绍</a></li>
+        <li><a href="#additional" role="tab" data-toggle="tab" style="font-size:16px">商品规格</a></li>
       </ul><!-- .nav-tabs -->
       <!-- Tab panes -->
       <div class="tab-content">
