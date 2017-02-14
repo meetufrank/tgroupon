@@ -38,17 +38,17 @@
     <tr>
       <!-- start for specifications -->
       {foreach from=$attribute item=attribute_value}
-        <td scope="col" align="center"><div align="center"><strong>{$attribute_value.attr_name}</strong></div></td>
+        <td align="center"><div><strong>{$attribute_value.attr_name}</strong></div></td>
       {foreachelse}
-        <td scope="col" align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
       {/foreach}
       <!-- end for specifications -->
-      <td class="label_2">{$lang.goods_sn}</td>
+      <td align="center"><strong>{$lang.goods_sn}</strong></td>
 
-      <td class="label_2" align="center">属性关联图片</td>
-      <td class="label_2" align="center">属性关联价格</td>
-      <td class="label_2" align="center">{$lang.goods_number}</td>
-      <td class="label_2" align="center">&nbsp;</td>
+      <td align="center"><strong>属性关联图片</strong></td>
+      <td align="center"><strong>属性关联价格</strong></td>
+      <td align="center"><strong>{$lang.goods_number}</strong></td>
+      <td align="center">&nbsp;</td>
 
     </tr>
 
@@ -57,13 +57,12 @@
       {foreach from=$product.goods_attr item=goods_attr}
       <td scope="col"><div align="center">{$goods_attr}</div></td>
       {/foreach}
-      <td><span onclick="listTable.edit(this, 'edit_product_sn', {$product.product_id})">{$product.product_sn|default:$lang.n_a}</span></td>
+      <td align="center"><span onclick="listTable.edit(this, 'edit_product_sn', {$product.product_id})">{$product.product_sn|default:$lang.n_a}</span></td>
 
       <!-- 保存后列表 -->
        <!-- 属性关联图片 -->
 
       <td  align="center">
-
                   {if $product.attributeimg == ''}
                         <img class="js_logoBox" src="../../images/12.png">
                   {else}
@@ -71,11 +70,11 @@
                   {/if}
       </td>
       <!-- 属性关联价格 -->
-      <td><span onclick="listTable.edit(this, 'edit_attributeprice', {$product.product_id})">{$product.attributeprice}</span></td>
+      <td align="center"><span onclick="listTable.edit(this, 'edit_attributeprice', {$product.product_id})">{$product.attributeprice}</span></td>
 
-      <td><span onclick="listTable.edit(this, 'edit_product_number', {$product.product_id})">
+      <td align="center"><span onclick="listTable.edit(this, 'edit_product_number', {$product.product_id})">
       {$product.product_number}</span></td>
-      <td><input type="button" class="button" value=" - " onclick="listTable.remove({$product.product_id}, '{$lang.trash_product_confirm}', 'product_remove')"/></td>
+      <td align="center"><input type="button" class="button" value=" - " onclick="listTable.remove({$product.product_id}, '{$lang.trash_product_confirm}', 'product_remove')"/></td>
 
     </tr>
     {/foreach}
@@ -106,9 +105,9 @@
               </div>
          </div>
       </td>
-      <td><input type="text" name="attributeprice[]"  value="{$attributeprice}"  size="10"/></td>
-      <td><input  type="text" name="product_number[]" value="{$product_number}" size="10"/></td>
-      <td><input type="button" class="button" value=" + " onclick="javascript:add_attr_product();"/></td>
+      <td align="center"><input type="text" name="attributeprice[]"  value="{$attributeprice}"  size="10"/></td>
+      <td align="center"><input  type="text" name="product_number[]" value="{$product_number}" size="10"/></td>
+      <td align="center"><input type="button" class="button" value=" + " onclick="javascript:add_attr_product();"/></td>
     </tr>
 
     <tr>
