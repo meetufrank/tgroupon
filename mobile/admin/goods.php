@@ -2523,15 +2523,15 @@ elseif ($_REQUEST['act'] == 'edit_priceratio')
     $product_id       = intval($_POST['id']);
     $priceratio       = intval($_POST['val']);
 
-
     /* 修改 */
-    $sql = "UPDATE " . $ecs->table('products') . " SET priceratio = '$priceratio' WHERE product_id = '$product_id'";
+    $sql = "UPDATE " . $ecs->table('products') . " SET priceratio = $priceratio WHERE product_id = '$product_id'";
     $result = $db->query($sql);
     if ($result)
     {
         clear_cache_files();
-        make_json_result($attributeprice);
+        make_json_result($priceratio);
     }
+
 }
 
 
@@ -2650,7 +2650,7 @@ if($fileInfo['error']==0){
     $product['product_sn']      = $_POST['product_sn'];
     $product['product_number']  = $_POST['product_number'];
     $product['attributeprice']  = $_POST['attributeprice'];
-
+    $product['priceratio']  = $_POST['priceratio'];
 
 
 
@@ -2726,8 +2726,8 @@ if($fileInfo['error']==0){
         }
 
         /* 插入货品表 */
-      echo  $sql = "INSERT INTO " . $GLOBALS['ecs']->table('products') . " (goods_id, goods_attr, product_sn, product_number,attributeprice,attributeimg)  VALUES ('" . $product['goods_id'] . "', '$goods_attr', '$value', '" . $product['product_number'][$key] . "', '" . $product['attributeprice'][$key] . "','$destination')";
-
+        $sql = "INSERT INTO " . $GLOBALS['ecs']->table('products') . " (goods_id, goods_attr, product_sn, product_number,attributeprice,priceratio,attributeimg)  VALUES ('" . $product['goods_id'] . "', '$goods_attr', '$value', '" . $product['product_number'][$key] . "', '" . $product['attributeprice'][$key] . "', '" . $product['priceratio'][$key] . "','$destination')";
+         // print_r($sql);exit;
         if (!$GLOBALS['db']->query($sql))
         {
             continue;
