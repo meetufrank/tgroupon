@@ -383,7 +383,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
         $goods_article_list = get_goods_articles($goods['goods_id']);   // 关联文章
 		if(is_array($group_goods_list)){ //by mike add
 			foreach($group_goods_list as $k=>$val){
-				$group_goods_list[$k]['goods_name'] = '[套餐'.$val['group_id'].']'.$val['goods_name'];	
+				$group_goods_list[$k]['goods_name'] = '[套餐'.$val['group_id'].']'.$val['goods_name'];
 			}
 		}
 
@@ -421,7 +421,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 
     /* 创建 html editor */
     create_html_editor('goods_desc', $goods['goods_desc']);
-	
+
 	create_html_editor2('goods_shipai', 'goods_shipai',$goods['goods_shipai']);
 	create_html_editor2('mobile_desc', 'mobile_desc',$goods['mobile_desc']);
     /* 模板赋值 */
@@ -1638,7 +1638,7 @@ elseif ($_REQUEST['act'] == 'remove')
 
     /* 检查权限 */
     check_authz_json('remove_back');
-    
+
     //检测此商品是否参与团购活动
     $sql = "SELECT count(*) " . "FROM " . $GLOBALS['ecs']->table('goods_activity') . " AS b " .
     		"LEFT JOIN " . $GLOBALS['ecs']->table('goods') . " AS g ON b.goods_id = g.goods_id " .
@@ -2135,10 +2135,10 @@ elseif ($_REQUEST['act'] == 'add_goods_article')
 elseif ($_REQUEST['act'] == 'edit_sales_volume_base')
 {
     check_authz_json('goods_manage');
- 
+
     $goods_id = intval($_POST['id']);
     $sales_volume_base = json_str_iconv(trim($_POST['val']));
- 
+
     if ($exc->edit("sales_volume_base = '$sales_volume_base', last_update=" .gmtime(), $goods_id))
     {
         clear_cache_files();

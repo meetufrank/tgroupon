@@ -307,3 +307,11 @@ MODIFY COLUMN `xs_fencheng`  double(4,2) NOT NULL DEFAULT 0.00 COMMENT '//线下
 */
 ALTER TABLE `ecs_tixian`
 MODIFY COLUMN `time`  datetime NOT NULL DEFAULT '' COMMENT '//提现时间' AFTER `money`;
+
+
+
+
+/*#2017/02/14 汪江  给货品表优惠价格比例字段
+*/
+ALTER TABLE `ecs_products`
+ADD COLUMN `priceratio`  int(11) NULL COMMENT '//货品价格比例' AFTER `attributeimg`;

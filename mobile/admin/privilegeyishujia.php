@@ -436,6 +436,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
     }
     $ec_salt=rand(1,9999);
     $password = !empty($_POST['new_password']) ? ", password = '".md5(md5($_POST['new_password']).$ec_salt)."'"    : '';
+    // print_r($url_img);exit;
     if ($_REQUEST['act'] == 'update')
     {
         /* 查看是否有权限编辑其他管理员的信息 */
@@ -528,7 +529,8 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
                "email = '$admin_email', ".
                "ec_salt = '$ec_salt' ,".
                "ysj_fencheng = '$ysj_fencheng', ".
-               "ysj_tixian = '$user_id' ".
+               "ysj_tixian = '$user_id', ".
+               "hav_logo  = '$url_img'" .
                $action_list.$img_list.$country_list.
                $role_id.
                $password.
@@ -544,7 +546,8 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
                "user_name = '$admin_name', ".
                "email = '$admin_email' ,".
                "ysj_fencheng = '$ysj_fencheng' ,".
-               "ysj_tixian = '$user_id' ".
+               "ysj_tixian = '$user_id', ".
+               "hav_logo = '$url_img'".
                $action_list.$img_list.$country_list.
                $role_id.
                $nav_list.
@@ -552,7 +555,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
 
 
     }
-
+// print_r($sql);exit;
    $db->query($sql);
 
    /* 记录管理员操作 */

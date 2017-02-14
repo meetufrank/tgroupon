@@ -194,7 +194,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
             'goods_weight'  => 0,
             'give_integral' => -1,
             'rank_integral' => -1,
-			'fencheng'=>0,
+            'fencheng'=>0,
         );
 
         if ($code != '')
@@ -264,7 +264,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
                 'goods_weight'  => 0,
                 'give_integral' => -1,
                 'rank_integral' => -1,
-				'fencheng' => 0
+                'fencheng' => 0
             );
         }
         /* 获取商品类型存在规格的类型 */
@@ -824,7 +824,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     $warn_number = isset($_POST['warn_number']) ? $_POST['warn_number'] : 0;
     $goods_type = isset($_POST['goods_type']) ? $_POST['goods_type'] : 0;
     $give_integral = isset($_POST['give_integral']) ? intval($_POST['give_integral']) : '-1';
-	$fencheng = isset($_POST['fencheng']) ? intval($_POST['fencheng']) : '0';
+    $fencheng = isset($_POST['fencheng']) ? intval($_POST['fencheng']) : '0';
     $rank_integral = isset($_POST['rank_integral']) ? intval($_POST['rank_integral']) : '-1';
     $suppliers_id = isset($_POST['suppliers_id']) ? intval($_POST['suppliers_id']) : '0';
 
@@ -951,7 +951,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "integral = '$_POST[integral]', " .
                 "give_integral = '$give_integral', " .
                 "rank_integral = '$rank_integral', " .
-				"fencheng = '$fencheng', " .
+                "fencheng = '$fencheng', " .
                 "is_best = '$is_best', " .
                 "is_new = '$is_new', " .
                 "is_hot = '$is_hot', " .
@@ -1014,7 +1014,7 @@ if($_FILES['attr_img']['name']){
     $up -> set("maxsize", 2000000);
     $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
     $up -> set("israndname", true);
-	$up->upload('attr_img');
+    $up->upload('attr_img');
 
 
 
@@ -1143,13 +1143,13 @@ if($_FILES['attr_img']['name']){
                 //     $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_price = '$info[attr_price]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
                 // }
                 elseif ($info['sign'] == 'update')
-                {	 if($info[attr_img]){
+                {    if($info[attr_img]){
 
 
-						$sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_img = '$info[attr_img]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+                        $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_img = '$info[attr_img]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
 
-					 }
-					// echo   $sql .'<br/>';
+                     }
+                    // echo   $sql .'<br/>';
                 }
                 else
                 {
@@ -2513,6 +2513,26 @@ elseif ($_REQUEST['act'] == 'edit_attributeprice')
         make_json_result($attributeprice);
     }
 }
+/*------------------------------------------------------ */
+//-- 修改货品关联属性价格
+/*------------------------------------------------------ */
+elseif ($_REQUEST['act'] == 'edit_priceratio')
+{
+    check_authz_json('goods_manage');
+
+    $product_id       = intval($_POST['id']);
+    $priceratio       = intval($_POST['val']);
+
+    /* 修改 */
+    $sql = "UPDATE " . $ecs->table('products') . " SET priceratio = $priceratio WHERE product_id = '$product_id'";
+    $result = $db->query($sql);
+    if ($result)
+    {
+        clear_cache_files();
+        make_json_result($priceratio);
+    }
+
+}
 
 
 
@@ -2630,7 +2650,7 @@ if($fileInfo['error']==0){
     $product['product_sn']      = $_POST['product_sn'];
     $product['product_number']  = $_POST['product_number'];
     $product['attributeprice']  = $_POST['attributeprice'];
-
+    $product['priceratio']  = $_POST['priceratio'];
 
 
 
@@ -2706,8 +2726,8 @@ if($fileInfo['error']==0){
         }
 
         /* 插入货品表 */
-      echo  $sql = "INSERT INTO " . $GLOBALS['ecs']->table('products') . " (goods_id, goods_attr, product_sn, product_number,attributeprice,attributeimg)  VALUES ('" . $product['goods_id'] . "', '$goods_attr', '$value', '" . $product['product_number'][$key] . "', '" . $product['attributeprice'][$key] . "','$destination')";
-
+        $sql = "INSERT INTO " . $GLOBALS['ecs']->table('products') . " (goods_id, goods_attr, product_sn, product_number,attributeprice,priceratio,attributeimg)  VALUES ('" . $product['goods_id'] . "', '$goods_attr', '$value', '" . $product['product_number'][$key] . "', '" . $product['attributeprice'][$key] . "', '" . $product['priceratio'][$key] . "','$destination')";
+         // print_r($sql);exit;
         if (!$GLOBALS['db']->query($sql))
         {
             continue;
