@@ -2513,6 +2513,26 @@ elseif ($_REQUEST['act'] == 'edit_attributeprice')
         make_json_result($attributeprice);
     }
 }
+/*------------------------------------------------------ */
+//-- 修改货品关联属性价格
+/*------------------------------------------------------ */
+elseif ($_REQUEST['act'] == 'edit_priceratio')
+{
+    check_authz_json('goods_manage');
+
+    $product_id       = intval($_POST['id']);
+    $priceratio       = intval($_POST['val']);
+
+
+    /* 修改 */
+    $sql = "UPDATE " . $ecs->table('products') . " SET priceratio = '$priceratio' WHERE product_id = '$product_id'";
+    $result = $db->query($sql);
+    if ($result)
+    {
+        clear_cache_files();
+        make_json_result($attributeprice);
+    }
+}
 
 
 

@@ -12,7 +12,7 @@
  * $Author: liubo $
  * $Id: lib_goods.php 17217 2011-01-19 06:29:08Z liubo $
  */
- 
+
 if (!defined('IN_ECS'))
 {
     die('Hacking attempt');
@@ -1100,7 +1100,7 @@ function product_list($goods_id, $conditions = '')
         $sql = "SELECT COUNT(*) FROM " .$GLOBALS['ecs']->table('products'). " AS p WHERE goods_id = $goods_id $where";
         $filter['record_count'] = $GLOBALS['db']->getOne($sql);
 
-        $sql = "SELECT product_id, goods_id, goods_attr, product_sn, product_number,attributeprice,attributeimg
+        $sql = "SELECT product_id, goods_id, goods_attr, product_sn, product_number,attributeprice,attributeimg,priceratio
                 FROM " . $GLOBALS['ecs']->table('products') . " AS g
                 WHERE goods_id = $goods_id $where
                 ORDER BY $filter[sort_by] $filter[sort_order]";

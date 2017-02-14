@@ -48,6 +48,7 @@
       <td align="center"><strong>属性关联图片</strong></td>
       <td align="center"><strong>属性关联价格</strong></td>
       <td align="center"><strong>{$lang.goods_number}</strong></td>
+      <td align="center"><strong>价格优惠比例</strong></td>
       <td align="center">&nbsp;</td>
 
     </tr>
@@ -66,7 +67,7 @@
                   {if $product.attributeimg == ''}
                         <img class="js_logoBox" src="../../images/12.png">
                   {else}
-                        <img class="js_logoBox" style="width:100px; height:100px;" src="{$product.attributeimg}"/>
+                        <img class="js_logoBox" style="width:100px; height:100px;" src="{$product.attributeimg}"/>sdfd
                   {/if}
       </td>
       <!-- 属性关联价格 -->
@@ -74,6 +75,9 @@
 
       <td align="center"><span onclick="listTable.edit(this, 'edit_product_number', {$product.product_id})">
       {$product.product_number}</span></td>
+      <!-- 货品优惠价格 -->
+      <td align="center"><span onclick="listTable.edit(this, 'edit_priceratio', {$product.product_id})">
+      {$product.priceratio}</span></td>
       <td align="center"><input type="button" class="button" value=" - " onclick="listTable.remove({$product.product_id}, '{$lang.trash_product_confirm}', 'product_remove')"/></td>
 
     </tr>
@@ -107,6 +111,7 @@
       </td>
       <td align="center"><input type="text" name="attributeprice[]"  value="{$attributeprice}"  size="10"/></td>
       <td align="center"><input  type="text" name="product_number[]" value="{$product_number}" size="10"/></td>
+      <td align="center"><input  type="text" name="priceratio[]" value="{$priceratio}" size="10"/></td>
       <td align="center"><input type="button" class="button" value=" + " onclick="javascript:add_attr_product();"/></td>
     </tr>
 
