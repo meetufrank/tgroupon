@@ -15,11 +15,13 @@
     <!-- tab bar -->
     <div id="tabbar-div">
       <p>
-        <span class="tab-front" id="general-tab">{$lang.tab_general}</span><span
-        class="tab-back" id="detail-tab">{$lang.tab_detail}</span><span
-        class="tab-back" id="mix-tab">{$lang.tab_mix}</span>{if $goods_type_list}<span
+        <span class="tab-front" id="general-tab">{$lang.tab_general}</span><!-- <span
+        class="tab-back" id="mix-tab">{$lang.tab_mix}</span>{if $goods_type_list}--><span
         class="tab-back" id="properties-tab">{$lang.tab_properties}</span>{/if}<span
-        class="tab-back" id="gallery-tab">{$lang.tab_gallery}</span><!-- <span
+        class="tab-back" id="gallery-tab">{$lang.tab_gallery}</span>
+<span
+        class="tab-back" id="detail-tab">{$lang.tab_detail}</span>
+        <!-- <span
         class="tab-back" id="linkgoods-tab">{$lang.tab_linkgoods}</span>{if $code eq ''}<span
         class="tab-back" id="groupgoods-tab">{$lang.tab_groupgoods}</span>{/if}<span
         class="tab-back" id="article-tab">{$lang.tab_article}</span> -->
@@ -86,7 +88,10 @@
                {/if}
             </td>
           </tr>
-
+         <tr>
+            <td class="label">{$lang.lab_intro}</td>
+            <td><input type="checkbox" name="is_best" value="1" {if $goods.is_best}checked="checked"{/if} />{$lang.is_best} <input type="checkbox" name="is_new" value="1" {if $goods.is_new}checked="checked"{/if} />{$lang.is_new} <input type="checkbox" name="is_hot" value="1" {if $goods.is_hot}checked="checked"{/if} />{$lang.is_hot}</td>
+          </tr>
            <tr>
             <td class="label">厂商：</td>
             <td><select name="father_id" id="suppliers_id">
@@ -269,10 +274,10 @@
             <td><input type="text" name="warn_number" value="{$goods.warn_number}" size="20" /></td>
           </tr>
           {/if}
-          <tr>
+          <!-- <tr>
             <td class="label">{$lang.lab_intro}</td>
             <td><input type="checkbox" name="is_best" value="1" {if $goods.is_best}checked="checked"{/if} />{$lang.is_best} <input type="checkbox" name="is_new" value="1" {if $goods.is_new}checked="checked"{/if} />{$lang.is_new} <input type="checkbox" name="is_hot" value="1" {if $goods.is_hot}checked="checked"{/if} />{$lang.is_hot}</td>
-          </tr>
+          </tr> -->
           <tr id="alone_sale_1">
             <td class="label" id="alone_sale_2">{$lang.lab_is_on_sale}</td>
             <td id="alone_sale_3"><input type="checkbox" name="is_on_sale" value="1" {if $goods.is_on_sale}checked="checked"{/if} /> {$lang.on_sale_desc}</td>
@@ -466,7 +471,7 @@
           {if $code neq ''}
           <input type="hidden" name="extension_code" value="{$code}" />
           {/if}
-          <input type="submit" value="{$lang.button_submit}" class="button" onclick="validate('{$goods.goods_id}')" />
+          <input type="button" value="{$lang.button_submit}" class="button" onclick="validate('{$goods.goods_id}')" />
           <!-- <input type="reset" value="{$lang.button_reset}" class="button" /> -->
         </div>
         <input type="hidden" name="act" value="{$form_act}" />

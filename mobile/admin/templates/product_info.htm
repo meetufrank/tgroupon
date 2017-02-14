@@ -33,17 +33,17 @@
 <input type="hidden" name="act" value="product_add_execute" />
   <table width="100%" cellpadding="3" cellspacing="1" id="table_list">
     <tr>
-      <th colspan="20" scope="col">{$goods_name}&nbsp;&nbsp;&nbsp;&nbsp;{$goods_sn}</th>
+      <th colspan="20" scope="col" align="center">{$goods_name}&nbsp;&nbsp;&nbsp;&nbsp;{$goods_sn}</th>
     </tr>
     <tr>
       <!-- start for specifications -->
       {foreach from=$attribute item=attribute_value}
-        <td scope="col"><div align="center"><strong>{$attribute_value.attr_name}</strong></div></td>
+        <td scope="col" align="center"><div align="center"><strong>{$attribute_value.attr_name}</strong></div></td>
       {foreachelse}
-        <td scope="col">&nbsp;</td>
+        <td scope="col" align="center">&nbsp;</td>
       {/foreach}
       <!-- end for specifications -->
-      <td class="label_2" align="center">{$lang.goods_sn}</td>
+      <td class="label_2">{$lang.goods_sn}</td>
 
       <td class="label_2" align="center">属性关联图片</td>
       <td class="label_2" align="center">属性关联价格</td>
