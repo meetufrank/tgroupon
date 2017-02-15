@@ -688,7 +688,7 @@ foreach ($friend_arr as $key => $value) {
 
  $sqls = "select attributeprice,attributeimg,product_number from `ecs_products` where goods_attr = '$jiageimg'";
   $jiageimgs = $db->getRow($sqls);
-$sub_price=$jiageimgs['attributeprice']+$shopdata['more_price'];
+$sub_price=sprintf("%.2f", $jiageimgs['attributeprice']+$shopdata['more_price']);
 
 $smarty->assign('jiagedata',$jiageimgs);
 $smarty->assign('checked_arr',$checked_arr);
