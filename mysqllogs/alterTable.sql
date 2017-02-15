@@ -315,3 +315,8 @@ MODIFY COLUMN `time`  datetime NOT NULL DEFAULT '' COMMENT '//提现时间' AFTE
 */
 ALTER TABLE `ecs_products`
 ADD COLUMN `priceratio`  int(11) NULL COMMENT '//货品价格比例' AFTER `attributeimg`;
+
+/*#2017/02/14 王晋  修改字段数据类型
+*/
+ALTER TABLE `ecs_products`
+MODIFY COLUMN `attributeprice`  decimal(10,2) NULL DEFAULT 0.00 AFTER `product_number`;
