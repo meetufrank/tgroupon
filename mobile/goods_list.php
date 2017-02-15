@@ -525,7 +525,7 @@ function get_goods_list($where='',$limit='',$str=''){
    if($str){
     $add_where="and g.goods_id not in (".$str.") ";
    }
-      $sql="select min(ep.product_id) as product_id,ep.goods_id,ep.attributeprice+g.more_price as attributeprice,ep.attributeimg,g.goods_name from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where.$add_where." GROUP BY ep.goods_id ".$limit." order by sort_order desc";
+      $sql="select min(ep.product_id) as product_id,ep.goods_id,cast(ep.attributeprice+g.more_priceas attributeprice),ep.attributeimg,g.goods_name from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where.$add_where." GROUP BY ep.goods_id ".$limit." order by sort_order desc";
       $data=$GLOBALS['db']->getALL($sql);
       return $data;
 }
