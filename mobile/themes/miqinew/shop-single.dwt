@@ -449,10 +449,10 @@
           <!-- 手机商品详情属性筛选 -->
           <form  name="ECS_FORMBUY_MOBILE">
               {foreach from=$specification item=spec key=spec_key name=name}
-              <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" >
-                  <p class="mobile-cart-group-text">{$spec.name}</p>
-                  <div class="mobile-cart-group type_arr">
-                      <ul class="mobile-cart-group-select" id="mobile-groupbox">
+              <input type="hidden" name="spec_{$spec_key}" value="{$checked_arr.$smarty.foreach.name.index}" class="mobile_input">
+                  <p class="mobile-cart-group-text mobile_name">{$spec.name}</p>
+                  <div class="mobile-cart-group type_arr mobile_div">
+                      <ul class="mobile-cart-group-select mobile_li" id="mobile-groupbox">
                           {foreach from=$spec.values item=value key=key}
                                <li>
                                    <a onclick="attrshuaixuan({$value.id},{$spec_key},{$smarty.foreach.name.index},1)" href="#"  {if $checked_arr.$smarty.foreach.name.index eq $value.id}class="mobile-cart-border-details pc-group-change"
@@ -477,6 +477,14 @@
           </form>
 
     </section>
+    <script type="text/javascript">
+
+  if($(".mobile_input").length<=1&&$(".mobile_li").length<=1){
+
+    $('.mobile_name').remove();
+    $('.mobile_div').remove();
+  }
+</script>
     <div class="clear"></div>
   <!--艺术家-->
     <section class="container padding-top">

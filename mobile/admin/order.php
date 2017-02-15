@@ -4599,7 +4599,7 @@ elseif ($_REQUEST['act'] == 'operate_post')
         }
         $sql="select user_id from ecs_order_info where order_id=".$order_id;
         $userid=$GLOBALS['db']->getOne($sql);
-        get_money($order_id,$userid);   //计算分成
+       // get_money($order_id,$userid);   //计算分成
         update_order($order_id, $arr);
 
         /* 记录log */
