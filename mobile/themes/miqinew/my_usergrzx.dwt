@@ -357,7 +357,7 @@
         <div class="shop-item" id="dizhi{$consignee.address_id}">
                 <div class="shop-thumbnail">
                 	<form name=”form” method=”post” action=”#” id="form0">
-                        <div {if $consignee.default eq 1}class="clearfix" style="padding:18px; background: #edf7f9;"{else}style="padding:18px;"{/if} id="shouhuo">
+                        <div {if $consignee.default eq 1}class="clearfix" style="padding:18px; background: #edf7f9;"{else}{/if} id="shouhuo">
                                 <div>
 	                                <p>收件人:<span>{$consignee.consignee|escape}</span></p>
 	                                <p>手机号:<span>{$consignee.tel}</span></p>
