@@ -317,7 +317,8 @@
 
                        if($("#"+id).attr("checked")=="checked"){
 
-                        $(this).parent().parent().parent().css({'font-weight':'bolder','background':"#edf7f9"});
+                        // $(this).parent().parent().parent().css({'font-weight':'bolder','background':"#edf7f9"});
+                        // $(this).parent().parent().parent().siblings().css({'font-weight':'normal','background':"none"});
                         var addressid=$("#"+id).val();
                             $.ajax({
                               type:"POST",
