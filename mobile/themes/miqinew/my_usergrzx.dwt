@@ -357,7 +357,7 @@
         <div class="shop-item" id="dizhi{$consignee.address_id}">
                 <div class="shop-thumbnail">
                 	<form name=”form” method=”post” action=”#” id="form0">
-                        <div {if $consignee.default eq 1}class="clearfix" style="padding-top:15px;padding-bottom:10px;padding-left:10px;padding-right:0px;background:#edf7f9;"{else}{/if} id="shouhuo">
+                        <div {if $consignee.default eq 1}class="clearfix" style="padding:18px; background: #edf7f9;"{else}style="padding:18px;{/if} id="shouhuo">
                                 <div>
 	                                <p>收件人:<span>{$consignee.consignee|escape}</span></p>
 	                                <p>手机号:<span>{$consignee.tel}</span></p>
@@ -366,20 +366,25 @@
                                 </div>
                                 <div class="pull-right hidden-xs" style="margin-top: -62px;">
 
- {if $consignee.default eq 1} <span href="#" style="font-size:12px; color: #999; margin-right:20px;">默认地址</span>{else}
+                                  {if $consignee.default eq 1}
+                                  <span href="#" style="font-size:12px; color: #999; margin-right:20px;">默认地址</span>
+                                  {else}
                                   <a href="#" onclick="morendizhi({$consignee.address_id})" class="btn btn-default btn-sm">设为默认地址</a>
                                   {/if}
                                   <a href="#" onclick="editdizhi({$consignee.address_id})" class="btn btn-primary btn-sm">编辑</a>
-                              </div>
-                              <div class="pull-right visible-xs">
-                              {if $consignee.default eq 1}
-                                   <span href="#" style="font-size:12px; color: #999; margin-right:20px;">默认地址</span>
-                              {else}
-                                  <a href="#" onclick="morendizhi({$consignee.address_id})" class="btn btn-default btn-sm">设为默认地址</a>
-                              {/if}
+                                </div>
 
-                                	<a href="#" onclick="editdizhi({$consignee.address_id})"  class="btn btn-primary btn-sm">编辑</a>
-                            	</div>
+
+                                  <div class="pull-right visible-xs">
+                                  {if $consignee.default eq 1}
+                                       <span href="#" style="font-size:12px; color: #999; margin-right:20px;">默认地址</span>
+                                  {else}
+                                      <a href="#" onclick="morendizhi({$consignee.address_id})" class="btn btn-default btn-sm">设为默认地址</a>
+                                  {/if}
+                                  <a href="#" onclick="editdizhi({$consignee.address_id})"  class="btn btn-primary btn-sm">编辑</a>
+                                	</div>
+
+
                         </div>
                         <div id="btn-sm" class="shop-item-tools">
                             <a onclick="deldizhi({$consignee.address_id})" href="#" class="btn btn-default btn-sm"><i class="material-icons close"></i></a>
