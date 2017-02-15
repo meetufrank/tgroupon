@@ -673,3 +673,6 @@ wx.ready(function(){
 
 </script>
 {/if}
+<script>
+$('.page-preloader').remove();
+</script>
