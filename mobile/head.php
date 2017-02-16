@@ -116,8 +116,8 @@ $smarty->assign('login_css', $css);
 
 include('Jssdk.php');
 
-$appId = 'wxb5aec13c030a530b';//打开微信公众平台-开发者中心 获取appId和appSecret
-$appSecret = '2232d4acc3612e530f0ccc311c72d68c';
+$appId = $config['appidphonecs'];//打开微信公众平台-开发者中心 获取appId和appSecret
+$appSecret = $config['appSecretphonecs'];
 $jssdk = new \Jssdk($appId, $appSecret);
 $datajssdk = $jssdk->getSignPackage();
 

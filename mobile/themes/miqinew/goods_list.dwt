@@ -204,7 +204,7 @@
                 <div class="shop-item-details">
                   <h3 class="shop-item-title"><a href="shop-single.php?id={{d.data[i].goods_id}}{$linestring2}">{{ d.data[i].goods_name }}</a></h3>
                   <span class="shop-item-price">
-
+                     <span class="old-price">￥{{ d.data[i].oldprice }}</span>
                     ￥{{ d.data[i].attributeprice }}
                   </span>
                 </div>
