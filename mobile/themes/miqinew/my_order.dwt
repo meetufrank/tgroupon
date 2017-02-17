@@ -465,8 +465,15 @@
 
                   <!-- 订单id -->
                   <input type="hidden"  value="{$co.order_id}" id="orderids">
-                  <a   class="btn btn-primary Logistics"  href="#" data-id="{$co.order_id}">快递跟踪</a>
-                  <!-- <a href="my_user.php?act=order_tracking&order_id={$no.order_id}" class="c-btn3">订单跟踪</a> -->
+                  <a class="btn btn-primary Logistics" href="#" data-id="{$co.order_id}" onClick="javascript:func()">快递跟踪</a>
+                    <div class="row" style="padding:6px 0;" id="expressmain">
+                        <div class="col-xs-2">
+                          <span style="font-size:10px;">2017-02-14</span><br>
+                          <span style="font-size:22px; font-weight:bold;"> 13:01:12</span>
+                        </div>
+                        <div class="col-xs-1 hidden-xs" style="margin-top:10px;"></div>
+                        <div class="col-xs-7" style="margin-top:10px;">顺丰速运 已收取快件</div>
+                    </div>
                       </div>
                       </div>
                       </div>
@@ -773,85 +780,68 @@
       });
       });
 
-            //快递跟踪
-            $('.Logistics').each(function(){
-                    $(this).click(function(){
-                             //获取订单编号
+      //快递跟踪
+            // $('.Logistics').each(function(){
+            //         $(this).click(function(){
+            //                  //获取订单编号
 
-                           var orderids = $(this).attr("data-id");
-                           //alert(orderids);
-                             // var orderids = document.getElementById("orderids{}").value;
-                             $.ajax({
-                                  type:"get",
-                                  url:"my_user.php?act=order_tracking_news",
-                                  async:true,
-                                  data:{order_id:orderids},
-                                  dataType: "json",
-                                  success: function (result) {
-                                             var content = "";
-                                             var a ='';
-                                             if(result.status == 200){  //成功
-                                                var resultData = result.data;
+            //                var orderids = $(this).attr("data-id");
+            //                //alert(orderids);
+            //                  // var orderids = document.getElementById("orderids{}").value;
+            //                  $.ajax({
+            //                       type:"get",
+            //                       url:"my_user.php?act=order_tracking_news",
+            //                       async:true,
+            //                       data:{order_id:orderids},
+            //                       dataType: "json",
+            //                       success: function (result) {
+            //                                  var content = "";
+            //                                  var a ='';
+            //                                  if(result.status == 200){  //成功
+            //                                     var resultData = result.data;
 
-                                                       for(var i=resultData.length-1;i>=0;i--){
+            //                                            for(var i=resultData.length-1;i>=0;i--){
 
-                                                        if(i%2 == 0){
-                                                             a = 'row bg-default';
-                                                              content +='<div class="'+a+'" style="padding:6px 0;"><div class="col-xs-2"><span style="font-size:10px;">'+resultData[i].time.substring(0,10)+'</span><br><span style="font-size:22px; font-weight:bold;">'+resultData[i].time.substring(10,20)+'</span></div><div class="col-xs-1 hidden-xs" style="margin-top:10px;"></div><div class="col-xs-7" style="margin-top:10px;">'+resultData[i].context+'</div></div>';
+            //                                             if(i%2 == 0){
+            //                                                  a = 'row bg-default';
+            //                                                   content +='<div class="'+a+'" style="padding:6px 0;"><div class="col-xs-2"><span style="font-size:10px;">'+resultData[i].time.substring(0,10)+'</span><br><span style="font-size:22px; font-weight:bold;">'+resultData[i].time.substring(10,20)+'</span></div><div class="col-xs-1 hidden-xs" style="margin-top:10px;"></div><div class="col-xs-7" style="margin-top:10px;">'+resultData[i].context+'</div></div>';
 
-                                                          }else{
-                                                            a = 'row';
-                                                             content +='<div class="'+a+'" style="padding:6px 0;"><div class="col-xs-2"><span style="font-size:10px;">'+resultData[i].time.substring(0,10)+'</span><br><span style="font-size:22px; font-weight:bold;">'+resultData[i].time.substring(10,20)+'</span></div><div class="col-xs-1 hidden-xs" style="margin-top:10px;"></div><div class="col-xs-7" style="margin-top:10px;">'+resultData[i].context+'</div></div>';
-                                                          }
-
-
-
-                                                        }
-                                              }else if(result.status == 400){  //失败
-                                                  alert("订单暂未发货，请稍后再来查询");
-                                                 }
-                                                  layer.open({
-                                                      title: [
-                                                        ''+result.shipping_name+':    '+result.invoice_no+'',
-
-                                                        'background-color:#77cde3; color:#fff;'
-                                                      ],
-                                                      content:content,
-                                                      btn: '我知道了',
-                                                      shadeClose: false,
-                                                          });
-
-                                        }//回调函数结束
-                             });//ajax结束
-              });//快递跟踪点击函数
-
-            });
+            //                                               }else{
+            //                                                 a = 'row';
+            //                                                  content +='<div class="'+a+'" style="padding:6px 0;"><div class="col-xs-2"><span style="font-size:10px;">'+resultData[i].time.substring(0,10)+'</span><br><span style="font-size:22px; font-weight:bold;">'+resultData[i].time.substring(10,20)+'</span></div><div class="col-xs-1 hidden-xs" style="margin-top:10px;"></div><div class="col-xs-7" style="margin-top:10px;">'+resultData[i].context+'</div></div>';
+            //                                               }
 
 
 
+            //                                             }
+            //                                   }else if(result.status == 400){  //失败
+            //                                       alert("订单暂未发货，请稍后再来查询");
+            //                                      }
+            //                                       layer.open({
+            //                                           title: [
+            //                                             ''+result.shipping_name+':    '+result.invoice_no+'',
 
+            //                                             'background-color:#77cde3; color:#fff;'
+            //                                           ],
+            //                                           content:content,
+            //                                           btn: '我知道了',
+            //                                           shadeClose: false,
+            //                                               });
 
-  // $('#Logistics').click(function(){
-  //   var content ='<div class="row bg-default" style="padding:6px 0;"><div class="col-xs-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-xs-1 hidden-xs" style="margin-top:10px;">●</div><div class="col-xs-7" style="margin-top:10px;">顺丰速运 &nbsp;已收取快件</div></div>'
-  //   +
-  //   '<div class="row" style="padding:6px 0;"><div class="col-xs-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-xs-1 hidden-xs"  style="margin-top:10px;">●</div><div class="col-xs-7" style="margin-top:10px;">顺丰速运 &nbsp;已收取快件已收取快件</div></div>'
-  //   +
-  //   '<div class="row bg-default" style="padding:6px 0;"><div class="col-xs-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-xs-1 hidden-xs"  style="margin-top:10px;">●</div><div class="col-xs-7" style="margin-top:10px; line-height:18px;">顺丰速运 &nbsp;已收取快件已收取快件已收取快件已收取快件已收取快件</div></div>'
-  //   +
-  //   '<div class="row" style="padding:6px 0;"><div class="col-xs-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-xs-1 hidden-xs"  style="margin-top:10px;">●</div><div class="col-xs-7" style="margin-top:10px; line-height:18px;">顺丰速运 &nbsp;已收取快件已收取快件已收取快件已收取快件已收取快件</div></div>'
-  //   +
-  //   '<div class="row bg-default" style="padding:6px 0; color:#f20000;"><div class="col-xs-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-xs-1 hidden-xs"  style="margin-top:12px;"><i class="material-icons done" style="border:1px solid #ef0568; border-radius:50%; padding:2px;"></i></div><div class="col-xs-7" style="margin-top:12px; line-height:18px;">已签收，感谢使用顺丰快递，期待再次为您服务！</div></div>'
-  //   ;
-  //   layer.open({
-  //       title: [
-  //         '跟踪包裹',
-  //         'background-color:#77cde3; color:#fff;'
-  //       ],
-  //       content:content,
-  //       btn: '我知道了',
-  //       shadeClose: false,
-  //     });
-  //     });
+            //                             }//回调函数结束
+            //                  });//ajax结束
+            //   });//快递跟踪点击函数
+
+            // });
+              var exs = document.getElementById("expressmain");
+              exs.style.display = "block";
+              function func() {
+                  if(exs.style.display == "block")
+                      exs.style.display = "none";
+                  else
+                      exs.style.display = "block";
+              }
+
 
   //管理地址
    $('#Address_Manager').click(function(){
