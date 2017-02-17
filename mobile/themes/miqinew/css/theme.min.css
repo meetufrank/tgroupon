@@ -129,6 +129,9 @@ svg {
 	.site-logo img {
 		max-width:100px
 	}
+	.nav-pills>li>a {
+	    padding: 10px 8px;
+	}
 }
 @media screen and (min-width:375px) and (max-width:413px){
 	.sidebar {
@@ -168,6 +171,9 @@ svg {
 	}
 	.site-logo img {
 		max-width:150px
+	}
+	.nav-pills>li>a {
+	    padding: 10px 15px;
 	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
@@ -209,6 +215,9 @@ svg {
 	}
 	.site-logo img {
 		max-width:190px
+	}
+	.nav-pills>li>a {
+	    padding: 10px 20px;
 	}
 }
 @media screen and (max-width: 480px) {
@@ -311,6 +320,9 @@ svg {
 	}
 	.site-logo img {
 		max-width:200px;
+	}
+	.nav-pills>li>a {
+	    padding: 10px 18px;
 	}
 }
 @media screen and (max-width: 768px) {
@@ -3236,7 +3248,7 @@ to {
 	text-decoration: none
 }
 .shop-item .shop-item-details .shop-item-price {
-	width: 50%;
+	width: 40%;
 	font-size: 16px;
 	text-align: right
 }
@@ -3319,13 +3331,6 @@ to {
 	-o-transition: background-color 0.3s;
 	transition: background-color 0.3s
 }
-/*.add-to-cart:hover {
-	color: #fff;
-	background-color: #51bfdb
-}
-.add-to-cart:focus, .add-to-cart:active {
-	color: #fff
-}*/
 .add-to-cart em {
 	position: absolute;
 	top: 0;
