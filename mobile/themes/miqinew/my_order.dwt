@@ -469,13 +469,13 @@
                   </div>
                   <!--快递信息开始-->
                   
-                  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:6px 0;" id="expressmain">
-                  <hr style="color:red">
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                      <span style="font-size:10px;">2017-02-14</span><br>
-                      <span style="font-size:22px; font-weight:bold;"> 13:01:12</span>
+                  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12" id="expressmain">
+                  <hr>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extime">
+                      <span>2017-02-14</span>
+                      <span> 13:01:12</span>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:10px;">顺丰速运 已收取快件</div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extext">顺丰速运 已收取快件</div>
                   </div>
                   <!--快递信息结束-->
                   </div>
