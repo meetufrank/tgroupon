@@ -132,12 +132,6 @@ svg {
 	.nav-pills>li>a {
 	    padding: 10px 8px;
 	}
-	.extime{
-
-	}
-	.extext{
-
-	}
 }
 @media screen and (min-width:375px) and (max-width:413px){
 	.sidebar {
@@ -180,12 +174,6 @@ svg {
 	}
 	.nav-pills>li>a {
 	    padding: 10px 15px;
-	}
-	.extime{
-
-	}
-	.extext{
-		
 	}
 }
 @media screen and (min-width:414px) and (max-width:768px){
@@ -230,12 +218,6 @@ svg {
 	}
 	.nav-pills>li>a {
 	    padding: 10px 20px;
-	}
-	.extime{
-
-	}
-	.extext{
-		
 	}
 }
 @media screen and (max-width: 480px) {
@@ -343,14 +325,20 @@ svg {
 	    padding: 10px 18px;
 	}
 	.extime{
-		font-size: 20px;
 		font-weight: bold;
 		margin-top:5px; 
 	}
 	.extext{
-		font-size: 20px;
 		font-weight: bold;
 		margin-top:5px; 
+	}
+	.exname{
+		font-weight: bold;
+		margin-top:5px;
+	}
+	.exnumber{
+		font-weight: bold;
+		margin-top:5px;
 	}
 }
 @media screen and (max-width: 768px) {
@@ -472,6 +460,22 @@ svg {
     	margin-bottom:8px;
     	font-weight:400;
     	width:65px;
+	}
+	.extime{
+		font-weight: bold;
+		margin-top:5px; 
+	}
+	.extext{
+		font-weight: bold;
+		margin-top:5px; 
+	}
+	.exname{
+		font-weight: bold;
+		margin-top:5px;
+	}
+	.exnumber{
+		font-weight: bold;
+		margin-top:5px;
 	}
 }
 .cart-subtotal-youfei{
