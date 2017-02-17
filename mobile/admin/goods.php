@@ -2501,11 +2501,11 @@ elseif ($_REQUEST['act'] == 'edit_attributeprice')
     check_authz_json('goods_manage');
 
     $product_id       = intval($_POST['id']);
-    $attributeprice       = intval($_POST['val']);
+    $attributeprice       = $_POST['val'];
 
 
     /* 修改 */
-    $sql = "UPDATE " . $ecs->table('products') . " SET attributeprice = '$attributeprice' WHERE product_id = '$product_id'";
+    $sql = "UPDATE " . $ecs->table('products') . " SET attributeprice = $attributeprice WHERE product_id = '$product_id'";
     $result = $db->query($sql);
     if ($result)
     {
@@ -2514,14 +2514,14 @@ elseif ($_REQUEST['act'] == 'edit_attributeprice')
     }
 }
 /*------------------------------------------------------ */
-//-- 修改货品关联属性价格
+//-- 修改货品价格优惠比例
 /*------------------------------------------------------ */
 elseif ($_REQUEST['act'] == 'edit_priceratio')
 {
     check_authz_json('goods_manage');
 
     $product_id       = intval($_POST['id']);
-    $priceratio       = intval($_POST['val']);
+    $priceratio       = $_POST['val'];
 
     /* 修改 */
     $sql = "UPDATE " . $ecs->table('products') . " SET priceratio = $priceratio WHERE product_id = '$product_id'";

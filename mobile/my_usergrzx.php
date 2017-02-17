@@ -1602,40 +1602,42 @@ elseif ($action == 'act_edit_address')
     $smarty->assign('lang', $_LANG);
 
     if($_GET['flag'] == 'display'){
-        $id = intval($_REQUEST['id']);
+        $id = intval($_POST['id']);
 
 
 
 
-        /* 取得国家列表、商店所在国家、商店所在国家的省列表 */
-        $smarty->assign('country_list',       get_regions());
-        $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
+        // /* 取得国家列表、商店所在国家、商店所在国家的省列表 */
+        // $smarty->assign('country_list',       get_regions());
+        // $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
 
         /* 获得用户所有的收货人信息 */
-        $consignee_list = get_consignee_list_new($_SESSION['user_id']);
+        $consignee_list = get_consignee_list_edit($id);
+        $consignee_list=$consignee_list[0];
 
 
+        // foreach ($consignee_list AS $region_id => $vo)
+        // {
 
-        foreach ($consignee_list AS $region_id => $vo)
-        {
+        //     if($vo['address_id']==$id ){
+        //        $consignee=$vo;
+        //       //$smarty->assign('consignee', $vo);
+        //     }
 
-            if($vo['address_id']==$id ){
-               $consignee=$vo;
-               $smarty->assign('consignee', $vo);
-            }
-
-        }
+        // }
 
         $province_list = get_regions(1, 1);
-        $city_list     = get_regions(2, $consignee['province']);
-        $district_list = get_regions(3, $consignee['city']);
+        $city_list     = get_regions(2, $consignee_list['province']);
+        $district_list = get_regions(3, $consignee_list['city']);
+        $address['province']=$province_list;
+        $address['city']=$city_list;
+        $address['district']=$district_list;
+       // $smarty->assign('province_list',    $province_list);
 
-        $smarty->assign('province_list',    $province_list);
 
 
-
-        $smarty->assign('city_list',        $city_list);
-        $smarty->assign('district_list',    $district_list);
+       // $smarty->assign('city_list',        $city_list);
+        //$smarty->assign('district_list',    $district_list);
      //   echo   '<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="收件人" /></div> <div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="手机" /><div>'
      // .
      // '<div id="form-control"><div class="col-md-4 col-xs-12"><div class="form-element form-select"><select class="form-control"><option>省</option></select></div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select"><select class="form-control"><option>市</option></select></div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select"><select class="form-control"><option>区</option></select></div></div></div>'
@@ -1644,16 +1646,22 @@ elseif ($action == 'act_edit_address')
      // .
      // '<div class="text-right visible-sm visible-xs"><a href="#" style="text-decoration: underline;">读取微信地址</a></div>';
 
-     $sqlssq = "select ua.province,ua.city,ua.district from `ecs_user_address` as ua where user_id = $user_id and address_id = $id";
-     $shengshiqu = $db->getAll($sqlssq);
+     // $sqlssq = "select ua.province,ua.city,ua.district from `ecs_user_address` as ua where user_id = $user_id and address_id = $id";
+     // $shengshiqu = $db->getAll($sqlssq);
 
-     $smarty->assign('shengshiqu',$shengshiqu);
+     // //$smarty->assign('shengshiqu',$shengshiqu);
+     // $data['province']=$province_list;
+     //  $data['city']=$city_list;
+     //   $data['district']=$district_list;
+     //    $data['shengshiqu']=$shengshiqu;
+
 
      //编辑页
-      $smarty->display('bianji.dwt');
-
-
-     return false;
+     // $smarty->display('bianji.dwt');
+$data['useraddress']=$consignee_list;  //选中显示信息
+$data['address']=$address;
+echo  json_encode($data);
+     exit;
     }
 
     $address = array(

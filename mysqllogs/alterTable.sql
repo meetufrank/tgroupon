@@ -321,7 +321,7 @@ ADD COLUMN `priceratio`  int(11) NULL COMMENT '//货品价格比例' AFTER `attr
 ALTER TABLE `ecs_products`
 MODIFY COLUMN `attributeprice`  decimal(10,2) NULL DEFAULT 0.00 AFTER `product_number`;
 
-/*#2017/02/14 汪江  修改字段数据类型
+/*#2017/02/16 汪江  修改字段数据类型
 */
 ALTER TABLE `ecs_products`
-MODIFY COLUMN `priceratio`  double(4,2) NULL DEFAULT 1 COMMENT '//货品价格比例' AFTER `attributeimg`;
+MODIFY COLUMN `priceratio`  double(7,6) NULL DEFAULT 1 COMMENT '//货品价格比例' AFTER `attributeimg`;

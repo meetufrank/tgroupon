@@ -214,7 +214,23 @@ function get_consignee_list_new($user_id)
 
     return $GLOBALS['db']->getAll($sql);
 }
+/**
+ * 取得收货人地址列表  新
+ * @param   int     $user_id    用户编号
+ * @return  array
+ */
+function get_consignee_list_edit($id)
+{
 
+
+   $sql = "SELECT ua.tel,ua.address_id,ua.user_id,ua.consignee,ua.address,ua.tel,ua.default,er1.region_name as province_name,er2.region_name as city_name,er3.region_name as district_name,ua.province,ua.city,ua.district FROM " . $GLOBALS['ecs']->table('user_address') .
+            " as ua INNER JOIN ecs_region as er1 ON er1.region_id=ua.province
+             INNER JOIN ecs_region as er2 ON er2.region_id=ua.city
+             INNER JOIN ecs_region as er3 ON er3.region_id=ua.district
+            WHERE address_id = ".$id;
+
+    return $GLOBALS['db']->getAll($sql);
+}
 /**
  *  给指定用户添加一个指定红包
  *

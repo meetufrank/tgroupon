@@ -40,7 +40,7 @@
   <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
   <script src="{$ectouch_themes}/js/jquery-1.4.4.min.js"></script>
 
-<script src="{$ectouch_themes}js/jquery-1.9.1.min.js"></script>
+<script src="{$ectouch_themes}/js/jquery-1.9.1.min.js"></script>
 
   <!-- by sun -->
   <style>
@@ -160,9 +160,7 @@
 	padding-left:0;
 	padding-right:0;
 	}
-.dizhiyanse{
-  background: #edf7f9;
-}
+
 
 </style>
 
@@ -358,10 +356,10 @@
 
           <!--收货地址1-->
        {foreach from=$consignee_list item=consignee key=sn}
-        <div class="shop-item" id="dizhi{$consignee.address_id}">
+        <div class="shop-item" {if $consignee.default eq 1}class="clearfix" style="padding:18px; background: #edf7f9;"{else}style="padding:18px;"{/if} id="dizhi{$consignee.address_id}">
                 <div class="shop-thumbnail">
                   <form name=”form” method=”post” action=”#” id="form0">
-                        <div {if $consignee.default eq 1}class="clearfix" style="padding:18px; background: #edf7f9;"{else}style="padding:18px;"{/if} id="shouhuo">
+                        <div  id="shouhuo">
                                 <div>
                                   <p>收件人:<span>{$consignee.consignee|escape}</span></p>
                                   <p>手机号:<span>{$consignee.tel}</span></p>
@@ -501,14 +499,59 @@
                             url:"my_usergrzx.php?act=act_edit_address&flag=display",
                             async:true,
                             data:{id:addressid},
+                            dataType:'JSON',
                             success: function (result) {
+                              //console.log(result);return;
                                    if(result){
+                                    var content =' <form method="post" class="checkout-form container" id="address_form"><div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="收件人" name="consignee" value="'+result.useraddress.consignee
++'"/></div>'
+    +
+    '<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="手机" name="tel" value="'+result.useraddress.tel+'"/></div>'
+    +
+    '<div id="form-control"><div class="col-md-4 col-xs-12"><div class="form-element form-select">'+
+    '<select name="province" id="province"   class="form-control" >'+
+               ' <option value="0">{$lang.please_select}{$name_of_region[1]}</option>';
+                if(result.address){
+                  $.each(result.address.province,function(i){
+                    content=content+'<option value="'+result.address.province[i].region_id+'" ';
+                    if(result.useraddress.province==result.address.province[i].region_id){
+                      content=content+' selected';
+                    }
+                    content=content+'  >'+result.address.province[i].region_name+'</option>';
+
+                  });
+                  content=content+' </select></div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select">'+
+                  '<select name="city" id="city"  class="form-control">'+
+                  '<option value="0">{$lang.please_select}{$name_of_region[2]}</option>';
+                  $.each(result.address.city,function(i){
+                    content=content+'<option value="'+result.address.city[i].region_id+'" ';
+                    if(result.useraddress.city==result.address.city[i].region_id){
+                      content=content+' selected';
+                    }
+                    content=content+'  >'+result.address.city[i].region_name+'</option>';
+
+                  });
+                  content=content+' </select></div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select">'+
+                  '<select name="district" id="district"   class="form-control">'+
+                  '<option value="0">{$lang.please_select}{$name_of_region[3]}</option>';
+                   $.each(result.address.district,function(i){
+                    content=content+'<option value="'+result.address.district[i].region_id+'" ';
+                    if(result.useraddress.district==result.address.district[i].region_id){
+                      content=content+' selected';
+                    }
+                    content=content+'  >'+result.address.district[i].region_name+'</option>';
+
+                  });
+                   content=content+'</select></div></div></div>';
+                   content=content+'<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="详细地址" name="address" value="'+result.useraddress.address+'"/></div><div class="text-right visible-sm visible-xs"><a href="" style="text-decoration: underline;"></a></div></form>';
+                }
+
                                     layer.open({
                                       title: [
                                         '编辑地址',
                                         'background-color:#77cde3; color:#fff;'
                                       ],
-                                      content:result,
+                                      content:content,
                                       btn: ['确认', '返回'],
                                       success: function(){
                                          //省事件开始

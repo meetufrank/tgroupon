@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-02-16 16:23:46
+ * @Last Modified time: 2017-02-16 18:15:59
  */
 
 
@@ -527,6 +527,12 @@ function get_goods_list($where='',$limit='',$str=''){
    }
       $sql="select min(ep.product_id) as product_id,ep.goods_id,ep.priceratio,cast(ep.attributeprice+g.more_price as decimal(10,2)) as attributeprice,ep.attributeimg,g.goods_name from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where.$add_where." GROUP BY ep.goods_id ".$limit." order by sort_order desc";
       $data=$GLOBALS['db']->getALL($sql);
+      foreach ($data as $key => $value) {
+        if($value['priceratio']&&$value['priceratio']<1&&$value['priceratio']>0){
+          $oldprice=$value['attributeprice']/$value['priceratio'];
+          $data[$key]['oldprice']= sprintf("%.2f",round($oldprice,2));
+        }
+      }
       return $data;
 }
 
