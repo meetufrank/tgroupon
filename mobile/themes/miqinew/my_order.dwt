@@ -385,8 +385,8 @@
                         <div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
                           订单编号：{$co.order_sn}
                           </div>
-                          <div class="row">
-                          <div class="col-md-6">
+                      <div class="row">
+                      <div class="col-md-6">
                       <!-- Item -->
                       <!--{foreach from=$co.good_list item=cg}-->
                       <div class="item hidden-xs">
@@ -466,17 +466,20 @@
                   <!-- 订单id -->
                   <input type="hidden"  value="{$co.order_id}" id="orderids">
                   <a class="btn btn-primary Logistics" href="#" data-id="{$co.order_id}" onClick="javascript:func()">快递跟踪</a>
-                    <div class="row" style="padding:6px 0;" id="expressmain">
-                        <div class="col-xs-2">
-                          <span style="font-size:10px;">2017-02-14</span><br>
-                          <span style="font-size:22px; font-weight:bold;"> 13:01:12</span>
-                        </div>
-                        <div class="col-xs-1 hidden-xs" style="margin-top:10px;"></div>
-                        <div class="col-xs-7" style="margin-top:10px;">顺丰速运 已收取快件</div>
-                    </div>
-                      </div>
-                      </div>
-                      </div>
+                  </div>
+                  </div>
+                  <!--快递信息开始-->
+                  
+                  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:6px 0;" id="expressmain">
+                  <hr style="color:red">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                      <span style="font-size:10px;">2017-02-14</span><br>
+                      <span style="font-size:22px; font-weight:bold;"> 13:01:12</span>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:10px;">顺丰速运 已收取快件</div>
+                  </div>
+                  <!--快递信息结束-->
+                  </div>
 
                    <!--{/foreach}-->
 
@@ -834,7 +837,7 @@
 
             // });
               var exs = document.getElementById("expressmain");
-              exs.style.display = "block";
+              exs.style.display = "none";
               function func() {
                   if(exs.style.display == "block")
                       exs.style.display = "none";
