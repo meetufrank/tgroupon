@@ -345,10 +345,12 @@ svg {
 	.extime{
 		font-size: 20px;
 		font-weight: bold;
+		margin-top:5px; 
 	}
 	.extext{
 		font-size: 20px;
 		font-weight: bold;
+		margin-top:5px; 
 	}
 }
 @media screen and (max-width: 768px) {
