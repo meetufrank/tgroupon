@@ -692,7 +692,7 @@ $sub_price=sprintf("%.2f", $jiageimgs['attributeprice']+$shopdata['more_price'])
 
 $smarty->assign('jiagedata',$jiageimgs);
 $smarty->assign('checked_arr',$checked_arr);
-$smarty->assign('sub_price',$sub_price);
+$smarty->assign('sub_price',sprintf("%.2f", $sub_price));
 $smarty->assign('select',json_encode($select));
 
 $smarty->display('shop-single.dwt',      $cache_id);   //商品详情页

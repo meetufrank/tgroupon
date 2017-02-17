@@ -5,9 +5,11 @@
     CopyRight 2014 All Rights Reserved
 */
 
+define('IN_ECTOUCH', true);
 
-define('APPID',         "wxb5aec13c030a530b");
-define('APPSECRET',     "2232d4acc3612e530f0ccc311c72d68c");
+require(dirname(__FILE__) . '/include/init.php');
+define('APPID',         $config['appidphonecs']);
+define('APPSECRET',     $config['appSecretphonecs']);
 
 
 class class_weixin

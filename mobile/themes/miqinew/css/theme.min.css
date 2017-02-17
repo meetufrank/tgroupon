@@ -3185,10 +3185,11 @@ to {
 .shop-item {
 	width: 100%;
 	margin-bottom: 36px;
+	background-color: #f5f5f5;
 }
 .shop-item .shop-thumbnail {
 	position: relative;
-	background-color: #f5f5f5;
+
 	overflow: hidden
 }
 .shop-item .shop-thumbnail .item-link {

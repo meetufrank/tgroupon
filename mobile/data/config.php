@@ -20,6 +20,7 @@ require(dirname(__FILE__) . '/convention.php');
 //网站全局配置
 $config['fenxingtupian'] = 'http://meetuuu.com/mobile/admin/'; //分享图片地址
 
+
 $config['site_name'] = '上海商创网络科技有限公司'; //站点名称
 $config['site_url']="http://".$_SERVER['HTTP_HOST']."/"; //电脑版地址
 $config['mobilesite_url']=str_replace($_SERVER["DOCUMENT_ROOT"],'',ROOT_PATH); //手机版地址
@@ -62,7 +63,15 @@ $config['ver_author'] = '商创网络';
 $config['ver_email'] = 'support@ectouch.cn';
 $config['ver_url'] = 'http://www.ectouch.cn/';
 
-$config['pc_url']='https://open.weixin.qq.com/connect/qrconnect?appid=wx972a6f963cf1d611&response_type=code&scope=snsapi_login&redirect_uri=http://meetuuu.com/mobile/weixinlogin.php&state=668ee48328701ca10efef2517d8826e8';              //电脑端微信登录链接
-$config['phone_url']='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5aec13c030a530b&redirect_uri=http://meetuuu.com/mobile/loginphone.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';              //微信浏览器登录链接
+
+//微信登录
+$config['appidphonecs'] = 'wxb5aec13c030a530b';   //微信太平洋手机appid(测试)
+$config['appidpccs'] = 'wx972a6f963cf1d611';   //微信蜜柚网电脑appid(测试)
+
+$config['appSecretphonecs'] = '2232d4acc3612e530f0ccc311c72d68c';   //微信太平洋手机AppSecret(测试)
+$config['appSecretpccs'] = '668ee48328701ca10efef2517d8826e8';   //微信蜜柚网电脑AppSecret(测试)
+
+$config['pc_url']='https://open.weixin.qq.com/connect/qrconnect?appid='.$config['appidpccs'].'&response_type=code&scope=snsapi_login&redirect_uri=http://meetuuu.com/mobile/weixinlogin.php&state='.$config['appSecretpccs'];            //电脑端微信登录链接
+$config['phone_url']='https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$config['appidphonecs'].'&redirect_uri=http://meetuuu.com/mobile/loginphone.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';              //微信浏览器登录链接
 
 

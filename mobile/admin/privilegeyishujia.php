@@ -521,6 +521,8 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
         if(empty($url_img)){$img_list='';}else{$img_list=' ,hav_logo=\''.$url_img.'\'';}
        if(empty($_POST['country'])){$country_list='';}else{$country_list=' ,country=\''.$_POST['country'].'\'';}
     }
+
+
     //更新艺术家信息
     if($pwd_modified)
     {
@@ -530,6 +532,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
                "ec_salt = '$ec_salt' ,".
                "ysj_fencheng = '$ysj_fencheng', ".
                "ysj_tixian = '$user_id', ".
+               "country = '$country', ".
                "hav_logo  = '$url_img'" .
                $action_list.$img_list.$country_list.
                $role_id.
@@ -547,6 +550,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
                "email = '$admin_email' ,".
                "ysj_fencheng = '$ysj_fencheng' ,".
                "ysj_tixian = '$user_id', ".
+               "country = '$country', ".
                "hav_logo = '$url_img'".
                $action_list.$img_list.$country_list.
                $role_id.

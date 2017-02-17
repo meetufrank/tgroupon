@@ -9,8 +9,8 @@ require(dirname(__FILE__) . '/include/init.php');
 $code = $_GET['code'];
 $state = $_GET['state'];
 //换成自己的接口信息
-$appid = 'wxb5aec13c030a530b';
-$appsecret = '2232d4acc3612e530f0ccc311c72d68c';
+$appid = $config['appidphonecs'];
+$appsecret = $config['appSecretphonecs'];
 if (empty($code)) $this->error('授权失败');
 $token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$appsecret.'&code='.$code.'&grant_type=authorization_code';
 $token = json_decode(file_get_contents($token_url));
