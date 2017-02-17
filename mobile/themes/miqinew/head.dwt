@@ -52,7 +52,7 @@
               <span style="display:inline-block; line-height:74px;">{$user_data.alias}</span>
             </div>
             </div>
-            <hr style="height:3px;">
+            <hr>
             <ul class="main-navigation space-bottom">
               <li><a href="my_user.php?act=order_list{$linestring2}" >我的订单</a></li>
               <li><a href="my_grzxgdsc.php{$linestring1}">我的收藏</a></li>
