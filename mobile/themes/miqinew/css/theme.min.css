@@ -340,6 +340,10 @@ svg {
 		font-weight: bold;
 		margin-top:5px;
 	}
+	.btn-out{
+		padding: 0 22px;
+		margin-right:8px;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -476,6 +480,9 @@ svg {
 	.exnumber{
 		font-weight: bold;
 		margin-top:5px;
+	}
+	.btn-out{
+		padding: 0 22px;
 	}
 }
 .cart-subtotal-youfei{
@@ -1578,6 +1585,38 @@ table>tbody+tbody {
 }
 .table-no-border>thead>tr>th, .table-no-border>thead>tr>td, .table-no-border>tbody>tr>th, .table-no-border>tbody>tr>td, .table-no-border>tfoot>tr>th, .table-no-border>tfoot>tr>td {
 	border-bottom: 0
+}
+.btn-out{
+	display: inline-block;
+	height: 48px;
+	line-height: 45px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #606060;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	text-transform: uppercase;
+	border: 2px solid transparent;
+	border-radius: 5px;
+	margin: 10px 0;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	white-space: nowrap;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-transition: color 0.3s ease-out, background-color 0.3s ease-out;
+	-o-transition: color 0.3s ease-out, background-color 0.3s ease-out;
+	transition: color 0.3s ease-out, background-color 0.3s ease-out;
+	background-color: #ededed
 }
 .btn, .back-btn, .done-btn, .search-btn {
 	display: inline-block;
