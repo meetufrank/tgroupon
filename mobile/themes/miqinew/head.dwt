@@ -5,7 +5,7 @@
 
     <!-- Site Logo -->
       <a href="index.html" class="site-logo">
-      	<img src="{$ectouch_themes}/img/Logo.png">
+        <img src="{$ectouch_themes}/img/Logo.png">
       </a>
 <!-- Toolbar -->
 
@@ -42,14 +42,14 @@
 
 <!-- Account (userinfo) -->
         <div class="toolbar-section" id="userinfo" >
-            <div>
-            <a href="#account" class="btn-out btn-primary waves-effect waves-light pull-right toggle-section" id="logout">退出</a>
+            <div class="clearfix">
+            <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section" id="logout">退出</a>
             <div class="quotation pull-left" style="width:auto;">
               <div class="quotation-author-ava pull-left">
                 <img class="" src="{$user_data.headimgurl}" alt="James Cameron">
               </div>
-              <span style="display:inline-block; line-height:74px; margin-left:5px;">{$user_data.alias}</span>
-              <span style="display:inline-block; line-height:74px; margin-left:5px;">589aed298d60</span>
+              &nbsp;&nbsp;
+              <span style="display:inline-block; line-height:74px;">{$user_data.alias}</span>
             </div>
             </div>
             <hr>
