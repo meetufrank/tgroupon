@@ -2498,6 +2498,31 @@ elseif ($_REQUEST['act'] == 'edit_attributeprice')
         make_json_result($attributeprice);
     }
 }
+
+
+/*------------------------------------------------------ */
+//-- 修改货品假价格
+/*------------------------------------------------------ */
+elseif ($_REQUEST['act'] == 'edit_falseprice')
+{
+    check_authz_json('goods_manage');
+
+    $product_id       = intval($_POST['id']);
+    $falseprice       = $_POST['val'];
+
+
+    /* 修改 */
+    $sql = "UPDATE " . $ecs->table('products') . " SET falseprice = $falseprice WHERE product_id = '$product_id'";
+    $result = $db->query($sql);
+    if ($result)
+    {
+        clear_cache_files();
+        make_json_result($falseprice);
+    }
+}
+
+
+
 /*------------------------------------------------------ */
 //-- 修改货品价格优惠比例
 /*------------------------------------------------------ */
