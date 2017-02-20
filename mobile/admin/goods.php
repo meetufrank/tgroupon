@@ -981,21 +981,6 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /* 处理属性 */
     if ((isset($_POST['attr_id_list']) && isset($_POST['attr_value_list'])) || (empty($_POST['attr_id_list']) && empty($_POST['attr_value_list'])))
     {
@@ -2651,6 +2636,7 @@ if($fileInfo['error']==0){
     $product['product_number']  = $_POST['product_number'];
     $product['attributeprice']  = $_POST['attributeprice'];
     $product['priceratio']  = $_POST['priceratio'];
+    $product['falseprice']  = $_POST['falseprice'];
 
 
 
@@ -2726,7 +2712,7 @@ if($fileInfo['error']==0){
         }
 
         /* 插入货品表 */
-        $sql = "INSERT INTO " . $GLOBALS['ecs']->table('products') . " (goods_id, goods_attr, product_sn, product_number,attributeprice,priceratio,attributeimg)  VALUES ('" . $product['goods_id'] . "', '$goods_attr', '$value', '" . $product['product_number'][$key] . "', '" . $product['attributeprice'][$key] . "', '" . $product['priceratio'][$key] . "','$destination')";
+        $sql = "INSERT INTO " . $GLOBALS['ecs']->table('products') . " (goods_id, goods_attr, product_sn, product_number,attributeprice,priceratio,attributeimg,falseprice)  VALUES ('" . $product['goods_id'] . "', '$goods_attr', '$value', '" . $product['product_number'][$key] . "', '" . $product['attributeprice'][$key] . "', '" . $product['priceratio'][$key] . "','$destination','".$product['falseprice'][$key]."')";
          // print_r($sql);exit;
         if (!$GLOBALS['db']->query($sql))
         {
