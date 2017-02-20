@@ -127,10 +127,9 @@
   }
 
   /* 快递跟踪背景色样式 */
-/*   .bjs{
-    background-color:red;
-  } */
-
+  .kuaidibjs{
+    background-color:#ededed;
+  }
   </style>
 
 
@@ -478,8 +477,17 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 exnumber">{$co.invoice_no}</div>
 
                                      {foreach from=$co.kuaidi.data item=cd name=name key=key}
+                                      {if $smarty.foreach.name.iteration %2 == 1}
+                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extime kuaidibjs">
+                                                    <span>{$cd.time}</span>
+                                                    <span>{$cd.ftime}</span>
+                                                </div>
 
-                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extime ">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extext kuaidibjs">
+                                                   {$cd.context}
+                                                </div>
+                                      {else}
+                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extime ">
                                                     <span>{$cd.time}</span>
                                                     <span>{$cd.ftime}</span>
                                                 </div>
@@ -487,6 +495,7 @@
                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extext ">
                                                    {$cd.context}
                                                 </div>
+                                      {/if}
                                       {/foreach}
 
                   </div>

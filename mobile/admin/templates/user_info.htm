@@ -66,7 +66,7 @@
     <td class="label">会员身份:</td>
     <td><select name="shenfen">
       <option value="0" selected>普通会员</option>
-      <option value="1" {if $user.is_line==1}selected{/if}>线下店</option>
+      <option value="1" {if $user.is_line==1}selected{/if}>空间主</option>
     </select></td>
   </tr>
 
@@ -84,13 +84,13 @@
 
   <!-- 线下店推荐分成 -->
   <tr>
-    <td class="label">线下店推荐分成:</td>
+    <td class="label">空间主推荐分成:</td>
     <td>
        <input name="tj_fencheng" type="text"  value="{$user.tj_fencheng}" size="10" />
     </td>
   </tr>
   <tr>
-    <td class="label">线下店产品分成:</td>
+    <td class="label">空间主产品分成:</td>
     <td>
        <input name="xs_fencheng" type="text"  value="{$user.xs_fencheng}" size="10" />
     </td>
@@ -99,7 +99,7 @@
 
 
   <tr>
-            <td class="label">线下店logo：</td>
+            <td class="label">空间主logo：</td>
             <td>
               <input type="file" name="pic" size="35" />
 
