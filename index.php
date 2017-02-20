@@ -111,11 +111,11 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     $smarty->assign('feed_url',        ($_CFG['rewrite'] == 1) ? 'feed.xml' : 'feed.php'); // RSS URL
 
     $smarty->assign('categories',      get_categories_tree()); // 分类树
-	
+
 	$smarty->assign('categories_pro',  get_categories_tree_pro()); // 分类树加强版
      /**小图 start**/
 	/*打开页面即可执行，仅执行一次，随即删掉*/
-		
+
 	for($i=1;$i<=$_CFG['auction_ad'];$i++){
 			$ad_arr .= "'c".$i.",";
 		}
@@ -279,8 +279,8 @@ function index_get_group_buy()
 
             /* 根据价格阶梯，计算最低价 */
             $ext_info = unserialize($row['ext_info']);
-		
-	
+
+
             $price_ladder = $ext_info['price_ladder'];
             if (!is_array($price_ladder) || empty($price_ladder))
             {
@@ -294,37 +294,37 @@ function index_get_group_buy()
                 }
             }
             ksort($price_ladderp);
-						
+
             $row['last_price'] = price_format(end($price_ladder));
-			
+
 			/*团购节省和折扣计算 by ecmoban start*/
-			$price    = $row['market_price']; //原价 
+			$price    = $row['market_price']; //原价
 			$nowprice = $row['last_price']; //现价
-			$row['jiesheng'] = $price-$nowprice; //节省金额 
+			$row['jiesheng'] = $price-$nowprice; //节省金额
 			if($nowprice > 0)
 			{
 				$row['zhekou'] = round(10 / ($price / $nowprice), 1);
 			}
-			else 
-			{ 
+			else
+			{
 				$row['zhekou'] = 0;
 			}
 
 			$activity_row = $GLOBALS['db']->getRow($sql);
 			$stat = group_buy_stat($row['act_id'], $ext_info['deposit']);
-			
+
 			$row['cur_amount'] = $stat['valid_goods'];         // 当前数量
 			$row['start_time'] = $row['start_time'];         // 开始时间
 			$row['end_time'] = $row['end_time'];         // 结束时间
 
-			 	
+
 			/*团购节省和折扣计算 by ecmoban end*/
             $row['url'] = build_uri('group_buy', array('gbid' => $row['group_buy_id']));
             $row['short_name']   = $GLOBALS['_CFG']['goods_name_length'] > 0 ?
                                            sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
             $row['short_style_name']   = add_style($row['short_name'],'');
             $group_buy_list[] = $row;
-			
+
         }
     }
 

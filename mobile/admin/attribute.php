@@ -141,7 +141,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     }
 
     $cat_id = $_REQUEST['cat_id'];
-
+// print_r($_POST['attr_name']);exit;
     /* 取得属性信息 */
     $attr = array(
         'cat_id'          => $_POST['cat_id'],
@@ -153,6 +153,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         'attr_type'       => empty($_POST['attr_type']) ? '0' : intval($_POST['attr_type']),
         'attr_group'      => isset($_POST['attr_group']) ? intval($_POST['attr_group']) : 0
     );
+
 
     /* 入库、记录日志、提示信息 */
     if ($is_insert)
@@ -174,6 +175,8 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         );
         sys_msg(sprintf($_LANG['edit_ok'], $attr['attr_name']), 0, $links);
     }
+
+
 }
 
 /*------------------------------------------------------ */

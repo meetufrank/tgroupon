@@ -1,157 +1,100 @@
-<!-- $Id: article_list.htm 16783 2009-11-09 09:59:06Z liuhui $ -->
-
 {if $full_page}
 {include file="pageheader.htm"}
 {insert_scripts files="../data/static/js/utils.js,./js/listtable.js"}
+<script type="text/javascript" src="../data/static/js/calendar.php?lang={$cfg_lang}"></script>
+<script>
+var thisfile = '{$thisfile}';
+var deleteck = '{$lang.deleteck}';
+var deleteid = '{$lang.delete}';
+</script>
+<link href="../data/static/js/calendar/calendar.css" rel="stylesheet" type="text/css" />
 <div class="form-div">
-  <form action="fengchen.php?act=list" name="a" >
-      <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
-      <!-- <select name="cat_id" >
-        <option value="0">{$lang.all_cat}</option>
-        <option value="1">产品分成</option>
-        <option value="2">销售分成</option>
-        <option value="3">艺术家分成</option>
-        <option value="4">厂商分成</option>
-          {$cat_select}
-      </select> -->
-      <select name="typeseach" >
-        <option value="5">全部分类</option>
-        <option value="1">产品分成</option>
-        <option value="2">销售分成</option>
-        <option value="3">艺术家分成</option>
-        <option value="4">厂商分成</option>
-      </select>
-      分成类型 <input type="text" name="keyword" id="keyword" />
-      用户名称<input type="text" name="yonghuname" id="yonghuname" />
-     <!--  <input type="submit" value="{$lang.button_search}" class="button" /> -->
-      <input type="button" value="搜索" class="button" />
-  </form>
-</div>
-
-<form method="POST" action="article.php?act=batch_remove" name="listForm">
-<!-- start cat list -->
-<div class="list-div" id="listDiv">
+{if !$crons_enable}
+<ul style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
+  <!-- <li style="border: 1px solid #CC0000; background: #FFFFCC; padding: 10px; margin-bottom: 5px;" >{$lang.enable_notice}</li> -->
+</ul>
 {/if}
+<form action="fengchen.php?act=list" method="post">
+  {$lang.goods_name}
+  <input type="hidden" name="act" value="list" />
+  <input name="goods_name" value="" type="text" size="25" />
+  <input type="submit" value="{$lang.button_search}" class="button" />
+</form>
+</div>
+<form method="post" action="" name="listForm">
+<div class="list-div" id="listDiv">
+  {/if}
 
-<table cellspacing='1' cellpadding='3' id='list-table'>
+<table cellspacing='1' cellpadding='3'>
+<tr>
+  <th width="5%"><input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">{$lang.id}</th>
+<!--   <th>{$lang.goods_name}</th>
+  <th width="25%">{$lang.starttime}</th> -->
+  <th width="25%">用户名称</th>
+<!--   <th width="25%">{$lang.endtime}</th>
+  <th width="10%">{$lang.handler}</th> -->
+</tr>
+{foreach from=$goodsdb item=val}
+<tr>
+  <td><input name="checkboxes[]" type="checkbox" value="{$val.goods_id}" />{$val.goods_id}</td>
+<!--   <td>{$val.goods_name}</td> -->
+
+  <td align="center">
+       {$val.user_name}
+  </td>
+
+</tr>
+    {foreachelse}
+    <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
+{/foreach}
+</table>
+{if $full_page}
+{/if}
+<table id="page-table" cellspacing="0">
   <tr>
-   <!--  <th><input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">
-      <a href="javascript:listTable.sort('article_id'); ">{$lang.article_id}</a>{$sort_article_id}</th>
- -->
-    <th><a>编号</th>
-    <th><a>线下店名称</th>
-    <th><a>商品名称</th>
-    <th><a>用户名称</th>
-    <th><a>分成金额</th>
-    <th><a>分成类型</th>
-    <th><a>获得提出用户</th>
-    <!-- <th>{$lang.handler}</th> -->
-  </tr>
-  {foreach from=$fclist item=list}
-   <tr>
-      <td align="center">{$list.id}</td>
-      <td align="center">{$list.xxdname}</td>
-      <td align="center">{$list.goods_name}</td>
-      <td align="center">{$list.username}</td>
-      <td align="center">{$list.money}</td>
-      <td align="center">{if $list.type eq 0}产品分成{elseif $list.type eq 1}销售分成{elseif $list.type eq 2}艺术家分成{elseif $list.type eq 3}厂商分成{/if}</td>
-      <td align="center">{$list.tcusername}</td>
-   </tr>
-   {foreachelse}
-    <tr><td class="no-records" colspan="10">{$lang.no_article}</td></tr>
-  {/foreach}
-  <tr>&nbsp;
-    <td align="right" nowrap="true" colspan="8">{include file="page.htm"}</td>
+    <!-- <td>
+      <input type="hidden" name="act" value="" />
+      <input name="date" type="text" id="date" size="10" value='0000-00-00' readonly="readonly" /><input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('date', '%Y-%m-%d', false, false, 'selbtn1');" value="{$lang.btn_select}" class="button"/>
+      <input type="button" id="btnSubmit1" value="{$lang.button_start}" disabled="true" class="button" onClick="return validate('batch_start')" />
+      <input type="button" id="btnSubmit2" value="{$lang.button_end}" disabled="true" class="button" onClick="return validate('batch_end')" />
+    </td> -->
+    <td align="right" nowrap="true">
+    {include file="page.htm"}
+    </td>
   </tr>
 </table>
-
 {if $full_page}
-</div>
-
-<div>
-  <input type="hidden" name="act" value="batch" />
- <!--  <select name="type" id="selAction" onchange="changeAction()">
-    <option value="">{$lang.select_please}</option>
-    <option value="button_remove">{$lang.button_remove}</option>
-    <option value="button_hide">{$lang.button_hide}</option>
-    <option value="button_show">{$lang.button_show}</option>
-    <option value="move_to">{$lang.move_to}</option>
-  </select> -->
-<!--   <select name="target_cat" style="display:none">
-    <option value="0">{$lang.select_please}</option>
-    {$cat_select}
-  </select> -->
-
-  <!-- <input type="submit" value="{$lang.button_submit}" id="btnSubmit" name="btnSubmit" class="button" disabled="true" /> -->
-</div>
 </form>
-<!-- end cat list -->
-<script type="text/javascript" language="JavaScript">
-  listTable.recordCount = {$record_count};
-  listTable.pageCount = {$page_count};
+</div>
+<script type="Text/Javascript" language="JavaScript">
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+<!--
+{literal}
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+{/literal}
 
-  {foreach from=$filter item=item key=key}
-  listTable.filter.{$key} = '{$item}';
-  {/foreach}
-  {literal}
-
-  onload = function()
+function validate(name)
+{
+  if(document.listForm.elements["date"].value == "0000-00-00")
   {
-    // 开始检查订单
-    startCheckOrder();
+    alert('{$lang.select_time}');
+    return;
   }
-	/**
-   * @param: bool ext 其他条件：用于转移分类
-   */
-  function confirmSubmit(frm, ext)
+  else
   {
-      if (frm.elements['type'].value == 'button_remove')
-      {
-          return confirm(drop_confirm);
-      }
-      else if (frm.elements['type'].value == 'not_on_sale')
-      {
-          return confirm(batch_no_on_sale);
-      }
-      else if (frm.elements['type'].value == 'move_to')
-      {
-          ext = (ext == undefined) ? true : ext;
-          return ext && frm.elements['target_cat'].value != 0;
-      }
-      else if (frm.elements['type'].value == '')
-      {
-          return false;
-      }
-      else
-      {
-          return true;
-      }
+    document.listForm.act.value=name;
+    document.listForm.submit();
   }
-	 function changeAction()
-  {
-
-      var frm = document.forms['listForm'];
-
-      // 切换分类列表的显示
-      frm.elements['target_cat'].style.display = frm.elements['type'].value == 'move_to' ? '' : 'none';
-
-      if (!document.getElementById('btnSubmit').disabled &&
-          confirmSubmit(frm, false))
-      {
-          frm.submit();
-      }
-  }
-
- // /* 搜索文章 */
- // function searchArticle()
- // {
- //    listTable.filter.keyword = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
- //    listTable.filter.cat_id = parseInt(document.forms['searchForm'].elements['cat_id'].value);
- //    listTable.filter.page = 1;
- //    listTable.loadList();
- // }
-
- {/literal}
+}
+//-->
 </script>
 {include file="pagefooter.htm"}
 {/if}

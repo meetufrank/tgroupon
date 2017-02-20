@@ -22,15 +22,6 @@ include('head.php');
 
 
 
-
-
-
-
-
-
-
-
-
 if ((DEBUG_MODE & 2) != 2)
 {
     $smarty->caching = true;
@@ -266,6 +257,7 @@ echo json_encode($data);
               exit;
 
 }elseif($_REQUEST['act'] == 'shochangsc'){
+  ajax_please_in();
      $goodsid = $_POST['goodsid'];
 
      //查询收藏表

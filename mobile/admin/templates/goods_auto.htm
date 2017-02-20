@@ -27,28 +27,21 @@ var deleteid = '{$lang.delete}';
 <table cellspacing='1' cellpadding='3'>
 <tr>
   <th width="5%"><input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">{$lang.id}</th>
-  <th>{$lang.goods_name}</th>
-  <th width="25%">{$lang.starttime}</th>
-  <th width="25%">{$lang.endtime}</th>
-  <th width="10%">{$lang.handler}</th>
+<!--   <th>{$lang.goods_name}</th>
+  <th width="25%">{$lang.starttime}</th> -->
+  <th width="25%">用户名称</th>
+<!--   <th width="25%">{$lang.endtime}</th>
+  <th width="10%">{$lang.handler}</th> -->
 </tr>
 {foreach from=$goodsdb item=val}
 <tr>
   <td><input name="checkboxes[]" type="checkbox" value="{$val.goods_id}" />{$val.goods_id}</td>
-  <td>{$val.goods_name}</td>
+<!--   <td>{$val.goods_name}</td> -->
+
   <td align="center">
-  <span onclick="listTable.edit(this, 'edit_starttime', '{$val.goods_id}');showCalendar(this.firstChild, '%Y-%m-%d', false, false, this.firstChild)"><!-- {if $val.starttime} -->{$val.starttime}<!-- {else} -->0000-00-00<!-- {/if} --></span>
-</td>
-  <td align="center">
-  <span onclick="listTable.edit(this, 'edit_endtime', '{$val.goods_id}');showCalendar(this.firstChild, '%Y-%m-%d', false, false, this.firstChild)"><!-- {if $val.endtime} -->{$val.endtime}<!-- {else} -->0000-00-00<!-- {/if} --></span>
+       {$val.user_name}
   </td>
-  <td align="center"><span id="del{$val.goods_id}">
-  {if $val.endtime || $val.starttime}
-    <a href="{$thisfile}?goods_id={$val.goods_id}&act=del" onclick="return confirm('{$lang.deleteck}');">{$lang.delete}</a>
-  {else}
-    -
-  {/if}</span>
-  </td>
+
 </tr>
     {foreachelse}
     <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
@@ -92,7 +85,7 @@ function validate(name)
   if(document.listForm.elements["date"].value == "0000-00-00")
   {
     alert('{$lang.select_time}');
-    return;	
+    return;
   }
   else
   {

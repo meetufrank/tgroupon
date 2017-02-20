@@ -175,7 +175,7 @@ $_LANG['50_virtual_card_list'] = '虚拟商品列表';
 $_LANG['51_virtual_card_add'] = '添加虚拟商品';
 $_LANG['52_virtual_card_change'] = '更改加密串';
 $_LANG['goods_auto'] = '商品自动上下架';
-$_LANG['article_auto'] = '文章自动发布';
+$_LANG['article_auto'] = '分成列表';
 // $_LANG['navigator'] = '菜单管理';
 
 /* 促销管理 */
@@ -244,7 +244,7 @@ $_LANG['05_user_rank_list'] = '会员等级';
 $_LANG['06_list_integrate'] = '会员整合';
 $_LANG['09_user_account'] = '充值和提现申请';
 $_LANG['10_user_account_manage'] = '资金管理';
-$_LANG['line_shop'] = '线下店签约管理';
+// $_LANG['line_shop'] = '线下店签约管理';
 $_LANG['line_shop_add'] = '新增线下店签约';
 
 /* 权限管理 */

@@ -17,63 +17,6 @@ define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
 
-
-
-// $appid = 'wx7eee3208b7b59ea1';
-// $secret ='9d9360d18e266b81d69888227fbbadeb';
-// if((!isset($_SESSION['wechat_id']) || $_SESSION['wechat_id']==null) && !$_SESSION['user_id'] && !$_CFG['shop_reg_closed']){
-//     $code=isset($_GET['code'])?$_GET['code']:null;
-//     $url =  urlencode("http://mall.58zcm.com/mobile/index.php");
-//     if($code==null){
-//         $str="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appid}&redirect_uri=".$url."&scope=snsapi_base&state=123&response_type=code#wechat_redirect";
-//         //echo $str;exit;
-//         header ("Location:".$str);
-//     }else{
-//         $str="https://api.weixin.qq.com/sns/oauth2/access_token?appid={$appid}&secret={$secret}&code=".$code."&grant_type=authorization_code";
-//         $ch = curl_init() ;
-//         curl_setopt($ch, CURLOPT_URL, $str);
-//         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-//         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-//         curl_setopt($ch, CURLOPT_HEADER, FALSE);
-//         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); //将curl_exec()获取的信息以文件流的形式返回，而不是直接输出。
-//         $output = curl_exec($ch);
-//         $output=json_decode($output,true);
-//         $_SESSION['wechat_id']=$output['openid'];
-//     }
-// }
-// //unset($_SESSION['user_id']);exit;
-// /*授权登陆 注册*/
-// if(!$_SESSION['user_id'] && $_SESSION['wechat_id'] && !$_CFG['shop_reg_closed']){
-//     $openid = $_SESSION['wechat_id'];
-
-//     $sql = "SELECT * FROM".$ecs->table('users')." where wx_open_id = '".$openid."'";
-//     $row = $db->getRow($sql);
-//     if($row){
-//         $username = $row['user_name'];
-//         $password = $row['user_name'];
-//         if ($user->login($username, $password)){
-//             update_user_info();
-//             recalculate_price();
-//          }
-//     }else{//注册
-//         include_once(ROOT_PATH . 'include/lib_passport.php');echo ROOT_PATH . 'include/lib_passport.php';
-
-//         $username = 'wx_'.time();
-//         $password = 'wx_'.time();
-//         $email    = 'wx_login'.time().'@qq.com';
-//         if (register($username, $password, $email) !== false){
-//             $sql = "UPDATE ".$ecs->table('users')." SET  wx_open_id = '".$openid."' WHERE user_id = '".$_SESSION['user_id']."'";
-//             if(!$db->query($sql)){
-//                 unset($_SESSION['user_id']);
-//             }
-//         }
-//     }
-// }
-
-
-
-
-
 require(ROOT_PATH . 'include/lib_weixintong.php');
 /* 载入语言文件 */
 require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
@@ -1303,6 +1246,88 @@ elseif ($action == 'order_list')
 
     $merge  = get_user_merge($user_id);
 
+
+    //快递跟踪信息
+
+
+
+
+
+
+
+
+
+
+
+
+$come_orders['data']=get_shipping_data($come_orders['data']);  //待收货订单跟踪
+
+  // foreach ($ye_arr as $key => $value) {
+  //   $get_content=array();
+  //   $array=array();
+  //   $small_array=array();
+  //   //生成快递100查询接口链接
+  //   if($value['shipping_id']!=14){
+  //       $shipping   = get_shipping_object($value['shipping_id']);
+
+  //       $query_link = $shipping->kuaidi100($value['invoice_no']);
+
+  //       //优先使用curl模式发送数据
+  //       if (function_exists('curl_init') == 1){
+  //         $curl = curl_init();
+  //         curl_setopt ($curl, CURLOPT_URL, $query_link);
+  //         curl_setopt ($curl, CURLOPT_HEADER,0);
+  //         curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+  //         curl_setopt ($curl, CURLOPT_USERAGENT,$_SERVER['HTTP_USER_AGENT']);
+  //         curl_setopt ($curl, CURLOPT_TIMEOUT,5);
+  //         $get_content = curl_exec($curl);
+  //         $get_content=json_decode($get_content);
+  //         if(is_object($get_content)){
+  //           foreach ($get_content as $gk => $gv) {
+  //                $array[$gk]=$gv;
+
+  //           }
+
+  //           foreach ($array['data'] as $dk => $dv) {
+  //               if(is_object($array['data'][$dk])){
+  //                   foreach ($array['data'][$dk] as $dvk => $dvv) {
+  //                       $small_array['data'][$dk][$dvk]=$dvv;
+  //                   }
+
+  //               }
+
+
+
+  //           }
+  //           $array['data']=$small_array;
+
+  //         }
+
+  //         curl_close ($curl);
+  //       }
+  //   }
+  //   $ye_arr[$key]['kuaidi']=$array;
+  // }
+
+ // print_r($orders);exit;
+   //$smarty->assign('orders', $orders);   //快递单号和快递名称
+  // $getcontent = json_decode($get_content);
+
+  // $getcontent->invoice_no=$orders['invoice_no'];
+  // $getcontent->shipping_name=$orders['shipping_name'];
+
+
+
+
+
+
+
+
+
+
+
+
+
     $smarty->assign('merge',  $merge);
     $smarty->assign('pager',  $pager);
     $smarty->assign('record_count_no',$record_count_no);//待付款
@@ -1315,6 +1340,7 @@ elseif ($action == 'order_list')
     $smarty->assign('done_orders', $done_orders);//已完成
 
     $smarty->display('my_order.dwt');
+    exit;
 
 }
 
@@ -1546,6 +1572,7 @@ elseif ($action == 'async_order_list')
              }else{
                  $order_list['more']=1;
              }
+   $order_list['data']=get_shipping_data($order_list['data']);  //待收货订单跟踪
              foreach ($order_list['data'] as $key => $value) {
                  $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
                         <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
@@ -1620,10 +1647,22 @@ elseif ($action == 'async_order_list')
                   <h4 class="text-primary">快递信息</h4>
                         <hr>
                   <a  class="btn btn-primary Logistics" href="#" data-id="'.$value['order_id'].'">快递跟踪</a>
-                      </div>
-                      </div>
-                      </div>
-                     ';
+                      </div><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="expressmain" style="border-top: 2px dashed #ededed">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 exname" id="couriername">'.$value['shipping_name'].'</div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 exnumber">'.$value['invoice_no'].'</div>';
+
+              foreach ((array)$value['kuaidi']['data'] as $k => $v) {
+
+
+                        $string.=' <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extime">
+                                            <span>'.$v['time'].'</span>
+                                            <span> '.$v['ftime'].'</span>
+                                        </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extext">'.$v['context'].'</div>';
+                    }
+                     $string.='</div></div>';
+
 
              }
         $data['data']=$string;
@@ -4594,5 +4633,66 @@ function get_accountlist($user_id, $account_type = '')
     return array('account' => $arr, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
 }
 
+
+
+function get_shipping_data($ye_arr=array()){
+    include_once(ROOT_PATH . 'include/lib_transaction.php');
+    include_once(ROOT_PATH . 'include/lib_order.php');
+     foreach ($ye_arr as $key => $value) {
+    $get_content=array();
+    $array=array();
+    $small_array=array();
+    //生成快递100查询接口链接
+    if($value['shipping_id']!=14){
+        $shipping   = get_shipping_object($value['shipping_id']);
+
+        $query_link = $shipping->kuaidi100($value['invoice_no']);
+
+        //优先使用curl模式发送数据
+        if (function_exists('curl_init') == 1){
+          $curl = curl_init();
+          curl_setopt ($curl, CURLOPT_URL, $query_link);
+          curl_setopt ($curl, CURLOPT_HEADER,0);
+          curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+          curl_setopt ($curl, CURLOPT_USERAGENT,$_SERVER['HTTP_USER_AGENT']);
+          curl_setopt ($curl, CURLOPT_TIMEOUT,5);
+          $get_content = curl_exec($curl);
+          $get_content=json_decode($get_content);
+          if(is_object($get_content)){
+            foreach ($get_content as $gk => $gv) {
+                 $array[$gk]=$gv;
+
+            }
+
+            foreach ($array['data'] as $dk => $dv) {
+                if(is_object($array['data'][$dk])){
+                    foreach ($array['data'][$dk] as $dvk => $dvv) {
+                        if($dvk=='time'){
+                            $dvv=date('Y-m-d',strtotime($dvv));
+                        }
+                        if($dvk=='ftime'){
+                            $dvv=date('H:i:s',strtotime($dvv));
+                        }
+                        $small_array[$dk][$dvk]=$dvv;
+                    }
+
+                }
+
+
+
+            }
+            $array['data']=$small_array;
+
+          }
+
+          curl_close ($curl);
+        }
+    }
+    $ye_arr[$key]['kuaidi']=$array;
+  }
+
+
+  return $ye_arr;
+}
 
 ?>

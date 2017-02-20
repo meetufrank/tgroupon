@@ -613,8 +613,11 @@ if (viewport().width < 768){
     var arr = new Array();
    //console.log($("#xiangqiangimg img"));
    $("#xiangqiangimg img").each(function(i){
-      arr[i]=$(this).attr("src");
+
+      str=$(this).attr("src");
+      arr[i]=str.replace('/mobile/include/kindeditor/php/../../../../images/upload/image/', "");
    });
+
    var imgstr=JSON.stringify(arr);
     window.location.href='mobileimg.php?imgstr='+imgstr;
    });
@@ -806,6 +809,7 @@ function numDecmobile(){
     var oDivpc = document.getElementById('shochangpc');   //电脑
     var goodsid = document.getElementById('goodsid').value;
     oDiv.onclick=function(){
+
          $.ajax({
                                     type:"post",
                                     url:"shop-single.php?act=shochangsc",

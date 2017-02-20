@@ -325,3 +325,8 @@ MODIFY COLUMN `attributeprice`  decimal(10,2) NULL DEFAULT 0.00 AFTER `product_n
 */
 ALTER TABLE `ecs_products`
 MODIFY COLUMN `priceratio`  double(7,6) NULL DEFAULT 1 COMMENT '//货品价格比例' AFTER `attributeimg`;
+
+/*#2017/02/20 汪江  添加货品假价格字段
+*/
+ALTER TABLE `ecs_products`
+ADD COLUMN `falseprice`  decimal(10,2) NULL DEFAULT 0.00 COMMENT '//货品假价格' AFTER `priceratio`;
