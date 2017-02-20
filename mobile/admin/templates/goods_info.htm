@@ -92,7 +92,7 @@
             <td class="label">{$lang.lab_intro}</td>
             <td><input type="checkbox" name="is_best" value="1" {if $goods.is_best}checked="checked"{/if} />{$lang.is_best} <input type="checkbox" name="is_new" value="1" {if $goods.is_new}checked="checked"{/if} />{$lang.is_new} <input type="checkbox" name="is_hot" value="1" {if $goods.is_hot}checked="checked"{/if} />{$lang.is_hot}</td>
           </tr>
-           <tr>
+           <!-- <tr>
             <td class="label">厂商：</td>
             <td><select name="father_id" id="suppliers_id">
                 <option value="0">不选</option>
@@ -100,10 +100,10 @@
         {foreach from=$firm_arr item=fa}
                 <option value="{$fa.user_id}" {if $fa.user_id==$goods.father_id} selected="true" {/if}>{$fa.user_name}</option>
         {/foreach}
-      </select></td>
+      </select></td> -->
           </tr>
           <tr>
-            <td class="label">艺术家：</td>
+            <td class="label">设计师：</td>
             <td><select name="arter_id" id="suppliers_id">
                 <option value="0">不选</option>
         {foreach from=$art_arr item=fa}
@@ -135,7 +135,7 @@
             {$lang.require_field}</td>
           </tr>
           <tr>
-            <td class="label">额外费用：</td>
+            <td class="label">快递费：</td>
             <td><input type="text" name="more_price" {if $goods.more_price}value="{$goods.more_price}"{else}value="0.00"{/if} size="20" onblur="priceSetted()"/></td>
           </tr>
 
