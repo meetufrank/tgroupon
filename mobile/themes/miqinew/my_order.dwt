@@ -176,6 +176,7 @@
             <li><a href="#tab1_3" role="tab" data-toggle="tab">待收货<span>{$record_count_come}</span></a></li>
             <li><a href="#tab1_4" role="tab" data-toggle="tab">已完成<span>{$record_count_done}</span></a></li>
           </ul>
+          <div style="clear:both"></div>
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane transition fade in active" id="tab1_1">
