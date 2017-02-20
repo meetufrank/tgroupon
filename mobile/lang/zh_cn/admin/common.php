@@ -175,7 +175,7 @@ $_LANG['50_virtual_card_list'] = '虚拟商品列表';
 $_LANG['51_virtual_card_add'] = '添加虚拟商品';
 $_LANG['52_virtual_card_change'] = '更改加密串';
 $_LANG['goods_auto'] = '商品自动上下架';
-$_LANG['article_auto'] = '文章自动发布';
+$_LANG['article_auto'] = '分成列表';
 // $_LANG['navigator'] = '菜单管理';
 
 /* 促销管理 */

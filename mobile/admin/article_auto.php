@@ -20,6 +20,7 @@ $smarty->assign('thisfile', 'article_auto.php');
 if ($_REQUEST['act'] == 'list')
 {
     $goodsdb = get_auto_goods();
+    //print_r($goodsdb['goodsdb']);exit;
     $crons_enable = $db->getOne("SELECT enable FROM " . $GLOBALS['ecs']->table('crons') . " WHERE cron_code='ipdel'");
     $smarty->assign('crons_enable', $crons_enable);
     $smarty->assign('full_page',    1);
@@ -155,39 +156,87 @@ elseif ($_REQUEST['act'] == 'batch_end')
     sys_msg($_LANG['batch_end_succeed'], 0, $lnk);
 }
 
+// function get_auto_goods()
+// {
+//     $where = '';
+//     if (!empty($_POST['goods_name']))
+//     {
+//         $goods_name = trim($_POST['goods_name']);
+//         $where = " WHERE g.title LIKE '%$goods_name%'";
+//         $filter['goods_name'] = $goods_name;
+//     }
+//     $sql = "SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('article') . " g" . $where;
+//     $filter['record_count'] = $GLOBALS['db']->getOne($sql);
+//     $goodsdb = array();
+//     $filter = page_and_size($filter);
+//     $sql = "SELECT g.*,a.starttime,a.endtime FROM " . $GLOBALS['ecs']->table('article') . " g LEFT JOIN " . $GLOBALS['ecs']->table('auto_manage') . " a ON g.article_id = a.item_id AND a.type='article'" . $where .
+//            " ORDER BY g. add_time DESC" .
+//            " LIMIT " . $filter['start'] . ",$filter[page_size]";
+//     $query = $GLOBALS['db']->query($sql);
+//     while ($rt = $GLOBALS['db']->fetch_array($query))
+//     {
+//         if (!empty($rt['starttime']))
+//         {
+//             $rt['starttime'] = local_date('Y-m-d',$rt['starttime']);
+//         }
+//         if (!empty($rt['endtime']))
+//         {
+//             $rt['endtime'] = local_date('Y-m-d',$rt['endtime']);
+//         }
+//         $rt['goods_id'] = $rt['article_id'];
+//         $rt['goods_name'] = $rt['title'];
+//         $goodsdb[] = $rt;
+//     }
+//     $arr = array('goodsdb' => $goodsdb, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
+
+//     return $arr;
+// }
+
+
+
+
+
 function get_auto_goods()
 {
     $where = '';
     if (!empty($_POST['goods_name']))
     {
         $goods_name = trim($_POST['goods_name']);
-        $where = " WHERE g.title LIKE '%$goods_name%'";
+        $where = " WHERE user_name LIKE '%$goods_name%'";
         $filter['goods_name'] = $goods_name;
     }
-    $sql = "SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('article') . " g" . $where;
+
+    //查询出列表总数
+    $sql = "SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('admin_user') . " g" . $where;
     $filter['record_count'] = $GLOBALS['db']->getOne($sql);
     $goodsdb = array();
+    //返回列表页总数 每页显示数 第一页 最后一页  $filter
     $filter = page_and_size($filter);
-    $sql = "SELECT g.*,a.starttime,a.endtime FROM " . $GLOBALS['ecs']->table('article') . " g LEFT JOIN " . $GLOBALS['ecs']->table('auto_manage') . " a ON g.article_id = a.item_id AND a.type='article'" . $where .
-           " ORDER BY g. add_time DESC" .
+    //print_r($goodsdb);exit;
+
+    //查询出列表页显示15条数据
+    $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('admin_user')  . $where .
            " LIMIT " . $filter['start'] . ",$filter[page_size]";
     $query = $GLOBALS['db']->query($sql);
+
     while ($rt = $GLOBALS['db']->fetch_array($query))
     {
-        if (!empty($rt['starttime']))
-        {
-            $rt['starttime'] = local_date('Y-m-d',$rt['starttime']);
-        }
-        if (!empty($rt['endtime']))
-        {
-            $rt['endtime'] = local_date('Y-m-d',$rt['endtime']);
-        }
-        $rt['goods_id'] = $rt['article_id'];
-        $rt['goods_name'] = $rt['title'];
+        // if (!empty($rt['starttime']))
+        // {
+        //     $rt['starttime'] = local_date('Y-m-d',$rt['starttime']);
+        // }
+        // if (!empty($rt['endtime']))
+        // {
+        //     $rt['endtime'] = local_date('Y-m-d',$rt['endtime']);
+        // }
+        // $rt['goods_id'] = $rt['article_id'];
+        // $rt['goods_name'] = $rt['title'];
         $goodsdb[] = $rt;
     }
-    $arr = array('goodsdb' => $goodsdb, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
 
+    $arr = array('goodsdb' => $goodsdb, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
+// print_r($goodsdb);exit;
     return $arr;
 }
+
 ?>

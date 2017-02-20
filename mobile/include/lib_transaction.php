@@ -401,13 +401,13 @@ function get_user_orders_new($user_id, $status=1,$num = 10, $start = 0)
     }elseif($status==4){//已完成
        $string=" and order_status!=2 and order_status!=3 and order_status!=4 and pay_status=2 and shipping_status=2";
     }
-     $sql = " SELECT order_id, order_sn, order_status, shipping_id, post_price,shipping_status, pay_status, add_time,order_amount,consignee,address,tel,re1.region_name as province,re2.region_name as city,re3.region_name as district, " .
+    $sql = " SELECT order_id, order_sn, order_status, shipping_id, post_price,shipping_status, pay_status, add_time,order_amount,consignee,address,tel,re1.region_name as province,re2.region_name as city,re3.region_name as district,invoice_no,order_sn,shipping_name,shipping_id, " .
            "(goods_amount + shipping_fee + insure_fee + pay_fee + pack_fee + card_fee + tax - discount ) AS total_fee ".
            " FROM " .$GLOBALS['ecs']->table('order_info')
             ." as oi inner join ".$GLOBALS['ecs']->table('region')."as re1 on re1.region_id=oi.province"
              ." inner join ".$GLOBALS['ecs']->table('region')."as re2 on re2.region_id=oi.city "
              ." inner join ".$GLOBALS['ecs']->table('region')."as re3 on re3.region_id=oi.district "
-             ." WHERE user_id = '$user_id' ".$string." ORDER BY add_time DESC";
+             ." WHERE user_id = $user_id ".$string." ORDER BY add_time DESC";
     $res = $GLOBALS['db']->SelectLimit($sql, $num, $start);
 
     while ($row = $GLOBALS['db']->fetchRow($res))
@@ -473,7 +473,11 @@ function get_user_orders_new($user_id, $status=1,$num = 10, $start = 0)
                        'consignee'      =>$row['consignee'],
                        'tel'            =>$row['tel'],
                        'order_amount'   =>$row['order_amount'],
-                       'post_price'     =>"￥".$row['post_price']
+                       'post_price'     =>"￥".$row['post_price'],
+                       'invoice_no'=>$row['invoice_no'],
+                       'shipping_name'=>$row['shipping_name'],
+                       'order_sn'=>$row['order_sn']
+
                        );
     }
 
@@ -1092,7 +1096,7 @@ function get_user_merge($user_id)
     {
         $merge[$val] = $val;
     }
-//print_r($merge);exit;
+// print_r($merge);exit;
     return $merge;
 }
 

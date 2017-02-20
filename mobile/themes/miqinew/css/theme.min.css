@@ -326,11 +326,11 @@ svg {
 	}
 	.extime{
 		font-weight: bold;
-		margin-top:5px; 
+		margin-top:5px;
 	}
 	.extext{
 		font-weight: bold;
-		margin-top:5px; 
+		margin-top:5px;
 	}
 	.exname{
 		font-weight: bold;
@@ -463,11 +463,11 @@ svg {
 	}
 	.extime{
 		font-weight: bold;
-		margin-top:5px; 
+		margin-top:5px;
 	}
 	.extext{
 		font-weight: bold;
-		margin-top:5px; 
+		margin-top:5px;
 	}
 	.exname{
 		font-weight: bold;
@@ -2102,16 +2102,16 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	top: 0;
 	left: 0;
 	background-color:white;
-	-webkit-transition: all 0.5s;
+	/* -webkit-transition: all 0.5s;
 	-o-transition: all 0.5s;
-	transition: all 0.5s
+	transition: all 0.5s */
 }
-.page-preloading .page-wrapper {
+/* .page-preloading .page-wrapper {
 	opacity: 0;
 	-webkit-transition: all 0.5s 0.3s;
 	-o-transition: all 0.5s 0.3s;
 	transition: all 0.5s 0.3s
-}
+} */
 .page-preloading .page-preloader {
 	visibility: visible;
 	opacity: 1

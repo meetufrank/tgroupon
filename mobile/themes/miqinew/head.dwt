@@ -169,6 +169,7 @@
 
 
   <script type="text/javascript">
+
   $(document).ready(function () {
 
 $("#logout").click(function(){
@@ -258,7 +259,7 @@ window.location.href="flow.php?step=pay_select{$linestring2}&cartid="+chk_value.
             $button.parent().find('.quantity').val(newVal);
             jisuanjiage();
         });
-        jisuanjiage();
+
   });
     function choseAll(){
         console.info($("#checkbox-all")[0].checked);

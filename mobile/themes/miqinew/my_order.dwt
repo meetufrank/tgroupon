@@ -126,6 +126,10 @@
   padding-right:0;
   }
 
+  /* 快递跟踪背景色样式 */
+/*   .bjs{
+    background-color:red;
+  } */
 
   </style>
 
@@ -468,19 +472,28 @@
                   <a class="btn btn-primary Logistics" href="#" data-id="{$co.order_id}" onClick="javascript:func()">快递跟踪</a>
                   </div>
                   <!--快递信息开始-->
-                  
+
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="expressmain" style="border-top: 2px dashed #ededed">
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 exname">圆通快递</div>
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 exnumber">15885121551615656156165</div>
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extime">
-                      <span>2017-02-14</span>
-                      <span> 13:01:12</span>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 exname" id="couriername">{$co.shipping_name}</div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 exnumber">{$co.invoice_no}</div>
+
+                                     {foreach from=$co.kuaidi.data item=cd name=name key=key}
+
+                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extime ">
+                                                    <span>{$cd.time}</span>
+                                                    <span>{$cd.ftime}</span>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extext ">
+                                                   {$cd.context}
+                                                </div>
+                                      {/foreach}
+
                   </div>
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extext">顺丰速运 已收取快件</div>
-                  </div>
+
                   <!--快递信息结束-->
                   </div>
-                  
+
                   </div>
 
                    <!--{/foreach}-->
@@ -791,8 +804,9 @@
             //                  //获取订单编号
 
             //                var orderids = $(this).attr("data-id");
-            //                //alert(orderids);
+            //                // alert(orderids);
             //                  // var orderids = document.getElementById("orderids{}").value;
+
             //                  $.ajax({
             //                       type:"get",
             //                       url:"my_user.php?act=order_tracking_news",
