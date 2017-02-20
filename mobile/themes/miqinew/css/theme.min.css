@@ -3310,7 +3310,7 @@ to {
 	vertical-align: top
 }
 .shop-item .shop-item-details .shop-item-title {
-	width: 50%;
+	width:45%;
 	font-size: 16px;
 	font-weight: normal
 }
@@ -3319,7 +3319,7 @@ to {
 	text-decoration: none
 }
 .shop-item .shop-item-details .shop-item-price {
-	width: 40%;
+	width: 50%;
 	font-size: 16px;
 	text-align: right
 }
