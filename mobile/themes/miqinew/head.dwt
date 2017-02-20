@@ -42,7 +42,8 @@
 
 <!-- Account (userinfo) -->
         <div class="toolbar-section" id="userinfo" >
-            <div class="clearfix">
+            <div>
+            589aedb298d60
             <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section" id="logout">退出</a>
             <div class="quotation pull-left" style="width:auto;">
               <div class="quotation-author-ava pull-left">
