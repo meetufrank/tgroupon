@@ -19,6 +19,7 @@ require(dirname(__FILE__) . '/convention.php');
 
 //网站全局配置
 $config['fenxingtupian'] = 'http://meetuuu.com/mobile/admin/'; //分享图片地址
+$config['erweimalainjie'] = 'meetuuu.com/';    //生成二维码链接
 
 
 $config['site_name'] = '上海商创网络科技有限公司'; //站点名称
