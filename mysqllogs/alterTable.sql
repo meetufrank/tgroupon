@@ -330,3 +330,9 @@ MODIFY COLUMN `priceratio`  double(7,6) NULL DEFAULT 1 COMMENT '//货品价格�
 */
 ALTER TABLE `ecs_products`
 ADD COLUMN `falseprice`  decimal(10,2) NULL DEFAULT 0.00 COMMENT '//货品假价格' AFTER `priceratio`;
+
+
+/*#2017/02/21 汪江  商品表添加特别优惠字段
+*/
+ALTER TABLE `ecs_goods`
+ADD COLUMN `is_very`  tinyint(1) NOT NULL DEFAULT 0 COMMENT '//特别优惠' AFTER `more_price`;
