@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-02-21 11:42:59
+ * @Last Modified time: 2017-02-21 17:25:38
  */
 
 
@@ -25,7 +25,11 @@ if (!isset($_REQUEST['step']))
 if ($_REQUEST['step'] == 'goods_list'){
 
 
+
+
        $smarty->assign('search_val',$_COOKIE['search_content']);
+       $smarty->assign('showtype',$_COOKIE['list_type']);
+       $smarty->assign('typeid',$_COOKIE['typeid']);
        $smarty->display('goods_list.dwt');
 
 
@@ -33,6 +37,19 @@ if ($_REQUEST['step'] == 'goods_list'){
 elseif($_REQUEST['step'] == 'ajax_goods_count'){
 
          $page_count=15;   ///设置每页显示条数
+       if($_COOKIE['list_type']){   //判断是否从首页入口搜索
+               if($list_type=='showtype'){
+                          $_POST['showtype']=$list_type;
+                          $_POST['typeid']=$_COOKIE['typeid'];
+                }elseif($list_type=='showsearch'){
+                        $_POST['showsearch']=$list_type;
+                        $_POST['typeid']=$_COOKIE['typeid'];
+                        $_POST['search']=$_COOKIE['search_content'];
+                }
+
+                 setcookie('list_type','',time()-3600);
+                  setcookie('typeid','',time()-3600);
+       }
         if(!$_POST['search']){
               setcookie('showsearch','',time()-3600);
               setcookie('search_content','',time()-3600);
@@ -237,15 +254,13 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
 elseif ($_REQUEST['step'] == 'ajax_goods_list') {
 
        $page_count=15;   ///设置每页显示条数
+
        if(!intval($_POST['page_num'])){
             $page_num=1;
        }else{
            $page_num=intval($_POST['page_num']);
        }
-       if(!$_POST['search']){
-              setcookie('showsearch','',time()-3600);
-              setcookie('search_content','',time()-3600);
-        }
+
        $limit="  limit ".($page_num-1)*$page_count." ,".$page_count." ";
        if($_POST['type']=='showprice'){
         $prev_search=$_COOKIE['search_content'];  //先拿到上一次搜索的内容

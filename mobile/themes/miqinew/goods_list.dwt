@@ -88,10 +88,10 @@
                 <ul>
 				{{# for(var y = 0, ilen = d[i].data.length; y < ilen; y++){ }}
                    {{# if(d[i].title=='价格区间'){ }}
-                     <li class="pricechange"><a href="#" id="showprice{{d[i].data[y].money_id}}" class="widgeta" onClick="showlist({{d[i].data[y].money_id}},'showprice')">{{d[i].data[y].money_name}}</a></li>
+                     <li class="pricechange"><a href="#" id="showprice{{d[i].data[y].money_id}}" class="widgeta {{# if(y==0){}}allpricechange{{# } }}" onClick="showlist({{d[i].data[y].money_id}},'showprice')">{{d[i].data[y].money_name}}</a></li>
                    {{# } }}
                      {{#  if(d[i].title=='商品分类'){ }}
-                     <li class="companychange"><a href="#" id="showtype{{d[i].data[y].id}}" class="widgetb" onClick="showlist({{d[i].data[y].id}},'showtype')">{{d[i].data[y].name}}</a></li>
+                     <li class="companychange"><a href="#" id="showtype{{d[i].data[y].id}}" class="widgetb  {{# if(y==0){}}allpricechange{{# } }}" onClick="showlist({{d[i].data[y].id}},'showtype')">{{d[i].data[y].name}}</a></li>
                    {{# } }}
 
 				  {{# } }}
@@ -238,6 +238,8 @@
                 }
 		});
   var searches='{$search_val}';
+  var typeid='{$typeid}';
+  var list_type='{$showtype}';
 		$.ajax({
 				   type: "post",
 				   url: "goods_list.php?step=ajax_goods_count",
@@ -248,7 +250,7 @@
                 $("#searchvalue").val(searches);
             }
 
-            insert_page(data,'','',searches);
+            insert_page(data,typeid,list_type,searches);
 				  },
 				  error: function(data){
 
