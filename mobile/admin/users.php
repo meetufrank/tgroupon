@@ -401,6 +401,7 @@ elseif($_REQUEST['act'] == 'erweima'){
 }
 // 根据货号查询商品id
 elseif($_REQUEST['act'] == 'goodsid'){
+   $erweimalainjie = $config['erweimalainjie'];
 
 
    $huohaoid = $_POST['huohao'];
@@ -408,8 +409,8 @@ elseif($_REQUEST['act'] == 'goodsid'){
    $sql = "select goods_id from ecs_goods where goods_sn = '$huohaoid'";
    $goodsid = $db->getOne($sql);
 
-     if($goodsid){
-       $data['msg']="http://meetuuu.com/mobile/shop-single.php?id=$goodsid&"."lineshop=".$userid;
+     if($goodsid){       $data['msg']="http://".$erweimalainjie."mobile/shop-single.php?id=$goodsid&"."lineshop=".$userid;
+
        $data['goodsid']=$goodsid;
        $data['userid']=$userid;
        echo json_encode($data);
