@@ -3236,7 +3236,11 @@ function get_money($orderid,$user_id)   //某订单id
             }elseif($tuijian['tuijian']>0){//
                 $tj_id=$tuijian['tuijian'];
                 $my_fencheng=get_lineratio($tj_id,$user_id,$data,$my_fencheng);  //线下店推荐分成
+            }else{
+                $tj_id=0;
+
             }
+
 
 
 

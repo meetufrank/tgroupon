@@ -1,0 +1,60 @@
+[2017-01-20 11:28:49][debug] <xml><appid><![CDATA[wxb5aec13c030a530b]]></appid>
+<attach><![CDATA[菠萝灯]]></attach>
+<bank_type><![CDATA[CMB_DEBIT]]></bank_type>
+<cash_fee><![CDATA[2]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1267579601]]></mch_id>
+<nonce_str><![CDATA[apt4panmio16dhb5uwxz5r1rl8r7eybv]]></nonce_str>
+<openid><![CDATA[okRTqvv9Rri34dDloixJeixyRPms]]></openid>
+<out_trade_no><![CDATA[2017012006801]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[6809604AD395D699B1A0B50ABF97B30F]]></sign>
+<time_end><![CDATA[20170120112849]]></time_end>
+<total_fee>2</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[4000242001201701206938843725]]></transaction_id>
+</xml>
+[2017-01-20 11:28:49][debug] call back:{"appid":"wxb5aec13c030a530b","attach":"\u83e0\u841d\u706f","bank_type":"CMB_DEBIT","cash_fee":"2","fee_type":"CNY","is_subscribe":"N","mch_id":"1267579601","nonce_str":"apt4panmio16dhb5uwxz5r1rl8r7eybv","openid":"okRTqvv9Rri34dDloixJeixyRPms","out_trade_no":"2017012006801","result_code":"SUCCESS","return_code":"SUCCESS","sign":"6809604AD395D699B1A0B50ABF97B30F","time_end":"20170120112849","total_fee":"2","trade_type":"JSAPI","transaction_id":"4000242001201701206938843725"}
+[2017-01-20 11:28:50][debug] query:{"appid":"wxb5aec13c030a530b","attach":"\u83e0\u841d\u706f","bank_type":"CMB_DEBIT","cash_fee":"2","fee_type":"CNY","is_subscribe":"N","mch_id":"1267579601","nonce_str":"xXIUeDJEMPnLhsgO","openid":"okRTqvv9Rri34dDloixJeixyRPms","out_trade_no":"2017012006801","result_code":"SUCCESS","return_code":"SUCCESS","return_msg":"OK","sign":"FFCE4C8FFCC97C0B55956588174A46CA","time_end":"20170120112849","total_fee":"2","trade_state":"SUCCESS","trade_type":"JSAPI","transaction_id":"4000242001201701206938843725"}
+[2017-01-20 11:46:12][debug] <xml><appid><![CDATA[wxb5aec13c030a530b]]></appid>
+<attach><![CDATA[创意床头灯]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[6]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1267579601]]></mch_id>
+<nonce_str><![CDATA[t0wgh32tcxkdyjo9956q2u1biaty7qlr]]></nonce_str>
+<openid><![CDATA[okRTqvpPRPq2WXM_1kXSAcQSZx2g]]></openid>
+<out_trade_no><![CDATA[2017012029105]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[C4F5B7E09B16E886B2FA860524080D00]]></sign>
+<time_end><![CDATA[20170120114611]]></time_end>
+<total_fee>6</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[4008732001201701206938094545]]></transaction_id>
+</xml>
+[2017-01-20 11:46:12][debug] call back:{"appid":"wxb5aec13c030a530b","attach":"\u521b\u610f\u5e8a\u5934\u706f","bank_type":"CFT","cash_fee":"6","fee_type":"CNY","is_subscribe":"N","mch_id":"1267579601","nonce_str":"t0wgh32tcxkdyjo9956q2u1biaty7qlr","openid":"okRTqvpPRPq2WXM_1kXSAcQSZx2g","out_trade_no":"2017012029105","result_code":"SUCCESS","return_code":"SUCCESS","sign":"C4F5B7E09B16E886B2FA860524080D00","time_end":"20170120114611","total_fee":"6","trade_type":"JSAPI","transaction_id":"4008732001201701206938094545"}
+[2017-01-20 11:46:13][debug] query:{"appid":"wxb5aec13c030a530b","attach":"\u521b\u610f\u5e8a\u5934\u706f","bank_type":"CFT","cash_fee":"6","fee_type":"CNY","is_subscribe":"N","mch_id":"1267579601","nonce_str":"u4MNgxtZ1fX2uNPY","openid":"okRTqvpPRPq2WXM_1kXSAcQSZx2g","out_trade_no":"2017012029105","result_code":"SUCCESS","return_code":"SUCCESS","return_msg":"OK","sign":"82B87DD954EFDED94C42A0E2725433C2","time_end":"20170120114612","total_fee":"6","trade_state":"SUCCESS","trade_type":"JSAPI","transaction_id":"4008732001201701206938094545"}
+[2017-01-20 15:48:59][debug] <xml><appid><![CDATA[wxb5aec13c030a530b]]></appid>
+<attach><![CDATA[创意床头灯]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[2]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1267579601]]></mch_id>
+<nonce_str><![CDATA[i93r6nwcj886intiobtwppt2j1cdu0ix]]></nonce_str>
+<openid><![CDATA[okRTqvpPRPq2WXM_1kXSAcQSZx2g]]></openid>
+<out_trade_no><![CDATA[2017012001123]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[9A443F8DB847D780EC2CE0C8CE39BBAA]]></sign>
+<time_end><![CDATA[20170120154858]]></time_end>
+<total_fee>2</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4008732001201701206967754153]]></transaction_id>
+</xml>
+[2017-01-20 15:48:59][debug] call back:{"appid":"wxb5aec13c030a530b","attach":"\u521b\u610f\u5e8a\u5934\u706f","bank_type":"CFT","cash_fee":"2","fee_type":"CNY","is_subscribe":"N","mch_id":"1267579601","nonce_str":"i93r6nwcj886intiobtwppt2j1cdu0ix","openid":"okRTqvpPRPq2WXM_1kXSAcQSZx2g","out_trade_no":"2017012001123","result_code":"SUCCESS","return_code":"SUCCESS","sign":"9A443F8DB847D780EC2CE0C8CE39BBAA","time_end":"20170120154858","total_fee":"2","trade_type":"NATIVE","transaction_id":"4008732001201701206967754153"}
+[2017-01-20 15:48:59][debug] query:{"appid":"wxb5aec13c030a530b","attach":"\u521b\u610f\u5e8a\u5934\u706f","bank_type":"CFT","cash_fee":"2","fee_type":"CNY","is_subscribe":"N","mch_id":"1267579601","nonce_str":"GPnb6zYbW12AfrlG","openid":"okRTqvpPRPq2WXM_1kXSAcQSZx2g","out_trade_no":"2017012001123","result_code":"SUCCESS","return_code":"SUCCESS","return_msg":"OK","sign":"FE7EAF87CB8F10D9EE1380236B7FB9DC","time_end":"20170120154858","total_fee":"2","trade_state":"SUCCESS","trade_type":"NATIVE","transaction_id":"4008732001201701206967754153"}

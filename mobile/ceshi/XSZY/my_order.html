@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>COLOR & SHAPE</title>
+
+  <!--SEO Meta Tags-->
+  <meta name="description" content="M-Store - Modern E-Commerce Template" />
+  <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+
+  <!--Mobile Specific Meta Tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!--Favicon
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+-->
+  <!-- Google Material Icons -->
+  <link href="css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+
+  <!-- Brand Icons -->
+  <link href="css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+
+  <!-- Bootstrap -->
+  <link href="css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <!-- Theme Styles -->
+  <link href="css/theme.min.css" rel="stylesheet" media="screen">
+  
+  <!-- tan chuang -->
+  <link href="js/layer_mobile/need/layer.css">
+  
+  <!-- Page Preloading -->
+  <script src="js/vendor/page-preloading.js"></script>
+  
+  <!-- by sun -->
+  <style>
+    .nav-pills{
+    	margin-left:-18px;
+    	padding-bottom:10px;
+    }
+  	.nav-pills>li {
+	    float: left;
+	    position: relative;
+	    display: block;
+	}
+	.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+	    color: #333;
+	    background-color: #f5f5f5;
+	}
+	.nav-pills>li>a {
+	    position: relative;
+	    display: block;
+	    padding: 10px 18px;
+	    text-decoration:none;
+	    font-size:14px;
+	    color: #a5a5a5;
+	}
+	.nav-pills>li>a>span {
+		padding-left:5px;
+		color:#f20000;
+	}
+	.teammate-thumb {
+	    border-radius: 50%;
+	}
+	.teammate-name a:hover {
+	    color: #333;
+	}
+	.teammate-name a {
+	    text-decoration: none;
+	    color: #999;
+	}
+	.list_msgs a{
+		color:#666;
+		font-size:14px;
+		text-decoration:none;
+	}
+	.list_msgs a:hover{
+		color:#999;
+		text-decoration:underline;
+	}
+  </style>
+  
+</head>
+
+<!-- Body -->
+<!-- Adding/Removing class ".page-preloading" is enabling/disabling background smooth page transition effect and spinner. Make sure you also added/removed link to page-preloading.js script in the <head> of the document. -->
+<body class="page-preloading">
+
+  <!-- Page Pre-Loader -->
+  <div class="page-preloader">
+    <div class="preloader">
+      <img src="img/preloader.gif" alt="Preloader">
+    </div>
+  </div><!-- .page-preloader -->
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+
+    <!-- Navbar -->
+    <!-- Remove ".navbar-sticky" class to make navigation bar scrollable with the page. -->
+    <header class="navbar navbar-sticky">
+
+      <!-- Site Logo -->
+      <a href="index.html" class="site-logo visible-desktop">
+        COLOR <span>&</span> SHAPE
+      </a><!-- site-logo.visible-desktop -->
+      <a href="index.html" class="site-logo visible-mobile">
+        COLOR <span>&</span> SHAPE
+      </a><!-- site-logo.visible-mobile -->
+
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <div class="inner">
+          <a href="#menu" class="toolbar-toggle"><i class="material-icons menu"></i></a>
+          <a href="#cart" class="toolbar-toggle">
+            <i>
+              <span class="material-icons shopping_basket"></span>
+              <span class="count">2</span>
+            </i>
+          </a>
+          <a href="#account" class="toolbar-toggle"><i class="material-icons person"></i></a>
+        </div>
+      </div><!-- .toolbar -->
+
+      <!-- Toolbar Dropdown -->
+      <div class="toolbar-dropdown">
+
+        <!-- Menu -->
+        <div class="toolbar-section" id="menu">
+          <div class="inner">
+            <ul class="main-navigation space-bottom">
+              <li><a href="#">首页</a></li>
+              <li><a href="#">商品</a></li>
+              <li><a href="#">艺术家</a></li>
+              <li><a href="#">关于我们</a></li>
+            </ul><!-- .main-navigation -->
+            
+          </div>
+          <!-- .inner -->
+        </div><!-- .toolbar-section#menu -->
+
+        <!-- Account (Login) -->
+        <div class="toolbar-section" id="account">
+          <h3 class="toolbar-title space-bottom">用户登录</h3>
+          <div class="inner">
+          	<a href="#userinfo" class="btn btn-primary waves-effect waves-light toggle-section">
+          		<i class="material-icons question_answer"></i>
+          		点击扫二维码登录
+      		</a>
+          </div><!-- .inner -->
+        </div><!-- .toolbar-section#account -->
+        
+        <!-- Account (userinfo) -->
+        <div class="toolbar-section" id="userinfo">
+            <div class="clearfix">
+            <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section">退出</a>
+            <div class="quotation pull-left" style="width:auto;">
+              <div class="quotation-author-ava pull-left">
+                <img class="" src="img/team/quote_author.jpg" alt="James Cameron">
+              </div>
+              &nbsp;&nbsp;
+              <span style="display:inline-block; line-height:74px;">微信名称</span>
+          	</div>
+      	  	</div>
+      	  	<hr class="padding-bottom">
+      	  	<ul class="main-navigation space-bottom">
+      	  		<li><a href="my_order.html">我的订单</a></li>
+      	  		<li><a href="#">我的收藏</a></li>
+      	  		<li><a class="relative" href="#">消息记录<span class="count">2</span></a></li>
+      	  		<li><a href="#">管理地址</a></li>
+      	  		<li><a href="#">商品销量</a></li>
+      	  	</ul>
+        </div>
+
+        <!-- Cart -->
+        <div class="toolbar-section" id="cart">
+          <div class="shopping-cart">
+          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px; ">
+          		<label class="checkbox">
+                  	<input style="position: absolute; opacity: 0;" type="checkbox">
+                  	<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
+                  <h4 style="margin-left:18px ;">全选</h4>
+                </label>
+                </div>
+            <!-- Item -->
+            <div class="item">
+            	<label class="checkbox">
+                  	<input style="position: absolute; opacity: 0;" type="checkbox">
+                  	<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
+                </label>
+              <a href="shop-single.html" class="item-thumb">
+                <img src="img/cart/item01.jpg" alt="Item">
+              </a>
+              <div class="item-details">
+                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
+                <h4 class="item-price">$85.90</h4>
+                <div class="count-input">
+                  <a class="incr-btn" data-action="decrease" href="#">–</a>
+                  <input class="quantity" type="text" value="1">
+                  <a class="incr-btn" data-action="increase" href="#">+</a>
+                </div>
+              </div>
+              <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="Remove">
+                <i class="material-icons delete"></i>
+              </a>
+            </div><!-- .item -->
+            <!-- Item -->
+            <div class="item">
+            	<label class="checkbox">
+                  	<input style="position: absolute; opacity: 0;" type="checkbox">
+                  	<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
+                </label>
+              <a href="shop-single.html" class="item-thumb">
+                <img src="img/cart/item02.jpg" alt="Item">
+              </a>
+              <div class="item-details">
+                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
+                <h4 class="item-price">$38.00</h4>
+                <div class="count-input">
+                  <a class="incr-btn" data-action="decrease" href="#">–</a>
+                  <input class="quantity" type="text" value="2">
+                  <a class="incr-btn" data-action="increase" href="#">+</a>
+                </div>
+              </div>
+              <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="Remove">
+                <i class="material-icons delete"></i>
+              </a>
+            </div><!-- .item -->
+            <!-- Subtotal -->
+            <div class="cart-subtotal space-bottom">
+              <div class="column">
+                <h3 class="toolbar-title">总价：</h3>
+              </div>
+              <div class="column">
+                <h3 class="amount">$161.90</h3>
+              </div>
+            </div><!-- .subtotal -->
+            <!-- Buttons -->
+            <div class="text-right">
+              <a href="#checkout" class="btn btn-primary waves-effect waves-light toggle-section">支付结算</a>
+            </div>
+          </div><!-- .shopping-cart -->
+        </div><!-- .toolbar-section#cart -->
+
+        <!-- Checkout -->
+        <div class="toolbar-section" id="checkout">
+          <form method="post" class="checkout-form container">
+            <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+              <div class="column">
+                <h3 class="toolbar-title">订单确认</h3>
+              </div>
+              <div class="column">
+                <h3 class="amount"><small class="hidden-xs">数量：6&nbsp;&nbsp;&nbsp;</small>$161.90</h3>
+              </div>
+            </div><!-- .subtotal -->
+            
+            <div class="form-group">
+              <label class="radio radio-inline">
+                <input type="radio" name="co_shipping" checked> 
+                	联系人：里默默<br>
+					手机号：18954781245<br>
+					地   址 ：上海市五角场黄兴路100号1号楼102室
+              </label>
+            </div><!-- .form-group -->
+            
+            <div class="form-group">
+              <label class="radio radio-inline">
+                <input type="radio" name="co_shipping"> 
+                	联系人：里默默<br>
+					手机号：18954781245<br>
+					地   址 ：上海市五角场黄兴路100号1号楼102室
+              </label>
+            </div><!-- .form-group -->
+            <h3><a class="toggle-section" href="#address">新增地址</a></h3>
+            <div class="text-right">
+              <a href="#cart" class="btn btn-default btn-ghost icon-left toggle-section">
+                	取消
+              </a>
+              <a href="#" class="btn btn-primary waves-effect waves-light">
+                	确认
+              </a>
+            </div>
+          </form><!-- .checkout-form.container -->
+        </div><!-- .toolbar-section#checkout -->
+        
+        <!-- 填写地址 -->
+        <div class="toolbar-section" id="address">
+          <form method="post" class="checkout-form container">
+            <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+              <div class="column">
+                <h3 class="toolbar-title">填写地址</h3>
+              </div>
+            </div><!-- .subtotal -->
+            
+            <input type="text" class="form-control" name="" placeholder="收件人">
+            <input type="text" class="form-control" name="" placeholder="手机号码">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-element form-select">
+                  <select class="form-control" name="">
+                    <option value="">选择省份</option>
+                    <option value="australia">Australia</option>
+                    <option value="gb">Great Britain</option>
+                    <option value="poland">Poland</option>
+                    <option value="switzerland">Switzerland</option>
+                    <option value="usa">USA</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-element form-select">
+                  <select class="form-control" name="">
+                    <option value="">选择城市</option>
+                    <option value="1">State 1</option>
+                    <option value="2">State 2</option>
+                    <option value="3">State 3</option>
+                    <option value="4">State 4</option>
+                    <option value="5">State 5</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <input type="text" class="form-control" name="" placeholder="详细地址">
+            <div class="text-right">
+              <a href="#checkout" class="btn btn-default btn-ghost icon-left toggle-section">
+                	返回
+              </a>
+              <a href="#checkout" class="btn btn-primary waves-effect waves-light toggle-section">
+                	确认
+              </a>
+            </div>
+            </form>
+            </div>
+      </div><!-- .toolbar-dropdown -->
+    </header><!-- .navbar.navbar-sticky -->
+
+    <!-- Featured Image 
+    <div class="featured-image" style="background-image: url(img/featured-image/faq.jpg);"></div>
+	-->
+	
+    <!-- Content -->
+    <section class="container padding-top-3x">
+     <!-- Nav Tabs -->
+      <ul class="nav-tabs" role="tablist">
+        <li class="active"><a href="#tab1" role="tab" data-toggle="tab">我的订单</a></li>
+        <li><a href="#tab2" role="tab" data-toggle="tab">我的收藏</a></li>
+        <li><a href="#tab3" role="tab" data-toggle="tab">消息记录</a></li>
+        <li><a href="#tab4" role="tab" data-toggle="tab">管理地址</a></li>
+        <li><a href="#tab5" role="tab" data-toggle="tab">商品销售</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane transition fade in active" id="tab1">
+        	<!-- Nav Tabs -->
+		      <ul class="nav-pills" role="tablist">
+		        <li class="active"><a href="#tab1_1" role="tab" data-toggle="tab">待付款<span>2</span></a></li>
+		        <li><a href="#tab1_2" role="tab" data-toggle="tab">待发货<span>1</span></a></li>
+		        <li><a href="#tab1_3" role="tab" data-toggle="tab">待收货<span>1</span></a></li>
+		      </ul>
+		      <!-- Tab panes -->
+		      <div class="tab-content">
+		        <div role="tabpanel" class="tab-pane transition fade in active" id="tab1_1">
+					          <div class="shopping-cart" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+					          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
+					          			订单编号：356666636329
+					                </div>
+					            <!-- Item -->
+					            <div class="item">
+					              <a href="shop-single.html" class="item-thumb">
+					                <img src="img/cart/item01.jpg" alt="Item">
+					              </a>
+					              <div class="item-details">
+					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
+					                <h4 class="item-price">数量：1 </h4>
+					                <h4 class="item-price">$85.90</h4>
+					              </div>
+					            </div><!-- .item -->
+					            <!-- Item -->
+					            <div class="item">
+					              <a href="shop-single.html" class="item-thumb">
+					                <img src="img/cart/item01.jpg" alt="Item">
+					              </a>
+					              <div class="item-details">
+					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
+					                <h4 class="item-price">数量：1 </h4>
+					                <h4 class="item-price">$85.90</h4>
+					              </div>
+					            </div><!-- .item -->
+					            <!-- Subtotal -->
+					            <div class="cart-subtotal space-bottom">
+					              <div class="column">
+					                <h3 class="toolbar-title">总价：</h3>
+					              </div>
+					              <div class="column">
+					                <h3 class="amount text-danger">$161.90</h3>
+					              </div>
+					            </div><!-- .subtotal -->
+					            <div style="background: #f8f8f8; padding:10px; margin-bottom: 20px;">
+					            	收件人：里默默<br>
+									手机号：18954781245<br>
+									地   址 ：上海市五角场黄兴路100号1号楼102室
+					            </div>
+					            <!-- Buttons -->
+					            <div class="text-right">
+					              <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
+					              <a href="#" class="btn btn-primary waves-effect waves-light">去支付</a>
+					            </div>
+					          </div><!-- .shopping-cart -->
+					          
+					          
+					          <div class="shopping-cart padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+					          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
+					          			订单编号：356666636329
+					                </div>
+					            <!-- Item -->
+					            <div class="item">
+					              <a href="shop-single.html" class="item-thumb">
+					                <img src="img/cart/item01.jpg" alt="Item">
+					              </a>
+					              <div class="item-details">
+					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
+					                <h4 class="item-price">数量：1 </h4>
+					                <h4 class="item-price">$85.90</h4>
+					              </div>
+					            </div><!-- .item -->
+					            <!-- Item -->
+					            <div class="item">
+					              <a href="shop-single.html" class="item-thumb">
+					                <img src="img/cart/item01.jpg" alt="Item">
+					              </a>
+					              <div class="item-details">
+					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
+					                <h4 class="item-price">数量：1 </h4>
+					                <h4 class="item-price">$85.90</h4>
+					              </div>
+					            </div><!-- .item -->
+					            <!-- Subtotal -->
+					            <div class="cart-subtotal space-bottom">
+					              <div class="column">
+					                <h3 class="toolbar-title">总价：</h3>
+					              </div>
+					              <div class="column">
+					                <h3 class="amount text-danger">$161.90</h3>
+					              </div>
+					            </div><!-- .subtotal -->
+					            <div style="background: #f8f8f8; padding:10px; margin-bottom: 20px;">
+					            	收件人：里默默<br>
+									手机号：18954781245<br>
+									地   址 ：上海市五角场黄兴路100号1号楼102室
+					            </div>
+					            <!-- Buttons -->
+					            <div class="text-right">
+					              <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
+					              <a href="#" class="btn btn-primary waves-effect waves-light">去支付</a>
+					            </div>
+					          </div><!-- .shopping-cart -->
+		        </div>
+		        <div role="tabpanel" class="tab-pane transition fade" id="tab1_2">
+		        	<div class="shopping-cart padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+					          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
+					          			订单编号：356666636329
+					                </div>
+					            <!-- Item -->
+					            <div class="item">
+					              <a href="shop-single.html" class="item-thumb">
+					                <img src="img/cart/item01.jpg" alt="Item">
+					              </a>
+					              <div class="item-details">
+					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
+					                <h4 class="item-price">数量：1 </h4>
+					                <h4 class="item-price">$85.90</h4>
+					              </div>
+					            </div><!-- .item -->
+					            <!-- Item -->
+					            <div class="item">
+					              <a href="shop-single.html" class="item-thumb">
+					                <img src="img/cart/item01.jpg" alt="Item">
+					              </a>
+					              <div class="item-details">
+					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
+					                <h4 class="item-price">数量：1 </h4>
+					                <h4 class="item-price">$85.90</h4>
+					              </div>
+					            </div><!-- .item -->
+					            <!-- Subtotal -->
+					            <div class="cart-subtotal space-bottom">
+					              <div class="column">
+					                <h3 class="toolbar-title">总价：</h3>
+					              </div>
+					              <div class="column">
+					                <h3 class="amount text-danger">$161.90</h3>
+					              </div>
+					            </div><!-- .subtotal -->
+					            <div style="background: #f8f8f8; padding:10px; margin-bottom: 20px;">
+					            	收件人：里默默<br>
+									手机号：18954781245<br>
+									地   址 ：上海市五角场黄兴路100号1号楼102室
+					            </div>
+					            <!-- Buttons 
+					            <div class="text-right">
+					              <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
+					              <a href="#" class="btn btn-primary waves-effect waves-light">去支付</a>
+					            </div>
+					            -->
+					          </div><!-- .shopping-cart -->
+		        </div>
+		        <div role="tabpanel" class="tab-pane transition fade" id="tab1_3">
+		        	<div class="shopping-cart padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+					          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
+					          			订单编号：356666636329
+					                </div>
+					                <div class="row">
+					                <div class="col-md-6">
+					            <!-- Item -->
+					            <div class="item">
+					              <a href="shop-single.html" class="item-thumb">
+					                <img src="img/cart/item01.jpg" alt="Item">
+					              </a>
+					              <div class="item-details">
+					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
+					                <h4 class="item-price">数量：1 </h4>
+					                <h4 class="item-price">$85.90</h4>
+					              </div>
+					            </div><!-- .item -->
+					            <!-- Item -->
+					            <div class="item">
+					              <a href="shop-single.html" class="item-thumb">
+					                <img src="img/cart/item01.jpg" alt="Item">
+					              </a>
+					              <div class="item-details">
+					                <h3 class="item-title"><a href="shop-single.html">商品名称</a></h3>
+					                <h4 class="item-price">数量：1 </h4>
+					                <h4 class="item-price">$85.90</h4>
+					              </div>
+					            </div><!-- .item -->
+					            <!-- Subtotal -->
+					            <div class="cart-subtotal space-bottom">
+					              <div class="column">
+					                <h3 class="toolbar-title">总价：</h3>
+					              </div>
+					              <div class="column">
+					                <h3 class="amount text-danger">$161.90</h3>
+					              </div>
+					            </div><!-- .subtotal -->
+					            </div>
+					            <div class="col-md-6">
+					            	<h4 class="text-primary">收件人信息</h4>
+					            	<hr>
+					            	<div>
+					            	收件人：里默默<br>
+									手机号：18954781245<br>
+									地   址 ：上海市五角场黄兴路100号1号楼102室
+									</div>
+									<br>
+
+									<h4 class="text-primary">快递信息</h4>
+					            	<hr>
+									<a id="Logistics" class="btn btn-primary" href="#">快递跟踪</a>
+					            </div>
+					            </div>
+					            <!-- Buttons 
+					            <div class="text-right">
+					              <a href="#" class="btn btn-default waves-effect waves-light">取消订单</a>
+					              <a href="#" class="btn btn-primary waves-effect waves-light">去支付</a>
+					            </div>
+					            -->
+					          </div><!-- .shopping-cart -->
+		        </div>
+		      </div>
+        </div>
+        <div role="tabpanel" class="tab-pane transition fade" id="tab2">
+        	<!-- Nav Tabs -->
+		      <ul class="nav-pills" role="tablist">
+		        <li class="active"><a href="#tab2_1" role="tab" data-toggle="tab">收藏的单品<span>5</span></a></li>
+		        <li><a href="#tab2_2" role="tab" data-toggle="tab">收藏的艺术家<span>2</span></a></li>
+		      </ul>
+		      <!-- Tab panes -->
+		      <div class="tab-content">
+		        <div role="tabpanel" class="tab-pane transition fade in active" id="tab2_1">
+		        	<div class="row">
+		        		<div class="col-md-4 col-sm-6">
+          <div class="shop-item">
+            <div class="shop-thumbnail">
+              <a href="shop-single.html" class="item-link"></a>
+              <img src="img/shop/th02.jpg" alt="Shop item">
+              <div class="shop-item-tools">
+                <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
+                  <i class="material-icons close"></i>
+                </a>
+              </div>
+            </div>
+            <div class="shop-item-details">
+              <h3 class="shop-item-title text-center"><a href="#">产品名称</a></h3>
+            </div>
+          </div><!-- .shop-item -->
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="shop-item">
+            <div class="shop-thumbnail">
+              <a href="shop-single.html" class="item-link"></a>
+              <img src="img/shop/th02.jpg" alt="Shop item">
+              <div class="shop-item-tools">
+                <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
+                  <i class="material-icons close"></i>
+                </a>
+              </div>
+            </div>
+            <div class="shop-item-details">
+              <h3 class="shop-item-title text-center"><a href="#">产品名称</a></h3>
+            </div>
+          </div><!-- .shop-item -->
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="shop-item">
+            <div class="shop-thumbnail">
+              <a href="shop-single.html" class="item-link"></a>
+              <img src="img/shop/th02.jpg" alt="Shop item">
+              <div class="shop-item-tools">
+                <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
+                  <i class="material-icons close"></i>
+                </a>
+              </div>
+            </div>
+            <div class="shop-item-details">
+              <h3 class="shop-item-title text-center"><a href="#">产品名称</a></h3>
+            </div>
+          </div><!-- .shop-item -->
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="shop-item">
+            <div class="shop-thumbnail">
+              <a href="shop-single.html" class="item-link"></a>
+              <img src="img/shop/th02.jpg" alt="Shop item">
+              <div class="shop-item-tools">
+                <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
+                  <i class="material-icons close"></i>
+                </a>
+              </div>
+            </div>
+            <div class="shop-item-details">
+              <h3 class="shop-item-title text-center"><a href="#">产品名称</a></h3>
+            </div>
+          </div><!-- .shop-item -->
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="shop-item">
+            <div class="shop-thumbnail">
+              <a href="shop-single.html" class="item-link"></a>
+              <img src="img/shop/th02.jpg" alt="Shop item">
+              <div class="shop-item-tools">
+                <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
+                  <i class="material-icons close"></i>
+                </a>
+              </div>
+            </div>
+            <div class="shop-item-details">
+              <h3 class="shop-item-title text-center"><a href="#">产品名称</a></h3>
+            </div>
+          </div><!-- .shop-item -->
+        </div>
+		        	</div>
+		        </div>
+		        <div role="tabpanel" class="tab-pane transition fade" id="tab2_2">
+		        	<div class="row">
+		        		<div class="col-md-2 col-sm-3">
+				          <div class="teammate">
+				            <div class="teammate-thumb">
+				              <div class="social-bar text-center space-bottom">
+				                <a href="#" class="btn btn-square btn-sm btn-primary waves-effect waves-light"><i class="material-icons close"></i>移除</a>
+				              </div><!-- .social-bar -->
+				              <img src="img/team/01.jpg" alt="">
+				            </div>
+				            <h4 class="teammate-name"><a href="#">艺术家姓名</a></h4>
+				          </div>
+				        </div>
+				        <div class="col-md-2 col-sm-3">
+				          <div class="teammate">
+				            <div class="teammate-thumb">
+				              <div class="social-bar text-center space-bottom">
+				                <a href="#" class="btn btn-square btn-sm btn-primary waves-effect waves-light"><i class="material-icons close"></i>移除</a>
+				              </div><!-- .social-bar -->
+				              <img src="img/team/01.jpg" alt="">
+				            </div>
+				            <h4 class="teammate-name"><a href="#">艺术家姓名</a></h4>
+				          </div>
+				        </div>
+				        
+		        	</div>
+		        </div>
+		      </div>
+        </div>
+        <div role="tabpanel" class="tab-pane transition fade" id="tab3">
+        	<!-- Nav Tabs -->
+		      <ul class="nav-pills" role="tablist">
+		        <li class="active"><a href="#tab3_1" role="tab" data-toggle="tab">未读消息<span>12</span></a></li>
+		        <li><a href="#tab3_2" role="tab" data-toggle="tab">已读消息<span>1</span></a></li>
+		      </ul>
+		      <!-- Tab panes -->
+		      <div class="tab-content">
+		        <div role="tabpanel" class="tab-pane transition fade in active" id="tab3_1">
+		        	<ul class="list_msgs">
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        	</ul>
+		        </div>
+		        <div role="tabpanel" class="tab-pane transition fade in active" id="tab3_2">
+		        	<ul class="list_msgs">
+		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a href="#">达芬奇绘画艺术作品已开单</a></li>
+		        	</ul>
+		        </div>
+		        </div>
+        </div>
+        <div role="tabpanel" class="tab-pane transition fade" id="tab4">
+        	<div class="shop-item">
+            <div class="shop-thumbnail">
+            	<div style="padding:18px;">
+            		收件人：里默默<br>
+					手机号：18954781245<br>
+					地 址 ：上海市五角场黄兴路100号1号楼102室 
+            		</div>
+              <div class="shop-item-tools">
+                <a href="#" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑">
+                  <i class="material-icons edit"></i>
+                </a>
+                <a href="#" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
+                  <i class="material-icons close"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        	<div class="shop-item">
+            <div class="shop-thumbnail">
+            	<div style="padding:18px;">
+            		收件人：里默默<br>
+					手机号：18954781245<br>
+					地 址 ：上海市五角场黄兴路100号1号楼102室 
+            		</div>
+              <div class="shop-item-tools">
+                <a href="#" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑">
+                  <i class="material-icons edit"></i>
+                </a>
+                <a href="#" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
+                  <i class="material-icons close"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        	<div class="shop-item">
+            <div class="shop-thumbnail">
+            	<div style="padding:18px;">
+            		收件人：里默默<br>
+					手机号：18954781245<br>
+					地 址 ：上海市五角场黄兴路100号1号楼102室 
+            		</div>
+              <div class="shop-item-tools">
+                <a href="#" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑">
+                  <i class="material-icons edit"></i>
+                </a>
+                <a href="#" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="移除">
+                  <i class="material-icons close"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="text-right">
+              <a href="#" class="btn btn-primary waves-effect waves-light">添加地址</a>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane transition fade" id="tab5">
+        	<!-- Nav Tabs -->
+		      <ul class="nav-pills" role="tablist">
+		        <li class="active"><a href="#tab5_1" role="tab" data-toggle="tab">空间主</a></li>
+		      </ul>
+		      <!-- Tab panes -->
+		      <div class="tab-content">
+		        <div role="tabpanel" class="tab-pane transition fade in active" id="tab5_1">
+		        	<div class="row">
+		        	<div class="col-md-12 clearfix">
+		        		<div class="pull-left">可提现：</div>
+		        		<div class="pull-right" style="margin-top: -13px;">
+		        			<span class="text-danger">300元</span>&nbsp;&nbsp;
+		        			<a id="Apply_Cash" class="btn btn-danger btn-sm">申请提现</a>
+	        			</div>
+		        	</div>
+		        	<div class="col-md-12 clearfix">
+		        		<div class="pull-left">提现总额：</div>
+		        		<div class="pull-right" style="margin-top: -13px;">
+		        			<span class="text-danger">300元</span>&nbsp;&nbsp;
+		        			<a id="Apply_Record" class="btn btn-danger btn-sm" href="#">提现记录</a>
+	        			</div>
+		        	</div>
+		        	</div>
+		        	<hr>
+		        	<table class="table">
+						<thead>
+					    <tr>
+					      <th>成单时间</th>
+					      <th>产品名称</th>
+					      <th>产品提现</th>
+					      <th>销售提成</th>
+					    </tr>
+					  	</thead>
+						<tbody>
+					    <tr>
+					      <td>2016-11-11&nbsp;&nbsp;16:30:00</td>
+					      <td>用户购买创意台灯</td>
+					      <td>获得9元</td>
+					      <td>获得1元</td>
+					    </tr>
+					    <tr>
+					      <td>2016-11-11&nbsp;&nbsp;16:30:00</td>
+					      <td>用户购买创意台灯</td>
+					      <td>获得9元</td>
+					      <td>获得1元</td>
+					    </tr>
+					    <tr>
+					      <td>2016-11-11&nbsp;&nbsp;16:30:00</td>
+					      <td>用户购买创意台灯</td>
+					      <td></td>
+					      <td>获得1元</td>
+					    </tr>
+					    <tr>
+					      <td>2016-11-11&nbsp;&nbsp;16:30:00</td>
+					      <td>用户购买创意台灯</td>
+					      <td></td>
+					      <td>获得1元</td>
+					    </tr>
+					    <tr>
+					      <td>2016-11-11&nbsp;&nbsp;16:30:00</td>
+					      <td>用户购买创意台灯</td>
+					      <td></td>
+					      <td>获得1元</td>
+					    </tr>
+					 	 </tbody>
+		        	</table>
+		        </div>
+		        </div>
+        </div>
+      </div>
+      </section><!-- .container -->
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="column">
+      	<div class="feature text-center">
+      		<a href="#">
+            <div class="feature-icon" style="margin-bottom:0px;">
+              <i class="material-icons credit_card"></i>
+            </div>
+            <div>
+				<a id="Cooperate" class="btn btn-default" style="font-size:16px;" href="javascript:;">与我们合作</a>
+			</div>
+            </a>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons settings"></i>
+            </div>
+            <h4 class="feature-title">关于我们</h4>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <i class="material-icons face"></i>
+            </div>
+            <h4 class="feature-title">物流及售后服务</h4>
+          </div>
+      </div><!-- .column -->
+    </footer><!-- .footer -->
+	<!--底部-->
+	<section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
+		<div class="text-center">
+			<div class="hidden-xs">
+				<div>联系我们：电话|微信：13502637171（KITTY）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系邮箱：3412355834@qq.com</div>
+				<!-- <div>公司地址：广东省潮州市潮安区江东镇沙洲工业区</div> -->
+				<div style="margin-top: 10px;">ICP备案号</div>
+			</div>
+			<div class="visible-xs">
+				<div>联系我们：电话|微信：13502637171（KITTY）</div>
+				<div style="margin-top: 10px;">联系邮箱：3412355834@qq.com</div>
+				<div style="margin-top: 10px;">ICP备案号</div>
+			</div>
+		</div>
+	</section>
+  </div><!-- .page-wrapper -->
+	
+  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+  <script src="js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <script src="js/vendor/smoothscroll.js"></script>
+  <script src="js/vendor/velocity.min.js"></script>
+  <script src="js/vendor/waves.min.js"></script>
+  <script src="js/vendor/icheck.min.js"></script>
+  <script src="js/scripts.js"></script>
+  
+  <!-- tan chuang -->
+  <script src="js/layer_mobile/layer.js"></script>
+  
+  <!-- script for tan chuang -->
+  <script>
+	//申请提现 
+   $('#Apply_Cash').click(function(){
+   	var content ='<div>您的申请已发送给管理员，我们会在2个工作日内审核你的提现要求，</div>'+'<div>请注意查看提现记录中的反馈信息</div>';
+  	layer.open({
+			  content:content,
+			  style:'text-align:center',
+			  btn: '我知道了',
+			  shadeClose: false
+			});
+			});
+			
+	//提现记录
+   $('#Apply_Record').click(function(){
+   	var content ='<div>2016.11.3 &nbsp;&nbsp;管理员Kitty同意了你的提现申请，本次提现金额为：300元</div>'+'<div>2016.11.3 &nbsp;&nbsp;管理员Kitty拒绝了你的提现申请，理由：未满提现额度</div>';
+  	layer.open({
+			  title: [
+			    '已提现：300元',
+			    'background-color:#77cde3; color:#fff;'
+			  ],
+			  content:content,			  
+			  btn: '我知道了',
+			  shadeClose: false,
+			});
+			});	
+				
+	//与我们合作
+   $('#Cooperate').click(function(){
+   	var content ='<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px;" placeholder="姓名" /></div>'
+   	+
+   	'<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px;" placeholder="手机" /></div>'
+   	+
+   	'<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px;" placeholder="邮箱" /></div>';
+  	layer.open({
+			  title: [
+			    '填写表单',
+			    'background-color:#77cde3; color:#fff;'
+			  ],
+			  content:content,	
+			  btn: ['提交', '取消']
+			});
+			});	
+			
+	//快递跟踪
+	$('#Logistics').click(function(){
+   	var content ='<div class="row bg-default" style="padding:6px 0;"><div class="col-md-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-md-1" style="margin-top:10px;">●</div><div class="col-md-7" style="margin-top:10px;">顺丰速运 &nbsp;已收取快件</div></div>'
+   	+
+   	'<div class="row" style="padding:6px 0;"><div class="col-md-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-md-1"  style="margin-top:10px;">●</div><div class="col-md-7" style="margin-top:10px;">顺丰速运 &nbsp;已收取快件已收取快件</div></div>'
+   	+
+   	'<div class="row bg-default" style="padding:6px 0;"><div class="col-md-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-md-1"  style="margin-top:10px;">●</div><div class="col-md-7" style="margin-top:10px; line-height:18px;">顺丰速运 &nbsp;已收取快件已收取快件已收取快件已收取快件已收取快件</div></div>'
+   	+
+   	'<div class="row" style="padding:6px 0;"><div class="col-md-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-md-1"  style="margin-top:10px;">●</div><div class="col-md-7" style="margin-top:10px; line-height:18px;">顺丰速运 &nbsp;已收取快件已收取快件已收取快件已收取快件已收取快件</div></div>'
+   	+
+   	'<div class="row bg-default text-danger" style="padding:6px 0;"><div class="col-md-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-md-1"  style="margin-top:12px;"><i class="material-icons done" style="border:1px solid #ef0568; border-radius:50%; padding:2px;"></i></div><div class="col-md-7" style="margin-top:12px; line-height:18px;">已签收，感谢使用顺丰快递，期待再次为您服务！</div></div>'
+   	;
+  	layer.open({
+			  title: [
+			    '跟踪包裹',
+			    'background-color:#77cde3; color:#fff;'
+			  ],
+			  content:content,			  
+			  btn: '我知道了',
+			  shadeClose: false,
+			});
+			});	
+										
+  </script>  
+  
+
+</body><!-- <body> -->
+
+</html>

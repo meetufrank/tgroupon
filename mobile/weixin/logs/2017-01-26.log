@@ -1,0 +1,20 @@
+[2017-01-26 12:15:37][debug] <xml><appid><![CDATA[wxb5aec13c030a530b]]></appid>
+<attach><![CDATA[创意床头灯]]></attach>
+<bank_type><![CDATA[ICBC_DEBIT]]></bank_type>
+<cash_fee><![CDATA[2]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1267579601]]></mch_id>
+<nonce_str><![CDATA[irxahsw6itjd3nd9saq279lqsbzpjcq3]]></nonce_str>
+<openid><![CDATA[okRTqvqRF0wqAu5zb6bshEJ5H48c]]></openid>
+<out_trade_no><![CDATA[2017012673066]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[D66FF2DB6475EF137CF502E7FCD3ADF8]]></sign>
+<time_end><![CDATA[20170126121537]]></time_end>
+<total_fee>2</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[4004922001201701267611829558]]></transaction_id>
+</xml>
+[2017-01-26 12:15:37][debug] call back:{"appid":"wxb5aec13c030a530b","attach":"\u521b\u610f\u5e8a\u5934\u706f","bank_type":"ICBC_DEBIT","cash_fee":"2","fee_type":"CNY","is_subscribe":"N","mch_id":"1267579601","nonce_str":"irxahsw6itjd3nd9saq279lqsbzpjcq3","openid":"okRTqvqRF0wqAu5zb6bshEJ5H48c","out_trade_no":"2017012673066","result_code":"SUCCESS","return_code":"SUCCESS","sign":"D66FF2DB6475EF137CF502E7FCD3ADF8","time_end":"20170126121537","total_fee":"2","trade_type":"JSAPI","transaction_id":"4004922001201701267611829558"}
+[2017-01-26 12:15:38][debug] query:{"appid":"wxb5aec13c030a530b","attach":"\u521b\u610f\u5e8a\u5934\u706f","bank_type":"ICBC_DEBIT","cash_fee":"2","fee_type":"CNY","is_subscribe":"N","mch_id":"1267579601","nonce_str":"IF2xAM4hMm1YezhZ","openid":"okRTqvqRF0wqAu5zb6bshEJ5H48c","out_trade_no":"2017012673066","result_code":"SUCCESS","return_code":"SUCCESS","return_msg":"OK","sign":"2A924D1AB83E6F8B3E484A6015225468","time_end":"20170126121537","total_fee":"2","trade_state":"SUCCESS","trade_type":"JSAPI","transaction_id":"4004922001201701267611829558"}

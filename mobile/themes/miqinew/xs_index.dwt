@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>形色主义首页</title>
+
+  <!--SEO Meta Tags-->
+  <meta name="description" content="COLOR & SHAPE" />
+  <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+
+  <!--Mobile Specific Meta Tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <!-- Google Material Icons -->
+  <link href="css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+
+  <!-- Brand Icons -->
+  <link href="css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+
+  <!-- Bootstrap -->
+  <link href="css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <!-- Theme Styles -->
+  <link href="css/theme.min.css" rel="stylesheet" media="screen">
+  
+  <!-- Page Preloading -->
+  <script src="js/vendor/page-preloading.js"></script>
+
+  <!-- Modernizr -->
+  <script src="js/vendor/modernizr.custom.js"></script>
+  
+  <!-- by sun -->
+  <style>
+  	@media screen and (min-width:768px){
+	  .info-box{
+		margin-top:70px;
+		}
+	}
+	@media (min-width: 1200px){
+		.container {
+			width:1300px;
+		}
+	}
+  	 .count{
+  	 	position: absolute;
+		display: block;
+		width: 16px;
+		height: 16px;
+		line-height: 16px;
+		font-size: 12px;
+		color: #fff;
+		text-align: center;
+		border-radius: 50%;
+		background-color: #77cde3;
+		top: -2px;
+		right: -17px;
+  	 }
+	.teammate-thumb{
+		border-radius: 50%;
+	}
+	.teammate-name a{
+		text-decoration:none;
+		color:#999;
+	}
+	.teammate-name a:hover{
+		color:#333;
+	}
+	.checkbox{
+		padding-left: 8px;
+		padding-bottom:10px;
+	}
+	.img-Currentsize{
+		max-width:85%;
+		display:inline-block;
+	}
+	.owl-nav{
+		display:none
+	}
+	.teammate {
+		width: 90%;
+	}
+  </style>
+ 
+</head>
+
+<!-- Body -->
+<body class="page-preloading">
+
+  <!-- Page Pre-Loader -->
+  <div class="page-preloader">
+    <div class="preloader">
+      <img src="img/preloader.gif" alt="Preloader">
+    </div>
+  </div>
+  <!-- .page-preloader -->
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+
+    <!-- 头部开始 -->
+    <header class="navbar navbar-sticky">
+
+      <!-- Site Logo -->
+      <a href="index.html" class="site-logo visible-desktop">
+        COLOR <span>&</span> SHAPE
+      </a><!-- site-logo.visible-desktop -->
+      <a href="index.html" class="site-logo visible-mobile">
+        COLOR <span>&</span> SHAPE
+      </a><!-- site-logo.visible-mobile -->
+
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <div class="inner">
+          <a href="#menu" class="toolbar-toggle"><i class="material-icons menu"></i></a>
+          <a href="#cart" class="toolbar-toggle">
+            <i>
+              <span class="material-icons shopping_basket"></span>
+             <span class="count">2</span>
+            </i>
+          </a>
+          <a href="#account" class="toolbar-toggle"><i class="material-icons person"></i></a>
+        </div>
+      </div>
+      <!-- .toolbar -->
+
+      <!-- Toolbar Dropdown -->
+      <div class="toolbar-dropdown">
+
+        <!-- Menu -->
+        <div class="toolbar-section" id="menu">
+          <div class="inner">
+            <ul class="main-navigation space-bottom">
+              <li><a href="index.html">首页</a></li>
+              <li><a href="shop-fullwidth-sl.html">商品</a></li>
+              <li><a href="artist-list.html">设计师</a></li>
+              <li><a href="#">关于我们</a></li>
+            </ul>
+            
+          </div>
+        </div>
+        <!-- Account (Login) -->
+        <div class="toolbar-section" id="account">
+          <h3 class="toolbar-title space-bottom">用户登录</h3>
+          <div class="inner">
+          	<a href="#userinfo" class="btn btn-primary waves-effect waves-light toggle-section">
+          		<i class="material-icons question_answer"></i>
+          		点击扫二维码登录
+      		</a>
+          </div>
+        </div>
+        
+        <!-- Account (userinfo) -->
+        <div class="toolbar-section" id="userinfo">
+            <div class="clearfix">
+            <a href="#account" class="btn btn-primary waves-effect waves-light pull-right toggle-section">退出</a>
+            <div class="quotation pull-left" style="width:auto;">
+              <div class="quotation-author-ava pull-left">
+                <img class="" src="img/team/quote_author.jpg" alt="James Cameron">
+              </div>
+              &nbsp;&nbsp;
+              <span style="display:inline-block; line-height:74px;">微信名称</span>
+          	</div>
+      	  	</div>
+      	  	<hr class="padding-bottom">
+      	  	<ul class="main-navigation space-bottom">
+      	  		<li><a href="my_order.html">我的订单</a></li>
+      	  		<li><a href="#">我的收藏</a></li>
+<!--      	  		<li><a class="relative" href="#">消息记录<span class="count">2</span></a></li>-->
+                <li><a class="relative" href="#">消息记录</a></li>
+      	  		<li><a href="#">管理地址</a></li>
+      	  		<li><a href="#">商品销售</a></li>
+      	  	</ul>
+        </div>
+
+        <!-- Cart -->
+        <div class="toolbar-section" id="cart">
+          <div class="shopping-cart" >
+          		<div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
+	          		<label class="checkbox check-label"  >
+	                  	<input style="position: absolute; opacity: 0;" type="checkbox"  id="checkbox-all" value="all">
+	                  <h4 style="margin-left:18px ;">全选</h4>
+	                </label>
+                </div>
+            <div class="cart-subtotal space-bottom" id="zongjia">
+              <div class="column">
+                <h3 class="toolbar-title">总价：</h3>
+              </div>
+              <div class="column">
+                <h3 class="amount">￥0.00</h3>
+              </div>
+            </div>
+
+            <div class="text-right">
+              <a href="#checkout" id="qujiesuan" class="btn btn-primary waves-effect waves-light toggle-section">支付结算</a>
+            </div>
+          </div>
+        </div>
+        <!-- Checkout -->
+        <div class="toolbar-section" id="checkout">
+          <form method="post" class="checkout-form container">
+            <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+              <div class="column">
+                <h3 class="toolbar-title">订单确认</h3>
+              </div>
+              <div class="column">
+                <h3 class="amount"><small class="hidden-xs">数量：6&nbsp;&nbsp;&nbsp;</small>$161.90</h3>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="radio radio-inline">
+                <input type="radio" name="co_shipping" checked> 
+                	联系人：里默默<br>
+					手机号：18954781245<br>
+					地   址 ：上海市五角场黄兴路100号1号楼102室
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <label class="radio radio-inline">
+                <input type="radio" name="co_shipping"> 
+                	联系人：里默默<br>
+					手机号：18954781245<br>
+					地   址 ：上海市五角场黄兴路100号1号楼102室
+              </label>
+            </div>
+            <h3><a class="toggle-section" href="#address">新增地址</a></h3>
+            <div class="text-right">
+              <a href="#cart" class="btn btn-default btn-ghost icon-left toggle-section">
+                	取消
+              </a>
+              <a href="#" class="btn btn-primary waves-effect waves-light">
+                	确认
+              </a>
+            </div>
+          </form>
+        </div>
+        
+        <!-- 新增地址 -->
+        <div class="toolbar-section" id="address">
+          
+            <div class="cart-subtotal space-bottom" style="border-bottom: 2px solid #ededed;">
+              <div class="column">
+                <h3 class="toolbar-title">新增地址</h3>
+              </div>
+            </div>
+            
+            <form method="post" class="checkout-form container" action="#" id="xzdz">
+            <div>
+            	
+                <p><input type="text" class="form-control" name="UserName" placeholder="收件人"><span></span></p>
+                <p><input type="text" class="form-control" name="UserTel" placeholder="手机号码"><span></span></p>
+                <div class="row">
+                  <div class="col-sm-6">
+                  <p><input type="text" class="form-control" name="UserSf" placeholder="省份"><span></span></p>
+                  </div>
+                  <div class="col-sm-6">
+                      <p><input type="text" class="form-control" name="UserCity" placeholder="城市"><span></span></p>
+                  </div>
+                </div>
+                <p><input type="text" class="form-control" name="UserAddress" placeholder="详细地址"><span></span></p>
+            </div>
+            <div class="text-right">
+              <a href="#checkout" class="btn btn-default btn-ghost icon-left toggle-section">
+                	返回
+              </a>
+              <button class="btn btn-primary waves-effect waves-light" >
+                	确认
+              </button>
+            </div>
+            </form>
+            </div>
+      </div>
+    </header>
+    <!-- 头部结束 -->
+
+    <!-- Hero Slider -->
+    <section class="hero-slider" data-loop="true" data-autoplay="true" data-interval="7000">
+      <div class="inner">
+        <div class="slide" style="background-image: url(img/hero-slider/01.jpg);">
+        </div><!-- .slide -->
+        <div class="slide" style="background-image: url(img/hero-slider/02.jpg);">
+        </div><!-- .slide -->
+        <div class="slide" style="background-image: url(img/hero-slider/03.jpg);">
+        </div><!-- .slide -->
+      </div><!-- .inner -->
+    </section><!-- .hero-slider -->
+    
+	<!-- search -->
+	<section class="container-fluid padding-top-3x">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<ul class="nav-tabs" role="tablist" style="border-bottom: none;">
+		            <li class="active"><a href="#products" role="tab" data-toggle="tab">商品</a></li>
+		            <li><a href="#designers" role="tab" data-toggle="tab">设计师</a></li>
+		          </ul>
+				<div class="tab-content" style="padding-top:0px; min-height: auto; margin-top: -10px;">
+					<div id="products" class="tab-pane transition fade scale active in">
+						<div class="row space-top-half">
+						<div class="col-xs-10" style="padding-left: 1px; padding-right: 0;">
+							<input type="text" class="form-control" placeholder="请在此处搜索您想要的商品" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您想要的商品'">
+						</div>
+						<div class="col-xs-2" style="padding-left: 1px; margin-top:-10px;">
+				          	<button class="btn btn-default" type="submit">
+			                  <i class="material-icons search"></i>
+			                </button>
+						</div>
+						</div>
+					</div>
+					<div id="designers" class="tab-pane transition fade scale">
+						<div class="row space-top-half">
+						<div class="col-xs-10" style="padding-left: 1px; padding-right: 0;">
+							<input type="text" class="form-control" placeholder="请在此处搜索您要找的设计师" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您要找的设计师'">
+						</div>
+						<div class="col-xs-2" style="padding-left: 1px; margin-top:-10px;">
+				          	<button class="btn btn-default" type="submit">
+			                  <i class="material-icons search"></i>
+			                </button>
+						</div>
+						</div>
+					</div>
+				</div>
+	          	
+			</div>
+		</div>
+	</section>
+	
+    <!-- Content Wide -->
+    <section class="container-fluid padding-top-3x">
+
+      <!-- Featured Categories -->
+      <h3 class="text-center padding-top">商品分类</h3>
+      <div class="row padding-top padding-bottom-3x">
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="#" class="category-link">
+            <img src="img/categories/cat01.jpg" alt="Category">
+            分类1
+          </a><!-- .category-link -->
+        </div><!-- .col-sm-4 -->
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="#" class="category-link">
+            <img src="img/categories/cat02.jpg" alt="Category">
+            分类2
+          </a><!-- .category-link -->
+        </div><!-- .col-sm-4 -->
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="#" class="category-link">
+            <img src="img/categories/cat03.jpg" alt="Category">
+            分类3
+          </a><!-- .category-link -->
+        </div><!-- .col-sm-4 -->
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="#" class="category-link">
+            <img src="img/categories/cat04.jpg" alt="Category">
+            分类4
+          </a><!-- .category-link -->
+        </div><!-- .col-sm-4 -->
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="#" class="category-link">
+            <img src="img/categories/cat03.jpg" alt="Category">
+            分类5
+          </a><!-- .category-link -->
+        </div><!-- .col-sm-4 -->
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="shop-fullwidth-sl.html" class="category-link">
+            <img src="img/categories/more.jpg" alt="Category">
+            更多
+          </a><!-- .category-link -->
+        </div><!-- .col-sm-4 -->
+      </div><!-- .row -->
+
+      <div class="row padding-top">
+
+        <!-- Special Offer -->
+        <div class="col-lg-3 col-md-4">
+          <div class="info-box text-center">
+            <h2>特别优惠<br><span class="text-danger">-30%</span></h2>
+            <a href="shop-single.html" class="inline">
+              <img src="img/shop/special-offer.jpg" alt="Special Offer">
+            </a>
+            <h3 class="lead text-normal space-bottom-half"><a href="shop-single.html" class="link-title">创意台灯</a></h3>
+            <span class="lead text-normal text-gray text-crossed">$800.00</span>
+            <span class="h4 text-normal text-danger">$560.00</span>
+
+            <!-- Countdown -->
+            <!--dao ji shi-->
+            <!--<div class="countdown space-top-half padding-top" data-date-time="07/30/2017 12:00:00">
+              <div class="item">
+                <div class="days">00</div>
+                <span class="days_ref">天</span>
+              </div>
+              <div class="item">
+                <div class="hours">00</div>
+                <span class="hours_ref">时</span>
+              </div>
+              <div class="item">
+                <div class="minutes">00</div>
+                <span class="minutes_ref">分</span>
+              </div>
+              <div class="item">
+                <div class="seconds">00</div>
+                <span class="seconds_ref">秒</span>
+              </div>
+            </div>-->
+          </div><!-- .info-box -->
+          <div class="padding-bottom-2x visible-xs"></div>
+        </div><!-- .col-lg-3.col-md-4 -->
+
+        <!-- Products -->
+        <div class="col-lg-9 col-md-8">
+          <!-- Nav Tabs -->
+          <ul class="nav-tabs text-center" role="tablist">
+            <li class="active"><a href="#newcomers" role="tab" data-toggle="tab">新品上架</a></li>
+            <li><a href="#toprated" role="tab" data-toggle="tab">折扣优惠</a></li>
+          </ul><!-- .nav-tabs -->
+
+          <!-- Tab Panes -->
+          <div class="tab-content">
+
+            <!-- #newcomers -->
+            <div role="tabpanel" class="tab-pane transition fade scale in active" id="newcomers">
+              <div class="row space-top-half">
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <!-- <span class="shop-label text-danger">Sale</span> -->
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th01.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $38.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th02.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $125.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th03.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $62.50
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th04.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $178.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+              </div><!-- .row -->
+              <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th05.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $69.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th06.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $130.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <!-- <span class="shop-label text-warning">Popular</span> -->
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th07.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $99.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th08.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $112.35
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+              </div><!-- .row -->
+            </div><!-- .tab-pane#newcomers -->
+
+            <!-- #toprated -->
+            <div role="tabpanel" class="tab-pane transition fade scale" id="toprated">
+              <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th09.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $118.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th10.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $85.90
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th11.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $417.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th12.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $245.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+              </div><!-- .row -->
+              <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th13.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $19.80
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th14.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $299.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th15.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $76.40
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th16.jpg" alt="Shop item">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $27.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+              </div><!-- .row -->
+            </div><!-- .tab-pane#toprated -->
+
+            <!-- #onsale -->
+            <div role="tabpanel" class="tab-pane transition fade scale" id="onsale">
+              <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <!-- <span class="shop-label text-danger">Sale</span> -->
+                      <a href="#" class="item-link"></a>
+                      <img src="img/shop/th05.jpg" alt="Shop item">
+                      <div class="shop-item-tools">
+                        <a href="#" class="add-to-cart">
+                          <em>加入购物车</em>
+                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                            <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="#">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        <!-- <span class="old-price">$69.00</span> -->
+                        $48.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="#" class="item-link"></a>
+                      <img src="img/shop/th06.jpg" alt="Shop item">
+                      <div class="shop-item-tools">
+                        <a href="#" class="add-to-cart">
+                          <em>加入购物车</em>
+                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                            <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="#">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        $130.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="#" class="item-link"></a>
+                      <img src="img/shop/th04.jpg" alt="Shop item">
+                      <div class="shop-item-tools">
+                        <a href="#" class="add-to-cart">
+                          <em>加入购物车</em>
+                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                            <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="#">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        <!-- <span class="old-price">$225.00</span> -->
+                        $178.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="#" class="item-link"></a>
+                      <img src="img/shop/th08.jpg" alt="Shop item">
+                      <div class="shop-item-tools">
+                        <a href="#" class="add-to-cart">
+                          <em>加入购物车</em>
+                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                            <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="#">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        <!-- <span class="old-price">$180.00</span> -->
+                        $112.35
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <!-- <span class="shop-label text-danger">Sale</span> -->
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th01.jpg" alt="Shop item">
+                      <div class="shop-item-tools">
+                        <a href="#" class="add-to-cart">
+                          <em>加入购物车</em>
+                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+              							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+              						</svg>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        <span class="old-price">$49.00</span>
+                        $38.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <!-- <span class="shop-label text-danger">Sale</span> -->
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th07.jpg" alt="Shop item">
+                      <div class="shop-item-tools">
+                        <a href="#" class="add-to-cart">
+                          <em>加入购物车</em>
+                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+              							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+              						</svg>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">Sunglasses</a></h3>
+                      <span class="shop-item-price">
+                        <span class="old-price">$122.00</span>
+                        $99.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <!-- <span class="shop-label text-danger">Sale</span> -->
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th09.jpg" alt="Shop item">
+                      <div class="shop-item-tools">
+                       <!--<a href="#" class="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="收藏">
+                          <i class="material-icons favorite_border"></i>
+                        </a>-->
+                        <a href="#" class="add-to-cart">
+                          <em>加入购物车</em>
+                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+              							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+              						</svg>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        <span class="old-price">$160.00</span>
+                        $118.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <!-- <span class="shop-label text-danger">Sale</span> -->
+                      <a href="shop-single.html" class="item-link"></a>
+                      <img src="img/shop/th02.jpg" alt="Shop item">
+                      <div class="shop-item-tools">
+                        <a href="#" class="add-to-cart">
+                          <em>加入购物车</em>
+                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+              							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+              						</svg>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <span class="shop-item-price">
+                        <span class="old-price">$199.00</span>
+                        $125.00
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+              </div><!-- .row -->
+            </div><!-- .tab-pane#onsale -->
+          </div><!-- .tab-content -->
+        </div><!-- .col-lg-9.col-md-8 -->
+      </div><!-- .row -->
+    </section><!-- .container-fluid -->
+
+    <!-- Brands -->
+    <section class="container padding-top-2x padding-bottom">
+      <hr>
+      <h3 class="text-center">设计师介绍</h3>
+      <div class="row padding-top">
+         <div class="col-xs-6 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="img/team/01.jpg" alt="" class="img-Currentsize">
+            </div>
+            <h4 class="teammate-name"><a href="#">设计师姓名</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="img/team/01.jpg" alt="" class="img-Currentsize">
+            </div>
+            <h4 class="teammate-name"><a href="#">设计师姓名</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="img/team/01.jpg" alt="" class="img-Currentsize">
+            </div>
+            <h4 class="teammate-name"><a href="#">设计师姓名</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="img/team/01.jpg" alt="" class="img-Currentsize">
+            </div>
+            <h4 class="teammate-name"><a href="#">设计师姓名</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="img/team/01.jpg" alt="" class="img-Currentsize">
+            </div>
+            <h4 class="teammate-name"><a href="#">设计师姓名</a></h4>
+          </div>
+          </div>
+         
+         <div class="col-xs-6 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <a href="artist-list.html"><img src="img/team/more.jpg" alt="" class="img-Currentsize"></a>
+            </div>
+            <h4 class="teammate-name"><a href="#">更多</a></h4>
+          </div>
+          </div>
+      </div><!-- .row -->
+      
+    </section><!-- .container -->
+
+    <!-- Video Popup -->
+    <div class="fw-section space-top-2x padding-top-3x padding-bottom-3x" style="background-image: url(img/video_bg.jpg);">
+      <div class="container padding-top-3x padding-bottom-3x text-center">
+        <div class="space-top-3x space-bottom">
+          <!-- Add ".light-skin" class to alter appearance. -->
+          <a href="https://player.vimeo.com/video/135832597?color=77cde3&title=0&byline=0&portrait=0" class="video-popup-btn">
+            <i class="material-icons play_arrow"></i>
+          </a>
+        </div>
+        <p class="space-bottom-2x">型色主义—可信赖的合作伙伴！</p>
+      </div>
+    </div><!-- .fw-section -->
+
+
+     <!-- Footer -->
+    <footer class="footer padding-top-2x">
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <!-- <i class="material-icons credit_card"></i> -->
+            </div>
+			<h4 class="feature-title"><a id="Cooperate" href="#">服务中心</a></h4>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <!-- <i class="material-icons settings"></i> -->
+            </div>
+            <h4 class="feature-title"><a href="#">关于我们</a></h4>
+          </div>
+      </div><!-- .column -->
+      <div class="column">
+      	<div class="feature text-center">
+            <div class="feature-icon">
+              <!-- <i class="material-icons face"></i> -->
+            </div>
+            <h4 class="feature-title"><a href="#">商业合作</a></h4>
+          </div>
+      </div>
+    </footer><!-- .footer -->
+	
+	<section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
+		<div class="text-center">
+			<div class="hidden-xs">
+				<div>联系我们：电话|微信：13502637171（KITTY）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系邮箱：3412355834@qq.com</div>
+				<!-- <div>公司地址：广东省潮州市潮安区江东镇沙洲工业区</div> -->
+				<div style="margin-top: 10px;">ICP备案号</div>
+			</div>
+			<div class="visible-xs">
+				<div>联系我们：电话|微信：13502637171（KITTY）</div>
+				<div style="margin-top: 10px;">联系邮箱：3412355834@qq.com</div>
+				<div style="margin-top: 10px;">ICP备案号</div>
+			</div>
+		</div>
+	</section>
+    <!--底部-->
+  </div><!-- .page-wrapper -->
+
+  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+  <script src="js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <script src="js/vendor/smoothscroll.js"></script>
+  <script src="js/vendor/velocity.min.js"></script>
+  <script src="js/vendor/waves.min.js"></script>
+  <script src="js/vendor/icheck.min.js"></script>
+  <script src="js/vendor/owl.carousel.min.js"></script>
+  <script src="js/vendor/jquery.downCount.js"></script>
+  <script src="js/vendor/magnific-popup.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/layer_mobile/layer.js"></script>
+  <script src="js/jquery.validate.js" type="text/javascript"></script>
+  <script src="js/messages_zh.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(document).ready(function () {
+        $("#newcomers .shop-item-tools a").click(function(){
+            layer.open({
+                content: '已加入购物车',
+                skin: 'msg',
+                time: 0.5 //0.5秒后自动关闭
+            });
+            $.ajax({
+                type:"GET",
+                url:"3.json",
+                dataType: "json",
+                success: function(data){
+                    $(".item").find("input[type='checkbox']").iCheck("destroy");
+                    //console.log(data);
+                    $.each(data,function(i){
+                        $("#zongjia").before('<div class="item">'+'<label class="checkbox">'+'<input style="position: absolute; opacity: 0;" type="checkbox" value="1">'+'</label>'+'<a href="shop-single.html" class="item-thumb">'+'<img src="'+data[i].img+'" alt="Item">'+'</a>'+'<div class="item-details">'+'<h3 class="item-title"><a href="shop-single.html">'+data[i].tradename+'</a></h3>'+'<h4 class="item-price" data-price="'+data[i].money+'">'+'￥'+data[i].money+'</h4>'+'<div class="count-input">'+'<a class="incr-btn" data-action="decrease" href="#">–</a>'+'<input class="quantity" type="text" value="'+data[i].value+'">'+'<a class="incr-btn" data-action="increase" href="#">+</a>'+'</div>'+'</div>'+'<a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="移出购物车">'+'<i class="material-icons delete"></i>'+'</a>'+'</div>');//内容添加到页面上.
+                    });
+                    $(".item").find("input[type='checkbox']").on('ifChanged', function(event){ //ifCreated 事件应该在插件初始化之前绑定
+                        jisuanjiage();
+                    });
+                    $(".item").find("input[type='checkbox']").iCheck();
+                },
+                error: function(){
+                    alert("json出错");
+                }
+            });
+
+        });
+        $('#checkbox-all').on('ifChanged', function(event){ //ifCreated 事件应该在插件初始化之前绑定
+            choseAll();
+        });
+        var $checkbox = $('input[type="checkbox"], input[type="radio"]');
+        if($checkbox.length) {
+            $('input').iCheck();
+        }
+        $("#cart").on("click",".item-remove",function(){
+            $(this).parents(".item").remove();;
+            jisuanjiage();
+        });
+        $("#cart").on("click",".incr-btn",function(){
+            var $button = $(this);
+            var oldValue = $button.parent().find('.quantity').val();
+            $button.parent().find('.incr-btn[data-action="decrease"]').removeClass('inactive');
+            if ($button.data('action') == "increase") {
+                var newVal = parseFloat(oldValue) + 1;
+            } else {
+                // Don't allow decrementing below 1
+                if (oldValue > 1) {
+                    var newVal = parseFloat(oldValue) - 1;
+                } else {
+                    newVal = 1;
+                    $button.addClass('inactive');
+                }
+            }
+            $button.parent().find('.quantity').val(newVal);
+            jisuanjiage();
+        });
+        jisuanjiage();
+	});
+    function choseAll(){
+        console.info($("#checkbox-all")[0].checked);
+        if($("#checkbox-all")[0].checked==true) {
+            $(".shopping-cart").find("input[type='checkbox']").iCheck('check');
+        }else{
+            $(".shopping-cart").find("input[type='checkbox']").iCheck('uncheck');
+        }
+        jisuanjiage();
+        // $(".shopping-cart").find("input[type='checkbox']").attr("checked",$("#checkbox-all").attr('checked'));;
+    }
+    function jisuanjiage(){
+        var pay=0;
+        $(".shopping-cart").children(".item").each(function () {
+            if($(this).find("input[type='checkbox']")[0].checked){
+                var price =parseFloat($(this).find(".item-price").attr("data-price"));
+                var quantity=parseFloat($(this).find("input[class='quantity']").val());
+                pay+=price*quantity;
+            }
+        });
+        if(pay>0){
+            $("#qujiesuan").show();
+        }else{
+            $("#qujiesuan").hide();
+        }
+        $(".amount").text("￥"+pay.toFixed(2));
+        // $(".shopping-cart").find("input[type='checkbox']").attr("checked",$("#checkbox-all").attr('checked'));;
+    }
+	</script>
+     
+    <script type="text/javascript">
+	// 手机号码验证
+	jQuery.validator.addMethod("isMobile", function(value, element) {
+    	var length = value.length;
+    	var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+    	return this.optional(element) || (length == 11 && mobile.test(value));
+	}, "请正确填写您的手机号码");
+	
+	 $(function () {
+		$("#xzdz").validate({
+			 rules: {
+                    UserName: { required: true, },
+                    UserTel: { required: true, number:true,isMobile:true,min:11},
+                    UserSf: { required: true,},
+                    UserCity: { required: true,minlength:2,maxlength:15 },
+					UserAddress: { required: true,minlength:2,maxlength:30 }
+                },
+                messages:{
+                    UserName: { 
+                        required: "请输入收货人！",
+                     },
+                    UserTel: {
+                        required: "请填写你的手机号码",
+                        number:"手机号码只能为数字",
+						min: "手机号码必须为11位数！",
+						isMobile:"请正确填写您的手机号码",
+                     },
+                    UserSf: {
+                        required: "请输入省份！",
+                    },
+                    UserCity: {
+                        required: "请输入城市!",
+                    },
+					UserAddress: {
+                        required: "请输入地址!",
+                    }
+                },
+                /*错误提示位置*/
+                errorPlacement: function (error, element) {
+                    error.appendTo(element.siblings("span"));
+                }
+		})
+	})
+	</script>
+	 <script>
+	//申请提现 
+   $('#Apply_Cash').click(function(){
+   	var content ='<div>您的申请已发送给管理员，我们会在2个工作日内审核你的提现要求，</div>'+'<div>请注意查看提现记录中的反馈信息</div>';
+  	layer.open({
+			  content:content,
+			  style:'text-align:center',
+			  btn: '我知道了',
+			  shadeClose: false
+			});
+			});
+			
+	//提现记录
+   $('#Apply_Record').click(function(){
+   	var content ='<div>2016.11.3 &nbsp;&nbsp;管理员Kitty同意了你的提现申请，本次提现金额为：300元</div>'+'<div>2016.11.3 &nbsp;&nbsp;管理员Kitty拒绝了你的提现申请，理由：未满提现额度</div>';
+  	layer.open({
+			  title: [
+			    '已提现：300元',
+			    'background-color:#77cde3; color:#fff;'
+			  ],
+			  content:content,			  
+			  btn: '我知道了',
+			  shadeClose: false,
+			});
+			});	
+				
+	//与我们合作
+   $('#Cooperate').click(function(){
+   	var content ='<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px;" placeholder="姓名" /></div>'
+   	+
+   	'<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px;" placeholder="手机" /></div>'
+   	+
+   	'<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px;" placeholder="邮箱" /></div>';
+  	layer.open({
+			  title: [
+			    '填写表单',
+			    'background-color:#77cde3; color:#fff;'
+			  ],
+			  content:content,	
+			  btn: ['提交', '取消']
+			});
+			});	
+			
+	//快递跟踪
+	$('#Logistics').click(function(){
+   	var content ='<div class="row bg-default" style="padding:6px 0;"><div class="col-md-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-md-1" style="margin-top:10px;">●</div><div class="col-md-7" style="margin-top:10px;">顺丰速运 &nbsp;已收取快件</div></div>'
+   	+
+   	'<div class="row" style="padding:6px 0;"><div class="col-md-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-md-1"  style="margin-top:10px;">●</div><div class="col-md-7" style="margin-top:10px;">顺丰速运 &nbsp;已收取快件已收取快件</div></div>'
+   	+
+   	'<div class="row bg-default" style="padding:6px 0;"><div class="col-md-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-md-1"  style="margin-top:10px;">●</div><div class="col-md-7" style="margin-top:10px; line-height:18px;">顺丰速运 &nbsp;已收取快件已收取快件已收取快件已收取快件已收取快件</div></div>'
+   	+
+   	'<div class="row" style="padding:6px 0;"><div class="col-md-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-md-1"  style="margin-top:10px;">●</div><div class="col-md-7" style="margin-top:10px; line-height:18px;">顺丰速运 &nbsp;已收取快件已收取快件已收取快件已收取快件已收取快件</div></div>'
+   	+
+   	'<div class="row bg-default text-danger" style="padding:6px 0;"><div class="col-md-2"><span style="font-size:10px;">2016-10-25</span><br><span style="font-size:22px; font-weight:bold;">19:03</span></div><div class="col-md-1"  style="margin-top:12px;"><i class="material-icons done" style="border:1px solid #ef0568; border-radius:50%; padding:2px;"></i></div><div class="col-md-7" style="margin-top:12px; line-height:18px;">已签收，感谢使用顺丰快递，期待再次为您服务！</div></div>'
+   	;
+  	layer.open({
+			  title: [
+			    '跟踪包裹',
+			    'background-color:#77cde3; color:#fff;'
+			  ],
+			  content:content,			  
+			  btn: '我知道了',
+			  shadeClose: false,
+			});
+			});	
+										
+  </script>  
+</body><!-- <body> -->
+
+</html>

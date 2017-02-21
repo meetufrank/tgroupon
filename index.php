@@ -14,7 +14,7 @@
 */
 
 define('IN_ECS', true);
-
+//header("Location:http://www.cands.cn/mobile/goods_list.php");exit;
 require(dirname(__FILE__) . '/includes/init.php');
 
 if ((DEBUG_MODE & 2) != 2)

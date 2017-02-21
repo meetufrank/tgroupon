@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-02-20 16:37:41
+ * @Last Modified time: 2017-02-21 11:42:59
  */
 
 
@@ -15,7 +15,8 @@ require(dirname(__FILE__) . '/include/init.php');
 include('head.php');
 
 
-
+setcookie('add_cart','',time()-3600);
+ setcookie('post_goods','',time()-3600);
 if (!isset($_REQUEST['step']))
 {
     $_REQUEST['step'] = "goods_list";
