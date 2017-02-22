@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : mysqldb
+Source Server         : mysql
 Source Server Version : 50528
 Source Host           : localhost:3306
 Source Database       : tgroup
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2017-02-09 10:18:55
+Date: 2017-02-22 16:53:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `ecs_account_log` (
   `change_type` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`log_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=230 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=251 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_account_log
@@ -48,7 +48,28 @@ INSERT INTO `ecs_account_log` VALUES ('225', '1628', '0.00', '0.00', '98', '98',
 INSERT INTO `ecs_account_log` VALUES ('226', '2', '0.00', '0.00', '0', '0', '1484704949', '订单 2017011826127 赠送的积分', '99');
 INSERT INTO `ecs_account_log` VALUES ('227', '2', '0.00', '0.00', '0', '0', '1484704993', '由于退货或未发货操作，退回订单 2017011826127 赠送的积分', '99');
 INSERT INTO `ecs_account_log` VALUES ('228', '2', '0.00', '0.00', '0', '0', '1484705334', '订单 2017011829762 赠送的积分', '99');
-INSERT INTO `ecs_account_log` VALUES ('229', '6', '0.00', '0.00', '0', '0', '1486495733', '订单 2017020779630 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('229', '2', '0.00', '0.00', '0', '0', '1484789479', '订单 2017011914748 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('230', '2', '0.00', '0.00', '0', '0', '1484790047', '订单 2017011803243 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('231', '11', '0.00', '0.00', '0', '0', '1486522173', '订单 2017020863006 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('232', '10', '0.00', '0.00', '0', '0', '1486528793', '订单 2017020846057 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('233', '10', '0.00', '0.00', '0', '0', '1486531400', '订单 2017020873629 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('234', '13', '0.00', '0.00', '0', '0', '1486577154', '订单 2017020891440 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('235', '11', '0.00', '0.00', '0', '0', '1486592089', '订单 2017020974182 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('236', '11', '0.00', '0.00', '0', '0', '1486596876', '订单 2017020846949 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('237', '13', '0.00', '0.00', '0', '0', '1486619038', '订单 2017020903923 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('238', '13', '0.00', '0.00', '0', '0', '1486619089', '由于退货或未发货操作，退回订单 2017020903923 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('239', '13', '0.00', '0.00', '0', '0', '1486619171', '订单 2017020903923 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('240', '10', '0.00', '0.00', '0', '0', '1486619458', '订单 2017020993486 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('241', '10', '0.00', '0.00', '0', '0', '1486621743', '订单 2017020958552 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('242', '11', '0.00', '0.00', '0', '0', '1486622146', '订单 2017020935383 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('243', '17', '0.00', '0.00', '0', '0', '1486622272', '订单 2017020968582 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('244', '11', '0.00', '0.00', '0', '0', '1486622683', '订单 2017020935350 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('245', '14', '0.00', '0.00', '0', '0', '1486671892', '订单 2017020987456 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('246', '19', '0.00', '0.00', '0', '0', '1486677201', '订单 2017021070114 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('247', '11', '0.00', '0.00', '0', '0', '1486686372', '订单 2017021054871 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('248', '11', '0.00', '0.00', '0', '0', '1486687367', '订单 2017021021397 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('249', '11', '0.00', '0.00', '0', '0', '1487270082', '订单 2017021503343 赠送的积分', '99');
+INSERT INTO `ecs_account_log` VALUES ('250', '10', '0.00', '0.00', '0', '0', '1487531815', '订单 2017021541238 赠送的积分', '99');
 
 -- ----------------------------
 -- Table structure for ecs_ad
@@ -242,7 +263,7 @@ CREATE TABLE `ecs_admin_log` (
   PRIMARY KEY (`log_id`),
   KEY `log_time` (`log_time`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=718 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1014 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_admin_log
@@ -951,19 +972,315 @@ INSERT INTO `ecs_admin_log` VALUES ('701', '1484718425', '1', '添加属性: 宽
 INSERT INTO `ecs_admin_log` VALUES ('702', '1484718436', '1', '编辑商品: 创意床头灯', '175.102.134.140');
 INSERT INTO `ecs_admin_log` VALUES ('703', '1484718437', '1', '编辑商品: 创意床头灯', '175.102.134.140');
 INSERT INTO `ecs_admin_log` VALUES ('704', '1484718464', '1', '商品: 1', '175.102.134.140');
-INSERT INTO `ecs_admin_log` VALUES ('705', '1484789527', '1', '编辑订单: 2017011944919,订单总金额由 0.02 变为 15.02', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('706', '1486332977', '1', '添加会员账号: wangjin', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('707', '1486421404', '1', '编辑权限管理: kitty', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('708', '1486422113', '1', '编辑权限管理: kitty', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('709', '1486495524', '1', '编辑订单: 2017020779630', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('710', '1486508024', '1', '添加会员账号: wangjin', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('711', '1486511006', '1', '编辑会员账号: wangjin', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('712', '1486518760', '1', '添加会员账号: asd', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('713', '1486518770', '1', '编辑会员账号: asd', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('714', '1486520901', '1', '编辑会员账号: asd', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('715', '1486530133', '1', '编辑权限管理: 王晋', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('716', '1486530159', '1', '编辑权限管理: 王晋', '127.0.0.1');
-INSERT INTO `ecs_admin_log` VALUES ('717', '1486530347', '1', '编辑权限管理: 王晋', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('705', '1484789377', '1', '编辑订单: 2017011914748,订单总金额由 0.04 变为 15.04', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('706', '1484789419', '1', '编辑订单: 2017011914748', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('707', '1484789439', '1', '编辑订单: 2017011914748', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('708', '1484791419', '1', '添加商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('709', '1484791445', '1', '编辑商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('710', '1484791456', '1', '编辑商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('711', '1484791514', '1', '编辑商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('712', '1484791514', '1', '编辑商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('713', '1484791554', '1', '商品: 16', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('714', '1484791612', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('715', '1484791612', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('716', '1484791615', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('717', '1484791618', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('718', '1484791618', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('719', '1484791620', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('720', '1484791620', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('721', '1484791653', '1', '商品: 16', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('722', '1484791703', '1', '编辑属性: 大小', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('723', '1484791711', '1', '编辑商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('724', '1484791711', '1', '编辑商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('725', '1484791736', '1', '编辑商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('726', '1484791769', '1', '编辑商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('727', '1484791769', '1', '编辑商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('728', '1484791791', '1', '回收商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('729', '1484791826', '1', '添加商品: 测试书籍', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('730', '1484791831', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('731', '1484791831', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('732', '1484791844', '1', '商品: 17', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('733', '1484791857', '1', '商品: 17', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('734', '1484791966', '1', '编辑属性: 颜色', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('735', '1484792007', '1', '编辑商品: 测试书籍', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('736', '1484792007', '1', '编辑商品: 测试书籍', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('737', '1484792023', '1', '编辑商品: 测试书籍', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('738', '1484792055', '1', '编辑商品: 测试书籍', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('739', '1484792055', '1', '编辑商品: 测试书籍', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('740', '1484792087', '1', '添加商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('741', '1484792126', '1', '编辑属性: 颜色', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('742', '1484792171', '1', '编辑属性: 颜色', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('743', '1484792221', '1', '编辑商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('744', '1484792221', '1', '编辑商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('745', '1484792249', '1', '商品: 18', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('746', '1484792270', '1', '商品: 18', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('747', '1484792315', '1', '商品: 18', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('748', '1484853155', '1', '回收商品: 测试书籍', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('749', '1484853159', '1', '回收商品: 测试数据', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('750', '1484853603', '1', '编辑商品: 菠萝灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('751', '1484853603', '1', '编辑商品: 菠萝灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('752', '1484869041', '1', '编辑商品: 创意床头灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('753', '1484869287', '1', '编辑商品: 创意床头灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('754', '1484869287', '1', '编辑商品: 创意床头灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('755', '1485208846', '1', '编辑商品: 创意床头灯', '110.182.196.53');
+INSERT INTO `ecs_admin_log` VALUES ('756', '1485208846', '1', '编辑商品: 创意床头灯', '110.182.196.53');
+INSERT INTO `ecs_admin_log` VALUES ('757', '1485211402', '1', '编辑商品: 创意床头灯', '110.182.196.53');
+INSERT INTO `ecs_admin_log` VALUES ('758', '1485211402', '1', '编辑商品: 创意床头灯', '110.182.196.53');
+INSERT INTO `ecs_admin_log` VALUES ('759', '1485222301', '1', '编辑商品: 创意床头灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('760', '1485222337', '1', '商品: ', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('761', '1485222337', '1', '回收: ', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('762', '1485222338', '1', '商品: ', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('763', '1485222338', '1', '回收: ', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('764', '1485222340', '1', '商品: ', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('765', '1485222340', '1', '回收: ', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('766', '1485222365', '1', '商品: 1', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('767', '1485222382', '1', '商品: 1', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('768', '1485222897', '1', '编辑商品: 创意床头灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('769', '1485222897', '1', '编辑商品: 创意床头灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('770', '1485225362', '1', '编辑商品: 菠萝灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('771', '1485225373', '1', '商品: ', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('772', '1485225373', '1', '回收: ', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('773', '1485225395', '1', '商品: 2', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('774', '1485225828', '1', '编辑商品: 菠萝灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('775', '1485225828', '1', '编辑商品: 菠萝灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('776', '1485227331', '1', '编辑商品: 三个灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('777', '1485227331', '1', '编辑商品: 三个灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('778', '1485227399', '1', '编辑商品: 三个灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('779', '1485227434', '1', '编辑商品: 三个灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('780', '1485230451', '1', '编辑商品: 挂灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('781', '1485230452', '1', '编辑商品: 挂灯', '211.161.244.221');
+INSERT INTO `ecs_admin_log` VALUES ('782', '1486325048', '1', '编辑属性: 尺寸就', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('783', '1486325102', '1', '编辑属性: 尺寸', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('784', '1486325116', '1', '编辑属性: 尺寸', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('785', '1486330303', '1', '编辑属性: 大小', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('786', '1486333059', '1', '编辑属性: 尺寸', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('787', '1486333608', '1', '编辑商品: 创意床头灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('788', '1486333608', '1', '编辑商品: 创意床头灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('789', '1486516676', '1', '编辑权限管理: kitty', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('790', '1486518107', '1', '编辑商品: 挂灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('791', '1486518107', '1', '编辑商品: 挂灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('792', '1486518126', '1', '编辑商品: 三个灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('793', '1486518127', '1', '编辑商品: 三个灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('794', '1486518134', '1', '编辑商品: 菠萝灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('795', '1486518134', '1', '编辑商品: 菠萝灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('796', '1486518142', '1', '编辑商品: 创意床头灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('797', '1486518142', '1', '编辑商品: 创意床头灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('798', '1486518872', '1', '删除会员账号: asd', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('799', '1486519460', '1', '删除会员账号: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('800', '1486519624', '1', '编辑会员账号: _', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('801', '1486519657', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('802', '1486527917', '1', '编辑权限管理: 王晋', '211.161.244.74');
+INSERT INTO `ecs_admin_log` VALUES ('803', '1486529500', '1', '编辑权限管理: 王晋', '211.161.244.74');
+INSERT INTO `ecs_admin_log` VALUES ('804', '1486531620', '1', '编辑权限管理: 王晋', '211.161.244.74');
+INSERT INTO `ecs_admin_log` VALUES ('805', '1486598434', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('806', '1486598800', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('807', '1486598839', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('808', '1486599428', '1', '编辑订单: 2017020920955,订单总金额由 0.02 变为 5.02', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('809', '1486599647', '1', '编辑权限管理: 王绛', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('810', '1486599771', '1', '编辑订单: 2017020920955,订单总金额由 5.02 变为 0.02', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('811', '1486599791', '1', '编辑订单: 2017020952640', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('812', '1486605225', '1', '编辑权限管理: 汪江', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('813', '1486605238', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('814', '1486605467', '1', '编辑权限管理: 汪江', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('815', '1486615684', '1', '编辑权限管理: 老K', '101.245.205.152');
+INSERT INTO `ecs_admin_log` VALUES ('816', '1486616248', '1', '编辑会员账号: 老K', '101.245.205.152');
+INSERT INTO `ecs_admin_log` VALUES ('817', '1486617223', '1', '编辑订单: 2017020993486', '101.245.205.152');
+INSERT INTO `ecs_admin_log` VALUES ('818', '1486618655', '1', '编辑订单: 2017020903923', '218.81.39.217');
+INSERT INTO `ecs_admin_log` VALUES ('819', '1486673891', '1', '编辑订单: 2017021014197', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('820', '1486673916', '1', '编辑订单: 2017021014197', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('821', '1486674039', '1', '编辑订单: 2017020930760', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('822', '1486674178', '1', '编辑订单: 2017021009498', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('823', '1486674336', '1', '编辑订单: 2017020934417', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('824', '1486675194', '1', '编辑会员账号: _', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('825', '1486675252', '1', '编辑会员账号: _', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('826', '1486682621', '1', '添加商品: af', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('827', '1486682625', '1', '添加商品: af', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('828', '1486682634', '1', '回收商品: af', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('829', '1486682644', '1', '回收商品: af', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('830', '1486685735', '1', '编辑会员账号: Kitty', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('831', '1486924182', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('832', '1486924182', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('833', '1487012423', '1', '添加商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('834', '1487012460', '1', '删除商品分类: 1', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('835', '1487014355', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('836', '1487014420', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('837', '1487015201', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('838', '1487015357', '1', '编辑商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('839', '1487015481', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('840', '1487015750', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('841', '1487015783', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('842', '1487015783', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('843', '1487015993', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('844', '1487016284', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('845', '1487016533', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('846', '1487016571', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('847', '1487016863', '1', '商品: 21', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('848', '1487016919', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('849', '1487017576', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('850', '1487027661', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('851', '1487029189', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('852', '1487036211', '1', '编辑会员账号: Kitty', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('853', '1487038032', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('854', '1487038522', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('855', '1487038754', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('856', '1487039214', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('857', '1487039269', '1', '编辑权限管理: 王晋', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('858', '1487039496', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('859', '1487039563', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('860', '1487040673', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('861', '1487105199', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('862', '1487105230', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('863', '1487105280', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('864', '1487105399', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('865', '1487105410', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('866', '1487105450', '1', '编辑商品: 砖心', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('867', '1487105513', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('868', '1487105513', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('869', '1487105532', '1', '商品: 21', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('870', '1487116248', '1', '编辑商品: 三个灯（预售测试款不发货）', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('871', '1487116572', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('872', '1487116572', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('873', '1487116600', '1', '商品: 5', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('874', '1487116673', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('875', '1487116673', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('876', '1487116702', '1', '商品: 5', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('877', '1487116989', '1', '编辑商品: 床头灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('878', '1487117406', '1', '编辑商品: 菠萝灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('879', '1487117440', '1', '编辑商品: 菠萝灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('880', '1487117451', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('881', '1487117451', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('882', '1487117477', '1', '商品: 5', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('883', '1487117533', '1', '编辑商品: 三个灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('884', '1487117544', '1', '编辑商品: 三个灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('885', '1487117565', '1', '编辑商品: 菠萝灯', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('886', '1487117602', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('887', '1487117602', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('888', '1487117911', '1', '商品: 5', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('889', '1487117920', '1', '编辑商品: 三个灯（测试款不发货）', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('890', '1487118328', '1', '编辑商品: 床头灯（测试款不发货）', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('891', '1487118331', '1', '编辑商品: 床头灯（测试款不发货）', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('892', '1487118415', '1', '编辑商品: 床头灯（测试款不发货）', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('893', '1487118460', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('894', '1487118460', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('895', '1487118462', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('896', '1487118462', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('897', '1487118629', '1', '商品: 1', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('898', '1487118647', '1', '商品: 1', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('899', '1487118719', '1', '编辑商品: 菠萝灯（测试款不发货）', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('900', '1487119952', '1', '编辑商品: 菠萝灯（测试款不发货）', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('901', '1487119988', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('902', '1487119988', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('903', '1487120001', '1', '商品: 2', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('904', '1487122304', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('905', '1487122304', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('906', '1487122371', '1', '商品: 21', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('907', '1487122633', '1', '商品: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('908', '1487122633', '1', '回收: ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('909', '1487122641', '1', '商品: 21', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('910', '1487136265', '1', '编辑商品: 砖心', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('911', '1487136898', '1', '删除会员账号: ', '112.65.211.87');
+INSERT INTO `ecs_admin_log` VALUES ('912', '1487138483', '1', '编辑商品: 砖心', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('913', '1487185085', '1', '编辑权限管理: Jason', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('914', '1487185778', '1', '编辑权限管理: Jason', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('915', '1487185798', '1', '编辑权限管理: Jason', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('916', '1487185830', '1', '编辑权限管理: Jason', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('917', '1487185861', '1', '编辑权限管理: Jason', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('918', '1487190653', '1', '商品: ', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('919', '1487190653', '1', '回收: ', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('920', '1487190665', '1', '商品: 21', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('921', '1487190891', '1', '编辑权限管理: 汪江', '101.245.202.209');
+INSERT INTO `ecs_admin_log` VALUES ('922', '1487191306', '1', '编辑权限管理: 汪江', '101.245.202.209');
+INSERT INTO `ecs_admin_log` VALUES ('923', '1487192153', '1', '编辑权限管理: Jason', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('924', '1487194544', '1', '编辑商品: 砖心', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('925', '1487195235', '1', '编辑商品: 砖心', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('926', '1487195345', '1', '编辑商品: 砖心', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('927', '1487200594', '1', '商品: ', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('928', '1487200594', '1', '回收: ', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('929', '1487200609', '1', '商品: 21', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('930', '1487200872', '1', '编辑会员账号: 蓝海动漫高淦', '42.196.3.252');
+INSERT INTO `ecs_admin_log` VALUES ('931', '1487207289', '1', '添加商品: adfa', '101.245.202.209');
+INSERT INTO `ecs_admin_log` VALUES ('932', '1487207303', '1', '商品: 22', '101.245.202.209');
+INSERT INTO `ecs_admin_log` VALUES ('933', '1487207392', '1', '回收商品: adfa', '101.245.202.209');
+INSERT INTO `ecs_admin_log` VALUES ('934', '1487269206', '1', '编辑订单: 2017021465782', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('935', '1487269238', '1', '编辑订单: 2017021503343', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('936', '1487269657', '1', '编辑订单: 2017021503343', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('937', '1487269741', '1', '编辑订单: 2017021465782', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('938', '1487269801', '1', '编辑订单: 2017021503343', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('939', '1487269826', '1', '编辑订单: 2017021503343', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('940', '1487269922', '1', '编辑订单: 2017021503343', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('941', '1487269972', '1', '编辑订单: 2017021503343', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('942', '1487270061', '1', '编辑订单: 2017021503343', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('943', '1487276456', '1', '删除文章: 投诉与建议 ', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('944', '1487282083', '1', '编辑订单: 2017020987456', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('945', '1487286116', '1', '编辑订单: 2017020987456', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('946', '1487310800', '1', '编辑商品分类: 蜡烛台', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('947', '1487310879', '1', '添加属性: 颜色', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('948', '1487310917', '1', '添加属性: 尺寸', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('949', '1487310941', '1', '添加属性: 材料', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('950', '1487311177', '1', '添加商品: 个性笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('951', '1487311279', '1', '编辑属性: 材料', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('952', '1487311288', '1', '编辑属性: 尺寸', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('953', '1487311298', '1', '编辑属性: 颜色', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('954', '1487311425', '1', '编辑商品: 个性笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('955', '1487311452', '1', '编辑属性: 尺寸', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('956', '1487311477', '1', '编辑属性: 尺寸', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('957', '1487311599', '1', '编辑商品: 个性笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('958', '1487311609', '1', '商品: ', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('959', '1487311609', '1', '回收: ', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('960', '1487311625', '1', '商品: 23', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('961', '1487311740', '1', '编辑商品: 笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('962', '1487312028', '1', '编辑商品: 笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('963', '1487312035', '1', '商品: ', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('964', '1487312035', '1', '回收: ', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('965', '1487312057', '1', '商品: 23', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('966', '1487312090', '1', '编辑商品: 笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('967', '1487312110', '1', '编辑商品: 笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('968', '1487312170', '1', '编辑商品: 笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('969', '1487312219', '1', '编辑商品: 笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('970', '1487312556', '1', '编辑商品: 笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('971', '1487312579', '1', '编辑商品: 笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('972', '1487312689', '1', '编辑商品: 笔筒（测试款不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('973', '1487315694', '1', '添加商品: 精致花边镂空吊灯', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('974', '1487315825', '1', '编辑商品: 精致花边镂空吊灯', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('975', '1487315832', '1', '商品: ', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('976', '1487315832', '1', '回收: ', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('977', '1487315847', '1', '商品: 24', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('978', '1487315921', '1', '编辑商品: 精致花边镂空吊灯', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('979', '1487316061', '1', '编辑商品: 精致花边镂空吊灯', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('980', '1487316128', '1', '编辑商品: 精致花边镂空吊灯', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('981', '1487316201', '1', '编辑商品: 精致花边镂空吊灯', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('982', '1487316214', '1', '编辑商品: 精致花边镂空吊灯', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('983', '1487316232', '1', '编辑商品: 精致花边镂空吊灯', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('984', '1487316272', '1', '编辑商品: 精致花边镂空吊灯', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('985', '1487316277', '1', '商品: ', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('986', '1487316277', '1', '回收: ', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('987', '1487316290', '1', '商品: 24', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('988', '1487316321', '1', '编辑商品: 精致花边镂空吊灯（测试不发货）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('989', '1487316352', '1', '编辑商品: 精致花边镂空吊灯（测试）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('990', '1487316367', '1', '编辑商品: 花边镂空吊灯（测试）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('991', '1487316497', '1', '编辑商品: 花边镂空吊灯（测试）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('992', '1487316637', '1', '编辑商品: 花边镂空吊灯（测试）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('993', '1487316670', '1', '编辑商品: 花边镂空吊灯（测试）', '211.161.244.118');
+INSERT INTO `ecs_admin_log` VALUES ('994', '1487531733', '1', '编辑订单: 2017021541238', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('995', '1487531808', '1', '编辑订单: 2017021541238', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('996', '1487532179', '1', '删除会员账号: IsaacCoure', '175.102.134.140');
+INSERT INTO `ecs_admin_log` VALUES ('997', '1487539556', '1', '添加商品: 陶艺小花瓶(测试不发货)', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('998', '1487539714', '1', '编辑属性: 尺寸', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('999', '1487539775', '1', '编辑商品: 陶艺小花瓶(测试不发货)', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1000', '1487539802', '1', '编辑商品: 陶艺小花瓶(测试不发货)', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1001', '1487539819', '1', '商品: 25', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1002', '1487539866', '1', '编辑商品: 陶艺小花瓶(测试)', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1003', '1487541192', '1', '编辑商品: 陶艺小花瓶(测试)', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1004', '1487541569', '1', '添加属性: 品牌', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1005', '1487541593', '1', '编辑商品: 陶艺小花瓶(测试)', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1006', '1487543597', '1', '编辑商品: 陶艺小花瓶(测试)', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1007', '1487543717', '1', '编辑商品: 陶艺小花瓶(测试)', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1008', '1487543728', '1', '编辑商品: 陶艺小花瓶(测试)', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1009', '1487543738', '1', '商品: ', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1010', '1487543738', '1', '回收: ', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1011', '1487543758', '1', '商品: 25', '103.40.223.34');
+INSERT INTO `ecs_admin_log` VALUES ('1012', '1487701916', '1', '编辑会员账号: 蓝蓝', '0.0.0.0');
+INSERT INTO `ecs_admin_log` VALUES ('1013', '1487702022', '1', '编辑商品分类: 氛围灯', '0.0.0.0');
 
 -- ----------------------------
 -- Table structure for ecs_admin_message
@@ -1016,13 +1333,17 @@ CREATE TABLE `ecs_admin_user` (
   PRIMARY KEY (`user_id`),
   KEY `user_name` (`user_name`),
   KEY `agency_id` (`agency_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_admin_user
 -- ----------------------------
-INSERT INTO `ecs_admin_user` VALUES ('1', 'admin', '81356625@qq.com', 'b8e3a5753943ca2088af062110111295', '4768', '1403613471', '1486527848', '211.161.244.74', 'all', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit', '', '0', '0', null, null, null, null, '0.00', '0', null);
-INSERT INTO `ecs_admin_user` VALUES ('11', '王晋', '972270516@qq.com', '4bf2452b0d2393ae77347ec7e1f81a13', null, '1486517765', '0', '', '', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit', '', '0', '0', null, '4', '中国', '', '20.00', '10', null);
+INSERT INTO `ecs_admin_user` VALUES ('1', 'admin', '81356625@qq.com', 'b8e3a5753943ca2088af062110111295', '4768', '1403613471', '1487701883', '0.0.0.0', 'all', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit', '', '0', '0', null, null, null, null, '0.00', '0', null);
+INSERT INTO `ecs_admin_user` VALUES ('11', 'Jason', '972270516@qq.com', '4bf2452b0d2393ae77347ec7e1f81a13', null, '1486517765', '0', '', '', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit', '', '0', '0', null, '4', 'American', '/mobile/images/logo/20170216125553_502.jpg', '5.00', '10', null);
+INSERT INTO `ecs_admin_user` VALUES ('12', '王绛', '1634259994@qq.com', '1d93b95da4c5a63d8aee1dba2654033d', null, '1486599622', '0', '', '', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit', '', '0', '0', null, '4', '台湾', '', '21.00', '14', null);
+INSERT INTO `ecs_admin_user` VALUES ('13', '汪江', '1634259912@qq.com', '1d93b95da4c5a63d8aee1dba2654033d', null, '1486605140', '0', '', '', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit', '', '0', '0', null, '4', '美国', '', '12.00', '14', null);
+INSERT INTO `ecs_admin_user` VALUES ('14', '老K', '71685632@qq.com', '1dcd3c1ad23a29302e4346ade2b1da75', null, '1486615675', '0', '', '', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit', '', '0', '0', null, '4', '中国', '/mobile/images/logo/20170209204755_152.jpg', '20.00', '13', null);
+INSERT INTO `ecs_admin_user` VALUES ('15', '王金', '1634259978@qq.com', '1d93b95da4c5a63d8aee1dba2654033d', null, '1486671617', '0', '', '', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit', '', '0', '0', null, '0', '', '', '0.00', '0', null);
 
 -- ----------------------------
 -- Table structure for ecs_adsense
@@ -1223,7 +1544,6 @@ INSERT INTO `ecs_article` VALUES ('22', '8', '售后服务保证 ', '', '', '', 
 INSERT INTO `ecs_article` VALUES ('23', '8', '产品质量保证 ', '', '', '', '质量', '1', '1', '1242577326', '', '0', 'http://', '');
 INSERT INTO `ecs_article` VALUES ('24', '9', '网站故障报告', '', '', '', '', '0', '1', '1242577432', '', '0', 'http://', '');
 INSERT INTO `ecs_article` VALUES ('25', '9', '选机咨询 ', '', '', '', '', '0', '1', '1242577448', '', '0', 'http://', '');
-INSERT INTO `ecs_article` VALUES ('26', '9', '投诉与建议 ', '', '', '', '', '0', '1', '1242577459', '', '0', 'http://', '');
 INSERT INTO `ecs_article` VALUES ('28', '11', '飞利浦9@9促销', '<p>&nbsp;</p>\r\n<div class=\"boxCenterList RelaArticle\" id=\"com_v\">\r\n<p align=\"left\">作为一款性价比极高的入门级<font size=\"3\" color=\"#ff0000\"><strong>商务手机</strong></font>，飞利浦<a href=\"mailto:9@9v\">Xenium&nbsp; 9@9v</a>三围大小为105&times;44&times;15.8mm，机身重量仅为<strong><font size=\"3\" color=\"#ff0000\">75g</font></strong>，装配了一块低规格1.75英寸128&times;160像素65000色CSTN显示屏。身正面采用月银色功能键区与屏幕数字键区相分隔，键盘设计较为<font size=\"3\"><strong><font color=\"#ff0000\">别</font><font color=\"#ff0000\">致</font></strong></font>，中部导航键区采用钛金色的&ldquo;腰带&rdquo;彰显出浓郁的商务气息。</p>\r\n<p align=\"left\">&nbsp;</p>\r\n<p align=\"left\">此款手机采用<strong><font size=\"3\" color=\"#ff0000\">触摸屏</font></strong>设计，搭配精致的手写笔，可支持手写中文和英文两个版本。增强的内置系统还能识别潦草字迹，确保在移动中和匆忙时输入文字的识别率。手写指令功能还支持特定图案的瞬间调用，独特的手写记事本功能，可以在触摸屏上随意绘制个性化的图案并进行<strong><font size=\"3\" color=\"#ff0000\">记事提醒</font></strong>，让商务应用更加随意。</p>\r\n<p align=\"left\">&nbsp;</p>\r\n<p align=\"left\">&nbsp;作为入门级为数不多支持<strong><font size=\"3\" color=\"#ff0000\">双卡功能</font></strong>的手机，可以同时插入两张SIM卡，通过菜单随意切换，只需开启漫游自动切换模式，<a href=\"mailto:9@9V\">9@9V</a>在该模式下能够判断网络情况，自动切换适合的手机号。</p>\r\n<p align=\"left\">&nbsp;</p>\r\n<p align=\"left\">&nbsp;</p>\r\n</div>\r\n<p>&nbsp;</p>', '', '', '', '0', '1', '1242578199', '', '0', 'http://', '');
 INSERT INTO `ecs_article` VALUES ('29', '11', '诺基亚5320 促销', '<p>&nbsp;</p>\r\n<div id=\"com_v\" class=\"boxCenterList RelaArticle\">\r\n<p>诺基亚5320XpressMusic音乐手机采用XpressMusic系列常见的黑红、黑蓝配色方案，而材质方便则选用的是经过<strong><font size=\"3\" color=\"#ff0000\">抛光处理</font></strong>的工程塑料；三围/体重为，为108&times;46&times;15mm/<strong><font size=\"3\" color=\"#ff0000\">90g</font></strong>，手感舒适。</p>\r\n<p>&nbsp;</p>\r\n<p>诺基亚5320采用的是一块可视面积为2.0英寸的<font size=\"3\" color=\"#ff0000\"><strong>1600万色</strong></font>屏幕，分辨率是常见的240&times;320像素（QVGA）。虽然屏幕不是特别大，但效果非常精细，色彩还原不错。</p>\r\n<p>&nbsp;</p>\r\n<p>手机背面，诺基亚为5320XM配备一颗<strong><font size=\"3\" color=\"#ff0000\">200W像素</font></strong>的摄像头，并且带有<strong><font size=\"3\" color=\"#ff0000\">两个LED的补光灯</font></strong>，可以实现拍照、摄像功能，并能通过彩信、邮件方式发送给朋友。</p>\r\n<p>&nbsp;</p>\r\n</div>\r\n<p>&nbsp;</p>', '', '', '', '1', '1', '1242578676', '', '0', 'http://', '');
 INSERT INTO `ecs_article` VALUES ('30', '11', '促销诺基亚N96', '<p>&nbsp;</p>\r\n<div class=\"boxCenterList RelaArticle\" id=\"com_v\">\r\n<p>诺基亚N96采用了<strong><font size=\"3\" color=\"#ff0000\">双向滑盖</font></strong>设计，机身整体呈灰黑色，沉稳、大气，机身材质采用了高强度的塑料材质，手机背面采用了抛光面板的设计风格。N96三维体积103*55*20mm，重量为125g。屏幕方面，诺基亚N96配备一块<strong><font size=\"3\" color=\"#ff0000\">2.8英寸</font></strong>的屏幕，支持<strong><font size=\"3\" color=\"#ff0000\">1670万色</font></strong>显示，分辨率达到QVGA（320&times;240）水准。</p>\r\n<p>&nbsp;<img src=\"http://img2.zol.com.cn/product/21/896/ceN6LBMCid3X6.jpg\" alt=\"\" /></p>\r\n<p>&nbsp;</p>\r\n<p>诺基亚N96设置有专门的<strong><font size=\"3\" color=\"#ff0000\">音乐播放键</font></strong>和标准的3.5毫米音频插口，支持多格式音乐播放。内置了<strong><font size=\"3\" color=\"#ff0000\">多媒体播放器</font></strong>，支持FM调频收音机等娱乐功能。N96手机支持<strong><font size=\"3\" color=\"#ff0000\">N-Gage游戏平台</font></strong>，内置包括<font size=\"3\" color=\"#ff0000\"><strong>《PinBall》完整版</strong></font>在内的四款N-Gage游戏，除了手机本身内置的游戏，还可以从N-Gage的网站下载或者购买最新的游戏，而且可以在论坛里和其他玩家一起讨论。</p>\r\n<p>&nbsp;</p>\r\n</div>\r\n<p>&nbsp;<img src=\"http://img2.zol.com.cn/product/21/898/cekkw57qJjSI.jpg\" alt=\"\" /></p>', '', '', '', '1', '1', '1242578826', '', '0', 'http://', '');
@@ -1293,20 +1613,23 @@ CREATE TABLE `ecs_attribute` (
   `attr_group` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`attr_id`),
   KEY `cat_id` (`cat_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=238 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=242 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_attribute
 -- ----------------------------
-INSERT INTO `ecs_attribute` VALUES ('233', '13', '尺寸', '0', '0', '', '0', '0', '0', '0');
+INSERT INTO `ecs_attribute` VALUES ('240', '14', '材料', '0', '0', '', '0', '0', '0', '0');
+INSERT INTO `ecs_attribute` VALUES ('241', '14', '品牌', '0', '0', '', '0', '0', '0', '0');
+INSERT INTO `ecs_attribute` VALUES ('239', '14', '尺寸', '1', '1', '13.8*8.5\r\n10.5*7.8', '0', '0', '0', '0');
+INSERT INTO `ecs_attribute` VALUES ('238', '14', '颜色', '1', '1', '白色', '0', '0', '0', '0');
 INSERT INTO `ecs_attribute` VALUES ('232', '13', '开关', '0', '0', '', '0', '0', '0', '0');
 INSERT INTO `ecs_attribute` VALUES ('231', '13', '光源', '0', '0', '', '0', '0', '0', '0');
 INSERT INTO `ecs_attribute` VALUES ('230', '13', '灯座', '0', '0', '', '0', '0', '0', '0');
 INSERT INTO `ecs_attribute` VALUES ('229', '13', '线长', '0', '0', '', '0', '0', '0', '0');
 INSERT INTO `ecs_attribute` VALUES ('228', '13', '材质', '0', '0', '', '0', '0', '0', '0');
 INSERT INTO `ecs_attribute` VALUES ('227', '13', '品牌', '0', '0', '', '0', '0', '0', '0');
-INSERT INTO `ecs_attribute` VALUES ('226', '13', '大小', '1', '1', '小\r\n大', '0', '0', '0', '0');
-INSERT INTO `ecs_attribute` VALUES ('225', '13', '颜色', '1', '1', '白色\r\n', '0', '0', '0', '0');
+INSERT INTO `ecs_attribute` VALUES ('226', '13', '尺寸', '1', '1', '小\r\n大\r\n中', '0', '0', '0', '0');
+INSERT INTO `ecs_attribute` VALUES ('225', '13', '颜色', '1', '1', '白色\r\n淡蓝\r\n粉色\r\n', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for ecs_auction_log
@@ -1630,7 +1953,7 @@ CREATE TABLE `ecs_cart` (
   `cart_type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '//1为立即支付',
   PRIMARY KEY (`rec_id`),
   KEY `session_id` (`session_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=154 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_cart
@@ -1692,13 +2015,13 @@ CREATE TABLE `ecs_category` (
   `cat_ico` varchar(255) NOT NULL,
   PRIMARY KEY (`cat_id`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=154 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=155 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_category
 -- ----------------------------
-INSERT INTO `ecs_category` VALUES ('149', '氛围灯', '', '', '0', '50', '', '', '0', '', '1', '0', '', '0', '0', '');
-INSERT INTO `ecs_category` VALUES ('150', '香薰灯', '', '', '0', '50', '', '', '0', '', '1', '0', '', '0', '0', '');
+INSERT INTO `ecs_category` VALUES ('149', '氛围灯', '', '', '0', '50', '', '', '0', '', '1', '0', '', '0', '0', '1487702022563304287.jpg');
+INSERT INTO `ecs_category` VALUES ('150', '蜡烛台', '', '', '0', '50', '', '', '0', '', '1', '0', '', '0', '0', '');
 INSERT INTO `ecs_category` VALUES ('151', '花瓶', '', '', '0', '50', '', '', '0', '', '1', '0', '', '0', '0', '');
 INSERT INTO `ecs_category` VALUES ('152', '时钟', '', '', '0', '50', '', '', '0', '', '1', '0', '', '0', '0', '');
 INSERT INTO `ecs_category` VALUES ('153', '油画', '', '', '0', '50', '', '', '0', '', '1', '0', '', '0', '0', '');
@@ -1745,7 +2068,7 @@ CREATE TABLE `ecs_collect_goods` (
   KEY `user_id` (`user_id`),
   KEY `goods_id` (`goods_id`),
   KEY `is_attention` (`is_attention`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_collect_goods
@@ -1753,6 +2076,18 @@ CREATE TABLE `ecs_collect_goods` (
 INSERT INTO `ecs_collect_goods` VALUES ('1', '3193', '9', '1427603983', '0');
 INSERT INTO `ecs_collect_goods` VALUES ('11', '4', '2', '0', '0');
 INSERT INTO `ecs_collect_goods` VALUES ('10', '2', '1', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('12', '1', '2', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('13', '3', '1', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('29', '5', '2', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('30', '5', '1', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('31', '1', '1', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('41', '0', '5', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('42', '10', '5', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('67', '12', '2', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('70', '0', '1', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('73', '15', '1', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('74', '13', '1', '0', '0');
+INSERT INTO `ecs_collect_goods` VALUES ('79', '0', '21', '0', '0');
 
 -- ----------------------------
 -- Table structure for ecs_comment
@@ -1869,7 +2204,7 @@ CREATE TABLE `ecs_delivery_goods` (
   PRIMARY KEY (`rec_id`),
   KEY `delivery_id` (`delivery_id`,`goods_id`),
   KEY `goods_id` (`goods_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_delivery_goods
@@ -1946,8 +2281,28 @@ INSERT INTO `ecs_delivery_goods` VALUES ('71', '65', '164', '0', '', '娃娃啊�
 INSERT INTO `ecs_delivery_goods` VALUES ('73', '66', '117', '0', '', '嘉娜宝玫瑰药用洗面奶150g', '嘉娜宝', 'ECS000117', '1', null, '0', '1', '');
 INSERT INTO `ecs_delivery_goods` VALUES ('74', '67', '7', '32', 'ECS000007g_p32', '挂灯', '', 'ECS000007', '1', null, '0', '1', '颜色:白色 \n');
 INSERT INTO `ecs_delivery_goods` VALUES ('75', '68', '1', '28', 'ECS000000g_p28', '创意床头灯', '', 'ECS000000', '1', null, '0', '1', '颜色:白色 \n大小:小 \n');
-INSERT INTO `ecs_delivery_goods` VALUES ('76', '69', '7', '32', 'ECS000007g_p32', '挂灯', '', 'ECS000007', '1', null, '0', '1', '颜色:白色 \n');
-INSERT INTO `ecs_delivery_goods` VALUES ('77', '70', '7', '32', 'ECS000007g_p32', '挂灯', '', 'ECS000007', '1', null, '0', '1', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('76', '69', '5', '31', 'ECS000005g_p31', '三个灯', '', 'ECS000005', '1', null, '0', '1', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('77', '70', '1', '28', 'ECS000000g_p28', '创意床头灯', '', 'ECS000000', '1', null, '0', '1', '颜色:白色 \n大小:小 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('78', '71', '5', '31', 'ECS000005g_p31', '三个灯', '', 'ECS000005', '1', null, '0', '1', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('79', '72', '7', '32', 'ECS000007g_p32', '挂灯', '', 'ECS000007', '1', null, '0', '2', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('80', '73', '1', '42', 'ECS000000g_p42', '创意床头灯', '', 'ECS000000', '1', null, '0', '5', '颜色:白色 \n尺寸:小 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('81', '74', '5', '31', 'ECS000005g_p31', '三个灯', '', 'ECS000005', '1', null, '0', '1', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('82', '75', '7', '32', 'ECS000007g_p32', '挂灯', '', 'ECS000007', '1', null, '0', '1', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('83', '76', '5', '31', 'ECS000005g_p31', '三个灯', '', 'ECS000005', '1', null, '0', '3', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('84', '77', '7', '32', 'ECS000007g_p32', '挂灯', '', 'ECS000007', '1', null, '0', '6', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('85', '78', '7', '32', 'ECS000007g_p32', '挂灯', '', 'ECS000007', '1', null, '0', '6', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('86', '79', '7', '32', 'ECS000007g_p32', '挂灯', '', 'ECS000007', '1', null, '0', '5', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('87', '80', '5', '31', 'ECS000005g_p31', '三个灯', '', 'ECS000005', '1', null, '0', '3', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('88', '81', '7', '32', 'ECS000007g_p32', '挂灯', '', 'ECS000007', '1', null, '0', '5', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('89', '82', '1', '43', 'ECS000000g_p43', '创意床头灯', '', 'ECS000000', '1', null, '0', '2', '颜色:白色 \n尺寸:大 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('90', '83', '7', '32', 'ECS000007g_p32', '挂灯', '', 'ECS000007', '1', null, '0', '4', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('91', '84', '5', '31', 'ECS000005g_p31', '三个灯', '', 'ECS000005', '1', null, '0', '1', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('92', '85', '2', '44', 'ECS000002g_p44', '菠萝灯', '', 'ECS000002', '1', null, '0', '5', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('93', '86', '7', '32', 'ECS000007g_p32', '挂灯', '', 'ECS000007', '1', null, '0', '10', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('94', '87', '5', '31', 'ECS000005g_p31', '三个灯', '', 'ECS000005', '1', null, '0', '3', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('95', '88', '2', '53', 'ECS000002g_p53', '菠萝灯（测试款不发货）', '', 'ECS000002', '1', null, '0', '1', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('96', '89', '2', '53', 'ECS000002g_p53', '菠萝灯（测试款不发货）', '', 'ECS000002', '1', null, '0', '1', '颜色:白色 \n');
+INSERT INTO `ecs_delivery_goods` VALUES ('97', '90', '2', '44', '', '菠萝灯（测试款不发货）', '', 'ECS000002', '1', null, '0', '1', '颜色:白色 \n');
 
 -- ----------------------------
 -- Table structure for ecs_delivery_order
@@ -1987,7 +2342,7 @@ CREATE TABLE `ecs_delivery_order` (
   PRIMARY KEY (`delivery_id`),
   KEY `user_id` (`user_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_delivery_order
@@ -2057,8 +2412,27 @@ INSERT INTO `ecs_delivery_order` VALUES ('65', '20161206151259868', '20161205591
 INSERT INTO `ecs_delivery_order` VALUES ('66', '20161221121543278', '2016122161760', '406', '402302945303', '1482258418', '14', '其他', '1628', 'admin', '王大锤', '北京北京东城区中国日本北海道', '1', '2', '52', '500', '', '', '', '18721667531', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1482264914', '0', '0', '1');
 INSERT INTO `ecs_delivery_order` VALUES ('67', '20170118180262318', '2017011826127', '10', '', '1484704453', '14', '其他', '2', 'admin', 'frank', '上海上海杨浦区国定东路200号', '1', '25', '321', '2708', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1484704949', '0', '2', '0');
 INSERT INTO `ecs_delivery_order` VALUES ('68', '20170118180726054', '2017011829762', '7', '3933791017502', '1484703942', '14', '其他', '2', 'admin', 'frank', '上海上海杨浦区国定东路200号', '1', '25', '321', '2708', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1484705238', '0', '0', '0');
-INSERT INTO `ecs_delivery_order` VALUES ('69', '20170119173287622', '2017011954035', '16', null, '1484768595', '14', '其他', '2', 'admin', 'frank', '上海上海杨浦区国定东路200号', '1', '25', '321', '2708', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1484789573', '0', '2', '0');
-INSERT INTO `ecs_delivery_order` VALUES ('70', '20170208112543414', '2017020779630', '24', '426526864639', '1486421450', '14', '其他', '6', 'admin', '王永生', '福建莆田秀屿区鲁提辖', '1', '4', '57', '560', '', '', '', '18119517251', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486495515', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('69', '20170119173083316', '2017011914748', '26', '3933791017502', '1484789255', '11', '韵达', '2', 'admin', 'frank', '上海上海杨浦区国定东路200号', '1', '25', '321', '2708', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '15.00', '1484789431', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('70', '20170119174072595', '2017011803243', '12', '3933791017502', '1484717103', '14', '其他', '2', 'admin', 'frank', '上海上海杨浦区国定东路200号', '1', '25', '321', '2708', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1484790047', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('71', '20170208184505203', '2017020863006', '25', '884094892943301300', '1486521648', '14', '其他', '11', 'admin', 'frank', '上海上海宝山区乾溪路300弄14号502', '0', '25', '321', '2717', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486521947', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('72', '20170208203987403', '2017020846057', '28', '884094892943301300', '1486528547', '14', '其他', '10', 'admin', '李裕煌', '广东潮州湘桥区粤海b区', '1', '6', '78', '711', '', '', '', '18520737332', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486528775', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('73', '20170208212319400', '2017020873629', '30', '884094892943301300', '1486531205', '14', '其他', '10', 'admin', '李裕煌', '广东潮州湘桥区粤海b区', '1', '6', '78', '711', '', '', '', '18520737332', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486531388', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('74', '20170209100500979', '2017020891440', '27', '884094892943301300', '1486525647', '14', '其他', '13', 'admin', '张泉凯', '上海上海虹口区1196', '0', '25', '321', '2712', '', '', '', '15692185366', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486577136', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('75', '20170209141411400', '2017020974182', '33', '884094892943301300', '1486591725', '14', '其他', '11', 'admin', 'frank', '上海上海宝山区乾溪路300弄14号502室', '0', '25', '321', '2717', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486592075', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('76', '20170209153486364', '2017020846949', '32', '884094892943301300', '1486532232', '14', '其他', '11', 'admin', 'frank', '上海上海宝山区乾溪路300弄14号502', '0', '25', '321', '2717', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486596846', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('77', '20170209214334446', '2017020903923', '12', '14145451i3491', '1486618488', '14', '其他', '13', 'admin', '张大宝', '新疆博尔塔拉温泉县新疆博尔塔拉温泉县新大街119号', '1', '29', '355', '3033', '', '', '', '', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486619038', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('78', '20170209215023591', '2017020993486', '7', '2017020993486', '1486617089', '10', '中通速递', '10', 'admin', '李裕煌', '广东潮州湘桥区粤海b区', '1', '6', '78', '711', '', '', '', '18520737332', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486619458', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('79', '20170209222932796', '2017020958552', '14', '2017020958552', '1486621673', '14', '其他', '10', 'admin', '李裕煌', '广东潮州湘桥区粤海b区', '1', '6', '78', '711', '', '', '', '18520737332', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486621743', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('80', '20170209223557541', '2017020935383', '16', '2017020935383', '1486622115', '14', '其他', '11', 'admin', 'frank', '上海上海宝山区乾溪路300弄14号502室', '0', '25', '321', '2717', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486622146', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('81', '20170209223777877', '2017020968582', '15', '2017020968582', '1486621955', '14', '其他', '17', 'admin', '刘明丽', '上海上海虹口区九龙路515号1106室', '0', '25', '321', '2712', '', '', '', '18601661978', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486622272', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('82', '20170209224416496', '2017020935350', '17', '2017020935350', '1486622523', '14', '其他', '11', 'admin', 'frank', '上海上海宝山区乾溪路300弄14号502室', '0', '25', '321', '2717', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486622683', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('83', '20170210122492951', '2017020987456', '8', '2017020987456', '1486617096', '14', '其他', '14', 'admin', '汪江', '上海上海杨浦区国定东路200号', '0', '25', '321', '2708', '', '', '', '18721887224', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486671892', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('84', '20170210125823800', '2017021014197', '18', null, '1486672112', '2', '', '14', 'admin', '汪江', '上海上海杨浦区国定东路200号', '0', '25', '321', '2708', '', '', '', '18721887224', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486673902', '0', '2', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('85', '20170210135381764', '2017021070114', '21', '111111', '1486677106', '14', '其他', '19', 'admin', '李裕煌', '广东潮州湘桥区粤海花园B区11幢301', '1', '6', '78', '711', '', '', '', '13829099772', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486677201', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('86', '20170210162627406', '2017021054871', '24', '2017021054871', '1486686212', '14', '其他', '11', 'admin', 'frank', '上海上海宝山区乾溪路300弄14号502室', '0', '25', '321', '2717', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486686372', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('87', '20170210164276232', '2017021021397', '25', '2017021021397', '1486687331', '14', '其他', '11', 'admin', 'frank', '上海上海宝山区乾溪路300弄14号502室', '0', '25', '321', '2717', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1486687367', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('89', '20170217103490171', '2017021503343', '47', '923532040745', '1487132649', '9', '顺丰速运', '11', 'admin', 'frank', '上海上海杨浦区上海上海杨浦区', '1', '25', '321', '2708', '', '', '', '18616696490', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1487270082', '0', '0', '0');
+INSERT INTO `ecs_delivery_order` VALUES ('90', '20170220111657610', '2017021541238', '42', '923532040745', '1487119610', '9', '顺丰速运', '10', 'admin', '李裕煌', '广东潮州湘桥区粤海b区', '1', '6', '78', '711', '', '', '', '18520737332', '', '', '', '等待所有商品备齐后再发', '0.00', '0.00', '1487531815', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for ecs_email_list
@@ -2207,11 +2581,47 @@ CREATE TABLE `ecs_fencheng` (
   `type` int(2) NOT NULL DEFAULT '0' COMMENT '//分成类型 0代表产品分成 1代表销售分成 2代表艺术家分成 3代表厂商',
   `get_shopid` mediumint(8) NOT NULL DEFAULT '0' COMMENT '//获得提成用户',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_fencheng
 -- ----------------------------
+INSERT INTO `ecs_fencheng` VALUES ('28', '2', '10', '19', '0.06', '2017-02-10 13:53:55', '0', '2', '10');
+INSERT INTO `ecs_fencheng` VALUES ('29', '2', '10', '19', '0.04', '2017-02-10 13:53:55', '0', '0', '10');
+INSERT INTO `ecs_fencheng` VALUES ('30', '2', '10', '19', '0.03', '2017-02-10 13:53:55', '0', '1', '10');
+INSERT INTO `ecs_fencheng` VALUES ('31', '2', '10', '19', '0.02', '2017-02-10 13:53:55', '0', '3', '0');
+INSERT INTO `ecs_fencheng` VALUES ('32', '7', '20', '11', '0.04', '2017-02-10 16:26:28', '0', '2', '10');
+INSERT INTO `ecs_fencheng` VALUES ('33', '7', '20', '11', '0.04', '2017-02-10 16:26:28', '0', '0', '20');
+INSERT INTO `ecs_fencheng` VALUES ('34', '7', '20', '11', '0.02', '2017-02-10 16:26:28', '0', '3', '0');
+INSERT INTO `ecs_fencheng` VALUES ('35', '5', '20', '11', '0.05', '2017-02-10 16:56:01', '0', '2', '10');
+INSERT INTO `ecs_fencheng` VALUES ('36', '5', '20', '11', '0.05', '2017-02-10 16:56:01', '0', '0', '20');
+INSERT INTO `ecs_fencheng` VALUES ('37', '5', '20', '11', '0.02', '2017-02-10 16:56:01', '0', '3', '0');
+INSERT INTO `ecs_fencheng` VALUES ('38', '1', '0', '10', '0.01', '2017-02-14 18:16:31', '0', '2', '10');
+INSERT INTO `ecs_fencheng` VALUES ('39', '1', '0', '10', '0.02', '2017-02-14 18:16:31', '0', '1', '10');
+INSERT INTO `ecs_fencheng` VALUES ('40', '1', '0', '10', '0.09', '2017-02-14 18:16:31', '0', '3', '0');
+INSERT INTO `ecs_fencheng` VALUES ('41', '1', '0', '10', '0.00', '2017-02-14 19:26:49', '0', '2', '10');
+INSERT INTO `ecs_fencheng` VALUES ('42', '1', '0', '10', '0.00', '2017-02-14 19:26:49', '0', '1', '10');
+INSERT INTO `ecs_fencheng` VALUES ('43', '1', '0', '10', '0.02', '2017-02-14 19:26:49', '0', '3', '0');
+INSERT INTO `ecs_fencheng` VALUES ('44', '2', '0', '14', '0.01', '2017-02-15 17:05:24', '0', '2', '10');
+INSERT INTO `ecs_fencheng` VALUES ('45', '2', '0', '14', '0.19', '2017-02-15 17:05:24', '0', '3', '0');
+INSERT INTO `ecs_fencheng` VALUES ('46', '2', '0', '10', '0.01', '2017-02-15 17:21:04', '0', '2', '10');
+INSERT INTO `ecs_fencheng` VALUES ('47', '2', '0', '10', '0.02', '2017-02-15 17:21:04', '0', '1', '10');
+INSERT INTO `ecs_fencheng` VALUES ('48', '2', '0', '10', '0.09', '2017-02-15 17:21:04', '0', '3', '0');
+INSERT INTO `ecs_fencheng` VALUES ('49', '2', '20', '11', '0.01', '2017-02-15 20:24:24', '0', '2', '10');
+INSERT INTO `ecs_fencheng` VALUES ('50', '2', '20', '11', '0.03', '2017-02-15 20:24:24', '0', '0', '20');
+INSERT INTO `ecs_fencheng` VALUES ('51', '2', '20', '11', '0.16', '2017-02-15 20:24:24', '0', '3', '0');
+INSERT INTO `ecs_fencheng` VALUES ('52', '2', '20', '23', '0.01', '2017-02-16 09:50:23', '0', '2', '10');
+INSERT INTO `ecs_fencheng` VALUES ('53', '2', '20', '23', '0.03', '2017-02-16 09:50:23', '0', '0', '20');
+INSERT INTO `ecs_fencheng` VALUES ('54', '2', '20', '23', '0.01', '2017-02-16 09:50:23', '0', '1', '20');
+INSERT INTO `ecs_fencheng` VALUES ('55', '2', '20', '23', '0.15', '2017-02-16 09:50:23', '0', '3', '0');
+INSERT INTO `ecs_fencheng` VALUES ('56', '21', '20', '24', '2.45', '2017-02-16 15:18:46', '0', '2', '10');
+INSERT INTO `ecs_fencheng` VALUES ('57', '21', '20', '24', '7.35', '2017-02-16 15:18:46', '0', '0', '20');
+INSERT INTO `ecs_fencheng` VALUES ('58', '21', '20', '24', '2.45', '2017-02-16 15:18:46', '0', '1', '20');
+INSERT INTO `ecs_fencheng` VALUES ('59', '21', '20', '24', '36.75', '2017-02-16 15:18:46', '0', '3', '0');
+INSERT INTO `ecs_fencheng` VALUES ('60', '21', '20', '25', '2.45', '2017-02-17 20:33:26', '0', '2', '10');
+INSERT INTO `ecs_fencheng` VALUES ('61', '21', '20', '25', '7.35', '2017-02-17 20:33:26', '0', '0', '20');
+INSERT INTO `ecs_fencheng` VALUES ('62', '21', '20', '25', '2.45', '2017-02-17 20:33:26', '0', '1', '20');
+INSERT INTO `ecs_fencheng` VALUES ('63', '21', '20', '25', '36.75', '2017-02-17 20:33:26', '0', '3', '0');
 
 -- ----------------------------
 -- Table structure for ecs_friend_link
@@ -2290,6 +2700,7 @@ CREATE TABLE `ecs_goods` (
   `arter_id` smallint(5) NOT NULL DEFAULT '0' COMMENT '//艺术家id',
   `father_id` smallint(5) NOT NULL COMMENT '//厂商id',
   `more_price` decimal(10,2) DEFAULT '0.00' COMMENT '//额外费用',
+  `is_very` tinyint(1) NOT NULL DEFAULT '0' COMMENT '//特别优惠',
   PRIMARY KEY (`goods_id`),
   KEY `goods_sn` (`goods_sn`),
   KEY `cat_id` (`cat_id`),
@@ -2301,26 +2712,36 @@ CREATE TABLE `ecs_goods` (
   KEY `goods_number` (`goods_number`),
   KEY `sort_order` (`sort_order`),
   KEY `sales_volume` (`sales_volume`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_goods
 -- ----------------------------
-INSERT INTO `ecs_goods` VALUES ('1', '149', 'ECS000000', '创意床头灯', '+', '157', '14', '0', '', '59', '0.000', '0.01', '0.01', '0.00', '0', '0', '1', '', '', '<img src=\"/images/upload/image/20170118/20170118144539_91715.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1484692728', '100', '0', '1', '0', '0', '0', '0', '1484718464', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '10', '0', '0.01');
-INSERT INTO `ecs_goods` VALUES ('2', '149', 'ECS000002', '菠萝灯', '+', '29', '2', '0', '', '20', '0.000', '0.01', '0.01', '0.00', '0', '0', '1', '', '', '<img src=\"/images/upload/image/20170118/20170118150126_11529.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1484694062', '100', '0', '1', '0', '0', '0', '0', '1486502470', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '10', '0', '0.01');
-INSERT INTO `ecs_goods` VALUES ('3', '149', 'ECS000003', '菠萝灯', '+', '0', '0', '0', '', '1000', '0.000', '0.01', '0.01', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484694062', '100', '1', '0', '0', '0', '0', '0', '1484694062', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '10', '0', '0.01');
-INSERT INTO `ecs_goods` VALUES ('4', '149', 'ECS000004', '', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '<img src=\"/images/upload/image/20170118/20170118150538_70055.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1484694340', '100', '1', '0', '0', '0', '0', '0', '1484694340', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00');
-INSERT INTO `ecs_goods` VALUES ('5', '149', 'ECS000005', '三个灯', '+', '32', '7', '0', '', '20', '0.000', '0.03', '0.03', '0.00', '0', '0', '1', '', '', '<img src=\"/images/upload/image/20170118/20170118150804_57735.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1484694464', '100', '0', '1', '0', '0', '0', '0', '1486521123', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '10', '0', '0.01');
-INSERT INTO `ecs_goods` VALUES ('6', '149', 'ECS000006', '三个灯', '+', '0', '0', '0', '', '1000', '0.000', '0.03', '0.03', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484694464', '100', '1', '0', '0', '0', '0', '0', '1484694464', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '10', '0', '0.01');
-INSERT INTO `ecs_goods` VALUES ('7', '149', 'ECS000007', '挂灯', '+', '21', '5', '0', '', '19', '0.000', '0.02', '0.02', '0.00', '0', '0', '1', '', '', '<img src=\"/images/upload/image/20170118/20170118151243_76333.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1484694747', '100', '0', '1', '0', '0', '0', '0', '1486521077', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '10', '0', '0.01');
-INSERT INTO `ecs_goods` VALUES ('8', '149', 'ECS000008', '挂灯', '+', '0', '0', '0', '', '1000', '0.000', '0.02', '0.02', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484694747', '100', '1', '0', '0', '0', '0', '0', '1484694747', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '10', '0', '0.01');
-INSERT INTO `ecs_goods` VALUES ('9', '149', 'ECS000009', '', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484695149', '100', '1', '1', '0', '0', '0', '0', '1484695149', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00');
-INSERT INTO `ecs_goods` VALUES ('10', '151', 'ECS000010', 'adfa', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484703786', '100', '1', '0', '0', '0', '0', '0', '1484703804', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00');
-INSERT INTO `ecs_goods` VALUES ('11', '151', 'ECS000011', '123', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484703948', '100', '1', '0', '0', '0', '0', '0', '1484703948', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00');
-INSERT INTO `ecs_goods` VALUES ('12', '149', 'ECS000012', 'adfladl', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484703965', '100', '1', '0', '0', '0', '0', '0', '1484703965', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00');
-INSERT INTO `ecs_goods` VALUES ('13', '149', 'ECS000013', 'adfladl', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484703965', '100', '1', '0', '0', '0', '0', '0', '1484703965', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00');
-INSERT INTO `ecs_goods` VALUES ('14', '149', 'ECS000014', 'hkhkhk', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484704102', '100', '1', '0', '0', '0', '0', '0', '1484704102', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00');
-INSERT INTO `ecs_goods` VALUES ('15', '149', 'ECS000015', 'hkhkhk', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484704102', '100', '1', '0', '0', '0', '0', '0', '1484704102', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00');
+INSERT INTO `ecs_goods` VALUES ('1', '149', 'ECS000000', '床头灯（测试款不发货）', '+', '1151', '127', '0', '', '100', '0.000', '0.01', '0.01', '0.00', '0', '0', '1', '', '', '<p>\r\n	<img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124175449_28611.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124175450_67020.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124175450_64187.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124175450_70405.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124175451_69433.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124175451_99503.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124175451_20044.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124175452_11442.jpg\" alt=\"\" /> \r\n</p>', '', '', '', '1', '', '1', '1', '0', '0', '1484692728', '1', '0', '1', '1', '1', '0', '0', '1487315774', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '11', '0', '0.00', '1');
+INSERT INTO `ecs_goods` VALUES ('2', '149', 'ECS000002', '菠萝灯（测试款不发货）', '+', '174', '36', '0', '', '48', '0.000', '0.01', '0.01', '0.00', '0', '0', '1', '', '', '<img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124184343_87910.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124184343_66694.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124184343_31033.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124184343_48712.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124184344_52592.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124184344_45401.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124184344_61761.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1484694062', '2', '0', '1', '1', '1', '0', '0', '1487315781', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '11', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('3', '149', 'ECS000003', '菠萝灯', '+', '0', '0', '0', '', '1000', '0.000', '0.01', '0.01', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484694062', '100', '1', '0', '1', '1', '0', '0', '1484694062', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '10', '0', '0.01', '0');
+INSERT INTO `ecs_goods` VALUES ('4', '149', 'ECS000004', '', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '<img src=\"/images/upload/image/20170118/20170118150538_70055.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1484694340', '100', '1', '0', '1', '1', '0', '0', '1484694340', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('5', '149', 'ECS000005', '三个灯（测试款不发货）', '+', '210', '49', '0', '', '50', '0.000', '0.03', '0.03', '0.00', '0', '0', '1', '', '', '<img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124190841_17946.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124190841_61393.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124190841_62655.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124190842_23644.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124190842_61653.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124190842_60140.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124190842_90064.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1484694464', '3', '0', '1', '1', '1', '0', '0', '1487117920', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '11', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('6', '149', 'ECS000006', '三个灯', '+', '0', '0', '0', '', '1000', '0.000', '0.03', '0.03', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484694464', '100', '1', '0', '1', '1', '0', '0', '1484694464', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '10', '0', '0.01', '0');
+INSERT INTO `ecs_goods` VALUES ('7', '149', 'ECS000007', '挂灯', '+', '141', '44', '0', '', '0', '0.000', '0.02', '0.02', '0.00', '0', '0', '1', '', '', '<img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124195814_25787.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124195814_20838.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124195815_48070.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124195815_67028.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124195816_83828.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124195817_54122.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124195817_99549.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124195818_94970.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170124/20170124195818_45617.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1484694747', '4', '0', '1', '1', '1', '0', '0', '1487315785', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '11', '0', '0.01', '0');
+INSERT INTO `ecs_goods` VALUES ('8', '149', 'ECS000008', '挂灯', '+', '0', '0', '0', '', '1000', '0.000', '0.02', '0.02', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484694747', '100', '1', '0', '1', '1', '0', '0', '1484694747', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '10', '0', '0.01', '0');
+INSERT INTO `ecs_goods` VALUES ('9', '149', 'ECS000009', '', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484695149', '100', '1', '1', '1', '1', '0', '0', '1484695149', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('10', '151', 'ECS000010', 'adfa', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484703786', '100', '1', '0', '1', '1', '0', '0', '1484703804', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('11', '151', 'ECS000011', '123', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484703948', '100', '1', '0', '1', '1', '0', '0', '1484703948', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('12', '149', 'ECS000012', 'adfladl', '+', '4', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484703965', '100', '1', '0', '1', '1', '0', '0', '1484703965', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('13', '149', 'ECS000013', 'adfladl', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484703965', '100', '1', '0', '1', '1', '0', '0', '1484703965', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('14', '149', 'ECS000014', 'hkhkhk', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484704102', '100', '1', '0', '1', '1', '0', '0', '1484704102', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('15', '149', 'ECS000015', 'hkhkhk', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484704102', '100', '1', '0', '1', '1', '0', '0', '1484704102', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('16', '149', 'ECS000016', '测试数据', '+', '9', '0', '0', '', '8', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '<img src=\"/images/upload/image/20170119/20170119180403_23847.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1484791419', '100', '1', '0', '1', '1', '0', '0', '1484791769', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('17', '149', 'ECS000017', '测试书籍', '+', '5', '0', '0', '', '6', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484791826', '100', '1', '0', '1', '1', '0', '0', '1484792055', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('18', '149', 'ECS000018', '测试数据', '+', '23', '0', '0', '', '23', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1484792087', '100', '1', '0', '1', '1', '0', '0', '1484792315', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('19', '0', 'ECS000019', 'af', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1486682621', '100', '1', '0', '1', '1', '0', '0', '1486682621', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('20', '152', 'ECS000020', 'af', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1486682625', '100', '1', '0', '1', '1', '0', '0', '1486682625', '0', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('21', '149', 'ECS000021', '砖心', '+', '405', '11', '0', '', '20', '0.000', '104.39', '87.00', '0.00', '0', '0', '1', '', '', '<img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170215/20170215124748_40713.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170215/20170215124748_54794.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170215/20170215124748_27788.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170215/20170215124748_56236.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170215/20170215124748_87639.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170215/20170215124748_56906.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170215/20170215124749_86749.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170215/20170215124749_94666.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170215/20170215124749_73666.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1487012423', '100', '0', '1', '1', '1', '0', '0', '1487316727', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '11', '0', '12.00', '0');
+INSERT INTO `ecs_goods` VALUES ('22', '149', 'ECS000022', 'adfa', '+', '0', '0', '0', '', '1000', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '1487207289', '100', '1', '0', '1', '1', '0', '0', '1487207303', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '0', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('23', '150', 'ECS000023', '笔筒（测试款不发货）', '+', '16', '0', '0', '', '50', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '<img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217222435_83568.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217222435_20358.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217222435_35132.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217222435_89511.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217222435_32918.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217222436_13558.jpg\" alt=\"\" />', '', '', '', '1', '', '1', '1', '0', '0', '1487311177', '5', '0', '1', '1', '1', '0', '0', '1487315792', '14', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '11', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('24', '149', 'ECS000024', '花边镂空吊灯（测试）', '+', '24', '0', '0', '', '50', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '<p>\r\n	<img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217233027_83180.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217233028_91627.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217233028_55682.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217233028_49165.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217233029_48149.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217233029_40759.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217233029_76351.jpg\" alt=\"\" /><img src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170217/20170217233029_45898.jpg\" alt=\"\" /> \r\n</p>', '', '', '', '1', '', '1', '1', '0', '0', '1487315694', '6', '0', '1', '1', '1', '0', '0', '1487316730', '13', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '11', '0', '0.00', '0');
+INSERT INTO `ecs_goods` VALUES ('25', '150', 'ECS000025', '陶艺小花瓶(测试)', '+', '13', '0', '0', '', '50', '0.000', '0.00', '0.00', '0.00', '0', '0', '1', '', '', '<img alt=\"\" src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170220/20170220135254_62889.jpg\" /><img alt=\"\" src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170220/20170220135255_75370.jpg\" /><img alt=\"\" src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170220/20170220135256_41829.jpg\" /><img alt=\"\" src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170220/20170220135257_43357.jpg\" /><img alt=\"\" src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170220/20170220135258_89909.jpg\" /><img alt=\"\" src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170220/20170220135258_28378.jpg\" /><img alt=\"\" src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170220/20170220135259_57253.jpg\" /><img alt=\"\" src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170220/20170220135259_87122.jpg\" /><img alt=\"\" src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170220/20170220135300_91455.jpg\" /><img alt=\"\" src=\"/mobile/include/kindeditor/php/../../../../images/upload/image/20170220/20170220135301_15197.jpg\" /> \r\n<p>\r\n	 \r\n</p>', '', '', '', '1', '', '1', '1', '0', '0', '1487539556', '7', '0', '1', '1', '1', '0', '0', '1487543758', '14', '', '-1', '-1', '0', null, '', '0', '0', '', null, '0', '0', '11', '0', '0.00', '0');
 
 -- ----------------------------
 -- Table structure for ecs_goods_activity
@@ -2401,13 +2822,48 @@ CREATE TABLE `ecs_goods_attr` (
   PRIMARY KEY (`goods_attr_id`),
   KEY `goods_id` (`goods_id`),
   KEY `attr_id` (`attr_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=429 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=483 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_goods_attr
 -- ----------------------------
+INSERT INTO `ecs_goods_attr` VALUES ('481', '25', '241', '型色主义', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('482', '25', '239', '13.8*8.5', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('479', '25', '240', '薄胎陶瓷', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('478', '24', '225', '白色', '', '/mobile/images/shuxing/20170217232321_139.png');
+INSERT INTO `ecs_goods_attr` VALUES ('477', '24', '231', '白炽灯、节能灯、LED', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('475', '23', '239', '11.5cm*8cm  11.5cm*9cm  10cm*8cm', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('476', '24', '228', '薄胎陶瓷', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('461', '18', '226', '小', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('459', '18', '226', '大', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('460', '18', '226', '中', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('458', '18', '225', '粉色', '', '/mobile/images/shuxing/20170119181701_500.png');
+INSERT INTO `ecs_goods_attr` VALUES ('457', '18', '225', '淡蓝', '', '/mobile/images/shuxing/20170119181701_846.png');
+INSERT INTO `ecs_goods_attr` VALUES ('456', '18', '225', '白色', '', '/mobile/images/shuxing/20170119181701_736.png');
+INSERT INTO `ecs_goods_attr` VALUES ('454', '18', '228', '打发', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('455', '18', '229', '的发的方法方法', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('453', '18', '227', 'adfa', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('452', '17', '225', '淡蓝', '', '/mobile/images/shuxing/20170119181327_967.png');
+INSERT INTO `ecs_goods_attr` VALUES ('451', '17', '225', '淡蓝', '', '/mobile/images/shuxing/20170119181327_967.png');
+INSERT INTO `ecs_goods_attr` VALUES ('450', '17', '225', '淡蓝', '', '/mobile/images/shuxing/20170119181327_967.png');
+INSERT INTO `ecs_goods_attr` VALUES ('449', '17', '225', '淡蓝', '', '/mobile/images/shuxing/20170119181327_687.png');
+INSERT INTO `ecs_goods_attr` VALUES ('447', '17', '226', '大', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('448', '17', '226', '中', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('446', '17', '226', '小', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('445', '17', '225', '白色', '', '/mobile/images/shuxing/20170119181026_910.png');
+INSERT INTO `ecs_goods_attr` VALUES ('444', '17', '229', '安家了多番安家了多番', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('443', '17', '228', '安家了多番', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('440', '16', '226', '大', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('441', '16', '226', '大', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('437', '16', '226', '中', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('439', '16', '226', '大', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('436', '16', '226', '中', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('442', '17', '227', 'adfa', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('438', '16', '226', '大', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('432', '16', '226', '小', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('431', '16', '225', '白色', '', '/mobile/images/shuxing/20170119180514_390.png');
+INSERT INTO `ecs_goods_attr` VALUES ('472', '22', '225', '白色', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('424', '7', '225', '白色', '', '/mobile/images/shuxing/20170118185329_528.png');
-INSERT INTO `ecs_goods_attr` VALUES ('423', '7', '233', '长20cm  宽20cm  高21cm', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('421', '7', '228', '薄胎陶瓷', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('422', '7', '231', '白炽灯、技能灯、LED', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('420', '5', '225', '白色', '', '/mobile/images/shuxing/20170118185338_112.png');
@@ -2415,7 +2871,8 @@ INSERT INTO `ecs_goods_attr` VALUES ('418', '5', '228', '薄胎陶瓷', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('419', '5', '231', '白炽灯、节能灯、LED', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('416', '2', '225', '白色', '', '/mobile/images/shuxing/20170118185346_427.png');
 INSERT INTO `ecs_goods_attr` VALUES ('417', '5', '227', '型色主义', '', '');
-INSERT INTO `ecs_goods_attr` VALUES ('415', '2', '232', '白炽灯、节能灯、LED', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('473', '23', '240', '薄胎陶瓷', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('474', '23', '238', '白色', '', '/mobile/images/shuxing/20170217221450_512.png');
 INSERT INTO `ecs_goods_attr` VALUES ('414', '2', '231', '白炽灯、节能灯、LED', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('412', '2', '227', '型色主义', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('413', '2', '228', '薄胎陶瓷', '', '');
@@ -2425,8 +2882,14 @@ INSERT INTO `ecs_goods_attr` VALUES ('408', '1', '229', '1.7米左右', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('409', '1', '230', 'E14', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('406', '1', '227', '型色主义', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('407', '1', '228', '薄胎陶瓷', '', '');
-INSERT INTO `ecs_goods_attr` VALUES ('405', '1', '226', '大', '', '/mobile/images/shuxing/20170118144642_102.jpg');
-INSERT INTO `ecs_goods_attr` VALUES ('404', '1', '226', '小', '', '/mobile/images/shuxing/20170118144642_270.jpg');
+INSERT INTO `ecs_goods_attr` VALUES ('468', '21', '227', '型色主义', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('469', '21', '228', '薄胎陶瓷', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('405', '1', '226', '大', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('471', '22', '227', 'adfa', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('470', '21', '225', '白色', '', '/mobile/images/shuxing/20170214115550_189.png');
+INSERT INTO `ecs_goods_attr` VALUES ('404', '1', '226', '小', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('430', '16', '228', '啊啊啊啊啊啊啊啊啊啊', '', '');
+INSERT INTO `ecs_goods_attr` VALUES ('429', '16', '227', '啊啊啊啊啊', '', '');
 INSERT INTO `ecs_goods_attr` VALUES ('403', '1', '225', '白色', '', '/mobile/images/shuxing/20170118185355_282.png');
 
 -- ----------------------------
@@ -2444,8 +2907,6 @@ CREATE TABLE `ecs_goods_cat` (
 -- ----------------------------
 INSERT INTO `ecs_goods_cat` VALUES ('8', '2');
 INSERT INTO `ecs_goods_cat` VALUES ('8', '5');
-INSERT INTO `ecs_goods_cat` VALUES ('16', '3');
-INSERT INTO `ecs_goods_cat` VALUES ('16', '5');
 INSERT INTO `ecs_goods_cat` VALUES ('163', '145');
 INSERT INTO `ecs_goods_cat` VALUES ('164', '145');
 
@@ -2462,16 +2923,16 @@ CREATE TABLE `ecs_goods_gallery` (
   `img_original` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`img_id`),
   KEY `goods_id` (`goods_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=201 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=239 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_goods_gallery
 -- ----------------------------
 INSERT INTO `ecs_goods_gallery` VALUES ('200', '7', 'images/201701/goods_img/7_P_1484695017462.jpg', '', 'images/201701/thumb_img/7_thumb_P_1484695017309.jpg', 'images/201701/source_img/7_P_1484695017111.jpg');
-INSERT INTO `ecs_goods_gallery` VALUES ('197', '5', 'images/201701/goods_img/5_P_1484694652977.jpg', '', 'images/201701/thumb_img/5_thumb_P_1484694652906.jpg', 'images/201701/source_img/5_P_1484694652254.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('205', '5', 'images/201701/goods_img/5_P_1485227399628.jpg', '', 'images/201701/thumb_img/5_thumb_P_1485227399942.jpg', 'images/201701/source_img/5_P_1485227399538.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('6', '3', 'images/200905/goods_img/3_P_1241422082461.jpg', '', 'images/200905/thumb_img/3_thumb_P_1241422082160.jpg', 'images/200905/source_img/3_P_1241422082816.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('7', '4', 'images/200905/goods_img/4_P_1241422402169.jpg', '', 'images/200905/thumb_img/4_thumb_P_1241422402909.jpg', 'images/200905/source_img/4_P_1241422402362.jpg');
-INSERT INTO `ecs_goods_gallery` VALUES ('196', '5', 'images/201701/goods_img/5_P_1484694641727.jpg', '', 'images/201701/thumb_img/5_thumb_P_1484694641829.jpg', 'images/201701/source_img/5_P_1484694641471.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('206', '5', 'images/201701/goods_img/5_P_1485227434136.jpg', '', 'images/201701/thumb_img/5_thumb_P_1485227434627.jpg', 'images/201701/source_img/5_P_1485227434792.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('199', '7', 'images/201701/goods_img/7_P_1484695007415.jpg', '', 'images/201701/thumb_img/7_thumb_P_1484695007104.jpg', 'images/201701/source_img/7_P_1484695007004.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('10', '8', 'images/200905/goods_img/8_P_1241425513388.jpg', '', 'images/200905/thumb_img/8_thumb_P_1241425513834.jpg', 'images/200905/source_img/8_P_1241425513810.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('11', '8', 'images/200905/goods_img/8_P_1241425891781.JPG', '正面', 'images/200905/thumb_img/8_thumb_P_1241425891460.jpg', 'images/200905/source_img/8_P_1241425891321.JPG');
@@ -2490,23 +2951,23 @@ INSERT INTO `ecs_goods_gallery` VALUES ('25', '19', 'images/200905/goods_img/19_
 INSERT INTO `ecs_goods_gallery` VALUES ('26', '19', 'images/200905/goods_img/19_P_1241970140600.jpg', '', 'images/200905/thumb_img/19_thumb_P_1241970140229.jpg', 'images/200905/source_img/19_P_1241970140187.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('27', '19', 'images/200905/goods_img/19_P_1241970175007.jpg', '', 'images/200905/thumb_img/19_thumb_P_1241970175086.jpg', 'images/200905/source_img/19_P_1241970175028.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('28', '22', 'images/200905/goods_img/22_P_1241971076061.jpg', '', 'images/200905/thumb_img/22_thumb_P_1241971076595.jpg', 'images/200905/source_img/22_P_1241971076696.jpg');
-INSERT INTO `ecs_goods_gallery` VALUES ('29', '23', 'images/200905/goods_img/23_P_1241971556661.jpg', '', 'images/200905/thumb_img/23_thumb_P_1241971556920.jpg', 'images/200905/source_img/23_P_1241971556122.jpg');
-INSERT INTO `ecs_goods_gallery` VALUES ('30', '24', 'images/200905/goods_img/24_P_1241971981420.jpg', '', 'images/200905/thumb_img/24_thumb_P_1241971981834.jpg', 'images/200905/source_img/24_P_1241971981824.jpg');
-INSERT INTO `ecs_goods_gallery` VALUES ('31', '25', 'images/200905/goods_img/25_P_1241972709888.jpg', '', 'images/200905/thumb_img/25_thumb_P_1241972709070.jpg', 'images/200905/source_img/25_P_1241972709222.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('232', '23', 'images/201702/goods_img/23_P_1487312110136.jpg', '', 'images/201702/thumb_img/23_thumb_P_1487312110264.jpg', 'images/201702/source_img/23_P_1487312110686.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('238', '25', 'images/201702/goods_img/25_P_1487539802644.jpg', '', 'images/201702/thumb_img/25_thumb_P_1487539802588.jpg', 'images/201702/source_img/25_P_1487539802614.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('237', '25', 'images/201702/goods_img/25_P_1487539802409.jpg', '', 'images/201702/thumb_img/25_thumb_P_1487539802238.jpg', 'images/201702/source_img/25_P_1487539802829.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('32', '26', 'images/200905/goods_img/26_P_1241972789025.jpg', '', 'images/200905/thumb_img/26_thumb_P_1241972789061.jpg', 'images/200905/source_img/26_P_1241972789731.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('33', '27', 'images/200905/goods_img/27_P_1241972894128.jpg', '', 'images/200905/thumb_img/27_thumb_P_1241972894915.jpg', 'images/200905/source_img/27_P_1241972894886.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('34', '28', 'images/200905/goods_img/28_P_1241972976099.jpg', '', 'images/200905/thumb_img/28_thumb_P_1241972976277.jpg', 'images/200905/source_img/28_P_1241972976150.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('35', '29', 'images/200905/goods_img/29_P_1241973022876.jpg', '', 'images/200905/thumb_img/29_thumb_P_1241973022886.jpg', 'images/200905/source_img/29_P_1241973022880.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('36', '30', 'images/200905/goods_img/30_P_1241973114554.jpg', '', 'images/200905/thumb_img/30_thumb_P_1241973114166.jpg', 'images/200905/source_img/30_P_1241973114795.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('38', '20', 'images/200905/goods_img/20_P_1242106490582.jpg', '', 'images/200905/thumb_img/20_thumb_P_1242106490836.jpg', 'images/200905/source_img/20_P_1242106490796.jpg');
-INSERT INTO `ecs_goods_gallery` VALUES ('39', '21', 'images/200905/goods_img/21_P_1242109298519.jpg', '', 'images/200905/thumb_img/21_thumb_P_1242109298525.jpg', 'images/200905/source_img/21_P_1242109298459.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('229', '21', 'images/201702/goods_img/21_P_1487195235614.jpg', '', 'images/201702/thumb_img/21_thumb_P_1487195235403.jpg', 'images/201702/source_img/21_P_1487195235018.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('40', '31', 'images/200905/goods_img/31_P_1242110412503.jpg', '', 'images/200905/thumb_img/31_thumb_P_1242110412614.jpg', 'images/200905/source_img/31_P_1242110412152.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('41', '32', 'images/200905/goods_img/32_P_1242110760641.jpg', '', 'images/200905/thumb_img/32_thumb_P_1242110760997.jpg', 'images/200905/source_img/32_P_1242110760203.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('42', '15', 'images/200905/goods_img/15_P_1242973362276.jpg', '', 'images/200905/thumb_img/15_thumb_P_1242973362611.jpg', 'images/200905/source_img/15_P_1242973362172.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('43', '10', 'images/200905/goods_img/10_P_1242973436620.jpg', '', 'images/200905/thumb_img/10_thumb_P_1242973436219.jpg', 'images/200905/source_img/10_P_1242973436898.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('44', '9', 'images/201311/goods_img/9_P_1384986608041.jpg', '', 'images/201311/thumb_img/9_thumb_P_1384986608509.jpg', 'images/201311/source_img/9_P_1384986608844.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('45', '9', 'images/201311/goods_img/9_P_1384987018219.jpg', '', 'images/201311/thumb_img/9_thumb_P_1384987018285.jpg', 'images/201311/source_img/9_P_1384987018317.jpg');
-INSERT INTO `ecs_goods_gallery` VALUES ('195', '2', 'images/201701/goods_img/2_P_1484694103075.jpg', '', 'images/201701/thumb_img/2_thumb_P_1484694103922.jpg', 'images/201701/source_img/2_P_1484694103800.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('203', '2', 'images/201701/goods_img/2_P_1485225362481.jpg', '', 'images/201701/thumb_img/2_thumb_P_1485225362200.jpg', 'images/201701/source_img/2_P_1485225362031.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('47', '8', 'images/201311/goods_img/8_P_1384988790534.jpg', '', 'images/201311/thumb_img/8_thumb_P_1384988790842.jpg', 'images/201311/source_img/8_P_1384988790304.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('48', '32', 'images/201311/goods_img/32_P_1384991764984.jpg', '', 'images/201311/thumb_img/32_thumb_P_1384991764767.jpg', 'images/201311/source_img/32_P_1384991764847.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('49', '19', 'images/201311/goods_img/19_P_1384994159375.jpg', '', 'images/201311/thumb_img/19_thumb_P_1384994159656.jpg', 'images/201311/source_img/19_P_1384994159296.jpg');
@@ -2530,9 +2991,9 @@ INSERT INTO `ecs_goods_gallery` VALUES ('66', '43', 'images/201311/goods_img/43_
 INSERT INTO `ecs_goods_gallery` VALUES ('67', '44', 'images/201311/goods_img/44_P_1385072182258.png', '', 'images/201311/thumb_img/44_thumb_P_1385072182592.jpg', 'images/201311/source_img/44_P_1385072182615.png');
 INSERT INTO `ecs_goods_gallery` VALUES ('68', '45', 'images/201311/goods_img/45_P_1385072303927.jpg', '', 'images/201311/thumb_img/45_thumb_P_1385072303676.jpg', 'images/201311/source_img/45_P_1385072303247.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('69', '46', 'images/201311/goods_img/46_P_1385072633608.jpg', '', 'images/201311/thumb_img/46_thumb_P_1385072633211.jpg', 'images/201311/source_img/46_P_1385072633015.jpg');
-INSERT INTO `ecs_goods_gallery` VALUES ('70', '24', 'images/201311/goods_img/24_P_1385074818063.png', '', 'images/201311/thumb_img/24_thumb_P_1385074818030.jpg', 'images/201311/source_img/24_P_1385074818763.png');
-INSERT INTO `ecs_goods_gallery` VALUES ('71', '23', 'images/201311/goods_img/23_P_1385075287679.jpg', '', 'images/201311/thumb_img/23_thumb_P_1385075287497.jpg', 'images/201311/source_img/23_P_1385075287782.jpg');
-INSERT INTO `ecs_goods_gallery` VALUES ('72', '21', 'images/201311/goods_img/21_P_1385075715200.png', '', 'images/201311/thumb_img/21_thumb_P_1385075715191.jpg', 'images/201311/source_img/21_P_1385075715792.png');
+INSERT INTO `ecs_goods_gallery` VALUES ('236', '24', 'images/201702/goods_img/24_P_1487316670813.jpg', '', 'images/201702/thumb_img/24_thumb_P_1487316670047.jpg', 'images/201702/source_img/24_P_1487316670632.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('231', '23', 'images/201702/goods_img/23_P_1487312110247.jpg', '', 'images/201702/thumb_img/23_thumb_P_1487312110469.jpg', 'images/201702/source_img/23_P_1487312110394.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('230', '21', 'images/201702/goods_img/21_P_1487195345004.jpg', '', 'images/201702/thumb_img/21_thumb_P_1487195345315.jpg', 'images/201702/source_img/21_P_1487195345467.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('73', '14', 'images/201311/goods_img/14_P_1385076093751.png', '', 'images/201311/thumb_img/14_thumb_P_1385076093573.jpg', 'images/201311/source_img/14_P_1385076093190.png');
 INSERT INTO `ecs_goods_gallery` VALUES ('74', '13', 'images/201311/goods_img/13_P_1385076209186.jpg', '', 'images/201311/thumb_img/13_thumb_P_1385076209603.jpg', 'images/201311/source_img/13_P_1385076209144.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('75', '10', 'images/201311/goods_img/10_P_1385076352266.png', '', 'images/201311/thumb_img/10_thumb_P_1385076352398.jpg', 'images/201311/source_img/10_P_1385076352937.png');
@@ -2635,8 +3096,8 @@ INSERT INTO `ecs_goods_gallery` VALUES ('178', '161', 'images/201504/goods_img/1
 INSERT INTO `ecs_goods_gallery` VALUES ('179', '162', 'images/201504/goods_img/162_P_1427857226756.jpg', '', 'images/201504/thumb_img/162_thumb_P_1427857226112.jpg', 'images/201504/source_img/162_P_1427857226060.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('180', '165', 'images/201611/goods_img/165_P_1478899909391.png', '', 'images/201611/thumb_img/165_thumb_P_1478899909624.jpg', 'images/201611/source_img/165_P_1478899909633.png');
 INSERT INTO `ecs_goods_gallery` VALUES ('181', '165', 'images/201611/goods_img/165_P_1478899909573.png', '', 'images/201611/thumb_img/165_thumb_P_1478899909707.jpg', 'images/201611/source_img/165_P_1478899909904.png');
-INSERT INTO `ecs_goods_gallery` VALUES ('193', '1', 'images/201701/goods_img/1_P_1484693359667.jpg', '', 'images/201701/thumb_img/1_thumb_P_1484693359558.jpg', 'images/201701/source_img/1_P_1484693359095.jpg');
-INSERT INTO `ecs_goods_gallery` VALUES ('194', '1', 'images/201701/goods_img/1_P_1484693373421.jpg', '', 'images/201701/thumb_img/1_thumb_P_1484693373407.jpg', 'images/201701/source_img/1_P_1484693373254.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('202', '1', 'images/201701/goods_img/1_P_1485222302502.jpg', '', 'images/201701/thumb_img/1_thumb_P_1485222302095.jpg', 'images/201701/source_img/1_P_1485222302254.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('201', '1', 'images/201701/goods_img/1_P_1485222302948.jpg', '', 'images/201701/thumb_img/1_thumb_P_1485222302853.jpg', 'images/201701/source_img/1_P_1485222302365.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('184', '17', 'images/201611/goods_img/17_P_1479501429570.png', '', 'images/201611/thumb_img/17_thumb_P_1479501429661.jpg', 'images/201611/source_img/17_P_1479501429212.png');
 INSERT INTO `ecs_goods_gallery` VALUES ('185', '17', 'images/201611/goods_img/17_P_1479501429824.png', '', 'images/201611/thumb_img/17_thumb_P_1479501429597.jpg', 'images/201611/source_img/17_P_1479501429279.png');
 INSERT INTO `ecs_goods_gallery` VALUES ('186', '165', 'images/201611/goods_img/165_P_1479754660380.jpg', '', 'images/201611/thumb_img/165_thumb_P_1479754660500.jpg', 'images/201611/source_img/165_P_1479754660914.jpg');
@@ -2645,6 +3106,7 @@ INSERT INTO `ecs_goods_gallery` VALUES ('188', '165', 'images/201612/goods_img/1
 INSERT INTO `ecs_goods_gallery` VALUES ('189', '165', 'images/201612/goods_img/165_P_1481850865981.png', '', 'images/201612/thumb_img/165_thumb_P_1481850865522.jpg', 'images/201612/source_img/165_P_1481850865736.png');
 INSERT INTO `ecs_goods_gallery` VALUES ('190', '164', 'images/201612/goods_img/164_P_1482700762112.jpg', '', 'images/201612/thumb_img/164_thumb_P_1482700762119.jpg', 'images/201612/source_img/164_P_1482700762680.jpg');
 INSERT INTO `ecs_goods_gallery` VALUES ('191', '164', 'images/201612/goods_img/164_P_1482700763400.jpg', '', 'images/201612/thumb_img/164_thumb_P_1482700763151.jpg', 'images/201612/source_img/164_P_1482700763542.jpg');
+INSERT INTO `ecs_goods_gallery` VALUES ('227', '21', 'images/201702/goods_img/21_P_1487138483990.png', '', 'images/201702/thumb_img/21_thumb_P_1487138483169.jpg', 'images/201702/source_img/21_P_1487138483792.png');
 
 -- ----------------------------
 -- Table structure for ecs_goods_type
@@ -2656,12 +3118,13 @@ CREATE TABLE `ecs_goods_type` (
   `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `attr_group` varchar(255) NOT NULL,
   PRIMARY KEY (`cat_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_goods_type
 -- ----------------------------
 INSERT INTO `ecs_goods_type` VALUES ('13', '氛围灯', '1', '');
+INSERT INTO `ecs_goods_type` VALUES ('14', '蜡烛台', '1', '');
 
 -- ----------------------------
 -- Table structure for ecs_group_goods
@@ -2847,7 +3310,6 @@ CREATE TABLE `ecs_member_price` (
 -- Records of ecs_member_price
 -- ----------------------------
 INSERT INTO `ecs_member_price` VALUES ('1', '23', '3', '3200.00');
-INSERT INTO `ecs_member_price` VALUES ('2', '23', '2', '3300.00');
 INSERT INTO `ecs_member_price` VALUES ('3', '13', '3', '1100.00');
 INSERT INTO `ecs_member_price` VALUES ('5', '158', '1', '198.00');
 INSERT INTO `ecs_member_price` VALUES ('6', '158', '99', '193.00');
@@ -2939,7 +3401,7 @@ CREATE TABLE `ecs_order_action` (
   `log_time` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`action_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=151 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_order_action
@@ -2992,15 +3454,78 @@ INSERT INTO `ecs_order_action` VALUES ('75', '7', 'admin', '1', '3', '2', '0', '
 INSERT INTO `ecs_order_action` VALUES ('76', '7', 'admin', '5', '5', '2', '0', '今天发货', '1484705238');
 INSERT INTO `ecs_order_action` VALUES ('77', '7', 'admin', '1', '1', '0', '1', '', '1484705334');
 INSERT INTO `ecs_order_action` VALUES ('78', '7', 'admin', '1', '1', '2', '0', '不行距间距', '1484705377');
-INSERT INTO `ecs_order_action` VALUES ('79', '16', 'admin', '1', '0', '2', '0', '1', '1484789555');
-INSERT INTO `ecs_order_action` VALUES ('80', '16', 'admin', '1', '3', '2', '0', '', '1484789562');
-INSERT INTO `ecs_order_action` VALUES ('81', '16', 'admin', '5', '5', '2', '0', '1', '1484789573');
-INSERT INTO `ecs_order_action` VALUES ('82', '24', 'admin', '1', '0', '2', '0', '1', '1486495485');
-INSERT INTO `ecs_order_action` VALUES ('83', '24', 'admin', '1', '3', '2', '0', '', '1486495501');
-INSERT INTO `ecs_order_action` VALUES ('84', '24', 'admin', '5', '5', '2', '0', '1', '1486495515');
-INSERT INTO `ecs_order_action` VALUES ('85', '24', 'admin', '1', '1', '2', '1', '11', '1486495733');
-INSERT INTO `ecs_order_action` VALUES ('86', '24', 'admin', '5', '2', '2', '0', '11', '1486497419');
-INSERT INTO `ecs_order_action` VALUES ('87', '24', 'admin', '5', '2', '2', '0', '11', '1486498197');
+INSERT INTO `ecs_order_action` VALUES ('79', '26', 'admin', '1', '3', '2', '0', '', '1484789350');
+INSERT INTO `ecs_order_action` VALUES ('80', '26', 'admin', '1', '3', '2', '0', '9', '1484789409');
+INSERT INTO `ecs_order_action` VALUES ('81', '26', 'admin', '5', '5', '2', '0', '、、', '1484789431');
+INSERT INTO `ecs_order_action` VALUES ('82', '26', 'admin', '1', '1', '2', '1', '', '1484789479');
+INSERT INTO `ecs_order_action` VALUES ('83', '12', 'admin', '5', '5', '2', '0', '了', '1484790047');
+INSERT INTO `ecs_order_action` VALUES ('84', '12', 'admin', '1', '1', '2', '1', '了', '1484790047');
+INSERT INTO `ecs_order_action` VALUES ('85', '25', 'admin', '1', '3', '2', '0', '', '1486521922');
+INSERT INTO `ecs_order_action` VALUES ('86', '25', 'admin', '5', '5', '2', '0', '', '1486521947');
+INSERT INTO `ecs_order_action` VALUES ('87', '25', 'admin', '1', '1', '2', '1', '', '1486522173');
+INSERT INTO `ecs_order_action` VALUES ('88', '25', 'admin', '5', '2', '2', '0', '收到', '1486522323');
+INSERT INTO `ecs_order_action` VALUES ('89', '28', 'admin', '1', '3', '2', '0', '', '1486528764');
+INSERT INTO `ecs_order_action` VALUES ('90', '28', 'admin', '5', '5', '2', '0', '1', '1486528775');
+INSERT INTO `ecs_order_action` VALUES ('91', '28', 'admin', '1', '1', '2', '1', '1', '1486528793');
+INSERT INTO `ecs_order_action` VALUES ('92', '28', 'admin', '5', '2', '2', '0', '11', '1486528810');
+INSERT INTO `ecs_order_action` VALUES ('93', '27', 'admin', '1', '3', '2', '0', '', '1486530937');
+INSERT INTO `ecs_order_action` VALUES ('94', '30', 'admin', '1', '3', '2', '0', '', '1486531380');
+INSERT INTO `ecs_order_action` VALUES ('95', '30', 'admin', '5', '5', '2', '0', '', '1486531388');
+INSERT INTO `ecs_order_action` VALUES ('96', '30', 'admin', '1', '1', '2', '1', '1', '1486531400');
+INSERT INTO `ecs_order_action` VALUES ('97', '30', 'admin', '5', '2', '2', '0', '1', '1486531425');
+INSERT INTO `ecs_order_action` VALUES ('98', '27', 'admin', '5', '5', '2', '0', '', '1486577136');
+INSERT INTO `ecs_order_action` VALUES ('99', '27', 'admin', '1', '1', '2', '1', '1', '1486577154');
+INSERT INTO `ecs_order_action` VALUES ('100', '33', 'admin', '1', '3', '2', '0', '', '1486592067');
+INSERT INTO `ecs_order_action` VALUES ('101', '33', 'admin', '5', '5', '2', '0', '', '1486592075');
+INSERT INTO `ecs_order_action` VALUES ('102', '33', 'admin', '1', '1', '2', '1', '1', '1486592089');
+INSERT INTO `ecs_order_action` VALUES ('103', '32', 'admin', '1', '3', '2', '0', '', '1486596839');
+INSERT INTO `ecs_order_action` VALUES ('104', '32', 'admin', '5', '5', '2', '0', '1', '1486596846');
+INSERT INTO `ecs_order_action` VALUES ('105', '32', 'admin', '1', '1', '2', '1', '1', '1486596876');
+INSERT INTO `ecs_order_action` VALUES ('106', '32', 'admin', '5', '2', '2', '0', '1', '1486596905');
+INSERT INTO `ecs_order_action` VALUES ('107', '7', 'admin', '1', '0', '2', '0', '1', '1486617269');
+INSERT INTO `ecs_order_action` VALUES ('108', '12', 'admin', '5', '5', '2', '0', '', '1486619038');
+INSERT INTO `ecs_order_action` VALUES ('109', '12', 'admin', '1', '1', '2', '1', '', '1486619038');
+INSERT INTO `ecs_order_action` VALUES ('110', '12', 'admin', '5', '4', '2', '1', '', '1486619089');
+INSERT INTO `ecs_order_action` VALUES ('111', '12', 'admin', '1', '1', '2', '1', '', '1486619171');
+INSERT INTO `ecs_order_action` VALUES ('112', '12', 'admin', '5', '2', '2', '0', '其实都是假的', '1486619218');
+INSERT INTO `ecs_order_action` VALUES ('113', '7', 'admin', '5', '5', '2', '0', '', '1486619458');
+INSERT INTO `ecs_order_action` VALUES ('114', '7', 'admin', '1', '1', '2', '1', '', '1486619458');
+INSERT INTO `ecs_order_action` VALUES ('115', '7', 'admin', '5', '2', '2', '0', '也是假的', '1486619508');
+INSERT INTO `ecs_order_action` VALUES ('116', '14', 'admin', '5', '5', '2', '0', '', '1486621743');
+INSERT INTO `ecs_order_action` VALUES ('117', '14', 'admin', '1', '1', '2', '1', '', '1486621743');
+INSERT INTO `ecs_order_action` VALUES ('118', '14', 'admin', '5', '2', '2', '0', '1', '1486621758');
+INSERT INTO `ecs_order_action` VALUES ('119', '16', 'admin', '5', '5', '2', '0', '', '1486622146');
+INSERT INTO `ecs_order_action` VALUES ('120', '16', 'admin', '1', '1', '2', '1', '', '1486622146');
+INSERT INTO `ecs_order_action` VALUES ('121', '16', 'admin', '5', '2', '2', '0', '1', '1486622182');
+INSERT INTO `ecs_order_action` VALUES ('122', '15', 'admin', '5', '5', '2', '0', '', '1486622272');
+INSERT INTO `ecs_order_action` VALUES ('123', '15', 'admin', '1', '1', '2', '1', '', '1486622272');
+INSERT INTO `ecs_order_action` VALUES ('124', '15', 'admin', '5', '2', '2', '0', 'hahahah', '1486622306');
+INSERT INTO `ecs_order_action` VALUES ('125', '17', 'admin', '5', '5', '2', '0', '', '1486622683');
+INSERT INTO `ecs_order_action` VALUES ('126', '17', 'admin', '1', '1', '2', '1', '', '1486622683');
+INSERT INTO `ecs_order_action` VALUES ('127', '8', 'admin', '5', '5', '2', '0', '', '1486671892');
+INSERT INTO `ecs_order_action` VALUES ('128', '8', 'admin', '1', '1', '2', '1', '', '1486671892');
+INSERT INTO `ecs_order_action` VALUES ('129', '18', 'admin', '1', '3', '2', '0', '', '1486672278');
+INSERT INTO `ecs_order_action` VALUES ('130', '18', 'admin', '5', '5', '2', '0', '', '1486673902');
+INSERT INTO `ecs_order_action` VALUES ('131', '13', 'admin', '1', '3', '2', '0', '', '1486674044');
+INSERT INTO `ecs_order_action` VALUES ('132', '19', 'admin', '1', '3', '2', '0', '', '1486674172');
+INSERT INTO `ecs_order_action` VALUES ('133', '21', 'admin', '5', '5', '2', '0', '', '1486677201');
+INSERT INTO `ecs_order_action` VALUES ('134', '21', 'admin', '1', '1', '2', '1', '', '1486677201');
+INSERT INTO `ecs_order_action` VALUES ('135', '21', 'admin', '5', '2', '2', '0', 'LIGHT测试', '1486677235');
+INSERT INTO `ecs_order_action` VALUES ('136', '24', 'admin', '5', '5', '2', '0', '', '1486686372');
+INSERT INTO `ecs_order_action` VALUES ('137', '24', 'admin', '1', '1', '2', '1', '', '1486686372');
+INSERT INTO `ecs_order_action` VALUES ('138', '24', 'admin', '5', '2', '2', '0', 'kitty测试\r\n', '1486686388');
+INSERT INTO `ecs_order_action` VALUES ('139', '25', 'admin', '5', '5', '2', '0', '', '1486687367');
+INSERT INTO `ecs_order_action` VALUES ('140', '25', 'admin', '1', '1', '2', '1', '', '1486687367');
+INSERT INTO `ecs_order_action` VALUES ('141', '25', 'admin', '5', '2', '2', '0', '111', '1486688161');
+INSERT INTO `ecs_order_action` VALUES ('142', '31', 'admin', '1', '0', '2', '0', '1', '1487269094');
+INSERT INTO `ecs_order_action` VALUES ('143', '47', 'admin', '1', '0', '0', '0', '1', '1487269819');
+INSERT INTO `ecs_order_action` VALUES ('144', '47', 'admin', '1', '0', '2', '0', '1', '1487270009');
+INSERT INTO `ecs_order_action` VALUES ('145', '47', 'admin', '1', '3', '2', '0', '', '1487270018');
+INSERT INTO `ecs_order_action` VALUES ('146', '47', 'admin', '5', '5', '2', '0', '1', '1487270026');
+INSERT INTO `ecs_order_action` VALUES ('147', '47', 'admin', '5', '5', '2', '0', '1', '1487270082');
+INSERT INTO `ecs_order_action` VALUES ('148', '47', 'admin', '1', '1', '2', '1', '1', '1487270082');
+INSERT INTO `ecs_order_action` VALUES ('149', '42', 'admin', '5', '5', '2', '0', '', '1487531815');
+INSERT INTO `ecs_order_action` VALUES ('150', '42', 'admin', '1', '1', '2', '1', '', '1487531815');
 
 -- ----------------------------
 -- Table structure for ecs_order_goods
@@ -3028,19 +3553,64 @@ CREATE TABLE `ecs_order_goods` (
   PRIMARY KEY (`rec_id`),
   KEY `order_id` (`order_id`),
   KEY `goods_id` (`goods_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_order_goods
 -- ----------------------------
-INSERT INTO `ecs_order_goods` VALUES ('25', '25', '5', '三个灯', 'ECS000005', '31', '1', '0.06', '0.04', '颜色:白色 \n', '1', '1', '', '0', '0', '420', '0', '0.00');
-INSERT INTO `ecs_order_goods` VALUES ('26', '26', '5', '三个灯', 'ECS000005', '31', '1', '0.06', '0.04', '颜色:白色 \n', '0', '1', '', '0', '0', '420', '0', '0.00');
-INSERT INTO `ecs_order_goods` VALUES ('27', '27', '5', '三个灯', 'ECS000005', '31', '1', '0.06', '0.04', '颜色:白色 \n', '1', '1', '', '0', '0', '420', '0', '0.00');
-INSERT INTO `ecs_order_goods` VALUES ('28', '28', '7', '挂灯', 'ECS000007', '32', '2', '0.04', '0.03', '颜色:白色 \n', '2', '1', '', '0', '0', '424', '10', '30.00');
-INSERT INTO `ecs_order_goods` VALUES ('29', '29', '7', '挂灯', 'ECS000007', '32', '1', '0.04', '0.03', '颜色:白色 \n', '0', '1', '', '0', '0', '424', '10', '30.00');
-INSERT INTO `ecs_order_goods` VALUES ('30', '30', '1', '创意床头灯', 'ECS000000', '42', '5', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '5', '1', '', '0', '0', '403,404', '10', '30.00');
-INSERT INTO `ecs_order_goods` VALUES ('31', '31', '5', '三个灯', 'ECS000005', '31', '18', '0.06', '0.04', '颜色:白色 \n', '0', '1', '', '0', '0', '420', '0', '0.00');
-INSERT INTO `ecs_order_goods` VALUES ('32', '32', '5', '三个灯', 'ECS000005', '31', '3', '0.06', '0.04', '颜色:白色 \n', '0', '1', '', '0', '0', '420', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('1', '1', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('2', '2', '1', '创意床头灯', 'ECS000000', '42', '6', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('3', '3', '1', '创意床头灯', 'ECS000000', '42', '6', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('4', '4', '1', '创意床头灯', 'ECS000000', '42', '3', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('5', '5', '1', '创意床头灯', 'ECS000000', '42', '15', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('6', '6', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('7', '7', '7', '挂灯', 'ECS000007', '32', '6', '0.04', '0.03', '颜色:白色 \n', '6', '1', '', '0', '0', '424', '13', '20.00');
+INSERT INTO `ecs_order_goods` VALUES ('8', '8', '7', '挂灯', 'ECS000007', '32', '4', '0.04', '0.03', '颜色:白色 \n', '4', '1', '', '0', '0', '424', '13', '20.00');
+INSERT INTO `ecs_order_goods` VALUES ('9', '9', '1', '创意床头灯', 'ECS000000', '42', '5', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '10', '30.00');
+INSERT INTO `ecs_order_goods` VALUES ('10', '10', '1', '创意床头灯', 'ECS000000', '42', '10', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('11', '11', '1', '创意床头灯', 'ECS000000', '42', '4', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('12', '11', '2', '菠萝灯', 'ECS000002', '44', '5', '0.03', '0.03', '颜色:白色 \n', '0', '1', '', '0', '0', '416', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('13', '12', '7', '挂灯', 'ECS000007', '32', '6', '0.04', '0.03', '颜色:白色 \n', '6', '1', '', '0', '0', '424', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('14', '13', '7', '挂灯', 'ECS000007', '32', '1', '0.04', '0.03', '颜色:白色 \n', '0', '1', '', '0', '0', '424', '13', '20.00');
+INSERT INTO `ecs_order_goods` VALUES ('15', '14', '7', '挂灯', 'ECS000007', '32', '5', '0.04', '0.03', '颜色:白色 \n', '5', '1', '', '0', '0', '424', '13', '20.00');
+INSERT INTO `ecs_order_goods` VALUES ('16', '15', '7', '挂灯', 'ECS000007', '32', '5', '0.04', '0.03', '颜色:白色 \n', '5', '1', '', '0', '0', '424', '13', '20.00');
+INSERT INTO `ecs_order_goods` VALUES ('17', '16', '5', '三个灯', 'ECS000005', '31', '3', '0.06', '0.04', '颜色:白色 \n', '3', '1', '', '0', '0', '420', '13', '20.00');
+INSERT INTO `ecs_order_goods` VALUES ('18', '17', '1', '创意床头灯', 'ECS000000', '43', '2', '0.03', '0.03', '颜色:白色 \n尺寸:大 \n', '2', '1', '', '0', '0', '403,405', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('19', '18', '5', '三个灯', 'ECS000005', '31', '1', '0.06', '0.04', '颜色:白色 \n', '1', '1', '', '0', '0', '420', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('20', '19', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('21', '20', '2', '菠萝灯', 'ECS000002', '44', '1', '0.03', '0.03', '颜色:白色 \n', '0', '1', '', '0', '0', '416', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('22', '21', '2', '菠萝灯', 'ECS000002', '44', '5', '0.03', '0.03', '颜色:白色 \n', '5', '1', '', '0', '0', '416', '10', '30.00');
+INSERT INTO `ecs_order_goods` VALUES ('23', '22', '1', '创意床头灯', 'ECS000000', '43', '1', '0.03', '0.03', '颜色:白色 \n尺寸:大 \n', '0', '1', '', '0', '0', '403,405', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('24', '23', '2', '菠萝灯', 'ECS000002', '44', '7', '0.03', '0.03', '颜色:白色 \n', '0', '1', '', '0', '0', '416', '20', '40.00');
+INSERT INTO `ecs_order_goods` VALUES ('25', '24', '7', '挂灯', 'ECS000007', '32', '10', '0.02', '0.01', '颜色:白色 \n', '10', '1', '', '0', '0', '424', '20', '40.00');
+INSERT INTO `ecs_order_goods` VALUES ('26', '25', '5', '三个灯', 'ECS000005', '31', '3', '0.07', '0.04', '颜色:白色 \n', '3', '1', '', '0', '0', '420', '20', '40.00');
+INSERT INTO `ecs_order_goods` VALUES ('27', '26', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '20', '40.00');
+INSERT INTO `ecs_order_goods` VALUES ('28', '27', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '10', '30.00');
+INSERT INTO `ecs_order_goods` VALUES ('29', '28', '1', '创意床头灯', 'ECS000000', '42', '10', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '10', '30.00');
+INSERT INTO `ecs_order_goods` VALUES ('30', '29', '1', '创意床头灯', 'ECS000000', '42', '6', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('31', '30', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('32', '31', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('33', '32', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('34', '33', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('35', '34', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('36', '35', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('37', '36', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('38', '37', '1', '创意床头灯', 'ECS000000', '42', '1', '0.02', '0.02', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('39', '38', '21', '砖心', 'ECS000021', '45', '1', '191.39', '99.00', '颜色:白色 \n', '0', '1', '', '0', '0', '470', '20', '15.00');
+INSERT INTO `ecs_order_goods` VALUES ('40', '39', '2', '菠萝灯（测试款不发货）', 'ECS000002', '44', '1', '0.03', '0.12', '颜色:白色 \n', '0', '1', '', '0', '0', '416', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('41', '40', '2', '菠萝灯（测试款不发货）', 'ECS000002', '44', '1', '0.03', '0.12', '颜色:白色 \n', '0', '1', '', '0', '0', '416', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('42', '41', '2', '菠萝灯（测试款不发货）', 'ECS000002', '44', '1', '0.03', '0.12', '颜色:白色 \n', '0', '1', '', '0', '0', '416', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('43', '42', '2', '菠萝灯（测试款不发货）', 'ECS000002', '44', '1', '0.03', '0.12', '颜色:白色 \n', '1', '1', '', '0', '0', '416', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('44', '43', '2', '菠萝灯（测试款不发货）', 'ECS000002', '53', '1', '0.21', '0.20', '颜色:白色 \n', '0', '1', '', '0', '0', '416', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('45', '44', '1', '床头灯（测试款不发货）', 'ECS000000', '51', '1', '0.11', '0.10', '颜色:白色 \n尺寸:小 \n', '0', '1', '', '0', '0', '403,404', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('46', '45', '2', '菠萝灯（测试款不发货）', 'ECS000002', '53', '1', '0.21', '0.20', '颜色:白色 \n', '0', '1', '', '0', '0', '416', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('47', '46', '21', '砖心', 'ECS000021', '55', '1', '191.39', '99.00', '颜色:白色 \n', '0', '1', '', '0', '0', '470', '0', '0.00');
+INSERT INTO `ecs_order_goods` VALUES ('48', '47', '2', '菠萝灯（测试款不发货）', 'ECS000002', '53', '1', '0.21', '0.20', '颜色:白色 \n', '1', '1', '', '0', '0', '416', '20', '15.00');
+INSERT INTO `ecs_order_goods` VALUES ('49', '48', '2', '菠萝灯（测试款不发货）', 'ECS000002', '53', '1', '0.21', '0.20', '颜色:白色 \n', '0', '1', '', '0', '0', '416', '20', '15.00');
+INSERT INTO `ecs_order_goods` VALUES ('50', '49', '21', '砖心', 'ECS000021', '56', '1', '191.39', '99.00', '颜色:白色 \n', '0', '1', '', '0', '0', '470', '20', '15.00');
+INSERT INTO `ecs_order_goods` VALUES ('51', '50', '21', '砖心', 'ECS000021', '56', '1', '104.39', '49.00', '颜色:白色 \n', '0', '1', '', '0', '0', '470', '20', '15.00');
+INSERT INTO `ecs_order_goods` VALUES ('52', '51', '21', '砖心', 'ECS000021', '57', '1', '141.39', '49.00', '颜色:白色 \n', '0', '1', '', '0', '0', '470', '20', '15.00');
+INSERT INTO `ecs_order_goods` VALUES ('53', '52', '21', '砖心', 'ECS000021', '57', '1', '141.39', '49.00', '颜色:白色 \n', '0', '1', '', '0', '0', '470', '0', '0.00');
 
 -- ----------------------------
 -- Table structure for ecs_order_info
@@ -3122,19 +3692,58 @@ CREATE TABLE `ecs_order_info` (
   KEY `pay_id` (`pay_id`),
   KEY `extension_code` (`extension_code`,`extension_id`),
   KEY `agency_id` (`agency_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_order_info
 -- ----------------------------
-INSERT INTO `ecs_order_info` VALUES ('25', '2017020863006', '11', '5', '2', '2', 'frank', '0', '25', '321', '2717', '乾溪路300弄14号502', '', '18616696490', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.04', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486521648', '0', '0', '1486522172', '0', '0', '0', '884094892943301300', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.04', '0', '0.00');
-INSERT INTO `ecs_order_info` VALUES ('26', '2017020876421', '12', '1', '0', '2', '王永生', '0', '25', '321', '2708', '国定东路200号4号楼', '', '17717872135', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.04', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486521683', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.04', '0', '0.00');
-INSERT INTO `ecs_order_info` VALUES ('27', '2017020891440', '13', '5', '1', '2', '张泉凯', '0', '25', '321', '2712', '1196', '', '15692185366', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.04', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486525647', '0', '0', '1486577154', '0', '0', '0', '884094892943301300', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.04', '0', '0.00');
-INSERT INTO `ecs_order_info` VALUES ('28', '2017020846057', '10', '5', '2', '2', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.06', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486528547', '0', '0', '1486528793', '0', '0', '0', '884094892943301300', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.06', '10', '0.00');
-INSERT INTO `ecs_order_info` VALUES ('29', '2017020880966', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.03', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.03', '0', '本站', '1486528660', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.03', '10', '0.00');
-INSERT INTO `ecs_order_info` VALUES ('30', '2017020873629', '10', '5', '2', '2', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.10', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486531205', '0', '0', '1486531400', '0', '0', '0', '884094892943301300', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.1', '10', '0.00');
-INSERT INTO `ecs_order_info` VALUES ('31', '2017020860560', '13', '0', '0', '0', '张泉凯', '0', '25', '321', '2712', '1196', '', '15692185366', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.72', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.72', '0', '本站', '1486531627', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.72', '0', '0.00');
-INSERT INTO `ecs_order_info` VALUES ('32', '2017020846949', '11', '1', '0', '2', 'frank', '0', '25', '321', '2717', '乾溪路300弄14号502', '', '18616696490', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.12', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486532232', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.12', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('1', '2017020934417', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '2', '圆通速递', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.02', '0', 'message', '1486603889', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('2', '2017020969630', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.12', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.12', '0', '本站', '1486604601', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.12', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('3', '2017020966912', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.12', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.12', '0', '本站', '1486604999', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.12', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('4', '2017020903637', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.06', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.06', '0', '本站', '1486605028', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.06', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('5', '2017020905802', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.30', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.30', '0', 'message', '1486605217', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.3', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('6', '2017020995732', '15', '0', '0', '0', '王永生苹果', '1', '2', '52', '500', '你管我', '', '18119517251', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.02', '0', '本站', '1486605373', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '1', '', '0.00', '0', '0', '0.00', '0.02', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('7', '2017020993486', '10', '5', '2', '2', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '10', '中通速递', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.18', '0.00', '0.00', '0.00', '0.00', '0.00', '0.18', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486617089', '0', '1486617269', '1486619458', '0', '0', '0', '2017020993486', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.18', '13', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('8', '2017020987456', '14', '5', '1', '2', '汪江', '1', '25', '321', '2708', '国定东路200号', '', '18721887224', '', '', '', '', '', '11', '韵达', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.12', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486617096', '0', '0', '1486671892', '0', '0', '0', '3933791017502', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.12', '13', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('9', '2017020906866', '13', '1', '0', '2', '张泉凯', '1', '25', '321', '2712', '1196', '', '15692185366', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.10', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486617804', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.1', '10', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('10', '2017020956170', '13', '1', '0', '2', '张泉凯', '1', '25', '321', '2712', '1196', '', '15692185366', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.20', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486617916', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.2', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('11', '2017020943439', '13', '1', '0', '2', '张泉凯', '1', '25', '321', '2712', '1196', '', '15692185366', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.23', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486618375', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.23', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('12', '2017020903923', '13', '5', '2', '2', '张大宝', '1', '29', '355', '3033', '新疆博尔塔拉温泉县新大街119号', '', '', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.19', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486618488', '0', '0', '1486619171', '0', '0', '0', '14145451i3491', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.18', '0', '0.01');
+INSERT INTO `ecs_order_info` VALUES ('13', '2017020930760', '10', '1', '3', '2', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '2', '圆通速递', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.03', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486621567', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.03', '13', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('14', '2017020958552', '10', '5', '2', '2', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.15', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486621673', '0', '0', '1486621743', '0', '0', '0', '2017020958552', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.15', '13', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('15', '2017020968582', '17', '5', '2', '2', '刘明丽', '1', '25', '321', '2712', '九龙路515号1106室', '', '18601661978', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.15', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486621955', '0', '0', '1486622272', '0', '0', '0', '2017020968582', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.15', '13', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('16', '2017020935383', '11', '5', '2', '2', 'frank', '1', '25', '321', '2717', '乾溪路300弄14号502室', '', '18616696490', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.12', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486622115', '0', '0', '1486622146', '0', '0', '0', '2017020935383', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.12', '13', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('17', '2017020935350', '11', '5', '1', '2', 'frank', '1', '25', '321', '2717', '乾溪路300弄14号502室', '', '18616696490', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.06', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486622523', '0', '0', '1486622683', '0', '0', '0', '2017020935350', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.06', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('18', '2017021014197', '14', '5', '5', '2', '汪江', '1', '25', '321', '2708', '国定东路200号', '', '18721887224', '', '', '', '', '', '10', '', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.04', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486672112', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.04', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('19', '2017021009498', '14', '1', '3', '2', '汪江', '1', '25', '321', '2708', '国定东路200号', '', '18721887224', '', '', '', '', '', '2', '', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486674095', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('20', '2017021052944', '14', '1', '0', '2', '汪江', '1', '25', '321', '2708', '国定东路200号', '', '18721887224', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.03', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486676929', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.03', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('21', '2017021070114', '19', '5', '2', '2', '李裕煌', '1', '6', '78', '711', '粤海花园B区11幢301', '', '13829099772', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.15', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486677106', '0', '0', '1486677201', '0', '0', '0', '111111', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.15', '10', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('22', '2017021062903', '20', '1', '0', '2', '黄朝吟', '1', '6', '78', '711', '潮州大道华禧大厦5号铺雅庭瓷砖', '', '13433730966', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.03', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', 'singlemessage', '1486685656', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.03', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('23', '2017021045998', '11', '1', '0', '2', 'frank', '1', '25', '321', '2717', '乾溪路300弄14号502室', '', '18616696490', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.21', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486685980', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.21', '20', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('24', '2017021054871', '11', '5', '2', '2', 'frank', '1', '25', '321', '2717', '乾溪路300弄14号502室', '', '18616696490', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.10', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486686212', '0', '0', '1486686372', '0', '0', '0', '2017021054871', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.1', '20', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('25', '2017021021397', '11', '5', '2', '2', 'frank', '1', '25', '321', '2717', '乾溪路300弄14号502室', '', '18616696490', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.12', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1486687331', '0', '0', '1486687367', '0', '0', '0', '2017021021397', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.12', '20', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('26', '2017021155693', '21', '1', '0', '2', '许先生', '1', '6', '77', '707', '科技园21号', '', '13590313432', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', 'singlemessage', '1486784194', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '20', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('27', '2017021406791', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.02', '0', '本站', '1487038194', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '10', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('28', '2017021427347', '10', '1', '0', '2', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.20', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1487038252', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.2', '10', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('29', '2017021421152', '10', '1', '0', '2', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.12', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1487038584', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.12', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('30', '2017021458762', '10', '1', '0', '2', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', 'message', '1487042798', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('31', '2017021465782', '10', '1', '0', '2', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '9', '顺丰速运', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.02', '0.00', '0', '0.00', '0.00', '0.00', '0', 'message', '1487051900', '1487269094', '1487269094', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('32', '2017021431879', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.02', '0', 'message', '1487052571', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('33', '2017021414887', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.02', '0', '本站', '1487052737', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('34', '2017021497155', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.02', '0', '本站', '1487053025', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('35', '2017021453300', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.02', '0', '本站', '1487053285', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('36', '2017021470496', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.02', '0', '本站', '1487054289', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('37', '2017021460401', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.02', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.02', '0', '本站', '1487055062', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.02', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('38', '2017021555084', '20', '0', '0', '0', '黄朝吟', '1', '6', '78', '711', '潮州大道华禧大厦5号铺雅庭瓷砖', '', '13433730966', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '99.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '99.00', '0', '本站', '1487098670', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '99', '20', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('45', '2017021595131', '14', '1', '0', '2', '王子涵', '1', '25', '321', '2717', '宝钢', '', '18721887226', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.20', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1487120713', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.2', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('48', '2017021652075', '23', '1', '0', '2', '黄淑琼', '1', '6', '78', '712', '江东镇独树村', '', '15919531102', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.20', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1487181000', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.2', '20', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('46', '2017021540280', '10', '0', '0', '0', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '99.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '99.00', '0', '本站', '1487126341', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '99', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('42', '2017021541238', '10', '5', '1', '2', '李裕煌', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '', '', '9', '顺丰速运', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.12', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', 'message', '1487119610', '0', '0', '1487531815', '0', '0', '0', '923532040745', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.12', '0', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('47', '2017021503343', '11', '5', '1', '2', 'frank', '1', '25', '321', '2708', '上海上海杨浦区', '', '18616696490', '', '', '', '', '', '9', '顺丰速运', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '0.20', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1487132649', '0', '1487270009', '1487270082', '0', '0', '0', '923532040745', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '0.2', '20', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('49', '2017021657981', '24', '0', '0', '0', '高淦', '1', '6', '78', '711', '春荣路与永春路交界处水木轩501', '', '13923509558', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '99.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '99.00', '0', '本站', '1487197415', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '99', '20', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('50', '2017021687877', '24', '1', '0', '2', '高淦', '1', '6', '78', '711', '春荣路与永春路交界处水木轩501', '', '13923509558', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '49.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1487200714', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '49', '20', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('51', '2017021753356', '25', '1', '0', '2', '黄莉', '1', '4', '60', '590', '公园路3号之5店面', '', '13950131521', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '49.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '0.00', '0', '本站', '1487305991', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '0', '', '0.00', '0', '0', '0.00', '49', '20', '0.00');
+INSERT INTO `ecs_order_info` VALUES ('52', '2017022009351', '10', '0', '0', '0', '王晋', '1', '2', '52', '500', '700', '', '18721667531', '', '', '', '', '', '14', '其他', '9', '微信支付', '等待所有商品备齐后再发', '', '', '', '', '', '', '49.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '49.00', '0', '本站', '1487544238', '0', '0', '0', '0', '0', '0', '', '', '0', '', '', '1', '', '0.00', '0', '0', '0.00', '49', '0', '0.00');
 
 -- ----------------------------
 -- Table structure for ecs_pack
@@ -3216,7 +3825,7 @@ CREATE TABLE `ecs_pay_log` (
   `order_type` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `is_paid` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`log_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=399 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=407 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_pay_log
@@ -3258,9 +3867,17 @@ INSERT INTO `ecs_pay_log` VALUES ('392', '398', '550.00', '0', '0');
 INSERT INTO `ecs_pay_log` VALUES ('393', '399', '275.00', '0', '0');
 INSERT INTO `ecs_pay_log` VALUES ('394', '405', '2750.00', '0', '0');
 INSERT INTO `ecs_pay_log` VALUES ('395', '406', '15.00', '0', '0');
-INSERT INTO `ecs_pay_log` VALUES ('396', '7', '15.02', '0', '0');
-INSERT INTO `ecs_pay_log` VALUES ('397', '17', '15.02', '0', '0');
-INSERT INTO `ecs_pay_log` VALUES ('398', '24', '0.00', '0', '0');
+INSERT INTO `ecs_pay_log` VALUES ('396', '7', '0.18', '0', '0');
+INSERT INTO `ecs_pay_log` VALUES ('397', '26', '0.00', '0', '0');
+INSERT INTO `ecs_pay_log` VALUES ('398', '36', '0.02', '0', '0');
+INSERT INTO `ecs_pay_log` VALUES ('399', '35', '0.02', '0', '0');
+INSERT INTO `ecs_pay_log` VALUES ('400', '18', '0.00', '0', '0');
+INSERT INTO `ecs_pay_log` VALUES ('401', '13', '0.00', '0', '0');
+INSERT INTO `ecs_pay_log` VALUES ('402', '19', '0.00', '0', '0');
+INSERT INTO `ecs_pay_log` VALUES ('403', '1', '0.02', '0', '0');
+INSERT INTO `ecs_pay_log` VALUES ('404', '31', '0.00', '0', '0');
+INSERT INTO `ecs_pay_log` VALUES ('405', '47', '0.00', '0', '0');
+INSERT INTO `ecs_pay_log` VALUES ('406', '42', '0.00', '0', '0');
 
 -- ----------------------------
 -- Table structure for ecs_plugins
@@ -3289,43 +3906,48 @@ CREATE TABLE `ecs_products` (
   `goods_attr` varchar(50) DEFAULT NULL,
   `product_sn` varchar(60) DEFAULT NULL,
   `product_number` smallint(5) unsigned DEFAULT '0',
-  `attributeprice` varchar(255) DEFAULT NULL,
+  `attributeprice` decimal(10,2) DEFAULT '0.00',
   `attributeimg` varchar(255) DEFAULT NULL,
+  `priceratio` double(7,6) DEFAULT '1.000000' COMMENT '//货品价格比例',
+  `falseprice` decimal(10,2) DEFAULT '0.00' COMMENT '//货品假价格',
   PRIMARY KEY (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_products
 -- ----------------------------
-INSERT INTO `ecs_products` VALUES ('1', '32', '163', '', '100', null, null);
-INSERT INTO `ecs_products` VALUES ('2', '24', '167', '', '100', null, null);
-INSERT INTO `ecs_products` VALUES ('3', '23', '175', '', '98', null, null);
-INSERT INTO `ecs_products` VALUES ('4', '21', '188', '', '17', null, null);
-INSERT INTO `ecs_products` VALUES ('5', '20', '194', '', '13', null, null);
-INSERT INTO `ecs_products` VALUES ('6', '17', '201', '', '981', null, null);
-INSERT INTO `ecs_products` VALUES ('7', '14', '213', '', '4', null, null);
-INSERT INTO `ecs_products` VALUES ('8', '13', '217', '', '8', null, null);
-INSERT INTO `ecs_products` VALUES ('9', '10', '239', '', '4', null, null);
-INSERT INTO `ecs_products` VALUES ('10', '10', '240', '', '12', null, null);
-INSERT INTO `ecs_products` VALUES ('11', '9', '227', '', '9', null, null);
-INSERT INTO `ecs_products` VALUES ('12', '9', '226', '', '3', null, null);
-INSERT INTO `ecs_products` VALUES ('13', '8', '231', '', '17', null, null);
-INSERT INTO `ecs_products` VALUES ('30', '2', '416', 'ECS000002g_p30', '20', '0.01', 'uploads/4e9f43e3855bb77905d172aa8492dc91.jpg');
-INSERT INTO `ecs_products` VALUES ('15', '16', '319', 'ECS000016g_p15', '1000', null, null);
-INSERT INTO `ecs_products` VALUES ('16', '16', '320', 'ECS000016g_p16', '1000', null, null);
-INSERT INTO `ecs_products` VALUES ('17', '16', '318', 'ECS000016g_p17', '1000', null, null);
-INSERT INTO `ecs_products` VALUES ('18', '12', '322', 'ECS000012g_p18', '1000', null, null);
-INSERT INTO `ecs_products` VALUES ('19', '12', '323', 'ECS000012g_p19', '1000', null, null);
-INSERT INTO `ecs_products` VALUES ('20', '12', '321', 'ECS000012g_p20', '1000', null, null);
-INSERT INTO `ecs_products` VALUES ('21', '189', '369,373', 'ECS000189g_p21', '10', '10', 'uploads/37665db0effee3165d7b8e1bee9e2118.jpg');
-INSERT INTO `ecs_products` VALUES ('22', '189', '369,374', 'ECS000189g_p22', '369', '54', 'uploads/02d9bad783ecdca5661fe508e201a9d1.jpg');
-INSERT INTO `ecs_products` VALUES ('23', '189', '369,375', 'ECS000189g_p23', '200', '30', 'uploads/215f54891d9c8e31c65cc254a6d9d022.jpg');
-INSERT INTO `ecs_products` VALUES ('24', '189', '370,373', 'ECS000189g_p24', '80', '20', 'uploads/8ab3093e76e94a7dfc49f1201d2f766f.jpg');
-INSERT INTO `ecs_products` VALUES ('28', '1', '403,404', 'ECS000000g_p28', '19', '0.01', 'uploads/7aad119eeeb9460df851e77fa9d3d470.jpg');
-INSERT INTO `ecs_products` VALUES ('29', '1', '403,405', 'ECS000000g_p29', '20', '0.02', 'uploads/de3b0fc4108509a8316cdf2c120f822d.jpg');
-INSERT INTO `ecs_products` VALUES ('31', '5', '420', 'ECS000005g_p31', '20', '0.03', 'uploads/fdf89e7c28e451ebc1215138c419a4a7.jpg');
-INSERT INTO `ecs_products` VALUES ('32', '7', '424', 'ECS000007g_p32', '19', '0.02', 'uploads/21e4e402f5bbdcce4e19ed038f31c155.jpg');
-INSERT INTO `ecs_products` VALUES ('34', '1', '403,405,427', 'ECS000000g_p34', '20', '0.10', 'uploads/0f5e0445865d8e63a073d39dff58d033.jpg');
+INSERT INTO `ecs_products` VALUES ('1', '32', '163', '', '100', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('62', '24', '478', 'ECS000024g_p62', '50', '0.50', 'uploads/92792141eaa4056bb550fbfbbce6d1dd.jpg', '0.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('5', '20', '194', '', '13', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('37', '17', '445,447', 'ECS000017g_p37', '2', '1.00', 'uploads/16d04a86d0d3693aa05df44af1c4bd89.png', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('7', '14', '213', '', '4', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('8', '13', '217', '', '8', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('9', '10', '239', '', '4', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('10', '10', '240', '', '12', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('11', '9', '227', '', '9', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('12', '9', '226', '', '3', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('13', '8', '231', '', '17', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('36', '16', '431,432', 'ECS000016g_p36', '5', '2.00', 'uploads/f72a8e41ad3a885c41c695bb5c357466.png', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('18', '12', '322', 'ECS000012g_p18', '1000', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('19', '12', '323', 'ECS000012g_p19', '1000', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('20', '12', '321', 'ECS000012g_p20', '1000', null, null, '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('21', '189', '369,373', 'ECS000189g_p21', '10', '10.00', 'uploads/37665db0effee3165d7b8e1bee9e2118.jpg', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('22', '189', '369,374', 'ECS000189g_p22', '369', '54.00', 'uploads/02d9bad783ecdca5661fe508e201a9d1.jpg', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('23', '189', '369,375', 'ECS000189g_p23', '200', '30.00', 'uploads/215f54891d9c8e31c65cc254a6d9d022.jpg', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('24', '189', '370,373', 'ECS000189g_p24', '80', '20.00', 'uploads/8ab3093e76e94a7dfc49f1201d2f766f.jpg', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('51', '1', '403,404', 'ECS000000g_p51', '50', '0.10', 'uploads/eba04926246be34857e1d032a1bd3a0f.jpg', '0.830000', '0.00');
+INSERT INTO `ecs_products` VALUES ('52', '1', '403,405', 'ECS000000g_p52', '50', '0.20', 'uploads/a58b71d48e7ba890df759c278cecbdb0.jpg', '0.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('53', '2', '416', 'ECS000002g_p53', '49', '0.20', 'uploads/6d8e87dce4ffb0164e6af9c047f57ec6.jpg', '0.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('50', '5', '420', 'ECS000005g_p50', '50', '0.40', 'uploads/544ffdab6c13e0a4fc7aa8971b8658f4.jpg', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('35', '16', '431,433', 'ECS000016g_p35', '3', '20.00', 'uploads/60e4097a06a46f01b559ec7b7cbdd93f.png', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('38', '17', '445,448', 'ECS000017g_p38', '4', '3.00', 'uploads/a0471294450938c5650211d17e0672d5.png', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('39', '18', '458,461', 'ECS000018g_p39', '6', '5.00', 'uploads/238032c074680ba4a4b112085f6561d6.png', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('40', '18', '457,461', 'ECS000018g_p40', '7', '6.00', 'uploads/a3197bd523f7955f9ce8c572dadb00a8.png', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('41', '18', '458,459', 'ECS000018g_p41', '10', '9.00', 'uploads/6343992aa2ae8cfbc7cec23dfd999eac.png', '1.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('57', '21', '470', 'ECS000021g_p57', '20', '37.00', 'uploads/24729709772a72c495b951d1654005be.jpg', '0.494949', '0.00');
+INSERT INTO `ecs_products` VALUES ('58', '22', '472', 'ECS000022g_p58', '1000', '23.39', 'uploads/09348e946480ce0576fa7a8fcb7f96f7.png', '0.360000', '0.00');
+INSERT INTO `ecs_products` VALUES ('60', '23', '474', 'ECS000023g_p60', '50', '0.10', 'uploads/4bb334d8591ae86561c53b91eca504a1.jpg', '0.000000', '0.00');
+INSERT INTO `ecs_products` VALUES ('64', '25', '482', 'ECS000025g_p64', '50', '0.40', 'uploads/bc2e00021dba09368a1c800f74e92aae.jpg', '0.000000', '0.00');
 
 -- ----------------------------
 -- Table structure for ecs_region
@@ -6813,7 +7435,7 @@ CREATE TABLE `ecs_role` (
 -- ----------------------------
 INSERT INTO `ecs_role` VALUES ('2', '测试', 'wx_api,wx_menu,wx_config,wx_bonus,wx_regmsg,wx_lang,wx_keywords,wx_point,wx_fun,wx_prize,wx_zjd,wx_dzp,wx_qr,wx_order,wx_pay,wx_reorder,wx_fans,wx_oauth,wx_tuijian,wx_list,wx_autoreg,affiliate,affiliate_ck,zdy_parent,danpin_tuiguang', ' ');
 INSERT INTO `ecs_role` VALUES ('3', '供应商', '', '供应商  ');
-INSERT INTO `ecs_role` VALUES ('4', '艺术家', '', '艺术家');
+INSERT INTO `ecs_role` VALUES ('4', '设计师', '', '设计师 ');
 
 -- ----------------------------
 -- Table structure for ecs_searchengine
@@ -6958,7 +7580,40 @@ INSERT INTO `ecs_searchengine` VALUES ('2015-04-19', 'BAIDU', '2');
 INSERT INTO `ecs_searchengine` VALUES ('2015-04-19', 'GOOGLE', '8');
 INSERT INTO `ecs_searchengine` VALUES ('2015-04-20', 'SOGOU', '1');
 INSERT INTO `ecs_searchengine` VALUES ('2017-01-18', 'GOOGLE', '36');
-INSERT INTO `ecs_searchengine` VALUES ('2017-01-19', 'GOOGLE', '22');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-19', 'GOOGLE', '56');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-19', 'SOGOU', '2');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-20', 'GOOGLE', '75');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-21', 'GOOGLE', '92');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-22', 'GOOGLE', '38');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-23', 'GOOGLE', '116');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-24', 'GOOGLE', '66');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-25', 'GOOGLE', '41');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-26', 'GOOGLE', '28');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-27', 'GOOGLE', '27');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-28', 'GOOGLE', '33');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-29', 'GOOGLE', '101');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-30', 'GOOGLE', '186');
+INSERT INTO `ecs_searchengine` VALUES ('2017-01-31', 'GOOGLE', '112');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-01', 'GOOGLE', '191');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-02', 'GOOGLE', '126');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-03', 'GOOGLE', '206');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-04', 'GOOGLE', '130');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-05', 'GOOGLE', '81');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-06', 'GOOGLE', '22');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-07', 'GOOGLE', '53');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-08', 'GOOGLE', '20');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-09', 'GOOGLE', '28');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-10', 'GOOGLE', '29');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-11', 'GOOGLE', '10');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-12', 'GOOGLE', '15');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-13', 'GOOGLE', '18');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-14', 'GOOGLE', '10');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-15', 'GOOGLE', '7');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-16', 'GOOGLE', '31');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-17', 'GOOGLE', '44');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-18', 'GOOGLE', '64');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-19', 'GOOGLE', '12');
+INSERT INTO `ecs_searchengine` VALUES ('2017-02-20', 'GOOGLE', '34');
 
 -- ----------------------------
 -- Table structure for ecs_sessions
@@ -6982,7 +7637,8 @@ CREATE TABLE `ecs_sessions` (
 -- ----------------------------
 -- Records of ecs_sessions
 -- ----------------------------
-INSERT INTO `ecs_sessions` VALUES ('638c8bad706fd9ba1c5de975e7f94d81', '1486606442', '13', '0', '127.0.0.1', '0', '0', '1.00', '0', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:70:\"http://localhost:8080/tgroupon/mobile/my_usergrzx.php?act=address_list\";}');
+INSERT INTO `ecs_sessions` VALUES ('f5050d3d29c93ff4efc727b19db15770', '1487751477', '0', '1', '0.0.0.0', '0', '0', '0.00', '0', 'a:4:{s:10:\"admin_name\";s:5:\"admin\";s:11:\"action_list\";s:3:\"all\";s:10:\"last_check\";i:1487722677;s:12:\"suppliers_id\";s:1:\"0\";}');
+INSERT INTO `ecs_sessions` VALUES ('a753d51d0204196d1fcecb2bdd66132b', '1487752491', '0', '0', '0.0.0.0', '0', '0', '1.00', '0', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:47:\"http://localhost:8080/tgroupon/mobile/index.php\";}');
 
 -- ----------------------------
 -- Table structure for ecs_sessions_data
@@ -8407,7 +9063,86 @@ INSERT INTO `ecs_sessions_data` VALUES ('d0655d5eb6adb058a8a1b344fe2d9774', '296
 INSERT INTO `ecs_sessions_data` VALUES ('2fba0fbec7605c710b468ab8d7e75afa', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:106:\"http://meetuuu.com/mobile/my_usergrzx.php?act=address_list&code=021PoyCV1VADBU0GjGCV1wQHCV1PoyCo&state=cft\";s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:3:\"我\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"4\";s:4:\"city\";s:2:\"57\";s:8:\"district\";s:3:\"560\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:9:\"发广告\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721887224\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"4\";}s:10:\"flow_order\";N;s:15:\"my_mobile_order\";s:2:\"15\";}');
 INSERT INTO `ecs_sessions_data` VALUES ('2850f12b3c50d28054b9785ecde60746', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&order_id=16\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"2\";s:8:\"add_time\";i:1484768595;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"2\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:5:\"frank\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2708\";s:7:\"address\";s:18:\"国定东路200号\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}s:15:\"my_mobile_order\";s:2:\"16\";}');
 INSERT INTO `ecs_sessions_data` VALUES ('1efe6128aaf819c05eff068fd8e1335d', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:13:\"singlemessage\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"1\";s:8:\"add_time\";i:1484768597;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";s:1:\"1\";s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"1\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"王晋\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"2\";s:4:\"city\";s:2:\"52\";s:8:\"district\";s:3:\"501\";s:7:\"address\";s:12:\"测试地址\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721667531\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"17\";}');
-INSERT INTO `ecs_sessions_data` VALUES ('84e99250b91d7284b4d7da4d9f6bf340', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:90:\"http://localhost:8080/tgroupon/mobile/flow.php?step=pay_select&lineshop=6&cartid=36&type=1\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"6\";s:8:\"add_time\";i:1486421450;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:6;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"5\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"王永生\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"4\";s:4:\"city\";s:2:\"57\";s:8:\"district\";s:3:\"560\";s:7:\"address\";s:9:\"鲁提辖\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18119517251\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:6:\"王晋\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"21\";s:4:\"city\";s:3:\"277\";s:8:\"district\";s:4:\"2302\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:12:\"测试地址\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721667531\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"6\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('a20a503fc11af3231286aa818112b5cc', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:52:\"http://meetuuu.com/mobile/my_user.php?act=order_list\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"5\";s:8:\"add_time\";i:1484770237;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"15\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"王永生\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"5\";s:4:\"city\";s:2:\"62\";s:8:\"district\";s:3:\"604\";s:7:\"address\";s:12:\"心嗖嗖嗖\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18119517251\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:9:\"王永生\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"5\";s:4:\"city\";s:2:\"62\";s:8:\"district\";s:3:\"604\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:12:\"心嗖嗖嗖\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18119517251\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"5\";}s:15:\"my_mobile_order\";s:2:\"18\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('0a2f3716c91e0e59836c36630e6e81f9', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:13:\"singlemessage\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:63:\"http://meetuuu.com/mobile/flow.php?step=pay_select&cartid=35,34\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";N;s:15:\"my_mobile_order\";s:2:\"19\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('fb6a5947cf28620effead24e3cdb474f', '2969618074', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&order_id=20\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"1\";s:8:\"add_time\";i:1484780237;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";s:1:\"1\";s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"1\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"王晋\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"2\";s:4:\"city\";s:2:\"52\";s:8:\"district\";s:3:\"501\";s:7:\"address\";s:12:\"测试地址\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721667531\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('bfd8079ad7a58bebd89b108857ef8dbc', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"1\";s:8:\"add_time\";i:1484780342;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";s:1:\"1\";s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"1\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"王晋\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"2\";s:4:\"city\";s:2:\"52\";s:8:\"district\";s:3:\"501\";s:7:\"address\";s:12:\"测试地址\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721667531\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('5c71d28151e80b25d62206cecab30a96', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:52:\"http://meetuuu.com/mobile/my_user.php?act=order_list\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"1\";s:8:\"add_time\";i:1484781369;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";s:1:\"1\";s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"1\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"王晋\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"2\";s:4:\"city\";s:2:\"52\";s:8:\"district\";s:3:\"501\";s:7:\"address\";s:12:\"测试地址\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721667531\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('dbbe1f07e3b1142198bb6a46939bae03', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:52:\"http://meetuuu.com/mobile/my_user.php?act=order_list\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"4\";s:8:\"add_time\";i:1484782150;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"14\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"王静\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"23\";s:4:\"city\";s:3:\"303\";s:8:\"district\";s:4:\"2515\";s:7:\"address\";s:18:\"不不不那女孩\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721887229\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}s:15:\"my_mobile_order\";s:2:\"24\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('f83514dcb9e8680396562026af43822e', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:52:\"http://meetuuu.com/mobile/my_user.php?act=order_list\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"5\";s:8:\"add_time\";i:1484784823;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"15\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"王永生\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"5\";s:4:\"city\";s:2:\"62\";s:8:\"district\";s:3:\"604\";s:7:\"address\";s:12:\"心嗖嗖嗖\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18119517251\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"25\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('9b7f5cdc2367d98dd9231a445cda6eb3', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:40:\"http://meetuuu.com/mobile/goods_list.php\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"2\";s:8:\"add_time\";i:1484789255;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"2\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:5:\"frank\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2708\";s:7:\"address\";s:18:\"国定东路200号\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}s:15:\"my_mobile_order\";s:2:\"26\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('67d563b51e542075e9aa3f7353e007fd', '4294967295', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:106:\"http://meetuuu.com/mobile/my_usergrzx.php?act=address_list&code=0019E52x07Qw1h1LBf3x0Ehg2x09E52t&state=cft\";s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:6:\"汪静\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"5\";s:4:\"city\";s:2:\"66\";s:8:\"district\";s:3:\"633\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:12:\"国定东路\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721887224\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"2\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('9a428b3160a0cd41e11064c9eafc5f04', '4294967295', 'a:8:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:52:\"http://meetuuu.com/mobile/my_user.php?act=order_list\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"1\";s:8:\"add_time\";i:1484854105;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"5\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:5:\"frank\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2713\";s:7:\"address\";s:6:\"abc路\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:5:\"frank\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2713\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:6:\"abc路\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";}s:15:\"my_mobile_order\";s:1:\"1\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('493761ad765346ec249bc492887f1ddb', '4294967295', 'a:8:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:12:\"groupmessage\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:52:\"http://meetuuu.com/mobile/my_user.php?act=order_list\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"3\";s:8:\"add_time\";i:1484855163;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";s:1:\"1\";s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"8\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"王晋\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"2\";s:4:\"city\";s:2:\"52\";s:8:\"district\";s:3:\"500\";s:7:\"address\";s:6:\"北京\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721667531\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:6:\"王晋\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"2\";s:4:\"city\";s:2:\"52\";s:8:\"district\";s:3:\"500\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:6:\"北京\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721667531\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"3\";}s:15:\"my_mobile_order\";s:1:\"2\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('5f57f47e0f82f718c41d77f6cc16d8a5', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:52:\"http://meetuuu.com/mobile/my_user.php?act=order_list\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"3\";s:8:\"add_time\";i:1484869711;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"16\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"王晋\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"3\";s:4:\"city\";s:2:\"38\";s:8:\"district\";s:3:\"418\";s:7:\"address\";s:12:\"测试地址\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721667531\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:6:\"王晋\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"3\";s:4:\"city\";s:2:\"38\";s:8:\"district\";s:3:\"418\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:12:\"测试地址\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721667531\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"3\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('966b8126c82e3fec4ebb20712ed6194d', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:46:\"http://meetuuu.com/mobile/shop-single.php?id=1\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"1\";s:8:\"add_time\";i:1484869721;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"5\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:5:\"frank\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2713\";s:7:\"address\";s:6:\"abc路\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:1:\"4\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('e67ccbf105d649e4a1fb7ca5abdd6510', '4294967295', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:219:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=%E7%8E%8B%E6%99%8B&tel=18721667531&province=%E5%8C%97%E4%BA%AC%E5%B8%82&city=%E5%8C%97%E4%BA%AC%E5%B8%82&district=%E4%B8%9C%E5%9F%8E%E5%8C%BA&address=700\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('9a9ccb64ec5f15bcac4d4930f8969f0b', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:40:\"http://meetuuu.com/mobile/goods_list.php\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"6\";s:8:\"add_time\";i:1484973560;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"11\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"阿任\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"712\";s:7:\"address\";s:6:\"金石\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"15992385879\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:6:\"阿任\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"712\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:6:\"金石\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"15992385879\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"6\";}s:15:\"my_mobile_order\";s:1:\"3\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('05056823896b71b1d1c86a381cb0f4eb', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:46:\"http://meetuuu.com/mobile/shop-single.php?id=2\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"4\";s:8:\"add_time\";i:1484960450;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"9\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"黄朝吟\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:43:\"潮州大道华禧大厦5号铺雅庭瓷砖\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"13433730966\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:1:\"2\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('81f29de0d9ac377d2aef74a123257c0b', '4294967295', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:229:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=jack&tel=15021836514&province=%E5%8C%97%E4%BA%AC%E5%B8%82&city=%E5%8E%BF&district=%E5%AF%86%E4%BA%91%E5%8E%BF&address=%E5%93%88%E5%88%A9%E8%B7%AF%E4%BA%9A%E8%B7%AF\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('ab47e936f278c9ed1e35afe5bf924732', '2969810524', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:270:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=%E7%8E%8B%E9%9D%99&tel=18721887229&province=%E5%B1%B1%E8%A5%BF%E7%9C%81&city=%E6%99%8B%E5%9F%8E%E5%B8%82&district=%E6%B3%BD%E5%B7%9E%E5%8E%BF&address=%E4%B8%8D%E4%B8%8D%E4%B8%8D%E9%82%A3%E5%A5%B3%E5%AD%A9\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('9f406874b8a5e57cd155d570e94f9161', '4294967295', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:229:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=jack&tel=15021836514&province=%E5%8C%97%E4%BA%AC%E5%B8%82&city=%E5%8E%BF&district=%E5%BB%B6%E5%BA%86%E5%8E%BF&address=%E5%93%88%E5%88%A9%E8%B7%AF%E4%BA%9A%E8%B7%AF\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('9da3a2c5034fb9b80ef166356be008b9', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:46:\"http://meetuuu.com/mobile/shop-single.php?id=1\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"5\";s:8:\"add_time\";i:1484955500;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"7\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"张泉凯\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2712\";s:7:\"address\";s:22:\"九龙路515号1106室\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"15692185366\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}s:15:\"my_mobile_order\";s:1:\"1\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('a599e87e078397b672a4cda8a41d56d8', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:46:\"http://meetuuu.com/mobile/shop-single.php?id=1\";s:10:\"flow_order\";N;s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:9:\"张泉凯\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2708\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:29:\"国定东路200号4号楼2层\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"15692185366\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"5\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('6245f89f2a0f729a5294ddfc1fa4a682', '2970115438', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:57:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&order_id=4\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"5\";s:8:\"add_time\";i:1485028919;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"10\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"张泉凯\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2708\";s:7:\"address\";s:29:\"国定东路200号4号楼2层\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"15692185366\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:1:\"4\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('22802b5fc20063bd81aba804b22d7309', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:61:\"http://meetuuu.com/mobile/flow.php?step=pay_select&&cartid=18\";s:10:\"flow_order\";N;s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:6:\"感觉\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"7\";s:4:\"city\";s:3:\"108\";s:8:\"district\";s:3:\"948\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:18:\"我再考虑考虑\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721887229\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"7\";}s:15:\"my_mobile_order\";s:1:\"6\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('4abf97001928223a7fdaae1cbaf17528', '2970181350', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:270:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=%E7%8E%8B%E9%9D%99&tel=18721887229&province=%E5%B1%B1%E8%A5%BF%E7%9C%81&city=%E6%99%8B%E5%9F%8E%E5%B8%82&district=%E6%B3%BD%E5%B7%9E%E5%8E%BF&address=%E4%B8%8D%E4%B8%8D%E4%B8%8D%E9%82%A3%E5%A5%B3%E5%AD%A9\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('3c95a9717aca8951a4edf1986415dc40', '4294967295', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:264:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=%E6%B1%AA%E6%B1%9F&tel=18721887224&province=%E4%B8%8A%E6%B5%B7%E5%B8%82&city=%E4%B8%8A%E6%B5%B7%E5%B8%82&district=%E6%9D%A8%E6%B5%A6%E5%8C%BA&address=%E5%9B%BD%E5%AE%9A%E4%B8%9C%E8%B7%AF200%E5%8F%B7\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('1fa2045675a3761e5b66ba124a279a21', '2970357627', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:229:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=%E5%BC%A0%E6%B3%89%E5%87%AF&tel=15692185366&province=%E4%B8%8A%E6%B5%B7%E5%B8%82&city=%E4%B8%8A%E6%B5%B7%E5%B8%82&district=%E8%99%B9%E5%8F%A3%E5%8C%BA&address=1196\";s:10:\"flow_order\";N;}');
+INSERT INTO `ecs_sessions_data` VALUES ('b6eedac57d0187324fa0912f0df1ed6c', '4294967295', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:110:\"http://meetuuu.com/mobile/my_usergrzx.php?act=address_list&code=011KY8QL10evQ11J5dOL1gmcQL1KY8Qr&state=fangbei\";s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:9:\"台风天\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"4\";s:4:\"city\";s:2:\"57\";s:8:\"district\";s:3:\"560\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:15:\"沉沉浮浮的\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721887229\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('3fe89bf8b0250ea6a6f5fbdb8802fbb0', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:52:\"http://meetuuu.com/mobile/my_user.php?act=order_list\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"8\";s:8:\"add_time\";i:1485289637;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";s:1:\"1\";s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"71\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"王晋\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:1:\"2\";s:4:\"city\";s:2:\"52\";s:8:\"district\";s:3:\"500\";s:7:\"address\";s:3:\"700\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721667531\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:1:\"7\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('caaebbf7fde5947d85e707382d5c0b0f', '4294967295', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:243:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=%E7%8E%8B%E5%AD%90%E6%B6%B5&tel=18721887226&province=%E4%B8%8A%E6%B5%B7%E5%B8%82&city=%E4%B8%8A%E6%B5%B7%E5%B8%82&district=%E5%AE%9D%E5%B1%B1%E5%8C%BA&address=%E5%AE%9D%E9%92%A2\";s:10:\"flow_order\";N;}');
+INSERT INTO `ecs_sessions_data` VALUES ('e7101499d15919df0c6cdfe81a5b438c', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:40:\"http://meetuuu.com/mobile/goods_list.php\";s:10:\"flow_order\";N;s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:3:\"adf\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"5\";s:4:\"city\";s:2:\"63\";s:8:\"district\";s:3:\"612\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:7:\"adfadfa\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721887229\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('f74f112897d77ce5086c4dbe03e436c7', '4294967295', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:247:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=jack&tel=15021836514&province=%E5%8C%97%E4%BA%AC%E5%B8%82&city=%E5%8C%97%E4%BA%AC%E5%B8%82&district=%E4%B8%9C%E5%9F%8E%E5%8C%BA&address=%E5%93%88%E5%88%A9%E8%B7%AF%E4%BA%9A%E8%B7%AF\";s:10:\"flow_order\";N;}');
+INSERT INTO `ecs_sessions_data` VALUES ('dac36a43dc70f7feebefc9e55f0dde06', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:46:\"http://meetuuu.com/mobile/shop-single.php?id=2\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"1\";s:8:\"add_time\";i:1485375320;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"65\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"干活\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"80\";s:8:\"district\";s:3:\"750\";s:7:\"address\";s:5:\"vbbbb\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721887229\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:1:\"8\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('172b99f6d63e15157a754106e4b43cad', '4294967295', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:1:\"4\";s:8:\"add_time\";i:1486079010;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:1:\"9\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"黄朝吟\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:43:\"潮州大道华禧大厦5号铺雅庭瓷砖\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"13433730966\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('ea982ff2d8237ee3af5cc3f7a18374fc', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&order_id=10\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1486251544;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:9:\"李裕煌\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:2:\"10\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('eb82de2e79c96b6a12d6e27b0644d361', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:52:\"http://meetuuu.com/mobile/my_user.php?act=order_list\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"11\";s:8:\"add_time\";i:1486521648;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"73\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:5:\"frank\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2717\";s:7:\"address\";s:23:\"乾溪路300弄14号502\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"25\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('43da6c9ba3c56b6306120d26ca975196', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:46:\"http://meetuuu.com/mobile/shop-single.php?id=5\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"12\";s:8:\"add_time\";i:1486521683;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"74\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"王永生\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2708\";s:7:\"address\";s:25:\"国定东路200号4号楼\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"17717872135\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"26\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('79ff83e93c5816bed7b494d49dc41b92', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&order_id=31\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"13\";s:8:\"add_time\";i:1486531627;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"75\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"张泉凯\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2712\";s:7:\"address\";s:4:\"1196\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"15692185366\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"31\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('9f29600faafbba221932c0f5a9c35538', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/shop-single.php?id=1&lineshop=10\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1486531205;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:10;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:9:\"flow_type\";i:0;}');
+INSERT INTO `ecs_sessions_data` VALUES ('91042b733694640faf4e2558fdfbfd71', '2973216910', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:243:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=%E7%8E%8B%E5%AD%90%E6%B6%B5&tel=18721887226&province=%E4%B8%8A%E6%B5%B7%E5%B8%82&city=%E4%B8%8A%E6%B5%B7%E5%B8%82&district=%E5%AE%9D%E5%B1%B1%E5%8C%BA&address=%E5%AE%9D%E9%92%A2\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('180a67b64cf3489676bda157d33a0a1b', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:13:\"singlemessage\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:88:\"http://meetuuu.com/mobile/goods_list.php?from=singlemessage&isappinstalled=0&lineshop=10\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"11\";s:8:\"add_time\";i:1486591725;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"78\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:5:\"frank\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2717\";s:7:\"address\";s:26:\"乾溪路300弄14号502室\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}s:15:\"my_mobile_order\";s:2:\"33\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('8bff3bfcd006b8629dd40abb04c3bd30', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:7:\"message\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:70:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&lineshop=10&order_id=36\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1486593499;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:10;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"36\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('08b13ad4d63976fd83f03507447ec9a9', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:57:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&order_id=4\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1486605028;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('0ac7deafe601f33f4651e7bfd36d15d0', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1486617089;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:13;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:1:\"7\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('9325cc7850660d5ecb0cfa85cca4358f', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:7:\"message\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:102:\"http://meetuuu.com/mobile/flow.php?step=pay_select&code=031nGG9i2eTZMG0q789i2NXv9i2nGG9S&state=fangbei\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";N;s:15:\"my_mobile_order\";s:1:\"1\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('9191744bb6228203c4b8a945a4225fef', '2973258475', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:7:\"message\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:112:\"http://meetuuu.com/mobile/flow.php?step=pay_select&code=0312VZJ92d8BtP0LxzK92nOZJ922VZJc&state=fangbei&winzoom=1\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";N;}');
+INSERT INTO `ecs_sessions_data` VALUES ('123c78290afa147581dec335cef03815', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:7:\"message\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:102:\"http://meetuuu.com/mobile/flow.php?step=pay_select&code=021zrD6r0rSVZr1mcN2r0jOj6r0zrD65&state=fangbei\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";N;s:15:\"my_mobile_order\";s:1:\"5\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('ea274e51459a88c1ccf72eabff9c4c4d', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:52:\"http://meetuuu.com/mobile/my_user.php?act=order_list\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"15\";s:8:\"add_time\";i:1486605373;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";s:1:\"1\";s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"79\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:15:\"王永生苹果\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"2\";s:4:\"city\";s:2:\"52\";s:8:\"district\";s:3:\"500\";s:7:\"address\";s:9:\"你管我\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18119517251\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:15:\"王永生苹果\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"2\";s:4:\"city\";s:2:\"52\";s:8:\"district\";s:3:\"500\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:9:\"你管我\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18119517251\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:2:\"15\";}s:15:\"my_mobile_order\";s:1:\"6\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('85b4b49ca2824237506055b72c1169a6', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:7:\"message\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:102:\"http://meetuuu.com/mobile/flow.php?step=pay_select&code=041lgTgh04xcxB1sxHhh0QWSgh0lgTgi&state=fangbei\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";N;}');
+INSERT INTO `ecs_sessions_data` VALUES ('3ae9efb3d58f3d360bb0ae098f3cd7cb', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"14\";s:8:\"add_time\";i:1486617096;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:13;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"76\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"汪江\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2708\";s:7:\"address\";s:18:\"国定东路200号\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721887224\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:1:\"8\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('c660ecd13fe33e31e67910a21490fcad', '4294967295', 'a:8:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:52:\"http://meetuuu.com/mobile/my_user.php?act=order_list\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"13\";s:8:\"add_time\";i:1486618488;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:4:\"0.01\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"81\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"张大宝\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"29\";s:4:\"city\";s:3:\"355\";s:8:\"district\";s:4:\"3033\";s:7:\"address\";s:9:\"改了天\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:0:\"\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"12\";s:9:\"flow_type\";i:0;s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:9:\"张大宝\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"29\";s:4:\"city\";s:3:\"355\";s:8:\"district\";s:4:\"3033\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:9:\"改了天\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:0:\"\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:2:\"13\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('2571dc2cbede5be4b56d16bb416404e4', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1486621673;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:13;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"14\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('64038afe2032029ace7de473e45e7e72', '4294967295', 'a:7:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/shop-single.php?id=7&lineshop=13\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"17\";s:8:\"add_time\";i:1486621955;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:13;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"82\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"刘明丽\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2712\";s:7:\"address\";s:22:\"九龙路515号1106室\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18601661978\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"15\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('52af6ea722e1fcf648aca270c7d13084', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"11\";s:8:\"add_time\";i:1486622115;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:13;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"78\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:5:\"frank\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2717\";s:7:\"address\";s:26:\"乾溪路300弄14号502室\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}s:15:\"my_mobile_order\";s:2:\"16\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('1bd7e95062ec9e3d5c79d815a8c96c54', '4294967295', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:40:\"http://meetuuu.com/mobile/goods_list.php\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"11\";s:8:\"add_time\";i:1486622523;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"78\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:5:\"frank\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2717\";s:7:\"address\";s:26:\"乾溪路300弄14号502室\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('6a0f745bf5a0b5729eb46134f83a8af2', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:72:\"http://meetuuu.com/mobile/my_user.php?act=order_tracking_news&order_id=8\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"14\";s:8:\"add_time\";i:1486676929;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"76\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"汪江\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2708\";s:7:\"address\";s:18:\"国定东路200号\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721887224\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:9:\"flow_type\";i:0;}');
+INSERT INTO `ecs_sessions_data` VALUES ('dedfa4c7b97281bb67133a66a12d1ce7', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/shop-single.php?id=5&lineshop=10\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"19\";s:8:\"add_time\";i:1486677106;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:10;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"83\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:24:\"粤海花园B区11幢301\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"13829099772\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"21\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('b71ed73645a484efb258bc160b0f9665', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:13:\"singlemessage\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:76:\"http://meetuuu.com/mobile/goods_list.php?from=singlemessage&isappinstalled=0\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"20\";s:8:\"add_time\";i:1486685656;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"84\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"黄朝吟\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:43:\"潮州大道华禧大厦5号铺雅庭瓷砖\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"13433730966\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"22\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('9b97fb563d86250d2ded9ed9834be905', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:70:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&lineshop=20&order_id=25\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"11\";s:8:\"add_time\";i:1486687331;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:20;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"78\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:5:\"frank\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2717\";s:7:\"address\";s:26:\"乾溪路300弄14号502室\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}s:15:\"my_mobile_order\";s:2:\"25\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('b9a032ba382438e4129e2e49c70d3746', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:39:\"http://meetuuu.com/mobile/my_income.php\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1487038584;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"29\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('096f454473555d132ba3864f490507ec', '4294967295', 'a:8:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:13:\"singlemessage\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"21\";s:8:\"add_time\";i:1486784194;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:20;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"85\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"许先生\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"77\";s:8:\"district\";s:3:\"707\";s:7:\"address\";s:14:\"科技园21号\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"13590313432\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:9:\"许先生\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"77\";s:8:\"district\";s:3:\"707\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:14:\"科技园21号\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"13590313432\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:2:\"21\";}s:15:\"my_mobile_order\";s:2:\"26\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('e8c9e2af239567eb9e75bf645deb736b', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:7:\"message\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1487042798;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"30\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('d6921c54b33322fe2c44af853e03a7f5', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:7:\"message\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&order_id=32\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1487052571;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"32\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('ce55962b201311c60e0c543ec949e21f', '4294967295', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&order_id=37\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1487055062;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('2dd52b0779049880b5638579915b77c3', '2974257916', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:264:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=%E6%B1%AA%E6%B1%9F&tel=18721887224&province=%E4%B8%8A%E6%B5%B7%E5%B8%82&city=%E4%B8%8A%E6%B5%B7%E5%B8%82&district=%E6%9D%A8%E6%B5%A6%E5%8C%BA&address=%E5%9B%BD%E5%AE%9A%E4%B8%9C%E8%B7%AF200%E5%8F%B7\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('40b813e267a6e108f5ba4a19d4b1a4f1', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"20\";s:8:\"add_time\";i:1487098670;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:20;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"84\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"黄朝吟\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:43:\"潮州大道华禧大厦5号铺雅庭瓷砖\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"13433730966\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"38\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('87c49808dadb83cfebd5b075d8145ff6', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"14\";s:8:\"add_time\";i:1487120713;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"90\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"王子涵\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2717\";s:7:\"address\";s:6:\"宝钢\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721887226\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('33ac6c1f387764c0aa610e208dd5e9eb', '2974293645', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:270:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=%E7%8E%8B%E9%9D%99&tel=18721887229&province=%E5%B1%B1%E8%A5%BF%E7%9C%81&city=%E6%99%8B%E5%9F%8E%E5%B8%82&district=%E6%B3%BD%E5%B7%9E%E5%8E%BF&address=%E4%B8%8D%E4%B8%8D%E4%B8%8D%E9%82%A3%E5%A5%B3%E5%AD%A9\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('fdd79e15774685b5f647708a40d737fd', '4294967295', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:110:\"http://meetuuu.com/mobile/my_usergrzx.php?act=address_list&code=05192iGZ0JXxZ12eKnJZ0aG1GZ092iGD&state=fangbei\";s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:9:\"王永生\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"2\";s:4:\"city\";s:2:\"52\";s:8:\"district\";s:3:\"500\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:15:\"哈哈哈哈QAQ\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"17717872351\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:2:\"15\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('cdcfd7475f177308a8a556516c407208', '4294967295', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/my_usergrzx.php?act=address_list\";s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:9:\"电放费\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"3\";s:4:\"city\";s:2:\"50\";s:8:\"district\";s:3:\"490\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:12:\"爱的发的\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:10:\"1855587154\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:2:\"15\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('8f73011cfb6ef67f0a6dddf176803666', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:7:\"message\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1487119610;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"42\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('8f770026971cba3669462180c79f8586', '2974298550', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&order_id=44\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"11\";s:8:\"add_time\";i:1487120475;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"78\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:5:\"frank\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2717\";s:7:\"address\";s:26:\"乾溪路300弄14号502室\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('f041222f95e12988aae51579c0371d00', '2974310282', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/flow.php?step=pay_ok&order_id=46\";s:9:\"flow_type\";i:0;s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1487126341;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"72\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"李裕煌\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:10:\"粤海b区\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18520737332\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('af4159dcc2ecc868c8c870063d12fd68', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:64:\"http://meetuuu.com/mobile/my_user.php?act=order_list&lineshop=20\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"11\";s:8:\"add_time\";i:1487132649;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:20;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"78\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:5:\"frank\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"0\";s:8:\"province\";s:2:\"25\";s:4:\"city\";s:3:\"321\";s:8:\"district\";s:4:\"2717\";s:7:\"address\";s:26:\"乾溪路300弄14号502室\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18616696490\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}s:15:\"my_mobile_order\";s:2:\"47\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('3acee60df3689a9dff1d2d84e175dd50', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:64:\"http://meetuuu.com/mobile/my_user.php?act=order_list&lineshop=20\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"23\";s:8:\"add_time\";i:1487181000;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:20;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"96\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:9:\"黄淑琼\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"712\";s:7:\"address\";s:18:\"江东镇独树村\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"15919531102\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"48\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('55c5903f93f73db12123e70d0c408cfa', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"24\";s:8:\"add_time\";i:1487200714;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:20;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"97\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"高淦\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"6\";s:4:\"city\";s:2:\"78\";s:8:\"district\";s:3:\"711\";s:7:\"address\";s:42:\"春荣路与永春路交界处水木轩501\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"13923509558\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"50\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('0d9946a75a8ef24f54764c6bad6ab65d', '4294967295', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:58:\"http://meetuuu.com/mobile/my_usergrzx.php?act=address_list\";s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:6:\"王江\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:2:\"13\";s:4:\"city\";s:3:\"194\";s:8:\"district\";s:4:\"1624\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:9:\"望城村\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721887229\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:2:\"14\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('cb80fb3b72e990343798e8931aeb1896', '4294967295', 'a:4:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:243:\"http://meetuuu.com/mobile/my_usergrzx.php?act=wxaddress&consignee=%E7%8E%8B%E5%AD%90%E6%B6%B5&tel=18721887226&province=%E4%B8%8A%E6%B5%B7%E5%B8%82&city=%E4%B8%8A%E6%B5%B7%E5%B8%82&district=%E5%AE%9D%E5%B1%B1%E5%8C%BA&address=%E5%AE%9D%E9%92%A2\";}');
+INSERT INTO `ecs_sessions_data` VALUES ('0f3c21ab99efd840ee5286567b5b56e7', '2974484805', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:110:\"http://meetuuu.com/mobile/my_usergrzx.php?act=address_list&code=001oTQBP09pZL92l2kBP0ymMBP0oTQB5&state=fangbei\";s:14:\"flow_consignee\";a:14:{s:10:\"address_id\";i:0;s:9:\"consignee\";s:6:\"到底\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"5\";s:4:\"city\";s:2:\"67\";s:8:\"district\";s:3:\"634\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:9:\"地方的\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:6:\"出差\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"user_id\";s:2:\"14\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('93661758ab7ab553974ccca139060e8d', '4294967295', 'a:5:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:47:\"http://meetuuu.com/mobile/shop-single.php?id=21\";s:10:\"flow_order\";a:39:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"10\";s:8:\"add_time\";i:1487544238;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";s:1:\"1\";s:10:\"post_price\";s:0:\"\";s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:2:\"95\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"王晋\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"2\";s:4:\"city\";s:2:\"52\";s:8:\"district\";s:3:\"500\";s:7:\"address\";s:3:\"700\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"18721667531\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"1\";}}');
+INSERT INTO `ecs_sessions_data` VALUES ('9f107f23290806fcf813d8e4b1ad470a', '4294967295', 'a:6:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;s:8:\"back_url\";s:51:\"http://meetuuu.com/mobile/flow.php?step=pay_success\";s:10:\"flow_order\";a:40:{s:11:\"shipping_id\";i:14;s:6:\"pay_id\";i:9;s:7:\"pack_id\";i:0;s:7:\"card_id\";i:0;s:12:\"card_message\";s:0:\"\";s:7:\"surplus\";i:0;s:8:\"integral\";i:0;s:8:\"bonus_id\";i:0;s:8:\"need_inv\";i:0;s:8:\"inv_type\";s:0:\"\";s:9:\"inv_payee\";s:0:\"\";s:11:\"inv_content\";s:0:\"\";s:10:\"postscript\";s:0:\"\";s:7:\"how_oos\";s:33:\"等待所有商品备齐后再发\";s:11:\"need_insure\";i:0;s:7:\"user_id\";s:2:\"25\";s:8:\"add_time\";i:1487305991;s:12:\"order_status\";i:0;s:15:\"shipping_status\";i:0;s:10:\"pay_status\";i:0;s:9:\"agency_id\";i:0;s:10:\"post_price\";s:0:\"\";s:11:\"lineshop_id\";i:20;s:14:\"extension_code\";s:0:\"\";s:12:\"extension_id\";i:0;s:10:\"address_id\";s:3:\"116\";s:12:\"address_name\";s:0:\"\";s:9:\"consignee\";s:6:\"黄莉\";s:5:\"email\";s:0:\"\";s:7:\"country\";s:1:\"1\";s:8:\"province\";s:1:\"4\";s:4:\"city\";s:2:\"60\";s:8:\"district\";s:3:\"590\";s:7:\"address\";s:23:\"公园路3号之5店面\";s:7:\"zipcode\";s:0:\"\";s:3:\"tel\";s:11:\"13950131521\";s:6:\"mobile\";s:0:\"\";s:13:\"sign_building\";s:0:\"\";s:9:\"best_time\";s:0:\"\";s:7:\"default\";s:1:\"0\";}s:15:\"my_mobile_order\";s:2:\"51\";}');
 
 -- ----------------------------
 -- Table structure for ecs_shipping
@@ -8865,15 +9600,17 @@ CREATE TABLE `ecs_tixian` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '//提现编号',
   `line_shopid` mediumint(8) NOT NULL COMMENT '//线下店id',
   `money` double(7,2) NOT NULL DEFAULT '0.00' COMMENT '//提现金额',
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '//提现时间',
+  `time` datetime NOT NULL COMMENT '//提现时间',
   `status` smallint(2) NOT NULL COMMENT '//状态',
   `other` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_tixian
 -- ----------------------------
+INSERT INTO `ecs_tixian` VALUES ('10', '10', '0.13', '2017-02-10 13:59:28', '1', null);
+INSERT INTO `ecs_tixian` VALUES ('11', '20', '0.09', '2017-02-10 17:09:44', '0', null);
 
 -- ----------------------------
 -- Table structure for ecs_topic
@@ -9059,6 +9796,7 @@ CREATE TABLE `ecs_touch_ad` (
   `link_phone` varchar(60) NOT NULL DEFAULT '',
   `click_count` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `enabled` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `sort` int(11) DEFAULT '0',
   PRIMARY KEY (`ad_id`),
   KEY `position_id` (`position_id`),
   KEY `enabled` (`enabled`)
@@ -9067,9 +9805,9 @@ CREATE TABLE `ecs_touch_ad` (
 -- ----------------------------
 -- Records of ecs_touch_ad
 -- ----------------------------
-INSERT INTO `ecs_touch_ad` VALUES ('1', '1', '0', '1', '', 'http://demo.tgroupon.cn/mobile/images/1394415487832396515.jpg', '1396339200', '1525161600', '', '', '', '333', '1');
-INSERT INTO `ecs_touch_ad` VALUES ('2', '1', '0', '2', '', 'http://demo.tgroupon.cn/mobile/images/1394415508290057627.jpg', '1396339200', '1525161600', '', '', '', '198', '1');
-INSERT INTO `ecs_touch_ad` VALUES ('3', '1', '0', '3', '', 'http://demo.tgroupon.cn/mobile/images/1394415497283455138.jpg', '1396339200', '1525161600', '', '', '', '209', '1');
+INSERT INTO `ecs_touch_ad` VALUES ('1', '1', '0', '1', '', 'http://demo.tgroupon.cn/mobile/images/1394415487832396515.jpg', '1396339200', '1525161600', '', '', '', '333', '1', '0');
+INSERT INTO `ecs_touch_ad` VALUES ('2', '1', '0', '2', '', 'http://demo.tgroupon.cn/mobile/images/1394415508290057627.jpg', '1396339200', '1525161600', '', '', '', '198', '1', '0');
+INSERT INTO `ecs_touch_ad` VALUES ('3', '1', '0', '3', '', 'http://demo.tgroupon.cn/mobile/images/1394415497283455138.jpg', '1396339200', '1525161600', '', '', '', '209', '1', '0');
 
 -- ----------------------------
 -- Table structure for ecs_touch_ad_position
@@ -9163,7 +9901,7 @@ CREATE TABLE `ecs_touch_priv` (
   `user_id` int(11) NOT NULL,
   `action_list` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_touch_priv
@@ -9177,6 +9915,11 @@ INSERT INTO `ecs_touch_priv` VALUES ('8', '7', 'goods_manage,cat_manage,cat_drop
 INSERT INTO `ecs_touch_priv` VALUES ('9', '8', 'goods_manage,cat_manage,cat_drop,attr_manage,brand_manage,goods_type,comment_manage');
 INSERT INTO `ecs_touch_priv` VALUES ('10', '9', '');
 INSERT INTO `ecs_touch_priv` VALUES ('11', '10', '');
+INSERT INTO `ecs_touch_priv` VALUES ('12', '11', '');
+INSERT INTO `ecs_touch_priv` VALUES ('13', '12', '');
+INSERT INTO `ecs_touch_priv` VALUES ('14', '13', '');
+INSERT INTO `ecs_touch_priv` VALUES ('15', '14', '');
+INSERT INTO `ecs_touch_priv` VALUES ('16', '15', '');
 
 -- ----------------------------
 -- Table structure for ecs_touch_shipping
@@ -9494,12 +10237,16 @@ CREATE TABLE `ecs_txlog` (
   `log_userid` mediumint(8) NOT NULL COMMENT '//提现用户id',
   `log_content` text COMMENT '//反馈信息',
   `log_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `remark` text NOT NULL COMMENT '//审核备注',
+  `objection` text NOT NULL COMMENT '//拒绝理由',
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_txlog
 -- ----------------------------
+INSERT INTO `ecs_txlog` VALUES ('1', '10', '提现金额为0.13元，正在审核中。。。', '2017-02-10 13:59:28', '', '');
+INSERT INTO `ecs_txlog` VALUES ('4', '20', '提现金额为0.09元，正在审核中。。。', '2017-02-10 17:09:44', '', '');
 
 -- ----------------------------
 -- Table structure for ecs_users
@@ -9562,15 +10309,25 @@ CREATE TABLE `ecs_users` (
   KEY `parent_id` (`parent_id`),
   KEY `flag` (`flag`),
   KEY `user_name` (`user_name`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_users
 -- ----------------------------
-INSERT INTO `ecs_users` VALUES ('11', '', '', 'Frank', '', '', '', '1', '0000-00-00', '0.00', '0.00', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', 'Frank', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '0', '0.00', 'o-YeGwpAQXlQOVB6RNz6exLHPPxI', 'http://wx.qlogo.cn/mmopen/nLB8Q0kJUtuyEX4UlWgTg8poZS7XQeQ1UekmNnrpzQv3LFW7tpCHjLZXBP3JcpCXxV3Dl319mn884kuTGrqCtlbZibj49c8PJ/0', 'oSiyOwJX1wXh7ilzz-ykUEEmO0I4', '0', '0.00', '0.00', '589af5487f7d5');
-INSERT INTO `ecs_users` VALUES ('10', '', '', '_', '', '', '', '1', '1957-01-01', '0.00', '0.00', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '_', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '1', '', '0.03', '10', '20.00', 'o-YeGws73HB3aVE16_wlbIMUZKlw', 'http://wx.qlogo.cn/mmopen/TBwsscFIaNAeDce6c0v0jW17vfibcqBJQia4yRIepQfYDkfEGvib4y1SL6WmWBA972IqcAV5FzNu3TPLmL5ibh3XkSWgxwFoyPaj/0', 'oSiyOwM-PkppQKNyaCrAsu3trLTw', '1', '0.00', '30.00', '589aedb298d60');
-INSERT INTO `ecs_users` VALUES ('12', '', '', '水', '', '', '', '1', '0000-00-00', '0.00', '0.00', '0', '0', '0', '1486550471', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '水', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '-1', '0.00', 'okRTqvltI75BOta8p8xb_c096AnE', 'http://wx.qlogo.cn/mmopen/Q3auHgzwzM5WG4JA1SQeLefTB34VWWKLdk9pbqgYcTibtVSiaHlTqOsGTWqQvb3FibYsHicv0JLuqABmJCzI4e9Gibw/0', 'oSiyOwFDxxAMzN-q4CF-LOkpKhKU', '0', '0.00', '0.00', '589af5c70cdfe');
-INSERT INTO `ecs_users` VALUES ('13', '', '', '老K', '', '', '', '1', '0000-00-00', '0.00', '0.00', '0', '0', '0', '1486554417', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '老K', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '-1', '0.00', 'okRTqvvt9sAqHsu1sggFvyZaXJ-8', 'http://wx.qlogo.cn/mmopen/6EicgjZH9pibK0ddXHlZuqTIOJ9Bo4ZOVrsnXib0Uia5rpmmiaO4n5ZVB9J1BGE5bmB6ickyWCJNBtWATMQMdz4us7icgEmETwpR6V9/0', 'oSiyOwPnhNTia-SJtea-0Ggffqhw', '0', '0.00', '0.00', '589b0531e1624');
+INSERT INTO `ecs_users` VALUES ('19', '', '', 'light', '', '', '', '1', '0000-00-00', '0.00', '0.00', '0', '0', '0', '1486705888', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', 'light', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '10', '0.00', 'okRTqvpkszlSq3J6oG6_legZecs8', 'http://wx.qlogo.cn/mmopen/m4GP008qXBl07DhOgXlfiaSkqGwDogna4c4sumptKHYSvxgwlmbxjicRZnDjIOVIx5x17ZD5iczvDRqsuiahD4vNxmBLZibHnxia2j/0', 'oSiyOwKiKxIdSCRASBiOHk1_U42A', '0', '0.00', '0.00', '589d54e0a2974');
+INSERT INTO `ecs_users` VALUES ('11', '', '', 'Frank', '', '', '', '1', '0000-00-00', '0.00', '0.00', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', 'Frank', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '0', '0.00', 'okRTqvv9Rri34dDloixJeixyRPms', 'http://wx.qlogo.cn/mmopen/tOhY9GXcK8SUUIWlLaH2kX9rd8kYlvkN6VicNV8J317RxeEonb8DBQ4PjpQRe2MviaQju6e4esqiaJpoCvbB1LacqodBjDXkO0c/0', 'oSiyOwJX1wXh7ilzz-ykUEEmO0I4', '0', '0.00', '0.00', '589af5487f7d5');
+INSERT INTO `ecs_users` VALUES ('10', '', '', '_', '', '', '', '1', '1957-01-01', '0.00', '0.00', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '_', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '1', '', '5.08', '10', '20.00', 'o-YeGws73HB3aVE16_wlbIMUZKlw', 'http://wx.qlogo.cn/mmopen/TBwsscFIaNAeDce6c0v0jW17vfibcqBJQia4yRIepQfYDkfEGvib4y1SL6WmWBA972IqcAV5FzNu3TPLmL5ibh3XkSWgxwFoyPaj/0', 'oSiyOwM-PkppQKNyaCrAsu3trLTw', '1', '0.13', '30.00', '589aedb298d60');
+INSERT INTO `ecs_users` VALUES ('12', '', '', '平常心', '', '', '', '1', '0000-00-00', '0.00', '0.00', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '平常心', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '-1', '0.00', 'okRTqvltI75BOta8p8xb_c096AnE', 'http://wx.qlogo.cn/mmopen/PdibpV1sFDHepchAVvVE80FiaYzlEChlacpwwlp1JaaFgicudVojZylVDaDBviam6CHUOTiaLrZegLYGCdHQG9TFm5Q/0', 'oSiyOwFDxxAMzN-q4CF-LOkpKhKU', '0', '0.00', '0.00', '589af5c70cdfe');
+INSERT INTO `ecs_users` VALUES ('13', '', '', '老K', '', '', '', '1', '1957-01-01', '0.00', '0.00', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '老K', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '1', '/mobile/images/logo/20170209205728_664.jpg', '0.14', '0', '10.00', 'okRTqvvt9sAqHsu1sggFvyZaXJ-8', 'http://wx.qlogo.cn/mmopen/6EicgjZH9pibK0ddXHlZuqTIOJ9Bo4ZOVrsnXib0Uia5rpmmiaO4n5ZVB9J1BGE5bmB6ickyWCJNBtWATMQMdz4us7icgEmETwpR6V9/0', 'oSiyOwPnhNTia-SJtea-0Ggffqhw', '1', '0.00', '20.00', '589b0531e1624');
+INSERT INTO `ecs_users` VALUES ('14', '', '', '西瓜桥', '', '', '', '1', '0000-00-00', '0.00', '0.00', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '西瓜桥', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '0', '0.00', 'o-YeGwly41CTpwOR5RTOHwVWA9kM', 'http://wx.qlogo.cn/mmopen/TBwsscFIaNBfIx5aiau0X0EoDuibNBibep5keHg3REYhR8Ticf5eRNkjhV64XpNMg9j2iazUiaRF2T36dj2dZs3oK4gA/0', 'oSiyOwBnNqIiM8CxI3huobLRo5QA', '1', '0.00', '0.00', '589bd170786e1');
+INSERT INTO `ecs_users` VALUES ('15', '', '', 'webys', '', '', '', '1', '0000-00-00', '0.00', '0.00', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', 'webys', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '-1', '0.00', 'o-YeGwrCaF25rSWfdWhi-XhCssUg', 'http://wx.qlogo.cn/mmopen/PiajxSqBRaEJXkKLHskPTkqibGfkMpSr8bqA5SG6Ky9HeLEd9HWUDiar4lNdcSkokMO6v0YcydJqZic3OflOiaIAsbQ/0', 'oSiyOwA414EeGr99YCuvt3QtORyU', '0', '0.00', '0.00', '589c3a7bc6b72');
+INSERT INTO `ecs_users` VALUES ('16', '', '', 'Z C J 、', '', '', '', '1', '0000-00-00', '0.00', '0.00', '0', '0', '0', '1486640205', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', 'Z C J 、', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '-1', '0.00', 'o-YeGwiL_BgYPT_AxFV_jAELx5lM', 'http://wx.qlogo.cn/mmopen/PiajxSqBRaELR7pPNB1R3SJ37Uvs97pSBevibMlRs4Y0gibiacRCkmkO8sQT6qZlvI7SU5tytbiaYzx8zzDPK3licI5w/0', 'oSiyOwOLgKEzjlmLflar9ZNSHRZI', '0', '0.00', '0.00', '589c544d78f2d');
+INSERT INTO `ecs_users` VALUES ('17', '', '', '感恩', '', '', '', '2', '0000-00-00', '0.00', '0.00', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '感恩', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '13', '0.00', 'okRTqvn9i5G6UHCVOVb1jkr4Y-JI', 'http://wx.qlogo.cn/mmopen/tOhY9GXcK8SUUIWlLaH2kbvBgicAwOwqvFibtGlicO6Sx2AKHo5uBaEN6S02HTYniaYq3TibBoLFSMHlPCibVDxwWq5mvtczJcjwLia/0', 'oSiyOwDi-jU0XhvhSZlCbBVCyD6I', '0', '0.00', '0.00', '589c7cb38996c');
+INSERT INTO `ecs_users` VALUES ('20', '', '', 'Kitty', '', '', '', '2', '1957-01-01', '0.00', '0.00', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', 'Kitty', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '1', '', '19.67', '-1', '5.00', 'okRTqvnsSG3Qs0Fr14YsHbdictuM', 'http://wx.qlogo.cn/mmopen/m4GP008qXBmSNsqtXQjE3bEiauufStU2O4QCqn19Dql22E7YY9OmFRFSiaFSMUCE4td4LTrKd3afFfTTGwxvyNIknibfhQBLTibr/0', 'oSiyOwPPMhWTsAOg1T-3FuOo2I7o', '0', '0.09', '15.00', '589d7638cc7e6');
+INSERT INTO `ecs_users` VALUES ('21', '', '', '达ོ达ོ在简单', '', '', '', '1', '0000-00-00', '0.00', '0.00', '0', '0', '0', '1486812763', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '达ོ达ོ在简单', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '-1', '0.00', 'okRTqvhXfkjxIVLsxkRvhow5iPsg', 'http://wx.qlogo.cn/mmopen/m4GP008qXBmYvicnw0vmzemeXlksC6MC1dCCd3y3qFGF3bpJ6THTHZRJZozrU6QoeUCPDLicJP6lMqFuAAbf5mnLMuWo7YlCSL/0', 'oSiyOwPH39nSWcrNAb85EylvGaJI', '0', '0.00', '0.00', '589ef65b06ee5');
+INSERT INTO `ecs_users` VALUES ('23', '', '', 'QIONG', '', '', '', '2', '0000-00-00', '0.00', '0.00', '0', '0', '0', '1487209713', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', 'QIONG', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '0', null, '0.00', '20', '0.00', 'okRTqvqxHq9XhUgW0U9ld5YXRy0k', 'http://wx.qlogo.cn/mmopen/6EicgjZH9pibK0ddXHlZuqTPrCAv8ot2ZksOEKwZEtZNguxkkUvoVH9GRPoku1lqCtkYfe55eys5e8L7ibsH3Mewz1Bz7Ke9gyn/0', 'oSiyOwHMxuVbaPK4gRjlWjxiE-N0', '0', '0.00', '0.00', '58a504f1b9d01');
+INSERT INTO `ecs_users` VALUES ('24', '', '', '蓝海动漫高淦', '', '', '', '2', '1957-01-01', '0.00', '0.00', '0', '0', '0', '1487226183', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '蓝海动漫高淦', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '1', '', '0.00', '20', '5.00', 'okRTqvqTRl5csoJrlygJZMVUipz8', 'http://wx.qlogo.cn/mmopen/Q3auHgzwzM7HDNK2nUGOma2ibe5ZoQPxVtREfsReGS1RBgRacqSqbE9nNwWibuO3icBvicSSNp01UWyEqgMaLpSyTH042ibN8HSThBE1GRCQECiag/0', 'oSiyOwNHC9ahhW3TKvDd743sXecc', '0', '0.00', '15.00', '58a5454771787');
+INSERT INTO `ecs_users` VALUES ('25', '', '', '蓝蓝', '', '', '', '2', '1957-01-01', '0.00', '0.00', '0', '0', '0', '1487334768', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '蓝蓝', '', '', '', '', '', '0', '0.00', null, null, '', '', null, '', '1', '', '0.00', '20', '0.00', 'okRTqvptGgFg69dqGKKwusKleTCk', 'http://wx.qlogo.cn/mmopen/PdibpV1sFDHcVreFhMLmMKPmJYQff17S3CYW0fB32ND3uGRh1AIkAyISworGhJsgCzsSSJf75ic1bic6Nu6JkoemeHhIspKN66n/0', 'oSiyOwAKyFeuh57NkB6NDXONJgKI', '0', '0.00', '0.00', '58a6ed70de3d7');
 
 -- ----------------------------
 -- Table structure for ecs_user_account
@@ -9620,18 +10377,39 @@ CREATE TABLE `ecs_user_address` (
   `default` int(2) NOT NULL DEFAULT '0' COMMENT '//默认地址',
   PRIMARY KEY (`address_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_user_address
 -- ----------------------------
-INSERT INTO `ecs_user_address` VALUES ('1', '', '1', '王晋', '', '1', '2', '52', '501', '测试地址', '', '18721667531', '', '', '', '0');
-INSERT INTO `ecs_user_address` VALUES ('2', '', '2', 'frank', '', '1', '25', '321', '2708', '国定东路200号', '', '18616696490', '', '', '', '1');
-INSERT INTO `ecs_user_address` VALUES ('3', '', '2', '华东交大', '', '1', '5', '66', '633', '都回家', '', '15021836514', '', '', '', '0');
-INSERT INTO `ecs_user_address` VALUES ('14', '', '4', '王静', '', '0', '23', '303', '2515', '不不不那女孩', '', '18721887229', '', '', '', '1');
-INSERT INTO `ecs_user_address` VALUES ('5', '', '6', '王永生', '', '1', '4', '57', '560', '鲁提辖', '', '18119517251', '', '', '', '0');
-INSERT INTO `ecs_user_address` VALUES ('8', '', '6', '王永生', '', '1', '5', '66', '633', '哦嗖嗖嗖', '', '18119517251', '', '', '', '0');
-INSERT INTO `ecs_user_address` VALUES ('15', '', '6', '王晋', '', '1', '21', '277', '2302', '测试地址', '', '18721667531', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('72', '', '10', '李裕煌', '', '1', '6', '78', '711', '粤海b区', '', '18520737332', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('70', '', '5', 'ken', '', '1', '25', '321', '2706', '500', '', '15692185366', '', '', '', '1');
+INSERT INTO `ecs_user_address` VALUES ('9', '', '4', '黄朝吟', '', '1', '6', '78', '711', '潮州大道华禧大厦5号铺雅庭瓷砖', '', '13433730966', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('68', '', '2', 'frank', '', '1', '25', '321', '2717', '乾溪路300弄14号502', '', '18616696490', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('11', '', '6', '阿任', '', '1', '6', '78', '712', '金石', '', '15992385879', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('78', '', '11', 'frank', '', '1', '25', '321', '2717', '乾溪路300弄14号502室', '', '18616696490', '', '', '', '1');
+INSERT INTO `ecs_user_address` VALUES ('18', '', '7', '感觉', '', '1', '7', '108', '948', '我再考虑考虑', '', '18721887229', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('17', '', '7', '就几块', '', '1', '18', '249', '2109', '啦咯啦咯啦咯啦', '', '18721887224', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('65', '', '1', '干活', '', '1', '6', '80', '750', 'vbbbb', '', '18721887229', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('66', '', '1', '王子涵', '', '1', '25', '321', '2717', '宝钢', '', '18721887226', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('67', '', '1', '王子涵', '', '1', '25', '321', '2717', '宝钢', '', '18721887226', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('64', '', '1', '汪江', '', '1', '25', '321', '2708', '国定东路200号', '', '18721887224', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('74', '', '12', '王永生', '', '1', '25', '321', '2708', '国定东路200号4号楼', '', '17717872135', '', '', '', '1');
+INSERT INTO `ecs_user_address` VALUES ('80', '', '13', '张泉凯', '', '1', '25', '321', '2712', '1196', '', '15692185366', '', '', '', '1');
+INSERT INTO `ecs_user_address` VALUES ('113', '', '14', 'ajldjfla', '', '1', '17', '237', '2014', 'sfaff', '', 'ajlfjal', '', '', '', '1');
+INSERT INTO `ecs_user_address` VALUES ('100', '', '10', '王晋', '', '1', '2', '52', '500', '700', '', '18721667531', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('93', '', '15', '123', '', '1', '2', '52', '500', '二点五多无多额外的翁多翁的无多', '', '1855587154', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('81', '', '13', '张大宝', '', '1', '29', '355', '3033', '改了天', '', '', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('82', '', '17', '刘明丽', '', '1', '25', '321', '2712', '九龙路515号1106室', '', '18601661978', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('83', '', '19', '李裕煌', '', '1', '6', '78', '711', '粤海花园B区11幢301', '', '13829099772', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('84', '', '20', '黄朝吟', '', '1', '6', '78', '711', '潮州大道华禧大厦5号铺雅庭瓷砖', '', '13433730966', '', '', '', '1');
+INSERT INTO `ecs_user_address` VALUES ('85', '', '21', '许先生', '', '1', '6', '77', '707', '科技园21号', '', '13590313432', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('115', '', '14', '王江', '', '1', '13', '194', '1624', '望城村', '', '18721887229', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('95', '', '10', '王晋', '', '1', '2', '52', '500', '700', '', '18721667531', '', '', '', '1');
+INSERT INTO `ecs_user_address` VALUES ('94', '', '15', '电放费', '', '1', '3', '50', '490', '爱的发的', '', '1855587154', '', '', '', '1');
+INSERT INTO `ecs_user_address` VALUES ('96', '', '23', '黄淑琼', '', '1', '6', '78', '712', '江东镇独树村', '', '15919531102', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('97', '', '24', '高淦', '', '1', '6', '78', '711', '春荣路与永春路交界处水木轩501', '', '13923509558', '', '', '', '0');
+INSERT INTO `ecs_user_address` VALUES ('116', '', '25', '黄莉', '', '1', '4', '60', '590', '公园路3号之5店面', '', '13950131521', '', '', '', '0');
 
 -- ----------------------------
 -- Table structure for ecs_user_bonus
