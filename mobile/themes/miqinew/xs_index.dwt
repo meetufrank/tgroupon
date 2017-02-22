@@ -209,10 +209,11 @@
 
         <!-- Special Offer -->
         <div class="col-lg-3 col-md-4">
-          <div class="info-box text-center">
+          <div class="info-box text-center" style="background-image:url(././admin/{$tb_list.attributeimg});-moz-background-size:100% 100%;
+   background-size:100% 100%;">
             <h2>特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
             <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="inline">
-              <img src="././admin/{$tb_list.attributeimg}" alt="Special Offer">
+             
             </a>
             <h3 class="lead text-normal space-bottom-half"><a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="link-title">{$tb_list.goods_name}</a></h3>
             <span class="lead text-normal text-gray text-crossed">￥{$tb_list.falseprice}</span>

@@ -22,20 +22,23 @@
 
   <tr>
 
-    <th><a href="javascript:listTable.sort('ad_name'); ">{$lang.ad_name}</a>{$sort_ad_name}</th>
+    <th><a>{$lang.ad_name}</a></th>
 
-    <th><a href="javascript:listTable.sort('position_id'); ">{$lang.position_id}</a>{$sort_position_id}</th>
+<!--     <th><a href="javascript:listTable.sort('position_id'); ">{$lang.position_id}</a>{$sort_position_id}</th> -->
 
-    <th><a href="javascript:listTable.sort('media_type'); ">{$lang.media_type}</a>{$sort_media_type}</th>
+    <!-- <th><a href="javascript:listTable.sort('media_type'); ">{$lang.media_type}</a>{$sort_media_type}</th> -->
 
     <th><a href="javascript:listTable.sort('start_date'); ">{$lang.start_date}</a>{$sort_start_date}</th>
 
     <th><a href="javascript:listTable.sort('end_date'); ">{$lang.end_date}</a>{$sort_end_date}</th>
 
-    <th><a href="javascript:listTable.sort('click_count'); ">{$lang.click_count}</a>{$sort_click_count}</th>
+  <!--   <th><a href="javascript:listTable.sort('click_count'); ">{$lang.click_count}</a>{$sort_click_count}</th>
 
-    <th>{$lang.ads_stats}</th>
-
+    <th>{$lang.ads_stats}</th> -->
+    <!-- 图片 -->
+    <th>图片</th>
+    <!-- 排序 -->
+    <th>排序</th>
     <th>{$lang.handler}</th>
 
   </tr>
@@ -44,33 +47,35 @@
 
   <tr>
 
-    <td class="first-cell">
+    <td class="first-cell" align="center">
 
     <span onclick="javascript:listTable.edit(this, 'edit_ad_name', {$list.ad_id})">{$list.ad_name|escape:html}</span>
 
     </td>
 
-    <td align="left"><span>{if $list.position_id eq 0}{$lang.outside_posit}{else}{$list.position_name}{/if}</span>
+ <!--    <td align="left"><span>{if $list.position_id eq 0}{$lang.outside_posit}{else}{$list.position_name}{/if}</span>
 
-    </td>
+    </td> -->
 
-    <td align="left"><span>{$list.type}</span></td>
+  <!--   <td align="left"><span>{$list.type}</span></td> -->
 
     <td align="center"><span>{$list.start_date}</span></td>
 
     <td align="center"><span>{$list.end_date}</span></td>
+    <td align="center"><span><img style="width:80px;height:50px;" src="../../mobile/data/afficheimg/{$list.ad_code}"></span></td>
+    <td align="center"><span>{$list.sort}</span></td>
 
-    <td align="right"><span>{$list.click_count}</span></td>
+   <!--  <td align="right"><span>{$list.click_count}</span></td>
 
-    <td align="right"><span>{$list.ad_stats}</span></td>
+    <td align="right"><span>{$list.ad_stats}</span></td> -->
 
-    <td align="right"><span>
+    <td align="center"><span>
 
-      {if $list.position_id eq 0}
+     <!--  {if $list.position_id eq 0}
 
       <a href="ads.php?act=add_js&type={$list.media_type}&id={$list.ad_id}" title="{$lang.add_js_code}"><img src="images/icon_js.gif" border="0" height="16" width="16" /></a>
 
-      {/if}
+      {/if} -->
 
       <a href="ads.php?act=edit&id={$list.ad_id}" title="{$lang.edit}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a>
 
