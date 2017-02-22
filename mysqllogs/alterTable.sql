@@ -336,3 +336,11 @@ ADD COLUMN `falseprice`  decimal(10,2) NULL DEFAULT 0.00 COMMENT '//货品假价
 */
 ALTER TABLE `ecs_goods`
 ADD COLUMN `is_very`  tinyint(1) NOT NULL DEFAULT 0 COMMENT '//特别优惠' AFTER `more_price`;
+
+
+/*#2017/02/22 汪江  首页轮播图表添加排序字段
+*/
+ALTER TABLE `ecs_touch_ad`
+ADD COLUMN `sort`  int(11) NULL DEFAULT 0 COMMENT '//首页轮播图排序' AFTER `enabled`;
+
+
