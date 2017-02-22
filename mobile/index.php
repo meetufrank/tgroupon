@@ -22,9 +22,13 @@ include('head.php');
 
 
 //首页banner显示
-$sql=" select * from ecs_touch_ad order by sort desc limit 4";
+echo $sql=" select * from ecs_touch_ad  where start_time<unix_timestamp(now()) and end_time>unix_timestamp(now()) and ad_code!='' order by sort desc limit 4";
 $banner_list=$GLOBALS['db']->getAll($sql);
-
+foreach ($banner_list as $key => $value) {
+    if(!strpos($value['ad_code'],'http://')){
+           $banner_list[$key]['ad_code']="data/afficheimg/".$value['ad_code'];
+    }
+}
 
 
 
