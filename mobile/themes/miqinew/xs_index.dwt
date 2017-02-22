@@ -230,37 +230,19 @@
 
         <!-- Special Offer -->
         <div class="col-lg-3 col-md-4">
+          <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}">
           <div class="info-box text-center" style="background-image:url(././admin/{$tb_list.attributeimg});-moz-background-size:100% 100%;
-   background-size:100% 100%;">
+   background-size:100% 100%;background-repeat: no-repeat">
             <h2>特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
-            <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="inline">
+            <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}">
              
             </a>
             <h3 class="lead text-normal space-bottom-half"><a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="link-title">{$tb_list.goods_name}</a></h3>
             <span class="lead text-normal text-gray text-crossed">￥{$tb_list.falseprice}</span>
             <span class="h4 text-normal text-danger">￥{$tb_list.attributeprice}</span>
 
-            <!-- Countdown -->
-            <!--dao ji shi-->
-            <!--<div class="countdown space-top-half padding-top" data-date-time="07/30/2017 12:00:00">
-              <div class="item">
-                <div class="days">00</div>
-                <span class="days_ref">天</span>
-              </div>
-              <div class="item">
-                <div class="hours">00</div>
-                <span class="hours_ref">时</span>
-              </div>
-              <div class="item">
-                <div class="minutes">00</div>
-                <span class="minutes_ref">分</span>
-              </div>
-              <div class="item">
-                <div class="seconds">00</div>
-                <span class="seconds_ref">秒</span>
-              </div>
-            </div>-->
           </div><!-- .info-box -->
+          </a>
           <div class="padding-bottom-2x visible-xs"></div>
         </div><!-- .col-lg-3.col-md-4 -->
 
@@ -279,7 +261,7 @@
             <div role="tabpanel" class="tab-pane transition fade scale in active" id="newcomers">
               <div class="row space-top-half">
               <!--{foreach from=$xp_list item=xl}-->
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-sm-6">
                   <div class="shop-item">
                     <div class="shop-thumbnail">
                       <!-- <span class="shop-label text-danger">Sale</span> -->
