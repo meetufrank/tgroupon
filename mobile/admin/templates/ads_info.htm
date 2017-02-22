@@ -34,7 +34,7 @@
 
     {if $action eq "add"}
 
-      <tr>
+      <tr style="display:none;">
 
         <td class="label">{$lang.media_type}</td>
 
@@ -43,12 +43,12 @@
          <select name="media_type" onchange="showMedia(this.value)">
 
          <option value='0'>{$lang.ad_img}</option>
-
+<!--
          <option value='1'>{$lang.ad_flash}</option>
 
          <option value='2'>{$lang.ad_html}</option>
 
-         <option value='3'>{$lang.ad_text}</option>
+         <option value='3'>{$lang.ad_text}</option> -->
 
          </select>
 
@@ -62,7 +62,7 @@
 
     {/if}
 
-    <tr>
+   <!--  <tr>
 
       <td  class="label">{$lang.position_id}</td>
 
@@ -78,7 +78,7 @@
 
       </td>
 
-    </tr>
+    </tr> -->
 
     <tr>
 
@@ -138,14 +138,14 @@
 
     </tr>
 
-    <tr>
+ <!--    <tr>
 
       <td  class="label">{$lang.img_url}</td>
 
       <td><input type="text" name="img_url" value="{$url_src}" size="35" /></td>
 
     </tr>
-
+ -->
     </tbody>
 
   {/if}
@@ -238,7 +238,7 @@
 
 
 
-    <tr>
+   <!--  <tr>
 
       <td  class="label">{$lang.enabled}</td>
 
@@ -251,8 +251,8 @@
       </td>
 
     </tr>
-
-    <tr>
+ -->
+   <!--  <tr>
 
       <td  class="label">{$lang.link_man}</td>
 
@@ -263,8 +263,8 @@
       </td>
 
     </tr>
-
-    <tr>
+ -->
+   <!--  <tr>
 
       <td  class="label">{$lang.link_email}</td>
 
@@ -274,9 +274,9 @@
 
       </td>
 
-    </tr>
+    </tr> -->
 
-    <tr>
+   <!--  <tr>
 
       <td  class="label">{$lang.link_phone}</td>
 
@@ -287,7 +287,7 @@
       </td>
 
     </tr>
-
+ -->
     <!-- 排序 -->
     <tr>
       <td  class="label">排序</td>
