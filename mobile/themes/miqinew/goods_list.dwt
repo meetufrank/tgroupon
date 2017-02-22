@@ -91,7 +91,7 @@
                      <li class="pricechange"><a href="#" id="showprice{{d[i].data[y].money_id}}" class="widgeta {{# if(y==0){}}allpricechange{{# } }}" onClick="showlist({{d[i].data[y].money_id}},'showprice')">{{d[i].data[y].money_name}}</a></li>
                    {{# } }}
                      {{#  if(d[i].title=='商品分类'){ }}
-                     <li class="companychange"><a href="#" id="showtype{{d[i].data[y].id}}" class="widgetb  {{# if(y==0){}}allpricechange{{# } }}" onClick="showlist({{d[i].data[y].id}},'showtype')">{{d[i].data[y].name}}</a></li>
+                     <li class="companychange"><a href="#" id="showtype{{d[i].data[y].id}}" class="widgetb  {{# if(d[i].data[y].id=={$check_id}){}}allpricechange{{# } }}" onClick="showlist({{d[i].data[y].id}},'showtype')">{{d[i].data[y].name}}</a></li>
                    {{# } }}
 
 				  {{# } }}
