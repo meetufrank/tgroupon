@@ -106,7 +106,9 @@
     <section class="hero-slider" data-loop="true" data-autoplay="true" data-interval="7000">
       <div class="inner">
       {foreach from=$banner_list item=bl}
+         <a href="{$bl.ad_link}" >
         <div class="slide" style="background-image: url({$bl.ad_code});">
+        </a>
         </div><!-- .slide -->
         {/foreach}
 
@@ -192,30 +194,7 @@
           </a><!-- .category-link -->
         </div><!-- .col-sm-4 -->
         <!--{/foreach}-->
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <a href="#" class="category-link">
-            <img src="{$ectouch_themes}/img/categories/cat02.jpg" alt="Category">
-            分类2
-          </a><!-- .category-link -->
-        </div><!-- .col-sm-4 -->
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <a href="#" class="category-link">
-            <img src="{$ectouch_themes}/img/categories/cat03.jpg" alt="Category">
-            分类3
-          </a><!-- .category-link -->
-        </div><!-- .col-sm-4 -->
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <a href="#" class="category-link">
-            <img src="{$ectouch_themes}/img/categories/cat04.jpg" alt="Category">
-            分类4
-          </a><!-- .category-link -->
-        </div><!-- .col-sm-4 -->
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <a href="#" class="category-link">
-            <img src="{$ectouch_themes}/img/categories/cat03.jpg" alt="Category">
-            分类5
-          </a><!-- .category-link -->
-        </div><!-- .col-sm-4 -->
+
         {if $type_hide==1}
         <div class="col-md-2 col-sm-4 col-xs-6">
           <a href="goods_list.php{$linestring1}" class="category-link">
