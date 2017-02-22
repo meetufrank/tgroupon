@@ -340,6 +340,9 @@ svg {
 		font-weight: bold;
 		margin-top:5px;
 	}
+	.lead {
+		margin-top:350px;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -476,6 +479,9 @@ svg {
 	.exnumber{
 		font-weight: bold;
 		margin-top:5px;
+	}
+	.lead {
+		margin-top:200px;
 	}
 }
 .cart-subtotal-youfei{
