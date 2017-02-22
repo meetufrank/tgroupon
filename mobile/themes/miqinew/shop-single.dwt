@@ -817,6 +817,10 @@ function numDecmobile(){
                                     data:{goodsid:goodsid},
                                     dataType: "json",
                                     success: function (result) {
+                                           if(result.error==12){
+                              if(result.url){
+                              window.location.href=result.url;
+                             }}
                                           if(result=='true'){
                                               $("#shochang").addClass("schongse");
                                           }else{
@@ -838,6 +842,11 @@ function numDecmobile(){
                                     data:{goodsid:goodsid},
                                     dataType: "json",
                                     success: function (result) {
+                                            if(result.error==12){
+                              if(result.url){
+                              window.location.href=result.url;
+                             }
+                    }
                                           if(result=='true'){
                                               $("#shochangpc").addClass("schongse");
                                           }else{
