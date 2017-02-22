@@ -4247,6 +4247,7 @@ display:none
 	width: 100%;
 	max-width: 220px;
 	margin-bottom: 12px;
+	height:160px;
 	opacity: 1;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;

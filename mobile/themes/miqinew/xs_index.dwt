@@ -105,8 +105,10 @@
     <!-- Hero Slider -->
     <section class="hero-slider" data-loop="true" data-autoplay="true" data-interval="7000">
       <div class="inner">
+      {foreach from=$banner_list item=bl}
         <div class="slide" style="background-image: url({$ectouch_themes}/img/hero-slider/01.jpg);">
         </div><!-- .slide -->
+        {/foreach}
         <div class="slide" style="background-image: url({$ectouch_themes}/img/hero-slider/02.jpg);">
         </div><!-- .slide -->
         <div class="slide" style="background-image: url({$ectouch_themes}/img/hero-slider/03.jpg);">
@@ -166,6 +168,18 @@
           }
      });
    });
+ function  drump_type(id){
+      var  type='showtype';
+           $.ajax({
+           type: "post",
+           url: "set_content.php",
+           data:{typeid:id,type:type},
+           success: function (data) {
+
+            window.location.href="goods_list.php{$linestring1}";
+          }
+        });
+   }
 </script>
     <!-- Content Wide -->
     <section class="container-fluid padding-top-3x">
@@ -173,12 +187,14 @@
       <!-- Featured Categories -->
       <h3 class="text-center padding-top">商品分类</h3>
       <div class="row padding-top padding-bottom-3x">
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <a href="#" class="category-link">
-            <img src="{$ectouch_themes}/img/categories/cat01.jpg" alt="Category">
-            分类1
+       <!--{foreach from=$type_list  item=tl}-->
+        <div class="col-md-2 col-sm-4 col-xs-6 " >
+          <a href="#" class="category-link" onclick="drump_type({$tl.cat_id});">
+            <img src="data/cat_ico/{$tl.cat_ico}" alt="{$tl.cat_name}">
+            {$tl.cat_name}
           </a><!-- .category-link -->
         </div><!-- .col-sm-4 -->
+        <!--{/foreach}-->
         <div class="col-md-2 col-sm-4 col-xs-6">
           <a href="#" class="category-link">
             <img src="{$ectouch_themes}/img/categories/cat02.jpg" alt="Category">
@@ -203,12 +219,14 @@
             分类5
           </a><!-- .category-link -->
         </div><!-- .col-sm-4 -->
+        {if $type_hide==1}
         <div class="col-md-2 col-sm-4 col-xs-6">
-          <a href="shop-fullwidth-sl.html" class="category-link">
+          <a href="goods_list.php{$linestring1}" class="category-link">
             <img src="{$ectouch_themes}/img/categories/more.jpg" alt="Category">
             更多
           </a><!-- .category-link -->
         </div><!-- .col-sm-4 -->
+        {/if}
       </div><!-- .row -->
 
       <div class="row padding-top">
@@ -216,13 +234,13 @@
         <!-- Special Offer -->
         <div class="col-lg-3 col-md-4">
           <div class="info-box text-center">
-            <h2>特别优惠<br><span class="text-danger">-30%</span></h2>
-            <a href="shop-single.html" class="inline">
-              <img src="{$ectouch_themes}/img/shop/special-offer.jpg" alt="Special Offer">
+            <h2>特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
+            <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="inline">
+              <img src="././admin/{$tb_list.attributeimg}" alt="Special Offer">
             </a>
-            <h3 class="lead text-normal space-bottom-half"><a href="shop-single.html" class="link-title">创意台灯</a></h3>
-            <span class="lead text-normal text-gray text-crossed">$800.00</span>
-            <span class="h4 text-normal text-danger">$560.00</span>
+            <h3 class="lead text-normal space-bottom-half"><a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="link-title">{$tb_list.goods_name}</a></h3>
+            <span class="lead text-normal text-gray text-crossed">￥{$tb_list.falseprice}</span>
+            <span class="h4 text-normal text-danger">￥{$tb_list.attributeprice}</span>
 
             <!-- Countdown -->
             <!--dao ji shi-->
@@ -262,441 +280,52 @@
             <!-- #newcomers -->
             <div role="tabpanel" class="tab-pane transition fade scale in active" id="newcomers">
               <div class="row space-top-half">
+              <!--{foreach from=$xp_list item=xl}-->
                 <div class="col-lg-3 col-sm-6">
                   <div class="shop-item">
                     <div class="shop-thumbnail">
                       <!-- <span class="shop-label text-danger">Sale</span> -->
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th01.jpg" alt="Shop item">
+                      <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
+                      <img src="././admin/{$xl.attributeimg}" alt="{$xl.goods_name}">
                     </div>
                     <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <h3 class="shop-item-title"><a href="shop-single.php?id={$xl.goods_id}{$linestring2}">{$xl.goods_name}</a></h3>
                       <span class="shop-item-price">
-                        $38.00
+                        ￥{$xl.attributeprice}
                       </span>
                     </div>
                   </div><!-- .shop-item -->
                 </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th02.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $125.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th03.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $62.50
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="img/shop/th04.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $178.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-              </div><!-- .row -->
-              <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th05.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $69.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th06.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $130.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <!-- <span class="shop-label text-warning">Popular</span> -->
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th07.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $99.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th08.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $112.35
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
+                <!--{/foreach}-->
+
               </div><!-- .row -->
             </div><!-- .tab-pane#newcomers -->
 
             <!-- #toprated -->
             <div role="tabpanel" class="tab-pane transition fade scale" id="toprated">
               <div class="row">
-                <div class="col-lg-3 col-sm-6">
+               <!--{foreach from=$dz_list item=dl}-->
+              <div class="col-lg-3 col-sm-6">
                   <div class="shop-item">
                     <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th09.jpg" alt="Shop item">
+                      <!-- <span class="shop-label text-danger">Sale</span> -->
+                      <a href="shop-single.php?id={$dl.goods_id}{$linestring2}" class="item-link"></a>
+                      <img src="././admin/{$dl.attributeimg}" alt="{$dl.goods_name}">
                     </div>
                     <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
+                      <h3 class="shop-item-title"><a href="shop-single.php?id={$dl.goods_id}{$linestring2}">{$dl.goods_name}</a></h3>
                       <span class="shop-item-price">
-                        $118.00
+                        ￥{$dl.attributeprice}
                       </span>
                     </div>
                   </div><!-- .shop-item -->
                 </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th10.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $85.90
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th11.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $417.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th12.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $245.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-              </div><!-- .row -->
-              <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th13.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $19.80
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th14.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $299.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th15.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $76.40
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th16.jpg" alt="Shop item">
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $27.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
+                 <!--{/foreach}-->
+
               </div><!-- .row -->
             </div><!-- .tab-pane#toprated -->
 
-            <!-- #onsale -->
-            <div role="tabpanel" class="tab-pane transition fade scale" id="onsale">
-              <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <!-- <span class="shop-label text-danger">Sale</span> -->
-                      <a href="#" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th05.jpg" alt="Shop item">
-                      <div class="shop-item-tools">
-                        <a href="#" class="add-to-cart">
-                          <em>加入购物车</em>
-                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-                            <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="#">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        <!-- <span class="old-price">$69.00</span> -->
-                        $48.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="#" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th06.jpg" alt="Shop item">
-                      <div class="shop-item-tools">
-                        <a href="#" class="add-to-cart">
-                          <em>加入购物车</em>
-                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-                            <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="#">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        $130.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="#" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th04.jpg" alt="Shop item">
-                      <div class="shop-item-tools">
-                        <a href="#" class="add-to-cart">
-                          <em>加入购物车</em>
-                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-                            <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="#">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        <!-- <span class="old-price">$225.00</span> -->
-                        $178.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <a href="#" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th08.jpg" alt="Shop item">
-                      <div class="shop-item-tools">
-                        <a href="#" class="add-to-cart">
-                          <em>加入购物车</em>
-                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-                            <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="#">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        <!-- <span class="old-price">$180.00</span> -->
-                        $112.35
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <!-- <span class="shop-label text-danger">Sale</span> -->
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th01.jpg" alt="Shop item">
-                      <div class="shop-item-tools">
-                        <a href="#" class="add-to-cart">
-                          <em>加入购物车</em>
-                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-              							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-              						</svg>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        <span class="old-price">$49.00</span>
-                        $38.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <!-- <span class="shop-label text-danger">Sale</span> -->
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th07.jpg" alt="Shop item">
-                      <div class="shop-item-tools">
-                        <a href="#" class="add-to-cart">
-                          <em>加入购物车</em>
-                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-              							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-              						</svg>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">Sunglasses</a></h3>
-                      <span class="shop-item-price">
-                        <span class="old-price">$122.00</span>
-                        $99.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <!-- <span class="shop-label text-danger">Sale</span> -->
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th09.jpg" alt="Shop item">
-                      <div class="shop-item-tools">
-                       <!--<a href="#" class="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="收藏">
-                          <i class="material-icons favorite_border"></i>
-                        </a>-->
-                        <a href="#" class="add-to-cart">
-                          <em>加入购物车</em>
-                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-              							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-              						</svg>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        <span class="old-price">$160.00</span>
-                        $118.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-                <div class="col-lg-3 col-sm-6">
-                  <div class="shop-item">
-                    <div class="shop-thumbnail">
-                      <!-- <span class="shop-label text-danger">Sale</span> -->
-                      <a href="shop-single.html" class="item-link"></a>
-                      <img src="{$ectouch_themes}/img/shop/th02.jpg" alt="Shop item">
-                      <div class="shop-item-tools">
-                        <a href="#" class="add-to-cart">
-                          <em>加入购物车</em>
-                          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-              							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-              						</svg>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.html">商品名称</a></h3>
-                      <span class="shop-item-price">
-                        <span class="old-price">$199.00</span>
-                        $125.00
-                      </span>
-                    </div>
-                  </div><!-- .shop-item -->
-                </div><!-- .col-lg-3.col-sm-6 -->
-              </div><!-- .row -->
-            </div><!-- .tab-pane#onsale -->
+
           </div><!-- .tab-content -->
         </div><!-- .col-lg-9.col-md-8 -->
       </div><!-- .row -->
@@ -707,70 +336,30 @@
       <hr>
       <h3 class="text-center">设计师介绍</h3>
       <div class="row padding-top">
+      <!--{foreach from=$ysj_list item=yl}-->
          <div class="col-xs-6 col-md-2">
          <div class="teammate">
             <div class="teammate-thumb">
               <div class="social-bar text-center space-bottom">
                 <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
               </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="" class="img-Currentsize">
+              <img src="..{$yl.hav_logo}" alt="" class="img-Currentsize">
             </div>
-            <h4 class="teammate-name"><a href="#">设计师姓名</a></h4>
+            <h4 class="teammate-name"><a href="#">{$yl.user_name}</a></h4>
           </div>
           </div>
-         <div class="col-xs-6 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="" class="img-Currentsize">
-            </div>
-            <h4 class="teammate-name"><a href="#">设计师姓名</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="" class="img-Currentsize">
-            </div>
-            <h4 class="teammate-name"><a href="#">设计师姓名</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="" class="img-Currentsize">
-            </div>
-            <h4 class="teammate-name"><a href="#">设计师姓名</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="" class="img-Currentsize">
-            </div>
-            <h4 class="teammate-name"><a href="#">设计师姓名</a></h4>
-          </div>
-          </div>
+          <!--{/foreach}-->
 
+{if $ysj_hide==1}
          <div class="col-xs-6 col-md-2">
          <div class="teammate">
             <div class="teammate-thumb">
-              <a href="artist-list.html"><img src="img/team/more.jpg" alt="" class="img-Currentsize"></a>
+              <a href="artist-list.html"><img src="{$ectouch_themes}/img/team/more.jpg" alt="" class="img-Currentsize"></a>
             </div>
             <h4 class="teammate-name"><a href="#">更多</a></h4>
           </div>
           </div>
+          {/if}
       </div><!-- .row -->
 
     </section><!-- .container -->
@@ -790,47 +379,7 @@
 
 
      <!-- Footer -->
-    <footer class="footer padding-top-2x">
-      <div class="column">
-      	<div class="feature text-center">
-            <div class="feature-icon">
-              <!-- <i class="material-icons credit_card"></i> -->
-            </div>
-			<h4 class="feature-title"><a id="Cooperate" href="#">服务中心</a></h4>
-          </div>
-      </div><!-- .column -->
-      <div class="column">
-      	<div class="feature text-center">
-            <div class="feature-icon">
-              <!-- <i class="material-icons settings"></i> -->
-            </div>
-            <h4 class="feature-title"><a href="#">关于我们</a></h4>
-          </div>
-      </div><!-- .column -->
-      <div class="column">
-      	<div class="feature text-center">
-            <div class="feature-icon">
-              <!-- <i class="material-icons face"></i> -->
-            </div>
-            <h4 class="feature-title"><a href="#">商业合作</a></h4>
-          </div>
-      </div>
-    </footer><!-- .footer -->
-
-	<section class="container space-top space-bottom padding-top-1x padding-bottom-1x">
-		<div class="text-center">
-			<div class="hidden-xs">
-				<div>联系我们：电话|微信：13502637171（KITTY）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系邮箱：3412355834@qq.com</div>
-				<!-- <div>公司地址：广东省潮州市潮安区江东镇沙洲工业区</div> -->
-				<div style="margin-top: 10px;">ICP备案号</div>
-			</div>
-			<div class="visible-xs">
-				<div>联系我们：电话|微信：13502637171（KITTY）</div>
-				<div style="margin-top: 10px;">联系邮箱：3412355834@qq.com</div>
-				<div style="margin-top: 10px;">ICP备案号</div>
-			</div>
-		</div>
-	</section>
+   {include file="foot.dwt"}
     <!--底部-->
   </div><!-- .page-wrapper -->
 
