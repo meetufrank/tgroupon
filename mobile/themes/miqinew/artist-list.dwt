@@ -95,15 +95,19 @@
     <!-- 头部开始 -->
    {include file="head.dwt"}
     <!-- 头部结束 -->
- <section class="hero-slider">
-      <div class="inner">
-        {foreach from=$banner_list item=bl}
-           <a href="{$bl.ad_link}">
-            <div class="slide pc-thumbnail" style="background-image:url({$bl.ad_code}));"></div>
-            </a>
-        {/foreach}
-      </div><!-- .inner -->
 
+    <section class="hero-slider" data-loop="true" data-autoplay="true" data-interval="7000">
+      <div class="inner">
+      {foreach from=$banner_list item=bl}
+         <a href="{$bl.ad_link}" >
+        <div class="slide" style="background-image: url({$bl.ad_code});">
+
+        </div><!-- .slide -->
+        </a>
+        {/foreach}
+
+      </div><!-- .inner -->
+    </section><!-- .hero-slider -->
 	<!-- Content -->
 	<section class="container padding-top-2x">
 		<div class="row">
@@ -164,9 +168,7 @@
   <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
   <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
   <script src="{$ectouch_themes}/js/scripts.js"></script>
-  <script src="{$ectouch_themes}/js/vendor/owl.carousel.min.js"></script>
   <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
-
   <script type="text/javascript">
         $(function(){
            var page=2;
