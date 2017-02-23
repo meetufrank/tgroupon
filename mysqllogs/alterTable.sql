@@ -354,3 +354,9 @@ ADD COLUMN `openidphone`  varchar(50) NOT NULL COMMENT '//手机openid' AFTER `w
 */
 ALTER TABLE `ecs_goods`
 ADD COLUMN `listimg`  varchar(255) NULL COMMENT '//首页列表轮播图片' AFTER `is_very`;
+
+
+/*#2017/02/23 汪江  广告表添加广告栏位
+*/
+ALTER TABLE `ecs_touch_ad`
+MODIFY COLUMN `position_id`  smallint(5) UNSIGNED NOT NULL DEFAULT 0 COMMENT '//首页1; 设计师2; 设计师列表详情3' AFTER `ad_id`;
