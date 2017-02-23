@@ -34,7 +34,7 @@
 
     {if $action eq "add"}
 
-      <tr style="display:none;">
+      <tr>
 
         <td class="label">{$lang.media_type}</td>
 
@@ -43,12 +43,12 @@
          <select name="media_type" onchange="showMedia(this.value)">
 
          <option value='0'>{$lang.ad_img}</option>
-<!--
+
          <option value='1'>{$lang.ad_flash}</option>
 
          <option value='2'>{$lang.ad_html}</option>
 
-         <option value='3'>{$lang.ad_text}</option> -->
+         <option value='3'>{$lang.ad_text}</option>
 
          </select>
 
@@ -62,7 +62,7 @@
 
     {/if}
 
-   <!--  <tr>
+    <tr>
 
       <td  class="label">{$lang.position_id}</td>
 
@@ -78,7 +78,7 @@
 
       </td>
 
-    </tr> -->
+    </tr>
 
     <tr>
 
