@@ -29,7 +29,7 @@
         <div class="toolbar-section" id="menu">
           <div class="inner">
             <ul class="main-navigation space-bottom">
-              <li><a href="index.html">首页</a></li>
+              <li><a href="index.php{$linestring1}">首页</a></li>
               <li><a href="goods_list.php{$linestring1}" >商品</a></li>
               <li><a href="artist-list.html">设计师</a></li>
               <li><a href="#">关于我们</a></li>

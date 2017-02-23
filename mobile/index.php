@@ -28,6 +28,11 @@ foreach ($banner_list as $key => $value) {
     if(!strpos($value['ad_code'],'http://')){
            $banner_list[$key]['ad_code']="data/afficheimg/".$value['ad_code'];
     }
+    if(strpos($value['ad_link'], '?')){
+      $banner_list[$key]['ad_link']=$value['ad_link'].$linestring2;
+    }else{
+      $banner_list[$key]['ad_link']=$value['ad_link'].$linestring1;
+    }
 }
 
 

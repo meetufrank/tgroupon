@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>COLOR & SHAPE</title>
+
+  <!--SEO Meta Tags-->
+  <meta name="description" content="M-Store - Modern E-Commerce Template" />
+  <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+
+  <!--Mobile Specific Meta Tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!-- Google Material Icons -->
+  <link href="{$ectouch_themes}/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+
+  <!-- Brand Icons -->
+  <link href="{$ectouch_themes}/css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+
+  <!-- Bootstrap -->
+  <link href="{$ectouch_themes}/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <!-- Theme Styles -->
+  <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
+
+  <!-- Page Preloading -->
+  <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
+
+  <!-- by sun -->
+  <style>
+    .nav-pills{
+    	margin-left:-18px;
+    	padding-bottom:10px;
+    }
+  	.nav-pills>li {
+	    float: left;
+	    position: relative;
+	    display: block;
+	}
+	.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+	    color: #333;
+	    background-color: #f5f5f5;
+	}
+	.nav-pills>li>a {
+	    position: relative;
+	    display: block;
+	    padding: 10px 18px;
+	    text-decoration:none;
+	    font-size:14px;
+	    color: #a5a5a5;
+	}
+	.nav-pills>li>a>span {
+		padding-left:5px;
+		color:#f20000;
+	}
+	.teammate img{
+		border-radius: 50%;
+	}
+	.teammate:hover img{
+		border-radius: 0%;
+	}
+	.teammate-name a:hover {
+	    color: #333;
+	}
+	.teammate-name a {
+	    text-decoration: none;
+	    color: #999;
+	}
+	.list_msgs a{
+		color:#666;
+		font-size:14px;
+		text-decoration:none;
+	}
+	.list_msgs a:hover{
+		color:#999;
+		text-decoration:underline;
+	}
+  </style>
+
+</head>
+
+<body class="page-preloading">
+
+  <!-- Page Pre-Loader -->
+  <div class="page-preloader">
+    <div class="preloader">
+      <img src="{$ectouch_themes}/img/preloader.gif" alt="Preloader">
+    </div>
+  </div><!-- .page-preloader -->
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+
+    <!-- 头部开始 -->
+   {include file="head.dwt"}
+    <!-- 头部结束 -->
+
+    <div class="featured-image" style="background-image: url({$ectouch_themes}/img/featured-image/faq.jpg);"></div>
+	<!-- Content -->
+	<section class="container padding-top-2x">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="column">
+			      <form method="get" class="search-box">
+			        <input type="text" class="form-control" placeholder="请在此处搜索" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索'">
+			        <button type="submit">
+			          <i class="material-icons search"></i>
+			        </button>
+			      </form><!-- form.search-box -->
+			    </div>
+			</div>
+		</div>
+		<br>
+	    <hr>
+	    <br>
+	    <div class="row padding-top">
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$ectouch_themes}/img/team/01.jpg" alt="" id="img">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+         <div class="col-xs-6 col-sm-4 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="img/team/01.jpg" alt="">
+            </div>
+            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+          </div>
+          </div>
+          <div class="clearfix" id="clear-fudong">&nbsp;</div>
+          <hr>
+
+          <div class="text-center padding-bottom-2x" id="morefather">
+          <div id="more">
+          	<a href="artist-detail.html" class="btn btn-primary waves-effect waves-light" id="getValue">加载更多</a>
+          	<br>
+          	<a><i class="material-icons arrow_downward"></i></a>
+            </div>
+            <div style="text-align:center; width:50px;height:50px;margin:0 auto;display:none;" id="loadimg"><img src="img/preloader.gif"></div>
+          	</div>
+
+      </div>
+    </section>
+    <!--底部-->
+   {include file="foot.dwt"}
+  </div>
+  <!--底部-->
+
+  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+
+  <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
+  <script src="{$ectouch_themes}/js/scripts.js"></script>
+  <script src={$ectouch_themes}/js/layer_mobile/layer.js"></script>
+  <script type="text/javascript">
+        $(function(){
+            $("#getValue").click(function(){
+                $.ajax({
+                    type:"GET",
+                    url:"1.json",
+                    dataType: "json",
+                    success: function(data){
+						//console.log(data);
+						$.each(data,function(i){
+							layer.open({
+    						type: 2
+    						,content: '加载中'
+							,time: 0.5 //2秒后自动关闭
+  							});
+                           $("#clear-fudong").before('<div class="col-xs-6 col-sm-4 col-md-2">'+'<div class="teammate"><div class="teammate-thumb">'+
+						  ' <div class="social-bar text-center space-bottom">'+
+                '<a href="#" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a></div>'+
+              '<img src="'+data[i].photo+'" alt=""></div>'+
+            '<h4 class="teammate-name"><a href="#">'+data[i].name+'&nbsp;|&nbsp;'+data[i].country+'</a></h4></div></div>'
+
+          );//内容添加到页面上.
+
+                             });
+                    },
+                    error: function(){
+                        alert("Json出错");
+                    }
+                });
+
+            })
+        })
+    </script>
+
+</body><!-- <body> -->
+
+</html>
