@@ -73,6 +73,7 @@
 	.img-Currentsize{
 		max-width:85%;
 		display:inline-block;
+    border-radius: 50%;
 	}
 	.owl-nav{
 		display:none
@@ -108,10 +109,12 @@
       {foreach from=$banner_list item=bl}
          <a href="{$bl.ad_link}" >
         <div class="slide" style="background-image: url({$bl.ad_code});">
-        </a>
-        </div><!-- .slide -->
-        {/foreach}
 
+        
+
+        </div><!-- .slide -->
+        </a>
+          {/foreach}
       </div><!-- .inner -->
     </section><!-- .hero-slider -->
 
@@ -210,7 +213,7 @@
         <!-- Special Offer -->
         <div class="col-lg-3 col-md-4">
           <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}">
-          <div class="info-box text-center" style="background-image:url(././admin/{$tb_list.goods_img});-moz-background-size:100% 100%;
+          <div class="info-box text-center" style="background-image:url(../{$tb_list.goods_img});-moz-background-size:100% 100%;
    background-size:100% 100%;background-repeat: no-repeat">
             <h2>特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
             <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}">
