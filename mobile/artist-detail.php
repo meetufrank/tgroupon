@@ -16,14 +16,8 @@
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/include/init.php');
-require(ROOT_PATH . 'include/lib_weixintong.php');
-//头部需要文件
-require(ROOT_PATH . 'include/lib_order.php');
 
-/* 载入语言文件 */
-require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/user.php');
-require_once(ROOT_PATH . 'lang/' .$_CFG['lang']. '/shopping_flow.php');
-require(ROOT_PATH . 'head.php');
+include(ROOT_PATH . 'head.php');
 
 
 
@@ -43,5 +37,5 @@ $ysjzp = $db->getAll($ysjzpsql);
 $smarty->assign('ysjzp',$ysjzp);
 
 
-$smarty->display("artist-detail.dwt");   //加载艺术家	
+$smarty->display("artist-detail.dwt");   //加载艺术家
 ?>

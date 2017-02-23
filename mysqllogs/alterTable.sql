@@ -344,3 +344,7 @@ ALTER TABLE `ecs_touch_ad`
 ADD COLUMN `sort`  int(11) NULL DEFAULT 0 COMMENT '//首页轮播图排序' AFTER `enabled`;
 
 
+/*#2017/02/23 汪江  用户表添加一个手机openid字段
+*/
+ALTER TABLE `ecs_users`
+ADD COLUMN `openidphone`  varchar(50) NOT NULL COMMENT '//手机openid' AFTER `weiyi_num`;
