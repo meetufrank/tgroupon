@@ -95,16 +95,23 @@
     <!-- 头部开始 -->
    {include file="head.dwt"}
     <!-- 头部结束 -->
+ <section class="hero-slider">
+      <div class="inner">
+        {foreach from=$banner_list item=bl}
+           <a href="{$bl.ad_link}">
+            <div class="slide pc-thumbnail" style="background-image:url({$bl.ad_code}));"></div>
+            </a>
+        {/foreach}
+      </div><!-- .inner -->
 
-    <div class="featured-image" style="background-image: url({$ectouch_themes}/img/featured-image/faq.jpg);"></div>
 	<!-- Content -->
 	<section class="container padding-top-2x">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<div class="column">
 			      <form method="get" class="search-box">
-			        <input type="text" class="form-control" placeholder="请在此处搜索" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索'">
-			        <button type="submit">
+			        <input type="text" class="form-control" placeholder="请在此处搜索" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索'" id="search_content">
+			        <button type="submit" id="ysj_search" >
 			          <i class="material-icons search"></i>
 			        </button>
 			      </form><!-- form.search-box -->
@@ -114,151 +121,34 @@
 		<br>
 	    <hr>
 	    <br>
-	    <div class="row padding-top">
+
+	    <div class="row padding-top" id="ysj_content">
+      {foreach from=$artist_list item=al}
          <div class="col-xs-6 col-sm-4 col-md-2">
          <div class="teammate">
             <div class="teammate-thumb">
               <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+                <a href="artist-detail.php?ysjid={$al.user_id}{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
               </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="" id="img">
+              <img src="..{$al.hav_logo}" alt="{$al.user_name}" id="img">
             </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
+            <h4 class="teammate-name"><a href="#">{$al.user_name}&nbsp;|&nbsp;{$al.country}</a></h4>
           </div>
           </div>
-         <div class="col-xs-6 col-sm-4 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
-            </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-sm-4 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
-            </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-sm-4 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
-            </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-sm-4 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
-            </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-sm-4 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
-            </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-sm-4 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
-            </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-sm-4 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
-            </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-sm-4 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
-            </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-sm-4 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
-            </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-sm-4 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="{$ectouch_themes}/img/team/01.jpg" alt="">
-            </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
-          </div>
-          </div>
-         <div class="col-xs-6 col-sm-4 col-md-2">
-         <div class="teammate">
-            <div class="teammate-thumb">
-              <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
-              </div><!-- .social-bar -->
-              <img src="img/team/01.jpg" alt="">
-            </div>
-            <h4 class="teammate-name"><a href="#">达芬奇&nbsp;|&nbsp;意大利</a></h4>
-          </div>
-          </div>
+          {/foreach}
+
           <div class="clearfix" id="clear-fudong">&nbsp;</div>
           <hr>
-
+      {if $more==1}
           <div class="text-center padding-bottom-2x" id="morefather">
           <div id="more">
-          	<a href="artist-detail.html" class="btn btn-primary waves-effect waves-light" id="getValue">加载更多</a>
+          	<a href="#" class="btn btn-primary waves-effect waves-light" id="getValue">加载更多</a>
           	<br>
           	<a><i class="material-icons arrow_downward"></i></a>
             </div>
-            <div style="text-align:center; width:50px;height:50px;margin:0 auto;display:none;" id="loadimg"><img src="img/preloader.gif"></div>
+            <div style="text-align:center; width:50px;height:50px;margin:0 auto;display:none;" id="loadimg"><img src="{$ectouch_themes}img/preloader.gif"></div>
           	</div>
-
+      {/if}
       </div>
     </section>
     <!--底部-->
@@ -274,17 +164,22 @@
   <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
   <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
   <script src="{$ectouch_themes}/js/scripts.js"></script>
-  <script src={$ectouch_themes}/js/layer_mobile/layer.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/owl.carousel.min.js"></script>
+  <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
+
   <script type="text/javascript">
         $(function(){
+           var page=2;
             $("#getValue").click(function(){
+
                 $.ajax({
-                    type:"GET",
-                    url:"1.json",
+                    type:"POST",
+                    url:"artist_list.php?act=get_next_list",
                     dataType: "json",
+                    data:{page:page},
                     success: function(data){
 						//console.log(data);
-						$.each(data,function(i){
+						$.each(data.data,function(i){
 							layer.open({
     						type: 2
     						,content: '加载中'
@@ -292,22 +187,119 @@
   							});
                            $("#clear-fudong").before('<div class="col-xs-6 col-sm-4 col-md-2">'+'<div class="teammate"><div class="teammate-thumb">'+
 						  ' <div class="social-bar text-center space-bottom">'+
-                '<a href="#" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a></div>'+
-              '<img src="'+data[i].photo+'" alt=""></div>'+
-            '<h4 class="teammate-name"><a href="#">'+data[i].name+'&nbsp;|&nbsp;'+data[i].country+'</a></h4></div></div>'
+                '<a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a></div>'+
+              '<img src="..'+data.data[i].hav_logo+'" alt="'+data.data[i].hav_logo+'"></div>'+
+            '<h4 class="teammate-name"><a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}">'+data.data[i].user_name+'&nbsp;|&nbsp;'+data.data[i].country+'</a></h4></div></div>'
 
           );//内容添加到页面上.
 
+
+
                              });
+            if(data.more==0){
+                                $("#morefather").remove();
+                           }
+                           $("#search_content").val();
+            page++;
                     },
                     error: function(){
-                        alert("Json出错");
+
                     }
                 });
 
             })
         })
     </script>
+     <script type="text/javascript">
+
+            $("#ysj_search").click(function() {
+               event.preventDefault();
+              var content=$("#search_content").val();
+                 $.ajax({
+                    type:"POST",
+                    url:"artist_list.php?act=get_search_list",
+                    dataType: "json",
+                    data:{content:content},
+                    success: function(data){
+            //console.log(data);
+          $("#ysj_content").children().remove();
+          var new_content='';
+            $.each(data.data,function(i){
+              layer.open({
+                type: 2
+                ,content: '加载中'
+              ,time: 0.5 //2秒后自动关闭
+                });
+                 new_content+='<div class="col-xs-6 col-sm-4 col-md-2">'+'<div class="teammate"><div class="teammate-thumb">'+
+              ' <div class="social-bar text-center space-bottom">'+
+                '<a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a></div>'+
+              '<img src="..'+data.data[i].hav_logo+'" alt="'+data.data[i].hav_logo+'"></div>'+
+            '<h4 class="teammate-name"><a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}">'+data.data[i].user_name+'&nbsp;|&nbsp;'+data.data[i].country+'</a></h4></div></div>';
+
+
+
+
+                             });
+            new_content+='<div class="clearfix" id="clear-fudong">&nbsp;</div>  <hr>';
+             if(data.more==1){
+                                new_content+='<div class="text-center padding-bottom-2x" id="morefather"> <div id="more"> <a href="#" class="btn btn-primary waves-effect waves-light" id="getsearchValue">加载更多</a><br><a><i class="material-icons arrow_downward"></i></a> </div><div style="text-align:center; width:50px;height:50px;margin:0 auto;display:none;" id="loadimg"><img src="{$ectouch_themes}img/preloader.gif"></div> </div>';
+                           }
+
+                    $("#ysj_content").append(new_content);
+                    },
+                    error: function(){
+
+                    }
+                });
+                return false;
+            });
+
+
+             var search_page=2;
+            $("#getsearchValue").click(function(){
+
+                $.ajax({
+                    type:"POST",
+                    url:"artist_list.php?act=get_search_list",
+                    dataType: "json",
+                    data:{page:search_page},
+                    success: function(data){
+            //console.log(data);
+            $.each(data.data,function(i){
+              layer.open({
+                type: 2
+                ,content: '加载中'
+              ,time: 0.5 //2秒后自动关闭
+                });
+                           $("#clear-fudong").before('<div class="col-xs-6 col-sm-4 col-md-2">'+'<div class="teammate"><div class="teammate-thumb">'+
+              ' <div class="social-bar text-center space-bottom">'+
+                '<a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a></div>'+
+              '<img src="..'+data.data[i].hav_logo+'" alt="'+data.data[i].hav_logo+'"></div>'+
+            '<h4 class="teammate-name"><a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}">'+data.data[i].user_name+'&nbsp;|&nbsp;'+data.data[i].country+'</a></h4></div></div>'
+
+          );//内容添加到页面上.
+
+
+
+                             });
+            if(data.more==0){
+                                $("#morefather").remove();
+                           }
+                           if(data.search_content!=''){
+                                $("#search_content").val(data.search_content);
+                           }else{
+                               $("#search_content").val();
+                           }
+
+            search_page++;
+                    },
+                    error: function(){
+
+                    }
+                });
+
+            })
+      </script>
 
 </body><!-- <body> -->
 
