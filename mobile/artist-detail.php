@@ -23,7 +23,7 @@ if (!isset($_REQUEST['act']))
 {
     $_REQUEST['act'] = "artist_detail";
 }
-$page_num=1;  //页面显示条数
+$page_num=8;  //页面显示条数
 if($_REQUEST['act']=='artist_detail'){
 
 
@@ -102,7 +102,7 @@ exit;
 
     }
 
-      echo json_encode($data);
+      echo json_encode($ysjzp);
      exit;
 
 }

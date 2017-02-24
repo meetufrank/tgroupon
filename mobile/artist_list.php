@@ -24,7 +24,7 @@ if (!isset($_REQUEST['act']))
 {
     $_REQUEST['act'] = "artist_list";
 }
-$page_num=1;  //页面显示条数
+$page_num=12;  //页面显示条数
 if($_REQUEST['act']=='artist_list'){
 
   setcookie('artist_content','',time()-3600);

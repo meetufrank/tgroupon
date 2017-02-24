@@ -321,7 +321,7 @@
               <div class="social-bar text-center space-bottom">
                 <a href="artist-detail.php?ysjid={$yl.user_id}{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
               </div><!-- .social-bar -->
-              <img src="..{$yl.hav_logo}" alt="{$yl.user_name}" class="img-Currentsize">
+              <img src="{$yl.hav_logo}" alt="{$yl.user_name}" class="img-Currentsize">
             </div>
             <h4 class="teammate-name"><a href="artist-detail.php?ysjid={$yl.user_id}{$linestring2}">{$yl.user_name}</a></h4>
           </div>

@@ -122,7 +122,7 @@
 			<div class="quotation pull-left">
 	            <div class="quotation-author">
 	              <div class="quotation-author-ava">
-	                <img src="..{$ysjxx.hav_logo}" alt="James Cameron">
+	                <img src="{$ysjxx.hav_logo}" alt="James Cameron">
 	              </div>
 	              <a href="#">{$ysjxx.user_name}&nbsp;|&nbsp;{$ysjxx.country}</a>
 	            </div>
@@ -214,12 +214,12 @@
             $("#getValue-2").click(function(){
  event.preventDefault();
                 $.ajax({
-                    type:"post",
+                    type:"POST",
                     url:"artist-detail.php",
                     dataType: "json",
                     data:{page:page,userid:userid,act:'get_next_list'},
                     success: function(data){
-                                        console.log(data);
+                                       //  console.log(data);
 						$.each(data.data,function(i){
 							layer.open({
     						type: 2
