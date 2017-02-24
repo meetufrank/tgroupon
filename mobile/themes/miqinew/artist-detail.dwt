@@ -139,7 +139,7 @@
 		<hr>
       	<h3 class="padding-top">艺术家简介</h3>
       	<div class="row space-top">
-           {$ysjxx.artiststalk}
+           {$ysjxx.sjsintro}
           </div>
 
     </section>
@@ -212,12 +212,12 @@
           var page=2;
           var  userid='{$ysjxx.user_id}';
             $("#getValue-2").click(function(){
-
+ event.preventDefault();
                 $.ajax({
                     type:"post",
-                    url:"artist-detail.php?act=get_next_list",
+                    url:"artist-detail.php",
                     dataType: "json",
-                    data:{page:page,userid:userid},
+                    data:{page:page,userid:userid,act:'get_next_list'},
                     success: function(data){
                                         console.log(data);
 						$.each(data.data,function(i){
@@ -235,7 +235,7 @@
                     }
                 });
 
-            })
+            });
 
     </script>
 
