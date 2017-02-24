@@ -46,7 +46,7 @@ $smarty->assign('banner_list',$banner_list);
 //(头像、名称、地区、艺术家简介)
 if(isset($_REQUEST['ysjid'])){
     $ysjid = $_REQUEST['ysjid'];
-$ysjxxsql = "select u.user_id,u.user_name,u.hav_logo,u.country,u.artiststalk from  `ecs_admin_user` as u where `user_id` = '$ysjid'";
+$ysjxxsql = "select u.user_id,u.user_name,u.hav_logo,u.country,u.artiststalk,u.sjsintro from  `ecs_admin_user` as u where `user_id` = '$ysjid'";
 $ysjxx = $db->getRow($ysjxxsql);
 /* print_r($ysjxx); */
 $smarty->assign('ysjxx',$ysjxx);
@@ -98,10 +98,12 @@ exit;
 
         $data['data']=$ysjzp;
         $data['more']=$more;
-        echo json_encode($data);
+
 
     }
-    exit;
+
+      echo json_encode($data);
+     exit;
 
 }
 
