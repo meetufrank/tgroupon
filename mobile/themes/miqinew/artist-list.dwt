@@ -128,21 +128,11 @@
    {include file="head.dwt"}
     <!-- 头部结束 -->
 
-<!--     <section class="hero-slider" data-loop="true" data-autoplay="true" data-interval="7000">
-      <div class="inner">
-      {foreach from=$banner_list item=bl}
-         <a href="{$bl.ad_link}" >
-        <div class="slide" style="background-image: url({$bl.ad_code});">
-
-        </div>
-        </a>
-        {/foreach}
-
-      </div>
-    </section>-->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><a href="#"><img src="{$ectouch_themes}/img/kirana-about.jpg"></a></div>
+        {foreach from=$banner_list item=bl}
+            <div class="swiper-slide"><a href="{$bl.ad_link}"><img src="{$bl.ad_code}"></a></div>
+         {/foreach}
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
@@ -175,7 +165,7 @@
               </div><!-- .social-bar -->
               <img src="..{$al.hav_logo}" alt="{$al.user_name}" id="img">
             </div>
-            <h4 class="teammate-name"><a href="#">{$al.user_name}&nbsp;|&nbsp;{$al.country}</a></h4>
+            <h4 class="teammate-name"><a href="artist-detail.php?ysjid={$al.user_id}{$linestring2}">{$al.user_name}&nbsp;|&nbsp;{$al.country}</a></h4>
           </div>
           </div>
           {/foreach}

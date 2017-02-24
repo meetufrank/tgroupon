@@ -189,8 +189,9 @@
       var  type='showtype';
            $.ajax({
            type: "post",
-           url: "set_content.php",
+           url: "set_content.php?act=goods",
            data:{typeid:id,type:type},
+           dataType:"JSON",
            success: function (data) {
 
             window.location.href="goods_list.php{$linestring1}";
@@ -318,11 +319,11 @@
          <div class="teammate">
             <div class="teammate-thumb">
               <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.html" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+                <a href="artist-detail.php?ysjid={$yl.user_id}{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
               </div><!-- .social-bar -->
-              <img src="..{$yl.hav_logo}" alt="" class="img-Currentsize">
+              <img src="..{$yl.hav_logo}" alt="{$yl.user_name}" class="img-Currentsize">
             </div>
-            <h4 class="teammate-name"><a href="#">{$yl.user_name}</a></h4>
+            <h4 class="teammate-name"><a href="artist-detail.php?ysjid={$yl.user_id}{$linestring2}">{$yl.user_name}</a></h4>
           </div>
           </div>
           <!--{/foreach}-->
@@ -331,9 +332,9 @@
          <div class="col-xs-6 col-md-2">
          <div class="teammate">
             <div class="teammate-thumb">
-              <a href="artist-list.html"><img src="{$ectouch_themes}/img/team/more.jpg" alt="" class="img-Currentsize"></a>
+              <a href="artist_list.php{$linestring1}"><img src="{$ectouch_themes}/img/team/more.jpg" alt="" class="img-Currentsize"></a>
             </div>
-            <h4 class="teammate-name"><a href="#">更多</a></h4>
+            <h4 class="teammate-name"><a href="artist_list.php{$linestring1}">更多</a></h4>
           </div>
           </div>
           {/if}
