@@ -3292,7 +3292,7 @@ to {
 .shop-item .shop-item-details .shop-item-title>a {
 	color: #999;
 	text-decoration: none;
-	width:70%;
+	width:65%;
     white-space: nowrap;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
