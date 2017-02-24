@@ -126,9 +126,9 @@ $smarty->assign("banner_list",$banner_list);
         foreach($where_array as $key=>$value){
               $data_list=array();
               $next_data_list=array();
-              $num=$page_num*$pages-1;
+               $num=$page_num*($pages-1);
              $limit=' limit  '.$num.','.$page_num;
-             $next_num=$page_num*($pages+1)-1;
+             $next_num=$page_num*$pages;
              $next_limit=' limit  '.$next_num.','.$page_num;
               $data_list=get_artist_list($limit,$no_str,$value);
               $next_data_list=get_artist_list($next_limit,$no_next_str,$value);
@@ -163,10 +163,10 @@ $smarty->assign("banner_list",$banner_list);
       $data['more']=$more;
     $data['search_content']=$content;
   }else{
-     $num=$page_num*$pages-1;
+     $num=$page_num*($pages-1);
       $limit=' limit  '.$num.','.$page_num;
       $artist_list=get_artist_list($limit);
-      $next_num=$page_num*($pages+1)-1;
+      $next_num=$page_num*$pages;
       $next_limit=' limit  '.$next_num.','.$page_num;
       $artist_next_list=get_artist_list($next_limit);
       if(count($artist_next_list)){
@@ -200,13 +200,16 @@ $where_array=get_where($content);
 
              $no_str='';
              $no_next_str='';
+
    if(is_array($where_array)){
+
         foreach($where_array as $key=>$value){
+
               $data_list=array();
               $next_data_list=array();
-              $num=$page_num*$pages-1;
+              $num=$page_num*($pages-1);
              $limit=' limit  '.$num.','.$page_num;
-             $next_num=$page_num*($pages+1)-1;
+             $next_num=$page_num*$pages;
              $next_limit=' limit  '.$next_num.','.$page_num;
               $data_list=get_artist_list($limit,$no_str,$value);
               $next_data_list=get_artist_list($next_limit,$no_next_str,$value);
@@ -254,7 +257,7 @@ function get_artist_list($limit='',$str='',$where=''){
     $add_where=" and user_id not in (".$str.") ";
    }
   //艺术家列表
- $sql  = 'SELECT user_id, user_name,hav_logo,country'.
+  $sql  = 'SELECT user_id, user_name,hav_logo,country'.
 
             ' FROM ' .$GLOBALS['ecs']->table('admin_user')."WHERE role_id = 4  and hav_logo!='' ".$where.$add_where.$limit;
 
