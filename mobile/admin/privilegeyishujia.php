@@ -845,8 +845,8 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
 
         // echo '</pre>';
 
-        $url_img=$config['mobilesite_url'].$path.$up->getFileName();
 
+         $url_img=$config['mobilesite_url'].$path.$up->getFileName();
 
 
 
@@ -1048,7 +1048,9 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
 
     //修改设计师简介
     $contentedit = $_POST['content'];
-
+if($url_img){
+            $img_string="hav_logo  = '".$url_img."' ";
+         }
 
     //更新艺术家信息
 
@@ -1072,7 +1074,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
 
                "sjsintro = '$contentedit', ".
 
-               "hav_logo  = '$url_img'" .
+               $img_string .
 
                $action_list.$img_list.$country_list.
 
@@ -1110,7 +1112,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
 
                "sjsintro = '$contentedit', ".
 
-               "hav_logo = '$url_img'".
+               $img_string.
 
                $action_list.$img_list.$country_list.
 
@@ -1118,7 +1120,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
 
                $nav_list.
 
-               "WHERE user_id = '$admin_id'";
+               " WHERE user_id = '$admin_id'";
 
 
 
