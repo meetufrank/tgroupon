@@ -325,16 +325,16 @@ svg {
 	    padding: 10px 18px;
 	}
 	.extime{
-		font-weight: bold;
-		margin-top:5px;
 		height:55px;
 		padding-top:10px;
+		font-weight: bold;
+		margin-top:5px;		
 	}
 	.extext{
-		font-weight: bold;
-		margin-top:5px;
 		height:55px;
-		padding-top:5px;
+		padding-top:6px;
+		font-weight: bold;
+		margin-top:5px;		
 	}
 	.exname{
 		font-weight: bold;
