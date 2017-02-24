@@ -74,6 +74,7 @@
 	.img-Currentsize{
 		max-width:85%;
 		display:inline-block;
+    border-radius: 50%;
 	}
 	.owl-nav{
 		display:none
@@ -111,10 +112,12 @@
 ?>
          <a href="<?php echo $this->_var['bl']['ad_link']; ?>" >
         <div class="slide" style="background-image: url(<?php echo $this->_var['bl']['ad_code']; ?>);">
-        </a>
-        </div>
-        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 
+        
+
+        </div>
+        </a>
+          <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
       </div>
     </section>
 
@@ -215,11 +218,11 @@
         
         <div class="col-lg-3 col-md-4">
           <a href="shop-single.php?id=<?php echo $this->_var['tb_list']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>">
-          <div class="info-box text-center" style="background-image:url(././admin/<?php echo $this->_var['tb_list']['attributeimg']; ?>);-moz-background-size:100% 100%;
+          <div class="info-box text-center" style="background-image:url(../<?php echo $this->_var['tb_list']['goods_img']; ?>);-moz-background-size:100% 100%;
    background-size:100% 100%;background-repeat: no-repeat">
             <h2>特别优惠<br><span class="text-danger">-<?php echo $this->_var['tb_list']['priceratio']; ?>%</span></h2>
             <a href="shop-single.php?id=<?php echo $this->_var['tb_list']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>">
-             
+
             </a>
             <h3 class="lead text-normal space-bottom-half"><a href="shop-single.php?id=<?php echo $this->_var['tb_list']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>" class="link-title"><?php echo $this->_var['tb_list']['goods_name']; ?></a></h3>
             <span class="lead text-normal text-gray text-crossed">￥<?php echo $this->_var['tb_list']['falseprice']; ?></span>
