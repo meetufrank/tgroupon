@@ -110,7 +110,7 @@
          <a href="{$bl.ad_link}" >
         <div class="slide" style="background-image: url({$bl.ad_code});">
 
-        
+
 
         </div><!-- .slide -->
         </a>
@@ -142,10 +142,10 @@
 					<div id="designers" class="tab-pane transition fade scale">
 						<div class="row space-top-half">
 						<div class="col-xs-10" style="padding-left: 1px; padding-right: 0;">
-							<input type="text" class="form-control" placeholder="请在此处搜索您要找的设计师" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您要找的设计师'">
+							<input type="text" class="form-control" placeholder="请在此处搜索您要找的设计师" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您要找的设计师'" id="get_ysj_content">
 						</div>
 						<div class="col-xs-2" style="padding-left: 1px; margin-top:-10px;">
-				          	<button class="btn btn-default" type="submit">
+				          	<button class="btn btn-default" type="button" id="ysj_search">
 			                  <i class="material-icons search"></i>
 			                </button>
 						</div>
@@ -162,11 +162,26 @@
        var search='showsearch';
         $.ajax({
            type: "post",
-           url: "set_content.php",
+           url: "set_content.php?act=goods",
            data:{typeid:content,type:search},
+           dataType:"JSON",
            success: function (data) {
 
             window.location.href="goods_list.php{$linestring1}";
+          }
+     });
+   });
+  $("#ysj_search").click(function(){
+       var content=$("#get_ysj_content").val();
+
+        $.ajax({
+           type: "post",
+           url: "set_content.php?act=ysj",
+           data:{content:content},
+           dataType:"JSON",
+           success: function (data) {
+
+            window.location.href="artist_list.php{$linestring1}";
           }
      });
    });

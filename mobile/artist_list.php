@@ -26,8 +26,68 @@ if (!isset($_REQUEST['act']))
 }
 $page_num=1;  //页面显示条数
 if($_REQUEST['act']=='artist_list'){
-  setcookie('artist_content','',time()-3600);
 
+  setcookie('artist_content','',time()-3600);
+  if( !$_SESSION['is_send']){    //页面刷新清除功能
+      unset($_SESSION["ysj_content"]);
+  }else{
+    unset($_SESSION["is_send"]);
+  }
+  if($_SESSION["ysj_content"]){
+    $content=$_SESSION["ysj_content"];
+    $where_array=get_where($content);
+                 $no_str='';
+             $no_next_str='';
+   if(is_array($where_array)){
+        foreach($where_array as $key=>$value){
+              $data_list=array();
+              $next_data_list=array();
+             $limit=' limit 0,'.$page_num;
+             $next_limit=' limit '.$page_num.','.$page_num;
+              $data_list=get_artist_list($limit,$no_str,$value);
+              $next_data_list=get_artist_list($next_limit,$no_next_str,$value);
+              if(is_array($data_list)){
+                foreach ($data_list as $g_k => $g_v) {
+                $no_id[]=$g_v['user_id'];
+                }
+                $no_str=@implode(',',$no_id);
+
+              }
+               if(is_array($next_data_list)){
+                foreach ($next_data_list as $g_k => $g_v) {
+                $no_next_id[]=$g_v['user_id'];
+                }
+                $no_next_str=@implode(',',$no_next_id);
+
+              }
+
+
+              //$goods_list = array_merge($goods_list,$data_list);  //商品列表
+
+        }
+   }
+
+   if(count($next_data_list)){
+         $more=1;
+   }else{
+        $more=0;
+   }
+   $artist_list=$data_list;
+   $search_content=$content;
+
+  }else{
+
+      //艺术家列表
+        $limit=' limit 0,'.$page_num;
+        $artist_list=get_artist_list($limit);
+        $next_limit=' limit '.$page_num.','.$page_num;
+      $artist_next_list=get_artist_list($next_limit);
+      if(count($artist_next_list)){
+        $more=1;
+      }else{
+        $more=0;
+      }
+  }
   //艺术家banner显示
  $sql=" select * from ecs_touch_ad  where start_time<unix_timestamp(now()) and end_time>unix_timestamp(now()) and ad_code!='' and position_id=2 and enabled=1 order by sort desc limit 4 ";
 $banner_list=$GLOBALS['db']->getAll($sql);
@@ -42,18 +102,10 @@ foreach ($banner_list as $key => $value) {
       $banner_list[$key]['ad_link']=$value['ad_link'].$linestring1;
     }
 }
-  //艺术家列表
-  $limit=' limit 0,'.$page_num;
-  $artist_list=get_artist_list($limit);
-  $next_limit=' limit '.($page_num-1).','.$page_num;
-$artist_next_list=get_artist_list($next_limit);
-if(count($artist_next_list)){
-  $more=1;
-}else{
-  $more=0;
-}
+
 
 //print_r($artist_list);exit;
+$smarty->assign("search_content",$search_content);
 $smarty->assign("banner_list",$banner_list);
   $smarty->assign('more',$more);
   $smarty->assign('artist_list',$artist_list);
@@ -65,8 +117,53 @@ $smarty->assign("banner_list",$banner_list);
     }else{
        $pages=1;
     }
+    if($_SESSION["ysj_content"]){
+    $content=$_SESSION["ysj_content"];
+    $where_array=get_where($content);
+                 $no_str='';
+             $no_next_str='';
+   if(is_array($where_array)){
+        foreach($where_array as $key=>$value){
+              $data_list=array();
+              $next_data_list=array();
+              $num=$page_num*$pages-1;
+             $limit=' limit  '.$num.','.$page_num;
+             $next_num=$page_num*($pages+1)-1;
+             $next_limit=' limit  '.$next_num.','.$page_num;
+              $data_list=get_artist_list($limit,$no_str,$value);
+              $next_data_list=get_artist_list($next_limit,$no_next_str,$value);
+              if(is_array($data_list)){
+                foreach ($data_list as $g_k => $g_v) {
+                $no_id[]=$g_v['user_id'];
+                }
+                $no_str=@implode(',',$no_id);
 
-      $num=$page_num*$pages-1;
+              }
+               if(is_array($next_data_list)){
+                foreach ($next_data_list as $g_k => $g_v) {
+                $no_next_id[]=$g_v['user_id'];
+                }
+                $no_next_str=@implode(',',$no_next_id);
+
+              }
+
+
+              //$goods_list = array_merge($goods_list,$data_list);  //商品列表
+
+        }
+   }
+
+   if(count($next_data_list)){
+         $more=1;
+   }else{
+        $more=0;
+   }
+   $artist_list=$data_list;
+    $data['data']=$artist_list;
+      $data['more']=$more;
+    $data['search_content']=$content;
+  }else{
+     $num=$page_num*$pages-1;
       $limit=' limit  '.$num.','.$page_num;
       $artist_list=get_artist_list($limit);
       $next_num=$page_num*($pages+1)-1;
@@ -80,6 +177,9 @@ $smarty->assign("banner_list",$banner_list);
 
       $data['data']=$artist_list;
       $data['more']=$more;
+
+  }
+
 
       echo json_encode($data);
       exit;
@@ -95,38 +195,8 @@ $smarty->assign("banner_list",$banner_list);
      }else{
        $pages=1;
      }
+$where_array=get_where($content);
 
-      $str=strFilter($content);
-                    $num=abslength($str);
-                    $b_count=$num;
-
-                    for($a=$num-1;$a>=0;$a--){
-                      $count=0;
-                      $new_where=" ";//初始化
-                      $search_value=array();  //初始化数组
-                      $where=" and ( ";
-                      setcookie('showsearch',$where);
-                      for($b=0;$b<$num-$a;$b++){
-                          $search_value[]=csubstr($str,$count,$b_count);
-
-                          $count++;
-                      }
-                      $search_count=count($search_value);   //查询结果字符串的长度
-                      $or_num=$search_count-1;  //or存在的个数
-                      $value_count=0; //初始化结果循环次数
-                      foreach($search_value as $s_k=>$s_v){
-
-                          $new_where.="  user_name like '%".$s_v."%' ";
-                          if($value_count<$or_num){
-                            $new_where.=" or";
-                          }
-                          $value_count++;
-                      }
-
-                      $where.=$new_where." ) ";
-                      $where_array[]=$where;
-                     $b_count--;
-                    }
 
              $no_str='';
              $no_next_str='';
@@ -192,4 +262,41 @@ function get_artist_list($limit='',$str='',$where=''){
     return $ysj_list;
 }
 
+
+function  get_where($string=''){
+
+    $str=strFilter($string);
+                    $num=abslength($str);
+                    $b_count=$num;
+
+                    for($a=$num-1;$a>=0;$a--){
+                      $count=0;
+                      $new_where=" ";//初始化
+                      $search_value=array();  //初始化数组
+                      $where=" and ( ";
+                      for($b=0;$b<$num-$a;$b++){
+                          $search_value[]=csubstr($str,$count,$b_count);
+
+                          $count++;
+                      }
+                      $search_count=count($search_value);   //查询结果字符串的长度
+                      $or_num=$search_count-1;  //or存在的个数
+                      $value_count=0; //初始化结果循环次数
+                      foreach($search_value as $s_k=>$s_v){
+
+                          $new_where.="  user_name like '%".$s_v."%' ";
+                          if($value_count<$or_num){
+                            $new_where.=" or";
+                          }
+                          $value_count++;
+                      }
+
+                      $where.=$new_where." ) ";
+                      $where_array[]=$where;
+                     $b_count--;
+                    }
+
+
+                    return $where_array;
+}
 ?>

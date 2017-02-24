@@ -31,52 +31,52 @@
   <!-- by sun -->
   <style>
     .nav-pills{
-    	margin-left:-18px;
-    	padding-bottom:10px;
+      margin-left:-18px;
+      padding-bottom:10px;
     }
-  	.nav-pills>li {
-	    float: left;
-	    position: relative;
-	    display: block;
-	}
-	.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
-	    color: #333;
-	    background-color: #f5f5f5;
-	}
-	.nav-pills>li>a {
-	    position: relative;
-	    display: block;
-	    padding: 10px 18px;
-	    text-decoration:none;
-	    font-size:14px;
-	    color: #a5a5a5;
-	}
-	.nav-pills>li>a>span {
-		padding-left:5px;
-		color:#f20000;
-	}
-	.teammate img{
-		border-radius: 50%;
-	}
-	.teammate:hover img{
-		border-radius: 0%;
-	}
-	.teammate-name a:hover {
-	    color: #333;
-	}
-	.teammate-name a {
-	    text-decoration: none;
-	    color: #999;
-	}
-	.list_msgs a{
-		color:#666;
-		font-size:14px;
-		text-decoration:none;
-	}
-	.list_msgs a:hover{
-		color:#999;
-		text-decoration:underline;
-	}
+    .nav-pills>li {
+      float: left;
+      position: relative;
+      display: block;
+  }
+  .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+      color: #333;
+      background-color: #f5f5f5;
+  }
+  .nav-pills>li>a {
+      position: relative;
+      display: block;
+      padding: 10px 18px;
+      text-decoration:none;
+      font-size:14px;
+      color: #a5a5a5;
+  }
+  .nav-pills>li>a>span {
+    padding-left:5px;
+    color:#f20000;
+  }
+  .teammate img{
+    border-radius: 50%;
+  }
+  .teammate:hover img{
+    border-radius: 0%;
+  }
+  .teammate-name a:hover {
+      color: #333;
+  }
+  .teammate-name a {
+      text-decoration: none;
+      color: #999;
+  }
+  .list_msgs a{
+    color:#666;
+    font-size:14px;
+    text-decoration:none;
+  }
+  .list_msgs a:hover{
+    color:#999;
+    text-decoration:underline;
+  }
   /*swiper样式*/
    html, body {
         position: relative;
@@ -142,36 +142,36 @@
     </section>-->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><a href="#"><img src="{$ectouch_themes}/img/kirana-about.jpg"></a></div>           
+            <div class="swiper-slide"><a href="#"><img src="{$ectouch_themes}/img/kirana-about.jpg"></a></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
-	<!-- Content -->
-	<section class="container padding-top-2x">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<div class="column">
-			      <form method="get" class="search-box">
-			        <input type="text" class="form-control" placeholder="请在此处搜索" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索'" id="search_content">
-			        <button type="submit" id="ysj_search" >
-			          <i class="material-icons search"></i>
-			        </button>
-			      </form><!-- form.search-box -->
-			    </div>
-			</div>
-		</div>
-		<br>
-	    <hr>
-	    <br>
+  <!-- Content -->
+  <section class="container padding-top-2x">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="column">
+            <form method="get" class="search-box">
+              <input type="text" class="form-control" placeholder="请在此处搜索" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索'" id="search_content" {if $search_content}value="{$search_content}"{/if}>
+              <button type="submit" id="ysj_search" >
+                <i class="material-icons search"></i>
+              </button>
+            </form><!-- form.search-box -->
+          </div>
+      </div>
+    </div>
+    <br>
+      <hr>
+      <br>
 
-	    <div class="row padding-top" id="ysj_content">
+      <div class="row padding-top" id="ysj_content">
       {foreach from=$artist_list item=al}
          <div class="col-xs-6 col-sm-4 col-md-2">
          <div class="teammate">
             <div class="teammate-thumb">
               <div class="social-bar text-center space-bottom">
-                <a href="artist-detail.php?ysjid={$al.user_id}{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+                <a href="artist-detail.php?ysjid={$al.user_id}{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light" >了解设计师</a>
               </div><!-- .social-bar -->
               <img src="..{$al.hav_logo}" alt="{$al.user_name}" id="img">
             </div>
@@ -185,12 +185,12 @@
       {if $more==1}
           <div class="text-center padding-bottom-2x" id="morefather">
           <div id="more">
-          	<a href="#" class="btn btn-primary waves-effect waves-light" id="getValue">加载更多</a>
-          	<br>
-          	<a><i class="material-icons arrow_downward"></i></a>
+            <a href="#" class="btn btn-primary waves-effect waves-light" id="getValue">加载更多</a>
+            <br>
+            <a><i class="material-icons arrow_downward"></i></a>
             </div>
             <div style="text-align:center; width:50px;height:50px;margin:0 auto;display:none;" id="loadimg"><img src="{$ectouch_themes}img/preloader.gif"></div>
-          	</div>
+            </div>
       {/if}
       </div>
     </section>
@@ -228,15 +228,15 @@
                     dataType: "json",
                     data:{page:page},
                     success: function(data){
-						//console.log(data);
-						$.each(data.data,function(i){
-							layer.open({
-    						type: 2
-    						,content: '加载中'
-							,time: 0.5 //2秒后自动关闭
-  							});
+            //console.log(data);
+            $.each(data.data,function(i){
+              layer.open({
+                type: 2
+                ,content: '加载中'
+              ,time: 0.5 //2秒后自动关闭
+                });
                            $("#clear-fudong").before('<div class="col-xs-6 col-sm-4 col-md-2">'+'<div class="teammate"><div class="teammate-thumb">'+
-						  ' <div class="social-bar text-center space-bottom">'+
+              ' <div class="social-bar text-center space-bottom">'+
                 '<a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a></div>'+
               '<img src="..'+data.data[i].hav_logo+'" alt="'+data.data[i].hav_logo+'"></div>'+
             '<h4 class="teammate-name"><a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}">'+data.data[i].user_name+'&nbsp;|&nbsp;'+data.data[i].country+'</a></h4></div></div>'
@@ -249,7 +249,9 @@
             if(data.more==0){
                                 $("#morefather").remove();
                            }
-                           $("#search_content").val();
+                           if(data.search_content!=''){
+                            $("#search_content").val(data.search_content);
+                           }
             page++;
                     },
                     error: function(){
@@ -296,16 +298,7 @@
                            }
 
                     $("#ysj_content").append(new_content);
-                    },
-                    error: function(){
-
-                    }
-                });
-                return false;
-            });
-
-
-             var search_page=2;
+                     var search_page=2;
             $("#getsearchValue").click(function(){
 
                 $.ajax({
@@ -349,6 +342,16 @@
                 });
 
             })
+                    },
+                    error: function(){
+
+                    }
+                });
+                return false;
+            });
+
+
+
       </script>
 
 </body><!-- <body> -->

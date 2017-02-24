@@ -360,3 +360,11 @@ ADD COLUMN `listimg`  varchar(255) NULL COMMENT '//首页列表轮播图片' AFT
 */
 ALTER TABLE `ecs_touch_ad`
 MODIFY COLUMN `position_id`  smallint(5) UNSIGNED NOT NULL DEFAULT 0 COMMENT '//首页1; 设计师2; 设计师列表详情3' AFTER `ad_id`;
+
+
+
+
+/*#2017/02/24 汪江  admin_user 表添加设计师简介
+*/
+ALTER TABLE `ecs_admin_user`
+MODIFY COLUMN `sjsintro`  text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '//设计师简介' AFTER `artiststalk`;

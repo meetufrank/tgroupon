@@ -3,8 +3,12 @@
  * @Author: anchen
  * @Date:   2017-02-21 15:47:13
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-02-21 17:16:34
+ * @Last Modified time: 2017-02-24 15:30:16
  */
+
+define('IN_ECTOUCH', true);
+require(dirname(__FILE__) . '/include/init.php');
+if($_REQUEST['act']=='goods'){
 
 
 if($_POST['type']){
@@ -19,5 +23,16 @@ if($_POST['type']){
                   setcookie('typeid',$typeid);
              }
             echo json_encode(1);
-             exit;
+
+}
+ exit;
+}elseif($_REQUEST['act']=='ysj'){
+
+    if($_POST['content']){
+        $_SESSION['ysj_content']=$_POST['content'];
+        $_SESSION['is_send']=1;
+
+        echo json_encode(1);
+    }
+exit;
 }
