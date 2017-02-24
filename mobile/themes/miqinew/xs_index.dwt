@@ -253,7 +253,7 @@
           <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}">
           <div class="info-box text-center" style="background-image:url(../{$tb_list.goods_img});-moz-background-size:100% 100%;
    background-size:100% 100%;background-repeat: no-repeat">
-            <h2>特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
+            <h2 class="tbyh">特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
             <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}">
 
             </a>
