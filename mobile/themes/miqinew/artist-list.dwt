@@ -96,25 +96,13 @@
    {include file="head.dwt"}
     <!-- 头部结束 -->
 
-    <section class="hero-slider" data-loop="true" data-autoplay="true" data-interval="7000">
-      <div class="inner">
-      {foreach from=$banner_list item=bl}
-         <a href="{$bl.ad_link}" >
-        <div class="slide" style="background-image: url({$bl.ad_code});">
-
-        </div><!-- .slide -->
-        </a>
-        {/foreach}
-
-      </div><!-- .inner -->
-    </section><!-- .hero-slider -->
 	<!-- Content -->
 	<section class="container padding-top-2x">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<div class="column">
 			      <form method="get" class="search-box">
-			        <input type="text" class="form-control" placeholder="请在此处搜索" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索'" id="search_content">
+			        <input type="text" class="form-control" placeholder="请在此处搜索" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索'" id="search_content" {if $search_content}value="{$search_content}"{/if}>
 			        <button type="submit" id="ysj_search" >
 			          <i class="material-icons search"></i>
 			        </button>
@@ -201,7 +189,10 @@
             if(data.more==0){
                                 $("#morefather").remove();
                            }
-                           $("#search_content").val();
+                           if(data.search_content!=''){
+                            $("#search_content").val(data.search_content);
+                           }
+
             page++;
                     },
                     error: function(){
@@ -248,16 +239,7 @@
                            }
 
                     $("#ysj_content").append(new_content);
-                    },
-                    error: function(){
-
-                    }
-                });
-                return false;
-            });
-
-
-             var search_page=2;
+                      var search_page=2;
             $("#getsearchValue").click(function(){
 
                 $.ajax({
@@ -301,6 +283,16 @@
                 });
 
             })
+                    },
+                    error: function(){
+
+                    }
+                });
+                return false;
+            });
+
+
+
       </script>
 
 </body><!-- <body> -->
