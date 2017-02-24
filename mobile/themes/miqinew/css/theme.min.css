@@ -327,10 +327,14 @@ svg {
 	.extime{
 		font-weight: bold;
 		margin-top:5px;
+		height:55px;
+		padding-top:10px;
 	}
 	.extext{
 		font-weight: bold;
 		margin-top:5px;
+		height:55px;
+		padding-top:5px;
 	}
 	.exname{
 		font-weight: bold;

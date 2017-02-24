@@ -474,26 +474,26 @@
                   <!--快递信息开始-->
 
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="expressmain" style="border-top: 2px dashed #ededed">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 exname" id="couriername">{$co.shipping_name}</div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 exnumber">{$co.invoice_no}</div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 exname" id="couriername">{$co.shipping_name}</div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 exnumber">{$co.invoice_no}</div>
 
                                      {foreach from=$co.kuaidi.data item=cd name=name key=key}
                                       {if $smarty.foreach.name.iteration %2 == 1}
-                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extime kuaidibjs">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extime kuaidibjs">
                                                     <span>{$cd.time}</span>
                                                     <span>{$cd.ftime}</span>
                                                 </div>
 
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extext kuaidibjs">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extext kuaidibjs">
                                                    {$cd.context}
                                                 </div>
                                       {else}
-                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extime ">
+                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extime" >
                                                     <span>{$cd.time}</span>
                                                     <span>{$cd.ftime}</span>
                                                 </div>
 
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 extext ">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extext">
                                                    {$cd.context}
                                                 </div>
                                       {/if}
@@ -640,7 +640,6 @@
   <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
   <script src="{$ectouch_themes}/js/scripts.js"></script>
   <!-- script for tan chuang -->
-
  <script type="text/javascript">
  $(".cancel_order_mobile").each(function(){
 
