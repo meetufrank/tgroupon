@@ -367,4 +367,7 @@ MODIFY COLUMN `position_id`  smallint(5) UNSIGNED NOT NULL DEFAULT 0 COMMENT '//
 /*#2017/02/24 汪江  admin_user 表添加设计师简介
 */
 ALTER TABLE `ecs_admin_user`
-MODIFY COLUMN `sjsintro`  text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '//设计师简介' AFTER `artiststalk`;
+ADD COLUMN `sjsintro`  text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '//设计师简介' AFTER `artiststalk`;
+
+
+
