@@ -4,6 +4,9 @@
 
 
 
+<script charset="utf-8" src="../admin/data/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="../admin/data/kindeditor/lang/zh_CN.js"></script>
+
 <div class="main-div">
 
 <form name="theForm" method="post" enctype="multipart/form-data" onload="dj()"  onsubmit="return validate();">
@@ -210,14 +213,17 @@
 
           </tr>
 
-
-
-           <tr>
+          <tr>
               <td class="label">设计师简介</td>
               <td>
-                <input type="text" name="user_code"  value="{$weiyi_num}" />
+                  <textarea id="content" name="content"
+                      style="width:80%;height:400px;">
+                        {$user.sjsintro}
+                  </textarea>
               </td>
           </tr>
+
+
 
   {/if}
 
@@ -329,7 +335,19 @@
 
 {insert_scripts files="../data/static/js/utils.js,./js/validator.js"}
 
+<script type="text/javascript">
+    //KindEditor脚本
+    var editor;
+    KindEditor.ready(function(K) {
+        editor = K.create('#content', {
+        });
+    });
+</script>
+
 <script language="JavaScript">
+
+
+
 
 var action = "{$action}";
 
