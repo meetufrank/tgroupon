@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2016-12-27 10:42:17
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-02-22 11:54:44
+ * @Last Modified time: 2017-02-24 15:47:34
  */
 
 
@@ -26,10 +26,18 @@ if ($_REQUEST['step'] == 'goods_list'){
 
 
      if($_COOKIE['typeid']){
-              $check_id=$_COOKIE['typeid'];
+             if($_COOKIE['list_type']=='showsearch'){
+                        $check_id=0;
+             }else{
+                     $check_id=$_COOKIE['typeid'];
+             }
+
      }else{
               $check_id=0;
      }
+
+
+
        $smarty->assign('check_id',$check_id);
        $smarty->assign('search_val',$_COOKIE['search_content']);
        $smarty->assign('showtype',$_COOKIE['list_type']);
@@ -42,6 +50,7 @@ elseif($_REQUEST['step'] == 'ajax_goods_count'){
 
          $page_count=15;   ///设置每页显示条数
        if($_COOKIE['list_type']){   //判断是否从首页入口搜索
+        $list_type=$_COOKIE['list_type'];
                if($list_type=='showtype'){
                           $_POST['showtype']=$list_type;
                           $_POST['typeid']=$_COOKIE['typeid'];
