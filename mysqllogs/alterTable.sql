@@ -348,3 +348,9 @@ ADD COLUMN `sort`  int(11) NULL DEFAULT 0 COMMENT '//首页轮播图排序' AFTE
 */
 ALTER TABLE `ecs_users`
 ADD COLUMN `openidphone`  varchar(50) NOT NULL COMMENT '//手机openid' AFTER `weiyi_num`;
+
+
+/*#2017/02/23 汪江  商品表添加首页轮播图片
+*/
+ALTER TABLE `ecs_goods`
+ADD COLUMN `listimg`  varchar(255) NULL COMMENT '//首页列表轮播图片' AFTER `is_very`;

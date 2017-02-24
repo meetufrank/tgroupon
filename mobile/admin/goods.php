@@ -8,6 +8,7 @@
 
  * ============================================================================
 
+
  * * 版权所有 2005-2012 TGROUPON中国，并保留所有权利。
 
  * 网站地址: http://www.tgroupon.cn；
@@ -1677,6 +1678,12 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     $goods_thumb = (empty($goods_thumb) && isset($_POST['auto_thumb']))? $goods_img : $goods_thumb;
 
 
+    $tuijie_img_name = basename($image->upload_image($_FILES['tuijie_img'],'listimg'));
+    if($tuijie_img_name != ''){
+      $tuijie_img = '/data/listimg/'. $tuijie_img_name;
+    }
+
+
 
     //
 
@@ -1691,7 +1698,6 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
     //商品规格
-
 
 
 
@@ -1720,7 +1726,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
 
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral,fencheng, suppliers_id,arter_id,father_id,more_price,is_very )" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral,fencheng, suppliers_id,arter_id,father_id,more_price,is_very,listimg )" .
 
 
 
@@ -1742,7 +1748,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
 
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral','$fencheng', '$suppliers_id','$arter_id','$father_id',$more_price,'$is_very' )";
+                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral','$fencheng', '$suppliers_id','$arter_id','$father_id',$more_price,'$is_very','$tuijie_img' )";
 
         }
 
@@ -1762,7 +1768,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
 
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral,fencheng,arter_id,father_id,more_price,is_very )" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral,fencheng,arter_id,father_id,more_price,is_very,listimg )" .
 
 
 
@@ -1778,9 +1784,10 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
 
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral','$fencheng','$arter_id','$father_id',$more_price,'$is_very')";
+                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral','$fencheng','$arter_id','$father_id',$more_price,'$is_very', '$tuijie_img')";
 
         }
+
 
     }
 
@@ -1818,7 +1825,14 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
         }
 
-
+       $sql = "SELECT listimg" .
+                    " FROM " . $ecs->table('goods') .
+                    " WHERE goods_id = '$_REQUEST[goods_id]'";
+              $row = $db->getRow($sql);
+              if ($row['tuijie_img'])
+        {
+            @unlink(ROOT_PATH . $row['listimg']);
+        }
 
         $sql = "UPDATE " . $ecs->table('goods') . " SET " .
 
@@ -1881,7 +1895,10 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
             $sql .= "goods_thumb = '$goods_thumb', ";
 
         }
-
+ if($tuijie_img)
+              {
+                  $sql .= "listimg = '$tuijie_img', ";
+              }
         if ($code != '')
 
         {
@@ -3633,7 +3650,7 @@ elseif ($_REQUEST['act'] == 'drop_goods')
 
     $sql = "SELECT goods_id, goods_name, is_delete, is_real, goods_thumb, " .
 
-                "goods_img, original_img " .
+                "goods_img,listimg, original_img " .
 
             "FROM " . $ecs->table('goods') .
 
