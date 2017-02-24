@@ -28,13 +28,13 @@ $page_num=1;  //页面显示条数
 if($_REQUEST['act']=='artist_list'){
 
   setcookie('artist_content','',time()-3600);
-  if(!$_COOKIE['is_send']){    //页面刷新清除功能
-      setcookie('ysj_content','',time()-3600);
+  if( !$_SESSION['is_send']){    //页面刷新清除功能
+      unset($_SESSION["ysj_content"]);
   }else{
-     setcookie('is_send','',time()-3600);
+    unset($_SESSION["is_send"]);
   }
-  if($_COOKIE['ysj_content']){
-    $content=$_COOKIE['ysj_content'];
+  if($_SESSION["ysj_content"]){
+    $content=$_SESSION["ysj_content"];
     $where_array=get_where($content);
                  $no_str='';
              $no_next_str='';
@@ -117,8 +117,8 @@ $smarty->assign("banner_list",$banner_list);
     }else{
        $pages=1;
     }
-    if($_COOKIE['ysj_content']){
-    $content=$_COOKIE['ysj_content'];
+    if($_SESSION["ysj_content"]){
+    $content=$_SESSION["ysj_content"];
     $where_array=get_where($content);
                  $no_str='';
              $no_next_str='';

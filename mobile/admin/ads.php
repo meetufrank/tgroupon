@@ -468,7 +468,7 @@ elseif ($_REQUEST['act'] == 'insert')
 
 
     /* 插入数据 */
-// $sort = $_POST['link_sort'];
+// $sort = $_POST['position_id'];
 // print_r($sort);exit;
     $sql = "INSERT INTO ".$ecs->table('touch_ad'). " (position_id,media_type,ad_name,ad_link,ad_code,start_time,end_time,link_man,link_email,link_phone,sort,click_count,enabled)
 
@@ -1166,8 +1166,9 @@ function get_adslist()
             'LEFT JOIN ' . $GLOBALS['ecs']->table('order_info'). " AS o ON o.from_ad = ad.ad_id $where " .
 
             'GROUP BY ad.ad_id '.
+            'ORDER by ad.sort Desc';
 
-            'ORDER by '.$filter['sort_by'].' '.$filter['sort_order'];
+            // 'ORDER by '.$filter['sort_by'].' '.$filter['sort_order'];
 
 
 

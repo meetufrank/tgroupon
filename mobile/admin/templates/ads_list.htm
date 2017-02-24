@@ -24,6 +24,8 @@
 
     <th><a>{$lang.ad_name}</a></th>
 
+    <th><a>广告位置</a></th>
+
 <!--     <th><a href="javascript:listTable.sort('position_id'); ">{$lang.position_id}</a>{$sort_position_id}</th> -->
 
     <!-- <th><a href="javascript:listTable.sort('media_type'); ">{$lang.media_type}</a>{$sort_media_type}</th> -->
@@ -52,6 +54,26 @@
     <span onclick="javascript:listTable.edit(this, 'edit_ad_name', {$list.ad_id})">{$list.ad_name|escape:html}</span>
 
     </td>
+
+
+    <td align="center">
+        <span>
+             {if $list.position_id == 0}
+                 暂无广告位
+            {elseif $list.position_id == 1}
+                 首页位
+            {elseif $list.position_id == 2}
+                 设计师位
+            {elseif $list.position_id == 3}
+                 设计师列表详情位
+            {/if}
+
+        </span>
+    </td>
+
+
+
+
 
  <!--    <td align="left"><span>{if $list.position_id eq 0}{$lang.outside_posit}{else}{$list.position_name}{/if}</span>
 

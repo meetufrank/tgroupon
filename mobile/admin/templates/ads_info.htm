@@ -34,7 +34,7 @@
 
     {if $action eq "add"}
 
-      <tr>
+      <tr style="display:none;">
 
         <td class="label">{$lang.media_type}</td>
 
@@ -67,13 +67,12 @@
       <td  class="label">{$lang.position_id}</td>
 
       <td>
-
         <select name="position_id">
-
-        <option value='0'>{$lang.outside_posit}</option>
-
-        {html_options options=$position_list selected=$ads.position_id}
-
+            <option value='0' {if $ads.position_id == 0}selected = "selected"{/if}>请选择</option>
+            <option value='1' {if $ads.position_id == 1}selected = "selected"{/if}>首页位</option>
+            <option value='2' {if $ads.position_id == 2}selected = "selected"{/if}>设计师位</option>
+            <option value='3' {if $ads.position_id == 3}selected = "selected"{/if}>设计师列表详情位</option>
+        <!-- {html_options options=$position_list selected=$ads.position_id} -->
         </select>
 
       </td>
@@ -238,7 +237,7 @@
 
 
 
-   <!--  <tr>
+    <tr>
 
       <td  class="label">{$lang.enabled}</td>
 
@@ -251,7 +250,7 @@
       </td>
 
     </tr>
- -->
+
    <!--  <tr>
 
       <td  class="label">{$lang.link_man}</td>
