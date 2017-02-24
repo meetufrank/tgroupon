@@ -640,10 +640,6 @@
   <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
   <script src="{$ectouch_themes}/js/scripts.js"></script>
   <!-- script for tan chuang -->
-  <script>
-    document.getElementById("extimes").style.height=document.getElementById("extexts").offsetHeight+"px";
-    document.getElementById("extimes-color").style.height=document.getElementById("extexts-color").offsetHeight+"px"; 
-  </script>
  <script type="text/javascript">
  $(".cancel_order_mobile").each(function(){
 
