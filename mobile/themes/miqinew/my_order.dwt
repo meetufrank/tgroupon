@@ -479,21 +479,21 @@
 
                                      {foreach from=$co.kuaidi.data item=cd name=name key=key}
                                       {if $smarty.foreach.name.iteration %2 == 1}
-                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extime kuaidibjs" style="height:48px;position: relative">
-                                                    <span style="display:block;position:absolute;bottom:0px;text-align:center;">{$cd.time}</span>
-                                                    <span style="display:block;position:absolute;bottom:0px;text-align:center;">{$cd.ftime}</span>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extime kuaidibjs" style="height:48px;padding-top:5px">
+                                                    <span>{$cd.time}</span>
+                                                    <span>{$cd.ftime}</span>
                                                 </div>
 
-                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extext kuaidibjs" style="height:48px;position: relative">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extext kuaidibjs" style="height:48px;margin-top:3px;padding-top:3px;">
                                                    {$cd.context}
                                                 </div>
                                       {else}
-                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extime" style="height:48px;position: relative">
-                                                    <span style="display:block;position:absolute;bottom:0px;text-align:center;">{$cd.time}</span>
-                                                    <span style="display:block;position:absolute;bottom:0px;text-align:center;">{$cd.ftime}</span>
+                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extime" style="height:48px;padding-top:5px">
+                                                    <span>{$cd.time}</span>
+                                                    <span>{$cd.ftime}</span>
                                                 </div>
 
-                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extext" style="height:48px;position: relative">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extext" style="height:48px;margin-top:3px;padding-top:3px;">
                                                    {$cd.context}
                                                 </div>
                                       {/if}
