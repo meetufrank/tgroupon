@@ -76,7 +76,7 @@
     border-radius: 50%;
 	}
 	.owl-nav{
-		display:none
+		display:none;
 	}
 	.teammate {
 		width: 90%;
