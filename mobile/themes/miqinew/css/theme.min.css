@@ -3292,12 +3292,12 @@ to {
 .shop-item .shop-item-details .shop-item-title>a {
 	color: #999;
 	text-decoration: none;
-	width:100%;
-/*    white-space: nowrap;
+	width:70%;
+    white-space: nowrap;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     overflow: hidden;
-    display: inline-block;*/
+    display: inline-block;
     -webkit-line-clamp: 1;
 }
 .shop-item .shop-item-details .shop-item-price {
@@ -4261,7 +4261,7 @@ display:none
 	width: 100%;
 	max-width: 220px;
 	margin-bottom: 12px;
-	height:220px;
+	
 	opacity: 1;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
