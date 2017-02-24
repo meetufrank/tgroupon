@@ -249,7 +249,7 @@
       <div class="row padding-top">
 
         <!-- Special Offer -->
-        <div class="col-lg-3 col-md-4">
+        <div class="col-lg-3 col-md-3">
           <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}">
           <div class="info-box text-center" style="background-image:url(../{$tb_list.goods_img});-moz-background-size:100% 100%;
    background-size:100% 100%;background-repeat: no-repeat">
@@ -267,7 +267,7 @@
         </div><!-- .col-lg-3.col-md-4 -->
 
         <!-- Products -->
-        <div class="col-lg-9 col-md-8">
+        <div class="col-lg-9 col-md-9">
           <!-- Nav Tabs -->
           <ul class="nav-tabs text-center" role="tablist">
             <li class="active"><a href="#newcomers" role="tab" data-toggle="tab">新品上架</a></li>
