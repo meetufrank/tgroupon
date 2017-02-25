@@ -469,11 +469,11 @@
 
                   <!-- 订单id -->
                   <input type="hidden"  value="{$co.order_id}" id="orderids">
-                  <a class="btn btn-primary Logistics" href="#" data-id="{$co.order_id}" onClick="javascript:func()">快递跟踪</a>
+                  <a class="btn btn-primary Logistics" href="#" data-id="{$co.order_id}" onClick="javascript:func({$co.order_id})">快递跟踪</a>
                   </div>
                   <!--快递信息开始-->
 
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="expressmain" style="border-top: 2px dashed #ededed">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="expressmain{$co.order_id}" style="border-top: 2px dashed #ededed;display:none;">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 exname" id="couriername">{$co.shipping_name}</div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 exnumber">{$co.invoice_no}</div>
 
@@ -861,13 +861,17 @@
             //   });//快递跟踪点击函数
 
             // });
-              var exs = document.getElementById("expressmain");
-              exs.style.display = "none";
-              function func() {
-                  if(exs.style.display == "block")
-                      exs.style.display = "none";
-                  else
+
+              function func(orderid) {
+                var exs = document.getElementById("expressmain"+orderid);
+
+                  if(exs.style.display == "block"){
+
+                    exs.style.display = "none";
+                  }
+                  else{
                       exs.style.display = "block";
+                  }
               }
 
 
