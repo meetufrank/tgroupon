@@ -23,7 +23,7 @@ if (!isset($_REQUEST['act']))
 {
     $_REQUEST['act'] = "artist_detail";
 }
-$page_num=8;  //页面显示条数
+$page_num=4;  //页面显示条数
 if($_REQUEST['act']=='artist_detail'){
 
 
@@ -81,7 +81,9 @@ exit;
     }else{
        $pages=1;
     }
+
     $ysjid=intval($_POST['userid']);
+
     if($ysjid){
     $num=$page_num*($pages-1);
      $limit=' limit  '.$num.','.$page_num;
@@ -102,7 +104,7 @@ exit;
 
     }
 
-      echo json_encode($ysjzp);
+      echo json_encode($data);
      exit;
 
 }
