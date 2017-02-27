@@ -161,7 +161,7 @@
             <div class="shop-item-details">
               <h3 class="shop-item-title"><a href="#">{$ysjzp.goods_name}</a></h3>
               <span class="shop-item-price">
-                {$ysjzp.attributeprice}
+               ￥{$ysjzp.attributeprice}
               </span>
             </div>
           </div><!-- .shop-item -->
@@ -212,26 +212,27 @@
           var page=2;
           var  userid='{$ysjxx.user_id}';
             $("#getValue-2").click(function(){
- event.preventDefault();
+                event.preventDefault();
                 $.ajax({
                     type:"POST",
                     url:"artist-detail.php",
                     dataType: "json",
                     data:{page:page,userid:userid,act:'get_next_list'},
                     success: function(data){
-                                       //  console.log(data);
+                                      // console.log(data);return;
 						$.each(data.data,function(i){
 							layer.open({
-    						type: 2
-    						,content: '加载中'
-							,time: 0.5 //2秒后自动关闭
-  					});
+                						type: 2
+                						,content: '加载中'
+            							,time: 0.5 //2秒后自动关闭
+              					});
 
-                           $("#nextsp").append('<div class="col-lg-3 col-sm-6">'+'<div class="shop-item">'+'<div class="shop-thumbnail">'+'<a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}" class="item-link"></a>'+'<img src="././admin/'+data.data[i].attributeimg+'" alt="'+data.data[i].goods_name+'">'+'</div>'+'<div class="shop-item-details">'+'<h3 class="shop-item-title"><a href="#">'+data.data[i].goods_name+'</a></h3>'+'<span class="shop-item-price">'+data.data[i].attributeprice+'</span>'+'</div>'+'</div>'+'</div>');//内容添加到页面上.
+                           $("#nextsp").append('<div class="col-lg-3 col-sm-6">'+'<div class="shop-item">'+'<div class="shop-thumbnail">'+'<a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}" class="item-link"></a>'+'<img src="././admin/'+data.data[i].attributeimg+'" alt="'+data.data[i].goods_name+'">'+'</div>'+'<div class="shop-item-details">'+'<h3 class="shop-item-title"><a href="#">'+data.data[i].goods_name+'</a></h3>'+'<span class="shop-item-price">￥'+data.data[i].attributeprice+'</span>'+'</div>'+'</div>'+'</div>');//内容添加到页面上.
                              });
                          if(data.more==0){
                                     $("#more").remove();
                          }
+                         page++;
                     }
                 });
 
