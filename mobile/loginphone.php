@@ -105,6 +105,32 @@ $openids = $GLOBALS['db']->getOne($sql);
 
 
 
+ $access_token = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxb5aec13c030a530b&secret=2232d4acc3612e530f0ccc311c72d68c";
+
+    $access_msg = json_decode(file_get_contents($access_token));
+    $token = $access_msg->access_token;
+
+    $subscribe_msg = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$token&openid=$openid";
+    $subscribe = json_decode(file_get_contents($subscribe_msg));
+    $gzxx = $subscribe->subscribe;
+    //
+    if($gzxx === 1){
+     echo "已关注";
+    }else{
+    echo "未关注";
+
+ }
+
+exit;
+
+
+
+
+
+
+
+
+
 
 if(!$openids){
 

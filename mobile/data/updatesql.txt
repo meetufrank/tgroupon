@@ -1,5 +1,0 @@
-//2016-10-22  王晋
-  //(1)增加商品表关联艺术家ID
-ALTER TABLE `ecs_goods`
-ADD COLUMN `arter_id`  smallint(5) NOT NULL DEFAULT 0 COMMENT '//艺术家id' AFTER `fencheng`;
-
