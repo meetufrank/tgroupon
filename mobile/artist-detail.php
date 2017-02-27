@@ -83,9 +83,9 @@ exit;
     }
     $ysjid=intval($_POST['userid']);
     if($ysjid){
-    $num=$page_num*$pages-1;
+    $num=$page_num*($pages-1);
      $limit=' limit  '.$num.','.$page_num;
-     $next_num=$page_num*($pages+1)-1;
+     $next_num=$page_num*$pages;
      $next_limit=' limit  '.$next_num.','.$page_num;
      $where=" and g.arter_id=".$ysjid;
      $ysjzp=get_artist_goods($limit,$where);

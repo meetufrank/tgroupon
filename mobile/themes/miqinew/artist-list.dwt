@@ -259,9 +259,9 @@
               var content=$("#search_content").val();
                  $.ajax({
                     type:"POST",
-                    url:"artist_list.php?act=get_search_list",
+                    url:"artist_list.php",
                     dataType: "json",
-                    data:{content:content},
+                    data:{content:content,act:'get_search_list'},
                     success: function(data){
             //console.log(data);
           $("#ysj_content").children().remove();

@@ -155,7 +155,7 @@
 							<input type="text" class="form-control" placeholder="请在此处搜索您想要的商品" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您想要的商品'" id="goods_content">
 						</div>
 						<div class="col-xs-2" style="padding-left: 1px; margin-top:-10px;">
-				          	<button class="btn btn-default" type="button" id="goods_search">
+				          	<button class="btn btn-default" type="submit" id="goods_search">
 			                  <i class="material-icons search"></i>
 			                </button>
 						</div>
@@ -167,7 +167,7 @@
 							<input type="text" class="form-control" placeholder="请在此处搜索您要找的设计师" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您要找的设计师'" id="get_ysj_content">
 						</div>
 						<div class="col-xs-2" style="padding-left: 1px; margin-top:-10px;">
-				          	<button class="btn btn-default" type="button" id="ysj_search">
+				          	<button class="btn btn-default" type="submit" id="ysj_search">
 			                  <i class="material-icons search"></i>
 			                </button>
 						</div>
@@ -180,6 +180,7 @@
 	</section>
 <script type="text/javascript">
    $("#goods_search").click(function(){
+    event.preventDefault();
        var content=$("#goods_content").val();
        var search='showsearch';
         $.ajax({
@@ -194,6 +195,7 @@
      });
    });
   $("#ysj_search").click(function(){
+    event.preventDefault();
        var content=$("#get_ysj_content").val();
 
         $.ajax({
