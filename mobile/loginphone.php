@@ -115,13 +115,15 @@ $openids = $GLOBALS['db']->getOne($sql);
     $gzxx = $subscribe->subscribe;
     //
     if($gzxx === 1){
+      echo $gzxx;
      echo "已关注";
     }else{
-    echo "未关注";
+       echo $gzxx;
+      echo "未关注";
 
- }
+    }
 
-exit;
+
 
 
 
@@ -134,9 +136,9 @@ exit;
 
 if(!$openids){
 
-	 $sql = 'INSERT INTO ' . $ecs->table('users') . '(user_name,alias , wx_open_id , sex , reg_time  , headimgurl,unionid,openidphone) VALUES ' .
+	 $sql = 'INSERT INTO ' . $ecs->table('users') . '(user_name,alias , wx_open_id , sex , reg_time  , headimgurl,unionid,openidphone,attention) VALUES ' .
 
-                    "('$nickname','$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid','$openid')";
+                    "('$nickname','$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid','$openid','$gzxx')";
 
      $GLOBALS['db']->query($sql);
 
@@ -158,7 +160,7 @@ if(!$openids){
 
 }else{
 
-	 $sql = "UPDATE  ecs_users set user_name='$nickname',alias='$nickname',sex=$sex,reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid',openidphone='$openid' where unionid='$unionid'";
+	 $sql = "UPDATE  ecs_users set user_name='$nickname',alias='$nickname',sex=$sex,reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid',openidphone='$openid',attention = '$gzxx' where unionid='$unionid'";
 
 	$GLOBALS['db']->query($sql);
 
