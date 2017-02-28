@@ -202,7 +202,7 @@ color:#606060
 					<div id="designers" class="tab-pane transition fade scale">
 						<div class="row space-top-half">
 						<div class="col-xs-10" style="padding-left: 1px; padding-right: 0;">
-							<input type="text" class="form-control" placeholder="请在此处搜索您要找的设计师" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您要找的设计师'" id="get_ysj_content">
+							<input type="text" class="form-control-index" placeholder="请在此处搜索您要找的设计师" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您要找的设计师'" id="get_ysj_content">
 						</div>
 						<div class="col-xs-2" style="padding-left: 1px; margin-top:-10px;">
 				          	<button class="btn btn-default" type="submit" id="ysj_search">
