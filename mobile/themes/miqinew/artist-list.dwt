@@ -275,7 +275,7 @@
                  new_content+='<div class="col-xs-6 col-sm-4 col-md-2">'+'<div class="teammate"><div class="teammate-thumb">'+
               ' <div class="social-bar text-center space-bottom">'+
                 '<a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a></div>'+
-              '<img src="'+data.data[i].hav_logo+'" alt="'+data.data[i].hav_logo+'"></div>'+
+              '<img src="'+data.data[i].hav_logo+'" alt="'+data.data[i].user_name+'"></div>'+
             '<h4 class="teammate-name"><a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}">'+data.data[i].user_name+'&nbsp;|&nbsp;'+data.data[i].country+'</a></h4></div></div>';
 
 
@@ -307,7 +307,7 @@
                            $("#clear-fudong").before('<div class="col-xs-6 col-sm-4 col-md-2">'+'<div class="teammate"><div class="teammate-thumb">'+
               ' <div class="social-bar text-center space-bottom">'+
                 '<a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a></div>'+
-              '<img src="'+data.data[i].hav_logo+'" alt="'+data.data[i].hav_logo+'"></div>'+
+              '<img src="'+data.data[i].hav_logo+'" alt="'+data.data[i].user_name+'"></div>'+
             '<h4 class="teammate-name"><a href="artist-detail.php?ysjid='+data.data[i].user_id+'{$linestring2}">'+data.data[i].user_name+'&nbsp;|&nbsp;'+data.data[i].country+'</a></h4></div></div>'
 
           );//内容添加到页面上.
