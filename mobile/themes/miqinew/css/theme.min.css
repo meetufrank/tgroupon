@@ -420,9 +420,9 @@ svg {
 	.padding-top-goodlist{
 		padding-top:45px !important
 	}
-	.nav-tabs{
+	/* .nav-tabs{
 		padding-top:35px;
-	}
+	} */
 	.xinzeng-mobile{
 		margin-left:34px;
 	}
@@ -495,9 +495,6 @@ svg {
 	.exnumber{
 		font-weight: bold;
 		margin-top:5px;
-	}
-	.page-preloading.loading-done .page-wrapper {
-		margin-bottom:55px;
 	}
 }
 .cart-subtotal-youfei{
