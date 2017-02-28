@@ -81,6 +81,10 @@
         -webkit-align-items: center;
         align-items: center;
     }
+    /* 收藏状态为红色 */
+  .schongse{
+    color:rgb(200, 0, 0);
+  }
   /*swiper样式*/
 
   </style>
@@ -92,11 +96,7 @@
 <body class="page-preloading">
 
   <!-- Page Pre-Loader -->
-  <div class="page-preloader">
-    <div class="preloader">
-      <img src="{$ectouch_themes}/img/preloader.gif" alt="Preloader">
-    </div>
-  </div><!-- .page-preloader -->
+  <!-- .page-preloader -->
 
   <!-- Page Wrapper -->
   <div class="page-wrapper">
@@ -257,6 +257,7 @@
                               window.location.href=result.url;
                              }
                     }
+
                                           if(result=='insert'){
                                               $("#shochangpc").addClass("schongse");
                                           }else if(result=='delete'){

@@ -226,7 +226,7 @@
 								  <div class="teammate">
 									<div class="teammate-thumb">
 									  <div class="social-bar text-right space-bottom">
-										<a href="#" class="btn btn-square btn-sm btn-primary waves-effect waves-light" onclick="ysjdel({$ysjxx.scid})"><i class="material-icons close"></i></a>
+										<a href="artist-detail.php?ysjid={$ysjxx.scid}{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light" onclick="ysjdel({$ysjxx.scid})"><i class="material-icons close"></i></a>
 									  </div><!-- .social-bar -->
 									  <img src="{$ysjxx.hav_logo}" alt="">
 									</div>
