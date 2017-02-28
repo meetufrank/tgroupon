@@ -1163,8 +1163,12 @@ if($url_img){
 
 
    /* 提示信息 */
+    $editsjsts = "返回设计师列表";
+    $link[0]['text'] = $editsjsts;
 
-   $link[] = array('text' => strpos($g_link, 'list') ? $_LANG['back_admin_list'] : $_LANG['modif_info'], 'href'=>$g_link);
+    $link[0]['href'] = 'privilegeyishujia.php?act=list';
+
+   // $link[] = array('text' => strpos($g_link, 'list') ? $_LANG['back_admin_list'] : $_LANG['modif_info'], 'href'=>$g_link);
 
    sys_msg("$msg<script>parent.document.getElementById('header-frame').contentWindow.document.location.reload();</script>", 0, $link);
 
