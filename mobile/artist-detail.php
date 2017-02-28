@@ -28,7 +28,7 @@ if($_REQUEST['act']=='artist_detail'){
 
 
   //艺术家banner显示
- $sql=" select * from ecs_touch_ad  where start_time<unix_timestamp(now()) and end_time>unix_timestamp(now()) and ad_code!='' and position_id=2 and enabled=1 order by sort desc limit 4 ";
+ $sql=" select * from ecs_touch_ad  where start_time<unix_timestamp(now()) and end_time>unix_timestamp(now()) and ad_code!='' and position_id=3 and enabled=1 order by sort desc limit 4 ";
 $banner_list=$GLOBALS['db']->getAll($sql);
 foreach ($banner_list as $key => $value) {
     if(!strpos($value['ad_code'],'http://')){
