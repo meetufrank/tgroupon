@@ -115,11 +115,7 @@
 <body class="page-preloading">
 
   <!-- Page Pre-Loader -->
-  <div class="page-preloader">
-    <div class="preloader">
-      <img src="{$ectouch_themes}/img/preloader.gif" alt="Preloader">
-    </div>
-  </div>
+
   <!-- .page-preloader -->
 
   <!-- Page Wrapper -->
