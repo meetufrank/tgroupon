@@ -48,6 +48,7 @@ if($_REQUEST['act']=='artist_list'){
               $next_data_list=get_artist_list($next_limit,$no_next_str,$value);
               if(is_array($data_list)){
                 foreach ($data_list as $g_k => $g_v) {
+                  $datas[]=$data_list[$g_k];
                 $no_id[]=$g_v['user_id'];
                 }
                 $no_str=@implode(',',$no_id);
@@ -55,6 +56,7 @@ if($_REQUEST['act']=='artist_list'){
               }
                if(is_array($next_data_list)){
                 foreach ($next_data_list as $g_k => $g_v) {
+                  $next_data[]=$next_data_list[$g_k];
                 $no_next_id[]=$g_v['user_id'];
                 }
                 $no_next_str=@implode(',',$no_next_id);
@@ -67,12 +69,12 @@ if($_REQUEST['act']=='artist_list'){
         }
    }
 
-   if(count($next_data_list)){
+   if(count($next_data)){
          $more=1;
    }else{
         $more=0;
    }
-   $artist_list=$data_list;
+   $artist_list=$datas;
    $search_content=$content;
 
   }else{
@@ -134,6 +136,7 @@ $smarty->assign("banner_list",$banner_list);
               $next_data_list=get_artist_list($next_limit,$no_next_str,$value);
               if(is_array($data_list)){
                 foreach ($data_list as $g_k => $g_v) {
+                  $datas[]=$data_list[$g_k];
                 $no_id[]=$g_v['user_id'];
                 }
                 $no_str=@implode(',',$no_id);
@@ -141,6 +144,7 @@ $smarty->assign("banner_list",$banner_list);
               }
                if(is_array($next_data_list)){
                 foreach ($next_data_list as $g_k => $g_v) {
+                  $next_data[]=$next_data_list[$g_k];
                 $no_next_id[]=$g_v['user_id'];
                 }
                 $no_next_str=@implode(',',$no_next_id);
@@ -153,12 +157,12 @@ $smarty->assign("banner_list",$banner_list);
         }
    }
 
-   if(count($next_data_list)){
+   if(count($next_data)){
          $more=1;
    }else{
         $more=0;
    }
-   $artist_list=$data_list;
+   $artist_list=$datas;
     $data['data']=$artist_list;
       $data['more']=$more;
     $data['search_content']=$content;
@@ -215,6 +219,7 @@ $where_array=get_where($content);
               $next_data_list=get_artist_list($next_limit,$no_next_str,$value);
               if(is_array($data_list)){
                 foreach ($data_list as $g_k => $g_v) {
+                  $datas[]=$data_list[$g_k];
                 $no_id[]=$g_v['user_id'];
                 }
                 $no_str=@implode(',',$no_id);
@@ -222,6 +227,7 @@ $where_array=get_where($content);
               }
                if(is_array($next_data_list)){
                 foreach ($next_data_list as $g_k => $g_v) {
+                  $next_data[]=$next_data_list[$g_k];
                 $no_next_id[]=$g_v['user_id'];
                 }
                 $no_next_str=@implode(',',$no_next_id);
@@ -234,12 +240,12 @@ $where_array=get_where($content);
         }
    }
 
-   if(count($next_data_list)<=0){
+   if(count($next_data)<=0){
         $data['more']=0;
    }else{
         $data['more']=1;
    }
-   $data['data']=$data_list;
+   $data['data']=$datas;
    $data['search_content']=$content;
 
 
