@@ -129,14 +129,17 @@
     <!-- 头部结束 -->
 
     <div class="swiper-container">
+    {if $banner_list}
         <div class="swiper-wrapper">
         {foreach from=$banner_list item=bl}
             <div class="swiper-slide"><a href="{$bl.ad_link}"><img src="{$bl.ad_code}"></a></div>
          {/foreach}
         </div>
         <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+       <!--<div class="swiper-pagination"></div>-->
+           {/if}
     </div>
+
   <!-- Content -->
   <section class="container padding-top-2x">
     <div class="row">

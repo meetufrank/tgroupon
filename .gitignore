@@ -1,2 +1,6 @@
 /data/config.php
 /mobile/data/static_caches/shop_config.php
+/mobile/data/convention.php
+/mobile/data/install.lock
+/mobile/data/updatesql.txt
+/mobile/data/wx_new_log.txt

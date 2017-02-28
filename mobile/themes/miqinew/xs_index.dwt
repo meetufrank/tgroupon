@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>形色主义首页</title>
+  <title>型色主义首页</title>
 
   <!--SEO Meta Tags-->
   <meta name="description" content="COLOR & SHAPE" />
@@ -137,7 +137,9 @@
          {/foreach}
         </div>
         <!-- Add Pagination -->
+        {foreach from=$banner_list item=bl}
         <div class="swiper-pagination"></div>
+        {/foreach}
     </div>
 
 	<!-- search -->
@@ -251,21 +253,18 @@
       <div class="row padding-top">
 
         <!-- Special Offer -->
-        <div class="col-lg-3 col-md-3">
-          <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}">
+        <div class="col-lg-3 col-md-3" onclick="javascript:location.href='shop-single.php?id={$tb_list.goods_id}{$linestring2}' ">
+
           <div class="info-box text-center" style="background-image:url(../{$tb_list.goods_img});-moz-background-size:100% 100%;
    background-size:100% 100%;background-repeat: no-repeat">
             <h2 class="tbyh">特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
-            <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}">
-
-            </a>
             <h3 class="lead text-normal space-bottom-half"><a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="link-title">{$tb_list.goods_name}</a></h3>
             <span class="lead text-normal text-gray text-crossed">￥{$tb_list.falseprice}</span>
             <span class="h4 text-normal text-danger">￥{$tb_list.attributeprice}</span>
-
           </div><!-- .info-box -->
-          </a>
+
           <div class="padding-bottom-2x visible-xs"></div>
+
         </div><!-- .col-lg-3.col-md-4 -->
 
         <!-- Products -->
