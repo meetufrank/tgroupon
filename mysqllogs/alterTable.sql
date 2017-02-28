@@ -370,4 +370,7 @@ ALTER TABLE `ecs_admin_user`
 ADD COLUMN `sjsintro`  text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '//设计师简介' AFTER `artiststalk`;
 
 
-
+/*#2017/02/27 汪江  用户表添加是否关注微信公众号
+*/
+ALTER TABLE `ecs_users`
+ADD COLUMN `attention`  int(10) NOT NULL DEFAULT 0 COMMENT '//是否关注微信公众号 0未关注  1已关注' AFTER `openidphone`;
