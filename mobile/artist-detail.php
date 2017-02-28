@@ -136,7 +136,7 @@ exit;
                  }
 
       }else{
-             $sql="insert into `ecs_collect_goods`(user_id,ysj_id,add_time,is_attention) values($userid,$artid,time(),1)";
+             $sql="insert into `ecs_shocangysj` (user_id,ysj_id,add_time,is_attention) values($userid,$artid,now(),1)";
              $result=$GLOBALS['db']->query($sql);
               if($result){
                       echo json_encode('insert');
