@@ -258,7 +258,7 @@ $modules['11_system']['navigator']                  = 'navigator.php?act=list';
 
 
 
-$modules['12_template']['02_template_select']       = 'template.php?act=list';
+// $modules['12_template']['02_template_select']       = 'template.php?act=list';
 
 $modules['12_template']['03_template_setup']        = 'template.php?act=setup';
 

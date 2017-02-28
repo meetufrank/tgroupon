@@ -382,7 +382,7 @@ elseif ($_REQUEST['act'] == 'add')
 
     $smarty->assign('ur_here',     $_LANG['admin_add']);
 
-    $smarty->assign('action_link', array('href'=>'privilege.php?act=list', 'text' => $_LANG['admin_list']));
+    $smarty->assign('action_link', array('href'=>'ads.php?act=list', 'text' => $_LANG['admin_list']));
 
     $smarty->assign('form_act',    'insert');
 
@@ -610,16 +610,16 @@ if(!$user_id){
 
 
     /*添加链接*/
+    $sjslist = "设计师列表";
+    $link[0]['text'] = $sjslist;
 
-    $link[0]['text'] = $_LANG['go_allot_priv'];
-
-    $link[0]['href'] = 'privilege.php?act=allot&id='.$new_id.'&user='.$_POST['user_name'].'';
+    $link[0]['href'] = 'privilegeyishujia.php?act=list';
 
 
 
     $link[1]['text'] = $_LANG['continue_add'];
 
-    $link[1]['href'] = 'privilege.php?act=add';
+    $link[1]['href'] = 'privilegeyishujia.php?act=add';
 
 
 
