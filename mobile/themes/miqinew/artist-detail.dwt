@@ -106,15 +106,19 @@
     <!-- 头部结束 -->
 
     <!-- Featured Image -->
+
        <div class="swiper-container">
+        {if $banner_list}
         <div class="swiper-wrapper">
         {foreach from=$banner_list item=bl}
             <div class="swiper-slide"><a href="{$bl.ad_link}"><img src="{$bl.ad_code}"></a></div>
          {/foreach}
         </div>
         <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+       <!--  <div class="swiper-pagination"></div>-->
+       {/if}
     </div>
+
 	<!-- Content -->
 	<section class="container padding-top-2x">
 		<div class="clearfix">
@@ -128,7 +132,7 @@
 	          </div>
 	          <div class="pull-right" style="margin-top: 20px;">
 	          	<a href="#" class="sb-twitter">
-                  <i class="fa fa-heart" style="width:30px; height:30px;text-align:center; padding-top:5px;"></i>
+                  <i class="fa fa-heart  {if $sc_count}schongse{/if}" style="width:30px; height:30px;text-align:center; padding-top:5px;" id="shochangpc"></i>
                 </a>
 	          <!--	<a href="#" class="btn btn-default btn-sm" title="">
                   <i class="material-icons question_answer"></i>
@@ -136,7 +140,7 @@
              </div>
           </div>
 		<hr>
-      	<h3 class="padding-top">艺术家简介</h3>
+      	<h3 class="padding-top">设计师简介</h3>
       	<div class="row space-top">
            {$ysjxx.sjsintro}
           </div>
@@ -236,6 +240,35 @@
                 });
 
             });
+
+
+                $("#shochangpc").click(function(){
+
+                var artid={$ysjid};
+             $.ajax({
+                                    type:"post",
+                                    url:"artist-detail.php?act=shochangsc",
+                                    async:true,
+                                    data:{artid:artid},
+                                    dataType: "json",
+                                    success: function (result) {
+                                            if(result.error==12){
+                              if(result.url){
+                              window.location.href=result.url;
+                             }
+                    }
+                                          if(result=='insert'){
+                                              $("#shochangpc").addClass("schongse");
+                                          }else if(result=='delete'){
+                                             $("#shochangpc").removeClass("schongse");
+                                          }
+
+                                          }//回调函数结束
+
+                               });//ajax结束
+
+
+    });
 
     </script>
 

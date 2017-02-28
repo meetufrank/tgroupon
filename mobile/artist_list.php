@@ -91,7 +91,7 @@ if($_REQUEST['act']=='artist_list'){
       }
   }
   //艺术家banner显示
- $sql=" select * from ecs_touch_ad  where start_time<unix_timestamp(now()) and end_time>unix_timestamp(now()) and ad_code!='' and position_id=2 and enabled=1 order by sort desc limit 4 ";
+ $sql=" select * from ecs_touch_ad  where start_time<unix_timestamp(now()) and end_time>unix_timestamp(now()) and ad_code!='' and position_id=2 and enabled=1 order by sort desc limit 1 ";
 $banner_list=$GLOBALS['db']->getAll($sql);
 //print_r($banner_list);
 foreach ($banner_list as $key => $value) {
@@ -199,6 +199,9 @@ $smarty->assign("banner_list",$banner_list);
      }else{
        $pages=1;
      }
+    if($content){
+
+
 $where_array=get_where($content);
 
 
@@ -239,6 +242,15 @@ $where_array=get_where($content);
 
         }
    }
+}else{
+      $num=$page_num*($pages-1);
+             $limit=' limit  '.$num.','.$page_num;
+             $next_num=$page_num*$pages;
+             $next_limit=' limit  '.$next_num.','.$page_num;
+              $datas=get_artist_list($limit);
+              $next_data=get_artist_list($next_limit);
+   }
+
 
    if(count($next_data)<=0){
         $data['more']=0;
