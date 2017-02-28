@@ -32,7 +32,7 @@
    <link rel="stylesheet" href="{$ectouch_themes}/Swiper-3.4.0/dist/css/swiper.min.css">
   <!-- by sun -->
   <style>
-  	@media screen and (min-width:768px){
+  @media screen and (min-width:768px){
 	  .info-box{
 		margin-top:70px;
 		}
@@ -107,6 +107,44 @@
         -webkit-align-items: center;
         align-items: center;
     }
+.form-control-index {
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+  height: 48px;
+  font-size: 14px;
+  color: #606060;
+  text-transform: none;
+  border: 2px solid #ededed;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 0 16px;
+  margin-bottom: 24px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s
+}
+.form-control-index:focus {
+  border-color: #77cde3;
+  outline: none
+}
+.form-control-index::-moz-placeholder {
+color:#606060;
+opacity:1
+}
+.form-control-index:-ms-input-placeholder {
+color:#606060
+}
+.form-control-index::-webkit-input-placeholder {
+color:#606060
+}
+.form-control-index.placeholder {
+  color: #606060
+}
   </style>
 
 </head>
@@ -150,7 +188,7 @@
 					<div id="products" class="tab-pane transition fade scale active in">
 						<div class="row space-top-half">
 						<div class="col-xs-10" style="padding-left: 1px; padding-right: 0;">
-							<input type="text" class="form-control" placeholder="请在此处搜索您想要的商品" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您想要的商品'" id="goods_content">
+							<input type="text" class="form-control-index" placeholder="请在此处搜索您想要的商品" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您想要的商品'" id="goods_content">
 						</div>
 						<div class="col-xs-2" style="padding-left: 1px; margin-top:-10px;">
 				          	<button class="btn btn-default" type="submit" id="goods_search">
@@ -162,7 +200,7 @@
 					<div id="designers" class="tab-pane transition fade scale">
 						<div class="row space-top-half">
 						<div class="col-xs-10" style="padding-left: 1px; padding-right: 0;">
-							<input type="text" class="form-control" placeholder="请在此处搜索您要找的设计师" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您要找的设计师'" id="get_ysj_content">
+							<input type="text" class="form-control-index" placeholder="请在此处搜索您要找的设计师" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您要找的设计师'" id="get_ysj_content">
 						</div>
 						<div class="col-xs-2" style="padding-left: 1px; margin-top:-10px;">
 				          	<button class="btn btn-default" type="submit" id="ysj_search">

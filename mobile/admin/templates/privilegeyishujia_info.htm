@@ -23,7 +23,7 @@
 
   </tr>
 
-  <tr>
+  <tr style="display:none;">
 
     <td class="label">{$lang.email}</td>
 
@@ -33,9 +33,9 @@
 
   </tr>
 
- {if $action eq "add"}
+<!--  {if $action eq "add"} -->
 
-  <tr>
+  <tr style="display:none;">
 
     <td class="label">{$lang.password}</td>
 
@@ -45,7 +45,7 @@
 
   </tr>
 
-  <tr>
+  <tr style="display:none;">
 
     <td class="label">{$lang.pwd_confirm}</td>
 
@@ -55,11 +55,11 @@
 
   </tr>
 
-  {/if}
+<!--   {/if} -->
 
-  {if $action neq "add"}
+  <!-- {if $action neq "add"}
 
-  <tr>
+  <tr style="display:none;">
 
     <td class="label">
 
@@ -75,7 +75,7 @@
 
   </tr>
 
-  <tr>
+  <tr style="display:none;">
 
     <td class="label">{$lang.new_password}</td>
 
@@ -105,7 +105,7 @@
 
   </tr>
 
-  {/if}
+<!--   {/if} -->
 
   {/if}
 
@@ -513,9 +513,9 @@ function validate()
 
   validator.required("user_name", user_name_empty);
 
-  validator.required("email", email_empty, 1);
+  // validator.required("email", email_empty, 1);
 
-  validator.isEmail("email", email_error);
+  // validator.isEmail("email", email_error);
 
 
 
@@ -527,9 +527,9 @@ function validate()
 
     {
 
-      validator.password("password", password_invaild);
+      // validator.password("password", password_invaild);
 
-      validator.eqaul("password", "pwd_confirm", password_error);
+      // validator.eqaul("password", "pwd_confirm", password_error);
 
     }
 
