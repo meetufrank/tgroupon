@@ -66,9 +66,9 @@
             <?php elseif ($this->_var['list']['position_id'] == 1): ?>
                  首页位
             <?php elseif ($this->_var['list']['position_id'] == 2): ?>
-                 设计师位
+                 列表位
             <?php elseif ($this->_var['list']['position_id'] == 3): ?>
-                 设计师列表详情位
+                 详情位
             <?php endif; ?>
 
         </span>

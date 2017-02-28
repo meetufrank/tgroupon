@@ -70,8 +70,8 @@
         <select name="position_id">
             <option value='0' <?php if ($this->_var['ads']['position_id'] == 0): ?>selected = "selected"<?php endif; ?>>请选择</option>
             <option value='1' <?php if ($this->_var['ads']['position_id'] == 1): ?>selected = "selected"<?php endif; ?>>首页位</option>
-            <option value='2' <?php if ($this->_var['ads']['position_id'] == 2): ?>selected = "selected"<?php endif; ?>>设计师位</option>
-            <option value='3' <?php if ($this->_var['ads']['position_id'] == 3): ?>selected = "selected"<?php endif; ?>>设计师列表详情位</option>
+            <option value='2' <?php if ($this->_var['ads']['position_id'] == 2): ?>selected = "selected"<?php endif; ?>>列表位</option>
+            <option value='3' <?php if ($this->_var['ads']['position_id'] == 3): ?>selected = "selected"<?php endif; ?>>详情位</option>
         <!-- <?php echo $this->html_options(array('options'=>$this->_var['position_list'],'selected'=>$this->_var['ads']['position_id'])); ?> -->
         </select>
 
