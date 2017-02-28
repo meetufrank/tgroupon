@@ -1662,7 +1662,7 @@ function get_admin_userlist()
 
     $list = array();
 
-    $sql  = 'SELECT user_id, user_name, email, add_time, last_login,sjsintro '.
+    $sql  = 'SELECT user_id, ysj_fencheng,hav_logo,user_name, email, add_time, last_login,sjsintro '.
 
             'FROM ' .$GLOBALS['ecs']->table('admin_user')."WHERE role_id = 4 ".' ORDER BY user_id DESC';
 
