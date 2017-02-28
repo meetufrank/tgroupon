@@ -1072,7 +1072,7 @@ if($url_img){
 
                "country = '$country', ".
 
-               "sjsintro = '$contentedit' ".
+               "sjsintro = '$contentedit', ".
 
                $img_string .
 
@@ -1110,7 +1110,7 @@ if($url_img){
 
                "country = '$country', ".
 
-               "sjsintro = '$contentedit' ".
+               "sjsintro = '$contentedit', ".
 
                $img_string.
 

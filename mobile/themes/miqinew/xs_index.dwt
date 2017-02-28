@@ -35,7 +35,11 @@
   @media screen and (max-width:768px){
     .swiper-container {
       margin-top:55px;
-  }
+    }
+    .container-fluid-shopselect{
+      padding-left:0px;
+      padding-right:0px;
+    }
   }
   @media screen and (min-width:768px){
 	  .info-box{
@@ -44,13 +48,22 @@
      .swiper-container {
         height:100%;
     }
+    .container-fluid-shopselect{
+      padding: 0 30px
+    }
+
 	}
 	@media (min-width: 1200px){
 		.container {
 			width:1300px;
 		}
 	}
-  	 .count{
+ .container-fluid-shopselect{
+      max-width: 1920px;
+      margin-left: auto;
+      margin-right: auto;
+}
+.count{
   	 	position: absolute;
 		display: block;
 		width: 16px;
@@ -267,7 +280,7 @@ color:#606060
    }
 </script>
     <!-- Content Wide -->
-    <section class="container-fluid">
+    <section class="container-fluid-shopselect">
 
       <!-- Featured Categories -->
       <h3 class="text-center">商品分类</h3>
