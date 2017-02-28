@@ -32,17 +32,32 @@
    <link rel="stylesheet" href="{$ectouch_themes}/Swiper-3.4.0/dist/css/swiper.min.css">
   <!-- by sun -->
   <style>
+  @media screen and (max-width:768px){
+    .swiper-container {
+      margin-top:55px;
+    }
+  }
   @media screen and (min-width:768px){
 	  .info-box{
 		margin-top:70px;
 		}
+     .swiper-container {
+        height:100%;
+    }
+    .container-fluid-shopselect{
+      padding: 0 30px
+    }
+
 	}
 	@media (min-width: 1200px){
 		.container {
 			width:1300px;
 		}
 	}
-  	 .count{
+ .container-fluid-shopselect{
+      max-width: 1920px;
+}
+.count{
   	 	position: absolute;
 		display: block;
 		width: 16px;
@@ -87,7 +102,6 @@
   }
   .swiper-container {
         width: 100%;
-        height:100%;
   }
   .swiper-slide {
         text-align: center;
@@ -177,7 +191,7 @@ color:#606060
     </div>
 
 	<!-- search -->
-	<section class="container-fluid padding-top-3x">
+	<section class="container-fluid">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<ul class="nav-tabs" role="tablist" style="border-bottom: none;">
@@ -260,11 +274,11 @@ color:#606060
    }
 </script>
     <!-- Content Wide -->
-    <section class="container-fluid padding-top-3x">
+    <section class="container-fluid-shopselect">
 
       <!-- Featured Categories -->
-      <h3 class="text-center padding-top">商品分类</h3>
-      <div class="row padding-top padding-bottom-3x">
+      <h3 class="text-center">商品分类</h3>
+      <div class="row padding-top">
        <!--{foreach from=$type_list  item=tl}-->
         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 " >
           <a href="#" class="category-link" onclick="drump_type({$tl.cat_id});">
