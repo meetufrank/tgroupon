@@ -36,10 +36,6 @@
     .swiper-container {
       margin-top:55px;
     }
-    .container-fluid-shopselect{
-      padding-left:0px;
-      padding-right:0px;
-    }
   }
   @media screen and (min-width:768px){
 	  .info-box{
@@ -60,8 +56,6 @@
 	}
  .container-fluid-shopselect{
       max-width: 1920px;
-      margin-left: auto;
-      margin-right: auto;
 }
 .count{
   	 	position: absolute;
