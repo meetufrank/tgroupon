@@ -112,9 +112,9 @@ svg {
 	.aiheart{
 		margin-right: -5px;
 	}
-	.nav-tabs>li>a {
+	/* .nav-tabs>li>a {
 	    font-size:12px;
-	}
+	} */
 	.myincometh{
 		font-size:12px;
 		font-weight: 400px;
@@ -337,13 +337,13 @@ svg {
 		height:55px;
 		padding-top:10px;
 		font-weight: bold;
-		margin-top:5px;		
+		margin-top:5px;
 	}
 	.extext{
 		height:55px;
 		padding-top:6px;
 		font-weight: bold;
-		margin-top:5px;		
+		margin-top:5px;
 	}
 	.exname{
 		font-weight: bold;
@@ -495,6 +495,9 @@ svg {
 	.exnumber{
 		font-weight: bold;
 		margin-top:5px;
+	}
+	.page-preloading.loading-done .page-wrapper {
+		margin-bottom:55px;
 	}
 }
 .cart-subtotal-youfei{
@@ -4267,7 +4270,7 @@ display:none
 	width: 100%;
 	max-width: 220px;
 	margin-bottom: 12px;
-	
+
 	opacity: 1;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
