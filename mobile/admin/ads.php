@@ -517,9 +517,9 @@ elseif ($_REQUEST['act'] == 'insert')
 
 
 
-    $link[0]['text'] = $_LANG['show_ads_template'];
+    // $link[0]['text'] = $_LANG['show_ads_template'];
 
-    $link[0]['href'] = 'template.php?act=setup';
+    // $link[0]['href'] = 'template.php?act=setup';
 
 
 
