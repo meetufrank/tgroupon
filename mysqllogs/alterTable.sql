@@ -374,3 +374,11 @@ ADD COLUMN `sjsintro`  text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMM
 */
 ALTER TABLE `ecs_users`
 ADD COLUMN `attention`  int(10) NOT NULL DEFAULT 0 COMMENT '//是否关注微信公众号 0未关注  1已关注' AFTER `openidphone`;
+
+
+
+
+/*#2017/03/1 汪江  admin_user 表添加设计师详情banner图
+*/
+ALTER TABLE `ecs_admin_user`
+ADD COLUMN `sjsbanner`  varchar(255) NOT NULL COMMENT '//设计师详情banner' AFTER `sjsintro`;

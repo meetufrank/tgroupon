@@ -2,11 +2,11 @@
   /**
     file: fileupload.class.php 文件上传类FileUpload
     本类的实例对象用于处理上传文件，可以上传一个文件，也可同时处理多个文件上传
-  */ 
+  */
 class FileUpload {
     private $path = "./images/logo/";          //上传文件保存的路径
     private $allowtype = array('jpg','gif','png'); //设置限制上传文件的类型
-    private $maxsize = 1000000;           //限制文件上传大小（字节）
+    private $maxsize = 5000000;           //限制文件上传大小（字节）
     private $israndname = true;           //设置是否随机重命名文件， false不随机
 
     private $originName;              //源文件名
@@ -53,9 +53,9 @@ class FileUpload {
 
       /* 如果是多个文件上传则$file["name"]会是一个数组 */
       if(is_Array($name)){
-        $errors=array(); 
+        $errors=array();
         /*多个文件上传则循环处理 ， 这个循环只有检查上传文件的作用，并没有真正上传 */
-        foreach( $name  as  $i =>$v){ 
+        foreach( $name  as  $i =>$v){
           /*设置文件信息 */
 		  IF($name[$i]){
 			  if($this->setFiles($name[$i],$tmp_name[$i],$size[$i],$error[$i] )) {
@@ -163,9 +163,9 @@ class FileUpload {
         return false;
       $this->setOption('originName', $name);
       $this->setOption('tmpFileName',$tmp_name);
-      $aryStr = explode(".", $name); 
+      $aryStr = explode(".", $name);
       $this->setOption('fileType', strtolower($aryStr[count($aryStr)-1]));
-      
+
       $this->setOption('fileSize', $size);
       return true;
     }

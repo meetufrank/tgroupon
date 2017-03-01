@@ -30,6 +30,8 @@
 
     <th>设计师logo</th>
 
+    <th>设计师详情banner图</th>
+
     <th>{$lang.handler}</th>
 
   </tr>
@@ -43,11 +45,20 @@
     <td align="center" >{$list.ysj_fencheng}</td>
 
     <td align="center" >
-    {if $list.hav_logo !='' }
-      <img style="width:100px; height:100px;"  src="{$list.hav_logo}">
-      {else}
-      暂无logo
-    {/if}
+        {if $list.hav_logo !='' }
+          <img style="width:100px; height:100px;"  src="{$list.hav_logo}">
+          {else}
+          暂无logo
+        {/if}
+    </td>
+
+
+    <td align="center" >
+        {if $list.sjsbanner !='' }
+          <img style="width:100px; height:100px;"  src="{$list.sjsbanner}">
+          {else}
+          暂无branner图片
+        {/if}
     </td>
 
 

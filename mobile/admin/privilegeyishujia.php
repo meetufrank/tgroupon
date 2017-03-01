@@ -484,7 +484,7 @@ if(!$user_id){
 
   }
 
-    if($_FILES['pic']['name']){
+if($_FILES['pic']['name']){
 
                   //图片上传处理
 
@@ -496,7 +496,7 @@ if(!$user_id){
 
     $up -> set("path", ROOT_PATH.$path);
 
-    $up -> set("maxsize", 2000000);
+    $up -> set("maxsize", 5000000);
 
     $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
 
@@ -545,6 +545,63 @@ if(!$user_id){
 
 
 
+
+
+
+
+
+if($_FILES['sjspic']['name']){
+//图片上传处理
+ $up = new FileUpload();
+
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+
+    $path="images/sjsbanner/";
+
+    $up -> set("path", ROOT_PATH.$path);
+
+    $up -> set("maxsize", 5000000);
+
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+
+    $up -> set("israndname", true);
+
+    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名字 sjspic, 如果成功返回true, 失败返回false
+
+    if($up -> upload("sjspic")) {
+
+        // echo '<pre>';
+
+        // //获取上传后文件名子
+
+        // var_dump($up->getFileName());
+
+        // echo '</pre>';
+
+        $url_imgbanner=$config['mobilesite_url'].$path.$up->getFileName();
+    } else {
+
+        // echo '<pre>';
+
+        // //获取上传失败以后的错误提示
+
+        // var_dump($up->getErrorMsg());
+
+        // echo '</pre>';
+
+        sys_msg($up->getErrorMsg(), 1);
+
+    }
+}
+
+// print_r($url_imgbanner);exit;
+
+
+
+
+
+
+
     /* 获取添加日期及密码 */
 
     $add_time = gmtime();
@@ -583,9 +640,11 @@ if(!$user_id){
 
 
 
-    $sql = "INSERT INTO ".$ecs->table('admin_user')." (user_name, email, password, add_time, nav_list, action_list, role_id,country,hav_logo,ysj_fencheng,ysj_tixian,sjsintro) ".
+    $sql = "INSERT INTO ".$ecs->table('admin_user')." (user_name, email, password, add_time, nav_list, action_list, role_id,country,hav_logo,sjsbanner,ysj_fencheng,ysj_tixian,sjsintro) ".
 
-           "VALUES ('".trim($_POST['user_name'])."', '".trim($_POST['email'])."', '$password', '$add_time', '$row[nav_list]', '$action_list', 4,'".trim($_POST['country'])."','".$url_img."','".trim($_POST['ysj_fencheng'])."',".$user_id.",'$content')";
+           "VALUES ('".trim($_POST['user_name'])."', '".trim($_POST['email'])."', '$password', '$add_time', '$row[nav_list]', '$action_list', 4,'".trim($_POST['country'])."','"
+           .$url_img."','".$url_imgbanner."','"
+           .trim($_POST['ysj_fencheng'])."',".$user_id.",'$content')";
 
 
 
@@ -811,9 +870,9 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
 
 
 
-    if($_FILES['pic']['name']){
+if($_FILES['pic']['name']){
 
-                     //图片上传处理
+//图片上传处理
 
  $up = new FileUpload();
 
@@ -823,15 +882,11 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
 
     $up -> set("path", ROOT_PATH.$path);
 
-    $up -> set("maxsize", 2000000);
+    $up -> set("maxsize", 5000000);
 
     $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
 
     $up -> set("israndname", true);
-
-
-
-
 
     //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
 
@@ -844,14 +899,7 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
         // var_dump($up->getFileName());
 
         // echo '</pre>';
-
-
          $url_img=$config['mobilesite_url'].$path.$up->getFileName();
-
-
-
-
-
 
     } else {
 
@@ -864,12 +912,63 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
         // echo '</pre>';
 
         sys_msg($up->getErrorMsg(), 1);
-
     }
+}
 
 
 
+
+
+//设计师branner图片
+if($_FILES['sjspic']['name']){
+
+//图片上传处理
+
+ $up = new FileUpload();
+
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+
+    $path="images/sjsbanner/";
+
+    $up -> set("path", ROOT_PATH.$path);
+
+    $up -> set("maxsize", 5000000);
+
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+
+    $up -> set("israndname", true);
+
+    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
+
+    if($up -> upload("sjspic")) {
+
+        // echo '<pre>';
+
+        // //获取上传后文件名子
+
+        // var_dump($up->getFileName());
+
+        // echo '</pre>';
+         $url_imgbanner=$config['mobilesite_url'].$path.$up->getFileName();
+
+    } else {
+
+        // echo '<pre>';
+
+        // //获取上传失败以后的错误提示
+
+        // var_dump($up->getErrorMsg());
+
+        // echo '</pre>';
+
+        sys_msg($up->getErrorMsg(), 1);
     }
+}
+
+
+
+
+
 
     $ec_salt=rand(1,9999);
 
@@ -1046,11 +1145,18 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
     }
 
 
-    //修改设计师简介
-    $contentedit = $_POST['content'];
-if($url_img){
+         //修改设计师简介
+         $contentedit = $_POST['content'];
+         if($url_img){
             $img_string="hav_logo  = '".$url_img."' ";
          }
+
+        //设计师banner图片
+        if($url_imgbanner){
+            $img_stringbanner="sjsbanner  = '".$url_imgbanner."' ";
+         }
+
+         // print_r($url_imgbanner);exit;
 
     //更新艺术家信息
 
@@ -1075,6 +1181,8 @@ if($url_img){
                "sjsintro = '$contentedit', ".
 
                $img_string .
+
+               $img_stringbanner.
 
                $action_list.$img_list.$country_list.
 
@@ -1113,6 +1221,8 @@ if($url_img){
                "sjsintro = '$contentedit', ".
 
                $img_string.
+
+               $img_stringbanner.
 
                $action_list.$img_list.$country_list.
 
@@ -1666,7 +1776,7 @@ function get_admin_userlist()
 
     $list = array();
 
-    $sql  = 'SELECT user_id, ysj_fencheng,hav_logo,user_name, email, add_time, last_login,sjsintro '.
+    $sql  = 'SELECT user_id, ysj_fencheng,hav_logo,sjsbanner,user_name, email, add_time, last_login,sjsintro '.
 
             'FROM ' .$GLOBALS['ecs']->table('admin_user')."WHERE role_id = 4 ".' ORDER BY user_id DESC';
 
