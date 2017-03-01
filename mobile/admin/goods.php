@@ -197,6 +197,8 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
 
     assign_query_info();
 
+
+
     $htm_file = ($_REQUEST['act'] == 'list') ?
 
         'goods_list.htm' : (($_REQUEST['act'] == 'trash') ? 'goods_trash.htm' : 'group_list.htm');
