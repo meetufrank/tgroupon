@@ -328,6 +328,11 @@
                     error.appendTo(element.siblings("span"));
                 },
                 submitHandler:function() {
+                  layer.open({
+                type: 2
+                ,content: '提交中'
+              ,time: 1 //2秒后自动关闭
+                });
                      $.ajax({
                     type:"POST",
                     url:"about_us.php?type=1&act=add_hezuo",
@@ -335,13 +340,28 @@
                     data:$("#xzdz").serialize(),
                     success: function(data){
 
-                    }
-                  });
-                                 layer.open({
-                                      content: '您已提交成功!'
+                    if(data.error==12){
+                              if(data.url){
+                              window.location.href=data.url;return;
+                              }
+                            }
+                    if(data.msg=='true'){
+
+                              layer.open({
+                                      content: '提交成功!'
                                         ,skin: 'msg'
                                         ,time: 2 //2秒后自动关闭
                                     });
+                    }else{
+                           layer.open({
+                                      content: '提交失败!'
+                                        ,skin: 'msg'
+                                        ,time: 2 //2秒后自动关闭
+                                    });
+                    }
+                    }
+                  });
+
                         },
                  debug:true
 
@@ -379,11 +399,39 @@
                     error.appendTo(element.siblings("span"));
                 },
                 submitHandler:function() {
-                                 layer.open({
-                                      content: '您已提交成功!'
+                   layer.open({
+                type: 2
+                ,content: '提交中'
+              ,time: 1 //2秒后自动关闭
+                });
+                                  $.ajax({
+                    type:"POST",
+                    url:"about_us.php?type=2&act=add_hezuo",
+                    dataType: "json",
+                    data:$("#xzdz2").serialize(),
+                    success: function(data){
+
+                    if(data.error==12){
+                              if(data.url){
+                              window.location.href=data.url;return;
+                              }
+                            }
+                    if(data.msg=='true'){
+
+                              layer.open({
+                                      content: '提交成功!'
                                         ,skin: 'msg'
                                         ,time: 2 //2秒后自动关闭
                                     });
+                    }else{
+                           layer.open({
+                                      content: '提交失败!'
+                                        ,skin: 'msg'
+                                        ,time: 2 //2秒后自动关闭
+                                    });
+                    }
+                    }
+                  });
                         },
                  debug:true
 
@@ -421,11 +469,39 @@
                     error.appendTo(element.siblings("span"));
                 },
                 submitHandler:function() {
-                                 layer.open({
-                                      content: '您已提交成功!'
+                   layer.open({
+                type: 2
+                ,content: '提交中'
+              ,time: 1 //2秒后自动关闭
+                });
+                                  $.ajax({
+                    type:"POST",
+                    url:"about_us.php?type=3&act=add_hezuo",
+                    dataType: "json",
+                    data:$("#xzdz3").serialize(),
+                    success: function(data){
+
+                    if(data.error==12){
+                              if(data.url){
+                              window.location.href=data.url;return;
+                              }
+                            }
+                    if(data.msg=='true'){
+
+                              layer.open({
+                                      content: '提交成功!'
                                         ,skin: 'msg'
                                         ,time: 2 //2秒后自动关闭
                                     });
+                    }else{
+                           layer.open({
+                                      content: '提交失败!'
+                                        ,skin: 'msg'
+                                        ,time: 2 //2秒后自动关闭
+                                    });
+                    }
+                    }
+                  });
                         },
                  debug:true
 
