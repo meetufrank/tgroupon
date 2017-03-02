@@ -1136,7 +1136,7 @@ $smarty->assign('goodsdesc',  $goodsdesc);  //商品的详细描述
 
 //猜你喜欢
 
-$xinhuan = "select p.goods_id,p.attributeimg,p.attributeprice+g.more_price as attributeprice,g.goods_name from `ecs_products` as p
+$xinhuan = "select p.goods_id,p.attributeimg,cast(p.attributeprice+g.more_price as decimal(10,2)) as attributeprice,g.goods_name,g.listimg,cast(p.falseprice+g.more_price as decimal(10,2)) as falseprice from `ecs_products` as p
 
 inner join `ecs_goods` as g
 
@@ -1360,11 +1360,12 @@ foreach ($friend_arr as $key => $value) {
 
 
 
- $sqls = "select attributeprice,attributeimg,product_number from `ecs_products` where goods_attr = '$jiageimg'";
+ $sqls = "select attributeprice,falseprice,attributeimg,product_number from `ecs_products` where goods_attr = '$jiageimg'";
 
   $jiageimgs = $db->getRow($sqls);
 
 $sub_price=sprintf("%.2f", $jiageimgs['attributeprice']+$shopdata['more_price']);
+$falseprice=sprintf("%.2f", $jiageimgs['falseprice']+$shopdata['more_price']);
 
 
 
@@ -1373,7 +1374,7 @@ $smarty->assign('jiagedata',$jiageimgs);
 $smarty->assign('checked_arr',$checked_arr);
 
 $smarty->assign('sub_price',sprintf("%.2f", $sub_price));
-
+$smarty->assign('falseprice',sprintf("%.2f", $falseprice));
 $smarty->assign('select',json_encode($select));
 
 

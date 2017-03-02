@@ -549,7 +549,9 @@
                   </div>
                   <div class="shop-item-details">
                     <div class="shop-item-price">
-                      <span class="lead-shop-select text-normal text-gray text-crossed">￥100</span>
+                    {if $xh.falseprice>$xh.attributeprice}
+                      <span class="lead-shop-select text-normal text-gray text-crossed">￥{$xh.falseprice}</span>
+                    {/if}
                       ￥{$xh.attributeprice}
                     </div>
                   </div>

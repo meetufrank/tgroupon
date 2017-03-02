@@ -129,7 +129,10 @@
             </div>
              <div class="shop-item-details">
               <div class="shop-item-price">
-               <span class="lead-shop-select text-normal text-gray text-crossed">￥0.00</span>￥{$ysjzp.attributeprice}
+               {if $ysjzp.falseprice>$ysjzp.attributeprice}
+               <span class="lead-shop-select text-normal text-gray text-crossed">￥{$ysjzp.falseprice}</span>
+               {/if}
+               ￥{$ysjzp.attributeprice}
               </div>
             </div>
           </div><!-- .shop-item -->
@@ -185,8 +188,12 @@
                 						,content: '加载中'
             							,time: 0.5 //2秒后自动关闭
               					});
-
-                           $("#nextsp").append('<div class="col-lg-3 col-sm-6">'+'<div class="shop-item">'+'<div class="shop-thumbnail">'+'<a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}" class="item-link"></a>'+'<img src="././admin/'+data.data[i].attributeimg+'" alt="'+data.data[i].goods_name+'">'+'</div>'+'<div class="shop-item-details">'+'<h3 class="shop-item-title"><a href="#">'+data.data[i].goods_name+'</a></h3>'+'<span class="shop-item-price">￥'+data.data[i].attributeprice+'</span>'+'</div>'+'</div>'+'</div>');//内容添加到页面上.
+                              if(data.data[i].falseprice>data.data[i].attributeprice){
+                                var price='￥'+data.data[i].falseprice;
+                              }else{
+                                var price='';
+                              }
+                           $("#nextsp").append('<div class="col-lg-3 col-sm-6">'+'<div class="shop-item">'+'<div class="shop-thumbnail">'+'<a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}" class="item-link"></a>'+'<img src="././admin/'+data.data[i].attributeimg+'" alt="'+data.data[i].goods_name+'">'+'</div>'+'<div class="shop-item-details">'+'<h3 class="shop-item-title"><a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}">'+data.data[i].goods_name+'</a></h3>'+'<span class="shop-item-price"><span class="lead-shop-select text-normal text-gray text-crossed">'+price+'</span>￥'+data.data[i].attributeprice+'</span>'+'</div>'+'</div>'+'</div>');//内容添加到页面上.
                              });
                          if(data.more==0){
                                     $("#more").remove();
