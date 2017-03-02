@@ -415,7 +415,10 @@ ADD COLUMN `sq_status`  smallint(1) NOT NULL DEFAULT 0 COMMENT '//状态' AFTER 
 
 
 
-
+/*#2017/03/2 汪江  商品表添加特别优惠图片字段
+*/
+ALTER TABLE `ecs_goods`
+ADD COLUMN `veryimg`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '//特别优惠图片' AFTER `listimg`;
 
 
 
