@@ -30,15 +30,15 @@
 
     <!-- <th><a href="javascript:listTable.sort('media_type'); ">{$lang.media_type}</a>{$sort_media_type}</th> -->
 
-    <th><a href="javascript:listTable.sort('start_date'); ">{$lang.start_date}</a>{$sort_start_date}</th>
+<!--     <th><a href="javascript:listTable.sort('start_date'); ">{$lang.start_date}</a>{$sort_start_date}</th>
 
-    <th><a href="javascript:listTable.sort('end_date'); ">{$lang.end_date}</a>{$sort_end_date}</th>
+    <th><a href="javascript:listTable.sort('end_date'); ">{$lang.end_date}</a>{$sort_end_date}</th> -->
 
   <!--   <th><a href="javascript:listTable.sort('click_count'); ">{$lang.click_count}</a>{$sort_click_count}</th>
 
     <th>{$lang.ads_stats}</th> -->
     <!-- 图片 -->
-    <th>图片</th>
+    <th>广告位图片</th>
     <th>广告是否关闭</th>
     <!-- 排序 -->
     <th>排序</th>
@@ -65,8 +65,8 @@
                  首页位
             {elseif $list.position_id == 2}
                  列表位
-            {elseif $list.position_id == 3}
-                 详情位
+<!--             {elseif $list.position_id == 3}
+                 详情位 -->
             {/if}
 
         </span>
@@ -82,9 +82,9 @@
 
   <!--   <td align="left"><span>{$list.type}</span></td> -->
 
-    <td align="center"><span>{$list.start_date}</span></td>
+<!--     <td align="center"><span>{$list.start_date}</span></td>
 
-    <td align="center"><span>{$list.end_date}</span></td>
+    <td align="center"><span>{$list.end_date}</span></td> -->
     <td align="center"><span><img style="width:80px;height:50px;" src="../../mobile/data/afficheimg/{$list.ad_code}"></span></td>
     <td align="center"><span>{if $list.enabled == 0}关闭{else $list.enabled == 1}开启{/if}</span></td>
     <td align="center"><span>{$list.sort}</span></td>
