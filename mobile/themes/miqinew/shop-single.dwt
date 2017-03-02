@@ -328,12 +328,7 @@
         {foreach from=$xiangce item=xiangce}
             <div class="slide pc-thumbnail" style="background-image:url(../{$xiangce.img_url});"></div>
         {/foreach}
-      </div><!-- .inner -->
-
-
-
-
-
+      </div>
     </section>
     <!-- 详情页bannner -->
     <!-- 电脑端商品详情选择-->
@@ -550,11 +545,13 @@
                     {if $xh.attributeimg}<img src="././admin/{$xh.attributeimg}" alt="Shop item">{/if}
                   </div>
                   <div class="shop-item-details">
-                    <h3 class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}{$linestring2}">{$xh.goods_name}</a></h3>
-                    <span class="shop-item-price">
-                      <span class="old-price"></span>
+                    <div class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}{$linestring2}">{$xh.goods_name}</a></div>
+                  </div>
+                  <div class="shop-item-details">
+                    <div class="shop-item-price">
+                      <span class="lead-shop-select text-normal text-gray text-crossed">￥100</span>
                       ￥{$xh.attributeprice}
-                    </span>
+                    </div>
                   </div>
                 </div><!-- .shop-item -->
               </div><!-- .col-lg-3.col-sm-6 -->

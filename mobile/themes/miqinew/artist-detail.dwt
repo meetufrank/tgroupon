@@ -30,7 +30,6 @@
 
   <!-- Page Preloading -->
   <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
-    <link rel="stylesheet" href="{$ectouch_themes}/Swiper-3.4.0/dist/css/swiper.min.css">
 
   <!-- by sun -->
   <style>
@@ -51,42 +50,13 @@
 	    text-decoration: none;
 	    color: #999;
 	}
-  /*swiper样式*/
-   html, body {
-        position: relative;
-        height: 100%;
+  .owl-nav{
+    display:none;
   }
-  body {
-        margin: 0;
-        padding: 0;
-  }
-  .swiper-container {
-        width: 100%;
-  }
-  .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-    }
-    /* 收藏状态为红色 */
+  /* 收藏状态为红色 */
   .schongse{
     color:rgb(200, 0, 0);
   }
-  /*swiper样式*/
-
   </style>
 
 </head>
@@ -105,20 +75,15 @@
    {include file="head.dwt"}
     <!-- 头部结束 -->
 
-    <!-- Featured Image -->
-
-       <div class="swiper-container">
-        {if $banner_list}
-        <div class="swiper-wrapper">
-        {foreach from=$banner_list item=bl}
-            <div class="swiper-slide"><a href="{$bl.ad_link}"><img src="{$bl.ad_code}"></a></div>
-         {/foreach}
-        </div>
-        <!-- Add Pagination -->
-       <!--  <div class="swiper-pagination"></div>-->
-       {/if}
-    </div>
-
+ <!-- Hero Slider -->
+  <section class="hero-slider">
+      <div class="inner">
+      {foreach from=$banner_list item=bl}
+        <a href="{$bl.ad_link}"><div class="slide" style="background-image:url({$bl.ad_code});">
+        </div></a>
+      {/foreach}
+      </div>
+  </section>
 	<!-- Content -->
 	<section class="container padding-top-2x">
 		<div class="clearfix">
@@ -148,7 +113,7 @@
     </section>
 
 
-    <section class="container padding-top padding-bottom">
+    <section class="container padding-top">
       <hr>
       <h3 class="padding-top">近期作品</h3>
       <div class="row padding-top" id="nextsp">
@@ -157,15 +122,15 @@
           <div class="shop-item">
             <div class="shop-thumbnail">
               <a href="shop-single.php?id={$ysjzp.goods_id}{$linestring2}" class="item-link"></a>
-
               <img src="././admin/{$ysjzp.attributeimg}" alt="{$ysjzp.goods_name}">
-
             </div>
             <div class="shop-item-details">
-              <h3 class="shop-item-title"><a href="#">{$ysjzp.goods_name}</a></h3>
-              <span class="shop-item-price">
-               ￥{$ysjzp.attributeprice}
-              </span>
+              <div class="shop-item-title"><a href="#">{$ysjzp.goods_name}</a></div>
+            </div>
+             <div class="shop-item-details">
+              <div class="shop-item-price">
+               <span class="lead-shop-select text-normal text-gray text-crossed">￥0.00</span>￥{$ysjzp.attributeprice}
+              </div>
             </div>
           </div><!-- .shop-item -->
         </div><!-- .col-lg-3.col-sm-6 -->
@@ -192,15 +157,6 @@
   </div><!-- .page-wrapper -->
 
   <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
- <script src="{$ectouch_themes}/Swiper-3.4.0/dist/js/swiper.min.js"></script>
-
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        paginationClickable: true
-    });
-  </script>
   <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
   <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
   <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
@@ -208,7 +164,7 @@
   <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
   <script src="{$ectouch_themes}/js/scripts.js"></script>
   <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
-
+  <script src="{$ectouch_themes}/js/vendor/owl.carousel.min.js"></script>
 
    <script type="text/javascript">
 

@@ -156,7 +156,7 @@ color:#606060
     <!-- 头部结束 -->
 
     <!-- Hero Slider -->
-    <section class="hero-slider" data-loop="true" data-autoplay="true" data-interval="7000">
+    <section class="hero-slider">
       <div class="inner">
       {foreach from=$banner_list item=bl}
         <a href="{$bl.ad_link}"><div class="slide" style="background-image:url({$bl.ad_code});">
@@ -276,11 +276,13 @@ color:#606060
       <div class="row padding-top">
 
         <!-- Special Offer -->
-        <div class="col-lg-3 col-md-3" onclick="javascript:location.href='shop-single.php?id={$tb_list.goods_id}{$linestring2}' ">
+        <div class="col-lg-3 col-md-4" onclick="javascript:location.href='shop-single.php?id={$tb_list.goods_id}{$linestring2}' ">
 
-          <div class="info-box text-center" style="background-image:url(../{$tb_list.goods_img});-moz-background-size:100% 100%;
-   background-size:100% 100%;background-repeat: no-repeat">
-            <h2 class="tbyh">特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
+          <div class="info-box text-center">
+            <h2>特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
+            <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="inline">
+              <img src="../../{$tb_list.goods_img}" alt="{$tb_list.goods_name}">
+            </a>
             <h3 class="lead text-normal space-bottom-half"><a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="link-title">{$tb_list.goods_name}</a></h3>
             <span class="lead text-normal text-gray text-crossed">￥{$tb_list.falseprice}</span>
             <span class="h4 text-normal text-danger">￥{$tb_list.attributeprice}</span>
@@ -291,7 +293,7 @@ color:#606060
         </div><!-- .col-lg-3.col-md-4 -->
 
         <!-- Products -->
-        <div class="col-lg-9 col-md-9">
+        <div class="col-lg-9 col-md-8">
           <!-- Nav Tabs -->
           <ul class="nav-tabs text-center" role="tablist">
             <li class="active"><a href="#newcomers" role="tab" data-toggle="tab">新品上架</a></li>
@@ -308,15 +310,19 @@ color:#606060
                 <div class="col-lg-3 col-md-2 col-sm-2 col-sm-6">
                   <div class="shop-item">
                     <div class="shop-thumbnail">
-                      <!-- <span class="shop-label text-danger">Sale</span> -->
+
                       <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
                       <img src="././admin/{$xl.attributeimg}" alt="{$xl.goods_name}">
                     </div>
                     <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.php?id={$xl.goods_id}{$linestring2}">{$xl.goods_name}</a></h3>
-                      <span class="shop-item-price">
-                        ￥{$xl.attributeprice}
-                      </span>
+                      <div class="shop-item-title">
+                        <a href="shop-single.php?id={$xl.goods_id}{$linestring2}">{$xl.goods_name}</a>
+                      </div>
+                    </div>
+                    <div class="shop-item-details">
+                     <div class="shop-item-price">
+                        <span class="lead-shop-select text-normal text-gray text-crossed">￥0.00</span>￥{$xl.attributeprice}
+                      </div>
                     </div>
                   </div><!-- .shop-item -->
                 </div><!-- .col-lg-3.col-sm-6 -->
@@ -337,10 +343,12 @@ color:#606060
                       <img src="././admin/{$dl.attributeimg}" alt="{$dl.goods_name}">
                     </div>
                     <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.php?id={$dl.goods_id}{$linestring2}">{$dl.goods_name}</a></h3>
-                      <span class="shop-item-price">
-                        ￥{$dl.attributeprice}
-                      </span>
+                      <div class="shop-item-title"><a href="shop-single.php?id={$dl.goods_id}{$linestring2}">{$dl.goods_name}</a></div>
+                    </div>
+                    <div class="shop-item-details">
+                    <div class="shop-item-price">
+                        <span class="lead-shop-select text-normal text-gray text-crossed">￥10.00</span>￥{$dl.attributeprice}
+                    </div>
                     </div>
                   </div><!-- .shop-item -->
                 </div><!-- .col-lg-3.col-sm-6 -->
