@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2017-03-02 10:14:48
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-03-02 15:09:38
+ * @Last Modified time: 2017-03-02 18:03:10
  */
 define('IN_ECTOUCH', true);
 
@@ -18,7 +18,6 @@ if (!isset($_REQUEST['act']))
 
 
 if($_REQUEST['act']=='about_us'){
-
 
 
 

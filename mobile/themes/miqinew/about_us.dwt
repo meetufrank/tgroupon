@@ -62,7 +62,7 @@
     <div class="about_whiteLevel">
     	<div class="text-center">
     		<h2 style="color:#000;">关于型色主义</h2>
-    		<h3 style="color:#000;">服务中心</h3>
+    		<h3 id="fuwu"style="color:#000;">服务中心</h3>
     	</div>
       <h4>1、购物指南</h4>
       <p>第一次使用型色主义？</p>
@@ -93,7 +93,7 @@
       <p>•最终解释权归型色主义所有！</p>
 
 	<div class="text-center">
-		<h3 style="color:#000;">关于我们</h3>
+		<h3 style="color:#000;" id="guanyu">关于我们</h3>
 	</div>
 
       <h4>1、品牌理念</h4>
@@ -124,7 +124,7 @@
       <p>•型色主义网站：我们一直秉承尊重知识产权的理念，并对网站上所涉及的设计著作权、专利权等的产品具有相关权利。 我们声明：型色网站所售产品，任何单位或个人不得擅自复制、抄袭、非法使用或转载。否则，型色将通过法律允许的任何方式追究侵权者的责任。 型色拥有型色主义网站上所有内容。任何未被授权的浏览、复制、打印和传播属于本网站内的内容均不得用于商业用途，所有的资料、图象及其任何部分都必须包括此声明。型色主义所有的产品与技术均属于型色主义的知识产权，“型色”、“型色主义”、“www.cands.cn ”以及相关图形、标识等为型色的注册商标，未经允许，任何人不得复制、传播、展示等，否则，型色主义依法追究法律责任。</p>
 
 	<div class="text-center">
-		<h3 style="color:#000;">商业合作</h3>
+		<h3 style="color:#000;" id="shangye">商业合作</h3>
 	</div>
     <div style="border:1px solid #ccc; padding:30px 4%;">
     	<ul class="about_tabs text-center hidden-xs" role="tablist">
