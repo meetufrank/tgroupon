@@ -44,11 +44,12 @@
 
   <tr>
     <th>姓名</th>
-    <th>微信昵称</th>
+    <th>申请类型</th>
     <th>手机号</th>
     <th>邮箱</th>
     <th>微信号</th>
     <th>申请时间</th>
+    <th>状态</th>
 
     <!-- <th>
 
@@ -110,11 +111,28 @@
 	<td align="center">{$user.number}</td>
  -->
 <td align="center">{$user.sq_username}</td>
- <td align="center">{$user.sq_kjname}</td>
+ <td align="center">
+ {if $user.sq_type == 1}
+    渠道合作
+ {elseif $user.sq_type == 2}
+    品牌合作
+ {elseif $user.sq_type == 3}
+    设计师合作意向
+ {/if}
+
+
+ </td>
  <td align="center">{$user.sq_tel}</td>
  <td align="center">{$user.sq_email}</td>
  <td align="center">{$user.sq_wxname}</td>
  <td align="center">{$user.sq_time}</td>
+ <td align="center">
+    {if  $user.sq_status == 0}
+       未受理
+    {elseif $user.sq_status == 1}
+       已受理
+    {/if}
+ </td>
 	<!-- <td align="center"><a href="users.php?act=share_list&id={$user.user_id}">点击查看</a></td> -->
 
 	<td align="center">
