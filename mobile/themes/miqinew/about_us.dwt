@@ -328,6 +328,15 @@
                     error.appendTo(element.siblings("span"));
                 },
                 submitHandler:function() {
+                     $.ajax({
+                    type:"POST",
+                    url:"about_us.php?type=1&act=add_hezuo",
+                    dataType: "json",
+                    data:$("#xzdz").serialize(),
+                    success: function(data){
+
+                    }
+                  });
                                  layer.open({
                                       content: '您已提交成功!'
                                         ,skin: 'msg'
