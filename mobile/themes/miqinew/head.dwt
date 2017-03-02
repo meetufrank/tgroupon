@@ -4,7 +4,7 @@
 <header class="navbar navbar-sticky">
 
     <!-- Site Logo -->
-      <a href="index.html" class="site-logo">
+      <a href="index.php{$linestring1}" class="site-logo">
         <img src="{$ectouch_themes}/img/Logo.png">
       </a>
 <!-- Toolbar -->
@@ -32,7 +32,7 @@
               <li><a href="index.php{$linestring1}">首页</a></li>
               <li><a href="goods_list.php{$linestring1}" >商品</a></li>
               <li><a href="artist_list.php{$linestring1}">设计师</a></li>
-              <li><a href="#">关于我们</a></li>
+              <li><a href="about_us.php{$linestring1}">关于我们</a></li>
             </ul>
 
           </div>

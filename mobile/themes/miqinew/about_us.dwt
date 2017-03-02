@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>关于我们</title>
+
+  <!--SEO Meta Tags-->
+  <meta name="description" content="M-Store - Modern E-Commerce Template" />
+  <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+  <meta name="author" content="Rokaux" />
+
+  <!--Mobile Specific Meta Tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Google Material Icons -->
+  <link href="{$ectouch_themes}/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+
+  <!-- Brand Icons -->
+  <link href="{$ectouch_themes}/css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+
+  <!-- Bootstrap -->
+  <link href="{$ectouch_themes}/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <!-- Theme Styles -->
+  <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
+
+  <!-- Page Preloading -->
+  <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
+
+  <!-- Modernizr -->
+  <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
+
+  <!-- AboutUs170301 css -->
+  <link href="{$ectouch_themes}/css/AboutUs.css" rel="stylesheet" media="screen">
+
+</head>
+
+<!-- Body -->
+<!-- Adding/Removing class ".page-preloading" is enabling/disabling background smooth page transition effect and spinner. Make sure you also added/removed link to page-preloading.js script in the <head> of the document. -->
+<body class="page-preloading">
+
+ <!-- 头部开始 -->
+   {include file="head.dwt"}
+    <!-- 头部结束 -->
+
+
+  <!-- Page Pre-Loader -->
+  <div class="page-preloader">
+    <div class="preloader">
+      <img src="{$ectouch_themes}/img/preloader.gif" alt="Preloader">
+    </div>
+  </div><!-- .page-preloader -->
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+
+
+
+    <section class="about_topcss" style="background-image:url({$ectouch_themes}/img/backgroundPic.jpg)">
+
+
+    <div class="about_whiteLevel">
+    	<div class="text-center">
+    		<h2 style="color:#000;">关于型色主义</h2>
+    		<h3 style="color:#000;">服务中心</h3>
+    	</div>
+      <h4>1、购物指南</h4>
+      <p>第一次使用型色主义？</p>
+      <p>•线上直邮购：到访www.cands.cn型色主义官网，进入产品页面即可自行购买设计师的产品，我们会为您精细打包然后从工厂直邮到您家里。</p>
+      <p>•线下体验购：到访全国各地与我们合作的体验店，即可看到真实的线下产品体验款与空间的结合。如果你也有公共的空间希望展示设计师的产品，请跟我们联系。</p>
+
+
+      <h4>2、服务保障</h4>
+      <p>•全场包邮：型色主义跟优质的快递公司合作，为您提供最好的配送服务，免费为您快递送货到家。（暂不支持线下提货；新疆、西藏、青海地区邮费另外计算，请联系客服）</p>
+      <p>•包装安装：型色主义的产品都是从工厂统一按照快递发货标准包装，经过实验从2米高处掉下来都是没有问题的。如需安装，我们将会为您制作安装细节指导卡片。</p>
+      <div class="row">
+	      <div class="col-sm-6">
+	      		<img src="{$ectouch_themes}/img/ct8.jpg">
+	      </div>
+	      <div class="col-sm-6">
+	      		<img src="{$ectouch_themes}/img/ct3.jpg">
+	      </div>
+      </div>
+      <p>&nbsp;</p>
+      <p>•付款方式：微信支付</p>
+      <p>•售后服务：恭喜您收到型色主义的设计产品，在此请您一定要花点时间，做好签收确认！如您有任何问题，请您第一时间联系我们的客服，我们将会马上为您处理。</p>
+      <p>•投诉和受理：如果我们的产品或服务出现任何问题，我们深表歉意。请您务必与我们取得联系，我们将在第一时间与您沟通，以最快的速度解决问题。</p>
+      <p>•联系我们：电话|微信：13502637171；电子邮箱：service@cands.com</p>
+
+
+      <h4>3、用户协议</h4>
+      <p>•适用法律：通过访问（www.cands.cn）网站，我们默认您同意本使用条件以及您和本网站之间发生的任何争议均适用中华人民共和国法律。</p>
+      <p>•最终解释权归型色主义所有！</p>
+
+	<div class="text-center">
+		<h3 style="color:#000;">关于我们</h3>
+	</div>
+
+      <h4>1、品牌理念</h4>
+  	  <p><img class="img-responsive" src="{$ectouch_themes}/img/C&S-logo.png"></p>
+      <p>设计师代表|作品代表</p>
+      <p><img class="img-responsive" src="{$ectouch_themes}/img/designer.jpg"></p>
+      <p>空间代表</p>
+      <div class="row">
+      	<div class="col-xs-4">
+      		<img src="{$ectouch_themes}/img/timg.jpg">
+      		<p class="text-center">可能就是你</p>
+      	</div>
+      	<div class="col-xs-4">
+      		<img src="{$ectouch_themes}/img/Bryan.jpg">
+      		<p class="text-center">Bryan</p>
+  		</div>
+      	<div class="col-xs-4">
+      		<img src="{$ectouch_themes}/img/timg.jpg">
+      		<p class="text-center">可能就是你</p>
+  		</div>
+      </div>
+
+      <h4>2、设计师团</h4>
+      <p>超链接，跳转至设计师页面列表</p>
+
+      <h4>3、知识产权</h4>
+      <p>•型色主义产品：型色对旗下网站信息及产品享有完整的著作权、专利权及商标权等相关权利。除明显归属于合作伙伴、第三方所有的信息资料外，包括但不限于文字表述及其组合、图标、图饰、图表、色彩、版面设计、产品造型、模型、美术作品等，并且受《中华人民共和国著作权法》、《中华人民共和国商标法》及《中华人民共和国专利法》等相关法律法规和中国加入的所有知识产权方面的国际条约、国际公约等的保护。</p>
+      <p>•型色主义网站：我们一直秉承尊重知识产权的理念，并对网站上所涉及的设计著作权、专利权等的产品具有相关权利。 我们声明：型色网站所售产品，任何单位或个人不得擅自复制、抄袭、非法使用或转载。否则，型色将通过法律允许的任何方式追究侵权者的责任。 型色拥有型色主义网站上所有内容。任何未被授权的浏览、复制、打印和传播属于本网站内的内容均不得用于商业用途，所有的资料、图象及其任何部分都必须包括此声明。型色主义所有的产品与技术均属于型色主义的知识产权，“型色”、“型色主义”、“www.cands.cn ”以及相关图形、标识等为型色的注册商标，未经允许，任何人不得复制、传播、展示等，否则，型色主义依法追究法律责任。</p>
+
+	<div class="text-center">
+		<h3 style="color:#000;">商业合作</h3>
+	</div>
+    <div style="border:1px solid #ccc; padding:30px 4%;">
+    	<ul class="about_tabs text-center hidden-xs" role="tablist">
+	        <li class="active"><a href="#tab1" role="tab" data-toggle="tab">渠道合作</a></li>
+	        <li><a href="#tab2" role="tab" data-toggle="tab">品牌合作</a></li>
+	        <li><a href="#tab3" role="tab" data-toggle="tab">设计师合作意向</a></li>
+	      </ul>
+    	<ul class="about_tabs text-center visible-xs" role="tablist">
+	        <li class="active" style="display: block;"><a href="#tab1" role="tab" data-toggle="tab">渠道合作</a></li>
+	        <li style="display: block;"><a href="#tab2" role="tab" data-toggle="tab">品牌合作</a></li>
+	        <li style="display: block;"><a href="#tab3" role="tab" data-toggle="tab">设计师合作意向</a></li>
+	      </ul>
+	      <div class="tab-content">
+        	<div role="tabpanel" class="tab-pane transition fade in active" id="tab1">
+        		<p>
+        			型色主义（www.cands.cn）是一家有媒体属性的设计师家居饰品商城。感谢您决定加入我们，在我们什么都没有的这个测试阶段，您选择信任我们，跟我们共进退。通过您的二维码进入商城，顾客购买产品您即可得到20%的提成。下面是一些资料的备份，请按真实情况填写，商城给您发销售提成的时候会进行核对，确保到您本人的钱包里。
+        		</p>
+        		<form method="post" action="#" id="xzdz">
+			            <div>
+			                <div class="row">
+			                  <div class="col-sm-6">
+			                  	 <p><input type="text" class="form-control" name="UserName" placeholder="姓名"><span></span></p>
+			                  </div>
+			                  <div class="col-sm-6">
+			                  	 <p><input type="text" class="form-control" name="UserTel" placeholder="手机"><span></span></p>
+			                  </div>
+			                  <div class="col-sm-6">
+			                  <p><input type="text" class="form-control" name="UserMail" placeholder="邮箱"><span></span></p>
+			                  </div>
+			                  <div class="col-sm-6">
+			                      <p><input type="text" class="form-control" name="UserWeixin" placeholder="微信号"><span></span></p>
+			                  </div>
+		                    </div>
+
+			                <p><input type="text" class="form-control" name="SpaceName" placeholder="空间名称（如：星巴克咖啡）"><span></span></p>
+			                <p><input type="text" class="form-control" name="SpaceAddr" placeholder="空间地址"><span></span></p>
+			            </div>
+			            <div class="text-center">
+
+			              <button id="about_submit" class="btn btn-primary waves-effect waves-light" >
+			                  提交
+			              </button>
+			            </div>
+            </form>
+        		<!-- <form method="post" action="#" id="xzdz">
+        			<div class="row">
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" name="UserName" placeholder="姓名">
+        				</div>
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" name="UserTel" placeholder="手机">
+    					</div>
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" name="UserMail" placeholder="邮箱">
+        				</div>
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" name="UserWeixin" placeholder="微信号">
+    					</div>
+        				<div class="col-sm-12">
+        					<input type="text" class="form-control" name="SpaceName" placeholder="空间名称（如：星巴克咖啡）">
+    					</div>
+        				<div class="col-sm-12">
+        					<input type="text" class="form-control" name="SpaceAddr" placeholder="空间地址">
+    					</div>
+        			</div>
+        			<div class="text-center">
+        				<a href="#" class="btn btn-gray waves-effect waves-light">重置</a>
+        				<a id="about_submit" href="#" class="btn btn-primary waves-effect waves-light">提交</a>
+    				</div>
+        		</form> -->
+        	</div>
+        	<div role="tabpanel" class="tab-pane transition fade" id="tab2">
+
+        		<p>型色主义（www.cands.cn）是一家有媒体属性的设计师家居饰品商城。感谢您对我们的产品感兴趣，我们坚持设计师的原创产品开发和生产，我们抱着开放的心态，欢迎设计公司、贸易公司等合作共赢。</p>
+        		<form>
+        			<div class="row">
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" placeholder="姓名">
+        				</div>
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" placeholder="手机">
+    					</div>
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" placeholder="邮箱">
+        				</div>
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" placeholder="微信号">
+    					</div>
+        				<div class="col-sm-12">
+        					<textarea rows="4" class="form-control" placeholder="您对此次合作有什么期待" style="margin-bottom: 0; padding-bottom:0; "></textarea>
+        					<p style="color: #a5a5a5; font-size: 12px;">(&nbsp;限300字以内&nbsp;)</p>
+    					</div>
+        			</div>
+        			<div class="text-center">
+
+        				<a href="#" class="btn btn-primary waves-effect waves-light">提交</a>
+    				</div>
+        		</form>
+        	</div>
+        	<div role="tabpanel" class="tab-pane transition fade" id="tab3">
+
+        		<p>型色主义（www.cands.cn）是一家有媒体属性的设计师家居饰品商城。感谢您对我们的产品感兴趣，我们坚持设计师的原创产品开发和生产，我们抱着开放的心态，欢迎设计公司、贸易公司等合作共赢。</p>
+        		<form>
+        			<div class="row">
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" placeholder="姓名">
+        				</div>
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" placeholder="手机">
+    					</div>
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" placeholder="邮箱">
+        				</div>
+        				<div class="col-sm-6">
+        					<input type="text" class="form-control" placeholder="微信号">
+    					</div>
+        				<div class="col-sm-12">
+        					<textarea rows="4" class="form-control" placeholder="您对此次合作有什么期待" style="margin-bottom: 0; padding-bottom:0; "></textarea>
+        					<p style="color: #a5a5a5; font-size: 12px;">(&nbsp;限300字以内&nbsp;)</p>
+    					</div>
+        			</div>
+        			<div class="text-center">
+
+        				<a href="#" class="btn btn-primary waves-effect waves-light">提交</a>
+    				</div>
+        		</form>
+        	</div>
+        </div>
+    </div>
+
+    </div>
+
+    </section><!-- .container -->
+
+
+    {include file="foot.dwt"}
+  </div><!-- .page-wrapper -->
+
+
+
+  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+
+  <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/nouislider.min.js"></script>
+  <script src="{$ectouch_themes}/js/scripts.js"></script>
+   <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
+  <script src="{$ectouch_themes}/js/jquery.validate.js" type="text/javascript"></script>
+  <script src="{$ectouch_themes}/js/messages_zh.js" type="text/javascript"></script>
+  <script>
+	//提交成功提示框
+   $('#about_submit').click(function(){
+  	layer.open({
+			  content: '您已提交成功!'
+			    ,skin: 'msg'
+			    ,time: 2 //2秒后自动关闭
+			});
+			});
+	</script>
+<script type="text/javascript">
+  // 手机号码验证
+  jQuery.validator.addMethod("isMobile", function(value, element) {
+      var length = value.length;
+      var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+      return this.optional(element) || (length == 11 && mobile.test(value));
+  }, "请正确填写您的手机号码");
+
+   $(function () {
+    $("#xzdz").validate({
+       rules: {
+                    UserName: { required: true, },
+                    UserTel: { required: true, number:true,isMobile:true,min:11},
+                    UserMail: { required: true,},
+                    UserWeixin: { required: true,},
+                    SpaceName: { required: true, },
+                    SpaceAddr: { required: true,minlength:2,maxlength:30 }
+                },
+                messages:{
+                    UserName: {
+                        required: "请输入姓名！",
+                     },
+                    UserTel: {
+                        required: "请填写你的手机号码",
+                        number:"手机号码只能为数字",
+            min: "手机号码必须为11位数！",
+            isMobile:"请正确填写您的手机号码",
+                     },
+                    UserMail: {
+                        required: "请输入邮箱！",
+                    },
+                    UserWeixin: {
+                        required: "请输入微信!",
+                    },
+                    SpaceName: {
+                        required: "请输入空间名称！",
+                     },
+         		    SpaceAddr: {
+                        required: "请输入空间地址!",
+                    }
+                },
+                /*错误提示位置*/
+                errorPlacement: function (error, element) {
+                    error.appendTo(element.siblings("span"));
+                }
+    })
+  })
+  </script>
+  </body><!-- <body> -->
+
+</html>
