@@ -406,4 +406,9 @@ PRIMARY KEY (`sq_id`)
 ALTER TABLE `ecs_shenqing`
 MODIFY COLUMN `sq_type`  smallint(1) NOT NULL DEFAULT 1 COMMENT '//合作类型 1渠道 2 品牌 3设计师' AFTER `sq_text`;
 
+/*#2017/03/1 王晋  添加合作申请表 ecs_shenqing字段
+*/
+ALTER TABLE `ecs_shenqing`
+ADD COLUMN `sq_time`  timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '//申请时间' AFTER `sq_type`,
+ADD COLUMN `sq_status`  smallint(1) NOT NULL DEFAULT 0 COMMENT '//状态' AFTER `sq_time`;
 

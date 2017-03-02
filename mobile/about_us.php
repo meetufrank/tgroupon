@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2017-03-02 10:14:48
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-03-02 12:41:50
+ * @Last Modified time: 2017-03-02 13:08:13
  */
 define('IN_ECTOUCH', true);
 
@@ -27,7 +27,9 @@ $smarty->display('about_us.dwt');
 exit;
 }elseif($_REQUEST['act']=='add_hezuo'){
 
-$content=$_POST['UserName'];
+$username=$_POST['UserName'];
+$username=$_POST['UserName'];
+$username=$_POST['UserName'];
 print_r($content);exit;
 
 }
