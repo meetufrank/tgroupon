@@ -35,7 +35,7 @@ foreach ($banner_list as $key => $value) {
       $banner_list[$key]['ad_link']=$value['ad_link'].$linestring1;
     }
 }
-//print_r($banner_list);exit;
+
 
 
 //分类列表及小图标
@@ -87,7 +87,7 @@ $smarty->display('xs_index.dwt');
 //获取商品列表
 function get_goods_list($where='',$limit=''){
 
-      $sql="select min(ep.product_id) as product_id,ep.goods_id,cast((1-ep.priceratio)*100 as decimal(2,0))as  priceratio,cast(ep.attributeprice+g.more_price as decimal(10,2)) as attributeprice,cast(ep.falseprice+g.more_price as decimal(10,2)) as falseprice,ep.attributeimg,g.goods_name,g.goods_img from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where." GROUP BY ep.goods_id  order by g.sort_order desc ".$limit;
+      $sql="select min(ep.product_id) as product_id,ep.goods_id,cast((1-ep.priceratio)*100 as decimal(2,0))as  priceratio,cast(ep.attributeprice+g.more_price as decimal(10,2)) as attributeprice,cast(ep.falseprice+g.more_price as decimal(10,2)) as falseprice,ep.attributeimg,g.goods_name,g.goods_img,g.veryimg from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where." GROUP BY ep.goods_id  order by g.sort_order desc ".$limit;
       $data=$GLOBALS['db']->getALL($sql);
 
       return $data;
