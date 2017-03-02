@@ -1,0 +1,48 @@
+
+/*AboutUs css*/
+
+.about_topcss{
+	padding:50px 4%;
+}
+
+.about_whiteLevel{
+	background-color: white;
+	margin: 0 auto;
+	padding: 2% 4% 4% 4%;
+}
+
+.about_tabs > li {
+    position: relative;
+    display: inline-block;
+}
+.about_tabs > li.active > a, .about_tabs > li.active > a:hover, .about_tabs > li.active > a:focus {
+    color: #333;
+    background-color: #e6e6e6;
+}
+.about_tabs > li > a {
+    position: relative;
+    display: block;
+    padding: 6px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #666;
+    background-color: #f9f9f9;
+}
+#xzdz span label{
+	color: #ea0101;
+	margin-top:-20px;
+	text-align:right;
+	/*padding-left:18px;*/
+}
+#xzdz2 span label{
+    color: #ea0101;
+    margin-top:-20px;
+    text-align:right;
+    /*padding-left:18px;*/
+}
+#xzdz3 span label{
+    color: #ea0101;
+    margin-top:-20px;
+    text-align:right;
+    /*padding-left:18px;*/
+}
