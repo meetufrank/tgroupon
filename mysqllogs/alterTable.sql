@@ -382,3 +382,22 @@ ADD COLUMN `attention`  int(10) NOT NULL DEFAULT 0 COMMENT '//是否关注微信
 */
 ALTER TABLE `ecs_admin_user`
 ADD COLUMN `sjsbanner`  varchar(255) NOT NULL COMMENT '//设计师详情banner' AFTER `sjsintro`;
+
+/*#2017/03/1 汪江  添加合作申请表 ecs_shenqing
+*/
+CREATE TABLE `ecs_shenqing` (
+`sq_id`  mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '//申请表id' ,
+`sq_userid`  mediumint(8) NOT NULL COMMENT '//发起申请的用户id' ,
+`sq_username`  varchar(20) NOT NULL DEFAULT '' COMMENT '//姓名' ,
+`sq_tel`  varchar(20) NOT NULL DEFAULT '' COMMENT '//联系方式' ,
+`sq_email`  varchar(50) NOT NULL DEFAULT '' COMMENT '//邮箱' ,
+`sq_wxname`  varchar(100) NULL DEFAULT '' COMMENT '//微信号' ,
+`sq_kjname`  varchar(30) NOT NULL DEFAULT '' COMMENT '//微信名称' ,
+`sq_kjaddress`  varchar(255) NOT NULL DEFAULT '' COMMENT '//空间地址' ,
+`sq_text`  text NULL COMMENT '//合作期待' ,
+`sq_type`  smallint(1) NOT NULL DEFAULT 1 COMMENT '//合作期待内容' ,
+PRIMARY KEY (`sq_id`)
+)
+;
+
+
