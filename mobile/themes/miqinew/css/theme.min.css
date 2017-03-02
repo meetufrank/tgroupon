@@ -3280,7 +3280,6 @@ to {
 	padding-top:5px;
 	padding-left:5px;
 	padding-right:0px;
-	padding-bottom:5px
 }
 .shop-item .shop-item-details .shop-item-title, .shop-item .shop-item-details .shop-item-price {
 	display: table-cell;
@@ -3288,7 +3287,8 @@ to {
 }
 .shop-item .shop-item-details .shop-item-title {
 	font-size:18px;
-	font-weight: normal
+	font-weight: normal;
+	height:auto;
 }
 .shop-item .shop-item-details .shop-item-title>a {
 	color: #999;
@@ -3305,11 +3305,13 @@ to {
 	color: #999;
 	width:100%;
 	font-size: 16px;
+	display:inline-block;
+	max-height:2px;
 }
 .shop-item .shop-item-details .shop-item-price .old-price {
 	font-size: 14px;
 	color: #999;
-	text-decoration: line-through
+	text-decoration: line-through;
 }
 .shop-item .shop-item-tools {
 	position: absolute;

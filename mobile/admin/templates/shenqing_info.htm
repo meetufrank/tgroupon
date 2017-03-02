@@ -1,0 +1,247 @@
+<!-- $Id: user_info.htm 16854 2009-12-07 06:20:09Z sxc_shop $ -->
+
+{include file="pageheaderxingtong.htm"}
+
+<div class="main-div">
+
+<form method="post" action="shenqing.php?act=xiugai" name="theForm" onsubmit="">
+
+<table width="100%" >
+
+   <!-- 申请类型 -->
+   <tr>
+    <td class="label">申请类型:</td>
+    <td><label>
+    {if $sqedit.sq_type == 1}
+       渠道合作
+    {elseif $sqedit.sq_type == 2}
+       品牌合作
+    {elseif $sqedit.sq_type == 3}
+       设计师合作意向
+    {/if}
+    </label></td>
+   </tr>
+
+  <!-- 申请人编号 -->
+   <tr style="display:none;">
+    <td><input name="sqid" type="text" value="{$sqedit.sq_id}"></td>
+   </tr>
+
+
+   <!-- 申请人 -->
+   <tr>
+    <td class="label">姓名:</td>
+    <td><label>{$sqedit.sq_username}</label></td>
+   </tr>
+
+   <tr>
+    <td class="label">手机:</td>
+    <td><label>{$sqedit.sq_tel}</label></td>
+   </tr>
+
+
+   <tr>
+    <td class="label">邮箱:</td>
+    <td><label>{$sqedit.sq_email}</label></td>
+   </tr>
+
+
+   <tr>
+    <td class="label">微信号:</td>
+    <td><label>{$sqedit.sq_wxname}</label></td>
+   </tr>
+
+
+     <tr {if $sqedit.sq_kjname == ''}style="display:none;"{/if}>
+      <td class="label">空间名称:</td>
+      <td><label>{$sqedit.sq_kjname}</label></td>
+     </tr>
+
+
+
+   <tr {if $sqedit.sq_kjaddress == ''}style="display:none;"{/if}>
+    <td class="label">空间地址:</td>
+    <td><label>{$sqedit.sq_kjaddress}</label></td>
+   </tr>
+
+   <tr {if $sqedit.sq_text == ''}style="display:none;"{/if}>
+    <td class="label">合作期待:</td>
+    <td>
+      <textarea rows="10" cols="100"  disabled="disabled">
+         {$sqedit.sq_text}
+      </textarea>
+    </td>
+   </tr>
+
+   <tr>
+    <td class="label">申请时间:</td>
+    <td><label>{$sqedit.sq_time}</label></td>
+   </tr>
+
+   <tr>
+              <td class="label">审核状态:</td>
+              <td>
+                <input type="radio" name="radioname" value="0" {if $sqedit.sq_status eq 0} checked{/if}>未受理
+                <input type="radio" name="radioname" value="1" {if $sqedit.sq_status eq 1} checked{/if}>已受理
+              </td>
+  </tr>
+
+
+
+
+
+
+   <tr>
+
+        <td colspan="2" align="center">
+
+             <input id="btn" type="submit" value="确定" class="button"   />
+
+        </td>
+
+     </tr>
+
+</table>
+
+
+
+</form>
+
+</div>
+
+{insert_scripts files="../js/utils.js,validator.js"}
+
+{literal}
+
+<script language="JavaScript">
+
+<!--
+
+
+
+if (document.forms['theForm'].elements['act'].value == "insert")
+
+{
+
+  document.forms['theForm'].elements['username'].focus();
+
+}
+
+else
+
+{
+
+  document.forms['theForm'].elements['email'].focus();
+
+}
+
+
+
+onload = function()
+
+{
+
+    // 开始检查订单
+
+    startCheckOrder();
+
+}
+
+
+
+/**
+
+ * 检查表单输入的数据
+
+ */
+
+function validate()
+
+{
+
+    validator = new Validator("theForm");
+
+    validator.isEmail("email", invalid_email, true);
+
+
+
+    if (document.forms['theForm'].elements['act'].value == "insert")
+
+    {
+
+        validator.required("username",  no_username);
+
+        validator.required("password", no_password);
+
+        validator.required("confirm_password", no_confirm_password);
+
+        validator.eqaul("password", "confirm_password", password_not_same);
+
+
+
+        var password_value = document.forms['theForm'].elements['password'].value;
+
+        if (password_value.length < 6)
+
+        {
+
+          validator.addErrorMsg(less_password);
+
+        }
+
+        if (/ /.test(password_value) == true)
+
+        {
+
+          validator.addErrorMsg(passwd_balnk);
+
+        }
+
+    }
+
+    else if (document.forms['theForm'].elements['act'].value == "update")
+
+    {
+
+        var newpass = document.forms['theForm'].elements['password'];
+
+        var confirm_password = document.forms['theForm'].elements['confirm_password'];
+
+        if(newpass.value.length > 0 || confirm_password.value.length)
+
+        {
+
+          if(newpass.value.length >= 6 || confirm_password.value.length >= 6)
+
+          {
+
+            validator.eqaul("password", "confirm_password", password_not_same);
+
+          }
+
+          else
+
+          {
+
+            validator.addErrorMsg(password_len_err);
+
+          }
+
+        }
+
+    }
+
+
+
+    return validator.passed();
+
+}
+
+//-->
+
+</script>
+
+{/literal}
+
+{include file="pagefooter.htm"}
+
