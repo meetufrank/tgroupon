@@ -138,6 +138,8 @@ if (!defined('IN_ECTOUCH'))
 
     $purview['10_user_account_manage'] = 'account_manage';
 
+    $purview['11_shenqing']        = 'shenqing';
+
     $purview['line_shop']           = 'line_shop';   //签约表
 
 
