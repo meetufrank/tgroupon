@@ -1148,12 +1148,12 @@ if($_FILES['sjspic']['name']){
          //修改设计师简介
          $contentedit = $_POST['content'];
          if($url_img){
-            $img_string="hav_logo  = '".$url_img."' ";
+            $img_string=",hav_logo  = '".$url_img."' ";
          }
 
         //设计师banner图片
         if($url_imgbanner){
-            $img_stringbanner="sjsbanner  = '".$url_imgbanner."' ";
+            $img_stringbanner=",sjsbanner  = '".$url_imgbanner."' ";
          }
 
          // print_r($url_imgbanner);exit;
@@ -1178,7 +1178,7 @@ if($_FILES['sjspic']['name']){
 
                "country = '$country', ".
 
-               "sjsintro = '$contentedit', ".
+               "sjsintro = '$contentedit' ".
 
                $img_string .
 
@@ -1218,7 +1218,7 @@ if($_FILES['sjspic']['name']){
 
                "country = '$country', ".
 
-               "sjsintro = '$contentedit', ".
+               "sjsintro = '$contentedit' ".
 
                $img_string.
 
