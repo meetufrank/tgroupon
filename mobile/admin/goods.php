@@ -1698,6 +1698,36 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
 
+//特别优惠图片
+if($_FILES['veryimg']['name']){
+//图片上传处理
+ $up = new FileUpload();
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+
+    $path="images/veryimg/";
+
+    $up -> set("path", ROOT_PATH.$path);
+
+    $up -> set("maxsize", 5000000);
+
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+
+    $up -> set("israndname", true);
+
+    //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名字 sjspic, 如果成功返回true, 失败返回false
+
+    if($up -> upload("veryimg")) {
+        $url_veryimg=$config['mobilesite_url'].$path.$up->getFileName();
+    } else {
+
+        sys_msg($up->getErrorMsg(), 1);
+
+    }
+}
+
+// print_r($url_veryimg);exit;
+
+
 
     //商品规格
 
@@ -1728,7 +1758,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
 
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral,fencheng, suppliers_id,arter_id,father_id,more_price,is_very,listimg )" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral,fencheng, suppliers_id,arter_id,father_id,more_price,is_very,listimg,veryimg)" .
 
 
 
@@ -1750,7 +1780,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
 
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral','$fencheng', '$suppliers_id','$arter_id','$father_id',$more_price,'$is_very','$tuijie_img' )";
+                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral','$fencheng', '$suppliers_id','$arter_id','$father_id',$more_price,'$is_very','$tuijie_img','$url_veryimg')";
 
         }
 
@@ -1770,7 +1800,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
 
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral,fencheng,arter_id,father_id,more_price,is_very,listimg )" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral,fencheng,arter_id,father_id,more_price,is_very,listimg,veryimg)" .
 
 
 
@@ -1786,7 +1816,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 
 
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral','$fencheng','$arter_id','$father_id',$more_price,'$is_very', '$tuijie_img')";
+                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral','$fencheng','$arter_id','$father_id',$more_price,'$is_very', '$tuijie_img','$url_veryimg')";
 
         }
 
@@ -1866,9 +1896,9 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
                 "arter_id = '$arter_id', ".
 
-                "more_price = '$more_price',"
+                "more_price = '$more_price',".
 
-
+                "veryimg = '$url_veryimg',"
 
 
 

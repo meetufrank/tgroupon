@@ -412,3 +412,15 @@ ALTER TABLE `ecs_shenqing`
 ADD COLUMN `sq_time`  timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '//申请时间' AFTER `sq_type`,
 ADD COLUMN `sq_status`  smallint(1) NOT NULL DEFAULT 0 COMMENT '//状态' AFTER `sq_time`;
 
+
+
+
+
+
+
+
+
+
+
+
+
