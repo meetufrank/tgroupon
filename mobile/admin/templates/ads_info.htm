@@ -70,8 +70,8 @@
         <select name="position_id">
             <option value='0' {if $ads.position_id == 0}selected = "selected"{/if}>请选择</option>
             <option value='1' {if $ads.position_id == 1}selected = "selected"{/if}>首页位</option>
-            <option value='2' {if $ads.position_id == 2}selected = "selected"{/if}>列表位</option>
-            <option value='3' {if $ads.position_id == 3}selected = "selected"{/if}>详情位</option>
+            <option value='2' {if $ads.position_id == 2}selected = "selected"{/if}>设计师列表位</option>
+<!--             <option value='3' {if $ads.position_id == 3}selected = "selected"{/if}>详情位</option> -->
         <!-- {html_options options=$position_list selected=$ads.position_id} -->
         </select>
 
@@ -79,7 +79,7 @@
 
     </tr>
 
-    <tr>
+    <!-- <tr>
 
       <td  class="label">{$lang.start_date}</td>
 
@@ -101,7 +101,7 @@
 
       </td>
 
-    </tr>
+    </tr> -->
 
   {if $ads.media_type eq 0 OR $action eq "add"}
 
@@ -137,13 +137,13 @@
 
     </tr>
 
-    <tr>
+   <!--  <tr>
 
       <td  class="label">{$lang.img_url}必需包含"http://"</td>
 
       <td><input type="text" name="img_url" value="{$url_src}" size="35" /></td>
 
-    </tr>
+    </tr> -->
 
     </tbody>
 

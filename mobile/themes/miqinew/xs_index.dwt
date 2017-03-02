@@ -29,7 +29,6 @@
 
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
-   <link rel="stylesheet" href="{$ectouch_themes}/Swiper-3.4.0/dist/css/swiper.min.css">
   <!-- by sun -->
   <style>
   @media screen and (max-width:768px){
@@ -100,31 +99,6 @@
 	.teammate {
 		width: 90%;
 	}
-   /*swiper样式*/
-   html, body {
-        position: relative;
-  }
-  .swiper-container {
-        width: 100%;
-  }
-  .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-    }
 .form-control-index {
   display: block;
   width: 100%;
@@ -182,17 +156,14 @@ color:#606060
     <!-- 头部结束 -->
 
     <!-- Hero Slider -->
-   <div class="swiper-container">
-        <div class="swiper-wrapper">
-        {foreach from=$banner_list item=bl}
-            <div class="swiper-slide"><a href="{$bl.ad_link}"><img src="{$bl.ad_code}"></a></div>
-         {/foreach}
-        </div>
-        <!-- Add Pagination -->
-        {foreach from=$banner_list item=bl}
-        <div class="swiper-pagination"></div>
-        {/foreach}
-    </div>
+    <section class="hero-slider" data-loop="true" data-autoplay="true" data-interval="7000">
+      <div class="inner">
+      {foreach from=$banner_list item=bl}
+        <a href="{$bl.ad_link}"><div class="slide" style="background-image:url({$bl.ad_code});">
+        </div></a>
+      {/foreach}
+      </div>
+    </section>
 
 	<!-- search -->
 	<section class="container-fluid">
@@ -438,15 +409,6 @@ color:#606060
 
   <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
 
- <script src="{$ectouch_themes}/Swiper-3.4.0/dist/js/swiper.min.js"></script>
-
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        paginationClickable: true
-    });
-  </script>
   <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
   <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
   <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
