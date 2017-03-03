@@ -44,12 +44,12 @@
 
     <th style="display:none;"><a href="javascript:listTable.sort('is_on_sale'); ">{$lang.is_on_sale}</a>{$sort_is_on_sale}</th>
 
-    <th><a href="javascript:listTable.sort('is_best'); ">{$lang.is_best}</a>{$sort_is_best}</th>
+    <th><a href="javascript:listTable.sort('is_best'); ">猜你喜欢{$lang.is_best}</a>{$sort_is_best}</th>
 
     <th><a href="javascript:listTable.sort('is_new'); ">{$lang.is_new}</a>{$sort_is_new}</th>
 
-    <th><a href="javascript:listTable.sort('is_hot'); ">{$lang.is_hot}</a>{$sort_is_hot}</th>
-
+    <th><a href="javascript:listTable.sort('is_hot'); ">折扣优惠</a>{$sort_is_hot}</th>
+    <th>特别优惠图片</th>
     <th><a href="javascript:listTable.sort('sort_order'); ">{$lang.sort_order}</a>{$sort_sort_order}</th>
 
     {if $use_storage}
@@ -74,7 +74,7 @@
 
     <td><span onclick="listTable.edit(this, 'edit_goods_sn', {$goods.goods_id})">{$goods.goods_sn}</span></td>
 
-    <td style="display:none;" align="right"><span>{$goods.shop_price}</span></td>
+    <td align="center" style="display:none;" align="right"><span>{$goods.shop_price}</span></td>
 
     <td align="center" style="display:none;"><img src="images/{if $goods.is_on_sale}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_on_sale', {$goods.goods_id})" /></td>
 
@@ -83,7 +83,7 @@
     <td align="center"><img src="images/{if $goods.is_new}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_new', {$goods.goods_id})" /></td>
 
     <td align="center"><img src="images/{if $goods.is_hot}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_hot', {$goods.goods_id})" /></td>
-
+    <td align="center"><img style="width:100px; height:100px;" src="{$goods.veryimg}"></td>
     <td align="center"><span onclick="listTable.edit(this, 'edit_sort_order', {$goods.goods_id})">{$goods.sort_order}</span></td>
 
     {if $use_storage}
