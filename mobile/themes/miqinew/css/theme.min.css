@@ -370,6 +370,9 @@ svg {
 		font-size:22px;
 		margin-bottom: 15px;
 	}
+	.mysystem_time-main{
+		float:right;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -520,9 +523,6 @@ svg {
 	}
 	.text-primary-pc{
 		font-size:22px;
-	}
-	.mysystem_time-main{
-		float:right;
 	}
 }
 .cart-subtotal-youfei{
