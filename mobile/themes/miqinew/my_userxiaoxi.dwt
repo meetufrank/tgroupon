@@ -154,7 +154,7 @@
   .mysystem_messages,.mysystem_time{
     color: #606060;
   }
-  .tab-content{
+  .tab-content-mes{
     padding-left:0px;
     padding-right:0px;
     margin-top:8px;
@@ -211,12 +211,11 @@
 		        <li class="active"><a href="#tab3_1" role="tab" data-toggle="tab">系统消息<span>12</span></a></li>
 		      </ul>
 		      <!--消息记录 -->
-		      <div class="tab-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		      <div class="tab-content-mes col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="mysystem_messages col-lg-7 col-md-7 col-sm-7 col-xs-12">消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息
             </div>
             <div class="mysystem_time col-lg-5 col-md-5 col-sm-5 col-xs-12">
-              <span style="float:right">17:04:22</span><span style="margin-right:5px;float:right">2017-02-17</span>
-              <div style="clear:both"></div>
+              <span clss="mysystem_time-main">2017-02-17&bnsp;&bnsp;&bnsp;17:04:22</span>
             </div>
 		      </div>
 
