@@ -151,7 +151,9 @@
 	padding-left:0;
 	padding-right:0;
 	}
-
+  .list_msgs{
+    color: #606060;
+  }
 
   </style>
 
@@ -183,24 +185,13 @@
 
     <!-- Content -->
     <section class="container padding-top-3x">
-
-
-
 	  <!-- Nav Tabs -->
       {include file="my_head.dwt"}
       <!-- Tab panes -->
 
 
 
-      <div class="tab-content">
-
-
-
-
-
-
-
-
+  <div class="tab-content">
 		<div role="tabpanel" class="tab-pane transition fade in active" id="tab3">
         	<!-- Nav Tabs -->
 		      <ul class="nav-pills" role="tablist">
@@ -221,23 +212,10 @@
 		      </div>
 
     </div>
-    <div class="layui-box layui-laypage layui-laypage-default">
-            <span class="layui-laypage-curr"><em class="layui-laypage-em"></em><em>1</em></span>
-            <a href="javascript:;" data-page="2">2</a>
-            <a href="javascript:;" data-page="3">3</a>
-            <a href="javascript:;" data-page="4">4</a>
-            <a href="javascript:;" data-page="5">5</a>
-            <span>…</span>
-            <a href="javascript:;" class="layui-laypage-last" title="尾页" data-page="100">末页</a>
-            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
-    </div>
+</div>
 
 
-
-
-
-      </div>
-      </section><!-- .container -->
+</section><!-- .container -->
 
            <!-- Footer脚步 -->
   {include file="foot.dwt"}
