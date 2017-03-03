@@ -151,7 +151,7 @@
 	padding-left:0;
 	padding-right:0;
 	}
-  .list_msgs{
+  .mysystem_messages,.mysystem_time{
     color: #606060;
   }
 
