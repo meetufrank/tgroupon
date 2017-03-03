@@ -366,6 +366,10 @@ svg {
 		 margin-right: 0;
 		 cursor:pointer;
 	}
+	.text-primary-pc{
+		font-size:22px;
+		margin-bottom: 15px;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -421,9 +425,6 @@ svg {
 	.padding-top-goodlist{
 		padding-top:45px !important
 	}
-	/* .nav-tabs{
-		padding-top:35px;
-	} */
 	.xinzeng-mobile{
 		margin-left:34px;
 	}
@@ -514,6 +515,11 @@ svg {
 	.pay_label-pc{
 		 padding:2px 0;
 		 font-size:14px;
+		 margin-right: 1px;
+    	margin-left: 1px;
+	}
+	.text-primary-pc{
+		font-size:22px;
 	}
 }
 .cart-subtotal-youfei{

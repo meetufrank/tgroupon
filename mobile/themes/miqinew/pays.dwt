@@ -105,7 +105,7 @@
         <!-- 快递地址 -->
         <div class="shopping-cart-1 padding-bottom-1x pay-address-main"  id="pay_consignee">
                 <div class="pays-address">
-                    <h4 class="text-primary">快递地址</h4>
+                    <div class="text-primary text-primary-pc">快递地址</div>
                 </div>
 
                    <!-- {foreach from=$consignee_list item=consignee key=sn name=address}-->
