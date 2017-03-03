@@ -208,17 +208,32 @@
 		<div role="tabpanel" class="tab-pane transition fade in active" id="tab3">
         	<!-- Nav Tabs -->
 		      <ul class="nav-pills" role="tablist">
-		        <li class="active"><a href="#tab3_1" role="tab" data-toggle="tab">系统消息<span>12</span></a></li>
+		        <li class="active"><a href="#tab3_1" role="tab" data-toggle="tab">系统消息<span>{$xxcounts}</span></a></li>
 		      </ul>
 		      <!--消息记录 -->
-		      <div class="tab-content-mes col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		     <!--  <div class="tab-content-mes col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="mysystem_messages col-lg-7 col-md-7 col-sm-7 col-xs-12">消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息
             </div>
             <div class="mysystem_time col-lg-5 col-md-5 col-sm-5 col-xs-12">
               <span class="mysystem_time-main">2017-02-17&nbsp;&nbsp;&nbsp;17:04:22</span>
             </div>
-		      </div>
+		      </div> -->
+                               <!--  {$xxxxs.xxtime|mb_substr:0:5:'GBK'} -->
+                     <!--  {$xxxxs.xxtime}2017-02-17&nbsp;&nbsp;&nbsp;17:04:22 -->
+          {foreach from=$xxxxs item=xxxxs name=no}
+                <a href="{$xxxxs.xxlink}">
+                  <div class="tab-content-mes col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="mysystem_messages col-lg-7 col-md-7 col-sm-7 col-xs-12">{$xxxxs.xxtitle}
+                    </div>
+                    <div class="mysystem_time col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                      <span class="mysystem_time-main">
+                           {$xxxxs.xxtime}
+                      </span>
+                    </div>
+                  </div>
 
+                </a>
+          {/foreach}
     </div>
 </div>
 

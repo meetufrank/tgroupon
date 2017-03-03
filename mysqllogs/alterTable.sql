@@ -420,8 +420,16 @@ ADD COLUMN `sq_status`  smallint(1) NOT NULL DEFAULT 0 COMMENT '//状态' AFTER 
 ALTER TABLE `ecs_goods`
 ADD COLUMN `veryimg`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '//特别优惠图片' AFTER `listimg`;
 
-
-
+/*#2017/03/03 汪江  添加系统消息表
+*/
+CREATE TABLE `ecs_xiaoxi` (
+`xxid`  int(10) NOT NULL AUTO_INCREMENT COMMENT '//系统消息id' ,
+`xxtitle`  varchar(255) NULL COMMENT '//系统消息标题' ,
+`xxlink`  varchar(255) NULL COMMENT '//系统消息链接' ,
+`xxtime`  varchar(255) NULL COMMENT '//系统消息时间' ,
+PRIMARY KEY (`xxid`)
+)
+;
 
 
 
