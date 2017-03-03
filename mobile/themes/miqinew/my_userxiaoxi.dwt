@@ -157,8 +157,13 @@
   .tab-content{
     padding-left:0px;
     padding-right:0px;
+    margin-top:8px;
   }
   .mysystem_messages{
+    padding-left:0px;
+    padding-right:0px;
+  }
+  .mysystem_time{
     padding-left:0px;
     padding-right:0px;
   }
