@@ -103,13 +103,13 @@
     <!-- Shop Catalog -->
 <section class="container padding-top-4x">
         <!-- 快递地址 -->
-        <div class="shopping-cart-1 padding-bottom-1x" style="padding:15px;" id="pay_consignee">
+        <div class="shopping-cart-1 padding-bottom-1x pay-address-main"  id="pay_consignee">
                 <div class="pays-address">
                     <h4 class="text-primary">快递地址</h4>
                 </div>
 
                    <!-- {foreach from=$consignee_list item=consignee key=sn name=address}-->
-                  <div class="row pay_label" style=" padding:2px 0; margin-bottom: 10px; margin-left: 0; margin-right: 0;cursor:pointer;" onclick="checkadd({$consignee.address_id})" id="div{$consignee.address_id}">
+                  <div class="row pay_label pay_label-pc" style="" onclick="checkadd({$consignee.address_id})" id="div{$consignee.address_id}">
 
                   <div class="col-md-6 check_box"  >
                     <label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label{$consignee.address_id}"  >

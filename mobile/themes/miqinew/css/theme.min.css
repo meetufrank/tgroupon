@@ -353,10 +353,19 @@ svg {
 	.info-box {
 		margin-top: 70px
 	}
+	.pay-address-main{
+		padding:15px;
+	}
 	.pays-address{
 		border-bottom: 2px solid #ededed; margin-bottom:15px;
 	}
-
+	.pay_label-pc{
+		 padding:2px 0;
+		 margin-bottom: 10px;
+		 margin-left: 0;
+		 margin-right: 0;
+		 cursor:pointer;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -371,12 +380,6 @@ svg {
 		white-space:pre-wrap;
 		text-justify:inter-ideograph;
 		text-align:justify;
-	}
-	.adperson{
-		margin-left:34px;
-	}
-	.adnumber{
-		margin-left:34px;
 	}
 	.all-price{
 		margin-top:30px;
@@ -504,6 +507,13 @@ svg {
 	}
 	.my-head-mobile{
 		padding-top:10px;
+	}
+	.pay-address-main{
+		padding-top:15px;
+	}
+	.pay_label-pc{
+		 padding:2px 0;
+		 font-size:14px;
 	}
 }
 .cart-subtotal-youfei{
