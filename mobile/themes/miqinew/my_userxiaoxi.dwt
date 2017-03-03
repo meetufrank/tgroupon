@@ -37,7 +37,6 @@
   <!-- by sun -->
   <style>
     .nav-pills{
-    	margin-left:-18px;
     	padding-bottom:10px;
     }
   	.nav-pills>li {
@@ -172,57 +171,51 @@
   <!-- Page Wrapper -->
   <div class="page-wrapper">
 
-   
+
    <!-- 头部开始 -->
    {include file="head.dwt"}
   <!-- 头部结束-->
-   
-   
-   
-   
-   
+
+
+
+
+
 
     <!-- Content -->
     <section class="container padding-top-3x">
-    
-	
-	
+
+
+
 	  <!-- Nav Tabs -->
       {include file="my_head.dwt"}
       <!-- Tab panes -->
-	
-	
-	
+
+
+
       <div class="tab-content">
 
 
-		  
-		 
-		
 
 
-		
+
+
+
+
 		<div role="tabpanel" class="tab-pane transition fade in active" id="tab3">
         	<!-- Nav Tabs -->
 		      <ul class="nav-pills" role="tablist">
-		        <li class="active"><a href="#tab3_1" role="tab" data-toggle="tab">未读消息<span>12</span></a></li>
-		        <li><a href="#tab3_2" role="tab" data-toggle="tab">已读消息<span>1</span></a></li>
+		        <li class="active"><a href="#tab3_1" role="tab" data-toggle="tab">系统消息<span>12</span></a></li>
 		      </ul>
 		      <!-- Tab panes -->
 		      <div class="tab-content">
 		        <div role="tabpanel" class="tab-pane transition fade in active" id="tab3_1">
 		        	<ul class="list_msgs">
-		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a class="title" href="#">达芬奇绘画艺术作品已开单</a></li>
-		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a class="title" href="#">达芬奇绘画艺术作品已开单</a></li>
-		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a class="title" href="#">达芬奇绘画艺术作品已开单</a></li>
-		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a class="title" href="#">达芬奇绘画艺术作品已开单</a></li>
-		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a class="title" href="#">达芬奇绘画艺术作品已开单</a></li>
-		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a class="title" href="#">达芬奇绘画艺术作品已开单</a></li>
-		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a class="title" href="#">达芬奇绘画艺术作品已开单</a></li>
-		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a class="title" href="#">达芬奇绘画艺术作品已开单</a></li>
-		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a class="title" href="#">达芬奇绘画艺术作品已开单</a></li>
-		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a class="title" href="#">达芬奇绘画艺术作品已开单</a></li>
-		        		<li><a class="pull-right" href="#"><i class="material-icons close"></i></a><a class="title" href="#">达芬奇绘画艺术作品已开单</a></li>
+		        		<li class="col-lg-12">
+                  <a href="#">
+                    <div class="mysystem_messages col-lg-7 col-md-7 col-sm-7 col-xs-12">消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息</div>
+                    <div class="mysystem_time col-lg-5 col-md-5 col-sm-5 col-xs-12"><span>2017-02-17</span><span>17:04:22</span></div>
+                  </a>
+                </li>
 		        	</ul>
 		        	<!-- Pagination -->
 					<div class="layui-box layui-laypage layui-laypage-default">
@@ -247,17 +240,17 @@
 		        </div>
 		        </div>
         </div>
-       
-      
 
-         
-		        	
+
+
+
+
       </div>
       </section><!-- .container -->
 
            <!-- Footer脚步 -->
   {include file="foot.dwt"}
-	
+
   </div>
 
   <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
