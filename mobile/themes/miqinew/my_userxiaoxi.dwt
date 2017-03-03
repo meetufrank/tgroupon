@@ -158,7 +158,7 @@
     padding-left:0px;
     padding-right:0px;
     margin-top:8px;
-    border-bottom:2px #606060 solid;
+    border-bottom:2px #ededed solid;
   }
   .mysystem_messages{
     padding-left:0px;
@@ -215,7 +215,7 @@
             <div class="mysystem_messages col-lg-7 col-md-7 col-sm-7 col-xs-12">消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息
             </div>
             <div class="mysystem_time col-lg-5 col-md-5 col-sm-5 col-xs-12">
-              <span clss="mysystem_time-main">2017-02-17&bnsp;&bnsp;&bnsp;17:04:22</span>
+              <span clss="mysystem_time-main">2017-02-17&nbsp;&nbsp;&nbsp;17:04:22</span>
             </div>
 		      </div>
 
