@@ -191,7 +191,7 @@
         	<!-- Nav Tabs -->
 		      <ul class="nav-pills" role="tablist">
 		        <li class="active"><a href="#tab2_1" role="tab" data-toggle="tab">收藏的单品<span id="testid">{$spnum}</span></a></li>
-		        <li><a href="#tab2_2" role="tab" data-toggle="tab">收藏的艺术家<span id="ysjsum">{$ysjnum}</span></a></li>
+		        <li><a href="#tab2_2" role="tab" data-toggle="tab">收藏的设计师<span id="ysjsum">{$ysjnum}</span></a></li>
 		      </ul>
 		      <!-- Tab panes -->
 		      <div id="btn-sm" class="tab-content">
