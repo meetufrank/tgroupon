@@ -199,15 +199,11 @@
 		      </ul>
 		      <!-- Tab panes -->
 		      <div class="tab-content">
-		        <div role="tabpanel" class="tab-pane transition fade in active" id="tab3_1">
-		        	<ul class="list_msgs">
-		        		<li class="col-lg-12">
+		        <div role="tabpanel" class="tab-pane transition fade in active col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tab3_1">
                   <a href="#">
                     <div class="mysystem_messages col-lg-7 col-md-7 col-sm-7 col-xs-12">消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息</div>
                     <div class="mysystem_time col-lg-5 col-md-5 col-sm-5 col-xs-12"><span>2017-02-17</span><span>17:04:22</span></div>
                   </a>
-                </li>
-		        	</ul>
 		        </div>
 		      </div>
 
