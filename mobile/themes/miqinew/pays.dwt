@@ -104,7 +104,7 @@
 <section class="container padding-top-4x">
         <!-- 快递地址 -->
         <div class="shopping-cart-1 padding-bottom-1x" style="padding:15px;" id="pay_consignee">
-                <div style=" border-bottom: 2px solid #ededed; margin-bottom:15px; ">
+                <div class="pays-address">
                     <h4 class="text-primary">快递地址</h4>
                 </div>
 
