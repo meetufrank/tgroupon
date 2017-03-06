@@ -131,7 +131,8 @@ $modules['04_order']['10_back_order']               = 'order.php?act=back_list';
 //$modules['05_banner']['ad_position']                = 'ad_position.php?act=list';
 
 $modules['05_banner']['ad_list']                    = 'ads.php?act=list';
-
+//系统消息
+$modules['05_banner']['myuserxiaoxi']                    = 'myuserxiaoxi.php?act=list';
 
 
 //  $modules['06_stats']['flow_stats']                  = 'flow_stats.php?act=view';
