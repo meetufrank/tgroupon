@@ -138,8 +138,8 @@ color:#606060
   color: #606060
 }
 .index-row{
-  margin-left:-13px;
-  margin-right:-13px;
+  margin-left:-10px;
+  margin-right:-10px;
 }
 
 </style>

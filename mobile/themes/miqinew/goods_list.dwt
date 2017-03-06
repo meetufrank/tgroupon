@@ -45,6 +45,13 @@
   padding-left:15px;
   padding-right:15px;
 }
+
+@media screen and (max-width:768px){
+    .mobile-good-list-row{
+      padding-right:0px;
+      padding-left:0px;
+}
+}
 </style>
 </head>
 
@@ -72,7 +79,7 @@
         <i class="fa fa-th"></i>
       </div>
 
-      <div class="good-list-row padding-top-goodlist">
+      <div class="row padding-top-goodlist">
 
         <!-- Sidebar (Filters) -->
         <div class="col-lg-2 col-md-3 col-sm-4">
@@ -193,7 +200,7 @@
 	  {{# for(var i = 0, len = d.data.length; i < len; i++){ }}
 
             <!-- Item -->
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-lg-3 col-md-4 col-sm-6 mobile-good-list-row">
               <div class="shop-item">
                 <div class="shop-thumbnail">
                   <a href="shop-single.php?id={{d.data[i].goods_id}}{$linestring2}" class="item-link"></a>

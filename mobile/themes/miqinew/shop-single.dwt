@@ -308,9 +308,11 @@
     max-width: 100%;
     background-color: rgba(0,0,0,0);
 }
-.shopsingle-row{
-  margin-left:-15px;
-  margin-right:-15px;
+@media screen and (max-width:768px){
+    .mobile-shopsingle-row{
+      padding-right:0px;
+      padding-left:0px;
+}
 }
   </style>
 
@@ -479,7 +481,7 @@
     <div class="clear"></div>
   <!--艺术家-->
     <section class="container padding-top">
-    <div class="shopsingle-row">
+    <div class="row">
        <div class="artist-lf col-lg-6 col-md-6 col-sm-6">
             <!--艺术家-->
            {foreach from=$spysj item=spysj}
@@ -503,7 +505,7 @@
       <!-- Tab panes -->
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane transition fade in active" id="description">
-          <div class="shopsingle-row space-top">
+          <div class="row space-top">
             <div class="space-bottom" id="xiangqiangimg">
                 <!-- 产品介绍 -->
                 {foreach from=$goodsdesc item=goodsdesc}
@@ -513,7 +515,7 @@
           </div>
         </div><!-- .tab-pane -->
         <div role="tabpanel" class="tab-pane transition fade" id="additional">
-          <div class="shopsingle-row">
+          <div class="row">
                 <!-- 商品规格 -->
 
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -539,10 +541,10 @@
       <div style="width:100px; height:30px;background-color:#ededed;position:absolute; margin-top:10px;" class="hidden-xs"></div>
         <hr style="position:relative;">
       <h3 class="padding-top mabeylike">猜 你 喜 欢</h3>
-      <div class="shopsingle-row padding-top">
+      <div class="row padding-top">
         <!-- 猜你喜欢(商品货品中同一类型的第一个) -->
         {foreach from=$xh item=xh}
-              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mobile-shopsingle-row">
 
                   <div class="shop-thumbnail">
                     <a href="shop-single.php?id={$xh.goods_id}{$linestring2}" class="item-link"></a>
