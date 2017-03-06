@@ -223,7 +223,8 @@ if (!defined('IN_ECTOUCH'))
     $purview['ad_position']          = 'ad_manage';
 
     $purview['ad_list']              = 'ad_manage';
-
+    //系统消息
+    $purview['myuserxiaoxi']              = 'ad_manage';
 
 
 //订单管理权限

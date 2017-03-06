@@ -57,6 +57,10 @@
   .schongse{
     color:rgb(200, 0, 0);
   }
+
+  .article-content img{
+    text-align: center;
+  }
   </style>
 
 </head>
@@ -106,7 +110,7 @@
           </div>
 		<hr>
       	<h3 class="padding-top mobile-artistface">设计师简介</h3>
-      	<div class="row space-top">
+      	<div class="row space-top article-content">
            {$ysjxx.sjsintro}
           </div>
 

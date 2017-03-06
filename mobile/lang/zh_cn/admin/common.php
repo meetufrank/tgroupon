@@ -429,7 +429,7 @@ $_LANG['09_delivery_order'] = '发货单列表';
 // $_LANG['ad_position'] = '广告管理';
 
 $_LANG['ad_list'] = '广告列表';
-
+$_LANG['myuserxiaoxi'] = '系统消息';
 
 
 /* 报表统计 */
