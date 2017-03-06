@@ -308,14 +308,6 @@
     max-width: 100%;
     background-color: rgba(0,0,0,0);
 }
-@media screen and (max-width: 768px) {
-  .col-xs-12{
-    position: relative;
-    min-height: 1px;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-}
   </style>
 
 
