@@ -303,7 +303,7 @@ color:#606060
             <div role="tabpanel" class="tab-pane transition fade scale in active" id="newcomers">
               <div class="row space-top-half">
               <!--{foreach from=$xp_list item=xl}-->
-                <div class="col-lg-3 col-md-2 col-sm-2 col-sm-6">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12">
                   <div class="shop-item">
                     <div class="shop-thumbnail">
 
@@ -334,7 +334,7 @@ color:#606060
             <div role="tabpanel" class="tab-pane transition fade scale" id="toprated">
               <div class="row">
                <!--{foreach from=$dz_list item=dl}-->
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12">
                   <div class="shop-item">
                     <div class="shop-thumbnail">
                       <!-- <span class="shop-label text-danger">Sale</span> -->
