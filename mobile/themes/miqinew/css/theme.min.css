@@ -325,7 +325,7 @@ svg {
 	    padding-left:15px;
 	}
 	.site-logo img {
-		max-width:200px;
+		max-width:190px;
 	}
 	.nav-pills>li>a {
 	    padding: 10px 18px;
@@ -353,6 +353,26 @@ svg {
 	.info-box {
 		margin-top: 70px
 	}
+	.pay-address-main{
+		padding:15px;
+	}
+	.pays-address{
+		border-bottom: 2px solid #ededed; margin-bottom:15px;
+	}
+	.pay_label-pc{
+		 padding:2px 0;
+		 margin-bottom: 10px;
+		 margin-left: 0;
+		 margin-right: 0;
+		 cursor:pointer;
+	}
+	.text-primary-pc{
+		font-size:22px;
+		margin-bottom: 15px;
+	}
+	.mysystem_time-main{
+		float:right;
+	}
 }
 @media screen and (max-width: 768px) {
 	.featured-image {
@@ -367,12 +387,6 @@ svg {
 		white-space:pre-wrap;
 		text-justify:inter-ideograph;
 		text-align:justify;
-	}
-	.adperson{
-		margin-left:34px;
-	}
-	.adnumber{
-		margin-left:34px;
 	}
 	.all-price{
 		margin-top:30px;
@@ -414,9 +428,6 @@ svg {
 	.padding-top-goodlist{
 		padding-top:45px !important
 	}
-	/* .nav-tabs{
-		padding-top:35px;
-	} */
 	.xinzeng-mobile{
 		margin-left:34px;
 	}
@@ -489,6 +500,29 @@ svg {
 	.exnumber{
 		font-weight: bold;
 		margin-top:5px;
+	}
+	.mobile-Recent{
+		font-size:16px;
+		font-weight: bold;
+	}
+	.mobile-artistface{
+		font-size:16px;
+		font-weight: bold;
+	}
+	.my-head-mobile{
+		padding-top:10px;
+	}
+	.pay-address-main{
+		padding-top:15px;
+	}
+	.pay_label-pc{
+		 padding:2px 0;
+		 font-size:14px;
+		 margin-right: 1px;
+    	margin-left: 1px;
+	}
+	.text-primary-pc{
+		font-size:22px;
 	}
 }
 .cart-subtotal-youfei{

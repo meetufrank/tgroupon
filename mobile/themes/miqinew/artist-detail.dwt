@@ -105,7 +105,7 @@
              </div>
           </div>
 		<hr>
-      	<h3 class="padding-top">设计师简介</h3>
+      	<h3 class="padding-top mobile-artistface">设计师简介</h3>
       	<div class="row space-top">
            {$ysjxx.sjsintro}
           </div>
@@ -115,7 +115,7 @@
 
     <section class="container padding-top">
       <hr>
-      <h3 class="padding-top">近期作品</h3>
+      <h3 class="padding-top mobile-Recent">近期作品</h3>
       <div class="row padding-top" id="nextsp">
 	  {foreach from=$ysjzp item=ysjzp name=no}
         <div class="col-lg-3 col-sm-6" >

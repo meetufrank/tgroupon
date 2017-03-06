@@ -35,10 +35,6 @@
     .swiper-container {
       margin-top:55px;
     }
-    .container-fluid-shopselect{
-      padding-left:10px;
-      padding-right:10px;
-    }
   }
   @media screen and (min-width:768px){
 	  .info-box{

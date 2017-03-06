@@ -191,7 +191,7 @@
         	<!-- Nav Tabs -->
 		      <ul class="nav-pills" role="tablist">
 		        <li class="active"><a href="#tab2_1" role="tab" data-toggle="tab">收藏的单品<span id="testid">{$spnum}</span></a></li>
-		        <li><a href="#tab2_2" role="tab" data-toggle="tab">收藏的艺术家<span id="ysjsum">{$ysjnum}</span></a></li>
+		        <li><a href="#tab2_2" role="tab" data-toggle="tab">收藏的设计师<span id="ysjsum">{$ysjnum}</span></a></li>
 		      </ul>
 		      <!-- Tab panes -->
 		      <div id="btn-sm" class="tab-content">
@@ -228,7 +228,7 @@
 									  <div class="social-bar text-right space-bottom">
 										<a href="artist-detail.php?ysjid={$ysjxx.scid}{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light" onclick="ysjdel({$ysjxx.scid})"><i class="material-icons close"></i></a>
 									  </div><!-- .social-bar -->
-									  <img src="{$ysjxx.hav_logo}" alt="">
+									  <img src="{$ysjxx.hav_logo}" alt="" style="margin:auto">
 									</div>
 									<h4 class="teammate-name"><a href="">{$ysjxx.user_name}</a></h4>
 								  </div>
