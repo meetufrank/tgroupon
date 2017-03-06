@@ -305,7 +305,6 @@ color:#606060
               <div class="row space-top-half">
               <!--{foreach from=$xp_list item=xl}-->
                 <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12">
-                  <div class="shop-item">
                     <div class="shop-thumbnail">
 
                       <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
@@ -324,7 +323,6 @@ color:#606060
                         ￥{$xl.attributeprice}
                       </div>
 
-                  </div><!-- .shop-item -->
                 </div><!-- .col-lg-3.col-sm-6 -->
                 <!--{/foreach}-->
 

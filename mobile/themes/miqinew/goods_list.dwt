@@ -201,17 +201,15 @@
                   <img src="././admin/{{ d.data[i].attributeimg}}" alt="Shop item">
                 </div>
                 {{# }}}
-                <div class="shop-item-details">
                   <div class="shop-item-title"><a href="shop-single.php?id={{d.data[i].goods_id}}{$linestring2}">{{ d.data[i].goods_name }}</a></div>
-                </div>
-                <div class="shop-item-details">
+
                   <div class="shop-item-price">
                   {{# if(d.data[i].falseprice>d.data[i].attributeprice){}}
                      <span class="lead-shop-select text-normal text-gray text-crossed">￥{{ d.data[i].falseprice }}</span>
                      {{# } }}
                     ￥{{ d.data[i].attributeprice }}
                   </div>
-                </div>
+
               </div><!-- .shop-item -->
             </div><!-- .col-md-4.col-sm-6 -->
 		{{# } }}

@@ -123,23 +123,23 @@
       <div class="row padding-top" id="nextsp">
 	  {foreach from=$ysjzp item=ysjzp name=no}
         <div class="col-lg-3 col-sm-6" >
-          <div class="shop-item">
+
             <div class="shop-thumbnail">
               <a href="shop-single.php?id={$ysjzp.goods_id}{$linestring2}" class="item-link"></a>
               <img src="././admin/{$ysjzp.attributeimg}" alt="{$ysjzp.goods_name}">
             </div>
-            <div class="shop-item-details">
+
               <div class="shop-item-title"><a href="#">{$ysjzp.goods_name}</a></div>
-            </div>
-             <div class="shop-item-details">
+
+
               <div class="shop-item-price">
                {if $ysjzp.falseprice>$ysjzp.attributeprice}
                <span class="lead-shop-select text-normal text-gray text-crossed">￥{$ysjzp.falseprice}</span>
                {/if}
                ￥{$ysjzp.attributeprice}
               </div>
-            </div>
-          </div><!-- .shop-item -->
+
+
         </div><!-- .col-lg-3.col-sm-6 -->
      {/foreach}
 
