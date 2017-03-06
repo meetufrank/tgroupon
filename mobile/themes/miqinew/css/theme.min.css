@@ -3592,7 +3592,9 @@ to {
 	position: relative;
 	width: 100%;
 	max-width: 660px;
-	margin: auto
+	margin: auto;
+	padding-left: 15px;
+    padding-right: 15px;
 }
 .product-gallery .product-gallery-preview {
 	display: block;
