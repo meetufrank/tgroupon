@@ -53,11 +53,11 @@
 			width:1300px;
 		}
 	}
- .container-fluid-shopselect{
+.container-fluid-shopselect{
       max-width: 1920px;
 }
 .count{
-  	 	position: absolute;
+  	position: absolute;
 		display: block;
 		width: 16px;
 		height: 16px;
@@ -69,7 +69,7 @@
 		background-color: #77cde3;
 		top: -2px;
 		right: -17px;
-  	 }
+  }
 	.teammate-thumb{
 		border-radius: 50%;
 	}
