@@ -59,7 +59,7 @@
   }
 
   .article-content img{
-    text-align: center;
+    margin:auto;
   }
   </style>
 
