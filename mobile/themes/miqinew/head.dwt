@@ -423,7 +423,6 @@ if(type&&!ismobile){
               dataType:"json",
               data:{step:'add_to_cart',goods:$.toJSON(goods),type:type,comeback:loca_str},
               success: function(data){
-
                     if(data.error==12){
                               if(data.url){
                               window.location.href=data.url;
@@ -435,7 +434,6 @@ if(type&&!ismobile){
                     }
                    if(data.cartid){
                   if(type){
-
 
                               if(ismobile){
 
