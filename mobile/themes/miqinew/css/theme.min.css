@@ -4110,7 +4110,7 @@ display:none
 }
 }
 .hero-slider {
-	width: 100%;
+	/* width: 100%; */
 	overflow: hidden
 }
 .hero-slider .slide {
