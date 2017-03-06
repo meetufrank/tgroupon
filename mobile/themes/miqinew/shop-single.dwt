@@ -308,6 +308,14 @@
     max-width: 100%;
     background-color: rgba(0,0,0,0);
 }
+@media screen and (max-width: 768px) {
+  .col-xs-12{
+    position: relative;
+    min-height: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+}
   </style>
 
 
@@ -538,7 +546,7 @@
       <div class="row padding-top">
         <!-- 猜你喜欢(商品货品中同一类型的第一个) -->
         {foreach from=$xh item=xh}
-              <div class="col-lg-3 col-sm-6 mobile-indent">
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="shop-item">
                   <div class="shop-thumbnail">
                     <a href="shop-single.php?id={$xh.goods_id}{$linestring2}" class="item-link"></a>

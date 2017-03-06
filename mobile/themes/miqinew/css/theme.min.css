@@ -692,9 +692,9 @@ kbd {
 	.padding-bottom-3x {
 		padding-bottom: 48px !important
 	}
-	.mobile-indent{
+/* 	.mobile-indent{
 		padding:0px 0px;
-	}
+	} */
 	.duquaddress{
 		float: left;
 	}
