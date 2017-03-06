@@ -311,19 +311,19 @@ color:#606060
                       <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
                       <img src="././admin/{$xl.attributeimg}" alt="{$xl.goods_name}">
                     </div>
-                    <div class="shop-item-details">
+
                       <div class="shop-item-title">
                         <a href="shop-single.php?id={$xl.goods_id}{$linestring2}">{$xl.goods_name}</a>
                       </div>
-                    </div>
-                    <div class="shop-item-details">
+
+
                      <div class="shop-item-price">
                      {if $xl.falseprice>$xl.attributeprice}
                         <span class="lead-shop-select text-normal text-gray text-crossed">￥{$xl.falseprice}</span>
                      {/if}
                         ￥{$xl.attributeprice}
                       </div>
-                    </div>
+
                   </div><!-- .shop-item -->
                 </div><!-- .col-lg-3.col-sm-6 -->
                 <!--{/foreach}-->
@@ -342,10 +342,10 @@ color:#606060
                       <a href="shop-single.php?id={$dl.goods_id}{$linestring2}" class="item-link"></a>
                       <img src="././admin/{$dl.attributeimg}" alt="{$dl.goods_name}">
                     </div>
-                    <div class="shop-item-details">
-                      <div class="shop-item-title"><a href="shop-single.php?id={$dl.goods_id}{$linestring2}">{$dl.goods_name}</a></div>
-                    </div>
-                    <div class="shop-item-details">
+
+                    <div class="shop-item-title"><a href="shop-single.php?id={$dl.goods_id}{$linestring2}">{$dl.goods_name}</a></div>
+
+
                     <div class="shop-item-price">
                     {if $dl.falseprice>$dl.attributeprice}
                         <span class="lead-shop-select text-normal text-gray text-crossed">￥{$dl.falseprice}</span>
@@ -353,7 +353,7 @@ color:#606060
                         ￥{$dl.attributeprice}
 
                     </div>
-                    </div>
+
                   </div><!-- .shop-item -->
                 </div><!-- .col-lg-3.col-sm-6 -->
                  <!--{/foreach}-->
