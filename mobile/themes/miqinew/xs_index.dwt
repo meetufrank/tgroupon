@@ -35,6 +35,10 @@
     .swiper-container {
       margin-top:55px;
     }
+    .index-sl-per{
+      padding-right:0px;
+      padding-left:0px;
+    }
   }
   @media screen and (min-width:768px){
 	  .info-box{
@@ -134,13 +138,10 @@ color:#606060
   color: #606060
 }
 .index-row{
-  margin-left:-15px;
-  margin-right:-15px;
+  margin-left:-13px;
+  margin-right:-13px;
 }
-.index-sl-per{
-  padding-right:0px;
-  padding-left:0px;
-}
+
 </style>
 
 </head>
