@@ -1722,6 +1722,8 @@ function user_list()
 
         }
 
+
+
         $filter['rank'] = empty($_REQUEST['rank']) ? 0 : intval($_REQUEST['rank']);
 
         $filter['pay_points_gt'] = empty($_REQUEST['pay_points_gt']) ? 0 : intval($_REQUEST['pay_points_gt']);
@@ -1733,7 +1735,7 @@ function user_list()
         $filter['sort_by']    = empty($_REQUEST['sort_by'])    ? 'user_id' : trim($_REQUEST['sort_by']);
 
         $filter['sort_order'] = empty($_REQUEST['sort_order']) ? 'DESC'     : trim($_REQUEST['sort_order']);
-
+        $filter['xxtitle'] = empty($_REQUEST['xxtitle']) ? '' : trim($_REQUEST['xxtitle']);
 
 
         $ex_where = ' WHERE 1 ';
@@ -1790,9 +1792,14 @@ function user_list()
 
         }
 
+       if($filter['xxtitle'])
+{
 
+$xxtitle = $filter['xxtitle'];
+$ex_where .= " and xxtitle like '%$xxtitle%'";
+}
 
-        $filter['record_count'] = $GLOBALS['db']->getOne("SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('xiaoxi'));
+        $filter['record_count'] = $GLOBALS['db']->getOne("SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('xiaoxi').$ex_where);
 
 
 
@@ -1804,7 +1811,7 @@ function user_list()
 
         $sql = "SELECT * ".
 
-                " FROM " . $GLOBALS['ecs']->table('xiaoxi') .
+                " FROM " . $GLOBALS['ecs']->table('xiaoxi') .$ex_where.
 
                 " LIMIT " . $filter['start'] . ',' . $filter['page_size'];
 

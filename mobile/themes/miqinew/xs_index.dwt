@@ -35,11 +35,20 @@
     .swiper-container {
       margin-top:55px;
     }
+    .mobile-good-list-row{
+      padding-right:0px;
+      padding-left:0px;
+  }
+    .index-sl-per{
+      padding-right:0px;
+      padding-left:0px;
+    }
   }
   @media screen and (min-width:768px){
 	  .info-box{
 		margin-top:70px;
 		}
+     .swiper-container {
     .swiper-container {
         height:100%;
     }
@@ -248,12 +257,17 @@ color:#606060
         });
    }
 </script>
+    <!-- Content Wide -->
+    <section class="container-fluid">
 
    <section class="container-fluid padding-top-3x">
 
       <!-- Featured Categories -->
+      <h3 class="text-center">商品分类</h3>
       <h3 class="text-center padding-top">商品分类</h3>
       <div class="row padding-top">
+       <!--{foreach from=$type_list  item=tl}-->
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 " >
       <!--{foreach from=$type_list  item=tl}-->
         <div class="col-md-2 col-sm-4 col-xs-6">
           <a href="#" class="category-link" onclick="drump_type({$tl.cat_id});">
@@ -262,11 +276,15 @@ color:#606060
           </a><!-- .category-link -->
         </div><!-- .col-sm-4 -->
         <!--{/foreach}-->
+
         {if $type_hide==1}
         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
           <a href="goods_list.php{$linestring1}" class="category-link">
             <img src="{$ectouch_themes}/img/categories/more.jpg" alt="Category">
             更多
+          </a><!-- .category-link -->
+        </div><!-- .col-sm-4 -->
+        {/if}
           </a>
         </div>
       {/if}
@@ -275,6 +293,8 @@ color:#606060
       <div class="row padding-top">
 
         <!-- Special Offer -->
+        <div class="col-lg-3 col-md-4 index-sl-per" onclick="javascript:location.href='shop-single.php?id={$tb_list.goods_id}{$linestring2}' ">
+
         <div class="col-lg-3 col-md-4" onclick="javascript:location.href='shop-single.php?id={$tb_list.goods_id}{$linestring2}' ">
           <div class="info-box text-center">
             <h2>特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
@@ -285,10 +305,13 @@ color:#606060
             <span class="lead text-normal text-gray text-crossed">￥{$tb_list.falseprice}</span>
             <span class="h4 text-normal text-danger">￥{$tb_list.attributeprice}</span>
           </div><!-- .info-box -->
+
           <div class="padding-bottom-2x visible-xs"></div>
+
         </div><!-- .col-lg-3.col-md-4 -->
 
         <!-- Products -->
+        <div class="col-lg-9 col-md-8 index-sl-per">
         <div class="col-lg-9 col-md-8">
           <!-- Nav Tabs -->
           <ul class="nav-tabs text-center" role="tablist">
@@ -303,8 +326,22 @@ color:#606060
             <div role="tabpanel" class="tab-pane transition fade scale in active" id="newcomers">
               <div class="row space-top-half">
               <!--{foreach from=$xp_list item=xl}-->
+                <div class="col-lg-3 col-md-4 col-sm-6 mobile-good-list-row">
                 <div class="col-lg-3 col-sm-6">
                   <div class="shop-item">
+                      <div class="shop-thumbnail">
+
+                        <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
+                        <img src="././admin/{$xl.attributeimg}" alt="{$xl.goods_name}">
+                      </div>
+
+                        <div class="shop-item-title">
+                          <a href="shop-single.php?id={$xl.goods_id}{$linestring2}">{$xl.goods_name}</a>
+                        </div>
+
+
+                       <div class="shop-item-price">
+                       {if $xl.falseprice>$xl.attributeprice}
                     <div class="shop-thumbnail">
                       <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
                       <img src="../..{$xl.listimg}" alt="{$xl.goods_name}">
@@ -315,15 +352,24 @@ color:#606060
                     <div class="shop-item-details">
                        <span class="shop-item-price">
                         {if $xl.falseprice>$xl.attributeprice}
+
+
+
                           <span class="lead-shop-select text-normal text-gray text-crossed">￥{$xl.falseprice}</span>
                        {/if}
+                          ￥{$xl.attributeprice}
+                        </div>
+                  </div>
                         ￥{$xl.attributeprice}
                       </span>
                     </div>
                   </div><!-- .shop-item -->
                 </div><!-- .col-lg-3.col-sm-6 -->
+                <!--{/foreach}-->
+
               <!--{/foreach}-->
               </div><!-- .row -->
+            </div><!-- .tab-pane#newcomers -->
             </div>
 
 
@@ -331,12 +377,23 @@ color:#606060
             <div role="tabpanel" class="tab-pane transition fade scale" id="toprated">
               <div class="row">
                <!--{foreach from=$dz_list item=dl}-->
+              <div class="col-lg-3 col-sm-6 index-sl-per">
                 <div class="col-lg-3 col-sm-6">
+
                   <div class="shop-item">
                     <div class="shop-thumbnail">
+                      <!-- <span class="shop-label text-danger">Sale</span> -->
                       <a href="shop-single.php?id={$dl.goods_id}{$linestring2}" class="item-link"></a>
+                      <img src="././admin/{$dl.attributeimg}" alt="{$dl.goods_name}">
                       <img src="../..{$dl.listimg}" alt="{$dl.goods_name}">
+
                     </div>
+
+                    <div class="shop-item-title"><a href="shop-single.php?id={$dl.goods_id}{$linestring2}">{$dl.goods_name}</a></div>
+
+
+                    <div class="shop-item-price">
+                    {if $dl.falseprice>$dl.attributeprice}
                     <div class="shop-item-details">
                       <h3 class="shop-item-title"><a href="shop-single.php?id={$dl.goods_id}{$linestring2}">{$dl.goods_name}</a></h3>
                     </div>
@@ -346,17 +403,24 @@ color:#606060
                         <span class="lead-shop-select text-normal text-gray text-crossed">￥{$dl.falseprice}</span>
                      {/if}
                         ￥{$dl.attributeprice}
+
                       </span>
                     </div>
+
                   </div><!-- .shop-item -->
                 </div><!-- .col-lg-3.col-sm-6 -->
+                 <!--{/foreach}-->
                 <!--{/foreach}-->
 
               </div><!-- .row -->
+            </div><!-- .tab-pane#toprated -->
+
+
             </div><!-- .tab-pane#onsale -->
           </div><!-- .tab-content -->
         </div><!-- .col-lg-9.col-md-8 -->
       </div><!-- .row -->
+    </section><!-- .container-fluid -->
     </section>
     <!-- .container-fluid -->
 

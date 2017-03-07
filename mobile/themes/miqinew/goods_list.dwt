@@ -37,6 +37,7 @@
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
 <style>
+
 .shop-bar{
   padding-left:15px;
   padding-right:15px;
@@ -152,6 +153,7 @@
 
 
         </div><!-- .col-md-9 col-sm-8 -->
+
       </div><!-- row-->
     </section><!-- .container -->
   </div><!-- .page-wrapper -->
@@ -196,14 +198,19 @@
 	  {{# for(var i = 0, len = d.data.length; i < len; i++){ }}
 
             <!-- Item -->
+
             <div class="col-lg-3 col-md-4 col-sm-6 mobile-good-list-row">
               <div class="shop-item">
                 <div class="shop-thumbnail">
                   <a href="shop-single.php?id={{d.data[i].goods_id}}{$linestring2}" class="item-link"></a>
-              {{# if(d.data[i].attributeimg){}}
-                  <img src="././admin/{{ d.data[i].attributeimg}}" alt="Shop item">
+
+
+              {{# if(d.data[i].listimg){}}
+                  <img src="../..{{d.data[i].listimg}}" alt="Shop item">
+                  {{# }}}
                 </div>
-                {{# }}}
+
+
                   <div class="shop-item-title"><a href="shop-single.php?id={{d.data[i].goods_id}}{$linestring2}">{{ d.data[i].goods_name }}</a></div>
 
                   <div class="shop-item-price">
@@ -219,6 +226,7 @@
       {{# }else{}}
       &nbsp;&nbsp;未搜索到指定商品~
       {{# }}}
+
       </div><!--good-list-row-->
 
 
@@ -296,7 +304,8 @@ layui.use(['laypage', 'layer'], function(){
               },
               error: function(data){
 
-                          layer.open({
+
+                   layer.open({
                   content: '暂无商品'
                   ,skin: 'msg'
                   });

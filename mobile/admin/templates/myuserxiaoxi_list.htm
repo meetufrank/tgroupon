@@ -14,15 +14,18 @@
 
     <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
 
-    &nbsp;{$lang.label_rank_name} <select name="user_rank"><option value="0">{$lang.all_option}</option>{html_options options=$user_ranks }</select>
-
-    &nbsp;{$lang.label_pay_points_gt}&nbsp;<input type="text" name="pay_points_gt" size="8" />&nbsp;{$lang.label_pay_points_lt}&nbsp;<input type="text" name="pay_points_lt" size="10" />
+   <select style="display:none;" name="user_rank"><option value="0">{$lang.all_option}</option>{html_options options=$user_ranks }</select>
 
 
+    <input style="display:none;" type="text" name="pay_points_gt" size="8" />
+    <input style="display:none;" type="text" name="pay_points_lt" size="10" />
 
 
-    &nbsp;{$lang.label_user_name} &nbsp;<input type="text" name="keyword" />
-    &nbsp;系统消息标题 &nbsp;<input type="text" name="xxtitle" />
+
+
+
+    <input style="display:none;" type="text" name="keyword" />
+    &nbsp;系统消息标题 &nbsp;<input type="text" name="xxtitle"/>
     <input type="submit" value="{$lang.button_search}" />
 
 
@@ -89,7 +92,7 @@
 
       <input type="hidden" name="act" value="batch_remove" />
 
-     <input type="submit" id="btnSubmit" value="{$lang.button_remove}" disabled="true" class="button" /></td>
+     <input style="display:none;" type="submit" id="btnSubmit" value="{$lang.button_remove}" disabled="true" class="button" /></td>
 
       <td align="right" nowrap="true" colspan="8">
 
@@ -172,6 +175,7 @@ function searchUser()
     listTable.filter['pay_points_gt'] = Utils.trim(document.forms['searchForm'].elements['pay_points_gt'].value);
 
     listTable.filter['pay_points_lt'] = Utils.trim(document.forms['searchForm'].elements['pay_points_lt'].value);
+
 
     listTable.filter['page'] = 1;
 
