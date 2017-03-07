@@ -4,7 +4,7 @@
 <header class="navbar navbar-sticky">
 
     
-      <a href="index.html" class="site-logo">
+      <a href="index.php<?php echo $this->_var['linestring1']; ?>" class="site-logo">
         <img src="<?php echo $this->_var['ectouch_themes']; ?>/img/Logo.png">
       </a>
 
@@ -32,7 +32,7 @@
               <li><a href="index.php<?php echo $this->_var['linestring1']; ?>">首页</a></li>
               <li><a href="goods_list.php<?php echo $this->_var['linestring1']; ?>" >商品</a></li>
               <li><a href="artist_list.php<?php echo $this->_var['linestring1']; ?>">设计师</a></li>
-              <li><a href="#">关于我们</a></li>
+              <li><a href="about_us.php<?php echo $this->_var['linestring1']; ?>">关于我们</a></li>
             </ul>
 
           </div>
@@ -56,8 +56,8 @@
             <ul class="main-navigation space-bottom">
               <li><a href="my_user.php?act=order_list<?php echo $this->_var['linestring2']; ?>" >我的订单</a></li>
               <li><a href="my_grzxgdsc.php<?php echo $this->_var['linestring1']; ?>">我的收藏</a></li>
-<!--              <li><a class="relative" href="#">消息记录<span class="count">2</span></a></li>-->
-                <li><a class="relative" href="#">消息记录</a></li>
+<!--              <li><a class="relative" href="my_userxiaoxi.php<?php echo $this->_var['linestring1']; ?>">消息记录<span class="count">2</span></a></li>-->
+                <li><a class="relative" href="my_userxiaoxi.php<?php echo $this->_var['linestring1']; ?>">消息记录</a></li>
               <li><a href="my_usergrzx.php?act=address_list<?php echo $this->_var['linestring2']; ?>">管理地址</a></li>
               <?php if ($this->_var['is_income']): ?> <li><a href="my_income.php<?php echo $this->_var['linestring1']; ?>">商品销量</a></li><?php endif; ?>
             </ul>
@@ -425,7 +425,6 @@ if(type&&!ismobile){
               dataType:"json",
               data:{step:'add_to_cart',goods:$.toJSON(goods),type:type,comeback:loca_str},
               success: function(data){
-
                     if(data.error==12){
                               if(data.url){
                               window.location.href=data.url;
@@ -437,7 +436,6 @@ if(type&&!ismobile){
                     }
                    if(data.cartid){
                   if(type){
-
 
                               if(ismobile){
 

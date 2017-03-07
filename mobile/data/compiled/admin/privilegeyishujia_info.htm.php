@@ -28,7 +28,6 @@
     <td class="label"><?php echo $this->_var['lang']['email']; ?></td>
 
     <td>
-
       <input type="text" name="email" value="<?php echo htmlspecialchars($this->_var['user']['email']); ?>" size="34" /><?php echo $this->_var['lang']['require_field']; ?></td>
 
   </tr>
@@ -185,6 +184,18 @@
 
           </tr>
 
+
+
+            <tr>
+              <td class="label">设计师详情banner图</td>
+              <td>
+                <input type="file" name="sjspic" size="35" />
+              </td>
+            </tr>
+
+
+
+
           <tr>
 
             <td class="label">国家</td>
@@ -325,7 +336,7 @@
 
       <input type="submit" value="<?php echo $this->_var['lang']['button_submit']; ?>" class="button" />&nbsp;&nbsp;&nbsp;
 
-      <input type="reset" value="<?php echo $this->_var['lang']['button_reset']; ?>" class="button" />
+      <!-- <input type="reset" value="<?php echo $this->_var['lang']['button_reset']; ?>" class="button" /> -->
 
       <input type="hidden" name="act" value="<?php echo $this->_var['form_act']; ?>" />
 

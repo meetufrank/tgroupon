@@ -30,20 +30,34 @@
 
   
   <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/modernizr.custom.js"></script>
-   <link rel="stylesheet" href="<?php echo $this->_var['ectouch_themes']; ?>/Swiper-3.4.0/dist/css/swiper.min.css">
   
   <style>
+  @media screen and (max-width:768px){
+    .swiper-container {
+      margin-top:55px;
+    }
+  }
   @media screen and (min-width:768px){
 	  .info-box{
 		margin-top:70px;
 		}
+     .swiper-container {
+        height:100%;
+    }
+    .container-fluid-shopselect{
+      padding: 0 30px;
+    }
+
 	}
 	@media (min-width: 1200px){
 		.container {
 			width:1300px;
 		}
 	}
-  	 .count{
+ .container-fluid-shopselect{
+      max-width: 1920px;
+}
+.count{
   	 	position: absolute;
 		display: block;
 		width: 16px;
@@ -82,32 +96,6 @@
 	.teammate {
 		width: 90%;
 	}
-   /*swiper样式*/
-   html, body {
-        position: relative;
-  }
-  .swiper-container {
-        width: 100%;
-        height:100%;
-  }
-  .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-    }
 .form-control-index {
   display: block;
   width: 100%;
@@ -165,24 +153,19 @@ color:#606060
     
 
     
-   <div class="swiper-container">
-        <div class="swiper-wrapper">
-        <?php $_from = $this->_var['banner_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'bl');if (count($_from)):
+    <section class="hero-slider">
+      <div class="inner">
+      <?php $_from = $this->_var['banner_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'bl');if (count($_from)):
     foreach ($_from AS $this->_var['bl']):
 ?>
-            <div class="swiper-slide"><a href="<?php echo $this->_var['bl']['ad_link']; ?>"><img src="<?php echo $this->_var['bl']['ad_code']; ?>"></a></div>
-         <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-        </div>
-        
-        <?php $_from = $this->_var['banner_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'bl');if (count($_from)):
-    foreach ($_from AS $this->_var['bl']):
-?>
-        <div class="swiper-pagination"></div>
-        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-    </div>
+        <a href="<?php echo $this->_var['bl']['ad_link']; ?>"><div class="slide" style="background-image:url(<?php echo $this->_var['bl']['ad_code']; ?>);">
+        </div></a>
+      <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+      </div>
+    </section>
 
 	
-	<section class="container-fluid padding-top-3x">
+	<section class="container-fluid">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<ul class="nav-tabs" role="tablist" style="border-bottom: none;">
@@ -265,11 +248,11 @@ color:#606060
    }
 </script>
     
-    <section class="container-fluid padding-top-3x">
+    <section class="container-fluid-shopselect">
 
       
-      <h3 class="text-center padding-top">商品分类</h3>
-      <div class="row padding-top padding-bottom-3x">
+      <h3 class="text-center">商品分类</h3>
+      <div class="row padding-top">
        <?php $_from = $this->_var['type_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'tl');if (count($_from)):
     foreach ($_from AS $this->_var['tl']):
 ?>
@@ -294,11 +277,13 @@ color:#606060
       <div class="row padding-top">
 
         
-        <div class="col-lg-3 col-md-3" onclick="javascript:location.href='shop-single.php?id=<?php echo $this->_var['tb_list']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>' ">
+        <div class="col-lg-3 col-md-4" onclick="javascript:location.href='shop-single.php?id=<?php echo $this->_var['tb_list']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>' ">
 
-          <div class="info-box text-center" style="background-image:url(../<?php echo $this->_var['tb_list']['goods_img']; ?>);-moz-background-size:100% 100%;
-   background-size:100% 100%;background-repeat: no-repeat">
-            <h2 class="tbyh">特别优惠<br><span class="text-danger">-<?php echo $this->_var['tb_list']['priceratio']; ?>%</span></h2>
+          <div class="info-box text-center">
+            <h2>特别优惠<br><span class="text-danger">-<?php echo $this->_var['tb_list']['priceratio']; ?>%</span></h2>
+            <a href="shop-single.php?id=<?php echo $this->_var['tb_list']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>" class="inline">
+              <img src="../..<?php echo $this->_var['tb_list']['veryimg']; ?>" alt="<?php echo $this->_var['tb_list']['goods_name']; ?>">
+            </a>
             <h3 class="lead text-normal space-bottom-half"><a href="shop-single.php?id=<?php echo $this->_var['tb_list']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>" class="link-title"><?php echo $this->_var['tb_list']['goods_name']; ?></a></h3>
             <span class="lead text-normal text-gray text-crossed">￥<?php echo $this->_var['tb_list']['falseprice']; ?></span>
             <span class="h4 text-normal text-danger">￥<?php echo $this->_var['tb_list']['attributeprice']; ?></span>
@@ -309,7 +294,7 @@ color:#606060
         </div>
 
         
-        <div class="col-lg-9 col-md-9">
+        <div class="col-lg-9 col-md-8">
           
           <ul class="nav-tabs text-center" role="tablist">
             <li class="active"><a href="#newcomers" role="tab" data-toggle="tab">新品上架</a></li>
@@ -328,15 +313,22 @@ color:#606060
                 <div class="col-lg-3 col-md-2 col-sm-2 col-sm-6">
                   <div class="shop-item">
                     <div class="shop-thumbnail">
-                      <!-- <span class="shop-label text-danger">Sale</span> -->
+
                       <a href="shop-single.php?id=<?php echo $this->_var['xl']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>" class="item-link"></a>
-                      <img src="././admin/<?php echo $this->_var['xl']['attributeimg']; ?>" alt="<?php echo $this->_var['xl']['goods_name']; ?>">
+                      <img src="..<?php echo $this->_var['xl']['listimg']; ?>" alt="<?php echo $this->_var['xl']['goods_name']; ?>">
                     </div>
                     <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.php?id=<?php echo $this->_var['xl']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>"><?php echo $this->_var['xl']['goods_name']; ?></a></h3>
-                      <span class="shop-item-price">
+                      <div class="shop-item-title">
+                        <a href="shop-single.php?id=<?php echo $this->_var['xl']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>"><?php echo $this->_var['xl']['goods_name']; ?></a>
+                      </div>
+                    </div>
+                    <div class="shop-item-details">
+                     <div class="shop-item-price">
+                     <?php if ($this->_var['xl']['falseprice'] > $this->_var['xl']['attributeprice']): ?>
+                        <span class="lead-shop-select text-normal text-gray text-crossed">￥<?php echo $this->_var['xl']['falseprice']; ?></span>
+                     <?php endif; ?>
                         ￥<?php echo $this->_var['xl']['attributeprice']; ?>
-                      </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -356,13 +348,19 @@ color:#606060
                     <div class="shop-thumbnail">
                       <!-- <span class="shop-label text-danger">Sale</span> -->
                       <a href="shop-single.php?id=<?php echo $this->_var['dl']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>" class="item-link"></a>
-                      <img src="././admin/<?php echo $this->_var['dl']['attributeimg']; ?>" alt="<?php echo $this->_var['dl']['goods_name']; ?>">
+                      <img src="..<?php echo $this->_var['dl']['listimg']; ?>" alt="<?php echo $this->_var['dl']['goods_name']; ?>">
                     </div>
                     <div class="shop-item-details">
-                      <h3 class="shop-item-title"><a href="shop-single.php?id=<?php echo $this->_var['dl']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>"><?php echo $this->_var['dl']['goods_name']; ?></a></h3>
-                      <span class="shop-item-price">
+                      <div class="shop-item-title"><a href="shop-single.php?id=<?php echo $this->_var['dl']['goods_id']; ?><?php echo $this->_var['linestring2']; ?>"><?php echo $this->_var['dl']['goods_name']; ?></a></div>
+                    </div>
+                    <div class="shop-item-details">
+                    <div class="shop-item-price">
+                    <?php if ($this->_var['dl']['falseprice'] > $this->_var['dl']['attributeprice']): ?>
+                        <span class="lead-shop-select text-normal text-gray text-crossed">￥<?php echo $this->_var['dl']['falseprice']; ?></span>
+                     <?php endif; ?>
                         ￥<?php echo $this->_var['dl']['attributeprice']; ?>
-                      </span>
+
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -433,15 +431,6 @@ color:#606060
 
   
 
- <script src="<?php echo $this->_var['ectouch_themes']; ?>/Swiper-3.4.0/dist/js/swiper.min.js"></script>
-
-  
-  <script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        paginationClickable: true
-    });
-  </script>
   <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/bootstrap.min.js"></script>
   <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/smoothscroll.js"></script>
   <script src="<?php echo $this->_var['ectouch_themes']; ?>/js/vendor/velocity.min.js"></script>

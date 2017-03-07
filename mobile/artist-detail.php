@@ -27,26 +27,19 @@ $page_num=4;  //页面显示条数
 if($_REQUEST['act']=='artist_detail'){
 
 
-  //艺术家banner显示
- $sql=" select * from ecs_touch_ad  where ad_code!='' and position_id=3 and enabled=1 order by sort desc limit 1 ";
-$banner_list=$GLOBALS['db']->getAll($sql);
-foreach ($banner_list as $key => $value) {
-    if(!strpos($value['ad_code'],'http://')){
-           $banner_list[$key]['ad_code']="data/afficheimg/".$value['ad_code'];
-    }
-    if(strpos($value['ad_link'], '?')){
-      $banner_list[$key]['ad_link']=$value['ad_link'].$linestring2;
-    }else{
-      $banner_list[$key]['ad_link']=$value['ad_link'].$linestring1;
-    }
-}
-$smarty->assign('banner_list',$banner_list);
+
+
 
 //艺术家信息
 //(头像、名称、地区、艺术家简介)
 if(isset($_REQUEST['ysjid'])){
 
     $ysjid = $_REQUEST['ysjid'];
+
+    $sql=" select sjsbanner from ecs_admin_user  where  sjsbanner!='' and ysj_tixian<>0 and user_id= ".$ysjid;
+$banner_list=$GLOBALS['db']->getOne($sql);
+$smarty->assign('banner_list',$banner_list);
+
 $ysjxxsql = "select u.user_id,u.user_name,u.hav_logo,u.country,u.artiststalk,u.sjsintro from  `ecs_admin_user` as u where `user_id` = '$ysjid'";
 $ysjxx = $db->getRow($ysjxxsql);
 /* print_r($ysjxx); */
@@ -158,8 +151,9 @@ exit;
 
 
 function get_artist_goods($limit='',$where=''){
-      $ysjzpsql = "select min(ep.product_id) as product_id,ep.goods_id,ep.priceratio,cast(ep.attributeprice+g.more_price as decimal(10,2)) as attributeprice,cast(ep.falseprice+g.more_price as decimal(10,2)) as falseprice,ep.attributeimg,g.goods_name from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where." GROUP BY ep.goods_id  order by g.add_time desc ".$limit;
+      $ysjzpsql = "select min(ep.product_id) as product_id,ep.goods_id,ep.priceratio,cast(ep.attributeprice+g.more_price as decimal(10,2)) as attributeprice,cast(ep.falseprice+g.more_price as decimal(10,2)) as falseprice,ep.attributeimg,g.goods_name,g.listimg from ecs_products as ep INNER JOIN ecs_goods as g on g.goods_id=ep.goods_id where ep.attributeprice<>0 and ep.attributeimg!='' and g.is_delete=0 and g.is_on_sale=1 ".$where." GROUP BY ep.goods_id  order by g.add_time desc ".$limit;
     $ysjzp = $GLOBALS['db']->getAll($ysjzpsql);
+
 
     return $ysjzp;
 }

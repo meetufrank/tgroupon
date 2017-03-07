@@ -863,8 +863,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 
     /* 创建 html editor */
 
-    create_html_editor('goods_desc', $goods['goods_desc']);
-
+   create_html_editor('goods_desc', $goods['goods_desc']);
 
 
     /* 模板赋值 */
@@ -1683,6 +1682,10 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     $tuijie_img_name = basename($image->upload_image($_FILES['tuijie_img'],'listimg'));
     if($tuijie_img_name != ''){
       $tuijie_img = '/data/listimg/'. $tuijie_img_name;
+    }else{
+         if ($is_insert){
+         sys_msg('首页列表图片必须上传', 1);exit;
+        }
     }
 
 
@@ -1694,6 +1697,8 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
       $father_id = empty($_POST['father_id']) ? '' : intval($_POST['father_id']);
 
       $more_price=empty($_POST['more_price']) ? 0.00 : floatval($_POST['more_price']);
+
+
 
 
 
@@ -1896,9 +1901,8 @@ if($_FILES['veryimg']['name']){
 
                 "arter_id = '$arter_id', ".
 
-                "more_price = '$more_price',".
+                "more_price = '$more_price',"
 
-                "veryimg = '$url_veryimg',"
 
 
 
@@ -1930,6 +1934,10 @@ if($_FILES['veryimg']['name']){
  if($tuijie_img)
               {
                   $sql .= "listimg = '$tuijie_img', ";
+              }
+if($very_img)
+              {
+                  $sql .= "veryimg = '$very_img', ";
               }
         if ($code != '')
 

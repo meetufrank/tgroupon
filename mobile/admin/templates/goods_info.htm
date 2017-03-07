@@ -469,11 +469,16 @@
           <tr>
               <td class="label">特别优惠图片:</td>
               <td>
-                <input type="file" name="veryimg" size="35" />
+                <input type="file" name="veryimg" size="35"  />
+                {if $goods.veryimg}
+                <a href="goods.php?act=show_image&img_url={$goods.veryimg}" target="_blank"><img src="images/yes.gif" border="0" /></a>
+              {else}
+                <img src="images/no.gif" />
+              {/if}
               </td>
 
            <tr>
-            <td class="label">首页轮播图片：</td>
+            <td class="label">列表页显示图片：</td>
             <td>
               <input type="file" name="tuijie_img" size="35" />
               {if $goods.listimg}
@@ -532,7 +537,6 @@
           </tr>
 
         </table>
-
 
 
         <!-- 鍏朵粬淇℃伅 -->
@@ -1050,7 +1054,7 @@
   function validate(goods_id)
 
   {
-
+editor.sync();
       var validator = new Validator('theForm');
 
       var goods_sn  = document.forms['theForm'].elements['goods_sn'].value;
