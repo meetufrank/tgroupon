@@ -35,6 +35,14 @@
     .swiper-container {
       margin-top:55px;
     }
+    .mobile-good-list-row{
+      padding-right:0px;
+      padding-left:0px;
+  }
+    .index-sl-per{
+      padding-right:0px;
+      padding-left:0px;
+    }
   }
   @media screen and (min-width:768px){
 	  .info-box{
@@ -53,11 +61,11 @@
 			width:1300px;
 		}
 	}
- .container-fluid-shopselect{
+.container-fluid-shopselect{
       max-width: 1920px;
 }
 .count{
-  	 	position: absolute;
+  	position: absolute;
 		display: block;
 		width: 16px;
 		height: 16px;
@@ -69,7 +77,7 @@
 		background-color: #77cde3;
 		top: -2px;
 		right: -17px;
-  	 }
+  }
 	.teammate-thumb{
 		border-radius: 50%;
 	}
@@ -133,7 +141,7 @@ color:#606060
 .form-control-index.placeholder {
   color: #606060
 }
-  </style>
+</style>
 
 </head>
 
@@ -245,7 +253,7 @@ color:#606060
    }
 </script>
     <!-- Content Wide -->
-    <section class="container-fluid-shopselect">
+    <section class="container-fluid">
 
       <!-- Featured Categories -->
       <h3 class="text-center">商品分类</h3>
@@ -272,7 +280,7 @@ color:#606060
       <div class="row padding-top">
 
         <!-- Special Offer -->
-        <div class="col-lg-3 col-md-4" onclick="javascript:location.href='shop-single.php?id={$tb_list.goods_id}{$linestring2}' ">
+        <div class="col-lg-3 col-md-4 index-sl-per" onclick="javascript:location.href='shop-single.php?id={$tb_list.goods_id}{$linestring2}' ">
 
           <div class="info-box text-center">
             <h2>特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
@@ -289,7 +297,7 @@ color:#606060
         </div><!-- .col-lg-3.col-md-4 -->
 
         <!-- Products -->
-        <div class="col-lg-9 col-md-8">
+        <div class="col-lg-9 col-md-8 index-sl-per">
           <!-- Nav Tabs -->
           <ul class="nav-tabs text-center" role="tablist">
             <li class="active"><a href="#newcomers" role="tab" data-toggle="tab">新品上架</a></li>
@@ -303,27 +311,26 @@ color:#606060
             <div role="tabpanel" class="tab-pane transition fade scale in active" id="newcomers">
               <div class="row space-top-half">
               <!--{foreach from=$xp_list item=xl}-->
-                <div class="col-lg-3 col-md-2 col-sm-2 col-sm-6">
+                <div class="col-lg-3 col-md-4 col-sm-6 mobile-good-list-row">
                   <div class="shop-item">
-                    <div class="shop-thumbnail">
+                      <div class="shop-thumbnail">
 
-                      <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
+                        <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
                       <img src="../..{$xl.listimg}" alt="{$xl.goods_name}">
-                    </div>
-                    <div class="shop-item-details">
-                      <div class="shop-item-title">
-                        <a href="shop-single.php?id={$xl.goods_id}{$linestring2}">{$xl.goods_name}</a>
                       </div>
-                    </div>
-                    <div class="shop-item-details">
-                     <div class="shop-item-price">
-                     {if $xl.falseprice>$xl.attributeprice}
-                        <span class="lead-shop-select text-normal text-gray text-crossed">￥{$xl.falseprice}</span>
-                     {/if}
-                        ￥{$xl.attributeprice}
-                      </div>
-                    </div>
-                  </div><!-- .shop-item -->
+
+                        <div class="shop-item-title">
+                          <a href="shop-single.php?id={$xl.goods_id}{$linestring2}">{$xl.goods_name}</a>
+                        </div>
+
+
+                       <div class="shop-item-price">
+                       {if $xl.falseprice>$xl.attributeprice}
+                          <span class="lead-shop-select text-normal text-gray text-crossed">￥{$xl.falseprice}</span>
+                       {/if}
+                          ￥{$xl.attributeprice}
+                        </div>
+                  </div>
                 </div><!-- .col-lg-3.col-sm-6 -->
                 <!--{/foreach}-->
 
@@ -334,17 +341,19 @@ color:#606060
             <div role="tabpanel" class="tab-pane transition fade scale" id="toprated">
               <div class="row">
                <!--{foreach from=$dz_list item=dl}-->
-              <div class="col-lg-3 col-sm-6">
+
+              <div class="col-lg-3 col-sm-6 index-sl-per">
                   <div class="shop-item">
                     <div class="shop-thumbnail">
                       <!-- <span class="shop-label text-danger">Sale</span> -->
                       <a href="shop-single.php?id={$dl.goods_id}{$linestring2}" class="item-link"></a>
+
                       <img src="../..{$dl.listimg}" alt="{$dl.goods_name}">
                     </div>
-                    <div class="shop-item-details">
-                      <div class="shop-item-title"><a href="shop-single.php?id={$dl.goods_id}{$linestring2}">{$dl.goods_name}</a></div>
-                    </div>
-                    <div class="shop-item-details">
+
+                    <div class="shop-item-title"><a href="shop-single.php?id={$dl.goods_id}{$linestring2}">{$dl.goods_name}</a></div>
+
+
                     <div class="shop-item-price">
                     {if $dl.falseprice>$dl.attributeprice}
                         <span class="lead-shop-select text-normal text-gray text-crossed">￥{$dl.falseprice}</span>
@@ -352,7 +361,7 @@ color:#606060
                         ￥{$dl.attributeprice}
 
                     </div>
-                    </div>
+
                   </div><!-- .shop-item -->
                 </div><!-- .col-lg-3.col-sm-6 -->
                  <!--{/foreach}-->

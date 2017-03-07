@@ -308,6 +308,12 @@
     max-width: 100%;
     background-color: rgba(0,0,0,0);
 }
+@media screen and (max-width:768px){
+    .mobile-shopsingle-row{
+      padding-right:0px;
+      padding-left:0px;
+}
+}
   </style>
 
 
@@ -538,24 +544,24 @@
       <div class="row padding-top">
         <!-- 猜你喜欢(商品货品中同一类型的第一个) -->
         {foreach from=$xh item=xh}
-              <div class="col-lg-3 col-sm-6 mobile-indent">
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mobile-shopsingle-row">
                 <div class="shop-item">
                   <div class="shop-thumbnail">
                     <a href="shop-single.php?id={$xh.goods_id}{$linestring2}" class="item-link"></a>
                     {if $xh.listimg}<img src="../..{$xh.listimg}" alt="Shop item">{/if}
                   </div>
-                  <div class="shop-item-details">
+
                     <div class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}{$linestring2}">{$xh.goods_name}</a></div>
-                  </div>
-                  <div class="shop-item-details">
+
+
                     <div class="shop-item-price">
                     {if $xh.falseprice>$xh.attributeprice}
                       <span class="lead-shop-select text-normal text-gray text-crossed">￥{$xh.falseprice}</span>
                     {/if}
                       ￥{$xh.attributeprice}
                     </div>
-                  </div>
-                </div><!-- .shop-item -->
+
+                </div>
               </div><!-- .col-lg-3.col-sm-6 -->
         {/foreach}
 

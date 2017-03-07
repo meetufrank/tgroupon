@@ -2,10 +2,10 @@
 
 <!-- $Id: users_list.htm 17053 2010-03-15 06:50:26Z sxc_shop $ -->
 
-{include file="pageheader.htm"}
+{include file="pageheadermyuserxiaoxilist.htm"}
+
 
 {insert_scripts files="../js/utils.js,listtable.js"}
-
 
 
 <div class="form-div">
@@ -18,7 +18,12 @@
 
     &nbsp;{$lang.label_pay_points_gt}&nbsp;<input type="text" name="pay_points_gt" size="8" />&nbsp;{$lang.label_pay_points_lt}&nbsp;<input type="text" name="pay_points_lt" size="10" />
 
-    &nbsp;{$lang.label_user_name} &nbsp;<input type="text" name="keyword" /> <input type="submit" value="{$lang.button_search}" />
+
+
+
+    &nbsp;{$lang.label_user_name} &nbsp;<input type="text" name="keyword" />
+    &nbsp;系统消息标题 &nbsp;<input type="text" name="xxtitle" />
+    <input type="submit" value="{$lang.button_search}" />
 
 
 
@@ -44,67 +49,18 @@
 
   <tr>
 
-  <!--   <th>
 
-      <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">
-
-      <a href="javascript:listTable.sort('user_id'); ">{$lang.record_id}</a>{$sort_user_id}
-
-    </th> -->
-
-    <!-- <th><a href="javascript:listTable.sort('user_name'); ">{$lang.username}</a>{$sort_user_name}</th> -->
-
-    <!-- <th><a href="javascript:listTable.sort('email'); ">{$lang.email}</a>{$sort_email}</th> -->
-
-    <!-- <th>用户编号</th>
-
-    <th>{$lang.user_money}</th>
-
-    <th>{$lang.frozen_money}</th>
-
-    <th>{$lang.rank_points}</th>
-
-    <th>{$lang.pay_points}</th>
-
-    <th><a href="javascript:listTable.sort('reg_time'); ">{$lang.reg_date}</a>{$sort_reg_time}</th>
-
-	<th><font color="red">一级分销个数</font></th>
-
-	<th><font color="red">分销详情</font></th>
-
-    <th>{$lang.handler}</th>
- -->
   <th>消息标题</th>
   <th>消息链接</th>
   <th>消息时间</th>
   <th>{$lang.handler}</th>
-  <tr>
+  </tr>
 
   {foreach from=$user_list item=user}
 
   <tr>
 
-    <!-- <td><input type="checkbox" name="checkboxes[]" value="{$user.user_id}" notice="{if $user.user_money ne 0}1{else}0{/if}"/>{$user.user_id}</td>
 
-    <td class="first-cell">{$user.user_name|escape}</td> -->
-
-    <!-- <td><span onclick="listTable.edit(this, 'edit_email', {$user.user_id})">{$user.email}</span></td> -->
-
-   <!--  <td>{$user.weiyi_num}</td>
-
-    <td>{$user.user_money}</td>
-
-    <td>{$user.frozen_money}</td>
-
-    <td>{$user.rank_points}</td>
-
-    <td>{$user.pay_points}</td>
-
-    <td align="center">{$user.reg_time}</td>
-
-	<td align="center">{$user.number}</td> -->
-
-	<!-- <td align="center"><a href="users.php?act=share_list&id={$user.user_id}">点击查看</a></td> -->
 
   <td align="center">{$user.xxtitle|truncate:30}</td>
   <td align="center">{$user.xxlink|truncate:30}</td>
@@ -113,26 +69,9 @@
 
       <a href="myuserxiaoxi.php?act=edit&id={$user.xxid}" title="{$lang.edit}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a>
 
-     <!--  <a href="users.php?act=address_list&id={$user.user_id}" title="{$lang.address_list}"><img src="images/book_open.gif" border="0" height="16" width="16" /></a>
+      <a href="myuserxiaoxi.php?act=remove&id={$user.xxid}" title="{$lang.edit}"><img src="images/icon_drop.gif" border="0" height="16" width="16" /></a>
 
-      <a href="order.php?act=list&user_id={$user.user_id}" title="{$lang.view_order}"><img src="images/icon_view.gif" border="0" height="16" width="16" /></a>
-
-      <a href="account_log.php?act=list&user_id={$user.user_id}" title="{$lang.view_deposit}"><img src="images/icon_account.gif" border="0" height="16" width="16" /></a>
-
-      <!-- 生成二维码 -->
-
-
-
-   <!--     {if $user.is_line == 1}
-
-       <a id="erweimaid" href="users.php?act=erweima&id={$user.user_id}" title="生成二维码链接"><img src="images/icon_docs.gif" border="0" height="16" width="16" /></a>
-
-       {/if} -->
-
-
-
-
-      <a href="javascript:confirm_redirect('{if $user.user_money ne 0}{$lang.still_accounts}{/if}{$lang.remove_confirm}', 'users.php?act=remove&id={$user.user_id}')" title="{$lang.remove}"><img src="images/icon_drop.gif" border="0" height="16" width="16" /></a>
+   <!--    <a href="javascript:confirm_redirect('{if $user.user_money ne 0}{$lang.still_accounts}{/if}{$lang.remove_confirm}', 'myuserxiaoxi.php?act=remove&id={$user.xxid}')" title="{$lang.remove}"><img src="images/icon_drop.gif" border="0" height="16" width="16" /></a> -->
 
     </td>
 
@@ -150,11 +89,11 @@
 
       <input type="hidden" name="act" value="batch_remove" />
 
-      <input type="submit" id="btnSubmit" value="{$lang.button_remove}" disabled="true" class="button" /></td>
+     <input type="submit" id="btnSubmit" value="{$lang.button_remove}" disabled="true" class="button" /></td>
 
       <td align="right" nowrap="true" colspan="8">
 
-      {include file="page.htm"}
+         {include file="page.htm"}
 
       </td>
 
@@ -225,6 +164,8 @@ function searchUser()
 {
 
     listTable.filter['keywords'] = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+    //系统消息标题搜索
+    listTable.filter['xxtitle'] = Utils.trim(document.forms['searchForm'].elements['xxtitle'].value);
 
     listTable.filter['rank'] = document.forms['searchForm'].elements['user_rank'].value;
 

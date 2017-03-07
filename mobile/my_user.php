@@ -2852,11 +2852,11 @@ elseif ($action == 'async_order_list')
 
              foreach ($order_list['data'] as $key => $value) {
 
-                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;" id="order_cart_'.$value['order_id'].'">
+                 $string='<div class="shopping-cart-1 pc-Payment" id="order_cart_'.$value['order_id'].'">
 
-                        <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
+                        <div class="clearfix pc-payment-1">
 
-                          <div class="pull-left" style="padding-top:10px;">订单编号:'.$value['order_sn'].'</div>
+                          <div class="pull-left pc-payment-dnumber">订单编号:'.$value['order_sn'].'</div>
 
                             <!-- Buttons -->
 
@@ -2864,7 +2864,7 @@ elseif ($action == 'async_order_list')
 
                             <a href="#" class="btn btn-default waves-effect waves-light cancel_order_pc" data-id="'.$value['order_id'].'">取消订单</a>
 
-                            <a href="flow.php?step=pay_ok&order_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light">去支付</a>
+                            <a href="flow.php?step=pay_ok&order_id='.$value['order_id'].'" class="btn btn-primary waves-effect waves-light" target="_Blank">去支付</a>
 
                           </div>
 
@@ -2872,7 +2872,7 @@ elseif ($action == 'async_order_list')
 
                           </div>
 
-                      <div class="row">
+                      <div class="row mobile-payment-main">
 
                           <div class="col-md-6">';
 
@@ -2908,7 +2908,7 @@ elseif ($action == 'async_order_list')
 
                          </div>';
 
-                    $string.='<div class="item visible-xs"><div class="row"><div class="col-xs-5">';
+                    $string.='<div class="item visible-xs"><div class="row"><div class="col-xs-3">';
 
                     if($v['goods_thumb']){
 
@@ -2920,7 +2920,7 @@ elseif ($action == 'async_order_list')
 
                     }
 
-                    $string.='</div><div class="col-xs-7" onclick="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'
+                    $string.='</div><div class="col-xs-9" onclick="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'
 
                         </div>
 
@@ -2968,13 +2968,13 @@ elseif ($action == 'async_order_list')
 
                         <div class="column">
 
-                          <h3 class="toolbar-title">总价：</h3>
+                          <div class="pc-payment-allmoney">总价：</div>
 
                         </div>
 
                         <div class="column">
 
-                          <h3 class="amount_no" style="color:#f20000">'.$value['total_fee'].'</h3>
+                          <div class="pc-amount_no" style="color:#f20000">'.$value['total_fee'].'</div>
 
                         </div>
 
@@ -2984,11 +2984,9 @@ elseif ($action == 'async_order_list')
 
                       <div class="col-md-6">
 
-                        <h4 class="text-primary">收件人信息</h4>
+                        <h4 class="pc-text-primary">收件人信息</h4>
 
-                        <hr>
-
-                        <div>
+                        <div class="pc-text-primary-main">
 
                         收件人：'.$value['consignee'].'<br>
 
@@ -3002,11 +3000,10 @@ elseif ($action == 'async_order_list')
 
                       </div>
 
-                      <br>
 
 
 
-                      <div class="visible-sm visible-xs">
+                      <div class="visible-sm visible-xs mobile-payment-button">
 
                         <a href="#" class="btn btn-default waves-effect waves-light cancel_order_mobile" data-id="'.$value['order_id'].'">取消订单</a>
 
@@ -3066,19 +3063,15 @@ elseif ($action == 'async_order_list')
 
              foreach ($order_list['data'] as $key => $value) {
 
-                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+                 $string='<div class="shopping-cart-1 pc-Payment">
 
-                        <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
+                        <div class="clearfix pc-payment-1">
 
-                          <div class="pull-left" style="padding-top:10px;">订单编号:'.$value['order_sn'].'</div>
+                          <div class="pull-left pc-payment-dnumber">订单编号:'.$value['order_sn'].'</div>
 
+                        </div>
 
-
-
-
-                          </div>
-
-                      <div class="row">
+                      <div class="row mobile-payment-main">
 
                           <div class="col-md-6">';
 
@@ -3098,27 +3091,27 @@ elseif ($action == 'async_order_list')
 
                     $string.='<div class="item-details">
 
-                    <h3 class="item-title"><a style="color:#77cde3" href="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'</a></h3><div><div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
-
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
-
-                          <h4 class="item-price">'.$v['goods_price'].'</h4>
-
+                    <h3 class="item-title"><a style="color:#77cde3" href="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'</a></h3>
+                        <div>
+                            <div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
+                            <h4 class="item-price">数量：'.$v['goods_number'].'</h4>
                         </div>
+                    <h4 class="item-price">'.$v['goods_price'].'</h4>
+                    </div>
+                    </div>';
 
-                         </div>';
 
                     $string.='<div class="item visible-xs">
 
                         <div class="row">
 
-                        <div class="col-xs-5">';
+                        <div class="col-xs-3">';
 
                     if($v['goods_thumb']){
 
 
 
-                        $string.='<a href="shop-single.php?id='.$v['goods_id'].$linestring2.'" class="item-thumb pull-left">
+                        $string.='<a href="shop-single.php?id='.$v['goods_id'].$linestring2.'">
 
                           <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
 
@@ -3128,7 +3121,7 @@ elseif ($action == 'async_order_list')
 
                     $string.='</div>
 
-                        <div class="col-xs-7">
+                        <div class="col-xs-9" onclick="shop-single.php?id={$gl.goods_id}{$linestring2}">
 
                           '.$v['goods_name'].'
 
@@ -3136,7 +3129,7 @@ elseif ($action == 'async_order_list')
 
                         </div>
 
-                          <div style="margin-top:20px;padding:10px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">'.$v['goods_attr'].'</div>
+                          <div class="myorder-shop-item">'.$v['goods_attr'].'</div>
 
                           <div class="clearfix clearfix2">
 
@@ -3154,11 +3147,11 @@ elseif ($action == 'async_order_list')
 
                 }
 
-                $string.='<div class="cart-subtotal-youfei space-bottom" style="border-bottom: 2px solid #ededed;">
+                $string.='<div class="cart-subtotal-youfei my-space-bottom" style="border-bottom: 2px solid #ededed;">
 
                         <div class="column">
 
-                          <div>邮费：</div>
+                          <div class="wait-mobile-many">邮费：</div>
 
                         </div>
 
@@ -3168,17 +3161,18 @@ elseif ($action == 'async_order_list')
 
                         </div>
 
-                      </div><div class="cart-subtotal">
+                      </div>
+                      <div class="cart-subtotal my-space-bottom">
 
                         <div class="column">
 
-                          <h4 class="toolbar-title">总价：</h4>
+                          <h4 class="pc-payment-allmoney">总价：</h4>
 
                         </div>
 
                         <div class="column">
 
-                          <h3 class="amount_ye" style="color:#f20000">'.$value['total_fee'].'</h3>
+                          <h3 class="pc-amount_no" style="color:#f20000">'.$value['total_fee'].'</h3>
 
                         </div>
 
@@ -3188,11 +3182,8 @@ elseif ($action == 'async_order_list')
 
                       <div class="col-md-6">
 
-                        <h4 class="text-primary">收件人信息</h4>
-
-                        <hr>
-
-                        <div>
+                        <div class="pc-text-primary">收件人信息</div>
+                        <div class="pc-text-primary-main-shoujian">
 
                         收件人：'.$value['consignee'].'<br>
 
@@ -3205,14 +3196,6 @@ elseif ($action == 'async_order_list')
                       </div>
 
                       </div>
-
-                      <br>
-
-
-
-
-
-
 
                     </div>';
 
@@ -3265,11 +3248,11 @@ elseif ($action == 'async_order_list')
 
              foreach ($order_list['data'] as $key => $value) {
 
-                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+                 $string='<div class="shopping-cart-1 pc-Payment">
 
-                        <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
+                        <div class="clearfix pc-payment-1">
 
-                          <div class="pull-left" style="padding-top:10px;">订单编号:'.$value['order_sn'].'</div>
+                          <div class="pull-left pc-payment-dnumber">订单编号:'.$value['order_sn'].'</div>
 
 
 
@@ -3277,7 +3260,7 @@ elseif ($action == 'async_order_list')
 
                           </div>
 
-                      <div class="row">
+                      <div class="row mobile-payment-main">
 
                           <div class="col-md-6">';
 
@@ -3287,7 +3270,7 @@ elseif ($action == 'async_order_list')
 
                     if($v['goods_thumb']){
 
-                        $string.='<a style="color:#77cde3" href="shop-single.php?id='.$v['goods_id'].$linestring2.'" class="item-thumb pull-left">
+                        $string.='<a href="shop-single.php?id='.$v['goods_id'].$linestring2.'" class="item-thumb pull-left">
 
                           <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
 
@@ -3297,15 +3280,15 @@ elseif ($action == 'async_order_list')
 
                     $string.='<div class="item-details">
 
-                    <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'</a></h3><div><div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
+                    <h3 class="item-title"><a style="color:#77cde3" href="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'</a></h3>
+                    <div>
+                        <div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
 
                           <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
-
-                          <h4 class="item-price">'.$v['goods_price'].'</h4>
-
                         </div>
-
-                         </div>';
+                            <h4 class="item-price">'.$v['goods_price'].'</h4>
+                         </div>
+                    </div>';
 
                     $string.='<div class="item visible-xs">
 
@@ -3315,11 +3298,9 @@ elseif ($action == 'async_order_list')
 
                     if($v['goods_thumb']){
 
-
-
                         $string.='<a href="shop-single.php?id='.$v['goods_id'].$linestring2.'">
 
-                          <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
+                          <img  class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
 
                         </a>';
 
@@ -3327,7 +3308,7 @@ elseif ($action == 'async_order_list')
 
                     $string.='</div>
 
-                        <div class="col-xs-9">
+                        <div class="col-xs-9" onclick="shop-single.php?id={$gl.goods_id}{$linestring2}">
 
                           '.$v['goods_name'].'
 
@@ -3355,11 +3336,11 @@ elseif ($action == 'async_order_list')
 
                 }
 
-                $string.='<div class="cart-subtotal-youfei space-bottom" style="border-bottom: 2px solid #ededed;">
+                $string.='<div class="art-subtotal-youfei my-space-bottom" style="border-bottom: 2px solid #ededed;">
 
                         <div class="column">
 
-                          <div>邮费：</div>
+                          <div class="wait-mobile-many">邮费：</div>
 
                         </div>
 
@@ -3369,17 +3350,18 @@ elseif ($action == 'async_order_list')
 
                         </div>
 
-                      </div><div class="cart-subtotal">
+                      </div>
+                      <div class="cart-subtotal my-space-bottom">
 
                         <div class="column">
 
-                          <h4 class="toolbar-title">总价：</h4>
+                          <div class="pc-payment-allmoney">总价：</div>
 
                         </div>
 
                         <div class="column">
 
-                          <h3 class="amount_come" style="color:#f20000">'.$value['total_fee'].'</h3>
+                          <div class="pc-amount_no" style="color:#f20000">'.$value['total_fee'].'</div>
 
                         </div>
 
@@ -3389,11 +3371,9 @@ elseif ($action == 'async_order_list')
 
                       <div class="col-md-6">
 
-                        <h4 class="text-primary">收件人信息</h4>
+                        <div class="text-primary">收件人信息</div>
 
-                        <hr>
-
-                        <div>
+                        <div class="pc-text-primary-main">
 
                         收件人：'.$value['consignee'].'<br>
 
@@ -3403,15 +3383,13 @@ elseif ($action == 'async_order_list')
 
                   </div>
 
-                  <br>
+                  <div class="pc-text-primary-kuaidi">快递信息</div>
 
-                  <h4 class="text-primary">快递信息</h4>
 
-                        <hr>
+                  <div class="mobile-kuaidigz"><a  class="btn btn-primary Logistics" href="#" data-id="'.$value['order_id'].'" onClick="javascript:func()">快递跟踪</a></div>
 
-                  <a  class="btn btn-primary Logistics" href="#" data-id="'.$value['order_id'].'" onClick="javascript:func()">快递跟踪</a>
-
-                      </div><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="expressmain" style="border-top: 2px dashed #ededed">
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="expressmain" style="border-top: 2px dashed #ededed">
 
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 exname" id="couriername">'.$value['shipping_name'].'</div>
 
@@ -3503,19 +3481,15 @@ elseif ($action == 'async_order_list')
 
              foreach ($order_list['data'] as $key => $value) {
 
-                 $string='<div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
+                 $string='<div class="shopping-cart-1 pc-Payment">
 
-                        <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
+                        <div class="clearfix pc-payment-1">
 
-                          <div class="pull-left" style="padding-top:10px;">订单编号:'.$value['order_sn'].'</div>
-
-
-
-
+                          <div class="pull-left pc-payment-dnumber">订单编号:'.$value['order_sn'].'</div>
 
                           </div>
 
-                      <div class="row">
+                      <div class="row mobile-payment-main">
 
                           <div class="col-md-6">';
 
@@ -3535,15 +3509,14 @@ elseif ($action == 'async_order_list')
 
                     $string.='<div class="item-details">
 
-                    <h3 class="item-title"><a href="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'</a></h3><div><div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
-
-                          <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
-
-                          <h4 class="item-price">'.$v['goods_price'].'</h4>
-
+                    <h3 class="item-title"><a style="color:#77cde3" href="shop-single.php?id='.$v['goods_id'].$linestring2.'">'.$v['goods_name'].'</a></h3>
+                    <div>
+                        <div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
+                        <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
+                    </div>
+                    <h4 class="item-price">'.$v['goods_price'].'</h4>
                         </div>
-
-                         </div>';
+                    </div>';
 
                     $string.='<div class="item visible-xs">
 
@@ -3565,7 +3538,7 @@ elseif ($action == 'async_order_list')
 
                     $string.='</div>
 
-                        <div class="col-xs-9">
+                        <div class="col-xs-9" onclick="shop-single.php?id={$gl.goods_id}{$linestring2}">
 
                           '.$v['goods_name'].'
 
@@ -3593,11 +3566,11 @@ elseif ($action == 'async_order_list')
 
                 }
 
-                $string.='<div class="cart-subtotal-youfei space-bottom" style="border-bottom: 2px solid #ededed;">
+                $string.='<div class="cart-subtotal-youfei my-space-bottom" style="border-bottom: 2px solid #ededed;">
 
                         <div class="column">
 
-                          <div>邮费：</div>
+                          <div class="wait-mobile-many">邮费：</div>
 
                         </div>
 
@@ -3607,17 +3580,18 @@ elseif ($action == 'async_order_list')
 
                         </div>
 
-                      </div><div class="cart-subtotal">
+                      </div>
+                      <div class="cart-subtotal my-space-bottom">
 
                         <div class="column">
 
-                          <h4 class="toolbar-title">总价：</h4>
+                          <div class="pc-payment-allmoney">总价：</div>
 
                         </div>
 
                         <div class="column">
 
-                          <h3 class="amount_done" style="color:#f20000">'.$value['total_fee'].'</h3>
+                          <h3 class="pc-amount_no" style="color:#f20000">'.$value['total_fee'].'</h3>
 
                         </div>
 
@@ -3627,11 +3601,9 @@ elseif ($action == 'async_order_list')
 
                       <div class="col-md-6">
 
-                        <h4 class="text-primary">收件人信息</h4>
+                        <div class="pc-text-primary">>收件人信息</div>
 
-                        <hr>
-
-                        <div>
+                        <div class="pc-text-primary-main-shoujian">
 
                         收件人：'.$value['consignee'].'<br>
 
@@ -3640,10 +3612,6 @@ elseif ($action == 'async_order_list')
                   地   址 ：'.$value['address'].'
 
                   </div>
-
-                  <br>
-
-
 
                       </div>
 

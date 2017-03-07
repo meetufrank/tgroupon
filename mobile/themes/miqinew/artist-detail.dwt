@@ -34,7 +34,7 @@
   <!-- by sun -->
   <style>
     .quotation{
-    	width:50%;
+    	width:70%;
     }
     .quotation .quotation-author-ava{
     	width:100px;
@@ -60,6 +60,13 @@
 
   .article-content img{
     margin:auto;
+  }
+
+  @media screen and (max-width:768px){
+    .mobile-artist-row{
+      padding-right:0px;
+      padding-left:0px;
+  }
   }
   </style>
 
@@ -122,24 +129,24 @@
       <h3 class="padding-top mobile-Recent">近期作品</h3>
       <div class="row padding-top" id="nextsp">
 	  {foreach from=$ysjzp item=ysjzp name=no}
-        <div class="col-lg-3 col-sm-6" >
+        <div class="col-lg-3 col-sm-6 mobile-artist-row" >
           <div class="shop-item">
             <div class="shop-thumbnail">
               <a href="shop-single.php?id={$ysjzp.goods_id}{$linestring2}" class="item-link"></a>
               <img src="../..{$ysjzp.listimg}" alt="{$ysjzp.goods_name}">
             </div>
-            <div class="shop-item-details">
+
               <div class="shop-item-title"><a href="#">{$ysjzp.goods_name}</a></div>
-            </div>
-             <div class="shop-item-details">
+
+
               <div class="shop-item-price">
                {if $ysjzp.falseprice>$ysjzp.attributeprice}
                <span class="lead-shop-select text-normal text-gray text-crossed">￥{$ysjzp.falseprice}</span>
                {/if}
                ￥{$ysjzp.attributeprice}
               </div>
-            </div>
-          </div><!-- .shop-item -->
+          </div>
+
         </div><!-- .col-lg-3.col-sm-6 -->
      {/foreach}
 
@@ -197,7 +204,8 @@
                               }else{
                                 var price='';
                               }
-                           $("#nextsp").append('<div class="col-lg-3 col-sm-6">'+'<div class="shop-item">'+'<div class="shop-thumbnail">'+'<a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}" class="item-link"></a><img src="'+'../..'+data.data[i].listimg+'" alt="'+data.data[i].goods_name+'">'+'</div>'+'<div class="shop-item-details">'+'<h3 class="shop-item-title"><a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}">'+data.data[i].goods_name+'</a></h3>'+'<span class="shop-item-price"><span class="lead-shop-select text-normal text-gray text-crossed">'+price+'</span>￥'+data.data[i].attributeprice+'</span>'+'</div>'+'</div>'+'</div>');//内容添加到页面上.
+
+                           $("#nextsp").append('<div class="col-lg-3 col-sm-6 mobile-artist-row">'+'<div class="shop-item">'+'<div class="shop-thumbnail">'+'<a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}" class="item-link"></a><img src="'+'../..'+data.data[i].listimg+'" alt="'+data.data[i].goods_name+'">'+'</div>'+'<div class="shop-item-details">'+'<h3 class="shop-item-title"><a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}">'+data.data[i].goods_name+'</a></h3>'+'<span class="shop-item-price"><span class="lead-shop-select text-normal text-gray text-crossed">'+price+'</span>￥'+data.data[i].attributeprice+'</span>'+'</div>'+'</div>'+'</div>');//内容添加到页面上.
                              });
                          if(data.more==0){
                                     $("#more").remove();

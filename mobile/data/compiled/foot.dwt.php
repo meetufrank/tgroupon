@@ -1,17 +1,17 @@
  <footer class="footer padding-top-2x">
       <div class="column">
         <div class="feature text-center">
-      <div class="feature-title"><a id="Cooperate" href="#">服务中心</a></div>
+      <div class="feature-title"><a id="Cooperate" href="about_us.php<?php echo $this->_var['linestring1']; ?>#fuwu">服务中心</a></div>
           </div>
       </div>
       <div class="column">
         <div class="feature text-center">
-            <div class="feature-title"><a href="#">关于我们</a></div>
+            <div class="feature-title"><a href="about_us.php<?php echo $this->_var['linestring1']; ?>#guanyu">关于我们</a></div>
           </div>
       </div>
       <div class="column">
         <div class="feature text-center">
-            <div class="feature-title"><a href="#">商业合作</a></div>
+            <div class="feature-title"><a href="about_us.php<?php echo $this->_var['linestring1']; ?>#shangye">商业合作</a></div>
           </div>
       </div>
     </footer>
