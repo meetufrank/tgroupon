@@ -37,11 +37,19 @@
 
   <!-- by sun -->
   <style>
+  @media screen and (max-width:768px){
+    .tab-content{
+      padding-top:0px;
+      padding-bottom:0px;
+      padding-left:5px;
+      padding-right:5px;
+    }
+    .nav-pills{
+      margin-bottom:0px;
+    }
+  }
     .nav-pills{
       margin-left:-18px;
-      padding-bottom:10px;
-      margin-top: 10px;
-      margin-bottom:35px;
       margin-left:0px;
     }
     .nav-pills>li {
@@ -182,9 +190,9 @@
             <div role="tabpanel" class="tab-pane transition fade in active" id="tab1_1">
              <!--待付款-->
  <!--{foreach from=$no_orders.data item=no}-->
-                    <div class="shopping-cart-1" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;" id="order_cart_{$no.order_id}">
-                        <div class="clearfix" style=" border-bottom: 2px solid #ededed; margin-bottom:30px;">
-                          <div class="pull-left" style="padding-top:10px;">订单编号:{$no.order_sn}</div>
+                    <div class="shopping-cart-1 pc-Payment" id="order_cart_{$no.order_id}">
+                        <div class="clearfix pc-payment-1">
+                          <div class="pull-left pc-payment-dnumber">订单编号:{$no.order_sn}</div>
                             <!-- Buttons -->
                           <div class="pull-right hidden-xs hidden-sm">
                             <a href="#" class="btn btn-default waves-effect waves-light cancel_order_pc" data-id="{$no.order_id}">取消订单</a>
@@ -192,7 +200,7 @@
                           </div>
 
                           </div>
-                      <div class="row">
+                      <div class="row mobile-payment-main">
                           <div class="col-md-6">
                       <!-- Item -->
                     <!--{foreach from=$no.good_list item=gl}-->
@@ -214,14 +222,14 @@
                          </div><!-- .item -->
                          <div class="item visible-xs">
                          <div class="row">
-                          <div class="col-xs-5">
+                          <div class="col-xs-3">
                           {if $gl.goods_thumb}
                             <a href="shop-single.php?id={$gl.goods_id}{$linestring2}">
                               <img class="img-responsive" src="././admin/{$gl.goods_thumb}" alt="{$gl.goods_name}">
                             </a>
                             {/if}
                           </div>
-                          <div class="col-xs-7" onclick="shop-single.php?id={$gl.goods_id}{$linestring2}">
+                          <div class="col-xs-9" onclick="shop-single.php?id={$gl.goods_id}{$linestring2}">
                           {$gl.goods_name}
                         </div>
                         </div>
@@ -248,26 +256,23 @@
                       <!-- Subtotal -->
                       <div class="cart-subtotal my-space-bottom">
                         <div class="column">
-                          <h4>总价：</h4>
+                          <div class="pc-payment-allmoney">总价：</div>
                         </div>
                         <div class="column">
-                          <h3 class="amount_no" style="color:#f20000">{$no.total_fee}</h3>
+                          <div class="pc-amount_no" style="color:#f20000">{$no.total_fee}</div>
                         </div>
                       </div><!-- .subtotal -->
                       </div>
                       <div class="col-md-6">
-                        <h4 class="text-primary">收件人信息</h4>
-                        <hr>
-                        <div>
+                        <div class="pc-text-primary">收件人信息</div>
+                      <div class="pc-text-primary-main">
                         收件人：{$no.consignee}<br>
                   手机号：{$no.tel}<br>
                   地   址 ：{$no.address}
                   </div>
                       </div>
                       </div>
-                      <br>
-
-                      <div class="visible-sm visible-xs">
+                      <div class="visible-sm visible-xs mobile-payment-button">
                         <a href="#" class="btn btn-default waves-effect waves-light cancel_order_mobile" data-id="{$no.order_id}" >取消订单</a>
                         <a href="flow.php?step=pay_ok&order_id={$no.order_id}" class="btn btn-primary waves-effect waves-light" target="_Blank">去支付</a>
                       </div>
@@ -290,14 +295,16 @@
               </div>
               {/if}
             </div>
-<!--待发货-->
+
+<!--待发货开始-->
             <div role="tabpanel" class="tab-pane transition fade" id="tab1_2">
             <!--{foreach from=$ye_orders.data item=ye}-->
-              <div class="shopping-cart-1 padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
-                        <div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
-                          订单编号：{$ye.order_sn}
-                          </div>
-                      <div class="row">
+
+              <div class="shopping-cart-1 pc-Payment">
+              <div class="clearfix pc-payment-1">
+                    <div class="pull-left pc-payment-dnumber"> 订单编号：{$ye.order_sn}</div>
+              </div>
+                      <div class="row mobile-payment-main">
                           <div class="col-md-6">
 
                       <!--{foreach from=$ye.good_list item=yg}-->
@@ -320,50 +327,49 @@
                       </div><!-- .item -->
                       <div class="item visible-xs">
                         <div class="row">
-                        <div class="col-xs-5">
+                        <div class="col-xs-3">
                         {if $yg.goods_thumb}
                           <a href="shop-single.php?id={$yg.goods_id}{$linestring2}">
                             <img class="img-responsive" src="././admin/{$yg.goods_thumb}" alt="{$yg.goods_name}">
                           </a>
                            {/if}
                         </div>
-                        <div class="col-xs-7">
+                        <div class="col-xs-9" onclick="shop-single.php?id={$gl.goods_id}{$linestring2}">
                           {$yg.goods_name}
                         </div>
                         </div>
-                          <div style="margin-top:20px;padding:10px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$yg.goods_attr}</div>
+                          <div class="myorder-shop-item">{$yg.goods_attr}</div>
                           <div class="clearfix clearfix2">
-                            <div class="pull-left">{$yg.goods_price}</div>
+                            <div class="pull-left" style="color: #F20000;">{$yg.goods_price}</div>
                             <div class="pull-right">
                                    数量：{$yg.goods_number}
                             </div>
                           </div>
                       </div><!-- .item -->
                    <!--{/foreach}-->
-                   <div class="cart-subtotal-youfei space-bottom" style="border-bottom: 2px solid #ededed;">
+                   <div class="cart-subtotal-youfei my-space-bottom" style="border-bottom: 2px solid #ededed;">
                         <div class="column">
-                          <div>邮费：</div>
+                          <div class="wait-mobile-many">邮费：</div>
                         </div>
                         <div class="column">
                           <div class="amount_order_no1 wait-mobile-many">{$ye.post_price}</div>
                         </div>
                       </div>
                       <!-- Subtotal -->
-                      <div class="cart-subtotal">
+                      <div class="cart-subtotal my-space-bottom">
                         <div class="column">
-                          <h4>总价：</h4>
+                          <div class="pc-payment-allmoney">总价：</div>
                         </div>
                         <div class="column">
-                          <h3 class="amount_ye" style="color:#f20000">{$ye.total_fee}</h3>
+                          <div class="pc-amount_no" style="color:#f20000">{$ye.total_fee}</div>
                         </div>
 
                       </div><!-- .subtotal -->
 
                       </div>
                       <div class="col-md-6">
-                        <h4 class="text-primary">收件人信息</h4>
-                        <hr>
-                        <div>
+                        <div class="pc-text-primary">收件人信息</div>
+                        <div class="pc-text-primary-main-shoujian">
                         收件人：{$ye.consignee}<br>
                   手机号：{$ye.tel}<br>
                   地   址 ：{$ye.address}
@@ -382,14 +388,14 @@
               </div>
                  {/if}
             </div>
-<!--待收货-->
+<!--待收货开始-->
             <div role="tabpanel" class="tab-pane transition fade" id="tab1_3">
             <!--{foreach from=$come_orders.data item=co}-->
-              <div class="shopping-cart-1 padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
-                        <div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
-                          订单编号：{$co.order_sn}
-                          </div>
-                      <div class="row">
+              <div class="shopping-cart-1 pc-Payment">
+                <div class="clearfix pc-payment-1">
+                            <div class="pull-left pc-payment-dnumber">订单编号：{$co.order_sn}</div>
+                </div>
+                      <div class="row mobile-payment-main">
                       <div class="col-md-6">
                       <!-- Item -->
                       <!--{foreach from=$co.good_list item=cg}-->
@@ -397,32 +403,32 @@
 
                         {if $cg.goods_thumb}
                         <a href="shop-single.php?id={$cg.goods_id}{$linestring2}" class="item-thumb pull-left">
-                          <img src="././admin/{$cg.goods_thumb}" alt="{$cg.goods_name}">
+                          <img class="img-responsive" src="././admin/{$cg.goods_thumb}" alt="{$cg.goods_name}">
                         </a>
                         {/if}
                         <div class="item-details">
                           <h3 class="item-title"><a style="color:#77cde3" href="shop-single.php?id={$cg.goods_id}{$linestring2}">{$cg.goods_name}</a></h3>
                           <div>
-                          <div class="pull-right" style="color: #000;">{$cg.goods_attr}</div>
-                          <h4 class="item-price">数量：{$cg.goods_number} </h4>
+                            <div class="pull-right" style="color: #000;">{$cg.goods_attr}</div>
+                            <h4 class="item-price">数量：{$cg.goods_number} </h4>
                           </div>
                           <h4 class="item-price">{$cg.goods_price}</h4>
                         </div>
                       </div><!-- .item -->
                       <div class="item visible-xs">
                         <div class="row">
-                        <div class="col-xs-5">
+                        <div class="col-xs-3">
                               {if $cg.goods_thumb}
                             <a href="shop-single.php?id={$cg.goods_id}{$linestring2}">
-                              <img src="././admin/{$cg.goods_thumb}" alt="{$cg.goods_name}">
+                              <img  class="img-responsive" src="././admin/{$cg.goods_thumb}" alt="{$cg.goods_name}">
                             </a>
                             {/if}
                         </div>
-                        <div class="col-xs-7">
+                        <div class="col-xs-9" onclick="shop-single.php?id={$gl.goods_id}{$linestring2}">
                           {$cg.goods_name}
                         </div>
                         </div>
-                          <div style="margin-top:20px;padding:10px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$cg.goods_attr}</div>
+                          <div class="myorder-shop-item">{$cg.goods_attr}</div>
                           <div class="clearfix clearfix2">
                             <div class="pull-left" style="color: #F20000;">{$cg.goods_price}</div>
                             <div class="pull-right">
@@ -433,43 +439,37 @@
                        <!--{/foreach}-->
 
                       <!-- Subtotal -->
-                      <div class="cart-subtotal-youfei space-bottom" style="border-bottom: 2px solid #ededed;">
+                      <div class="cart-subtotal-youfei my-space-bottom" style="border-bottom: 2px solid #ededed;">
                         <div class="column">
-                          <div>邮费：</div>
+                          <div class="wait-mobile-many">邮费：</div>
                         </div>
                         <div class="column">
                           <div class="amount_order_no1 wait-mobile-many">{$co.post_price}</div>
                         </div>
                       </div>
                       <!-- Subtotal -->
-                      <div class="cart-subtotal">
+                      <div class="cart-subtotal my-space-bottom">
                         <div class="column">
-                          <h4>总价：</h4>
+                          <div class="pc-payment-allmoney">总价：</div>
                         </div>
                         <div class="column">
-                          <h3 class="amount_come" style="color:#f20000">{$co.total_fee}</h3>
+                          <div class="pc-amount_no" style="color:#f20000">{$co.total_fee}</div>
                         </div>
 
                       </div><!-- .subtotal -->
 
                       </div>
                       <div class="col-md-6">
-                        <h4 class="text-primary">收件人信息</h4>
-                        <hr>
-                        <div>
+                        <div class="pc-text-primary">收件人信息</div>
+                        <div class="pc-text-primary-main">
                         收件人：{$co.consignee}<br>
                   手机号：{$co.tel}<br>
                   地   址 ：{$co.address}
                   </div>
-                  <br>
-
-                  <h4 class="text-primary">快递信息</h4>
-                        <hr>
-
-
+                  <div class="pc-text-primary-kuaidi">快递信息</div>
                   <!-- 订单id -->
-                  <input type="hidden"  value="{$co.order_id}" id="orderids">
-                  <a class="btn btn-primary Logistics" href="#" data-id="{$co.order_id}" onClick="javascript:func({$co.order_id})">快递跟踪</a>
+                  <input type="hidden" value="{$co.order_id}" id="orderids">
+                  <div class="mobile-kuaidigz"><a class="btn btn-primary Logistics" href="#" data-id="{$co.order_id}" onClick="javascript:func({$co.order_id})">快递跟踪</a></div>
                   </div>
                   <!--快递信息开始-->
 
@@ -521,44 +521,44 @@
 <!--已完成-->
             <div role="tabpanel" class="tab-pane transition fade" id="tab1_4">
             <!--{foreach from=$done_orders.data item=do}-->
-              <div class="shopping-cart-1 padding-bottom-1x" style=" border: 2px solid #ededed; padding:15px; margin-bottom: 30px;">
-                        <div style=" border-bottom: 2px solid #ededed; margin-bottom:30px;padding-bottom: 18px; ">
-                          订单编号：{$do.order_sn}
-                          </div>
-                          <div class="row">
-                          <div class="col-md-6">
+              <div class="shopping-cart-1 pc-Payment">
+              <div class="clearfix pc-payment-1">
+                          <div class="pull-left pc-payment-dnumber">订单编号:{$do.order_sn}</div>
+              </div>
+              <div class="row mobile-payment-main">
+                 <div class="col-md-6">
                       <!-- Item -->
                       <!--{foreach from=$do.good_list item=dg}-->
                       <div class="item hidden-xs">
 
                         {if $dg.goods_thumb}
                         <a href="shop-single.php?id={$dg.goods_id}{$linestring2}" class="item-thumb pull-left">
-                          <img src="././admin/{$dg.goods_thumb}" alt="{$dg.goods_name}">
+                          <img class="img-responsive" src="././admin/{$dg.goods_thumb}" alt="{$dg.goods_name}">
                         </a>
                         {/if}
                         <div class="item-details">
                           <h3 class="item-title"><a style="color:#77cde3" href="shop-single.php?id={$dg.goods_id}{$linestring2}">{$dg.goods_name}</a></h3>
                           <div>
-                          <div class="pull-right" style="color: #000;">{$dg.goods_attr}</div>
-                          <h4 class="item-price">数量：{$dg.goods_number} </h4>
+                            <div class="pull-right" style="color: #000;">{$dg.goods_attr}</div>
+                            <h4 class="item-price">数量：{$dg.goods_number} </h4>
                           </div>
                           <h4 class="item-price">{$dg.goods_price}</h4>
                         </div>
                       </div><!-- .item -->
                       <div class="item visible-xs">
                         <div class="row">
-                        <div class="col-xs-5">
+                        <div class="col-xs-3">
                               {if $dg.goods_thumb}
                             <a href="shop-single.php?id={$dg.goods_id}{$linestring2}">
-                              <img src="././admin/{$dg.goods_thumb}" alt="{$dg.goods_name}">
+                              <img class="img-responsive" src="././admin/{$dg.goods_thumb}" alt="{$dg.goods_name}">
                             </a>
                             {/if}
                         </div>
-                        <div class="col-xs-7">
+                        <div class="col-xs-9" onclick="shop-single.php?id={$gl.goods_id}{$linestring2}">
                           {$dg.goods_name}
                         </div>
                         </div>
-                          <div style="margin-top:20px;padding:10px 0; border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5; color: #000;">{$dg.goods_attr}</div>
+                          <div class="myorder-shop-item">{$dg.goods_attr}</div>
                           <div class="clearfix clearfix2">
                             <div class="pull-left" style="color: #F20000;">{$dg.goods_price}</div>
                             <div class="pull-right">
@@ -569,41 +569,33 @@
                        <!--{/foreach}-->
 
                       <!-- Subtotal -->
-                      <div class="cart-subtotal-youfei space-bottom" style="border-bottom: 2px solid #ededed;">
+                      <div class="cart-subtotal-youfei my-space-bottom" style="border-bottom: 2px solid #ededed;">
                         <div class="column">
-                          <div>邮费：</div>
+                          <div class="wait-mobile-many">邮费：</div>
                         </div>
                         <div class="column">
                           <div class="amount_order_no1 wait-mobile-many">{$do.post_price}</div>
                         </div>
                       </div>
                       <!-- Subtotal -->
-                      <div class="cart-subtotal">
+                      <div class="cart-subtotal my-space-bottom">
                         <div class="column">
-                          <h4>总价：</h4>
+                          <div class="pc-payment-allmoney">总价：</div>
                         </div>
                         <div class="column">
-                          <h3 class="amount_done" style="color:#f20000">{$do.total_fee}</h3>
+                          <div class="pc-amount_no" style="color:#f20000">{$do.total_fee}</div>
                         </div>
 
                       </div><!-- .subtotal -->
 
                       </div>
                       <div class="col-md-6">
-                        <h4 class="text-primary">收件人信息</h4>
-                        <hr>
-                        <div>
+                        <div class="pc-text-primary">收件人信息</div>
+                        <div class="pc-text-primary-main-shoujian">
                         收件人：{$do.consignee}<br>
                   手机号：{$do.tel}<br>
                   地   址 ：{$do.address}
                   </div>
-                  <br>
-
-
-
-
-
-
                       </div>
                       </div>
                       </div>
@@ -807,60 +799,6 @@
       });
       });
 
-      //快递跟踪
-            // $('.Logistics').each(function(){
-            //         $(this).click(function(){
-            //                  //获取订单编号
-
-            //                var orderids = $(this).attr("data-id");
-            //                // alert(orderids);
-            //                  // var orderids = document.getElementById("orderids{}").value;
-
-            //                  $.ajax({
-            //                       type:"get",
-            //                       url:"my_user.php?act=order_tracking_news",
-            //                       async:true,
-            //                       data:{order_id:orderids},
-            //                       dataType: "json",
-            //                       success: function (result) {
-            //                                  var content = "";
-            //                                  var a ='';
-            //                                  if(result.status == 200){  //成功
-            //                                     var resultData = result.data;
-
-            //                                            for(var i=resultData.length-1;i>=0;i--){
-
-            //                                             if(i%2 == 0){
-            //                                                  a = 'row bg-default';
-            //                                                   content +='<div class="'+a+'" style="padding:6px 0;"><div class="col-xs-2"><span style="font-size:10px;">'+resultData[i].time.substring(0,10)+'</span><br><span style="font-size:22px; font-weight:bold;">'+resultData[i].time.substring(10,20)+'</span></div><div class="col-xs-1 hidden-xs" style="margin-top:10px;"></div><div class="col-xs-7" style="margin-top:10px;">'+resultData[i].context+'</div></div>';
-
-            //                                               }else{
-            //                                                 a = 'row';
-            //                                                  content +='<div class="'+a+'" style="padding:6px 0;"><div class="col-xs-2"><span style="font-size:10px;">'+resultData[i].time.substring(0,10)+'</span><br><span style="font-size:22px; font-weight:bold;">'+resultData[i].time.substring(10,20)+'</span></div><div class="col-xs-1 hidden-xs" style="margin-top:10px;"></div><div class="col-xs-7" style="margin-top:10px;">'+resultData[i].context+'</div></div>';
-            //                                               }
-
-
-
-            //                                             }
-            //                                   }else if(result.status == 400){  //失败
-            //                                       alert("订单暂未发货，请稍后再来查询");
-            //                                      }
-            //                                       layer.open({
-            //                                           title: [
-            //                                             ''+result.shipping_name+':    '+result.invoice_no+'',
-
-            //                                             'background-color:#77cde3; color:#fff;'
-            //                                           ],
-            //                                           content:content,
-            //                                           btn: '我知道了',
-            //                                           shadeClose: false,
-            //                                               });
-
-            //                             }//回调函数结束
-            //                  });//ajax结束
-            //   });//快递跟踪点击函数
-
-            // });
 
               function func(orderid) {
                 var exs = document.getElementById("expressmain"+orderid);

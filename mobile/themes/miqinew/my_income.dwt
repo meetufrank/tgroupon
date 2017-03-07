@@ -36,6 +36,18 @@
 
   <!-- by sun -->
   <style>
+  @media screen and (max-width:768px){
+    .tab-content{
+      margin-top:10px;
+    }
+    .table{
+      max-width:90%;
+      margin-left:18px;
+    }
+    #shouyi_page{
+      margin-left:15px;
+    }
+  }
     .nav-pills{
     	margin-left:-18px;
     	padding-bottom:10px;
