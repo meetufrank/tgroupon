@@ -3412,10 +3412,12 @@ to {
 }
 .shop-item .shop-item-details {
 	display: table;
-	width: 100%;
-	padding-top:5px;
-	padding-left:5px;
-	padding-right:0px;
+    width: 100%;
+    padding-top: 24px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .shop-item .shop-item-details .shop-item-title, .shop-item .shop-item-details .shop-item-price {
 	display: table-cell;
