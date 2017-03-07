@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>型色主义首页</title>
+
+  <!--SEO Meta Tags-->
+  <meta name="description" content="COLOR & SHAPE" />
+  <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+
+  <!--Mobile Specific Meta Tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!-- Google Material Icons -->
+  <link href="{$ectouch_themes}/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+
+  <!-- Brand Icons -->
+  <link href="{$ectouch_themes}/css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+
+  <!-- Bootstrap -->
+  <link href="{$ectouch_themes}/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <!-- Theme Styles -->
+  <link href="{$ectouch_themes}/css/theme.min.css" rel="stylesheet" media="screen">
+
+  <!-- Page Preloading -->
+  <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
+
+  <!-- Modernizr -->
+  <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
+  <!-- by sun -->
+  <style>
+  @media screen and (max-width:768px){
+    .swiper-container {
+      margin-top:55px;
+    }
+  }
+  @media screen and (min-width:768px){
+	  .info-box{
+		margin-top:70px;
+		}
+    .swiper-container {
+        height:100%;
+    }
+    .container-fluid-shopselect{
+      padding: 0 30px;
+    }
+
+	}
+	@media (min-width: 1200px){
+		.container {
+			width:1300px;
+		}
+	}
+.row{
+  margin-left: -15px;
+  margin-right:-15px;
+}
+.container-fluid-shopselect{
+      max-width: 1920px;
+}
+.count{
+  	position: absolute;
+		display: block;
+		width: 16px;
+		height: 16px;
+		line-height: 16px;
+		font-size: 12px;
+		color: #fff;
+		text-align: center;
+		border-radius: 50%;
+		background-color: #77cde3;
+		top: -2px;
+		right: -17px;
+  }
+	.teammate-thumb{
+		border-radius: 50%;
+	}
+	.teammate-name a{
+		text-decoration:none;
+		color:#999;
+	}
+	.teammate-name a:hover{
+		color:#333;
+	}
+	.checkbox{
+		padding-left: 8px;
+		padding-bottom:10px;
+	}
+	.img-Currentsize{
+		max-width:85%;
+		display:inline-block;
+    border-radius: 50%;
+	}
+	.owl-nav{
+		display:none;
+	}
+	.teammate {
+		width: 90%;
+	}
+.form-control-index {
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+  height: 48px;
+  font-size: 14px;
+  color: #606060;
+  text-transform: none;
+  border: 2px solid #ededed;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 0 16px;
+  margin-bottom: 24px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s
+}
+.form-control-index:focus {
+  border-color: #77cde3;
+  outline: none
+}
+.form-control-index::-moz-placeholder {
+color:#606060;
+opacity:1
+}
+.form-control-index:-ms-input-placeholder {
+color:#606060
+}
+.form-control-index::-webkit-input-placeholder {
+color:#606060
+}
+.form-control-index.placeholder {
+  color: #606060
+}
+</style>
+
+</head>
+
+<!-- Body -->
+<body class="page-preloading">
+
+  <!-- Page Pre-Loader -->
+
+  <!-- .page-preloader -->
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+
+    <!-- 头部开始 -->
+    {include file="head.dwt"}
+    <!-- 头部结束 -->
+
+    <!-- Hero Slider -->
+    <section class="hero-slider">
+      <div class="inner">
+      {foreach from=$banner_list item=bl}
+        <a href="{$bl.ad_link}"><div class="slide" style="background-image:url({$bl.ad_code});">
+        </div></a>
+      {/foreach}
+      </div>
+    </section>
+
+	<!-- search -->
+	<section class="container-fluid">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<ul class="nav-tabs" role="tablist" style="border-bottom: none;">
+		            <li class="active"><a href="#products" role="tab" data-toggle="tab">商品</a></li>
+		            <li><a href="#designers" role="tab" data-toggle="tab">设计师</a></li>
+		          </ul>
+				<div class="tab-content" style="padding-top:0px; min-height: auto; margin-top: -10px;">
+					<div id="products" class="tab-pane transition fade scale active in">
+						<div class="row space-top-half">
+						<div class="col-xs-10" style="padding-left: 1px; padding-right: 0;">
+							<input type="text" class="form-control-index" placeholder="请在此处搜索您想要的商品" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您想要的商品'" id="goods_content">
+						</div>
+						<div class="col-xs-2" style="padding-left: 1px; margin-top:-10px;">
+				          	<button class="btn btn-default" type="submit" id="goods_search">
+			                  <i class="material-icons search"></i>
+			                </button>
+						</div>
+						</div>
+					</div>
+					<div id="designers" class="tab-pane transition fade scale">
+						<div class="row space-top-half">
+						<div class="col-xs-10" style="padding-left: 1px; padding-right: 0;">
+							<input type="text" class="form-control-index" placeholder="请在此处搜索您要找的设计师" onfocus="this.placeholder=''" onblur="this.placeholder='请在此处搜索您要找的设计师'" id="get_ysj_content">
+						</div>
+						<div class="col-xs-2" style="padding-left: 1px; margin-top:-10px;">
+				          	<button class="btn btn-default" type="submit" id="ysj_search">
+			                  <i class="material-icons search"></i>
+			                </button>
+						</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+<script type="text/javascript">
+   $("#goods_search").click(function(){
+    event.preventDefault();
+       var content=$("#goods_content").val();
+       var search='showsearch';
+        $.ajax({
+           type: "post",
+           url: "set_content.php?act=goods",
+           data:{typeid:content,type:search},
+           dataType:"JSON",
+           success: function (data) {
+
+            window.location.href="goods_list.php{$linestring1}";
+          }
+     });
+   });
+  $("#ysj_search").click(function(){
+    event.preventDefault();
+       var content=$("#get_ysj_content").val();
+
+        $.ajax({
+           type: "post",
+           url: "set_content.php?act=ysj",
+           data:{content:content},
+           dataType:"JSON",
+           success: function (data) {
+
+            window.location.href="artist_list.php{$linestring1}";
+          }
+     });
+   });
+ function  drump_type(id){
+      var  type='showtype';
+           $.ajax({
+           type: "post",
+           url: "set_content.php?act=goods",
+           data:{typeid:id,type:type},
+           dataType:"JSON",
+           success: function (data) {
+
+            window.location.href="goods_list.php{$linestring1}";
+          }
+        });
+   }
+</script>
+
+   <section class="container-fluid padding-top-3x">
+
+      <!-- Featured Categories -->
+      <h3 class="text-center padding-top">商品分类</h3>
+      <div class="row padding-top">
+      <!--{foreach from=$type_list  item=tl}-->
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="#" class="category-link" onclick="drump_type({$tl.cat_id});">
+            <img src="data/cat_ico/{$tl.cat_ico}" alt="{$tl.cat_name}">
+            {$tl.cat_name}
+          </a><!-- .category-link -->
+        </div><!-- .col-sm-4 -->
+        <!--{/foreach}-->
+        {if $type_hide==1}
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+          <a href="goods_list.php{$linestring1}" class="category-link">
+            <img src="{$ectouch_themes}/img/categories/more.jpg" alt="Category">
+            更多
+          </a>
+        </div>
+      {/if}
+      </div><!-- .row -->
+
+      <div class="row padding-top">
+
+        <!-- Special Offer -->
+        <div class="col-lg-3 col-md-4" onclick="javascript:location.href='shop-single.php?id={$tb_list.goods_id}{$linestring2}' ">
+          <div class="info-box text-center">
+            <h2>特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
+            <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="inline">
+              <img src="../../..{$tb_list.veryimg}" alt="{$tb_list.goods_name}">
+            </a>
+            <h3 class="lead text-normal space-bottom-half"><a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="link-title">{$tb_list.goods_name}</a></h3>
+            <span class="lead text-normal text-gray text-crossed">￥{$tb_list.falseprice}</span>
+            <span class="h4 text-normal text-danger">￥{$tb_list.attributeprice}</span>
+          </div><!-- .info-box -->
+          <div class="padding-bottom-2x visible-xs"></div>
+        </div><!-- .col-lg-3.col-md-4 -->
+
+        <!-- Products -->
+        <div class="col-lg-9 col-md-8">
+          <!-- Nav Tabs -->
+          <ul class="nav-tabs text-center" role="tablist">
+            <li class="active"><a href="#newcomers" role="tab" data-toggle="tab">新品上架</a></li>
+            <li><a href="#toprated" role="tab" data-toggle="tab">折扣优惠</a></li>
+          </ul><!-- .nav-tabs -->
+
+          <!-- Tab Panes -->
+          <div class="tab-content">
+
+            <!-- #newcomers -->
+            <div role="tabpanel" class="tab-pane transition fade scale in active" id="newcomers">
+              <div class="row space-top-half">
+              <!--{foreach from=$xp_list item=xl}-->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
+                      <img src="../..{$xl.listimg}" alt="{$xl.goods_name}">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.php?id={$xl.goods_id}{$linestring2}">{$xl.goods_name}</a></h3>
+                    </div>
+                    <div class="shop-item-details">
+                       <span class="shop-item-price">
+                        {if $xl.falseprice>$xl.attributeprice}
+                          <span class="lead-shop-select text-normal text-gray text-crossed">￥{$xl.falseprice}</span>
+                       {/if}
+                        ￥{$xl.attributeprice}
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+              <!--{/foreach}-->
+              </div><!-- .row -->
+            </div>
+
+
+            <!-- #toprated -->
+            <div role="tabpanel" class="tab-pane transition fade scale" id="toprated">
+              <div class="row">
+               <!--{foreach from=$dz_list item=dl}-->
+                <div class="col-lg-3 col-sm-6">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <a href="shop-single.php?id={$dl.goods_id}{$linestring2}" class="item-link"></a>
+                      <img src="../..{$dl.listimg}" alt="{$dl.goods_name}">
+                    </div>
+                    <div class="shop-item-details">
+                      <h3 class="shop-item-title"><a href="shop-single.php?id={$dl.goods_id}{$linestring2}">{$dl.goods_name}</a></h3>
+                    </div>
+                    <div class="shop-item-details">
+                      <span class="shop-item-price">
+                      {if $dl.falseprice>$dl.attributeprice}
+                          <span class="lead-shop-select text-normal text-gray text-crossed">￥{$dl.falseprice}</span>
+                       {/if}
+                        ￥{$dl.attributeprice}
+                      </span>
+                    </div>
+                  </div><!-- .shop-item -->
+                </div><!-- .col-lg-3.col-sm-6 -->
+                <!--{/foreach}-->
+
+              </div><!-- .row -->
+            </div><!-- .tab-pane#onsale -->
+          </div><!-- .tab-content -->
+        </div><!-- .col-lg-9.col-md-8 -->
+      </div><!-- .row -->
+    </section>
+    <!-- .container-fluid -->
+
+
+
+    <!-- Brands -->
+    <section class="container padding-top-2x padding-bottom">
+      <hr>
+      <h3 class="text-center">设计师介绍</h3>
+      <div class="row padding-top">
+      <!--{foreach from=$ysj_list item=yl}-->
+         <div class="col-xs-6 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <div class="social-bar text-center space-bottom">
+                <a href="artist-detail.php?ysjid={$yl.user_id}{$linestring2}" class="btn btn-square btn-sm btn-primary waves-effect waves-light">了解设计师</a>
+              </div><!-- .social-bar -->
+              <img src="{$yl.hav_logo}" alt="{$yl.user_name}" class="img-Currentsize">
+            </div>
+            <h4 class="teammate-name"><a href="artist-detail.php?ysjid={$yl.user_id}{$linestring2}">{$yl.user_name}</a></h4>
+          </div>
+          </div>
+          <!--{/foreach}-->
+
+{if $ysj_hide==1}
+         <div class="col-xs-6 col-md-2">
+         <div class="teammate">
+            <div class="teammate-thumb">
+              <a href="artist_list.php{$linestring1}"><img src="{$ectouch_themes}/img/team/more.jpg" alt="" class="img-Currentsize"></a>
+            </div>
+            <h4 class="teammate-name"><a href="artist_list.php{$linestring1}">更多</a></h4>
+          </div>
+          </div>
+          {/if}
+      </div><!-- .row -->
+
+    </section><!-- .container -->
+
+    <!-- Video Popup -->
+    <div class="fw-section space-top-2x padding-top-3x padding-bottom-3x" style="background-image: url({$ectouch_themes}/img/video_bg.jpg);">
+      <div class="container padding-top-3x padding-bottom-3x text-center">
+        <div class="space-top-3x space-bottom">
+          <!-- Add ".light-skin" class to alter appearance. -->
+          <a href="https://player.vimeo.com/video/135832597?color=77cde3&title=0&byline=0&portrait=0" class="video-popup-btn">
+            <i class="material-icons play_arrow"></i>
+          </a>
+        </div>
+        <p class="space-bottom-2x">型色主义—可信赖的合作伙伴！</p>
+      </div>
+    </div><!-- .fw-section -->
+
+
+     <!-- Footer -->
+   {include file="foot.dwt"}
+    <!--底部-->
+  </div><!-- .page-wrapper -->
+
+  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+
+  <script src="{$ectouch_themes}/js/vendor/bootstrap.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/smoothscroll.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/velocity.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/waves.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/icheck.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/owl.carousel.min.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/jquery.downCount.js"></script>
+  <script src="{$ectouch_themes}/js/vendor/magnific-popup.min.js"></script>
+  <script src="{$ectouch_themes}/js/scripts.js"></script>
+  <script src="{$ectouch_themes}/js/layer_mobile/layer.js"></script>
+
+</body><!-- <body> -->
+
+</html>
