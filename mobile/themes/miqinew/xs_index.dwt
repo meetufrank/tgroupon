@@ -31,35 +31,20 @@
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
   <!-- by sun -->
   <style>
-  @media screen and (max-width:768px){
-    .swiper-container {
-      margin-top:55px;
-    }
-  }
   @media screen and (min-width:768px){
 	  .info-box{
 		margin-top:70px;
 		}
-    .swiper-container {
-        height:100%;
-    }
-    .container-fluid-shopselect{
-      padding: 0 30px;
-    }
-
 	}
 	@media (min-width: 1200px){
 		.container {
 			width:1300px;
 		}
 	}
-.row{
+/* .row{
   margin-left: -15px;
   margin-right:-15px;
-}
-.container-fluid-shopselect{
-      max-width: 1920px;
-}
+} */
 .count{
   	position: absolute;
 		display: block;
