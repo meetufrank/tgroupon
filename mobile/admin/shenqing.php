@@ -2192,20 +2192,6 @@ function get_affiliate_ck($user_id,$level)
 }
 
 
-//查询数据方法
-function get_pzd_list()
-{
-$sql = "SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('shenqing');
-$filter['record_count'] = $GLOBALS['db']->getOne($sql);
-$filter = page_and_size($filter);
-/* 获活动数据 */
-$sql = "SELECT * FROM " . $GLOBALS['ecs']->table('shenqing')." LIMIT ". $filter['start'] .", " . $filter['page_size'];
-$filter['keywords'] = stripslashes($filter['keywords']);
-set_filter($filter, $sql);
-$row = $GLOBALS['db']->getAll($sql);
-$arr = array('pzd_list' => $row, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
-return $arr;
-}
 
 
 
