@@ -39,6 +39,10 @@
       padding-right:0px;
       padding-left:0px;
   }
+    .index-sl-per{
+      padding-right:0px;
+      padding-left:0px;
+    }
   }
   @media screen and (min-width:768px){
 	  .info-box{
