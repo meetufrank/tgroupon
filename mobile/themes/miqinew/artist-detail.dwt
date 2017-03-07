@@ -80,14 +80,14 @@
     <!-- 头部结束 -->
 
  <!-- Hero Slider -->
+ {if $banner_list}
   <section class="hero-slider">
       <div class="inner">
-      {foreach from=$banner_list item=bl}
-        <a href="{$bl.ad_link}"><div class="slide" style="background-image:url({$bl.ad_code});">
+        <a href="#"><div class="slide" style="background-image:url({$banner_list});">
         </div></a>
-      {/foreach}
       </div>
   </section>
+  {/if}
 	<!-- Content -->
 	<section class="container padding-top-2x">
 		<div class="clearfix">
@@ -126,7 +126,7 @@
           <div class="shop-item">
             <div class="shop-thumbnail">
               <a href="shop-single.php?id={$ysjzp.goods_id}{$linestring2}" class="item-link"></a>
-              <img src="././admin/{$ysjzp.attributeimg}" alt="{$ysjzp.goods_name}">
+              <img src="../..{$ysjzp.listimg}" alt="{$ysjzp.goods_name}">
             </div>
             <div class="shop-item-details">
               <div class="shop-item-title"><a href="#">{$ysjzp.goods_name}</a></div>
@@ -197,7 +197,7 @@
                               }else{
                                 var price='';
                               }
-                           $("#nextsp").append('<div class="col-lg-3 col-sm-6">'+'<div class="shop-item">'+'<div class="shop-thumbnail">'+'<a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}" class="item-link"></a>'+'<img src="././admin/'+data.data[i].attributeimg+'" alt="'+data.data[i].goods_name+'">'+'</div>'+'<div class="shop-item-details">'+'<h3 class="shop-item-title"><a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}">'+data.data[i].goods_name+'</a></h3>'+'<span class="shop-item-price"><span class="lead-shop-select text-normal text-gray text-crossed">'+price+'</span>￥'+data.data[i].attributeprice+'</span>'+'</div>'+'</div>'+'</div>');//内容添加到页面上.
+                           $("#nextsp").append('<div class="col-lg-3 col-sm-6">'+'<div class="shop-item">'+'<div class="shop-thumbnail">'+'<a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}" class="item-link"></a><img src="'+'../..'+data.data[i].listimg+'" alt="'+data.data[i].goods_name+'">'+'</div>'+'<div class="shop-item-details">'+'<h3 class="shop-item-title"><a href="shop-single.php?id='+data.data[i].goods_id+'{$linestring2}">'+data.data[i].goods_name+'</a></h3>'+'<span class="shop-item-price"><span class="lead-shop-select text-normal text-gray text-crossed">'+price+'</span>￥'+data.data[i].attributeprice+'</span>'+'</div>'+'</div>'+'</div>');//内容添加到页面上.
                              });
                          if(data.more==0){
                                     $("#more").remove();

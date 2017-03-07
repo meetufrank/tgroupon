@@ -308,7 +308,7 @@ color:#606060
                     <div class="shop-thumbnail">
 
                       <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
-                      <img src="././admin/{$xl.attributeimg}" alt="{$xl.goods_name}">
+                      <img src="../..{$xl.listimg}" alt="{$xl.goods_name}">
                     </div>
                     <div class="shop-item-details">
                       <div class="shop-item-title">
@@ -339,7 +339,7 @@ color:#606060
                     <div class="shop-thumbnail">
                       <!-- <span class="shop-label text-danger">Sale</span> -->
                       <a href="shop-single.php?id={$dl.goods_id}{$linestring2}" class="item-link"></a>
-                      <img src="././admin/{$dl.attributeimg}" alt="{$dl.goods_name}">
+                      <img src="../..{$dl.listimg}" alt="{$dl.goods_name}">
                     </div>
                     <div class="shop-item-details">
                       <div class="shop-item-title"><a href="shop-single.php?id={$dl.goods_id}{$linestring2}">{$dl.goods_name}</a></div>

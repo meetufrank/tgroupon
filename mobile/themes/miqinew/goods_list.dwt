@@ -197,10 +197,11 @@
               <div class="shop-item">
                 <div class="shop-thumbnail">
                   <a href="shop-single.php?id={{d.data[i].goods_id}}{$linestring2}" class="item-link"></a>
-              {{# if(d.data[i].attributeimg){}}
-                  <img src="././admin/{{ d.data[i].attributeimg}}" alt="Shop item">
+              {{# if(d.data[i].listimg){}}
+                  <img src="../..{{d.data[i].listimg}}" alt="Shop item">
+                  {{# }}}
                 </div>
-                {{# }}}
+
                 <div class="shop-item-details">
                   <div class="shop-item-title"><a href="shop-single.php?id={{d.data[i].goods_id}}{$linestring2}">{{ d.data[i].goods_name }}</a></div>
                 </div>
@@ -295,7 +296,7 @@ layui.use(['laypage', 'layer'], function(){
               },
               error: function(data){
 
-                          layer.open({
+                   layer.open({
                   content: '暂无商品'
                   ,skin: 'msg'
                   });

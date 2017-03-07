@@ -432,6 +432,19 @@ PRIMARY KEY (`xxid`)
 ;
 
 
+/*#2017/03/03 王晋  添加读取消息记录表
+*/
+CREATE TABLE `ecs_read` (
+`re_id`  mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '//消息读取id' ,
+`re_userid`  mediumint(8) NOT NULL COMMENT '//用户id' ,
+`re_xxid`  mediumint(8) NOT NULL COMMENT '//消息id' ,
+PRIMARY KEY (`re_id`)
+)
+;
 
+/*#2017/03/03 王晋  修改消息表消息时间字段数据类型
+*/
+ALTER TABLE `ecs_xiaoxi`
+MODIFY COLUMN `xxtime`  timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '//系统消息时间' AFTER `xxlink`;
 
 

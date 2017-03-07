@@ -542,7 +542,7 @@
                 <div class="shop-item">
                   <div class="shop-thumbnail">
                     <a href="shop-single.php?id={$xh.goods_id}{$linestring2}" class="item-link"></a>
-                    {if $xh.attributeimg}<img src="././admin/{$xh.attributeimg}" alt="Shop item">{/if}
+                    {if $xh.listimg}<img src="../..{$xh.listimg}" alt="Shop item">{/if}
                   </div>
                   <div class="shop-item-details">
                     <div class="shop-item-title"><a href="shop-single.php?id={$xh.goods_id}{$linestring2}">{$xh.goods_name}</a></div>
