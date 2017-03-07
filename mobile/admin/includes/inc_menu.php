@@ -106,7 +106,7 @@ $modules['03_promotion']['15_exchange_goods']       = 'exchange_goods.php?act=li
 
 
 
-$modules['04_order']['011_fallinto']               = 'fallinto.php?act=delivery_list';
+// $modules['04_order']['011_fallinto']               = 'fallinto.php?act=delivery_list';
 
 $modules['04_order']['02_order_list']               = 'order.php?act=list';
 
