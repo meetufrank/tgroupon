@@ -37,10 +37,6 @@
   <!-- Modernizr -->
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
 <style>
-.good-list-row {
-  margin-right:-13px;
-  margin-left:-13px;
-}
 .shop-bar{
   padding-left:15px;
   padding-right:15px;
@@ -156,7 +152,7 @@
 
 
         </div><!-- .col-md-9 col-sm-8 -->
-      </div><!-- good-list-row-->
+      </div><!-- row-->
     </section><!-- .container -->
   </div><!-- .page-wrapper -->
 

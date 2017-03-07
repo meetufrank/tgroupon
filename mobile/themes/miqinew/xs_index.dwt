@@ -35,10 +35,10 @@
     .swiper-container {
       margin-top:55px;
     }
-    .index-sl-per{
+    .mobile-good-list-row{
       padding-right:0px;
       padding-left:0px;
-    }
+  }
   }
   @media screen and (min-width:768px){
 	  .info-box{
@@ -307,25 +307,26 @@ color:#606060
             <div role="tabpanel" class="tab-pane transition fade scale in active" id="newcomers">
               <div class="row space-top-half">
               <!--{foreach from=$xp_list item=xl}-->
-                <div class="col-lg-3 col-sm-6 index-sl-per">
-                    <div class="shop-thumbnail">
+                <div class="col-lg-3 col-md-4 col-sm-6 mobile-good-list-row">
+                  <div class="shop-item">
+                      <div class="shop-thumbnail">
 
-                      <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
-                      <img src="././admin/{$xl.attributeimg}" alt="{$xl.goods_name}">
-                    </div>
-
-                      <div class="shop-item-title">
-                        <a href="shop-single.php?id={$xl.goods_id}{$linestring2}">{$xl.goods_name}</a>
+                        <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
+                        <img src="././admin/{$xl.attributeimg}" alt="{$xl.goods_name}">
                       </div>
 
+                        <div class="shop-item-title">
+                          <a href="shop-single.php?id={$xl.goods_id}{$linestring2}">{$xl.goods_name}</a>
+                        </div>
 
-                     <div class="shop-item-price">
-                     {if $xl.falseprice>$xl.attributeprice}
-                        <span class="lead-shop-select text-normal text-gray text-crossed">￥{$xl.falseprice}</span>
-                     {/if}
-                        ￥{$xl.attributeprice}
-                      </div>
 
+                       <div class="shop-item-price">
+                       {if $xl.falseprice>$xl.attributeprice}
+                          <span class="lead-shop-select text-normal text-gray text-crossed">￥{$xl.falseprice}</span>
+                       {/if}
+                          ￥{$xl.attributeprice}
+                        </div>
+                  </div>
                 </div><!-- .col-lg-3.col-sm-6 -->
                 <!--{/foreach}-->
 

@@ -545,7 +545,7 @@
         <!-- 猜你喜欢(商品货品中同一类型的第一个) -->
         {foreach from=$xh item=xh}
               <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mobile-shopsingle-row">
-
+                <div class="shop-item">
                   <div class="shop-thumbnail">
                     <a href="shop-single.php?id={$xh.goods_id}{$linestring2}" class="item-link"></a>
                     {if $xh.attributeimg}<img src="././admin/{$xh.attributeimg}" alt="Shop item">{/if}
@@ -561,7 +561,7 @@
                       ￥{$xh.attributeprice}
                     </div>
 
-
+                </div>
               </div><!-- .col-lg-3.col-sm-6 -->
         {/foreach}
 

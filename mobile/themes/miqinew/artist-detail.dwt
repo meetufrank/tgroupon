@@ -130,7 +130,7 @@
       <div class="row padding-top" id="nextsp">
 	  {foreach from=$ysjzp item=ysjzp name=no}
         <div class="col-lg-3 col-sm-6 mobile-artist-row" >
-
+          <div class="shop-item">
             <div class="shop-thumbnail">
               <a href="shop-single.php?id={$ysjzp.goods_id}{$linestring2}" class="item-link"></a>
               <img src="././admin/{$ysjzp.attributeimg}" alt="{$ysjzp.goods_name}">
@@ -145,7 +145,7 @@
                {/if}
                ￥{$ysjzp.attributeprice}
               </div>
-
+          </div>
 
         </div><!-- .col-lg-3.col-sm-6 -->
      {/foreach}
