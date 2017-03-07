@@ -60,7 +60,8 @@ if ($_REQUEST['act'] == 'list')
 
 		$user_id=$aa['user_id'];
 
-		$sql = "SELECT count('uid')  FROM ecs_users  where parent_id='$user_id' ";
+		$sql = "
+select count(*) from `ecs_xiaoxi`";
 
 		$number = $db->query($sql);
 
@@ -72,13 +73,14 @@ if ($_REQUEST['act'] == 'list')
 
 	}
 
-    //print_r($user_list);
-    //查询系统消息表
-    $xxlist = "select * from `ecs_xiaoxi`";
-    $xxlists = $db->getAll($xxlist);
-    // print_r($xxlists);exit;
-    $smarty->assign('user_list',   $xxlists);
+    // //print_r($user_list);
+    // //查询系统消息表
+    // $xxlist = "select * from `ecs_xiaoxi`";
+    // $xxlists = $db->getAll($xxlist);
+    // // print_r($xxlists);exit;
+    // $smarty->assign('user_list',   $xxlists);
 
+    $smarty->assign('user_list',   $kk);
     $smarty->assign('filter',       $user_list['filter']);
 
     $smarty->assign('record_count', $user_list['record_count']);
@@ -147,7 +149,7 @@ elseif ($_REQUEST['act'] == 'query')
 
 
 
-    make_json_result($smarty->fetch('users_list.htm'), '', array('filter' => $user_list['filter'], 'page_count' => $user_list['page_count']));
+    make_json_result($smarty->fetch('myuserxiaoxi_list.htm'), '', array('filter' => $user_list['filter'], 'page_count' => $user_list['page_count']));
 
 }
 
@@ -203,12 +205,35 @@ elseif ($_REQUEST['act'] == 'add')
 
     assign_query_info();
 
-    $smarty->display('myuserxiaoxi_info.htm');
+    $smarty->display('myuserxiaoxi_add.htm');
 
 }
 
 
+elseif ($_REQUEST['act'] == 'xxinsert'){
+    $title = $_POST['xxtitle'];
+    $links = $_POST['xxlink'];
 
+
+   $xxinsert = "insert into `ecs_xiaoxi`(xxtitle,xxlink,xxtime) value('$title','$links',now())
+";
+   $db->query($xxinsert);
+
+        $link[0]['text'] = '继续添加!';
+
+        $link[0]['href'] = 'myuserxiaoxi.php?act=add';
+
+        $link[1]['text'] = '返回系统消息列表!';
+
+        $link[1]['href'] = 'myuserxiaoxi.php?act=list';
+
+
+        sys_msg('操作成功', 0, $link);
+
+        exit;
+
+
+}
 /*------------------------------------------------------ */
 
 //-- 添加会员帐号
@@ -223,7 +248,11 @@ elseif ($_REQUEST['act'] == 'insert')
 
     admin_priv('users_manage');
 
-    $username = empty($_POST['username']) ? '' : trim($_POST['username']);
+
+
+
+
+    // $username = empty($_POST['username']) ? '' : trim($_POST['username']);
 
     $password = empty($_POST['password']) ? '' : trim($_POST['password']);
 
@@ -242,7 +271,6 @@ elseif ($_REQUEST['act'] == 'insert')
     $sf = empty($_POST['shenfen']) ? 0 : intval($_POST['shenfen']);
 
     $tj_fencheng = empty($_POST['tj_fencheng']) ? 0 : intval($_POST['tj_fencheng']);
-
 
 
 
@@ -481,11 +509,31 @@ if($_FILES['pic']['name']){
 
     /* 提示信息 */
 
-    $link[] = array('text' => $_LANG['go_back'], 'href'=>'users.php?act=list');
+    // $link[] = array('text' => $_LANG['go_back'], 'href'=>'myuserxiaoxi.php?act=list');
 
-    sys_msg(sprintf($_LANG['add_success'], htmlspecialchars(stripslashes($_POST['username']))), 0, $link);
+    // sys_msg(sprintf($_LANG['add_success'], htmlspecialchars(stripslashes($_POST['username']))), 0, $link);
+
+ /*添加链接*/
+    $sjslist = "设计师列表";
+    $link[0]['text'] = $sjslist;
+
+    $link[0]['href'] = 'privilegeyishujia.php?act=list';
 
 
+
+    $link[1]['text'] = $_LANG['continue_add'];
+
+    $link[1]['href'] = 'privilegeyishujia.php?act=add';
+
+
+
+    sys_msg($_LANG['add'] . "&nbsp;" .$_POST['user_name'] . "&nbsp;" . $_LANG['action_succeed'],0, $link);
+
+
+
+    /* 记录管理员操作 */
+
+    admin_log($_POST['user_name'], 'add', 'privilege');
 
 }
 
@@ -506,260 +554,17 @@ elseif ($_REQUEST['act'] == 'edit')
     /* 检查权限 */
 
     admin_priv('users_manage');
+    $id = $_REQUEST['id'];
+    // print_r($id);exit;
+    $xxxx = "select * from `ecs_xiaoxi` where xxid = $id";
+    $xxxxs = $db->getAll($xxxx);
 
+    $smarty->assign('xxxxs',$xxxxs);
 
 
-    $sql = "SELECT u.user_name, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn, u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo,u.hav_money,u.tj_fencheng,u.xs_fencheng".
 
-        " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 
-
-
-    $row = $db->GetRow($sql);
-
-    $row['user_name'] = addslashes($row['user_name']);
-
-    $users  =& init_users();
-
-    $user   = $users->get_user_info($row['user_name']);
-
-
-
-    $sql = "SELECT u.user_id, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn,
-
-    u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo,u.hav_money,u.tj_fencheng,u.xs_fencheng".
-
-        " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
-
-
-
-    $row = $db->GetRow($sql);
-
-
-
-    if ($row)
-
-    {
-
-        $user['user_id']        = $row['user_id'];
-
-        $user['sex']            = $row['sex'];
-
-        $user['birthday']       = date($row['birthday']);
-
-        $user['pay_points']     = $row['pay_points'];
-
-        $user['rank_points']    = $row['rank_points'];
-
-        $user['user_rank']      = $row['user_rank'];
-
-        $user['user_money']     = $row['user_money'];
-
-        $user['frozen_money']   = $row['frozen_money'];
-
-        $user['credit_line']    = $row['credit_line'];
-
-        $user['formated_user_money'] = price_format($row['user_money']);
-
-        $user['formated_frozen_money'] = price_format($row['frozen_money']);
-
-        $user['parent_id']      = $row['parent_id'];
-
-        $user['parent_username']= $row['parent_username'];
-
-        $user['qq']             = $row['qq'];
-
-        $user['msn']            = $row['msn'];
-
-        $user['office_phone']   = $row['office_phone'];
-
-        $user['home_phone']     = $row['home_phone'];
-
-        $user['mobile_phone']   = $row['mobile_phone'];
-
-        $user['is_line']   = $row['is_line'];
-
-        $user['hav_logo']  = $row['hav_logo'];
-
-        $user['hav_money']  = $row['hav_money'];
-
-        $user['tj_fencheng'] = $row['tj_fencheng'];
-
-        $user['xs_fencheng'] = $row['xs_fencheng'];
-
-    }
-
-    else
-
-    {
-
-          $link[] = array('text' => $_LANG['go_back'], 'href'=>'users.php?act=list');
-
-          sys_msg($_LANG['username_invalid'], 0, $links);
-
-//        $user['sex']            = 0;
-
-//        $user['pay_points']     = 0;
-
-//        $user['rank_points']    = 0;
-
-//        $user['user_money']     = 0;
-
-//        $user['frozen_money']   = 0;
-
-//        $user['credit_line']    = 0;
-
-//        $user['formated_user_money'] = price_format(0);
-
-//        $user['formated_frozen_money'] = price_format(0);
-
-     }
-
-
-
-    /* 取出注册扩展字段 */
-
-    $sql = 'SELECT * FROM ' . $ecs->table('reg_fields') . ' WHERE type < 2 AND display = 1 AND id != 6 ORDER BY dis_order, id';
-
-    $extend_info_list = $db->getAll($sql);
-
-
-
-    $sql = 'SELECT reg_field_id, content ' .
-
-           'FROM ' . $ecs->table('reg_extend_info') .
-
-           " WHERE user_id = $user[user_id]";
-
-    $extend_info_arr = $db->getAll($sql);
-
-
-
-    $temp_arr = array();
-
-    foreach ($extend_info_arr AS $val)
-
-    {
-
-        $temp_arr[$val['reg_field_id']] = $val['content'];
-
-    }
-
-
-
-    foreach ($extend_info_list AS $key => $val)
-
-    {
-
-        switch ($val['id'])
-
-        {
-
-            case 1:     $extend_info_list[$key]['content'] = $user['msn']; break;
-
-            case 2:     $extend_info_list[$key]['content'] = $user['qq']; break;
-
-            case 3:     $extend_info_list[$key]['content'] = $user['office_phone']; break;
-
-            case 4:     $extend_info_list[$key]['content'] = $user['home_phone']; break;
-
-            case 5:     $extend_info_list[$key]['content'] = $user['mobile_phone']; break;
-
-            default:    $extend_info_list[$key]['content'] = empty($temp_arr[$val['id']]) ? '' : $temp_arr[$val['id']] ;
-
-        }
-
-    }
-
-
-
-    $smarty->assign('extend_info_list', $extend_info_list);
-
-
-
-    /* 当前会员推荐信息 */
-
-    $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
-
-    $smarty->assign('affiliate', $affiliate);
-
-
-
-    empty($affiliate) && $affiliate = array();
-
-
-
-    if(empty($affiliate['config']['separate_by']))
-
-    {
-
-        //推荐注册分成
-
-        $affdb = array();
-
-        $num = count($affiliate['item']);
-
-        $up_uid = "'$_GET[id]'";
-
-        for ($i = 1 ; $i <=$num ;$i++)
-
-        {
-
-            $count = 0;
-
-            if ($up_uid)
-
-            {
-
-                $sql = "SELECT user_id FROM " . $ecs->table('users') . " WHERE parent_id IN($up_uid)";
-
-                $query = $db->query($sql);
-
-                $up_uid = '';
-
-                while ($rt = $db->fetch_array($query))
-
-                {
-
-                    $up_uid .= $up_uid ? ",'$rt[user_id]'" : "'$rt[user_id]'";
-
-                    $count++;
-
-                }
-
-            }
-
-            $affdb[$i]['num'] = $count;
-
-        }
-
-        if ($affdb[1]['num'] > 0)
-
-        {
-
-            $smarty->assign('affdb', $affdb);
-
-        }
-
-    }
-
-
-
-
-
-    assign_query_info();
-
-    $smarty->assign('ur_here',          $_LANG['users_edit']);
-
-    $smarty->assign('action_link',      array('text' => $_LANG['03_users_list'], 'href'=>'users.php?act=list&' . list_link_postfix()));
-
-    $smarty->assign('user',             $user);
-
-    $smarty->assign('form_action',      'update');
-
-    $smarty->assign('special_ranks',    get_rank_list(true));
-
-    $smarty->display('user_info.htm');
+    $smarty->display('myuserxiaoxi_info.htm');
 
 }
 
@@ -829,6 +634,30 @@ elseif($_REQUEST['act'] == 'goodsid'){
 
 /*------------------------------------------------------ */
 
+elseif ($_REQUEST['act'] == 'xiugai'){
+
+   $xxid = $_POST['xxid'];
+   // print_r($xxid);exit;
+   $sq_status = $_POST['xxtitle'];
+   $xxlink = $_POST['xxlink'];
+
+
+   $sqstatusedit = "update `ecs_xiaoxi` set xxtitle= '$sq_status',xxlink = '$xxlink',xxtime = now() where xxid = $xxid";
+
+   $db->query($sqstatusedit);
+
+
+        $link[0]['text'] = '系统消息';
+
+        $link[0]['href'] = 'myuserxiaoxi.php?act=list';
+
+         sys_msg('操作成功', 0, $link);
+
+         exit;
+
+
+}
+
 
 
 elseif ($_REQUEST['act'] == 'update')
@@ -838,6 +667,8 @@ elseif ($_REQUEST['act'] == 'update')
     /* 检查权限 */
 
     admin_priv('users_manage');
+
+
 
     $username = empty($_POST['username']) ? '' : trim($_POST['username']);
 
@@ -1346,32 +1177,42 @@ elseif ($_REQUEST['act'] == 'remove')
     /* 检查权限 */
 
     admin_priv('users_drop');
+    $id =  intval($_REQUEST['id']);
 
 
 
-    $sql = "SELECT user_name FROM " . $ecs->table('users') . " WHERE user_id = '" . $_GET['id'] . "'";
 
-    $username = $db->getOne($sql);
+    $sql = "DELETE from ecs_xiaoxi where xxid = $id";
 
-    /* 通过插件来删除用户 */
+    $username = $db -> query($sql);
 
-    $users =& init_users();
+        $link[0]['text'] = '删除系统消息成功!';
 
-    $users->remove_user($username); //已经删除用户所有数据
+        $link[0]['href'] = 'myuserxiaoxi.php?act=list';
+
+        sys_msg('操作成功', 0, $link);
+
+        exit;
+
+    // /* 通过插件来删除用户 */
+
+    // $users =& init_users();
+
+    // $users->remove_user($username); //已经删除用户所有数据
 
 
 
-    /* 记录管理员操作 */
+    // /* 记录管理员操作 */
 
-    admin_log(addslashes($username), 'remove', 'users');
+    // admin_log(addslashes($username), 'remove', 'users');
 
 
 
-    /* 提示信息 */
+    // /* 提示信息 */
 
-    $link[] = array('text' => $_LANG['go_back'], 'href'=>'users.php?act=list');
+    // $link[] = array('text' => $_LANG['go_back'], 'href'=>'users.php?act=list');
 
-    sys_msg(sprintf($_LANG['remove_success'], $username), 0, $link);
+    // sys_msg(sprintf($_LANG['remove_success'], $username), 0, $link);
 
 }
 
@@ -1951,7 +1792,7 @@ function user_list()
 
 
 
-        $filter['record_count'] = $GLOBALS['db']->getOne("SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('users') . $ex_where);
+        $filter['record_count'] = $GLOBALS['db']->getOne("SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('xiaoxi'));
 
 
 
@@ -1961,11 +1802,9 @@ function user_list()
 
 
 
-        $sql = "SELECT is_line,user_id, user_name, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time,weiyi_num ".
+        $sql = "SELECT * ".
 
-                " FROM " . $GLOBALS['ecs']->table('users') . $ex_where .
-
-                " ORDER by " . $filter['sort_by'] . ' ' . $filter['sort_order'] .
+                " FROM " . $GLOBALS['ecs']->table('xiaoxi') .
 
                 " LIMIT " . $filter['start'] . ',' . $filter['page_size'];
 

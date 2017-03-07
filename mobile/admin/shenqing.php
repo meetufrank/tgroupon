@@ -58,8 +58,6 @@ if ($_REQUEST['act'] == 'list')
 
     $rs = $db->query($sql);
 
-
-
     $ranks = array();
 
     while ($row = $db->FetchRow($rs))
@@ -86,7 +84,7 @@ if ($_REQUEST['act'] == 'list')
 
 		$user_id=$aa['user_id'];
 
-		$sql = "SELECT count('uid')  FROM ecs_users  where parent_id='$user_id' ";
+		$sql = "select count(*) from `ecs_shenqing`";
 
 		$number = $db->query($sql);
 
@@ -98,13 +96,13 @@ if ($_REQUEST['act'] == 'list')
 
 	}
 
-     // print_r($user_list);
+     // print_r($kk);exit;
     //查询申请
-    $sqlist = "select * from `ecs_shenqing`";
+    // $sqlist = "select * from `ecs_shenqing`";
 
-    $sqlists = $db->getAll($sqlist);
+    // $sqlists = $db->getAll($sqlist);
     // print_r($sqlists);exit;
-    $smarty->assign('user_lists',   $sqlists);
+    // $smarty->assign('user_lists',   $sqlists);
 
     $smarty->assign('user_list',   $kk);
 
@@ -1783,7 +1781,7 @@ function user_list()
 
 
 
-        $filter['record_count'] = $GLOBALS['db']->getOne("SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('users') . $ex_where);
+        $filter['record_count'] = $GLOBALS['db']->getOne("SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('shenqing') . $ex_where);
 
 
 
@@ -1793,11 +1791,9 @@ function user_list()
 
 
 
-        $sql = "SELECT is_line,user_id, user_name, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time,weiyi_num ".
+        $sql = "SELECT * ".
 
-                " FROM " . $GLOBALS['ecs']->table('users') . $ex_where .
-
-                " ORDER by " . $filter['sort_by'] . ' ' . $filter['sort_order'] .
+                " FROM " . $GLOBALS['ecs']->table('shenqing') . $ex_where .
 
                 " LIMIT " . $filter['start'] . ',' . $filter['page_size'];
 
@@ -1806,7 +1802,7 @@ function user_list()
         $filter['keywords'] = stripslashes($filter['keywords']);
 
         set_filter($filter, $sql);
-
+// print_r($sql);exit;
     }
 
     else
@@ -2196,7 +2192,20 @@ function get_affiliate_ck($user_id,$level)
 }
 
 
-
+//查询数据方法
+function get_pzd_list()
+{
+$sql = "SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('shenqing');
+$filter['record_count'] = $GLOBALS['db']->getOne($sql);
+$filter = page_and_size($filter);
+/* 获活动数据 */
+$sql = "SELECT * FROM " . $GLOBALS['ecs']->table('shenqing')." LIMIT ". $filter['start'] .", " . $filter['page_size'];
+$filter['keywords'] = stripslashes($filter['keywords']);
+set_filter($filter, $sql);
+$row = $GLOBALS['db']->getAll($sql);
+$arr = array('pzd_list' => $row, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
+return $arr;
+}
 
 
 
