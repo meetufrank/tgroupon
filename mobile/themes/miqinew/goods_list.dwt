@@ -145,7 +145,7 @@
         </div>
 
         <!-- Products Grid -->
-        <div class="col-lg-10 col-md-9 col-sm-8">
+        <div class="col-lg-10 col-md-9 col-sm-8 mobile-good-list-row">
 
 
 
@@ -195,7 +195,7 @@
               </form><!-- form.search-box -->
             </div><!-- .column -->
           </div><!-- .shop-bar -->
-	  <div class="good-list-row">
+	  <div class="row">
     {{# if(d.data){}}
 	  {{# for(var i = 0, len = d.data.length; i < len; i++){ }}
 
