@@ -113,7 +113,7 @@
 
                   <div class="col-md-6 check_box"  >
                     <label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label{$consignee.address_id}"  >
-                     <input type="radio" name="my_co_shipping" {if $consignee.default==1}checked{elseif $smarty.foreach.address.iteration==1 }checked{/if} value="{$consignee.address_id}"  id="address{$consignee.address_id}"  >
+                     <input type="radio" name="my_co_shipping" {if $consignee.default==1}checked="checked"{/if} value="{$consignee.address_id}"  id="address{$consignee.address_id}"  >
                      </label><!--{$consignee.city}{$consignee.district}-->
                    {$consignee.province}{$consignee.address}
                   </div>
@@ -664,7 +664,7 @@
                                 }else{
                                      var check='checked';
                                 }
-                            var content=' <div class="row pay_label" style=" padding:2px 0; margin-bottom: 10px; margin-left: 0; margin-right: 0;cursor:pointer;" onclick="checkadd('+data.address_id+')" id="div'+data.address_id+'"><div class="col-md-6 check_box"  ><label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label'+data.address_id+'"  ><div class="iradio '+check+'"><input type="radio" name="my_co_shipping"  value="'+data.address_id+'"  id="address'+data.address_id+'"  style="position: absolute; opacity: 0;" '+check+'><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label> '+data.province+data.address+'</div><div class="xinzeng-mobile col-md-3">收件人：'+data.consignee+'</div><div class="col-md-3 xinzeng-mobile">联系电话：'+data.tel+'</div> </div>';
+                            var content=' <div class="row pay_label" style=" padding:2px 0; margin-bottom: 10px; margin-left: 0; margin-right: 0;cursor:pointer;" onclick="checkadd('+data.address_id+')" id="div'+data.address_id+'"><div class="col-md-6 check_box"  ><label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label'+data.address_id+'"  ><div class="iradio '+check+'"><input type="radio" name="my_co_shipping"  value="'+data.address_id+'"  id="address'+data.address_id+'"  style="position: absolute; opacity: 0;" '+check+'><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label>'+data.city+data.district+' '+data.province+data.address+'</div><div class="adperson col-md-3">收件人：'+data.consignee+'</div><div class="col-md-3 adnumber">联系电话：'+data.tel+'</div> </div>';
 
                             //console.log(data);
                              $("#address_h5").before(content);
@@ -685,7 +685,194 @@
             });
             });
 
+//编辑地址
+$("#pc_changaddress").click(function() {
 
+event.preventDefault();
+ $(" #pay_consignee input[type='radio']").each(function(){
+
+                       var id= $(this).attr("id");
+
+                       if($("#"+id).attr("checked")=="checked"){
+                        window.__editaddid__=$("#"+id).val();
+                      }
+                    });  //each结束
+ if(__editaddid__<=0){
+  alert('出错，暂时无法修改，请在个人中心修改我的地址');
+  return;
+ }
+                       $.ajax({
+                            type:"post",
+                            url:"my_usergrzx.php?act=act_edit_address&flag=display",
+                            async:true,
+                            data:{id:__editaddid__},
+                            dataType:'JSON',
+                            success: function (result) {
+
+                                   if(result){
+                                    var content =' <form method="post" class="checkout-form container" id="address_form"><div><input type="hidden" value="'+result.useraddress.address_id+'" name="addressid"><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="收件人" name="consignee" value="'+result.useraddress.consignee
++'"/></div>'
+    +
+    '<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="手机" name="tel" value="'+result.useraddress.tel+'"/></div>'
+    +
+    '<div id="form-control"><div class="col-md-4 col-xs-12"><div class="form-element form-select">'+
+    '<select name="province" id="province"   class="form-control" >'+
+               ' <option value="0">{$lang.please_select}{$name_of_region[1]}</option>';
+                if(result.address){
+                  $.each(result.address.province,function(i){
+                    content=content+'<option value="'+result.address.province[i].region_id+'" ';
+                    if(result.useraddress.province==result.address.province[i].region_id){
+                      content=content+' selected';
+                    }
+                    content=content+'  >'+result.address.province[i].region_name+'</option>';
+
+                  });
+                  content=content+' </select></div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select">'+
+                  '<select name="city" id="city"  class="form-control">'+
+                  '<option value="0">{$lang.please_select}{$name_of_region[2]}</option>';
+                  $.each(result.address.city,function(i){
+                    content=content+'<option value="'+result.address.city[i].region_id+'" ';
+                    if(result.useraddress.city==result.address.city[i].region_id){
+                      content=content+' selected';
+                    }
+                    content=content+'  >'+result.address.city[i].region_name+'</option>';
+
+                  });
+                  content=content+' </select></div></div><div class="col-md-4 col-xs-12"><div class="form-element form-select">'+
+                  '<select name="district" id="district"   class="form-control">'+
+                  '<option value="0">{$lang.please_select}{$name_of_region[3]}</option>';
+                   $.each(result.address.district,function(i){
+                    content=content+'<option value="'+result.address.district[i].region_id+'" ';
+                    if(result.useraddress.district==result.address.district[i].region_id){
+                      content=content+' selected';
+                    }
+                    content=content+'  >'+result.address.district[i].region_name+'</option>';
+
+                  });
+                   content=content+'</select></div></div></div>';
+                   content=content+'<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="详细地址" name="address" value="'+result.useraddress.address+'"/></div><div class="text-right visible-sm visible-xs"><a href="" style="text-decoration: underline;"></a></div></form>';
+                }
+
+                                    layer.open({
+                                      title: [
+                                        '编辑地址',
+                                        'background-color:#77cde3; color:#fff;'
+                                      ],
+                                      content:content,
+                                      btn: ['确认', '返回'],
+                                      success: function(){
+                                         //省事件开始
+                             $("#province").change(function(){
+                                var id=$("#province").val();
+                                $("#city").find("option").remove();
+                                          $("#district").find("option").remove();
+                                         $("#city").append('<option value="0">{$lang.please_select}{$name_of_region[2]}</option>');
+                                         $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
+                                if(id!=0){
+                                 $.ajax({
+                                    url:"ajax_region.php",
+                                    data:{ajax_province:id},
+                                    dataType:"JSON",
+                                    success: function(data){
+
+                                         $.each(data,function(i){
+
+                                             $("#city").append(
+                                               ' <option value="'+data[i].region_id+'"  >'+data[i].region_name+'</option>'
+                                             );
+
+
+                                         });
+                                         var cityid=$("#city").val();
+
+
+
+
+
+                                    },
+                                    error:function(){
+                                          alert('error');
+                                    }
+                                  });
+                                }
+
+                            });
+                        //省事件结束
+                        //市事件开始
+                         $("#city").change(function(){
+                            var id=$("#city").val();
+                            $("#district").find("option").remove();
+                            $("#district").append('<option value="0">{$lang.please_select}{$name_of_region[3]}</option>');
+                            if(id!=0){
+                             $.ajax({
+                                url:"ajax_region.php",
+                                data:{ajax_province:id},
+                                dataType:"JSON",
+                                success: function(data){
+
+                                     $.each(data,function(i){
+                                     if(i==0){
+                                         $("#district").append(
+                                           ' <option value="'+data[i].region_id+'" selected >'+data[i].region_name+'</option>'
+                                         );
+                                     }else{
+                                         $("#district").append(
+                                           ' <option value="'+data[i].region_id+'" >'+data[i].region_name+'</option>'
+                                         );
+                                     }
+
+                                     });
+
+                                },
+                                error:function(){
+                                      alert('error');
+                                }
+                              });
+                            }
+
+                        });
+                        //市事件结束
+
+                        },
+                          yes: function(index){
+                            $.ajax({
+                          type:"POST",
+                          url:"flow.php?step=editdizhi",
+                          data:$('#address_form').serialize(),
+                          dataType:"json",
+                          success: function(data){
+
+                             if($("input:radio[name='my_co_shipping']").length == 1){
+                                      var check='';
+                                }else{
+                                     var check='checked';
+                                }
+                            if(data.default==1){
+                              var check='checked';
+                            }
+                            var content=' <div class="col-md-6 check_box"  ><label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label'+data.address_id+'"  ><div class="iradio '+check+'"><input type="radio" name="my_co_shipping"  value="'+data.address_id+'"  id="address'+data.address_id+'"  style="position: absolute; opacity: 0;" '+check+'><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label>'+data.city+data.district+' '+data.province+data.address+'</div><div class="col-md-3 adperson">收件人：'+data.consignee+'</div><div class="col-md-3 adnumber">联系电话：'+data.tel+'</div> ';
+
+                            $("#div"+data.address_id).children().remove();
+                             $("#div"+data.address_id).append(content);
+                                 layer.close(index);
+
+                                },
+                          error:function(){
+                            layer.close(index);
+                          }
+                               });
+
+              },
+
+                                    });
+
+                                }
+
+                                  }//回调函数结束
+                               });//ajax结束
+
+
+}); //点击事件结束
 
 
     </script>

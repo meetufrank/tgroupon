@@ -502,7 +502,7 @@
                             success: function (result) {
                               //console.log(result);return;
                                    if(result){
-                                    var content =' <form method="post" class="checkout-form container" id="address_form"><div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="收件人" name="consignee" value="'+result.useraddress.consignee
+                                    var content =' <form method="post" class="checkout-form container" id="address_form" action="my_usergrzx.php?act=editdizhi{$linestring2}"><div><input type="hidden" value="'+result.useraddress.address_id+'" name="addressid"><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="收件人" name="consignee" value="'+result.useraddress.consignee
 +'"/></div>'
     +
     '<div><input type="text" style="width:98%; height:40px; padding:0 1%; margin-bottom:10px; border: 1px solid #ededed;" placeholder="手机" name="tel" value="'+result.useraddress.tel+'"/></div>'
@@ -627,6 +627,7 @@
 
                         },
                           yes: function(index){
+
                               $("#address_form").submit();
               },
 
@@ -761,12 +762,15 @@
                           url:"flow.php?step=consignee",
                           data:$('#address_form').serialize(),
                           success: function(data){
-                            window.location.reload();
+                           // window.location.reload();
                             //window.location.href=window.location.href;
                             //alert("ada");
                                  layer.close(index);
                                   //window.location.href=window.location.href;
-                                }
+                                },
+                          error:function(){
+                             layer.close(index);
+                          }
                                });
               },
 
