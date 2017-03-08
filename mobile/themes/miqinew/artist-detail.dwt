@@ -33,23 +33,60 @@
 
   <!-- by sun -->
   <style>
+  @media screen and (max-width:768px){
     .quotation{
-    	width:70%;
+      margin-left:10px;
     }
     .quotation .quotation-author-ava{
-    	width:100px;
-    	float:left;
-    	margin-right:20px;
+      width:50px;
+      float:left;
+      margin-right:5px;
     }
+    .quotation-author a {
+      display:block;
+      margin-top:10px;
+      text-decoration: none;
+      color: #999;
+    }
+    #shochangpc{
+      width:30px;
+      height:30px;
+      margin-top: 18px;
+    }
+  }
+   @media screen and (min-width:768px){
+    .quotation .quotation-author-ava{
+      width:100px;
+      float:left;
+      margin-right:20px;
+    }
+    .quotation-author a {
+      display:block;
+      margin-top:30px;
+      text-decoration: none;
+      color: #999;
+    }
+    .artist-detail-xin{
+      margin-top: 20px;
+    }
+    #shochangpc{
+      width:30px;
+      height:30px;
+      text-align:center;
+      padding-top:5px;
+    }
+  }
+  .owl-controls{
+    display:none;
+  }
+  .quotation{
+    	width:70%;
+  }
+
 	.quotation-author a:hover {
 	    color: #333;
 	}
-	.quotation-author a {
-		display:block;
-		margin-top:30px;
-	    text-decoration: none;
-	    color: #999;
-	}
+
   .owl-nav{
     display:none;
   }
@@ -106,9 +143,9 @@
 	              <a href="#">{$ysjxx.user_name}&nbsp;|&nbsp;{$ysjxx.country}</a>
 	            </div>
 	          </div>
-	          <div class="pull-right" style="margin-top: 20px;">
+	          <div class="pull-right artist-detail-xin">
 	          	<a href="#" class="sb-twitter">
-                  <i class="fa fa-heart  {if $sc_count}schongse{/if}" style="width:30px; height:30px;text-align:center; padding-top:5px;" id="shochangpc"></i>
+                  <i class="fa fa-heart  {if $sc_count}schongse{/if}"  id="shochangpc"></i>
                 </a>
 	          <!--	<a href="#" class="btn btn-default btn-sm" title="">
                   <i class="material-icons question_answer"></i>
