@@ -1689,7 +1689,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     }
 
 
-
+// print_r($tuijie_img);exit;
 
     //
 
