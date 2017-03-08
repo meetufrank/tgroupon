@@ -1108,7 +1108,7 @@ $smarty->assign('spguige',  $spguige);
 
 //商品相册
 
-$xiangce = "select * from `ecs_goods_gallery` where goods_id = $goodsid";
+$xiangce = "select * from `ecs_goods_gallery` where goods_id = $goodsid order by img_desc desc";
 
 $xiangce = $db->getAll($xiangce);
 
