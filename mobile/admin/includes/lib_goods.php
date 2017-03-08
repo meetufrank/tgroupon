@@ -1848,7 +1848,7 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
 
 
 
-        $sql = "SELECT goods_id, goods_name, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, sales_volume_base, veryimg," .
+        $sql = "SELECT goods_id, goods_name, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, sales_volume_base, veryimg,listimg," .
 
                     " (promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today') AS is_promote ".
 

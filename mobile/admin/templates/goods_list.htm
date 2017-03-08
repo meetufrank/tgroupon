@@ -49,7 +49,7 @@
     <th><a href="javascript:listTable.sort('is_new'); ">{$lang.is_new}</a>{$sort_is_new}</th>
 
     <th><a href="javascript:listTable.sort('is_hot'); ">折扣优惠</a>{$sort_is_hot}</th>
-    <th>特别优惠图片</th>
+    <th>列表显示图片</th>
     <th><a href="javascript:listTable.sort('sort_order'); ">{$lang.sort_order}</a>{$sort_sort_order}</th>
 
     {if $use_storage}
@@ -83,7 +83,7 @@
     <td align="center"><img src="images/{if $goods.is_new}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_new', {$goods.goods_id})" /></td>
 
     <td align="center"><img src="images/{if $goods.is_hot}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_hot', {$goods.goods_id})" /></td>
-    <td align="center"><img style="width:100px; height:100px;" src="{$goods.veryimg}"></td>
+    <td align="center"><img style="width:100px; height:100px;" src="../..{$goods.listimg}"></td>
     <td align="center"><span onclick="listTable.edit(this, 'edit_sort_order', {$goods.goods_id})">{$goods.sort_order}</span></td>
 
     {if $use_storage}
