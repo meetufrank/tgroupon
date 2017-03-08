@@ -135,7 +135,7 @@
                    <a href="#" onclick="callpay()" class="toggle-section addNewAddress">读取微信地址</a>
                    {/if}
                    &nbsp;&nbsp;<a href="#" id="Address_Manager" class="toggle-section addNewAddress">新增地址</a>
-
+                  <a href="#" id="pc_changaddress" class="toggle-section addNewAddress">编辑地址</a>
 
 
                    </h5>
