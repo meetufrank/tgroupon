@@ -1177,31 +1177,25 @@ elseif ($_REQUEST['act'] == 'remove')
 
     admin_priv('users_drop');
 
-
-
-    $sql = "SELECT user_name FROM " . $ecs->table('users') . " WHERE user_id = '" . $_GET['id'] . "'";
-
-    $username = $db->getOne($sql);
-
-    /* 通过插件来删除用户 */
-
-    $users =& init_users();
-
-    $users->remove_user($username); //已经删除用户所有数据
+      $id =  intval($_REQUEST['id']);
 
 
 
-    /* 记录管理员操作 */
 
-    admin_log(addslashes($username), 'remove', 'users');
+    $sql = "DELETE from ecs_shenqing where sq_id = $id";
+
+       $username = $db -> query($sql);
+
+        $link[0]['text'] = '删除系统消息成功,返回列表页!';
+
+        $link[0]['href'] = 'shenqing.php?act=list';
+
+        sys_msg('操作成功', 0, $link);
+
+        exit;
 
 
 
-    /* 提示信息 */
-
-    $link[] = array('text' => $_LANG['go_back'], 'href'=>'users.php?act=list');
-
-    sys_msg(sprintf($_LANG['remove_success'], $username), 0, $link);
 
 }
 
@@ -1702,6 +1696,7 @@ function user_list()
         /* 过滤条件 */
 
         $filter['keywords'] = empty($_REQUEST['keywords']) ? '' : trim($_REQUEST['keywords']);
+        $filter['sq_username'] = empty($_REQUEST['sq_username']) ? '' : trim($_REQUEST['sq_username']);
 
         if (isset($_REQUEST['is_ajax']) && $_REQUEST['is_ajax'] == 1)
 
@@ -1712,7 +1707,7 @@ function user_list()
         }
 
         $filter['rank'] = empty($_REQUEST['rank']) ? 0 : intval($_REQUEST['rank']);
-
+        $filter['sq_type'] = empty($_REQUEST['sq_type']) ? 0 : intval($_REQUEST['sq_type']);
         $filter['pay_points_gt'] = empty($_REQUEST['pay_points_gt']) ? 0 : intval($_REQUEST['pay_points_gt']);
 
         $filter['pay_points_lt'] = empty($_REQUEST['pay_points_lt']) ? 0 : intval($_REQUEST['pay_points_lt']);
@@ -1732,6 +1727,22 @@ function user_list()
         {
 
             $ex_where .= " AND user_name LIKE '%" . mysql_like_quote($filter['keywords']) ."%'";
+
+        }
+
+        if ($filter['sq_username'])
+
+        {
+
+            $ex_where .= " AND sq_username LIKE '%" . mysql_like_quote($filter['sq_username']) ."%'";
+
+        }
+
+        if ($filter['sq_type'])
+
+        {
+
+            $ex_where .= " AND sq_type LIKE '%" . mysql_like_quote($filter['sq_type']) ."%'";
 
         }
 
