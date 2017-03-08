@@ -2,7 +2,7 @@
 
 <!-- $Id: users_list.htm 17053 2010-03-15 06:50:26Z sxc_shop $ -->
 
-{include file="pageheader.htm"}
+{include file="pageheader_shenqinglist.htm"}
 
 {insert_scripts files="../js/utils.js,listtable.js"}
 
@@ -14,12 +14,23 @@
 
     <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
 
-    &nbsp;{$lang.label_rank_name} <select name="user_rank"><option value="0">{$lang.all_option}</option>{html_options options=$user_ranks }</select>
+    <select style="display:none;" name="user_rank"><option value="0">{$lang.all_option}</option>{html_options options=$user_ranks }</select>
 
-    &nbsp;{$lang.label_pay_points_gt}&nbsp;<input type="text" name="pay_points_gt" size="8" />&nbsp;{$lang.label_pay_points_lt}&nbsp;<input type="text" name="pay_points_lt" size="10" />
+    类型搜索
+    <select name="sq_type">
+        <option value="0">请选择</option>
+        <option value="1">渠道合作</option>
+        <option value="2">品牌合作</option>
+        <option value="3">设计师合作意向</option>
+    </select>
+    <input style="display:none;" type="text" name="pay_points_gt" size="8" />
+    <input style="display:none;" type="text" name="pay_points_lt" size="10" />
 
-    &nbsp;{$lang.label_user_name} &nbsp;<input type="text" name="keyword" /> <input type="submit" value="{$lang.button_search}" />
 
+
+    姓名<input type="text" name="sq_username" />
+    <input type="submit" value="{$lang.button_search}" />
+<input style="visibility:hidden;" type="text" name="keyword" />
 
 
   </form>
@@ -50,8 +61,6 @@
     <th>微信号</th>
     <th>申请时间</th>
     <th>状态</th>
-
-
     <th>{$lang.handler}</th>
 
 
@@ -93,27 +102,22 @@
 
       <a href="shenqing.php?act=edit&id={$user.sq_id}" title="{$lang.edit}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a>
 
-      <a href="users.php?act=address_list&id={$user.user_id}" title="{$lang.address_list}"><img src="images/book_open.gif" border="0" height="16" width="16" /></a>
+      <!-- <a href="users.php?act=address_list&id={$user.user_id}" title="{$lang.address_list}"><img src="images/book_open.gif" border="0" height="16" width="16" /></a> -->
 
-      <a href="order.php?act=list&user_id={$user.user_id}" title="{$lang.view_order}"><img src="images/icon_view.gif" border="0" height="16" width="16" /></a>
+     <!--  <a href="order.php?act=list&user_id={$user.user_id}" title="{$lang.view_order}"><img src="images/icon_view.gif" border="0" height="16" width="16" /></a>
 
-      <a href="account_log.php?act=list&user_id={$user.user_id}" title="{$lang.view_deposit}"><img src="images/icon_account.gif" border="0" height="16" width="16" /></a>
+      <a href="account_log.php?act=list&user_id={$user.user_id}" title="{$lang.view_deposit}"><img src="images/icon_account.gif" border="0" height="16" width="16" /></a> -->
 
       <!-- 生成二维码 -->
 
 
 
-       {if $user.is_line == 1}
-
-       <a id="erweimaid" href="users.php?act=erweima&id={$user.user_id}" title="生成二维码链接"><img src="images/icon_docs.gif" border="0" height="16" width="16" /></a>
-
-       {/if}
+     <a href="shenqing.php?act=remove&id={$user.sq_id}" title="{$lang.edit}"><img src="images/icon_drop.gif" border="0" height="16" width="16" /></a>
 
 
 
 
 
-      <a href="javascript:confirm_redirect('{if $user.user_money ne 0}{$lang.still_accounts}{/if}{$lang.remove_confirm}', 'users.php?act=remove&id={$user.user_id}')" title="{$lang.remove}"><img src="images/icon_drop.gif" border="0" height="16" width="16" /></a>
 
     </td>
 
@@ -131,7 +135,7 @@
 
       <input type="hidden" name="act" value="batch_remove" />
 
-      <input type="submit" id="btnSubmit" value="{$lang.button_remove}" disabled="true" class="button" /></td>
+      <!-- <input type="submit" id="btnSubmit" value="{$lang.button_remove}" disabled="true" class="button" /> --></td>
 
       <td align="right" nowrap="true" colspan="8">
 
@@ -207,6 +211,10 @@ function searchUser()
 {
 
     listTable.filter['keywords'] = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+
+    listTable.filter['sq_username'] = Utils.trim(document.forms['searchForm'].elements['sq_username'].value);
+
+    listTable.filter['sq_type'] = document.forms['searchForm'].elements['sq_type'].value;
 
     listTable.filter['rank'] = document.forms['searchForm'].elements['user_rank'].value;
 

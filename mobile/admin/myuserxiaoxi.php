@@ -1184,9 +1184,9 @@ elseif ($_REQUEST['act'] == 'remove')
 
     $sql = "DELETE from ecs_xiaoxi where xxid = $id";
 
-    $username = $db -> query($sql);
+       $username = $db -> query($sql);
 
-        $link[0]['text'] = '删除系统消息成功!';
+        $link[0]['text'] = '删除系统消息成功,返回列表页!';
 
         $link[0]['href'] = 'myuserxiaoxi.php?act=list';
 
