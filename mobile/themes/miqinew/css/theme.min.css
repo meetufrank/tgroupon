@@ -3419,10 +3419,10 @@ to {
 	display: table;
     width: 100%;
     padding-top: 24px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-left:10px;
+    padding-right:0px;
+    padding-top:0px;
+    padding-bottom:0px;
 }
 .shop-item .shop-item-details .shop-item-title, .shop-item .shop-item-details .shop-item-price {
 	display: table-cell;
