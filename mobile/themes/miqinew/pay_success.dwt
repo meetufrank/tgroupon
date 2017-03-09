@@ -43,6 +43,9 @@
       padding-right:0px;
       padding-left:0px;
 }
+.shop-item-title,.shop-item-price{
+      padding-left: 10px;
+    }
 }
   .add-to-cart-pay{
     position: relative;
