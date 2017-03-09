@@ -60,6 +60,9 @@
   .space-bottom {
     margin-bottom:40px !important;
   }
+  .shop-item-title,.shop-item-price{
+      padding-left: 10px;
+    }
 	}
 @media screen and (max-width:320px){
     .mobile-shop-detail {

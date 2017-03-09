@@ -47,7 +47,10 @@
     .mobile-good-list-row{
       padding-right:0px;
       padding-left:0px;
-}
+    }
+    .shop-item-title,.shop-item-price{
+      padding-left: 10px;
+    }
 }
 </style>
 </head>

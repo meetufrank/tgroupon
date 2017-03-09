@@ -53,6 +53,9 @@
       height:30px;
       margin-top: 18px;
     }
+    .shop-item-title,.shop-item-price{
+      padding-left: 10px;
+    }
   }
    @media screen and (min-width:768px){
     .quotation .quotation-author-ava{
