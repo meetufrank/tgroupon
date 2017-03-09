@@ -76,7 +76,7 @@ if ($_REQUEST['act'] == 'list')
 
     $smarty->assign('ur_here',      $_LANG['03_article_list']);
 
-    $smarty->assign('action_link',  array('text' => $_LANG['article_add'], 'href' => 'article.php?act=add'));
+   // $smarty->assign('action_link',  array('text' => $_LANG['article_add'], 'href' => 'article.php?act=add'));
 
     $smarty->assign('full_page',    1);
 
@@ -84,7 +84,7 @@ if ($_REQUEST['act'] == 'list')
 
 
 
-    $article_list = get_articleslist();
+   // $article_list = get_articleslist();
 
 
 
