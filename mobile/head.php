@@ -54,7 +54,7 @@ if($_SERVER['REQUEST_METHOD']!="POST"){
 
 }
 
-$_SESSION['user_id']=10;
+
 if($_COOKIE['user_id']){
 
   $_SESSION['user_id']=$_COOKIE['user_id'];
