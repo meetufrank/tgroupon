@@ -432,6 +432,12 @@ PRIMARY KEY (`xxid`)
 ;
 
 
+/*#2017/03/03 王晋 修改分成表字段数据类型
+*/
+ALTER TABLE `ecs_fencheng`
+MODIFY COLUMN `time`  datetime NOT NULL COMMENT '//时间' AFTER `money`;
+
+
 
 
 

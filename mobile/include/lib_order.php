@@ -3282,7 +3282,7 @@ function get_money($orderid,$user_id)   //某订单id
 
  function fencheng_insert($goods_id,$lineshop_id,$user_id,$money,$get_id,$type){   //商品id，线下店id，用户id，所得金钱，受益方id，收益类型
 
- $sql="INSERT INTO ecs_fencheng SET goodsid=".intval($goods_id).", line_shopid=".intval($lineshop_id).", userid=".intval($user_id).", money=".floatval($money).", get_shopid=".intval($get_id).",type=".$type;
+ $sql="INSERT INTO ecs_fencheng SET goodsid=".intval($goods_id).", line_shopid=".intval($lineshop_id).", userid=".intval($user_id).", money=".floatval($money).", get_shopid=".intval($get_id).",type=".$type.",time='".date("Y-m-d H:i:s")."'";
     $result=$GLOBALS['db']->query($sql);
 
     return $result;

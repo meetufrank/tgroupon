@@ -1657,7 +1657,6 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
     /* 过滤条件 */
 
     $param_str = '-' . $is_delete . '-' . $real_goods;
-
     $result = get_filter($param_str);
 
     if ($result === false)
