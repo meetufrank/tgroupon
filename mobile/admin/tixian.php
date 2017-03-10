@@ -557,261 +557,161 @@ elseif ($_REQUEST['act'] == 'edit')
 
     admin_priv('users_manage');
 
+ // 提现申请编辑展示
+
+    $txid = $_GET['id'];
+
+    $txbainji = "select t.id,t.line_shopid,u.user_name,t.money,t.time,t.`status` from `ecs_tixian`  as t
+
+inner join `ecs_users` as u
+
+on t.line_shopid = u.user_id
+
+where t.id = $txid";
+
+    $txbianjixs = $db->getAll($txbainji);
+
+    $smarty->assign('txbianjixs',$txbianjixs);
+
+    //print_r($txbianjixs);exit;
+
+    //审核记录展示(备注，拒绝理由)
+
+    $txlogsql = "select * from `ecs_txlog` where log_userid = $txid order by log_time desc limit 1";
+
+    $txlog = $db->getRow($txlogsql);
+
+    // print_r($txlog);exit;
+
+    $smarty->assign('txlog',$txlog);
 
 
-    $sql = "SELECT u.user_name, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn, u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo,u.hav_money,u.tj_fencheng,u.xs_fencheng".
-
-        " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 
 
+    $smarty->display('tixian_info.htm');
 
-    $row = $db->GetRow($sql);
-
-    $row['user_name'] = addslashes($row['user_name']);
-
-    $users  =& init_users();
-
-    $user   = $users->get_user_info($row['user_name']);
+}
 
 
 
-    $sql = "SELECT u.user_id, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn,
+// 修改审核
 
-    u.office_phone, u.home_phone, u.mobile_phone,u.is_line,u.hav_logo,u.hav_money,u.tj_fencheng,u.xs_fencheng".
+elseif ($_REQUEST['act'] == 'xiugai'){
 
-        " FROM " .$ecs->table('users'). " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
+   $radionck = $_POST['radioname'];
+
+   $money = $_POST['amount'];
+
+   $id = $_POST['txid'];
+
+   $userid = $_POST['lineshopid'];
+
+   $beizhu = $_POST['beizhu'];
+
+   $objection = $_POST['objection'];
 
 
 
-    $row = $db->GetRow($sql);
+   $sql="select money,status,time from ecs_tixian where id=".$id." and status!=2 and status!=3";
+
+   $data=$GLOBALS['db']->getRow($sql);
+
+   $money=$data['money'];
+
+   $status=$data['status'];
+
+   if(!$money){
+
+        $link[0]['text'] = '返回提现详情';
+
+        $link[0]['href'] = 'tixian.php?act=edit&id='.$id;
 
 
+        $link[1]['text'] = '返回提现详情';
 
-    if ($row)
+        $link[1]['href'] = 'tixian.php?act=edit&id='.$id;
 
-    {
+         sys_msg('您已结束该条提现操作', 0, $link);
 
-        $user['user_id']        = $row['user_id'];
+         exit;
 
-        $user['sex']            = $row['sex'];
+   }
 
-        $user['birthday']       = date($row['birthday']);
+   if($radionck == 1){
 
-        $user['pay_points']     = $row['pay_points'];
+      $logcontent = "提现金额为".$money."元,已受理,请您耐心等候。";
 
-        $user['rank_points']    = $row['rank_points'];
+   }else if($radionck == 2){
 
-        $user['user_rank']      = $row['user_rank'];
+     if($status==0){
 
-        $user['user_money']     = $row['user_money'];
+        $link[0]['text'] = '返回提现详情';
 
-        $user['frozen_money']   = $row['frozen_money'];
+        $link[0]['href'] = 'tixian.php?act=edit&id='.$id;
 
-        $user['credit_line']    = $row['credit_line'];
+         sys_msg('请先受理这条提现请求', 0, $link);
 
-        $user['formated_user_money'] = price_format($row['user_money']);
-
-        $user['formated_frozen_money'] = price_format($row['frozen_money']);
-
-        $user['parent_id']      = $row['parent_id'];
-
-        $user['parent_username']= $row['parent_username'];
-
-        $user['qq']             = $row['qq'];
-
-        $user['msn']            = $row['msn'];
-
-        $user['office_phone']   = $row['office_phone'];
-
-        $user['home_phone']     = $row['home_phone'];
-
-        $user['mobile_phone']   = $row['mobile_phone'];
-
-        $user['is_line']   = $row['is_line'];
-
-        $user['hav_logo']  = $row['hav_logo'];
-
-        $user['hav_money']  = $row['hav_money'];
-
-        $user['tj_fencheng'] = $row['tj_fencheng'];
-
-        $user['xs_fencheng'] = $row['xs_fencheng'];
-
-    }
-
-    else
-
-    {
-
-          $link[] = array('text' => $_LANG['go_back'], 'href'=>'users.php?act=list');
-
-          sys_msg($_LANG['username_invalid'], 0, $links);
-
-//        $user['sex']            = 0;
-
-//        $user['pay_points']     = 0;
-
-//        $user['rank_points']    = 0;
-
-//        $user['user_money']     = 0;
-
-//        $user['frozen_money']   = 0;
-
-//        $user['credit_line']    = 0;
-
-//        $user['formated_user_money'] = price_format(0);
-
-//        $user['formated_frozen_money'] = price_format(0);
+         exit;
 
      }
 
+     $jujuetx = "update `ecs_users` set hav_money=hav_money+$money,all_money=all_money-$money  where user_id = $userid";
 
+      $db->query($jujuetx);
 
-    /* 取出注册扩展字段 */
+      $logcontent = "提现金额为".$money."已拒绝您的提现申请，理由：".$objection;
 
-    $sql = 'SELECT * FROM ' . $ecs->table('reg_fields') . ' WHERE type < 2 AND display = 1 AND id != 6 ORDER BY dis_order, id';
+   }else if($radionck == 3){
 
-    $extend_info_list = $db->getAll($sql);
+      if($status==0){
 
+        $link[0]['text'] = '返回提现详情';
 
+        $link[0]['href'] = 'tixian.php?act=edit&id='.$id;
 
-    $sql = 'SELECT reg_field_id, content ' .
+         sys_msg('请先受理这条提现请求', 0, $link);
 
-           'FROM ' . $ecs->table('reg_extend_info') .
+         exit;
 
-           " WHERE user_id = $user[user_id]";
+     }
 
-    $extend_info_arr = $db->getAll($sql);
+     $time=$data['time'];
 
+     $now=date('Y-m-d H:i:s');
 
+     $sql=" update  ecs_fencheng set status=1 where time between '".$time."' and '".$now."'";
 
-    $temp_arr = array();
+    $GLOBALS['db']->query($sql);
 
-    foreach ($extend_info_arr AS $val)
 
-    {
 
-        $temp_arr[$val['reg_field_id']] = $val['content'];
+      $logcontent = "提现金额为".$money."已完成您的提现申请。";
 
-    }
+   }
 
 
 
-    foreach ($extend_info_list AS $key => $val)
+  $sql = "update `ecs_tixian` set `status` = $radionck  where id = $id";
 
-    {
+   $db->query($sql);
 
-        switch ($val['id'])
 
-        {
 
-            case 1:     $extend_info_list[$key]['content'] = $user['msn']; break;
+    $txlogsql = "insert into `ecs_txlog`(log_userid,log_content,log_time,remark,objection) values($userid,'$logcontent',now(),'$beizhu','$objection')";
 
-            case 2:     $extend_info_list[$key]['content'] = $user['qq']; break;
+   $db->query($txlogsql);
 
-            case 3:     $extend_info_list[$key]['content'] = $user['office_phone']; break;
 
-            case 4:     $extend_info_list[$key]['content'] = $user['home_phone']; break;
 
-            case 5:     $extend_info_list[$key]['content'] = $user['mobile_phone']; break;
+       $link[0]['text'] = '返回提现列表';
 
-            default:    $extend_info_list[$key]['content'] = empty($temp_arr[$val['id']]) ? '' : $temp_arr[$val['id']] ;
+        $link[0]['href'] = 'tixian.php?act=list';
 
-        }
+         sys_msg('操作成功', 0, $link);
 
-    }
-
-
-
-    $smarty->assign('extend_info_list', $extend_info_list);
-
-
-
-    /* 当前会员推荐信息 */
-
-    $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
-
-    $smarty->assign('affiliate', $affiliate);
-
-
-
-    empty($affiliate) && $affiliate = array();
-
-
-
-    if(empty($affiliate['config']['separate_by']))
-
-    {
-
-        //推荐注册分成
-
-        $affdb = array();
-
-        $num = count($affiliate['item']);
-
-        $up_uid = "'$_GET[id]'";
-
-        for ($i = 1 ; $i <=$num ;$i++)
-
-        {
-
-            $count = 0;
-
-            if ($up_uid)
-
-            {
-
-                $sql = "SELECT user_id FROM " . $ecs->table('users') . " WHERE parent_id IN($up_uid)";
-
-                $query = $db->query($sql);
-
-                $up_uid = '';
-
-                while ($rt = $db->fetch_array($query))
-
-                {
-
-                    $up_uid .= $up_uid ? ",'$rt[user_id]'" : "'$rt[user_id]'";
-
-                    $count++;
-
-                }
-
-            }
-
-            $affdb[$i]['num'] = $count;
-
-        }
-
-        if ($affdb[1]['num'] > 0)
-
-        {
-
-            $smarty->assign('affdb', $affdb);
-
-        }
-
-    }
-
-
-
-
-
-    assign_query_info();
-
-    $smarty->assign('ur_here',          $_LANG['users_edit']);
-
-    $smarty->assign('action_link',      array('text' => $_LANG['03_users_list'], 'href'=>'users.php?act=list&' . list_link_postfix()));
-
-    $smarty->assign('user',             $user);
-
-    $smarty->assign('form_action',      'update');
-
-    $smarty->assign('special_ranks',    get_rank_list(true));
-
-    $smarty->display('user_info.htm');
-
+         exit;
 }
+
 
 // 生成二维码链接
 
