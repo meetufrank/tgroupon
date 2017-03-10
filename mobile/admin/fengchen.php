@@ -181,12 +181,7 @@ $result = get_filter($param_str);
         $filter = page_and_size($filter);
 
 
- $fclistsql = "select f.id,eu1.user_name as xxdname,g.goods_name,eu2.user_name as username,f.money,f.type,f.get_shopid,f.status from `ecs_fencheng` as f
-
-inner join `ecs_users` as eu1
-
-on f.line_shopid = eu1.user_id
-
+ $fclistsql = "select f.id,g.goods_name,eu2.user_name as username,f.money,f.type,f.get_shopid,f.status,f.line_shopid from `ecs_fencheng` as f
 inner join `ecs_goods` as g
 
 on f.goodsid = g.goods_id
@@ -217,6 +212,13 @@ foreach ($fc_list as $key => $value) {
         $username=$GLOBALS['db']->getOne($sql);
         $fc_list[$key]['tcusername']=$username;
 
+     }
+     if($value['line_shopid']<=0){
+             $fc_list[$key]['xxdname']='型色主义网站';
+     }else{
+        $sql="select user_name from ecs_users where user_id=".$value['line_shopid'];
+        $username=$GLOBALS['db']->getOne($sql);
+        $fc_list[$key]['xxdname']=$username;
      }
 
 }
