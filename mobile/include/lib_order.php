@@ -455,6 +455,7 @@ function order_info($order_id, $order_sn = '',$type=0)
         $order['formated_surplus']        = price_format($order['surplus'], false);
         $order['formated_order_amount']   = price_format(abs($order['order_amount']), false);
         $order['formated_add_time']       = local_date($GLOBALS['_CFG']['time_format'], $order['add_time']);
+        $order['post_price']   = price_format($order['post_price'], false);
     }
 	// 增加地区 by wang
 	$sql = "select region_name from ".$GLOBALS['ecs']->table('region') . " where region_id in(".$order['province'].",". $order['city'].",".$order['district'].")";
