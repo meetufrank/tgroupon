@@ -117,7 +117,25 @@
       </div>
 
       <h4>2、设计师团</h4>
-      <p>超链接，跳转至设计师页面列表</p>
+      <div class="row">
+	    <div class="col-xs-4">
+		    <a style="color:black;" href="http://meetuuu.com/mobile/artist-detail.php?ysjid=11#menu">
+				<img src="{$ectouch_themes}/img/shejishi1.jpg">
+				<p class="text-center">Bryan</p>
+			</a>
+      	</div>
+      	<div class="col-xs-4">
+		    <a style="color:black;" href="http://meetuuu.com/mobile/artist-detail.php?ysjid=17">
+				<img src="{$ectouch_themes}/img/shejishi2.jpg">
+				<p class="text-center">洪鑫</p>
+			</a>
+  		</div>
+		<div class="col-xs-4">
+      		<img src="{$ectouch_themes}/img/timg.jpg">
+      		<p class="text-center">可能就是你</p>
+  		</div>
+	  </div>
+      <br/>
 
       <h4>3、知识产权</h4>
       <p>•型色主义产品：型色对旗下网站信息及产品享有完整的著作权、专利权及商标权等相关权利。除明显归属于合作伙伴、第三方所有的信息资料外，包括但不限于文字表述及其组合、图标、图饰、图表、色彩、版面设计、产品造型、模型、美术作品等，并且受《中华人民共和国著作权法》、《中华人民共和国商标法》及《中华人民共和国专利法》等相关法律法规和中国加入的所有知识产权方面的国际条约、国际公约等的保护。</p>

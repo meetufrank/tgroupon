@@ -3487,13 +3487,21 @@ elseif ($action == 'drop_consignees')
 
     $addressid = $_POST['addressid'];
 
+    $sqlmoren = "SELECT `default` FROM `ecs_user_address` where address_id = '$addressid'";
+	$defaults = $db -> getOne($sqlmoren);
+	if($defaults  ==  0){
+		$sqldeldizhi ="DELETE FROM  `ecs_user_address`
 
+        WHERE address_id = '$addressid';";
+	
+        $dels = $db->query($sqldeldizhi);
+		echo 1;
+	}elseif($defaults  ==  1){
+		echo 2;
+	}
 
-    $sqldeldizhi ="DELETE FROM  `ecs_user_address`
+    
 
-    WHERE address_id = '$addressid';";
-
-    $db->query($sqldeldizhi);
 
 }
 

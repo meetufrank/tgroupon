@@ -191,6 +191,8 @@ $modules['08_members']['09_user_account']           = 'user_account.php?act=list
 
 $modules['08_members']['11_shenqing']             = 'shenqing.php?act=list';
 
+$modules['08_members']['11_tixian']             = 'tixian.php?act=list';
+
 $modules['08_members']['line_shop']             = 'line_shop.php?act=list';  //签约表
 
 
