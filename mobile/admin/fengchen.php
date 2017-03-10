@@ -152,7 +152,7 @@ if($_REQUEST['typeseach']!=5&&isset($_REQUEST['typeseach'])){
     $where=" where f.type=".$_REQUEST['typeseach'];
 }
 if($_REQUEST['usercode']){
-    $sql=" select user_id from ecs_users  where weiyi_num=".$_REQUEST['usercode'];
+    $sql=" select user_id from ecs_users  where weiyi_num='".$_REQUEST['usercode']."'";
     $user_id=$GLOBALS['db']->getOne($sql);
     if(!$where){
          $where=" where f.get_shopid=".$user_id;
