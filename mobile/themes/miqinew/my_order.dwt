@@ -37,6 +37,18 @@
 
   <!-- by sun -->
   <style>
+  @media screen and (min-width:768px){
+     .nav-pills{
+      margin-left:-18px;
+      margin-left:0px;
+    }
+    .tab-content-pc{
+      padding-top:0px;
+      padding-bottom:0px;
+      padding-left:0px;
+      padding-right:0px;
+    }
+  }
   @media screen and (max-width:768px){
     .tab-content{
       padding-top:0px;
@@ -46,13 +58,18 @@
     }
     .nav-pills{
       margin-bottom:0px;
-    }
-  }
-    .nav-pills{
-      margin-left:-18px;
-      margin-left:0px;
+      margin-left: 4px;
+      margin-right: 4px;
     }
     .nav-pills>li {
+      float: left;
+      position: relative;
+      display: block;
+      width: 25%;
+    }
+  }
+ 
+  .nav-pills>li {
       float: left;
       position: relative;
       display: block;
@@ -174,11 +191,11 @@
      <!-- Nav Tabs -->
       {include file="my_head.dwt"}
       <!-- Tab panes -->
-      <div class="tab-content">
+      <div class="tab-content-pc">
         <div role="tabpanel" class="tab-pane transition fade in active" id="tab1">
           <!-- Nav Tabs -->
 
-          <ul class="nav-pills" role="tablist">
+          <ul class="nav-pills mobile-nav-pills" role="tablist">
             <li class="active"><a href="#tab1_1" role="tab" data-toggle="tab">待付款<span id="no_pay_num">{$record_count_no}</span></a></li>
             <li><a href="#tab1_2" role="tab" data-toggle="tab">待发货<span>{$record_count_yes}</span></a></li>
             <li><a href="#tab1_3" role="tab" data-toggle="tab">待收货<span>{$record_count_come}</span></a></li>

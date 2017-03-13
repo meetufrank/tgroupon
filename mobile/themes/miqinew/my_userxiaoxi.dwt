@@ -158,8 +158,9 @@
     padding-left:0px;
     padding-right:0px;
     margin-top:8px;
-    border-bottom:2px #ededed solid;
+    border-bottom:2px #f5f5f5 solid;
   }
+  @media screen and (min-width:768px){
   .mysystem_messages{
     padding-left:0px;
     padding-right:0px;
@@ -167,6 +168,15 @@
   .mysystem_time{
     padding-left:0px;
     padding-right:0px;
+  }
+  }
+  @media screen and (max-width:768px){
+    .tab-content-mes{
+      background-color:#f5f5f5;
+    }
+    .active-mobile{
+      padding-left: 15px;
+    }
   }
   </style>
 
@@ -208,18 +218,8 @@
 		<div role="tabpanel" class="tab-pane transition fade in active" id="tab3">
         	<!-- Nav Tabs -->
 		      <ul class="nav-pills" role="tablist">
-		        <li class="active"><a href="#tab3_1" role="tab" data-toggle="tab">系统消息<span>{$xxcounts}</span></a></li>
+		        <li class="active active-mobile"><a href="#tab3_1" role="tab" data-toggle="tab">系统消息<span>{$xxcounts}</span></a></li>
 		      </ul>
-		      <!--消息记录 -->
-		     <!--  <div class="tab-content-mes col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="mysystem_messages col-lg-7 col-md-7 col-sm-7 col-xs-12">消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息
-            </div>
-            <div class="mysystem_time col-lg-5 col-md-5 col-sm-5 col-xs-12">
-              <span class="mysystem_time-main">2017-02-17&nbsp;&nbsp;&nbsp;17:04:22</span>
-            </div>
-		      </div> -->
-                               <!--  {$xxxxs.xxtime|mb_substr:0:5:'GBK'} -->
-                     <!--  {$xxxxs.xxtime}2017-02-17&nbsp;&nbsp;&nbsp;17:04:22 -->
           {foreach from=$xxxxs item=xxxxs name=no}
                 <a href="#" onclick="localink({$xxxxs.xxid});">
                   <div class="tab-content-mes col-lg-12 col-md-12 col-sm-12 col-xs-12">
