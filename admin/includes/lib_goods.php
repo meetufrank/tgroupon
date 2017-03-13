@@ -628,6 +628,7 @@ function get_attr_list($cat_id, $goods_id = 0)
             "ORDER BY a.sort_order, a.attr_type, a.attr_id, v.attr_price, v.goods_attr_id";
 
     $row = $GLOBALS['db']->GetAll($sql);
+    print_r($row);exit;
     print_($row);
     return $row;
 }
