@@ -31,6 +31,11 @@
   <script src="{$ectouch_themes}/js/vendor/modernizr.custom.js"></script>
   <!-- by sun -->
   <style>
+  @media screen and (max-width:768px){
+    .shop-item-title a,.shop-item-details a{
+      font-size: 14px;
+    }
+  }
   @media screen and (min-width:768px){
 	  .info-box{
 		margin-top:70px;
@@ -41,10 +46,6 @@
 			width:1300px;
 		}
 	}
-/* .row{
-  margin-left: -15px;
-  margin-right:-15px;
-} */
 .count{
   	position: absolute;
 		display: block;
