@@ -140,6 +140,8 @@ if (!defined('IN_ECTOUCH'))
 
     $purview['11_shenqing']        = 'shenqing';
 
+    $purview['11_tixian']        = 'tixian';
+
     $purview['line_shop']           = 'line_shop';   //签约表
 
 

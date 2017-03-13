@@ -1,0 +1,163 @@
+<!-- $Id: user_account_info.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+
+{include file="pageheaderxingtong.htm"}
+
+{insert_scripts files="./js/validator.js"}
+
+<div class="main-div">
+
+  <form action="tixian.php?act=xiugai" method="post" name="theForm" onsubmit="">
+
+    <table width="100%">
+
+
+
+      {foreach from="$txbianjixs" item=item}
+
+            <tr>
+
+              <td class="label">空间主名称:</td>
+
+              <td>
+
+
+
+                <input type="text" readOnly="true" name="amount" value="{$item.user_name}" size="20">
+
+                <!-- 提现用户id -->
+
+                <input type="hidden"  name="lineshopid" id="lineshopid" value="{$item.line_shopid}" size="20">
+
+                <!-- 提现用户id -->
+
+                <input type="hidden"  id="txid" value="{$item.id}" size="20" name="txid">
+
+              </td>
+
+            </tr>
+
+            <tr>
+
+              <td class="label">提现金额:</td>
+
+              <td>
+
+                <input type="text" readOnly="true" id="money" name="amount" value="{$item.money}" size="20">
+
+              </td>
+
+            </tr>
+
+            <tr>
+
+              <td class="label">提现时间:</td>
+
+              <td>
+
+                <input type="text" readOnly="true" name="amount" value="{$item.time}" size="20">
+
+              </td>
+
+            </tr>
+
+            <tr>
+
+              <td class="label">审核状态:</td>
+
+              <td>
+
+            <!--     <input type="radio" name="radioname" value="0" {if $item.status eq 0} checked{/if}>未受理 -->
+
+                <input type="radio" name="radioname" value="0" {if $item.status eq 0} checked{/if}>未受理
+
+                <input type="radio" name="radioname" value="1" {if $item.status eq 1} checked{/if}>已受理
+
+                <input type="radio" name="radioname" value="2" {if $item.status eq 2} checked{/if}>拒绝
+
+                <input type="radio" name="radioname" value="3" {if $item.status eq 3} checked{/if}>已完成
+
+              </td>
+
+            </tr>
+
+
+
+                <tr>
+
+                  <td class="label">备注:</td>
+
+                  <td><textarea name="beizhu" id="beizhu" cols="40" rows="5">{$txlog.remark}</textarea></td>
+
+                </tr>
+
+                <tr>
+
+                  <td class="label">拒绝理由:</td>
+
+                  <td><textarea name="objection" id="objection" cols="40" rows="5">{$txlog.objection}</textarea></td>
+
+                </tr>
+
+
+
+      {/foreach}
+
+
+
+    <!--   <tr>
+
+        <td class="label">&nbsp;</td>
+
+        <td>
+
+          <input type="hidden" name="id" value="{$user_surplus.id}" />
+
+          <input type="hidden" name="act" value="{$form_act}" />
+
+          {if $user_surplus.process_type eq 0 || $user_surplus.process_type eq 1}
+
+          <input type="submit" value="{$lang.button_submit}" class="button" />
+
+          <input type="reset" value="{$lang.button_reset}" class="button" />
+
+          {/if}
+
+        </td>
+
+      </tr> -->
+
+      <tr>
+
+        <td colspan="2" align="center">
+
+             <input id="btn" type="submit" value="确定" class="button"   />
+
+        </td>
+
+     </tr>
+
+    </table>
+
+  </form>
+
+</div>
+
+{insert_scripts files="../js/jquery-1.9.1.min.js"}
+
+
+
+<script language="JavaScript">
+
+<!--
+
+{literal}
+
+
+
+//-->
+
+{/literal}
+
+</script>
+
+{include file="pagefooter.htm"}

@@ -494,6 +494,8 @@ $_LANG['10_user_account_manage'] = '资金管理';
 
 $_LANG['11_shenqing'] = '申请';
 
+$_LANG['11_tixian'] = '充值与提现申请';
+
 // $_LANG['line_shop'] = '线下店签约管理';
 
 $_LANG['line_shop_add'] = '新增线下店签约';

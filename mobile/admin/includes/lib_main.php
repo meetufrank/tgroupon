@@ -1428,7 +1428,6 @@ function set_filter($filter, $sql, $param_str = '')
         $filterfile .= $param_str;
 
     }
-
     setcookie('ECSCP[lastfilterfile]', sprintf('%X', crc32($filterfile)), time() + 600);
 
     setcookie('ECSCP[lastfilter]',     urlencode(serialize($filter)), time() + 600);
@@ -1462,6 +1461,7 @@ function get_filter($param_str = '')
         $filterfile .= $param_str;
 
     }
+
 
     if (isset($_GET['uselastfilter']) && isset($_COOKIE['ECSCP']['lastfilterfile'])
 

@@ -432,6 +432,10 @@ PRIMARY KEY (`xxid`)
 ;
 
 
+/*#2017/03/03 王晋 修改分成表字段数据类型
+*/
+ALTER TABLE `ecs_fencheng`
+MODIFY COLUMN `time`  datetime NOT NULL COMMENT '//时间' AFTER `money`;
 /*#2017/03/03 王晋  添加读取消息记录表
 */
 CREATE TABLE `ecs_read` (
@@ -446,5 +450,7 @@ PRIMARY KEY (`re_id`)
 */
 ALTER TABLE `ecs_xiaoxi`
 MODIFY COLUMN `xxtime`  timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '//系统消息时间' AFTER `xxlink`;
+
+
 
 

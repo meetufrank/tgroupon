@@ -455,6 +455,7 @@ function order_info($order_id, $order_sn = '',$type=0)
         $order['formated_surplus']        = price_format($order['surplus'], false);
         $order['formated_order_amount']   = price_format(abs($order['order_amount']), false);
         $order['formated_add_time']       = local_date($GLOBALS['_CFG']['time_format'], $order['add_time']);
+        $order['post_price']   = price_format($order['post_price'], false);
     }
 	// 增加地区 by wang
 	$sql = "select region_name from ".$GLOBALS['ecs']->table('region') . " where region_id in(".$order['province'].",". $order['city'].",".$order['district'].")";
@@ -3282,7 +3283,7 @@ function get_money($orderid,$user_id)   //某订单id
 
  function fencheng_insert($goods_id,$lineshop_id,$user_id,$money,$get_id,$type){   //商品id，线下店id，用户id，所得金钱，受益方id，收益类型
 
- $sql="INSERT INTO ecs_fencheng SET goodsid=".intval($goods_id).", line_shopid=".intval($lineshop_id).", userid=".intval($user_id).", money=".floatval($money).", get_shopid=".intval($get_id).",type=".$type;
+ $sql="INSERT INTO ecs_fencheng SET goodsid=".intval($goods_id).", line_shopid=".intval($lineshop_id).", userid=".intval($user_id).", money=".floatval($money).", get_shopid=".intval($get_id).",type=".$type.",time='".date("Y-m-d H:i:s")."'";
     $result=$GLOBALS['db']->query($sql);
 
     return $result;

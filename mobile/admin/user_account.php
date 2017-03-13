@@ -449,7 +449,7 @@ elseif ($_REQUEST['act'] == 'xiugai'){
 
      $now=date('Y-m-d H:i:s');
 
-     $sql=" delete from ecs_fencheng where time between '".$time."' and '".$now."'";
+     $sql=" update  ecs_fencheng set status=1 where time between '".$time."' and '".$now."'";
 
     $GLOBALS['db']->query($sql);
 

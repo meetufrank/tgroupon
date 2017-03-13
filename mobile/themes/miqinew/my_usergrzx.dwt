@@ -223,11 +223,15 @@
                                     data:{addressid:addressid},
                                     dataType: "json",
                                     success: function (result) {
-
+                                             if(result == 1){
+											    document.getElementById("dizhi"+addressid).remove();
+											 }else if(result == 2){
+											    alert("默认地址不能删除!!!");
+											 }
 
                                           }//回调函数结束
                                });//ajax结束
-                           document.getElementById("dizhi"+addressid).remove();
+                           
 
           }
 
@@ -762,7 +766,7 @@
                           url:"flow.php?step=consignee",
                           data:$('#address_form').serialize(),
                           success: function(data){
-                           // window.location.reload();
+                           window.location.reload();
                             //window.location.href=window.location.href;
                             //alert("ada");
                                  layer.close(index);

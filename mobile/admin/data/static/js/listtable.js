@@ -199,7 +199,7 @@ listTable.gotoPageNext = function()
 {
   if (this.filter.page < listTable.pageCount)
   {
-    listTable.gotoPage(parseInt(this.filter.page) + 1);
+    listTable.gotoPage(parseInt(this.filter.page)+1);
   }
 }
 
