@@ -88,7 +88,7 @@
 
 
 
-      
+
 
       <td align="center"><strong>属性关联价格</strong></td>
 
@@ -99,7 +99,7 @@
       <td align="center"><strong>假价格</strong></td>
 
       <td align="center"><strong>价格优惠比例</strong></td>
-	  
+
 	  <td align="center"><strong>属性关联图片</strong></td>
 
       <td align="center">&nbsp;</td>
@@ -126,7 +126,7 @@
 
       <!-- 保存后列表 -->
 
-      
+
 
       <!-- 属性关联价格 -->
 
@@ -159,15 +159,26 @@
       <td align="center"><span onclick="listTable.edit(this, 'edit_priceratio', {$product.product_id})">
 
       {$product.priceratio}</span></td>
-	  
+
 	  <td align="center">
-	     {if $product.attributeimg == ''}
-			<a href="goods.php?act=imgadd&id={$product.product_id}" title="{$lang.edit}">新增属性图片
-		 {else}
-		    <img class="js_logoBox" style="width:100px; height:100px;" src="{$product.attributeimg}"/>
-			<input type="button" value="编辑">
-		 {/if}
-	  
+	   <!--   {if $product.attributeimg == ''}
+			     <a href="goods.php?act=imgadd&id={$product.product_id}" title="{$lang.edit}">新增属性图片</a>
+       {elseif $product.attributeimg !='' and $product.attimgopen == 0}
+            属性图片暂不显示
+            <a href="goods.php?act=attrimgdit&id={$product.product_id}" title="{$lang.edit}">编辑</a>
+		   {else}
+		      <img class="js_logoBox" style="width:100px; height:100px;" src="{$product.attributeimg}"/>
+			    <a href="goods.php?act=attrimgdit&id={$product.product_id}" title="{$lang.edit}">编辑</a>
+		   {/if} -->
+
+
+         {if $product.attributeimg == ''}
+           <a href="goods.php?act=imgadd&id={$product.product_id}" title="{$lang.edit}">新增属性图片</a>
+       {else}
+          <img class="js_logoBox" style="width:100px; height:100px;" src="{$product.attributeimg}"/>
+          <a href="goods.php?act=attrimgdit&id={$product.product_id}" title="{$lang.edit}">编辑</a>
+       {/if}
+
 	  </td>
 
       <td align="center"><input type="button" class="button" value=" - " onclick="listTable.remove({$product.product_id}, '{$lang.trash_product_confirm}', 'product_remove')"/></td>
@@ -210,7 +221,7 @@
 
       <td  align="center"><input type="text" name="product_sn[]" value="" size="20"/></td>
 
-     
+
 
       <td align="center"><input type="text" name="attributeprice[]"  value="{$attributeprice}"  size="10"/></td>
 
@@ -221,9 +232,9 @@
         <!-- 假价格 -->
 
        <td align="center"><input type="text" name="falseprice[]"  value="{$falseprice}"  size="10"/></td>
-      
+
       <td align="center"><input  type="text" name="priceratio[]" value="{$priceratio}" size="10"/></td>
- 
+      <td align="center"></td>
       <td align="center"><input type="button" class="button" value=" + " onclick="javascript:add_attr_product();"/></td>
 
     </tr>
