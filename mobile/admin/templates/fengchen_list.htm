@@ -48,6 +48,7 @@
      <!--  <input type="submit" value="{$lang.button_search}" class="button" /> -->
 
       <input type="submit" value="搜索" class="button" />
+      <input type="button" value="导出当前列表Excel" onclick="exportlist();" class="button" />
 
   </form>
 
@@ -90,7 +91,7 @@
     <th><a>分成类型</th>
 
     <th><a>获得提出用户</th>
-
+    <th><a>分成日期</th>
     <!-- <th>{$lang.handler}</th> -->
 
   </tr>
@@ -112,6 +113,7 @@
       <td align="center">{if $list.type eq 0}销售利润{elseif $list.type eq 1}推荐提成{elseif $list.type eq 2}设计分成{elseif $list.type eq 3}型色主义{/if}</td>
 
       <td align="center">{$list.tcusername}</td>
+      <td align="center">{$list.time}</td>
 
    </tr>
 
@@ -215,12 +217,26 @@
     listTable.filter.typeseach = parseInt(document.forms['searchform'].elements['typeseach'].value);
 
     listTable.filter.usercode = Utils.trim(document.forms['searchform'].elements['usercode'].value);
-
+   
     listTable.filter.page = 1;
 
     listTable.loadList();
 
  }
+
+function exportlist(){
+   var typeseach=parseInt(document.forms['searchform'].elements['typeseach'].value);
+   var usercode=Utils.trim(document.forms['searchform'].elements['usercode'].value);
+  var typestr='';
+       if(typeseach!=''){
+         typestr+='&&typeseach='+typeseach;
+       }
+       if(usercode!=''){
+         typestr+='&&usercode='+usercode;
+       }
+        
+  window.open("fengchen.php?act=fencheng_export"+typestr);
+}
 
 
 

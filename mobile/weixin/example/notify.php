@@ -1,7 +1,7 @@
 <?php
 
 ini_set('date.timezone','Asia/Shanghai');
-//serror_reporting(E_ERROR);
+error_reporting(E_ERROR);
 
 require_once "../lib/WxPay.Api.php";
 require_once '../lib/WxPay.Notify.php';
@@ -60,22 +60,22 @@ $notify = new PayNotifyCallBack();
 
 
 // $xml='<xml><appid><![CDATA[wxb5aec13c030a530b]]></appid>
-// <attach><![CDATA[娃娃啊啊]]></attach>
-// <bank_type><![CDATA[CMB_DEBIT]]></bank_type>
-// <cash_fee><![CDATA[1]]></cash_fee>
+// <attach><![CDATA[挂灯]]></attach>
+// <bank_type><![CDATA[CFT]]></bank_type>
+// <cash_fee><![CDATA[11]]></cash_fee>
 // <fee_type><![CDATA[CNY]]></fee_type>
-// <is_subscribe><![CDATA[Y]]></is_subscribe>
+// <is_subscribe><![CDATA[N]]></is_subscribe>
 // <mch_id><![CDATA[1267579601]]></mch_id>
-// <nonce_str><![CDATA[9m48w4jsudwn577934lhlgkt5pk8tqb1]]></nonce_str>
-// <openid><![CDATA[okRTqvv9Rri34dDloixJeixyRPms]]></openid>
-// <out_trade_no><![CDATA[126757960120161224143511]]></out_trade_no>
+// <nonce_str><![CDATA[4l4wa0vg4kwap18ip4ylkuskw0qgbx2b]]></nonce_str>
+// <openid><![CDATA[okRTqvpPRPq2WXM_1kXSAcQSZx2g]]></openid>
+// <out_trade_no><![CDATA[2017031405386]]></out_trade_no>
 // <result_code><![CDATA[SUCCESS]]></result_code>
 // <return_code><![CDATA[SUCCESS]]></return_code>
-// <sign><![CDATA[9563957A7BC4D2BBCC4314A1F694DC92]]></sign>
-// <time_end><![CDATA[20161224143541]]></time_end>
-// <total_fee>1</total_fee>
+// <sign><![CDATA[A26B3C3D39EA10645DBBB4A9F7B83D59]]></sign>
+// <time_end><![CDATA[20170314103029]]></time_end>
+// <total_fee>11</total_fee>
 // <trade_type><![CDATA[NATIVE]]></trade_type>
-// <transaction_id><![CDATA[4000242001201612243817562256]]></transaction_id>
+// <transaction_id><![CDATA[4008732001201703143313277361]]></transaction_id>
 // </xml>';
 
 

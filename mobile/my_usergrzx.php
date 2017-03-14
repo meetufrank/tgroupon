@@ -92,9 +92,9 @@ if(isset($_REQUEST['code'])&&isset($_REQUEST['state'])&&$action == 'weixin'){
 
     //xxxx修改成自己的appID和AppSecret
 
-    $appid = 'wx7eee3208b7b59ea1';
+    $appid = $config['appidphonecs'];
 
-    $appsecret = '9d9360d18e266b81d69888227fbbadeb';
+    $appsecret = $config['appSecretphonecs'];
 
 
 
