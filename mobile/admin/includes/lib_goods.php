@@ -2201,7 +2201,7 @@ function product_list($goods_id, $conditions = '')
 
 
 
-        $sql = "SELECT product_id, goods_id, goods_attr, product_sn, product_number,attributeprice,attributeimg,priceratio,falseprice
+        $sql = "SELECT attimgopen,product_id, goods_id, goods_attr, product_sn, product_number,attributeprice,attributeimg,priceratio,falseprice
 
                 FROM " . $GLOBALS['ecs']->table('products') . " AS g
 
