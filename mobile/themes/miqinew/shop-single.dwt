@@ -339,7 +339,8 @@
 	display:none;
 	}
 	#xiangqiangimg img{
-		margin:auto;
+    margin:auto;
+    display: inline;
 	}
   /* 商品属性不可选 */
   .specDonotchoose{

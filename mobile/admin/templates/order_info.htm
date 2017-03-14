@@ -232,7 +232,7 @@
 
     </script>
 
-    <a href="order.php?act=edit&order_id={$order.order_id}&step=shipping" class="special" onclick="">编辑</a>&nbsp;&nbsp;<!-- <input type="button" onclick="window.open('order.php?act=info&order_id={$order.order_id}&shipping_print=1')" class="button" value="{$lang.print_shipping}"> {if $order.insure_fee > 0}（{$lang.label_insure_fee}{$order.formated_insure_fee}）{/if} -->
+    <!-- <a href="order.php?act=edit&order_id={$order.order_id}&step=shipping" class="special" onclick="">编辑</a>&nbsp;&nbsp; --><!-- <input type="button" onclick="window.open('order.php?act=info&order_id={$order.order_id}&shipping_print=1')" class="button" value="{$lang.print_shipping}"> {if $order.insure_fee > 0}（{$lang.label_insure_fee}{$order.formated_insure_fee}）{/if} -->
 
     </td>
 
@@ -400,7 +400,7 @@
 
   <tr>
 
-    <th colspan="8" scope="col">{$lang.goods_info}<a href="order.php?act=edit&order_id={$order.order_id}&step=goods" class="special">{$lang.edit}</a></th>
+    <th colspan="8" scope="col">{$lang.goods_info}<!-- <a href="order.php?act=edit&order_id={$order.order_id}&step=goods" class="special">{$lang.edit}</a> --></th>
 
     </tr>
 
@@ -636,7 +636,7 @@
 
         {/if} {if $operable_list.return}
 
-        <input name="return" type="submit" value="{$lang.op_return}" class="button" />
+        <!-- <input name="return" type="submit" value="{$lang.op_return}" class="button" /> -->
 
         {/if} {if $operable_list.to_delivery}
 
@@ -646,7 +646,7 @@
 
         {/if} <!-- <input name="after_service" type="submit" value="{$lang.op_after_service}" class="button" /> -->{if $operable_list.remove}
 
-        <input name="remove" type="submit" value="{$lang.remove}" class="button" onClick="return window.confirm('{$lang.js_languages.remove_confirm}');" />
+        <!-- <input name="remove" type="submit" value="{$lang.remove}" class="button" onClick="return window.confirm('{$lang.js_languages.remove_confirm}');" /> -->
 
         {/if}
 

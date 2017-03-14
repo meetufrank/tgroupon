@@ -23,17 +23,17 @@ $_LANG['cs'][CS_AWAIT_PAY] = '待付款';
 $_LANG['cs'][CS_AWAIT_SHIP] = '待发货';
 $_LANG['cs'][CS_FINISHED] = '已完成';
 $_LANG['cs'][PS_PAYING] = '付款中';
-$_LANG['cs'][OS_CANCELED] = '取消';
-$_LANG['cs'][OS_INVALID] = '无效';
-$_LANG['cs'][OS_RETURNED] = '退货';
-$_LANG['cs'][OS_SHIPPED_PART] = '部分发货';
+// $_LANG['cs'][OS_CANCELED] = '取消';
+// $_LANG['cs'][OS_INVALID] = '无效';
+// $_LANG['cs'][OS_RETURNED] = '退货';
+// $_LANG['cs'][OS_SHIPPED_PART] = '部分发货';
 
 /* 订单状态 */
 $_LANG['os'][OS_UNCONFIRMED] = '未确认';
 $_LANG['os'][OS_CONFIRMED] = '已确认';
-$_LANG['os'][OS_CANCELED] = '<font color="red"> 取消</font>';
-$_LANG['os'][OS_INVALID] = '<font color="red">无效</font>';
-$_LANG['os'][OS_RETURNED] = '<font color="red">退货</font>';
+// $_LANG['os'][OS_CANCELED] = '<font color="red"> 取消</font>';
+// $_LANG['os'][OS_INVALID] = '<font color="red">无效</font>';
+// $_LANG['os'][OS_RETURNED] = '<font color="red">退货</font>';
 $_LANG['os'][OS_SPLITED] = '已分单';
 $_LANG['os'][OS_SPLITING_PART] = '部分分单';
 
