@@ -1082,7 +1082,7 @@ $smarty->assign('spnames',  $spnames);  //商品名称
 
 //商品关联艺术家
 
-$spysj = "select u.hav_logo,u.user_name,u.country from `ecs_goods` as g
+$spysj = "select u.user_id,u.hav_logo,u.user_name,u.country from `ecs_goods` as g
 
 inner join `ecs_admin_user` as u on g.arter_id = u.user_id where g.goods_id = '$goodsid'";
 

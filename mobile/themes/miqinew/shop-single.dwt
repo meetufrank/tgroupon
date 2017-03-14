@@ -50,7 +50,7 @@
     margin-top:15px;
     margin-left:15px;
     display:inline-block;
-    font-size:16px; 
+    font-size:16px;
     font-weight:blod;
   }
 }
@@ -74,7 +74,7 @@
     margin-top:0px;
     margin-left:15px;
     display:inline-block;
-    font-size:14px; 
+    font-size:14px;
     font-weight:blod;
   }
 .mobile-shopsingle-row{
@@ -534,7 +534,7 @@
             <!--艺术家-->
            {foreach from=$spysj item=spysj}
                  <p>
-                  <img src="..{$spysj.hav_logo}" class="pm-img-shopsingle">
+                  <a href="artist-detail.php?ysjid={$spysj.user_id}"><img src="..{$spysj.hav_logo}" class="pm-img-shopsingle"></a>
                   <span class="ss-art-name">{$spysj.user_name}</span>
                   <img src="{$ectouch_themes}/img/shugang.png" style="display:inline-block; width:1px; height:30px;">
                   <span class="ss-art-country">{$spysj.country}</span>
