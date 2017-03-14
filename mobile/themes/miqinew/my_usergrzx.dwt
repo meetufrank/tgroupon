@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,10 +37,18 @@
   <script src="{$ectouch_themes}/js/vendor/page-preloading.js"></script>
   <script src="{$ectouch_themes}/js/jquery-1.4.4.min.js"></script>
 
-<script src="{$ectouch_themes}/js/jquery-1.9.1.min.js"></script>
-
   <!-- by sun -->
   <style>
+    @media screen and (max-width:768px){
+      .shop-item{
+        max-width: 95%;
+        margin:0 auto;
+        margin-top: 5px;
+      }
+    }
+  .shop-item{
+    border: 2px solid #edf7f9;
+  }
     .nav-pills{
     	margin-left:-18px;
     	padding-bottom:10px;

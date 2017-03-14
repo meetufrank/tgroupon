@@ -39,7 +39,12 @@
   <link href="{$ectouch_themes}/css/AboutUs.css" rel="stylesheet" media="screen">
 
 </head>
-
+<style>
+.row{
+    margin-left: -15px;
+    margin-right: -15px;
+}
+</style>
 <!-- Body -->
 <!-- Adding/Removing class ".page-preloading" is enabling/disabling background smooth page transition effect and spinner. Make sure you also added/removed link to page-preloading.js script in the <head> of the document. -->
 <body class="page-preloading">

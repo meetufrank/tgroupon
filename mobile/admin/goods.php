@@ -956,7 +956,63 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 
 }
 
+elseif ($_REQUEST['act'] == 'imgadd'){
 
+	$id = $_REQUEST['id'];
+	$smarty->assign('id',$id);
+	$smarty->display('productimg_add.htm');
+}
+
+
+elseif ($_REQUEST['act'] == 'productimginsert'){
+
+	$id = $_REQUEST['id'];
+
+    $imgxianshi = $_REQUEST['imgxianshi'];
+    // print_r($imgxianshi);exit;
+
+	if($_FILES['attributeimg']['name']){
+
+    //图片上传处理
+
+    $up = new FileUpload();
+
+    //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+
+    $path="images/shuxing/";
+
+    $up -> set("path", ROOT_PATH.$path);
+
+    $up -> set("maxsize", 5000000);
+
+    $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+
+    $up -> set("israndname", true);
+
+    if($up -> upload("attributeimg")) {
+
+        $url_img=$config['mobilesite_url'].$path.$up->getFileName();
+
+    } else {
+        sys_msg($up->getErrorMsg(), 1);
+
+    }
+
+}
+
+    $updateimgyisql = "update `ecs_products` set attributeimg = '$url_img',attimgopen = $imgxianshi where product_id = ".$id;
+    $db->query($updateimgyisql);
+
+
+    $links[0]['text']    = '返回属性图片添加';
+    $links[0]['href']    = 'goods.php?act=imgadd&id='.$id;
+    sys_msg('操作成功', 0, $links);
+
+    exit;
+
+
+	print_r($updateimgyisql);exit;
+}
 
 /*------------------------------------------------------ */
 
@@ -4716,7 +4772,6 @@ elseif ($_REQUEST['act'] == 'product_list')
     $product = product_list($goods_id, '');
 
 
-
     $smarty->assign('ur_here',      $_LANG['18_product_list']);
 
     $smarty->assign('action_link',  array('href' => 'goods.php?act=list', 'text' => $_LANG['01_goods_list']));
@@ -5224,142 +5279,6 @@ elseif ($_REQUEST['act'] == 'edit_product_number')
 elseif ($_REQUEST['act'] == 'product_add_execute')
 
 {
-
-
-
-
-
-
-
-//上传图片
-
-    $fileInfo=$_FILES['cover'];
-
-$maxSize=2097152;//允许的最大值
-
-$allowExt=array('jpeg','jpg','png','gif','wbmp');
-
-$flag=true;//检测是否为真实图片类型
-
-//1.判断错误号
-
-if($fileInfo['error']==0){
-
-    //判断上传文件的大小
-
-    if($fileInfo['size']>$maxSize){
-
-        exit('上传文件过大');
-
-    }
-
-    //$ext=strtolower(end(explode('.',$fileInfo['name'])));
-
-    $ext=pathinfo($fileInfo['name'],PATHINFO_EXTENSION);
-
-    if(!in_array($ext,$allowExt)){
-
-        exit('非法文件类型');
-
-    }
-
-    //判断文件是否是通过HTTP POST方式上传来的
-
-    if(!is_uploaded_file($fileInfo['tmp_name'])){
-
-        exit('文件不是通过HTTP POST方式上传来的');
-
-    }
-
-    //检测是否为真实的图片类型
-
-    if($flag){
-
-        if(!getimagesize($fileInfo['tmp_name'])){
-
-            exit('不是真正图片类型');
-
-        }
-
-    }
-
-    $path='uploads';
-
-    if(!file_exists($path)){
-
-        mkdir($path,0777,true);
-
-        chmod($path,0777);
-
-    }
-
-    //确保文件名唯一，防止重名产生覆盖
-
-    $uniName=md5(uniqid(microtime(true),true)).'.'.$ext;
-
-    $destination=$path.'/'.$uniName;
-
-
-
-    if(@move_uploaded_file($fileInfo['tmp_name'],$destination)){
-
-        echo '';
-
-
-
-    }else{
-
-        echo '';
-
-    }
-
-}else{
-
-    //匹配错误信息
-
-    switch($fileInfo['error']){
-
-        case 1:
-
-            echo '上传文件超过了PHP配置文件中upload_max_filesize选项的值';
-
-            break;
-
-        case 2:
-
-            echo '超过了表单MAX_FILE_SIZE限制的大小';
-
-            break;
-
-        case 3:
-
-            echo '文件部分被上传';
-
-            break;
-
-        case 4:
-
-            echo '没有选择上传文件';
-
-            break;
-
-        case 6:
-
-            echo '没有找到临时目录';
-
-            break;
-
-        case 7:
-
-        case 8:
-
-            echo '系统错误';
-
-            break;
-
-    }
-
-}
 
 
 

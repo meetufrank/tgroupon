@@ -452,5 +452,8 @@ ALTER TABLE `ecs_xiaoxi`
 MODIFY COLUMN `xxtime`  timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '//系统消息时间' AFTER `xxlink`;
 
 
-
+/*#2017/03/14 汪江  添加属性图片是否开启字段
+*/
+ALTER TABLE `ecs_products`
+ADD COLUMN `attimgopen`  int(11) NULL COMMENT '//属性图片是否开启 1开启  0关闭' AFTER `falseprice`;
 

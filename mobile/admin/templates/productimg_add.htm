@@ -1,0 +1,273 @@
+<!-- $Id: user_info.htm 16854 2009-12-07 06:20:09Z sxc_shop $ -->
+
+{include file="pageheadermyuserxiaoxiadd.htm"}
+
+<div class="main-div">
+
+
+
+
+<form method="post" action="goods.php?act=productimginsert&id=92" name="theForm" enctype="multipart/form-data" onsubmit="return validate()">
+
+<table width="100%" >
+
+
+            <tr>
+              <td class="label">商品属性图片:</td>
+              <td>
+                <input type="file" name="attributeimg" size="35" />
+				<input type="hidden" name="id" size="35" value="{$id}" />
+              </td>
+            </tr>
+
+
+			  <tr>
+				<td class="label">是否开启:</td>
+				<td>
+				
+				    <input type="radio" name="imgxianshi" value="1"  checked="true"/>开启
+
+                    <input type="radio" name="imgxianshi" value="0"  checked="true" />关闭
+				</td>
+			  </tr>
+              
+			  
+			  
+
+
+
+
+  {foreach from=$extend_info_list item=field}
+
+  <tr>
+
+    <td class="label">{$field.reg_field_name}:</td>
+
+    <td>
+
+    <input name="extend_field{$field.id}" type="text" size="40" class="inputBg" value="{$field.content}"/>
+
+    </td>
+
+  </tr>
+
+  {/foreach}
+
+  {if $user.parent_id}
+
+  <tr>
+
+    <td class="label">{$lang.parent_user}:</td>
+
+    <td><a href="users.php?act=edit&id={$user.parent_id}">{$user.parent_username}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="users.php?act=remove_parent&id={$user.user_id}">{$lang.parent_remove}</a></td>
+
+  </tr>
+
+  {/if}
+
+  {if $affiliate.on eq 1 && $affdb}
+
+  <tr>
+
+    <td class="label">{$lang.affiliate_user}:</td>
+
+    <td>[<a href="users.php?act=aff_list&auid={$user.user_id}">{$lang.show_affiliate_users}</a>][<a href="affiliate_ck.php?act=list&auid={$user.user_id}">{$lang.show_affiliate_orders}</a>]</td>
+
+  </tr>
+
+  <tr>
+
+    <td></td>
+
+    <td>
+
+    <table border="0" cellspacing="1" style="background: #dddddd; width:30%;">
+
+    <tr>
+
+    <td bgcolor="#ffffff">{$lang.affiliate_lever}</td>
+
+    {foreach from=$affdb key=level item=val0}
+
+    <td bgcolor="#ffffff">{$level}</td>
+
+    {/foreach}
+
+    </tr>
+
+    <tr>
+
+    <td bgcolor="#ffffff">{$lang.affiliate_num}</td>
+
+    {foreach from=$affdb item=val}
+
+    <td bgcolor="#ffffff">{$val.num}</td>
+
+    {/foreach}
+
+    </tr>
+
+    </table>
+
+    </td>
+
+  </tr>
+
+  {/if}
+
+  <tr>
+
+
+
+       <td colspan="2" align="center">
+
+             <input id="btn" type="submit" value="确定" class="button"   />
+
+        </td>
+
+  </tr>
+
+</table>
+
+
+
+</form>
+
+</div>
+
+{insert_scripts files="../js/utils.js,validator.js"}
+
+{literal}
+
+<script language="JavaScript">
+
+<!--
+
+
+
+if (document.forms['theForm'].elements['act'].value == "insert")
+
+{
+
+  document.forms['theForm'].elements['username'].focus();
+
+}
+
+else
+
+{
+
+  document.forms['theForm'].elements['email'].focus();
+
+}
+
+
+
+onload = function()
+
+{
+
+    // 开始检查订单
+
+    startCheckOrder();
+
+}
+
+
+
+/**
+
+ * 检查表单输入的数据
+
+ */
+
+function validate()
+
+{
+
+    validator = new Validator("theForm");
+
+    validator.isEmail("email", invalid_email, true);
+
+
+
+    if (document.forms['theForm'].elements['act'].value == "insert")
+
+    {
+
+        validator.required("username",  no_username);
+
+        validator.required("password", no_password);
+
+        validator.required("confirm_password", no_confirm_password);
+
+        validator.eqaul("password", "confirm_password", password_not_same);
+
+
+
+        var password_value = document.forms['theForm'].elements['password'].value;
+
+        if (password_value.length < 6)
+
+        {
+
+          validator.addErrorMsg(less_password);
+
+        }
+
+        if (/ /.test(password_value) == true)
+
+        {
+
+          validator.addErrorMsg(passwd_balnk);
+
+        }
+
+    }
+
+    else if (document.forms['theForm'].elements['act'].value == "update")
+
+    {
+
+        var newpass = document.forms['theForm'].elements['password'];
+
+        var confirm_password = document.forms['theForm'].elements['confirm_password'];
+
+        if(newpass.value.length > 0 || confirm_password.value.length)
+
+        {
+
+          if(newpass.value.length >= 6 || confirm_password.value.length >= 6)
+
+          {
+
+            validator.eqaul("password", "confirm_password", password_not_same);
+
+          }
+
+          else
+
+          {
+
+            validator.addErrorMsg(password_len_err);
+
+          }
+
+        }
+
+    }
+
+
+
+    return validator.passed();
+
+}
+
+//-->
+
+</script>
+
+{/literal}
+
+{include file="pagefooter.htm"}
+
