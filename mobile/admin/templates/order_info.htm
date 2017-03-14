@@ -432,7 +432,7 @@
 
     {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'}
 
-    <a href="../goods.php?id={$goods.goods_id}" target="_blank">{$goods.goods_name} {if $goods.brand_name}[ {$goods.brand_name} ]{/if}
+    <a href="../shop-single.php?id={$goods.goods_id}" target="_blank">{$goods.goods_name} {if $goods.brand_name}[ {$goods.brand_name} ]{/if}
 
     {if $goods.is_gift}{if $goods.goods_price > 0}{$lang.remark_favourable}{else}{$lang.remark_gift}{/if}{/if}
 
@@ -446,7 +446,7 @@
 
         {foreach from=$goods.package_goods_list item=package_goods_list}
 
-          <a href="../goods.php?id={$package_goods_list.goods_id}" target="_blank">{$package_goods_list.goods_name}</a><br />
+          <a href="../shop-single.php?id={$package_goods_list.goods_id}" target="_blank">{$package_goods_list.goods_name}</a><br />
 
         {/foreach}
 
@@ -628,7 +628,7 @@
 
         {/if} {if $operable_list.cancel}
 
-        <input name="cancel" type="submit" value="{$lang.op_cancel}" class="button" />
+        <!-- <input name="cancel" type="submit" value="{$lang.op_cancel}" class="button" /> -->
 
         {/if} {if $operable_list.invalid}
 
@@ -646,7 +646,7 @@
 
         {/if} <!-- <input name="after_service" type="submit" value="{$lang.op_after_service}" class="button" /> -->{if $operable_list.remove}
 
-        <!-- <input name="remove" type="submit" value="{$lang.remove}" class="button" onClick="return window.confirm('{$lang.js_languages.remove_confirm}');" /> -->
+        <input name="remove" type="submit" value="{$lang.remove}" class="button" onClick="return window.confirm('{$lang.js_languages.remove_confirm}');" />
 
         {/if}
 
