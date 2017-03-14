@@ -126,7 +126,7 @@ elseif ($_REQUEST['act'] == 'list')
 
     $smarty->assign('ur_here', $_LANG['02_order_list']);
 
-    $smarty->assign('action_link', array('href' => 'order.php?act=order_query', 'text' => $_LANG['03_order_query']));
+    // $smarty->assign('action_link', array('href' => 'order.php?act=order_query', 'text' => $_LANG['03_order_query']));
 
 
 
