@@ -168,7 +168,7 @@
 
     <td><div align="right"><strong>{$lang.label_user_name}</strong></div></td>
 
-    <td>{$order.user_name|default:$lang.anonymous} {if $order.user_id > 0}[ <a href="" onclick="staticbar();return false;">{$lang.display_buyer}</a> ] <!-- [ <a href="user_msg.php?act=add&order_id={$order.order_id}&user_id={$order.user_id}">{$lang.send_message}</a> ] -->{/if}</td>
+    <td>{$order.user_name|default:$lang.anonymous} {if $order.user_id > 0}<!-- [ <a href="" onclick="staticbar();return false;">{$lang.display_buyer}</a> ] --> <!-- [ <a href="user_msg.php?act=add&order_id={$order.order_id}&user_id={$order.user_id}">{$lang.send_message}</a> ] -->{/if}</td>
 
     <td><div align="right"><strong>{$lang.label_order_time}</strong></div></td>
 
