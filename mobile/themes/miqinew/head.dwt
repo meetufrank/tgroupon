@@ -70,12 +70,12 @@
           <div class="inner">
 
    {if $loginpc}
-            <a href="https://open.weixin.qq.com/connect/qrconnect?appid=wxa7bf7c7e0dc6a404&response_type=code&scope=snsapi_login&redirect_uri=http://www.cands.cn/mobile/weixinlogin.php&state=9600732908ae24b0cb04cae8b7dd3b42" class="btn btn-primary waves-effect waves-light toggle-section">
+            <a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx972a6f963cf1d611&response_type=code&scope=snsapi_login&redirect_uri=http://meetuuu.com//mobile/weixinlogin.php&state=668ee48328701ca10efef2517d8826e8" class="btn btn-primary waves-effect waves-light toggle-section">
               <i class="material-icons question_answer"></i>
               点击扫二维码登录
           </a>
         {else}
-        <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf710583f433c07fe&redirect_uri=http://www.cands.cn/mobile/loginphone.php&response_type=code&scope=snsapi_userinfo&state=123&connect_redirect=1#wechat_redirect" class="btn btn-primary waves-effect waves-light toggle-section">
+        <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5aec13c030a530b&redirect_uri=http://meetuuu.com/mobile/loginphone.php&response_type=code&scope=snsapi_userinfo&state=123&connect_redirect=1#wechat_redirect" class="btn btn-primary waves-effect waves-light toggle-section">
               <i class="material-icons question_answer"></i>
               点击登录
           </a>
