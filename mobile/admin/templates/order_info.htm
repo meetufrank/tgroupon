@@ -168,7 +168,7 @@
 
     <td><div align="right"><strong>{$lang.label_user_name}</strong></div></td>
 
-    <td>{$order.user_name|default:$lang.anonymous} {if $order.user_id > 0}[ <a href="" onclick="staticbar();return false;">{$lang.display_buyer}</a> ] <!-- [ <a href="user_msg.php?act=add&order_id={$order.order_id}&user_id={$order.user_id}">{$lang.send_message}</a> ] -->{/if}</td>
+    <td>{$order.user_name|default:$lang.anonymous} {if $order.user_id > 0}<!-- [ <a href="" onclick="staticbar();return false;">{$lang.display_buyer}</a> ] --> <!-- [ <a href="user_msg.php?act=add&order_id={$order.order_id}&user_id={$order.user_id}">{$lang.send_message}</a> ] -->{/if}</td>
 
     <td><div align="right"><strong>{$lang.label_order_time}</strong></div></td>
 
@@ -232,7 +232,7 @@
 
     </script>
 
-    <a href="order.php?act=edit&order_id={$order.order_id}&step=shipping" class="special" onclick="">编辑</a>&nbsp;&nbsp;<!-- <input type="button" onclick="window.open('order.php?act=info&order_id={$order.order_id}&shipping_print=1')" class="button" value="{$lang.print_shipping}"> {if $order.insure_fee > 0}（{$lang.label_insure_fee}{$order.formated_insure_fee}）{/if} -->
+    <!-- <a href="order.php?act=edit&order_id={$order.order_id}&step=shipping" class="special" onclick="">编辑</a>&nbsp;&nbsp; --><!-- <input type="button" onclick="window.open('order.php?act=info&order_id={$order.order_id}&shipping_print=1')" class="button" value="{$lang.print_shipping}"> {if $order.insure_fee > 0}（{$lang.label_insure_fee}{$order.formated_insure_fee}）{/if} -->
 
     </td>
 
@@ -400,7 +400,7 @@
 
   <tr>
 
-    <th colspan="8" scope="col">{$lang.goods_info}<a href="order.php?act=edit&order_id={$order.order_id}&step=goods" class="special">{$lang.edit}</a></th>
+    <th colspan="8" scope="col">{$lang.goods_info}<!-- <a href="order.php?act=edit&order_id={$order.order_id}&step=goods" class="special">{$lang.edit}</a> --></th>
 
     </tr>
 
@@ -432,7 +432,7 @@
 
     {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'}
 
-    <a href="../goods.php?id={$goods.goods_id}" target="_blank">{$goods.goods_name} {if $goods.brand_name}[ {$goods.brand_name} ]{/if}
+    <a href="../shop-single.php?id={$goods.goods_id}" target="_blank">{$goods.goods_name} {if $goods.brand_name}[ {$goods.brand_name} ]{/if}
 
     {if $goods.is_gift}{if $goods.goods_price > 0}{$lang.remark_favourable}{else}{$lang.remark_gift}{/if}{/if}
 
@@ -446,7 +446,7 @@
 
         {foreach from=$goods.package_goods_list item=package_goods_list}
 
-          <a href="../goods.php?id={$package_goods_list.goods_id}" target="_blank">{$package_goods_list.goods_name}</a><br />
+          <a href="../shop-single.php?id={$package_goods_list.goods_id}" target="_blank">{$package_goods_list.goods_name}</a><br />
 
         {/foreach}
 
@@ -628,7 +628,7 @@
 
         {/if} {if $operable_list.cancel}
 
-        <input name="cancel" type="submit" value="{$lang.op_cancel}" class="button" />
+        <!-- <input name="cancel" type="submit" value="{$lang.op_cancel}" class="button" /> -->
 
         {/if} {if $operable_list.invalid}
 
@@ -636,7 +636,7 @@
 
         {/if} {if $operable_list.return}
 
-        <input name="return" type="submit" value="{$lang.op_return}" class="button" />
+        <!-- <input name="return" type="submit" value="{$lang.op_return}" class="button" /> -->
 
         {/if} {if $operable_list.to_delivery}
 

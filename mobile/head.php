@@ -129,7 +129,15 @@ if ($_SESSION['user_id'])
 
     $cart_goods = get_cart_goods(0,1);
 
+    foreach (@$cart_goods['goods_list'] as $key => $value) {
+         //计算库存数量
+    if($value['product_id']){
+        $sql=" select   sum(eg.goods_number) from ecs_order_goods as eg inner join ecs_order_info as ei on eg.order_id=ei.order_id where ei.pay_status=2 and eg.product_id=".$value['product_id'];
+        $old_numbers=$GLOBALS['db']->getOne($sql);
+        }
+        $cart_goods['goods_list'][$key]['product_number']-=$old_numbers;
 
+    }
 
      //查询这个用户是否为线下店
 

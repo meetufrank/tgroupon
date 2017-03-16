@@ -86,7 +86,7 @@ $smarty->assign('tixian_pages',$tixian_pages);
    $sql="select hav_money from ".$ecs->table('users')." where user_id=".$userid." and (is_line!=0 or is_art!=0)";    //查询提现金额
    $tixian=$GLOBALS['db']->getOne($sql);
 
- if($tixian>=500||$days>=30&&$tixian>0){
+ if($tixian>=200||$days>=30&&$tixian>0){
      $time=date('Y-m-d H:i:s');
     $sql="insert into ecs_tixian(line_shopid,money,status,time) values(".$userid.",".$tixian.",0,'".$time."')";
     $GLOBALS['db']->query($sql);
@@ -99,7 +99,7 @@ $smarty->assign('tixian_pages',$tixian_pages);
     $data['msg']="提交成功";
 
  }else{
-    $data['msg']="提交失败，提现间隔需超过30天或提现金额大于500元";
+    $data['msg']="提交失败，提现间隔需超过30天或提现金额大于200元";
  }
  echo json_encode($data);
  exit;

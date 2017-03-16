@@ -222,6 +222,9 @@
                          window.location.href=data.url;
                          return;
                     }
+                  if(data.error==1){
+                    alert(data.msg);return;
+                  }
                 if(data.step==1){
                     content=data.content;
                     layer.open({

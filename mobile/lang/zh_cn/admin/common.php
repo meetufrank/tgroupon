@@ -494,7 +494,7 @@ $_LANG['10_user_account_manage'] = '资金管理';
 
 $_LANG['11_shenqing'] = '申请';
 
-$_LANG['11_tixian'] = '充值与提现申请';
+$_LANG['11_tixian'] = '提现申请';
 
 // $_LANG['line_shop'] = '线下店签约管理';
 
@@ -506,13 +506,15 @@ $_LANG['line_shop_add'] = '新增线下店签约';
 
 $_LANG['admin_list'] = '管理员列表';
 
-$_LANG['privilegeyishujia'] = '设计师列表';
+// $_LANG['privilegeyishujia'] = '设计师 - 列表';
+
+$_LANG['shejishi'] = '设计师列表';  //正确版本
 
 $_LANG['fengchen'] = '分成列表';
 
 $_LANG['admin_list_role'] = '角色列表';
 
-$_LANG['admin_role'] = '角色管理';
+/* $_LANG['admin_role'] = '角色管理'; */
 
 $_LANG['admin_add'] = '添加管理员';
 

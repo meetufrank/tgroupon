@@ -1,38 +1,96 @@
 <!-- $Id: user_info.htm 16854 2009-12-07 06:20:09Z sxc_shop $ -->
 
-{include file="pageheadermyuserxiaoxiadd.htm"}
+{include file="pageheadershejishilist.htm"}
+
+
+<script charset="utf-8" src="../admin/data/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="../admin/data/kindeditor/lang/zh_CN.js"></script>
+
 
 <div class="main-div">
 
 
 
 
-<form method="post" action="goods.php?act=productimginsert&id=92" name="theForm" enctype="multipart/form-data" onsubmit="return validate()">
+<form method="post" action="shejishi.php?act=xiugai" name="theForm" enctype="multipart/form-data" onsubmit="return validate()">
 
 <table width="100%" >
 
 
+ <tr>
+
+    <td class="label">设计师名称:</td>
+
+    <td>
+
+      <input id="sjsname" type="text" name="user_name" maxlength="20" value="{$user_info.user_name}" size="34"/>{$lang.require_field}</td>
+      <input name="userid" style="display:none;" type="text" value="{$user_info.user_id}">
+  </tr>
+
+
+  <tr id="ysjfc">
+
+
+
+                <td class="label">设计师分成</td>
+
+                <td>
+
+                  <input type="text" name="ysj_fencheng" value="{$user_info.ysj_fencheng}"  size="10" />%
+
+
+
+                </td>
+
+      </tr>
+
+  <tr>
+
+            <td class="label">设计师logo</td>
+
+            <td>
+
+              <input type="file" name="pic" size="35" />
+
+
+
+            </td>
+
+          </tr>
+
+
+
             <tr>
-              <td class="label">商品属性图片:</td>
+              <td class="label">设计师详情banner图</td>
               <td>
-                <input type="file" name="attributeimg" size="35" />
-				<input type="hidden" name="id" size="35" value="{$id}" />
+                <input type="file" name="sjspic" size="35" />
               </td>
             </tr>
 
-
-			 <!--   <tr>
-              				<td class="label">是否开启:</td>
-              				<td>
-
-              				    <input type="radio" name="imgxianshi" value="1"  checked="true"/>开启
-
-                          <input type="radio" name="imgxianshi" value="0"  />关闭
-              				</td>
-			       </tr> -->
+          <tr>
+            <td class="label">国家</td>
+            <td>
+              <input type="text" name="country"  value="{$user_info.country}" />
+            </td>
+          </tr>
 
 
+          <tr>
+            <td class="label">绑定用户编号</td>
+            <td>
+             <input type="text" name="user_code"  value="{$weiyi_num}" />
+            </td>
+          </tr>
 
+          <tr>
+              <td class="label">设计师简介</td>
+              <td>
+                  <textarea id="content" name="content"
+                      style="width:80%;height:400px;">
+                      {$user_info.sjsintro}
+                  </textarea>
+              </td>
+          </tr>
 
 
 
@@ -138,6 +196,17 @@
 {insert_scripts files="../js/utils.js,validator.js"}
 
 {literal}
+
+
+<script type="text/javascript">
+    //KindEditor脚本
+    var editor;
+    KindEditor.ready(function(K) {
+        editor = K.create('#content', {
+        });
+    });
+</script>
+
 
 <script language="JavaScript">
 

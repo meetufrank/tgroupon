@@ -480,12 +480,16 @@ if(is_array($checked)){
 
  //   价格和商品
 
-   $sqls = "select attributeprice,attributeimg,product_number,goods_id from `ecs_products` where goods_attr = '".$jiageimg."'";
+   $sqls = "select attributeprice,attributeimg,product_number,goods_id,product_id from `ecs_products` where goods_attr = '".$jiageimg."'";
 
   $jiageimgs = $db->getRow($sqls);
 
-
-
+//计算库存数量
+if($jiageimgs['product_id']){
+    $sql=" select   sum(eg.goods_number) from ecs_order_goods as eg inner join ecs_order_info as ei on eg.order_id=ei.order_id where ei.pay_status=2 and eg.product_id=".$jiageimgs['product_id'];
+    $numbers=$GLOBALS['db']->getOne($sql);
+}
+$jiageimgs['product_number']=$jiageimgs['product_number']-$numbers;
   $sql="select more_price from ecs_goods  where goods_id=".$jiageimgs['goods_id'];
 
   $more_price = $db->getOne($sql);
@@ -1359,10 +1363,15 @@ foreach ($friend_arr as $key => $value) {
 
 
 
- $sqls = "select attributeprice,falseprice,attributeimg,product_number from `ecs_products` where goods_attr = '$jiageimg'";
+ $sqls = "select attributeprice,falseprice,attributeimg,product_number,product_id from `ecs_products` where goods_attr = '$jiageimg'";
 
   $jiageimgs = $db->getRow($sqls);
-
+//计算库存数量
+if($jiageimgs['product_id']){
+    $sql=" select   sum(eg.goods_number) from ecs_order_goods as eg inner join ecs_order_info as ei on eg.order_id=ei.order_id where ei.pay_status=2 and eg.product_id=".$jiageimgs['product_id'];
+    $numbers=$GLOBALS['db']->getOne($sql);
+}
+$jiageimgs['product_number']=$jiageimgs['product_number']-$numbers;
 $sub_price=sprintf("%.2f", $jiageimgs['attributeprice']+$shopdata['more_price']);
 $falseprice=sprintf("%.2f", $jiageimgs['falseprice']+$shopdata['more_price']);
 

@@ -960,9 +960,20 @@ elseif ($_REQUEST['act'] == 'imgadd'){
 
 	$id = $_REQUEST['id'];
 	$smarty->assign('id',$id);
+
 	$smarty->display('productimg_add.htm');
 }
+elseif ($_REQUEST['act'] == 'attrimgdit'){
 
+    $id = $_REQUEST['id'];
+    $smarty->assign('id',$id);
+    $opensql = "select attimgopen from `ecs_products` where product_id = $id ";
+    $open = $db->getOne($opensql);
+    $smarty->assign('open',$open);
+    //print_r($open);exit;
+
+    $smarty->display('productimg_edit.htm');
+}
 
 elseif ($_REQUEST['act'] == 'productimginsert'){
 
@@ -979,11 +990,14 @@ elseif ($_REQUEST['act'] == 'productimginsert'){
 
     //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
 
-    $path="images/shuxing/";
+    $path="uploads/";
 
-    $up -> set("path", ROOT_PATH.$path);
+
+    $up -> set("path", ROOT_PATH.'admin/'.$path);
 
     $up -> set("maxsize", 5000000);
+
+
 
     $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
 
@@ -991,7 +1005,8 @@ elseif ($_REQUEST['act'] == 'productimginsert'){
 
     if($up -> upload("attributeimg")) {
 
-        $url_img=$config['mobilesite_url'].$path.$up->getFileName();
+        $url_img=$path.$up->getFileName();
+        // print_r($config['mobilesite_url'].'admin/');
 
     } else {
         sys_msg($up->getErrorMsg(), 1);
@@ -1000,18 +1015,29 @@ elseif ($_REQUEST['act'] == 'productimginsert'){
 
 }
 
-    $updateimgyisql = "update `ecs_products` set attributeimg = '$url_img',attimgopen = $imgxianshi where product_id = ".$id;
+// print_r($url_img);exit;
+    if($url_img == ''){
+        $attrimgsql = "select attributeimg from `ecs_products` where product_id = $id";
+        $url_img = $db -> getOne($attrimgsql);
+        // print_r($url_img);exit;
+    }
+
+    // $updateimgyisql = "update `ecs_products` set attributeimg = '$url_img',attimgopen = $imgxianshi where product_id = ".$id;
+    $updateimgyisql = "update `ecs_products` set attributeimg = '$url_img' where product_id = ".$id;
     $db->query($updateimgyisql);
-
-
+    $goodsidsql = "select goods_id from `ecs_products` where product_id = $id";
+    $goodsids = $db->getOne($goodsidsql);
+    // print_r($goodsids);exit;
     $links[0]['text']    = '返回属性图片添加';
     $links[0]['href']    = 'goods.php?act=imgadd&id='.$id;
+    $links[1]['text']    = '返回货品列表';
+    $links[1]['href']    = 'goods.php?act=product_list&goods_id='.$goodsids;
     sys_msg('操作成功', 0, $links);
 
     exit;
 
 
-	print_r($updateimgyisql);exit;
+	// print_r($updateimgyisql);exit;
 }
 
 /*------------------------------------------------------ */
@@ -4770,7 +4796,7 @@ elseif ($_REQUEST['act'] == 'product_list')
     /* 取商品的货品 */
 
     $product = product_list($goods_id, '');
-
+   //print_r($product);exit;
 
     $smarty->assign('ur_here',      $_LANG['18_product_list']);
 

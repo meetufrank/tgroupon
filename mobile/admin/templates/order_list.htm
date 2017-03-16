@@ -78,7 +78,7 @@
 
   <tr>
 
-    <td valign="top" nowrap="nowrap"><input type="checkbox" name="checkboxes" value="{$order.order_sn}" /><a href="order.php?act=info&order_id={$order.order_id}" id="order_{$okey}">{$order.order_sn}{if $order.extension_code eq "group_buy"}<br /><div align="center">{$lang.group_buy}</div>{elseif $order.extension_code eq "exchange_goods"}<br /><div align="center">{$lang.exchange_goods}</div>{/if}</a></td>
+    <td valign="top" nowrap="nowrap"><input type="checkbox" name="checkboxes" value="{$order.order_sn}" /><a href="order.php?act=info&order_id={$order.order_id}" >{$order.order_sn}{if $order.extension_code eq "group_buy"}<br /><div align="center">{$lang.group_buy}</div>{elseif $order.extension_code eq "exchange_goods"}<br /><div align="center">{$lang.exchange_goods}</div>{/if}</a></td>
 
     <td>{$order.buyer|escape}<br />{$order.short_order_time}</td>
 
@@ -136,13 +136,13 @@
 
     <input name="confirm" type="submit" id="btnSubmit" value="{$lang.op_confirm}" class="button" disabled="true" onclick="this.form.target = '_self'" />
 
-    <input name="invalid" type="submit" id="btnSubmit1" value="{$lang.op_invalid}" class="button" disabled="true" onclick="this.form.target = '_self'" />
+   <!--  <input name="invalid" type="submit" id="btnSubmit1" value="{$lang.op_invalid}" class="button" disabled="true" onclick="this.form.target = '_self'" />
 
-    <input name="cancel" type="submit" id="btnSubmit2" value="{$lang.op_cancel}" class="button" disabled="true" onclick="this.form.target = '_self'" />
+    <input name="cancel" type="submit" id="btnSubmit2" value="{$lang.op_cancel}" class="button" disabled="true" onclick="this.form.target = '_self'" /> -->
 
     <input name="remove" type="submit" id="btnSubmit3" value="{$lang.remove}" class="button" disabled="true" onclick="this.form.target = '_self'" />
 
-    <input name="print" type="submit" id="btnSubmit4" value="{$lang.print_order}" class="button" disabled="true" onclick="this.form.target = '_blank'" />
+   <!--  <input name="print" type="submit" id="btnSubmit4" value="{$lang.print_order}" class="button" disabled="true" onclick="this.form.target = '_blank'" /> -->
 
     <input name="batch" type="hidden" value="1" />
 
