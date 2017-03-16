@@ -35,14 +35,14 @@ $_LANG['os'][OS_CONFIRMED] = '<span style="color:blue;">已确认</span>';
 // $_LANG['os'][OS_INVALID] = '<font color="red">无效</font>';
 // $_LANG['os'][OS_RETURNED] = '<font color="red">退货</font>';
 $_LANG['os'][OS_SPLITED] = '<span style="color:green;">已分单</span>';
-$_LANG['os'][OS_SPLITING_PART] = '部分分单';
+$_LANG['os'][OS_SPLITING_PART] = '<span style="color:blue;">部分分单</span>';
 
 $_LANG['ss'][SS_UNSHIPPED] = '<span style="color:red;">未发货</span>';
 $_LANG['ss'][SS_PREPARING] = '<span style="color:blue;">配货中</span>';
-$_LANG['ss'][SS_SHIPPED] = '<span style="color:green;">已发货</span>';
-$_LANG['ss'][SS_RECEIVED] = '<span style="color:grey;">收货确认</span>';
-$_LANG['ss'][SS_SHIPPED_PART] = '已发货(部分商品)';
-$_LANG['ss'][SS_SHIPPED_ING] = '发货中';
+$_LANG['ss'][SS_SHIPPED] = '<span style="color:blue;">已发货</span>';
+$_LANG['ss'][SS_RECEIVED] = '<span style="color:green;">收货确认</span>';
+$_LANG['ss'][SS_SHIPPED_PART] = '<span style="color:blue;">已发货(部分商品)</span>';
+$_LANG['ss'][SS_SHIPPED_ING] = '<span style="color:blue;">发货中</span>';
 
 $_LANG['ps'][PS_UNPAYED] = '<span style="color:red;">未付款</span>';
 $_LANG['ps'][PS_PAYING] = '付款中';

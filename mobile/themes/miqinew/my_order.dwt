@@ -86,7 +86,7 @@
       color: #a5a5a5;
   }
   .nav-pills>li>a>span {
-    padding-left:5px;
+/*    padding-left:5px;*/
     color:#f20000;
   }
   .teammate-thumb {
@@ -664,7 +664,7 @@
                   dataType:"JSON",
                   type:"POST",
                   success: function(data){
-
+                           window.location.href=window.location.href;
                   },
                   error:function(){
 

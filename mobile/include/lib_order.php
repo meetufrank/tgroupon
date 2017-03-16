@@ -891,7 +891,7 @@ function cart_goods($type = CART_GENERAL_GOODS,$addtype,$cart_id=0)
 {
 
      $sql = "SELECT rec_id, user_id, goods_id, goods_name, goods_sn, goods_number, " .
-            "market_price, goods_price,fencheng, goods_attr, is_real, extension_code, parent_id, is_gift, is_shipping, " .
+            "market_price,product_id,goods_price,fencheng, goods_attr, is_real, extension_code, parent_id, is_gift, is_shipping, " .
             "goods_price * goods_number AS subtotal " .
             "FROM " . $GLOBALS['ecs']->table('cart') .
             " WHERE session_id = '" . SESS_ID . "' " .
@@ -1301,7 +1301,12 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0,$type=0)
 
                         if(is_spec($spec) && !empty($prod) )
                         {
-                         $goods_storage=$product_info['product_number'];
+                            //计算库存数量
+                            if($product_info['product_id']){
+                                $sql=" select   sum(eg.goods_number) from ecs_order_goods as eg inner join ecs_order_info as ei on eg.order_id=ei.order_id where ei.pay_status=2 and eg.product_id=".$product_info['product_id'];
+                                $numbers=$GLOBALS['db']->getOne($sql);
+                            }
+                         $goods_storage=$product_info['product_number']-$numbers;
                         }
                         else
                         {
