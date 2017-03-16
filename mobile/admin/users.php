@@ -1896,6 +1896,9 @@ function user_list()
 
         $filter['keywords'] = empty($_REQUEST['keywords']) ? '' : trim($_REQUEST['keywords']);
 
+        //用户编号
+        $filter['weiyi_num'] = empty($_REQUEST['weiyi_num']) ? '' : trim($_REQUEST['weiyi_num']);
+
         if (isset($_REQUEST['is_ajax']) && $_REQUEST['is_ajax'] == 1)
 
         {
@@ -1925,6 +1928,14 @@ function user_list()
         {
 
             $ex_where .= " AND user_name LIKE '%" . mysql_like_quote($filter['keywords']) ."%'";
+
+        }
+
+        if ($filter['weiyi_num'])
+
+        {
+
+            $ex_where .= " AND weiyi_num LIKE '%" . mysql_like_quote($filter['weiyi_num']) ."%'";
 
         }
 

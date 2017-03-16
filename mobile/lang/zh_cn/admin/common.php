@@ -506,7 +506,9 @@ $_LANG['line_shop_add'] = '新增线下店签约';
 
 $_LANG['admin_list'] = '管理员列表';
 
-$_LANG['privilegeyishujia'] = '设计师列表';
+// $_LANG['privilegeyishujia'] = '设计师 - 列表';
+
+$_LANG['shejishi'] = '设计师列表';  //正确版本
 
 $_LANG['fengchen'] = '分成列表';
 

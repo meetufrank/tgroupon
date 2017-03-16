@@ -15,7 +15,9 @@
     &nbsp;<select  style="display:none;" name="user_rank"><option value="0">{$lang.all_option}</option>{html_options options=$user_ranks }</select>
    <input style="display:none;" type="text" name="pay_points_gt" size="8" />
    <input style="display:none;" type="text" name="pay_points_lt" size="10" />
-    &nbsp;{$lang.label_user_name} &nbsp;<input type="text" name="keyword" /> <input type="submit" value="{$lang.button_search}" />
+    &nbsp;{$lang.label_user_name} &nbsp;<input type="text" name="keyword" />
+    用户编号:<input type="text" name="weiyi_num" />
+    <input type="submit" value="{$lang.button_search}" />
   </form>
 
 </div>
@@ -215,6 +217,8 @@ function searchUser()
 {
 
     listTable.filter['keywords'] = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+
+    listTable.filter['weiyi_num'] = Utils.trim(document.forms['searchForm'].elements['weiyi_num'].value);
 
     listTable.filter['rank'] = document.forms['searchForm'].elements['user_rank'].value;
 
