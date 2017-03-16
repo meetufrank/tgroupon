@@ -188,7 +188,7 @@
                                         <div class="col-sm-3" style="padding-top: 3%;">
                                             <div class="count-input" style="margin:0 auto;">
                                               <a class="incr-btn" data-action="decrease" href="#" onclick="changecart({$gl.rec_id},-1)">–</a>
-                                              <input class="quantity cart_number_{$gl.rec_id}" type="text" value="{$gl.goods_number}" min="1" max="1000" name="goods_number[{$gl.rec_id}]"   readonly>
+                                              <input class="quantity cart_number_{$gl.rec_id}" type="text" value="{$gl.goods_number}" min="1" max="{$gl.product_number}" name="goods_number[{$gl.rec_id}]"   readonly>
                                               <a class="incr-btn" data-action="increase" href="#" onclick="changecart({$gl.rec_id},1)">+</a>
                                             </div>
                                         </div>
@@ -258,7 +258,7 @@
                                               <div class="pull-right">
                                                 <div class="count-input" style="display:inline-block;">
                                                 <a class="incr-btn" href="#" onclick="changecart({$gl.rec_id},-1)">–</a>
-                                                <input class="quantity cart_number_{$gl.rec_id}" type="text" value="{$gl.goods_number}" min="1" max="1000" name="goods_number[{$gl.rec_id}]"    readonly>
+                                                <input class="quantity cart_number_{$gl.rec_id}" type="text" value="{$gl.goods_number}" min="1" max="{$gl.product_number}" name="goods_number[{$gl.rec_id}]"    readonly>
                                                 <a class="incr-btn" href="#" onclick="changecart({$gl.rec_id},1)">+</a>
                                                 </div>
                                                 <a href="#" style="display:inline-block; padding-left:6px; width:36px; height:36px; font-size: 20px; border-radius:3px; border: 2px solid #ededed;" data-toggle="tooltip" data-placement="top" title="删除" class=" droplist dropcart{$gl.rec_id}" onclick="dropcart({$gl.rec_id});">
@@ -448,7 +448,12 @@
                    // document.getElementById('total_number').innerHTML = data.total_number;//更新数量
                   $('.goods_subtotal'+rec_id).html(data.goods_subtotal) ;//更新小计
                    jisuan();
-                    $('.cart_number_'+rec_id).val(goods_number); //更新数量
+                   if(data.error){
+                     alert("库存不足");
+                   }else{
+                     $('.cart_number_'+rec_id).val(goods_number); //更新数量
+                   }
+                   
 
 
                 },

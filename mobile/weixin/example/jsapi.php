@@ -27,6 +27,24 @@ require('../../include/init.php');
 $orderid=$_SESSION['my_mobile_order'];
 if($orderid){
 $order_id=$orderid;
+//查询货品是否足够
+$sql=" select product_id,goods_number from ".$GLOBALS['ecs']->table('order_goods')." where  order_id=".$order_id;
+
+                $pro_arr=$GLOBALS['db']->getAll($sql);
+                foreach ($pro_arr as $key => $value) {
+                    if($value['product_id']){
+                            $sql=" select   sum(eg.goods_number) from ecs_order_goods as eg inner join ecs_order_info as ei on eg.order_id=ei.order_id where ei.pay_status=2 and eg.product_id=".$value['product_id'];
+                            $numbers=$GLOBALS['db']->getOne($sql);
+                            $sql=" select product_number from ".$GLOBALS['ecs']->table('products')." where product_id=".$value['product_id'];
+                            $sumnumber=$GLOBALS['db']->getOne($sql); //总库存
+                            if($value['goods_number']+$numbers>$sumnumber){
+                            	echo '<script>alert("该订单中含有库存不足商品，请重新下单");</script>';
+                                 ecs_header("Location: ../../my_user.php?act=order_list");
+                                  exit;
+                            }
+                        }
+                }
+
 $sql=" select pay_status from  ecs_order_info where order_id=".$order_id;
 $pay_status=$GLOBALS['db']->getOne($sql);
 if($pay_status==2){
