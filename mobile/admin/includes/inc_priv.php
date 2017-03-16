@@ -150,7 +150,9 @@ if (!defined('IN_ECTOUCH'))
 
 //权限管理
 
-    $purview['privilegeyishujia']  = 'privilegeyishujia';   //设计师
+    $purview['privilegeyishujia']  = 'privilegeyishujia';
+
+    $purview['shejishi']  = 'shejishi';   //设计师
 
     $purview['fengchen']  = 'fengchen';   //分成列表
 

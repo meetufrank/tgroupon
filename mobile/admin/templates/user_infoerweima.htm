@@ -1,72 +1,151 @@
-<!-- $Id: user_info.htm 16854 2009-12-07 06:20:09Z sxc_shop $ -->
-{include file="pageheaderxingtong.htm"}
-<div class="main-div">
-
-<table width="100%" >
-
-  <!-- 货号 -->
-  <tr>
-    <td class="label">请输入货号:</td>
-    <td>
-       <input style="display:none;" type="text" id="userid" value="{$userid}">
-       <input name="huohao" id="huohao" style="width:180px;" type="text" value="" size="10" />
-    </td>
-  </tr>
-  <tr>
-    <td class="label">生成的链接:</td>
-    <td>
-       <input style="display:none;width:580px;" id="link"  name="lianjie" type="text" value=""  />
-    </td>
-  </tr>
-
-  <tr>
-    <td colspan="2" align="center">
-      <input id="btn" type="button" value="生成二维码链接" class="button" onClick="sub()"  /></td>
-  </tr>
-</table>
-
-</div>
-{insert_scripts files="../js/jquery-1.9.1.min.js"}
-
-{literal}
-<script language="JavaScript">
-   function sub(){
-    var huohao = document.getElementById("huohao").value;
-    var huohaoid=document.getElementById("link");
-    var link=document.getElementById("link").value;
-
-    var btnid=document.getElementById("btn");
-    var userid=document.getElementById("userid").value;
-
-    if(huohao=="")
-    {
-      alert("货号不能为空!");
-      return ;
-    }else{
-
-                             $.ajax({
-                                            type:"POST",
-                                            url:"users.php?act=goodsid",
-                                            async:true,
-                                            data:{huohao:huohao,userid:userid},
-                                            dataType:"JSON",
-                                            success:function(data){
-                                                    if(data.msg=='error'){
-                                                       alert("请输入正确的货号!!!");
-                                                    }else{
-                                                     alert("货号输入成功");
-document.getElementById("link").value =data.msg;
-
- huohaoid.style.display = "block";
-                                                      btnid.style.display = "none";
-
-                                                    }
-                                                  }
-                            });//ajax结束
-
-    }
-
-   }
-</script>
-{/literal}
-{include file="pagefooter.htm"}
+<!-- $Id: user_info.htm 16854 2009-12-07 06:20:09Z sxc_shop $ -->
+
+{include file="pageheaderxingtong.htm"}
+
+<div class="main-div">
+
+
+
+<table width="100%" >
+
+
+
+  <!-- 货号 -->
+
+  <tr>
+
+    <td class="label">请输入货号:</td>
+
+    <td>
+
+       <input style="display:none;" type="text" id="userid" value="{$userid}">
+
+       <input name="huohao" id="huohao" style="width:180px;" type="text" value="" size="10" />
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td class="label">生成的链接:</td>
+
+    <td>
+
+       <input style="display:none;width:580px;" id="link"  name="lianjie" type="text" value=""  />
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td class="label"></td>
+
+    <td>提示:请用草料二维码网站,"网址"生成此链接.<br/>草料二维码: http://cli.im/</td>
+  </tr>
+
+
+
+  <tr>
+
+    <td colspan="2" align="center">
+
+      <input id="btn" type="button" value="生成二维码链接" class="button" onClick="sub()"  /></td>
+
+  </tr>
+
+</table>
+
+
+
+</div>
+
+{insert_scripts files="../js/jquery-1.9.1.min.js"}
+
+
+
+{literal}
+
+<script language="JavaScript">
+
+   function sub(){
+
+    var huohao = document.getElementById("huohao").value;
+
+    var huohaoid=document.getElementById("link");
+
+    var link=document.getElementById("link").value;
+
+
+
+    var btnid=document.getElementById("btn");
+
+    var userid=document.getElementById("userid").value;
+
+
+
+    if(huohao=="")
+
+    {
+
+      alert("货号不能为空!");
+
+      return ;
+
+    }else{
+
+
+
+                             $.ajax({
+
+                                            type:"POST",
+
+                                            url:"users.php?act=goodsid",
+
+                                            async:true,
+
+                                            data:{huohao:huohao,userid:userid},
+
+                                            dataType:"JSON",
+
+                                            success:function(data){
+
+                                                    if(data.msg=='error'){
+
+                                                       alert("请输入正确的货号!!!");
+
+                                                    }else{
+
+                                                     alert("货号输入成功");
+
+document.getElementById("link").value =data.msg;
+
+
+
+ huohaoid.style.display = "block";
+
+                                                      btnid.style.display = "none";
+
+
+
+                                                    }
+
+                                                  }
+
+                            });//ajax结束
+
+
+
+    }
+
+
+
+   }
+
+</script>
+
+{/literal}
+
+{include file="pagefooter.htm"}
+

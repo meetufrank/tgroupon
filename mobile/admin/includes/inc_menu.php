@@ -206,7 +206,9 @@ $modules['10_priv_admin']['admin_list']             = 'privilege.php?act=list';
 
 $modules['10_priv_admin']['fengchen']             = 'fengchen.php?act=list';
 
-$modules['10_priv_admin']['privilegeyishujia']   = 'privilegeyishujia.php?act=list';  //设计师
+$modules['10_priv_admin']['privilegeyishujia']   = 'privilegeyishujia.php?act=list';
+
+$modules['10_priv_admin']['shejishi']   = 'shejishi.php?act=list';  //设计师
 
 $modules['10_priv_admin']['admin_role']             = 'role.php?act=list';
 
