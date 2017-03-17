@@ -79,6 +79,26 @@
   .owl-nav{
     display:none;
   }
+  @media screen and (max-width: 768px) {
+  .social-bar.text-center a {
+      margin-left:0px;
+      margin-right:0px;
+  }
+  .text-center .btn, .text-center .back-btn, .text-center .done-btn, .text-center .search-btn {
+    margin-left:0px;
+    margin-right:0px;
+  }
+}
+  @media screen and (min-width: 768px) {
+    .social-bar.text-center a {
+      margin-left:0px;
+      margin-right:0px;
+  }
+  .text-center .btn, .text-center .back-btn, .text-center .done-btn, .text-center .search-btn {
+    margin-left:0px;
+    margin-right:0px;
+  }
+}
   </style>
 </head>
 
