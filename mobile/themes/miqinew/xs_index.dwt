@@ -35,6 +35,10 @@
     .shop-item-title a,.shop-item-details a{
       font-size: 14px;
     }
+    .mobile-row{
+      margin-left: -15px;
+      margin-right: -15px;
+    }
   }
   @media screen and (min-width:768px){
 	  .info-box{
@@ -46,6 +50,7 @@
 			width:1300px;
 		}
 	}
+
 .count{
   	position: absolute;
 		display: block;
@@ -258,17 +263,19 @@ color:#606060
       {/if}
       </div><!-- .row -->
 
-      <div class="row padding-top">
+      <div class="row padding-top mobile-row">
 
         <!-- Special Offer -->
         <div class="col-lg-3 col-md-4" onclick="javascript:location.href='shop-single.php?id={$tb_list.goods_id}{$linestring2}' ">
           <div class="info-box text-center">
-            <h2>特别优惠<br><span class="text-danger">-{$tb_list.priceratio}%</span></h2>
+            <h2>热销产品<br><span class="text-danger">{if $tb_list.falseprice>$tb_list.attributeprice}-{$tb_list.priceratio}%{/if}</span></h2>
             <a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="inline">
               <img src="../../..{$tb_list.veryimg}" alt="{$tb_list.goods_name}">
             </a>
             <h3 class="lead text-normal space-bottom-half"><a href="shop-single.php?id={$tb_list.goods_id}{$linestring2}" class="link-title">{$tb_list.goods_name}</a></h3>
+            {if $tb_list.falseprice>$tb_list.attributeprice}
             <span class="lead text-normal text-gray text-crossed">￥{$tb_list.falseprice}</span>
+            {/if}
             <span class="h4 text-normal text-danger">￥{$tb_list.attributeprice}</span>
           </div><!-- .info-box -->
           <div class="padding-bottom-2x visible-xs"></div>
@@ -289,7 +296,7 @@ color:#606060
             <div role="tabpanel" class="tab-pane transition fade scale in active" id="newcomers">
               <div class="row space-top-half">
               <!--{foreach from=$xp_list item=xl}-->
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-3 col-sm-6 mobile-row">
                   <div class="shop-item">
                     <div class="shop-thumbnail">
                       <a href="shop-single.php?id={$xl.goods_id}{$linestring2}" class="item-link"></a>
@@ -317,7 +324,7 @@ color:#606060
             <div role="tabpanel" class="tab-pane transition fade scale" id="toprated">
               <div class="row">
                <!--{foreach from=$dz_list item=dl}-->
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-3 col-sm-6 mobile-row">
                   <div class="shop-item">
                     <div class="shop-thumbnail">
                       <a href="shop-single.php?id={$dl.goods_id}{$linestring2}" class="item-link"></a>
