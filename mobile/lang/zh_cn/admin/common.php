@@ -300,7 +300,7 @@ $_LANG['16_email_manage'] = '邮件群发管理';
 
 $_LANG['01_goods_list'] = '商品列表';
 
-$_LANG['02_goods_add'] = '添加新商品';
+//$_LANG['02_goods_add'] = '添加新商品';
 
 $_LANG['03_category_list'] = '商品分类';
 
@@ -482,7 +482,7 @@ $_LANG['08_unreply_msg'] = '会员留言';
 
 $_LANG['03_users_list'] = '会员列表';
 
-$_LANG['04_users_add'] = '添加会员';
+//$_LANG['04_users_add'] = '添加会员';
 
 $_LANG['05_user_rank_list'] = '会员等级';
 
