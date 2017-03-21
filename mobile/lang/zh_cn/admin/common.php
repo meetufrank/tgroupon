@@ -492,7 +492,7 @@ $_LANG['09_user_account'] = '充值和提现申请';
 
 $_LANG['10_user_account_manage'] = '资金管理';
 
-$_LANG['11_shenqing'] = '申请';
+$_LANG['11_shenqing'] = '合作申请';
 
 $_LANG['11_tixian'] = '提现申请';
 
