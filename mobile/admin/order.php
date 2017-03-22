@@ -9200,7 +9200,7 @@ elseif ($_REQUEST['act'] == 'operate_post')
 
         $userid=$GLOBALS['db']->getOne($sql);
 
-       // get_money($order_id,$userid);   //计算分成
+        get_money($order_id,$userid);   //计算分成
 
         update_order($order_id, $arr);
 
@@ -10815,7 +10815,7 @@ function operable_list($order)
             else
 
             {
-
+                  if(SS_RECEIVED != $ss){
                 /* 状态：已确认、已付款和付款中、已发货或已收货 */
 
                 if ($priv_list['ss'])
@@ -10855,7 +10855,7 @@ function operable_list($order)
                     $list['return'] = true; // 退货（包括退款）
 
                 }
-
+              }
             }
 
         }

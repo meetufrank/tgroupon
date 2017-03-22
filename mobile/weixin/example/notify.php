@@ -92,7 +92,7 @@ if($arr['appid']=='wxb5aec13c030a530b'&&$arr['mch_id']=='1267579601'&&$arr['resu
     $price=$order_price-$arr['cash_fee']/100;
 
     if($result){
-        get_money($order_id,$userid);
+        //get_money($order_id,$userid);
 	 	$time=time();
         $sql="update ecs_order_info set order_status=1,pay_status=2,order_amount=0,money_paid=".$price.",pay_time=".$time.",money_paid=".$order_price."  where order_sn=".$arr['out_trade_no'];
     	if($GLOBALS['db']->query($sql)){
@@ -104,11 +104,3 @@ if($arr['appid']=='wxb5aec13c030a530b'&&$arr['mch_id']=='1267579601'&&$arr['resu
 
 
 }exit;
-
-
-
-
-
-
-
-

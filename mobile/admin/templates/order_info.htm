@@ -573,7 +573,7 @@
     <th colspan="6">{$lang.action_info}</th>
 
   </tr>
-
+{if $order.shipping_status neq 2}
   <tr>
 
     <td><div align="right"><strong>{$lang.label_action_note}</strong></div></td>
@@ -636,7 +636,7 @@
 
         {/if} {if $operable_list.return}
 
-        <!-- <input name="return" type="submit" value="{$lang.op_return}" class="button" /> -->
+        <input name="return" type="submit" value="{$lang.op_return}" class="button" />
 
         {/if} {if $operable_list.to_delivery}
 
@@ -671,7 +671,7 @@
         <input name="order_id" type="hidden" value="{$smarty.request.order_id}"></td>
 
     </tr>
-
+{/if}
   <tr>
 
     <th>{$lang.action_user}</th>
@@ -779,4 +779,3 @@
 
 
 {include file="pagefooter.htm"}
-
