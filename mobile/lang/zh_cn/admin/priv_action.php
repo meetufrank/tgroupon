@@ -19,7 +19,7 @@ $_LANG['users_manage'] = '会员管理';
 $_LANG['priv_manage'] = '权限管理';
 $_LANG['sys_manage'] = '系统设置';
 $_LANG['order_manage'] = '订单管理';
-$_LANG['promotion'] = '促销管理';
+$_LANG['promotion'] = '广告管理';
 $_LANG['email'] = '邮件管理';
 $_LANG['templates_manage'] = '模板管理';
 $_LANG['db_manage'] = '数据库管理';
@@ -30,7 +30,7 @@ $_LANG['wechat'] = '商创TGROUPON';
 $_LANG['goods_manage'] = '商品添加/编辑';
 $_LANG['remove_back'] = '商品删除/恢复';
 $_LANG['cat_manage'] = '分类添加/编辑';
-$_LANG['cat_drop'] = '分类转移/删除';
+$_LANG['cat_drop'] = '分类/删除';
 $_LANG['attr_manage'] = '商品属性管理';
 $_LANG['brand_manage'] = '商品品牌管理';
 $_LANG['comment_manage'] = '用户评论管理';//  tianxin  100   添加   
@@ -118,7 +118,7 @@ $_LANG['snatch_manage'] = '夺宝奇兵';
 $_LANG['bonus_manage'] = '红包管理';
 $_LANG['card_manage'] = '祝福贺卡';
 $_LANG['pack'] = '商品包装';
-$_LANG['ad_manage'] = '广告管理';
+$_LANG['ad_manage'] = '广告列表';
 $_LANG['gift_manage'] = '赠品管理';
 $_LANG['auction'] = '拍卖活动';
 $_LANG['group_by'] = '团购活动';
@@ -185,7 +185,8 @@ $_LANG['zdy_parent']         = '查看|编辑推荐关系';
 
 
 
-
-
-
+$_LANG['shenqing']         = '合作申请';
+$_LANG['tixian']         = '申请提现';
+$_LANG['fengchen']         = '分成列表';
+$_LANG['shejishi']         = '设计师列表';
 ?>

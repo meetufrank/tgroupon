@@ -4570,7 +4570,7 @@ display:none
 }
 .teammate {
 	width: 100%;
-	max-width:100px;
+	max-width:200px;
 	margin: 0 auto 30px auto;
 	text-align: center
 }
