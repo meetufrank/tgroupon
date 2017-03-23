@@ -2477,7 +2477,7 @@ elseif ($action == 'order_list')
 
    //初始化每页显示数据
 
-   $size=1;
+   $size=5;
 
 
 
@@ -2817,7 +2817,7 @@ elseif ($action == 'async_order_list')
 
     include_once(ROOT_PATH . 'include/lib_transaction.php');
 
-    $page_num=1;
+    $page_num=5;
 
 
 
@@ -3389,7 +3389,7 @@ elseif ($action == 'async_order_list')
                   <div class="pc-text-primary-kuaidi">快递信息</div>
 
                     <input type="hidden" value="'.$value['order_id'].'" id="orderids">
-                  <div class="mobile-kuaidigz"><a class="btn btn-primary Logistics" href="#" data-id="'.$value['order_id'].'" onClick="javascript:func('.$value['order_id'].')">快递跟踪</a></div>
+                  <div class="mobile-kuaidigz"><a class="btn btn-primary Logistics" href="#" onClick="javascript:is_have('.$value['order_id'].')">确认收货</a><a class="btn btn-primary Logistics" href="#" data-id="'.$value['order_id'].'" onClick="javascript:func('.$value['order_id'].')">快递跟踪</a></div>
 
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="expressmain'.$value['order_id'].'" style="border-top: 2px dashed #ededed;display:none;">
@@ -3651,7 +3651,34 @@ elseif ($action == 'async_order_list')
 
 
 }
+elseif($action == 'is_have'){
+$order_id=intval($_REQUEST['order_id']);
+include_once(ROOT_PATH . 'include/lib_order.php');
+  $arr = array('shipping_status' => SS_RECEIVED);
 
+if(!$order_id){
+    $data['error']=1;
+  $data['msg']='未获取到订单号';
+  exit;
+}
+
+$sql="select user_id from ecs_order_info where order_id=".$order_id." and order_status!=2 and order_status!=3 and order_status!=4 and pay_status=2 and shipping_status=1";
+
+  $userid=$GLOBALS['db']->getOne($sql);
+if($userid==$_SESSION['user_id']){
+ get_money($order_id,$userid);   //计算分成
+
+  update_order($order_id, $arr);
+  $data['msg']='确认收货成功';
+  echo json_encode($data);
+}else{
+  $data['error']=1;
+  $data['msg']='请确认订单状态,或是否属于自己的订单';
+  echo json_encode($data);
+}
+
+exit;
+}
 
 
 /* 包裹跟踪 by wang */
