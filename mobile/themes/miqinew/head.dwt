@@ -60,6 +60,7 @@
                 <li><a class="relative" href="my_userxiaoxi.php{$linestring1}">消息记录</a></li>
               <li><a href="my_usergrzx.php?act=address_list{$linestring2}">管理地址</a></li>
               {if $is_income} <li><a href="my_income.php{$linestring1}">商品销量</a></li>{/if}
+              <li><span class="open-user-id">用户编号:0123456789zxcvbn</span></li>
             </ul>
         </div>
 

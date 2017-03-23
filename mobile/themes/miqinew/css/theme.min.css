@@ -415,8 +415,14 @@ svg {
     	text-transform: none;
 		border-bottom:2px solid #ededed;
 	}
+	.open-user-id{
+		font-size:24px;
+	}
 }
 @media screen and (max-width: 768px) {
+	.open-user-id{
+		font-size:16px;
+	}
 	.mobile-kuaidigz{
 		padding-left:20px;
 		padding-right:20px;
