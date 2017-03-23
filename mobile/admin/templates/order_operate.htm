@@ -22,18 +22,18 @@
   </tr>
   {/if}
   {if $show_refund}
-  <tr>
+  <!-- <tr>
     <th>{$lang.label_handle_refund}</th>
     <td><p>{if !$anonymous}<label><input type="radio" name="refund" value="1" />{$lang.return_user_money}</label><br>{/if}
       <label><input type="radio" name="refund" value="2" />{$lang.create_user_account}</label><br>
       <label><input name="refund" type="radio" value="3" />
       {$lang.not_handle}</label><br>
     </p></td>
-  </tr>
-  <tr>
+  </tr> -->
+  <!-- <tr>
     <th>{$lang.label_refund_note}</th>
     <td><textarea name="refund_note" cols="60" rows="3" id="refund_note">{$refund_note}</textarea></td>
-  </tr>
+  </tr> -->
   {/if}
   <tr>
     <td colspan="2">
@@ -77,11 +77,11 @@
           break;
         }
       }
-      if (!selected)
-      {
-        alert(pls_select_refund);
-        return false;
-      }
+      // if (!selected)      //
+      // {      //
+      //   alert(pls_select_refund);      //
+      //   return false;      //
+      // }
     }
     return true;
   }

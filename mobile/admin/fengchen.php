@@ -114,7 +114,7 @@ $smarty->assign('filter',       $fclist['filter']);
 
     $smarty->display('fengchen_list.htm');
 
-}elseif ($_REQUEST['act'] == 'fenchen_query')
+}elseif ($_REQUEST['act'] == 'query')
 
 {
 
@@ -148,7 +148,7 @@ $smarty->assign('filter',       $fclist['filter']);
 $result = get_fencheng(true);
 $fencheng=$result['fencheng'];
 foreach ($fencheng as $key => $value) {
-   
+
        switch ($value['type']) {
            case 1:
                $fencheng[$key]['type']='推荐提成';
@@ -172,17 +172,17 @@ foreach ($fencheng as $key => $value) {
     }else{
         $fencheng[$key]['status']='未提现';
     }
-   
+
 }
 
 
 
-//创建对象  
-    $objPHPExcel = new PHPExcel();  
+//创建对象
+    $objPHPExcel = new PHPExcel();
 
     // import("Org.Util.PHPExcel.Reader.Excel5");
     //  include(dirname(__FILE__) . '/includes/PHPExcel/Reader/Excel5');
-    
+
     if($_SESSION['admin_id']){
         $sql=" select user_name from ecs_admin_user where user_id=".$_SESSION['admin_id'];
         $username=$GLOBALS['db']->getOne($sql);
@@ -196,7 +196,7 @@ foreach ($fencheng as $key => $value) {
             ->setSubject("分成信息表")//题目
             ->setDescription("型色主义分成信息表,导出人：".$username)//描述
             ->setKeywords("分成")//关键字
-            ->setCategory("result file");//种类 
+            ->setCategory("result file");//种类
 //set width
             $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(8);
             $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(30);
@@ -207,7 +207,7 @@ foreach ($fencheng as $key => $value) {
             $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
             $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(20);
             $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(30);
-            
+
 
             //第一行数据
             $objPHPExcel->setActiveSheetIndex(0)
@@ -241,15 +241,15 @@ foreach ($fencheng as $key => $value) {
                 ->setCellValue('G'.$num, $v['type'])
                 ->setCellValue('H'.$num, $v['tcusername'])
                 ->setCellValue('I'.$num, $v['time']);
-              
+
 
 
             }
 
-            $objPHPExcel->getActiveSheet()->setTitle('分成信息表');  
-            $objPHPExcel->setActiveSheetIndex(0);  
-            $day      = date("m-d");  
-            $filename = $day.'分成信息表'; 
+            $objPHPExcel->getActiveSheet()->setTitle('分成信息表');
+            $objPHPExcel->setActiveSheetIndex(0);
+            $day      = date("m-d");
+            $filename = $day.'分成信息表';
             ob_end_clean();//清除缓冲区,避免乱码
             header('Content-Type: application/vnd.ms-excel');
             header('Content-Disposition: attachment;filename="'.$filename.'.xls"');
@@ -269,11 +269,13 @@ function get_fencheng($param_str=''){
 
 
 if($_REQUEST['typeseach']!=5&&isset($_REQUEST['typeseach'])){
-    $where=" where f.type=".$_REQUEST['typeseach'];
-    
+     $filter['typeseach']=$_REQUEST['typeseach'];
+    $where=" where f.type=".$filter['typeseach'];
+
 }
 if($_REQUEST['usercode']){
-    $sql=" select user_id from ecs_users  where weiyi_num='".$_REQUEST['usercode']."'";
+   $filter['usercode']=$_REQUEST['usercode'];
+    $sql=" select user_id from ecs_users  where weiyi_num='".$filter['usercode']."'";
     $user_id=$GLOBALS['db']->getOne($sql);
     if(!$user_id){
         $user_id=0;
@@ -307,11 +309,11 @@ $result = get_filter();
 if($param_str){
     $limit='';
 }else{
-   $limit=" LIMIT ". $filter['start'] . ",".$filter['page_size']; 
+   $limit=" LIMIT ". $filter['start'] . ",".$filter['page_size'];
 }
 
 
- $fclistsql = "select f.id,g.goods_name,eu2.user_name as username,f.money,f.type,f.get_shopid,f.status,f.line_shopid,f.time from `ecs_fencheng` as f
+$sql = "select f.id,g.goods_name,eu2.user_name as username,f.money,f.type,f.get_shopid,f.status,f.line_shopid,f.time from `ecs_fencheng` as f
 inner join `ecs_goods` as g
 
 on f.goodsid = g.goods_id
@@ -321,7 +323,7 @@ inner join `ecs_users` as eu2
 on f.userid = eu2.user_id
 
 ".$where." order by f.id desc  ".$limit;
-set_filter($filter, $sql);
+set_filter($filter,$sql);
 
     }else{
 
@@ -332,7 +334,7 @@ set_filter($filter, $sql);
 
     }
 
-$fc_list=$GLOBALS['db']->getAll($fclistsql);
+$fc_list=$GLOBALS['db']->getAll($sql);
 
 foreach ($fc_list as $key => $value) {
      if($value['get_shopid']<=0){

@@ -9396,9 +9396,14 @@ elseif ($_REQUEST['act'] == 'operate_post')
 
         /* 过滤数据 */
 
-        $_REQUEST['refund'] = isset($_REQUEST['refund']) ? $_REQUEST['refund'] : '';
+        // $_REQUEST['refund'] = isset($_REQUEST['refund']) ? $_REQUEST['refund'] : '';
+        //
+        // $_REQUEST['refund_note'] = isset($_REQUEST['refund_note']) ? $_REQUEST['refund'] : '';
 
-        $_REQUEST['refund_note'] = isset($_REQUEST['refund_note']) ? $_REQUEST['refund'] : '';
+        $_REQUEST['refund'] = isset($_REQUEST['refund']) ? $_REQUEST['refund'] : 2;
+
+        $_REQUEST['refund_note'] = isset($_REQUEST['refund_note']) ? $_REQUEST['refund_note'] : '';
+
 
 
 
@@ -9421,18 +9426,18 @@ elseif ($_REQUEST['act'] == 'operate_post')
 
 
         /* todo 处理退款 */
-
-        if ($order['pay_status'] != PS_UNPAYED)
-
-        {
-
-            $refund_type = $_REQUEST['refund'];
-
-            $refund_note = $_REQUEST['refund'];
-
-            order_refund($order, $refund_type, $refund_note);
-
-        }
+        //
+        // if ($order['pay_status'] != PS_UNPAYED)
+        //
+        // {
+        //
+        //     $refund_type = $_REQUEST['refund'];
+        //
+        //     $refund_note = $_REQUEST['refund'];
+        //
+        //     order_refund($order, $refund_type, $refund_note);
+        //
+        // }
 
 
 
