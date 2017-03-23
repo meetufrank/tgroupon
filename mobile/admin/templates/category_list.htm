@@ -16,7 +16,7 @@
     <!-- <th>{$lang.nav}</th> -->
     <th>{$lang.is_show}</th>
     <!-- <th>{$lang.short_grade}</th> -->
-    <!-- <th>{$lang.sort_order}</th> -->
+    <th>{$lang.sort_order}</th>
     <th>{$lang.handler}</th>
   </tr>
   {foreach from=$cat_info item=cat}
@@ -37,7 +37,7 @@
     <td style="display:none;" width="10%"><img src="images/{if $cat.show_in_nav eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_show_in_nav', {$cat.cat_id})" /></td>
     <td width="10%"><img src="images/{if $cat.is_show eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_is_show', {$cat.cat_id})" /></td>
     <td style="display:none;"><span onclick="listTable.edit(this, 'edit_grade', {$cat.cat_id})">{$cat.grade}</span></td>
-<!--     <td width="10%" align="right"><span onclick="listTable.edit(this, 'edit_sort_order', {$cat.cat_id})">{$cat.sort_order}</span></td> -->
+    <td width="10%" align="right"><span onclick="listTable.edit(this, 'edit_sort_order', {$cat.cat_id})">{$cat.sort_order}</span></td>
     <td width="24%" align="center">
       <a href="category.php?act=edit&amp;cat_id={$cat.cat_id}">{$lang.edit}
 	  |
