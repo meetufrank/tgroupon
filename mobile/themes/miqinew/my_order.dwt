@@ -68,7 +68,7 @@
       width: 25%;
     }
   }
- 
+
   .nav-pills>li {
       float: left;
       position: relative;
@@ -818,6 +818,7 @@
 
 
               function func(orderid) {
+                event.preventDefault();
                 var exs = document.getElementById("expressmain"+orderid);
 
                   if(exs.style.display == "block"){

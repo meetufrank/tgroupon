@@ -176,7 +176,7 @@ if(!$openids){
 
     $db->query($sql);
 
-     //$_SESSION['user_id'] = $uid;
+     $_SESSION['user_id'] = $uid;
 
 
 
@@ -188,7 +188,7 @@ if(!$openids){
 
 	$db->query($sql);
 
-  // $_SESSION['user_id'] = $openids;
+   $_SESSION['user_id'] = $openids;
 
    setcookie('user_id',$openids);
 

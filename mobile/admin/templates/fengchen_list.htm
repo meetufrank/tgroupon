@@ -197,7 +197,7 @@
 
   {
 
-  listTable.query = "fenchen_query";
+  listTable.query = "query";
 
 
   }
@@ -217,7 +217,7 @@
     listTable.filter.typeseach = parseInt(document.forms['searchform'].elements['typeseach'].value);
 
     listTable.filter.usercode = Utils.trim(document.forms['searchform'].elements['usercode'].value);
-   
+
     listTable.filter.page = 1;
 
     listTable.loadList();
@@ -234,7 +234,7 @@ function exportlist(){
        if(usercode!=''){
          typestr+='&&usercode='+usercode;
        }
-        
+
   window.open("fengchen.php?act=fencheng_export"+typestr);
 }
 
@@ -247,4 +247,3 @@ function exportlist(){
 {include file="pagefooter.htm"}
 
 {/if}
-

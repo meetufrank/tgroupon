@@ -1287,7 +1287,7 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0,$type=0)
          // }else{
                     /* 检查该商品是否已经存在在购物车中 */
                 $sql = "SELECT goods_number FROM " .$GLOBALS['ecs']->table('cart').
-                        " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
+                        " WHERE user_id = " .$_SESSION['user_id']. " AND goods_id = '$goods_id' ".
                         " AND parent_id = 0 AND goods_attr = '" .get_goods_attr_info($spec). "' " .
                         " AND cart_type = ".$type;
 
@@ -1323,12 +1323,12 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0,$type=0)
                             $goods_price = get_final_price($goods_id, $num, true, $spec);
                             $sql = "UPDATE " . $GLOBALS['ecs']->table('cart') . " SET goods_number = '$num'" .
                                    " , goods_price = '$goods_price'".
-                                   " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
+                                   " WHERE user_id = " .$_SESSION['user_id']. " AND goods_id = '$goods_id' ".
                                    " AND parent_id = 0 AND goods_attr = '" .get_goods_attr_info($spec). "' " .
                                    "  AND cart_type = ".$type;
                             $GLOBALS['db']->query($sql);
 
-                            $sql=" select rec_id from ".$GLOBALS['ecs']->table('cart') . " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
+                            $sql=" select rec_id from ".$GLOBALS['ecs']->table('cart') . " WHERE user_id = " .$_SESSION['user_id']. " AND goods_id = '$goods_id' ".
                                    " AND parent_id = 0 AND goods_attr = '" .get_goods_attr_info($spec). "' " .
                                    "  AND cart_type = ".$type;
                            $cartid=$GLOBALS['db']->getOne($sql);
@@ -1719,7 +1719,7 @@ function get_cart_goods($id=0,$type=0)
     /* 循环、统计 */
    $sql = "SELECT *, IF(parent_id, parent_id, goods_id) AS pid , goods_number " .
             " FROM " . $GLOBALS['ecs']->table('cart') . " " .
-            " WHERE session_id = '" . SESS_ID . "'  AND rec_type = '" . CART_GENERAL_GOODS . "'".$string .
+            " WHERE user_id = " .$_SESSION['user_id'] .$string .
             " ORDER BY pid, parent_id";
     $res = $GLOBALS['db']->query($sql);
 

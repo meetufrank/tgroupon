@@ -1668,9 +1668,12 @@ elseif ($action == 'logout_new')
 
 
 
-    $user->logout();
-
-    setcookie("user_id");
+    session_start();
+    session_regenerate_id();
+    $_SESSION['user_id']=0;
+    session_unset();
+    session_destroy();
+    setcookie("user_id",'',time()-3600);
 
     exit;
 
@@ -2474,7 +2477,7 @@ elseif ($action == 'order_list')
 
    //初始化每页显示数据
 
-   $size=5;
+   $size=1;
 
 
 
@@ -2814,7 +2817,7 @@ elseif ($action == 'async_order_list')
 
     include_once(ROOT_PATH . 'include/lib_transaction.php');
 
-    $page_num=5;
+    $page_num=1;
 
 
 
@@ -2884,7 +2887,7 @@ elseif ($action == 'async_order_list')
 
                        $string.='<a href="shop-single.php?id='.$v['goods_id'].$linestring2.'" class="item-thumb pull-left">
 
-                          <img class="img-responsive" src="admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
+                          <img class="img-responsive" src="././admin/'.$v['goods_thumb'].'" alt="'.$v['goods_name'].'">
 
                         </a>';
 
@@ -3285,7 +3288,7 @@ elseif ($action == 'async_order_list')
                         <div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
 
                           <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
-                        </div>
+
                             <h4 class="item-price">'.$v['goods_price'].'</h4>
                          </div>
                     </div>';
@@ -3336,7 +3339,7 @@ elseif ($action == 'async_order_list')
 
                 }
 
-                $string.='<div class="art-subtotal-youfei my-space-bottom" style="border-bottom: 2px solid #ededed;">
+                $string.='<div class="cart-subtotal-youfei my-space-bottom" style="border-bottom: 2px solid #ededed;">
 
                         <div class="column">
 
@@ -3363,15 +3366,15 @@ elseif ($action == 'async_order_list')
 
                           <div class="pc-amount_no" style="color:#f20000">'.$value['total_fee'].'</div>
 
-                        </div>
+                      </div>
 
-                      </div><!-- .subtotal -->
+                      </div>
 
                       </div>
 
                       <div class="col-md-6">
 
-                        <div class="text-primary">收件人信息</div>
+                        <div class="pc-text-primary">收件人信息</div>
 
                         <div class="pc-text-primary-main">
 
@@ -3385,11 +3388,11 @@ elseif ($action == 'async_order_list')
 
                   <div class="pc-text-primary-kuaidi">快递信息</div>
 
-
-                  <div class="mobile-kuaidigz"><a  class="btn btn-primary Logistics" href="#" data-id="'.$value['order_id'].'" onClick="javascript:func()">快递跟踪</a></div>
+                    <input type="hidden" value="'.$value['order_id'].'" id="orderids">
+                  <div class="mobile-kuaidigz"><a class="btn btn-primary Logistics" href="#" data-id="'.$value['order_id'].'" onClick="javascript:func('.$value['order_id'].')">快递跟踪</a></div>
 
                       </div>
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="expressmain" style="border-top: 2px dashed #ededed">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="expressmain'.$value['order_id'].'" style="border-top: 2px dashed #ededed;display:none;">
 
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 exname" id="couriername">'.$value['shipping_name'].'</div>
 
@@ -3400,7 +3403,7 @@ elseif ($action == 'async_order_list')
               foreach ((array)$value['kuaidi']['data'] as $k => $v) {
 
                        if($kd_count%2==1){
-                                      $string.=' <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12  extime kuaidibjs">
+                                      $string.=' <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 extime kuaidibjs">
 
                                             <span>'.$v['time'].'</span>
 
@@ -3513,7 +3516,7 @@ elseif ($action == 'async_order_list')
                     <div>
                         <div class="pull-right" style="color: #000;">'.$v['goods_attr'].'</div>
                         <h4 class="item-price">数量：'.$v['goods_number'].'</h4></div>
-                    </div>
+
                     <h4 class="item-price">'.$v['goods_price'].'</h4>
                         </div>
                     </div>';
@@ -3601,7 +3604,7 @@ elseif ($action == 'async_order_list')
 
                       <div class="col-md-6">
 
-                        <div class="pc-text-primary">>收件人信息</div>
+                        <div class="pc-text-primary">收件人信息</div>
 
                         <div class="pc-text-primary-main-shoujian">
 
