@@ -151,14 +151,14 @@ $openids = $db->getOne($sql);
 
 
 
-
+$last_time=date('Y-m-d H:i:s');
 if(!$openids){
 
 
 
-	$sql = 'INSERT INTO ' . $ecs->table('users') . '(user_name,alias , wx_open_id , sex , reg_time  , headimgurl,unionid) VALUES ' .
+	$sql = 'INSERT INTO ' . $ecs->table('users') . '(user_name,alias , wx_open_id , sex , reg_time  , headimgurl,unionid,last_time) VALUES ' .
 
-                    "('$nickname','$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid')";
+                    "('$nickname','$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid','$last_time')";
 
      $db->query($sql);
 
@@ -184,7 +184,7 @@ if(!$openids){
 
 }else{
 
-	$sql = "UPDATE `ecs_users` set user_name='$nickname',alias='$nickname',sex='$sex',reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid' where unionid='$unionid'";
+	$sql = "UPDATE `ecs_users` set user_name='$nickname',alias='$nickname',sex='$sex',reg_time='time()',last_time='$last_time',headimgurl='$headimgurl',wx_open_id='$openid' where unionid='$unionid'";
 
 	$db->query($sql);
 
@@ -210,7 +210,7 @@ header("Location:".$_SESSION['back_url']);
 
 }else{
 
-   header("Location: goods_list.php");
+   header("Location: index.php");
 
 }
 

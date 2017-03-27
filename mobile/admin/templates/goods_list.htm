@@ -68,11 +68,11 @@
 
   <tr>
 
-    <td><input type="checkbox" name="checkboxes[]" value="{$goods.goods_id}" />{$goods.goods_id}</td>
+    <td align="center"><input type="checkbox" name="checkboxes[]" value="{$goods.goods_id}" />{$goods.goods_id}</td>
 
-    <td class="first-cell" style="{if $goods.is_promote}color:red;{/if}"><span>{$goods.goods_name|escape:html}</span></td>
+    <td align="center" class="first-cell" style="{if $goods.is_promote}color:red;{/if}"><span>{$goods.goods_name|escape:html}</span></td>
 
-    <td><span onclick="listTable.edit(this, 'edit_goods_sn', {$goods.goods_id})">{$goods.goods_sn}</span></td>
+    <td align="center"><span onclick="listTable.edit(this, 'edit_goods_sn', {$goods.goods_id})">{$goods.goods_sn}</span></td>
 
     <td align="center" style="display:none;" align="right"><span>{$goods.shop_price}</span></td>
 
@@ -88,7 +88,7 @@
 
     {if $use_storage}
 
-    <td align="right"><span>{$goods.goods_number}</span></td>
+    <td align="center"><span>{$goods.goods_number}</span></td>
 
     {/if}
 

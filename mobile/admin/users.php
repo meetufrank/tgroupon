@@ -1,4 +1,4 @@
-<?php
+  <?php
 
 
 
@@ -1995,7 +1995,7 @@ function user_list()
 
 
 
-        $sql = "SELECT is_line,user_id, user_name, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time,weiyi_num ".
+        $sql = "SELECT is_line,user_id, user_name, email, is_validated, user_money, frozen_money, rank_points, pay_points, reg_time,weiyi_num,last_time ".
 
                 " FROM " . $GLOBALS['ecs']->table('users') . $ex_where .
 

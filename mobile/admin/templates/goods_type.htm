@@ -19,9 +19,9 @@
   </tr>
   {foreach from=$goods_type_arr item=goods_type}
   <tr>
-    <td class="first-cell"><span onclick="javascript:listTable.edit(this, 'edit_type_name', {$goods_type.cat_id})">{$goods_type.cat_name}</span></td>
-    <td>{$goods_type.attr_group}</td>
-    <td align="right">{$goods_type.attr_count}</td>
+    <td align="center" class="first-cell"><span onclick="javascript:listTable.edit(this, 'edit_type_name', {$goods_type.cat_id})">{$goods_type.cat_name}</span></td>
+    <td align="center">{$goods_type.attr_group}</td>
+    <td align="center">{$goods_type.attr_count}</td>
     <td align="center"><img src="images/{if $goods_type.enabled}yes{else}no{/if}.gif" ></td>
     <td align="center">
       <a href="attribute.php?act=list&goods_type={$goods_type.cat_id}" title="{$lang.attribute}">{$lang.attribute}</a> |
@@ -52,7 +52,7 @@
   {foreach from=$filter item=item key=key}
   listTable.filter.{$key} = '{$item}';
   {/foreach}
- 
+
   {literal}
   onload = function()
   {

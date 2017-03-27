@@ -20,9 +20,9 @@
 
     <select name="status" id="status">
 
-      <option value="-1">{$lang.select_please}</option>
+      <option value="-1" selected="selected">{$lang.select_please}</option>
 
-      {html_options options=$status_list}
+      {html_options options=$status_list selected =-1}
 
     </select>
 
@@ -80,13 +80,13 @@
 
     <td valign="top" nowrap="nowrap"><input type="checkbox" name="checkboxes" value="{$order.order_sn}" /><a href="order.php?act=info&order_id={$order.order_id}" >{$order.order_sn}{if $order.extension_code eq "group_buy"}<br /><div align="center">{$lang.group_buy}</div>{elseif $order.extension_code eq "exchange_goods"}<br /><div align="center">{$lang.exchange_goods}</div>{/if}</a></td>
 
-    <td>{$order.buyer|escape}<br />{$order.short_order_time}</td>
+    <td align="center">{$order.buyer|escape}<br />{$order.short_order_time}</td>
 
-    <td align="left" valign="top"><a href="mailto:{$order.email}"> {$order.consignee|escape}</a>{if $order.tel} [TEL: {$order.tel|escape}]{/if} <br />{$order.address|escape}</td>
+    <td align="center" valign="top"><a href="mailto:{$order.email}"> {$order.consignee|escape}</a>{if $order.tel} [TEL: {$order.tel|escape}]{/if} <br />{$order.address|escape}</td>
 
-    <td align="right" valign="top" nowrap="nowrap">{$order.formated_total_fee}</td>
+    <td align="center" valign="top" nowrap="nowrap">{$order.formated_total_fee}</td>
 
-    <td align="right" valign="top" nowrap="nowrap">{$order.formated_order_amount}</td>
+    <td align="center" valign="top" nowrap="nowrap">{$order.formated_order_amount}</td>
 
     <td align="center" valign="top" nowrap="nowrap">{$lang.os[$order.order_status]},{$lang.ps[$order.pay_status]},{$lang.ss[$order.shipping_status]}</td>
 

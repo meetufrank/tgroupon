@@ -133,12 +133,12 @@ $openids = $GLOBALS['db']->getOne($sql);
 
 
 
-
+$last_time=date('Y-m-d H:i:s');
 if(!$openids){
 
-	 $sql = 'INSERT INTO ' . $ecs->table('users') . '(user_name,alias , wx_open_id , sex , reg_time  , headimgurl,unionid,openidphone,attention) VALUES ' .
+	 $sql = 'INSERT INTO ' . $ecs->table('users') . '(user_name,alias , wx_open_id , sex , reg_time  , headimgurl,unionid,openidphone,attention,last_time) VALUES ' .
 
-                    "('$nickname','$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid','$openid','$gzxx')";
+                    "('$nickname','$nickname'  , '$openid' , '$sex' , '" . time() . "' , '$headimgurl','$unionid','$openid','$gzxx','$last_time')";
 
      $GLOBALS['db']->query($sql);
 
@@ -160,7 +160,7 @@ if(!$openids){
 
 }else{
 
-	 $sql = "UPDATE  ecs_users set user_name='$nickname',alias='$nickname',sex=$sex,reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid',openidphone='$openid',attention = '$gzxx' where unionid='$unionid'";
+	 $sql = "UPDATE  ecs_users set user_name='$nickname',alias='$nickname',sex=$sex,reg_time='time()',headimgurl='$headimgurl',wx_open_id='$openid',openidphone='$openid',attention = '$gzxx',last_time='$last_time'  where unionid='$unionid'";
 
 	$GLOBALS['db']->query($sql);
 
@@ -180,7 +180,7 @@ if(!$openids){
 
         }else{
 
-          ecs_header("Location:goods_list.php");
+          ecs_header("Location:index.php");
 
         }
 
