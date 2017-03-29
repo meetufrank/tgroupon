@@ -91,13 +91,13 @@
 
          <div class="toolbar-section" id="cart">
           <div class="shopping-cart">
-              <div style=" border-bottom: 2px solid #ededed; margin-bottom:30px; ">
+              <div style=" border-bottom: 2px solid #ededed;">
               <label class="checkbox">
                     <input style="position: absolute; opacity: 0;" type="checkbox" id='checkbox-all' value="all" checked="checked">
                     <ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>
                   <h4 style="margin-left:18px ;">全选</h4>
                 </label>
-                </div>
+              </div>
             <!-- Item -->
 
 
@@ -117,7 +117,7 @@
                 <div class="item-details"><div class="item-title">
                 <a href="shop-single.php?id={$goods.goods_id}{$linestring2}">{$goods.goods_name}</a>
                 </div>
-                <div class="item-titls">
+                <div>
                 <div style="color:#000" >{$goods.goods_attr}</div>
                 <h4 class="item-price" data-price="{$goods.goods_price}">{$goods.goods_price}</h4>
                 </div>
@@ -532,7 +532,7 @@ function addToCartResponse(data)
                 '<ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins>'+
                 '</label> <a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'{$linestring2}" class="item-thumb"><img src="././admin/'+data.goods_list[i]['goods_thumb']+'" alt="Item">'+
                 '</a><div class="item-details"><div class="item-title"><a href="shop-single.php?id='+data.goods_list[i]['goods_id']+'{$linestring2}">'+data.goods_list[i]['goods_name']+'</a>'+
-                '</div><div class="item-titls"><div style="color:#000" >'+data.goods_list[i]['goods_attr']+'</div><h4 class="item-price" data-price="'+data.goods_list[i]['goods_price']+'">'+data.goods_list[i]['goods_price']+
+                '</div><div><div style="color:#000" >'+data.goods_list[i]['goods_attr']+'</div><h4 class="item-price" data-price="'+data.goods_list[i]['goods_price']+'">'+data.goods_list[i]['goods_price']+
                 '</h4></div><div class="count-input">'+
                 '<a class="incr-btn" data-action="decrease" href="#" onclick="changenum('+data.goods_list[i]['rec_id']+',-1)">–</a>'+
                 '<input class="quantity" type="text" value="'+data.goods_list[i]['goods_number']+'" min="1" max="1000" name="goods_number['+data.goods_list[i]['rec_id']+']" '+

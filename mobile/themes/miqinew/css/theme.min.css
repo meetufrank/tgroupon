@@ -1499,9 +1499,9 @@ select option {
 	text-transform: none;
 	font-weight: normal;
 	cursor: default;
-	padding-left: 25px;
+/*	padding-left: 25px;
 	margin-bottom: 12px;
-	margin-left: 2px;
+	margin-left: 2px;*/
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -2782,7 +2782,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 .toolbar-dropdown .toolbar-section {
 	width: 100%;
 	display: none;
-	padding: 50px 40px
+	padding: 50px 20px;
 }
 .toolbar-dropdown .toolbar-section.current {
 	display: block;
@@ -2875,35 +2875,16 @@ display:none
 .shopping-cart {
 	width: 100%
 }
-.shopping-cart-1{
-	width: 100%
-}
 .shopping-cart .item {
 	position: relative;
 	display: table;
 	width: 100%;
 	border-bottom: 2px solid #ededed;
 }
-.shopping-cart-1 .item {
-	position: relative;
-	display: table;
-	width: 100%;
-	border-bottom: 2px solid #ededed;
-}
-.shopping-cart-1 .item .item-thumb {
-    width: 163px;
-    padding-right: 25px;
-}
-.shopping-cart-1 .item .item-thumb, .shopping-cart .item .item-details {
-    display: table-cell;
-    vertical-align: top;
-}
 .shopping-cart .item .item-thumb, .shopping-cart .item .item-details {
 	display: table-cell;
-	vertical-align: top
-}
-.shopping-cart .item .item-thumb {
-	padding-right: 25px
+	vertical-align: top;
+	padding-top:20px;
 }
 .shopping-cart .item .item-thumb>img {
 	width: 100%

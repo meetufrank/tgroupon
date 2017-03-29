@@ -112,7 +112,7 @@
                   <div class="row pay_label pay_label-pc" style="" onclick="checkadd({$consignee.address_id})" id="div{$consignee.address_id}">
 
                   <div class="col-md-6 check_box"  >
-                    <label class="radio radio-inline" style="margin-right:0; padding-top: 4px;" id="label{$consignee.address_id}"  >
+                    <label class="radio radio-inline" style="padding-top:7px;" id="label{$consignee.address_id}"  >
                      <input type="radio" name="my_co_shipping" {if $consignee.default==1}checked="checked"{/if} value="{$consignee.address_id}"  id="address{$consignee.address_id}"  >
                      </label><!--{$consignee.city}{$consignee.district}-->
                    {$consignee.province}{$consignee.address}
