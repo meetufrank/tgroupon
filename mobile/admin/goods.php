@@ -2382,36 +2382,27 @@ if($_FILES['attr_img']['name']){
             foreach ($attr_value_list as $attr_value => $info)
 
             {
-
+                    $sql='';
                 if ($info['sign'] == 'insert')
 
                 {
 
-                    $sql = "INSERT INTO " .$ecs->table('goods_attr'). " (attr_id, goods_id, attr_value, attr_price,attr_img)".
+                $sql = "INSERT INTO " .$ecs->table('goods_attr'). " (attr_id, goods_id, attr_value, attr_price,attr_img)".
 
                             "VALUES ('$attr_id', '$goods_id', '$attr_value', '$info[attr_price]','$info[attr_img]')";
 
+                      $i++;
 
+                }elseif ($info['sign'] == 'update')
 
-                }
-
-                // elseif ($info['sign'] == 'update')
-
-                // {
-
-                //     $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_price = '$info[attr_price]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
-
-                // }
-
-                elseif ($info['sign'] == 'update')
-
-                {    if($info[attr_img]){
+                {
+                  if($info[attr_img]){
 
 
 
 
 
-                        $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_img = '$info[attr_img]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+                       $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_img = '$info[attr_img]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
 
 
 
@@ -2425,12 +2416,12 @@ if($_FILES['attr_img']['name']){
 
                 {
 
-                    $sql = "DELETE FROM " .$ecs->table('goods_attr'). " WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+               $sql = "DELETE FROM " .$ecs->table('goods_attr'). " WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
 
                 }
-
-                $db->query($sql);
-
+                    if($sql){
+                $GLOBALS['db']->query($sql);
+                  }
 
 
             }
@@ -2447,13 +2438,13 @@ if($_FILES['attr_img']['name']){
 
     /* 处理会员价格 */
 
-    if (isset($_POST['user_rank']) && isset($_POST['user_price']))
-
-    {
-
-        handle_member_price($goods_id, $_POST['user_rank'], $_POST['user_price']);
-
-    }
+    // if (isset($_POST['user_rank']) && isset($_POST['user_price']))
+    //
+    // {
+    //
+    //     handle_member_price($goods_id, $_POST['user_rank'], $_POST['user_price']);
+    //
+    // }
 
 
 
@@ -2499,27 +2490,27 @@ if($_FILES['attr_img']['name']){
 
 
 
-    if ($is_insert)
-
-    {
-
-        /* 处理关联商品 */
-
-        handle_link_goods($goods_id);
-
-
-
-        /* 处理组合商品 */
-
-        handle_group_goods($goods_id);
-
-
-
-        /* 处理关联文章 */
-
-        handle_goods_article($goods_id);
-
-    }
+    // if ($is_insert)
+    //
+    // {
+    //
+    //     /* 处理关联商品 */
+    //
+    //     handle_link_goods($goods_id);
+    //
+    //
+    //
+    //     /* 处理组合商品 */
+    //
+    //     handle_group_goods($goods_id);
+    //
+    //
+    //
+    //     /* 处理关联文章 */
+    //
+    //     handle_goods_article($goods_id);
+    //
+    // }
 
     /* 重新格式化图片名称 */
 
@@ -2710,6 +2701,7 @@ if($_FILES['attr_img']['name']){
 
 
     sys_msg($is_insert ? $_LANG['add_goods_ok'] : $_LANG['edit_goods_ok'], 0, $link);
+    exit;
 
 }
 

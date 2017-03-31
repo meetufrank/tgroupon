@@ -340,63 +340,68 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
 
     $a = $_POST['typenum'];   //类型名称
 
+if($spec_arr){
 
+  //根据类型名称查询
 
-    $sql = "select goods_attr from `ecs_products` where FIND_IN_SET('$attrid',goods_attr) and product_number > 0";
+  $spec_str=implode(',',$spec_arr);
+  $sql = "select count(*) from `ecs_products` where goods_attr='$spec_str' and product_number > 0 ";
+  $spec_count= $db->getOne($sql);
+  if($spec_count){
+    foreach ($spec_arr as $key => $value) {
+      $sql="select attr_id from `ecs_goods_attr` where  goods_attr_id=".$value;
+
+      $checked[$key]['typeid']=$GLOBALS['db']->getOne($sql);
+      $checked[$key]['attrid']=$value;
+       $jiage_arr[$key]=$value;
+    }
+    $sx_status=1;
+  }else{
+     $sx_status=0;
+  }
+
+}
+
+    $sql = "select goods_attr from `ecs_products` where FIND_IN_SET('$attrid',goods_attr) and product_number > 0 order by attributeprice asc";
 
     $feiattrid = $db->getAll($sql);
+
 
     $sql = "select goods_attr_id from `ecs_goods_attr` where  attr_id=".$typeid;
 
     $friend_arr = $db->getAll($sql);
 
     $i=0;
-
+   $more_num=0;
     foreach ($feiattrid as $key => $value) {
 
 
 
             $goodsattr = explode(",",$value['goods_attr']);
 
-            $result=0;
-
-             foreach ($spec_arr as $sk=>$sv){   //查询属性条件是否全部匹配
-
-                if($v){
-
-                  if(in_array($sv,$goodsattr)){
-
-                    $result++;
-
-                  }
-
-                }else{
-
-                    $result++;
-
-                }
 
 
 
-             }
 
-
-
-             if($result==count($goodsattr)){   //默认选中
-
+                    if($sx_status==0){
                     foreach ($goodsattr as $sskk => $ssvv) {
-
-
-
-                                        $checked[$sskk]['attrid']=$ssvv;
-
+                      $my_num=0;
+                      foreach ($spec_arr as $sk => $sv) {
+                        if($sv==$ssvv&&$sk==$sskk){
+                             $my_num++;
+                        }
+                      }
+                      if($my_num>=$more_num){
+                        $more_num=$my_num;
+                        $checked_list[]=$value['goods_attr'];
+                      }
 
 
 
 
                     }
+                 }
 
-             }
 
 
 
@@ -420,7 +425,51 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
 
     }
 
+if($checked_list&&$sx_status==0){
 
+  foreach ($checked_list as $key => $value) {
+     $sql = "select attributeprice from `ecs_products` where goods_attr = '".$value."'";
+    $check_price = $db->getOne($sql);
+     $check_attr = explode(",",$value);
+    if($key==0){
+      $min_price=$check_price;
+      foreach ($check_attr as $kk => $vv) {
+           $checked[$kk]['attrid']=$vv;
+      }
+    }else{
+      if($check_price<$min_price){
+
+             foreach ($check_attr as $kk => $vv) {
+                  $checked[$kk]['attrid']=$vv;
+             }
+
+      }
+    }
+
+  }
+
+  if(is_array($checked)){
+
+
+
+          foreach ($checked as $key => $value) {
+
+               $jiage_arr[$key]=$value['attrid'];
+
+               $sql = "select attr_id from `ecs_goods_attr` where goods_attr_id=".$value['attrid'];
+
+               $checked[$key]['typeid']=$db->getOne($sql);
+
+          }
+
+
+
+
+
+  }
+
+}
+  $jiageimg=@implode(',',$jiage_arr);
 
 
 
@@ -446,29 +495,7 @@ foreach ($friend_arr as $key => $value) {
 
 }
 
-if(is_array($checked)){
 
-
-
-        foreach ($checked as $key => $value) {
-
-             $jiage_arr[$key]=$value['attrid'];
-
-             $sql = "select attr_id from `ecs_goods_attr` where goods_attr_id=".$value['attrid'];
-
-             $checked[$key]['typeid']=$db->getOne($sql);
-
-        }
-
-        $jiageimg=@implode(',',$jiage_arr);
-
-
-
-}else{
-
-    exit;
-
-}
 
 
 
@@ -1201,57 +1228,58 @@ g.attr_id = a.attr_id
 
 //默认选中商品
 
- $sql = "select goods_attr from `ecs_products` where goods_id=".$goods_id." and product_number > 0 ";
+ $sql = "select goods_attr from `ecs_products` where goods_id=".$goods_id." and product_number > 0 order by attributeprice asc";
 
  $select_arr = $db->getAll($sql);
 
 // $sql="select min(goods_attr_id) as goods_attr from ecs_goods_attr  where goods_id=".$goods_id."  GROUP BY attr_id";
-
-    //默认选中属性
-
-
+//
+//     默认选中属性
 
 
 
-    //     foreach ($select_arr as $key => $value) {
+$i=0;
+
+        foreach ($select_arr as $key => $value) {
 
 
 
-    //         $goodsattr = explode(",",$value['goods_attr']);
-
-
-
-
-
-    //           if($key==0){
-
-    //                 $checked_arr=$goodsattr;
-
-    //                 foreach ($goodsattr as $k => $v) {
-
-
-
-    //                         $select[$k][$i]['attr_id']=$v;
-
-    //                         $sql="select attr_id from `ecs_goods_attr` where  goods_attr_id=".$v;
-
-    //                         $select[$k][$i]['typeid']=$GLOBALS['db']->getOne($sql);
-
-    //                    $i++;
-
-    //                 }
-
-    //                }
+            $goodsattr = explode(",",$value['goods_attr']);
 
 
 
 
 
-    // }
 
 
 
-// print_r($checked_arr);
+                    foreach ($goodsattr as $k => $v) {
+
+
+                             if($k==0){
+
+
+                            $select[$k][$i]['attr_id']=$v;
+
+                            $sql="select attr_id from `ecs_goods_attr` where  goods_attr_id=".$v;
+
+                            $select[$k][$i]['typeid']=$GLOBALS['db']->getOne($sql);
+                            $i++;
+                                   }
+
+
+                    }
+
+
+
+
+
+
+
+    }
+
+
+
 
  //print_r($select);exit;
 
@@ -1275,7 +1303,7 @@ if(!$checked_arr){
 
     foreach ($checked_arr as $k_b => $v_b) {
 
-        if($v_b){//
+        if($k_b==0){//
 
 
 
@@ -1306,16 +1334,19 @@ if(!$checked_arr){
                         foreach ($goodsattr as $k => $v) {
 
 
+                               if($k!=0){
+
 
                                 $select[$k][$i]['attr_id']=$v;
 
                                 $sql="select attr_id from `ecs_goods_attr` where  goods_attr_id=".$v;
 
                                 $select[$k][$i]['typeid']=$GLOBALS['db']->getOne($sql);
+                                $i++;
+                               }
 
 
 
-                           $i++;
 
                         }
 
