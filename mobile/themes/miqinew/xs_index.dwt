@@ -75,10 +75,6 @@
 	.teammate-name a:hover{
 		color:#333;
 	}
-	.checkbox{
-		padding-left: 8px;
-		padding-bottom:10px;
-	}
 	.img-Currentsize{
 		max-width:85%;
 		display:inline-block;
